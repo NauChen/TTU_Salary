@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/meta.html', {
+    "title": "大同大學-校內育成媒合平台-已登職缺",
+    })
+</head>
+
+<body>
+    <main class="main">
+        <!-- 側邊攔 -->
+        @@include('layout/header.html')
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-person-digging"></i>&ensp;網頁建置中</li>
+                    </ol>
+                </div>
+                <!-- 建置內頁 -->
+                <div class="tabs-box my-2r underConstructionPage">
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>本頁建設中<i
+                            class="fa-solid fa-quote-right"></i></h3>
+                    <div class="tabs section-border-radius section-padding p-5">
+                        <img src="./images/under_construction.png">
+                    </div>
+                </div>
+
+                @@include('layout/footer.html')
+
+            </div>
+        </div>
+    </main>
+    @@include('layout/metaJS.html')
+
+    <script src="./js/myParkingSpaceList.js"></script>
+</body>
+
+</html>

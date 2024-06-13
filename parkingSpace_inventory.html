@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/meta.html', {
+    "title": "大同大學-校內育成媒合平台-已登職缺",
+    })
+</head>
+
+<body>
+    <main class="main">
+        <!-- 側邊攔 -->
+        @@include('layout/header.html')
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-file-contract"></i>&ensp;申請與查閱</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-square-parking"></i>&ensp;停車位管理</li>
+                    </ol>
+                </div>
+                <!-- 停車位列表 -->
+                <div class="tabs-box my-2r">
+                    <div class="row mb-4 px-3">
+                        <h3 class="section-header col-auto mb-0 lh-base"><i class="fa-solid fa-quote-left"></i>停車位列表<i
+                                class="fa-solid fa-quote-right"></i></h3>
+                        <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
+                            href="./parkingSpace_apply.html"><i class="fa-solid fa-car-side"></i>/<i class="fa-solid fa-motorcycle"></i><i
+                                class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-plus"></i><span
+                                class="tooltiptext tooltip-right">申請停車位</span></a>
+                    </div>
+
+                    <div class="tabs section-border-radius section-padding">
+                        <table id="myParkingSpaceList" class="table table-hover table-bordered responsive align-middle"
+                            style="width:100%">
+                        </table>
+                    </div>
+                </div>
+
+                @@include('layout/footer.html')
+
+            </div>
+        </div>
+    </main>
+    @@include('layout/metaJS.html')
+
+    <script src="./js/myParkingSpaceList.js"></script>
+</body>
+
+</html>
