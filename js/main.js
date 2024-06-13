@@ -1,5 +1,6 @@
 // const a = (x , y) =>  x * y;
 // console.log(a(20 , 10));
+document.write('<script type="text/javascript" src="./js/sweetAlert.js"></script>');
 
 let commonSettingsTable = {
     layout: {
@@ -678,13 +679,6 @@ $(function () {
         }
     });
 
-
-
-
-
-
-
-
     $('#myContractList').DataTable({
         ...commonSettingsTable,
         "data": dataset_myContractList,
@@ -745,26 +739,7 @@ $(function () {
 
 });
 
-//table table-hover table-bordered responsive dataTable dtr-inline
-//table table-hover table-bordered responsive dataTable dtr-inline collapsed
 
-/* ::::::::::::::::::::::::::::: 新增/修改職缺 */
-//選擇薪資條件變動輸入框
-//document.addEventListener('DOMContentLoaded', function () {
-//    // 監聽 select 的 change 事件
-//    document.getElementById('jobSalary').addEventListener('change', function () {
-//        // 取得選擇的選項值
-//        var selectedOption = this.value;
-//        handleSalaryChoose(selectedOption);
-//    });
-
-//    // 取得選擇的選項值
-//    var selectedOption = document.getElementById('jobSalary').value;
-//    // 初始化時執行判斷
-//    handleSalaryChoose(selectedOption);
-//});
-
-//招聘 識別證申請
 // 指定id群，加指定class
 function theseAddClass(classNames, ids) {
     ids.forEach(function (id) {
@@ -790,117 +765,56 @@ function theseRemoveClass(classNames, ids) {
 }
 
 
-//
-// 根據選項值顯示相應的薪資選項
-function handleSalaryChoose(selectedOption) {
-    switch (selectedOption) {
-        case '時薪':
-        case '日薪':
-            theseAddClass(["choose"], ["dollarsItem"]);
-            theseRemoveClass(["choose"], ['dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem', 'dollarsPerCaseItem']);
-            document.getElementById('salaryTypeRadio1').checked = true; // #optionsRadios1 增加 checked 屬性
-            break;
-        case '月薪':
-            theseAddClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem']);
-            theseRemoveClass(["choose"], ['dollarsPerCaseItem']);
-            if (!document.getElementById('salaryTypeRadio2').checked && !document.getElementById('salaryTypeRadio3').checked && !document.getElementById('salaryTypeRadio4').checked) {
-                document.getElementById('salaryTypeRadio1').checked = true; // #optionsRadios1 增加 checked 屬性
-            }
-            break;
-        case '按件計酬':
-            theseAddClass(["choose"], ['dollarsPerCaseItem']);
-            theseRemoveClass(["choose"], ["dollarsItem", 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem',]);
-            document.getElementById('salaryTypeRadio5').checked = true; // #optionsRadios1 增加 checked 屬性
-            break;
-        case '請選擇':
-            theseRemoveClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem', 'dollarsPerCaseItem']);
-            document.getElementById('salaryTypeRadio1', 'salaryTypeRadio2', 'salaryTypeRadio3', 'salaryTypeRadio4', 'salaryTypeRadio5').checked = false; // #optionsRadios1 增加 checked 屬性
-            break;
-    }
-}
+// ※※※※※※===TOP 按鈕===※※※※※※
+// window.addEventListener("scroll", function () {
+//     let btnUp = document.querySelector(".top_button");
+//     if (window.scrollY > 0) {
+//         // 當畫面不在網頁最頂端時，加上 scroll-animation 類別來套用透明度變化的動畫
+//         btnUp.classList.add("scroll-animation");
+//         btnUp.classList.remove("d-none");
+//     } else {
+//         // 畫面在網頁最頂端時，移除 scroll-animation 類別
+//         btnUp.classList.remove("scroll-animation");
+//         btnUp.classList.add("d-none");
+//     }
+// });
+// document.addEventListener("DOMContentLoaded", function () {
+//     let btn_up_el = document.getElementById("btn_up");
+//     if (btn_up_el) {
+//         btn_up_el.addEventListener("click", function () {
+//             let html_el = document.getElementsByTagName("html")[0];
+//             html_el.scrollTo({
+//                 top: 0,
+//                 behavior: "smooth"
+//             });
+//         });
+//     }
+// });
+$(function() {
+    // 監聽滾動事件
+    $(window).on("scroll", function() {
+        let btnUp = $(".top_button");
+        if ($(this).scrollTop() > 0) {
+            // 當畫面不在網頁最頂端時，加上 scroll-animation 類別來套用透明度變化的動畫
+            btnUp.addClass("scroll-animation").removeClass("d-none");
+        } else {
+            // 畫面在網頁最頂端時，移除 scroll-animation 類別
+            btnUp.removeClass("scroll-animation").addClass("d-none");
+        }
+    });
 
-//串接薪資區間
-function combineInputs() {
-    // 檢查 optionsRadios2 是否被選中
-    var dollarsToDollars = document.getElementById('optionsRadios2').checked;
-
-    if (dollarsToDollars) {
-        // 取得兩個 input 的值
-        var firstValue = document.querySelector('.combineInputs:nth-child(1)').value;
-        var secondValue = document.querySelector('.combineInputs:nth-child(2)').value;
-
-        // 組合兩個值，用 '~' 連接
-        var combinedValue = firstValue + '~' + secondValue;
-
-        // 賦值給 JobSalaryData
-        document.querySelector('[name="JobSalaryData"]').value = combinedValue;
-    }
-}
-
-
-
-// ================TOP 按鈕
-window.addEventListener("scroll", function () {
-    let btnUp = document.querySelector(".top_button");
-    if (window.scrollY > 0) {
-        // 當畫面不在網頁最頂端時，加上 scroll-animation 類別來套用透明度變化的動畫
-        btnUp.classList.add("scroll-animation");
-        btnUp.classList.remove("d-none");
-    } else {
-        // 畫面在網頁最頂端時，移除 scroll-animation 類別
-        btnUp.classList.remove("scroll-animation");
-        btnUp.classList.add("d-none");
-    }
-});
-document.addEventListener("DOMContentLoaded", function () {
-    let btn_up_el = document.getElementById("btn_up");
-    if (btn_up_el) {
-        btn_up_el.addEventListener("click", function () {
-            let html_el = document.getElementsByTagName("html")[0];
-            html_el.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    }
+    // 監聽 DOMContentLoaded 事件
+    $("#btn_up").on("click", function() {
+        $("html, body").animate({ scrollTop: 0 }, "smooth");
+    });
 });
 
 
 
-// 驗證電話格式的函數
-function validatePhone(phone) {
-    var phoneRegex = /^\d{2,4}-\d{6,8}$/;
-    return phoneRegex.test(phone);
-}
-//這個電話
-function checkThisPhone() {
-    var inputItem = $(this); // 當前失去焦點的 input 元素
-    var inputId = inputItem.attr('id'); // 獲取 input 元素的 id
-    var warningBox = $("#danger_" + inputId);
-    console.log('AAA');
-    if (validatePhone(inputItem)) {
-        console.log('TTT');
-        warningBox.text("");
-    } else {
-        console.log('RRR');
-        warningBox.text('電話/手機 的格式不正確，請依正確的格式輸入：區碼-電話號碼 或 09XX-XXXXXX');
-    }
 
-}
 
-//這個必填
-function checkThisRequired() {
-    var inputItem = $(this); // 當前失去焦點的 input 元素
-    var inputId = inputItem.attr('id'); // 獲取 input 元素的 id
-    // var label = $("label[for='" + inputId + "']").text(); // 獲取與 input 元素相關聯的 label 的文本內容
-    var warningBox = $("#danger_" + inputId);
-    if (inputItem.val().trim() === '' || inputItem.val() === null) {
-        warningBox.text("(-`д´-) 這是必填欄位，請填上歐！").removeClass("d-none");
-        allRequiredValid = false;
-    } else {
-        warningBox.text("").addClass("d-none");
-    }
-}
+
+
 
 function openFile(event) {
     var input = event.target; //取得上傳檔案
@@ -939,47 +853,9 @@ function unformatNumber(str) {
     return str.replace(/,/g, '');
 }
 
-// 將資料庫的文字內的 \n 轉成 <br>
-function convertNewlinesToBreaks(text) {
-    return text.replace(/\n/g, '<br>');
-}
 
-// 將 <br> 轉成 \n
-function convertBreaksToNewlines(text) {
-    return text.replace(/<br\s*[\/]?>/gi, '\n').trim();
-}
 
-// 將組合時間拆開
-function splitJobTime(jobTime) {
-    // 使用正則表達式將jobTime拆分為兩部分
-    var timeParts = jobTime.split(" ~ ");
 
-    // 檢查timeParts是否有兩個部分
-    if (timeParts.length === 2) {
-        return {
-            jobTime1: timeParts[0].trim(),
-            jobTime2: timeParts[1].trim()
-        };
-    } else {
-        throw new Error("Invalid jobTime format. It should be in the format 'HH:mm ~ HH:mm'.");
-    }
-}
-
-// 將組合薪資拆開
-// function splitSalaryDetails(salaryDetails) {
-//     // 使用正則表達式將jobTime拆分為兩部分
-//     var timeParts = salaryDetails.split("：");
-
-//     // 檢查timeParts是否有兩個部分
-//     if (timeParts.length === 2) {
-//         return {
-//             jobTime1: timeParts[0].trim(),
-//             jobTime2: timeParts[1].trim()
-//         };
-//     } else {
-//         throw new Error("Invalid jobTime format. It should be in the format 'HH:mm ~ HH:mm'.");
-//     }
-// }
 
 
 
@@ -1306,39 +1182,8 @@ $(function () {
         }
     });
 
-    // 驗證Line ID格式是否有效
-    function isValidLineID(lineID) {
-        // 允许的字符為半形英数字、(.)、(-)、(_)和@
-        var validChars = /^[a-zA-Z0-9.@_-]+$/;
-        return validChars.test(lineID);
-    }
 
-    // 驗證電子郵件地址的函數
-    function validateEmail(email) {
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-    // 轉換大寫字母為小寫
-    function convertEmail(email) {
-        var atIndex = email.indexOf('@');
-        if (atIndex !== -1) {
-            var localPart = email.substring(0, atIndex).toLowerCase();
-            var domainPart = email.substring(atIndex);
-            return localPart + domainPart;
-        }
-        return email;
-    }
-
-    // 驗證電話格式的函數
-    function validatePhone(phone) {
-        var phoneRegex = /^\d{2,4}-\d{6,8}$/;
-        return phoneRegex.test(phone);
-    }
 
 
 });
-//僅能輸入 數字 & '-'
-function verifyPhone(obj) {
-    $(obj).val($(obj).val().replace(/[^\d-]/g, ""));
-}
+

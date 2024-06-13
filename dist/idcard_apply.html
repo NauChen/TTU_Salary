@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.1/css/responsive.bootstrap5.min.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css"> -->
 </head>
 
 <body>
@@ -159,14 +160,14 @@
                         <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>申請人資料<i
                                 class="fa-solid fa-quote-right"></i></h3>
                         <div class="tabs section-border-radius section-padding">
-                            <form class="container-fluid" method="post" asp-controller="Job" asp-action="JobEdit">
+                            <form class="container-fluid" method="post" id="applyIdCardForm">
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-6 mb-3">
                                         <div class="row mb-3">
                                             <label for="idcardName" class="col-lg-auto col-form-label text-nowrap"><span
                                                     class="d-none d-lg-inline">&emsp;</span>姓名：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control requiredItem" id="idCardName">
+                                                <input type="text" class="form-control thisRequired" id="idCardName">
                                                 <span class="text-danger" id="danger_idCardName"></span>
                                             </div>
                                         </div>
@@ -175,7 +176,7 @@
                                                 class="col-lg-auto col-form-label text-nowrap"><span
                                                     class="d-none d-lg-inline">&emsp;</span>職稱：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="idCardJobName">
+                                                <input type="text" class="form-control thisRequired" id="idCardJobName">
                                                 <span class="text-danger" id="danger_idCardJobName"></span>
                                             </div>
                                         </div>
@@ -184,8 +185,8 @@
                                                 asp-for="IdCard_Phone"><span
                                                     class="d-none d-lg-inline">&emsp;</span>電話：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control checkPhone" id="idCardPhone"
-                                                    onkeyup="verifyPhone(this)">
+                                                <input type="text" class="form-control checkPhone thisRequired"
+                                                    id="idCardPhone" onkeyup="verifyPhone(this)">
                                                 <span class="text-danger" id="danger_idCardPhone"></span>
                                             </div>
                                         </div>
@@ -193,7 +194,8 @@
                                             <label for="idCardEmail"
                                                 class="col-lg-auto col-form-label text-nowrap">E-mail：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="idCardEmail">
+                                                <input type="email" class="form-control thisRequired" id="idCardEmail"
+                                                    onkeyup="verifyEmail(this)">
                                                 <span class="text-danger" id="danger_idCardEmail"></span>
                                             </div>
                                         </div>
@@ -208,7 +210,8 @@
                                                     <span class="text-danger" id="danger_idCard_Period1"></span>
                                                     <div class="input-group mb-1">
                                                         <span class="input-group-text">自</span>
-                                                        <input type="date" class="form-control" id="idCard_Period1">
+                                                        <input type="date" class="form-control thisRequired"
+                                                            id="idCard_Period1">
                                                         <span class="input-group-text">起</span>
                                                     </div>
                                                 </div>
@@ -216,7 +219,8 @@
                                                     <span class="text-danger" id="danger_idCard_Period2"></span>
                                                     <div class="input-group mb-1">
                                                         <span class="input-group-text">至</span>
-                                                        <input type="date" class="form-control" id="idCard_Period2">
+                                                        <input type="date" class="form-control thisRequired"
+                                                            id="idCard_Period2">
                                                         <span class="input-group-text">止</span>
                                                     </div>
                                                 </div>
@@ -226,7 +230,8 @@
                                             <label for="idCardCultRoom"
                                                 class="col-lg-auto col-form-label text-nowrap">培育室位置：</label>
                                             <div class="col">
-                                                <select class="form-control form-select" id="idCardCultRoom">
+                                                <select class="form-control form-select thisRequired"
+                                                    id="idCardCultRoom">
                                                     <option value="請選擇" disabled selected>--- 請選擇 ---</option>
                                                     <optgroup label="青創基地">
                                                         <option value="201">201</option>
@@ -241,7 +246,8 @@
                                             <label for="idCardPhoto"
                                                 class="col-lg-auto col-form-label text-nowrap">２吋證件照：</label>
                                             <div class="col">
-                                                <input type="file" onchange="openFile(event)" class="form-control"
+                                                <input type="file" onchange="openFile(event)"
+                                                    class="form-control thisRequired"
                                                     accept="image/git,image/jpeg,image/jpg,image/png" id="idCardPhoto">
                                                 <span class="text-danger" id="danger_idCardPhoto"></span>
                                             </div>
@@ -252,7 +258,8 @@
                                             <label for="danger_idCardEmergContact"
                                                 class="col-lg-auto col-form-label text-nowrap">緊急聯絡人：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="danger_idCardEmergContact">
+                                                <input type="text" class="form-control thisRequired"
+                                                    id="danger_idCardEmergContact">
                                                 <span class="text-danger" id="danger_idCardEmergContact"></span>
                                             </div>
                                         </div>
@@ -260,8 +267,8 @@
                                             <label for="idCardECPhone"
                                                 class="col-lg-auto col-form-label text-nowrap">&ensp;&#10551;聯絡電話：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control checkPhone" id="idCardECPhone"
-                                                    onkeyup="verifyPhone(this)">
+                                                <input type="text" class="form-control checkPhone thisRequired"
+                                                    id="idCardECPhone" onkeyup="verifyPhone(this)">
                                                 <span class="text-danger" id="danger_idCardECPhone"></span>
                                             </div>
                                         </div>
@@ -501,62 +508,65 @@
 <script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/3.0.1/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/3.0.1/js/responsive.bootstrap5.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.all.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./js/main.js"></script>
+    <script src="./js/idCardApply.js"></script>
 
-    <script src="./js/formPreview.js"></script>
-    <script>
-        $(function () {
-            //同步輸入框跟預覽td
-            syncInputValue('idCardName', 'idCardName_td');
-            syncInputValue('idCardJobName', 'idCardJobName_td');
-            syncInputValue('idCardPhone', 'idCardPhone_td');
-            syncInputValue('idCardEmail', 'idCardEmail_td');
-            syncInputDate('idCard_Period1', 'idCard_Period1_Y', 'idCard_Period1_m', 'idCard_Period1_D');
-            syncInputDate('idCard_Period2', 'idCard_Period2_Y', 'idCard_Period2_m', 'idCard_Period2_D');
-            syncSelectValue('idCardCultRoom', 'idCardCultRoom_Building', 'idCardCultRoom_Room');
-            syncInputValue('idCardEmergContact', 'ICE_Person');
-            syncInputValue('idCardECPhone', 'ICE_Phone');
+    <!-- <script src="./js/formPreview.js"></script> -->
+    <!-- <script>
+        // $(function () {
+        //     //同步輸入框跟預覽td
+        //     syncInputValue('idCardName', 'idCardName_td');
+        //     syncInputValue('idCardJobName', 'idCardJobName_td');
+        //     syncInputValue('idCardPhone', 'idCardPhone_td');
+        //     syncInputValue('idCardEmail', 'idCardEmail_td');
+        //     syncInputDate('idCard_Period1', 'idCard_Period1_Y', 'idCard_Period1_m', 'idCard_Period1_D');
+        //     syncInputDate('idCard_Period2', 'idCard_Period2_Y', 'idCard_Period2_m', 'idCard_Period2_D');
+        //     syncSelectValue('idCardCultRoom', 'idCardCultRoom_Building', 'idCardCultRoom_Room');
+        //     syncInputValue('idCardEmergContact', 'ICE_Person');
+        //     syncInputValue('idCardECPhone', 'ICE_Phone');
 
-            //圖書館閱覽申請切換
-            $('input[name="libraryRead"]').on('change', function () {
-                if ($('#wantReadLibrary').is(':checked')) {
-                    theseAddClass(["d-none"], ['wantNo', 'dontWantYes']);
-                    theseRemoveClass(["d-none"], ['wantYes', 'dontWantNo']);
-                } else if ($('#dontWantReadLibrary').is(':checked')) {
-                    theseAddClass(["d-none"], ['wantYes', 'dontWantNo']);
-                    theseRemoveClass(["d-none"], ['wantNo', 'dontWantYes']);
-                }
-            });
-            var allRequiredValid = true;
+        //     //圖書館閱覽申請切換
+        //     $('input[name="libraryRead"]').on('change', function () {
+        //         if ($('#wantReadLibrary').is(':checked')) {
+        //             theseAddClass(["d-none"], ['wantNo', 'dontWantYes']);
+        //             theseRemoveClass(["d-none"], ['wantYes', 'dontWantNo']);
+        //         } else if ($('#dontWantReadLibrary').is(':checked')) {
+        //             theseAddClass(["d-none"], ['wantYes', 'dontWantNo']);
+        //             theseRemoveClass(["d-none"], ['wantNo', 'dontWantYes']);
+        //         }
+        //     });
+        //     var allRequiredValid = true;
 
 
-            $('#confirm_idCardApp').on('click', function (event) {
-                if (!$(this).attr('data-bs-toggle') || !$(this).attr('data-bs-target')) {
-                    event.preventDefault();
-                    alert("請填上所有欄位，並上傳證件照‧");
-                }
-            });
+        //     $('#confirm_idCardApp').on('click', function (event) {
+        //         if (!$(this).attr('data-bs-toggle') || !$(this).attr('data-bs-target')) {
+        //             event.preventDefault();
+        //             alert("請填上所有欄位，並上傳證件照‧");
+        //         }
+        //     });
 
-            if (allRequiredValid) {
-                $('#confirm_idCardApp').attr('data-bs-toggle', 'modal').attr('data-bs-target', '#idCardApp_pdf');
-            };
-            // $('.checkPhone').on('input', function () {
-            //     var val = $this.val();
-            //     $this.val(val.replace(/[^0-9-]/g, '')); // 只允許輸入數字和 '-'
-            // });
-            $(".checkPhone").blur(checkThisPhone);
+        //     if (allRequiredValid) {
+        //         $('#confirm_idCardApp').attr('data-bs-toggle', 'modal').attr('data-bs-target', '#idCardApp_pdf');
+        //     };
+        //     // $('.checkPhone').on('input', function () {
+        //     //     var val = $this.val();
+        //     //     $this.val(val.replace(/[^0-9-]/g, '')); // 只允許輸入數字和 '-'
+        //     // });
+        //     $(".checkPhone").blur(checkThisPhone);
 
-            // 驗證電話格式的函數
-            // function validatePhone(phone) {
-            //     var phoneRegex = /^\d{2,4}-\d{6,8}$/;
-            //     return phoneRegex.test(phone);
-            // }
+        //     // 驗證電話格式的函數
+        //     // function validatePhone(phone) {
+        //     //     var phoneRegex = /^\d{2,4}-\d{6,8}$/;
+        //     //     return phoneRegex.test(phone);
+        //     // }
 
-            $(".requiredItem").blur(checkThisRequired);
+        //     $(".requiredItem").blur(checkThisRequired);
 
-        });
+        // });
 
-    </script>
+    </script> -->
 
 </body>
 

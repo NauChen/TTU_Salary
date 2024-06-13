@@ -46,7 +46,7 @@ function syncSelectValue(selectId, tdgroupId, tdvalueId) {
     });
 }
 
-//基地培育區 → 大樓名
+//基地培育區 轉 大樓名
 function changeRoomName(room) {
     switch (room) {
         case '青創基地':
@@ -80,7 +80,7 @@ function changeRoomName(room) {
 
 
 
-
+// 上傳圖片、預覽、裁切
 $(function () {
     /* ::::::::::::::::::::::::::::: 裁切上傳圖片 */
     var car_width_crop = 529; // 汽車裁切寬度
@@ -111,7 +111,7 @@ $(function () {
         });
     }
 
-    // 處理文件選擇
+    // 可調整裁切的大小
     function handleFileSelect(input, width_crop, height_crop) {
         $("#croppie-container").show();
         if (!croppie) {
@@ -126,7 +126,7 @@ $(function () {
         reader.readAsDataURL(input.files[0]);
     }
 
-    // 重置函數，恢復到初始狀態
+    // 重置函數，恢復到初始狀態( "重填" 按鈕使用)
     function resetToInitialState() {
         if (croppie) {
             croppie.destroy();
@@ -175,6 +175,7 @@ $(function () {
         });
     });
 
+    // 調整預覽燈箱內的圖片大小
     function displayCroppedImage(imgData, mode) {
         var width = mode === 'car' ? '100%' : '50%';
         $('#newImg').html('<img src="' + imgData + '" class="img-thumbnail" style="width: ' + width + ';">');
@@ -183,7 +184,8 @@ $(function () {
     $('#confirm_parkingSpaceApp').on('click', function (event) {
         if (!$(this).attr('data-bs-toggle') || !$(this).attr('data-bs-target')) {
             event.preventDefault();
-            alert("請先上傳行照內頁並裁剪至指定大小");
+            // alert("請先上傳行照內頁並裁剪至指定大小");
+            swalToastWarning('請先上傳行照內頁，並裁剪成指定大小。', 'top');
         }
     });
 

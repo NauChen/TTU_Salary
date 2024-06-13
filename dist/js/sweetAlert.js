@@ -1,0 +1,1 @@
+function swalToastWarning(e,o){Swal.mixin({toast:!0,position:o,showConfirmButton:!1,timer:2e3,timerProgressBar:!0,didOpen:e=>{e.onmouseenter=Swal.stopTimer,e.onmouseleave=Swal.resumeTimer}}).fire({icon:"warning",iconColor:"#e83e8c",title:e})}

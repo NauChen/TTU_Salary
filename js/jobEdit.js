@@ -1,3 +1,6 @@
+document.write('<script type="text/javascript" src="./js/formComm.js"></script>');
+// ***********************************確定後再合併$(function(){ });
+
 var dataset_myJob = [
     {
         'id': '1',
@@ -381,17 +384,14 @@ var dataset_myJob = [
     }
 ];
 
-
-
 $(function () {
 
     const urlParams = new URLSearchParams(window.location.search);
     const jobId = String(urlParams.get('id'));
 
-    // 确保 jobId 存在，并进行后续处理
+    // 確保 jobId 存在
     if (jobId) {
-        // 在控制台打印 jobId，以验证它是否被正确传递
-        console.log('Job ID:', jobId);
+        // console.log('Job ID:', jobId);
 
         let jobData = dataset_myJob.find(job => job.id === jobId);
         if (jobData) {
@@ -401,7 +401,7 @@ $(function () {
             $('#jobContent').text(jobData.jobContent);
             $('#jobLocation').text(jobData.jobLocation);
             $('#deptOf').val(jobData.deptOf);
-
+            // 將組合時間拆開，function來自formComm.js
             var splitTimes = splitJobTime(jobData.jobTime);
             $('#jobTime1').val(splitTimes.jobTime1);
             $('#jobTime2').val(splitTimes.jobTime2);
@@ -412,10 +412,11 @@ $(function () {
 
             $('#salaryType').val(jobData.salaryType);
             var selectedOption = $('#salaryType').val();
-            salaryTypeChoose(selectedOption);
 
+            salaryTypeChoose(selectedOption);
             handleSalaryDetails(jobData.salaryTypeItem, jobData.salaryAmount);
 
+            //限制截止日期不可小於當日
             var today = new Date().toISOString().split('T')[0];
             $('#applicationDeadline').attr('min', today);
             $('#applicationDeadline').val(jobData.applicationDeadline);
@@ -435,6 +436,35 @@ $(function () {
         // 取得選擇的選項值
         var selectedOption = $(this).val();
         handleSalaryChoose(selectedOption);
+    });
+
+    // 切換選擇單選框(薪資金額輸入)時，更改必填class。 必填class用在formComm.js的function，添加class的function來自main.js
+    $('input[name="salaryTypeItem"]').on("change", function () {
+        var selectedValue = $(this).val();
+        switch (selectedValue) {
+            case "1":
+                theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+                theseAddClass(["thisRequired"], ["dollarsInput"]);
+                break;
+            case "2":
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+                theseAddClass(["thisRequired"], ["dollarsToDollars_1Input", "dollarsToDollars_2Input"]);
+                break;
+            case "3":
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'negotiableInput', 'dollarsPerCaseInput']);
+                theseAddClass(["thisRequired"], ["moreThenDollarsInput"]);
+                break;
+            case "4":
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'dollarsPerCaseInput']);
+                theseAddClass(["thisRequired"], ["negotiableInput"]);
+                break;
+            case "5":
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']);
+                theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
+                break;
+            default:
+                break;
+        }
     });
 
 
@@ -462,7 +492,7 @@ function salaryTypeChoose(selectedOption) {
     }
 }
 
-// 設置單選選項並將金額轉換好代入
+// 修改職缺專用，設置單選選項並將金額轉換好代入
 function handleSalaryDetails(salaryTypeItem, salaryAmount) {
     function cleanAmount(amount) {
         return amount.replace(/[元|~|以上|面議|\(|\)|,]/g, '').trim();
@@ -474,6 +504,10 @@ function handleSalaryDetails(salaryTypeItem, salaryAmount) {
                 $('#salaryTypeRadio1').prop('checked', true);
                 var cleanSalary = cleanAmount(salaryAmount);
                 $('input[name="dollars"]').val(cleanSalary);
+                // 移除必填class，用於formComm.js
+                theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+                // 增加必填class，用於formComm.js
+                theseAddClass(["thisRequired"], ["dollarsInput"]);
             }
             break;
         case '2':
@@ -482,6 +516,8 @@ function handleSalaryDetails(salaryTypeItem, salaryAmount) {
                 var amounts = salaryAmount.replace('元', '').split('~');
                 $('input[name="dollarsValue1"]').val(cleanAmount(amounts[0]));
                 $('input[name="dollarsValue2"]').val(cleanAmount(amounts[1]));
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+                theseAddClass(["thisRequired"], ["dollarsToDollars_1Input", "dollarsToDollars_2Input"]);
             }
             break;
         case '3':
@@ -489,6 +525,8 @@ function handleSalaryDetails(salaryTypeItem, salaryAmount) {
                 $('#salaryTypeRadio3').prop('checked', true);
                 var cleanSalary = cleanAmount(salaryAmount.replace('以上', ''));
                 $('input[name="moreThenDollars"]').val(cleanSalary);
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'negotiableInput', 'dollarsPerCaseInput']);
+                theseAddClass(["thisRequired"], ["moreThenDollarsInput"]);
             }
             break;
         case '4':
@@ -496,6 +534,8 @@ function handleSalaryDetails(salaryTypeItem, salaryAmount) {
                 $('#salaryTypeRadio4').prop('checked', true);
                 var cleanSalary = cleanAmount(salaryAmount.replace('面議', '').replace('以上', ''));
                 $('input[name="negotiable"]').val(cleanSalary);
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'dollarsPerCaseInput']);
+                theseAddClass(["thisRequired"], ["negotiableInput"]);
             }
             break;
         case '5':
@@ -503,9 +543,17 @@ function handleSalaryDetails(salaryTypeItem, salaryAmount) {
                 $('#salaryTypeRadio5').prop('checked', true);
                 var cleanSalary = cleanAmount(salaryAmount.replace('/件', ''));
                 $('input[name="dollarsPerCase"]').val(cleanSalary);
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']);
+                theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
             }
             break;
         default:
             console.error('Invalid salaryTypeItem: ', salaryTypeItem);
     }
 }
+
+
+$(function () {
+    // 限制確認必填class是否都已有值，才可傳送。function來自formComm.js
+    validAllRequiredForm('submitBtn', 'editJobForm');
+});

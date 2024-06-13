@@ -30,14 +30,14 @@
                             class="fa-solid fa-quote-right"></i></h3>
 
                     <div class="tabs section-border-radius section-padding">
-                        <form class="container-fluid" method="post">
+                        <form class="container-fluid" method="post" id="editJobForm">
                             <div class="row">
                                 <div class="col-xl-4 col-lg-6 mb-3">
                                     <div class="row mb-3">
                                         <label for="jobTitle"
                                             class="col-lg-auto col-form-label text-nowrap">職務名稱：</label>
                                         <div class="col">
-                                            <input type="text" class="form-control" id="jobTitle">
+                                            <input type="text" class="form-control thisRequired" id="jobTitle">
                                             <span class="text-danger" id="danger_jobTitle"></span>
                                         </div>
                                     </div>
@@ -45,7 +45,7 @@
                                         <label for="jobEmployment"
                                             class="col-lg-auto col-form-label text-nowrap">工作性質：</label>
                                         <div class="col">
-                                            <select class="form-control form-select" id="jobEmployment">
+                                            <select class="form-control form-select thisRequired" id="jobEmployment">
                                                 <option value="請選擇" disabled selected>--- 請選擇 ---</option>
                                                 <option value="全職">全職</option>
                                                 <option value="工讀">工讀</option>
@@ -57,7 +57,7 @@
                                         <label for="jobContent"
                                             class="col-lg-auto col-form-label text-nowrap">工作內容：</label>
                                         <div class="col">
-                                            <textarea class="form-control resize-none h-150" id="jobContent"></textarea>
+                                            <textarea class="form-control resize-none h-150 thisRequired" id="jobContent"></textarea>
                                             <span class="text-danger" id="danger_jobContent"></span>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                         <label for="jobLocation"
                                             class="col-lg-auto col-form-label text-nowrap">工作地點：</label>
                                         <div class="col">
-                                            <textarea class="form-control resize-none h-100"
+                                            <textarea class="form-control resize-none h-100 thisRequired"
                                                 id="jobLocation"></textarea>
                                             <span class="text-danger" id="danger_jobLocation"></span>
                                         </div>
@@ -73,7 +73,7 @@
                                     <div class="row mb-3">
                                         <label for="deptOf" class="col-lg-auto col-form-label text-nowrap">科系限制：</label>
                                         <div class="col">
-                                            <select class="form-control form-select" id="deptOf">
+                                            <select class="form-control form-select thisRequired" id="deptOf">
                                                 <option value="請選擇" disabled selected>--- 請選擇 ---</option>
                                                 <optgroup label="全部">
                                                     <option value="不限學系">不限學系</option>
@@ -108,7 +108,7 @@
                                                 <span class="text-danger" id="danger_jobTime1"></span>
                                                 <div class="input-group mb-1">
                                                     <span class="input-group-text">自</span>
-                                                    <input type="time" class="form-control" id="jobTime1">
+                                                    <input type="time" class="form-control thisRequired" id="jobTime1">
                                                     <span class="input-group-text">起</span>
                                                 </div>
                                             </div>
@@ -116,7 +116,7 @@
                                                 <span class="text-danger" id="danger_jobTime2"></span>
                                                 <div class="input-group mb-1">
                                                     <span class="input-group-text">至</span>
-                                                    <input type="time" class="form-control" id="jobTime2">
+                                                    <input type="time" class="form-control thisRequired" id="jobTime2">
                                                     <span class="input-group-text">止</span>
                                                 </div>
                                             </div>
@@ -126,7 +126,7 @@
                                         <label for="vacationSystem"
                                             class="col-lg-auto col-form-label text-nowrap">休假制度：</label>
                                         <div class="col">
-                                            <select class="form-control form-select" id="vacationSystem">
+                                            <select class="form-control form-select thisRequired" id="vacationSystem">
                                                 <option value="請選擇" disabled selected>--- 請選擇 ---</option>
                                                 <option value="周休二日">周休二日</option>
                                                 <option value="排假">排假</option>
@@ -140,7 +140,7 @@
                                             class="col-lg-auto col-form-label text-nowrap">附加條件<span
                                                 class="d-none d-lg-inline"><br>&emsp;</span>與其他：</label>
                                         <div class="col">
-                                            <textarea class="form-control resize-none h-150"
+                                            <textarea class="form-control resize-none h-150 thisRequired"
                                                 id="jobCondition"></textarea>
                                             <span class="text-danger" id="danger_jobCondition"></span>
                                         </div>
@@ -149,7 +149,7 @@
                                         <label for="jobConnect"
                                             class="col-lg-auto col-form-label text-nowrap">應徵方式：</label>
                                         <div class="col">
-                                            <textarea class="form-control resize-none h-100" id="jobConnect"></textarea>
+                                            <textarea class="form-control resize-none h-100 thisRequired" id="jobConnect"></textarea>
                                             <span class="text-danger" id="danger_jobConnect"></span>
                                         </div>
                                     </div>
@@ -159,7 +159,7 @@
                                         <label for="salaryType"
                                             class="col-lg-auto col-form-label text-nowrap">工作待遇：</label>
                                         <div class="col">
-                                            <select class="form-control form-select" id="salaryType">
+                                            <select class="form-control form-select thisRequired" id="salaryType">
                                                 <option value="請選擇" disabled selected>--- 請選擇 ---</option>
                                                 <option value="時薪">時薪</option>
                                                 <!-- 元 -->
@@ -212,6 +212,7 @@
                                             <label class="form-check-label flex-grow-1" for="salaryTypeRadio3"
                                                 id="moreThenDollars">
                                                 <input type="text" placeholder="NTD" name="moreThenDollars"
+                                                    id="moreThenDollarsInput"
                                                     class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
                                                     oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元以上
                                             </label>
@@ -224,6 +225,7 @@
                                                 id="negotiable">
                                                 <span class="ms-2">面議</span>
                                                 <input type="text" placeholder="NTD" name="negotiable"
+                                                    id="negotiableInput"
                                                     class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
                                                     oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元以上
                                             </label>
@@ -236,6 +238,7 @@
                                             <label class="form-check-label flex-grow-1" for="salaryTypeRadio5"
                                                 id="dollarsPerCase">
                                                 <input type="text" placeholder="NTD" name="dollarsPerCase"
+                                                    id="dollarsPerCaseInput"
                                                     class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
                                                     oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元&ensp;/&ensp;件
                                             </label>
@@ -247,7 +250,7 @@
                                         <label for="applicationDeadline"
                                             class="col-lg-auto col-form-label text-nowrap">截止日期：</label>
                                         <div class="col">
-                                            <input type="date" id="applicationDeadline" class="form-control">
+                                            <input type="date" id="applicationDeadline" class="form-control thisRequired">
                                             <span class="text-danger" id="danger_applicationDeadline"></span>
                                         </div>
                                     </div>
@@ -255,11 +258,11 @@
                             </div>
                             <div class="row text-center p-3 justify-content-center">
                                 <div class="col-auto">
-                                    <a href="./nav-memo2-myjob.html"
+                                    <a href="./myjob.html"
                                         class="btn btn-lg btn-outline-danger twoWord text-nowrap">返回</a>
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-lg btn-success">更新</button>
+                                    <button type="button" class="btn btn-lg btn-success" id="submitBtn">更新</button>
                                 </div>
                             </div>
 
@@ -277,23 +280,7 @@
 
     <script src="./js/jobEdit.js"></script>
 
-    <!-- <script>
-        /* ::::::::::::::::::::::::::::: 新增/修改職缺 */
-        //選擇薪資條件變動輸入框
-        document.addEventListener('DOMContentLoaded', function () {
-            // 監聽 select 的 change 事件
-            document.getElementById('jobSalary').addEventListener('change', function () {
-                // 取得選擇的選項值
-                var selectedOption = this.value;
-                handleSalaryChoose(selectedOption);
-            });
 
-            // 取得選擇的選項值
-            var selectedOption = document.getElementById('jobSalary').value;
-            // 初始化時執行判斷
-            handleSalaryChoose(selectedOption);
-        });
-    </script> -->
 </body>
 
 </html>

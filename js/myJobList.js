@@ -1,126 +1,4 @@
-// var dataset_myJob = [
-//     {
-//         'id': '1',
-//         'createDate': "2024-04-25",
-//         'jobTitle': "System Architect",
-//         'jobEmployment': "Edinburgh",
-//         'jobTime': "11:00 ~ 12:00",
-//         'applicationDeadline': "2011-06-30",
-//     },
-//     {
-//         'id': '2',
-//         'createDate': "2011-06-30",
-//         'jobTitle': "Accountant",
-//         'jobEmployment': "Tokyo",
-//         'jobTime': "12:00 ~ 15:00",
-//         'applicationDeadline': "2011-06-30",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-//     {
-//         'id': '3',
-//         'createDate': "2009-01-12",
-//         'jobTitle': "Junior Technical Author",
-//         'jobEmployment': "San Francisco",
-//         'jobTime': "13:10 ~ 15:00",
-//         'applicationDeadline': "2011-06-25",
-//     },
-
-// ];
+// ****************************傳資料至後端未完成
 
 var dataset_myJob = [
     {
@@ -646,21 +524,21 @@ $(function () {
     $('#deleteTheseJobs').click(function () {
         let selectedIds = [];
 
-        // 遍历每一行，检查第一列复选框是否选中
+        // 遍歷每一行，檢查第一列複選框是否選中
         table.rows().every(function () {
             let row = this.node();
             let checkbox = $(row).find('.job-checkbox');
 
-            // 如果复选框被选中，获取该行的ID
+            // 如果複選框被選中，獲取該行的ID
             if (checkbox.prop('checked')) {
                 let rowData = this.data();
                 selectedIds.push(rowData.id);
             }
         });
 
-        // 如果没有选中任何行，提示用户
+        // 如果没有選中任何行，提示用戶
         if (selectedIds.length === 0) {
-            alert("請先勾選欲刪除的招聘職缺");
+            swalToastWarning('請先勾選欲刪除的招聘職。', 'top');
             return;
         }
 
@@ -670,7 +548,7 @@ $(function () {
         //     ids: selectedIds
         // };
 
-        // 向后端发送删除请求
+        // 向後端發送删除請求
         // $.ajax({
         //     url: 'asp.net的東西',
         //     type: 'POST',
