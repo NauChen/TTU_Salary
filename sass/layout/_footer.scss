@@ -1,0 +1,116 @@
+// footer {
+//     @include layout(90);
+//     background-color: #ffc801;
+// }
+
+/* ::::::::::::::::::::::::::::: Footer */
+.footer {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .links {
+        display: flex;
+        margin-bottom: 25px;
+
+        li {
+
+            &:not(:first-child),
+            &:not(:last-child) {
+                margin: 0 10px;
+            }
+        }
+
+        a {
+            padding: 0.3rem 0.8rem;
+            min-width: 110px;
+            text-align: center;
+            color: #78c2ad;
+
+            &:hover {
+                transition: all 0.2s linear;
+                color: #519864;
+            }
+        }
+
+        .copyright {
+            font-size: 13.5px;
+            margin-bottom: 8px;
+            color: #222;
+
+            span {
+                color: lightsalmon;
+                font-weight: 600;
+                font-size: 14.5px;
+            }
+        }
+
+    }
+}
+
+
+/* ==========右下TOP========== */
+
+.top_button {
+    position: fixed;
+    right: 50px;
+    bottom: 100px;
+    // background-color: #fff;
+    width: 5vw;
+    min-width: 60px;
+    height: 5vw;
+    min-height: 60px;
+    // border-radius: 20%;
+    opacity: 0;
+    // box-shadow: 0px 0px 10px gray;
+    z-index: 30;
+    transition: 0.3s ease;
+    /* 添加透明度變化的動畫效果 */
+    cursor: pointer;
+}
+
+.top_button img {
+    display: block;
+    margin: 0 auto;
+    width: 65%;
+    transform: translateY(3%);
+}
+
+.top_button:hover {
+    opacity: 1;
+}
+
+/* 定義透明度變化的動畫效果 */
+@keyframes fadeAnimation {
+    0% {
+        transform: rotate(0deg);
+        opacity: .8;
+    }
+
+    25% {
+        transform: rotate(-2deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    75% {
+        transform: rotate(2deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(0deg);
+        opacity: .8;
+    }
+
+}
+
+/* 當畫面不在網頁最頂端時，套用透明度變化的動畫 */
+.top_button.scroll-animation {
+    animation: fadeAnimation 1s linear infinite;
+}

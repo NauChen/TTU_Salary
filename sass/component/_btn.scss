@@ -1,0 +1,197 @@
+// .btn {
+//    padding: 10px 30px;
+//    text-align: center;
+//    color : $black;
+//    cursor: pointer;
+//    transition: all .3s ease;    
+//    &.primary {
+//      background-color: $primary;
+//      &:hover {
+//         background-color: darken($primary , 10);
+//         color: $white;
+//      }
+//    };
+//    &.secondary {
+//      background-color: $secondary;
+//      &:hover {
+//         background-color: darken($secondary , 10);
+//         color: $white;
+//      }
+//    }
+//    &.warning {
+//      background-color: $warning;
+
+//    }
+//    &.error {
+//       background-color: $error;
+//     }
+//    &.outline {
+//       border: 1px solid $primary;
+//       background-color: initial;
+//       color: $primary;
+//    }
+//    &.radius {
+//      border-radius: $border-radius-3;
+//    } 
+
+// }
+
+// @mixin btn($class , $bgc , $outline , $bdr: null) {
+//   .btn {
+//     padding: 10px 30px;
+//     text-align: center;
+//     color: $black;
+//     cursor: pointer;
+//     transition: all .3s ease;
+//       &.#{$class} {
+//         border-radius: $bdr;
+//         background-color: $bgc;
+//         border-color: $bgc;
+//         &:hover {
+//           background-color: darken($bgc , 10);
+//           color: $white;
+//         }
+//       }
+//       @if $outline {
+//        &.outline { 
+//          border-width: 1px;
+//          border-style: solid;
+//          background-color: initial;
+//        }      
+//       }
+//   }
+// }
+
+// @mixin btn_outline($class , $bgc , $bdr: null) {
+//   .btn {
+//     padding: 10px 30px;
+//     text-align: center;
+//     color: $black;
+//     cursor: pointer;
+//     transition: all .3s ease;
+//       &.#{$class} {
+//         border-radius: $bdr;
+//         border:1px solid $bgc;
+//         &:hover {
+//           background-color: $bgc;
+//           color: $white;
+//         }
+//       }
+//   }
+// }
+
+
+
+
+
+// @include btn(primary, $primary ,false ,10px);
+// @include btn(primary, $primary ,true,10px);
+// @include btn(secondary, $secondary ,true,10px);
+// @include btn(error, rgb(255, 94, 0) ,true,30px);
+
+.btn {
+    &.rounded-circle {
+        &.btn-sm {
+            &.car_icon {
+                width: 32px;
+                height: 32px;
+                padding: 0;
+            }
+        }
+    }
+}
+
+.goto_somewhere {
+    position: relative;
+
+    &:hover {
+        .fa-arrow-right {
+            transform: translateX(0px);
+            animation-name: gotoSomewhere;
+            animation-duration: .6s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+    }
+
+
+    .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: #f18bba;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+
+        position: absolute;
+        z-index: 1001;
+
+        opacity: .8;
+
+        &.tooltip-right {
+            top: 2px;
+            left: 115%;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 100%;
+                margin-top: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent #f18bba transparent transparent;
+            }
+        }
+
+        &.tooltip-top {
+            &::after {
+                content: "";
+                position: absolute;
+                top: 115%;
+                right: 45%;
+                margin-top: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: #f18bba transparent transparent transparent;
+            }
+
+            bottom: 125%;
+            left: -25px;
+        }
+    }
+
+    &:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    &.show {
+        &:hover .tooltiptext {
+            visibility: hidden;
+        }
+    }
+
+
+
+}
+
+@keyframes gotoSomewhere {
+    0% {
+        transform: translateX(0px);
+    }
+
+    25% {
+        transform: translateX(2px);
+    }
+
+    50% {
+        transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(-2px);
+    }
+
+}

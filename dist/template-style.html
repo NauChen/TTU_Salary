@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大同大學-校內育成媒合平台-已登職缺</title>
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/style.css">
+<!-- <link rel="stylesheet" href="./css/nav-memo2-main.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.1/css/responsive.bootstrap5.min.css">
+</head>
+
+<body>
+    <main class="main">
+        <!-- 側邊攔 -->
+        
+<!-- 側邊攔 -->
+<nav class="nav-box no_print">
+    <!-- RWD-MENU標籤 -->
+    <div class="burger-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+    <!-- 側邊攔上方 -->
+    <div class="top">
+        <a href="./index.html" class="navbar-logo">
+            <img src="./images/ttoLogo_2.png" class="navbar-brand">
+        </a>
+        <ul class="navigation navbar-top">
+            <li class="item">
+                <a class="link active" href="./index.html"><i class="fas fa-home"></i><span
+                        class="tooltiptext tooltip-right">儀錶板</span></a>
+            </li>
+            <li class="item dropend">
+                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-users"></i><span
+                        class="tooltiptext tooltip-right">職缺媒合</span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                    <li><a class="dropdown-item" href="./index.html">職缺總攬&ensp;<i
+                                class="fa-solid fa-users-line"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./myJob.html">刊登中&emsp;&ensp;<i
+                                class="fa-solid fa-users-viewfinder"></i></a></li>
+                </ul>
+            </li>
+            <li class="item dropend">
+                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink3" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-file-contract"></i><span
+                        class="tooltiptext tooltip-right">申請與查閱</span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
+                    <li><a class="dropdown-item" href="./idCard_inventory.html">識別證管理&ensp;<i
+                                class="fa-regular fa-address-card"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./parkingSpace_inventory.html">停車位管理&ensp;<i
+                                class="fa-solid fa-square-parking"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="#">續約申請&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="item">
+                <a class="link" href="#"><i class="fa-solid fa-spinner"></i><span
+                        class="tooltiptext tooltip-right">進度查詢</span></a>
+            </li>
+
+            <li class="item dropend">
+                <a class="link dropdown-toggle" role="button" id="dropdownMenuLink4" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-stamp"></i><span
+                        class="tooltiptext tooltip-right">資料審核</span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink4">
+                    <li><a class="dropdown-item" href="./coopManufApp.html">廠商審核&emsp;&ensp;<i
+                                class="fa-solid fa-user-tie"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./parkingSpaceApp.html">車位審核&emsp;&ensp;<i
+                                class="fa-solid fa-square-parking"></i></a></li>
+                    <li><a class="dropdown-item" href="#">空間審核&emsp;&ensp;<i class="fa-solid fa-building"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="#">續約審核&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="#">識別證審核&ensp;<i class="fa-regular fa-address-card"></i></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="item dropend">
+                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink5" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-briefcase"></i><span
+                        class="tooltiptext tooltip-right">資料管理</span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
+                    <li><a class="dropdown-item" href="./cultivationRoom.html">培育室管理&emsp;&ensp;<i
+                                class="fa-solid fa-tree-city"></i></a></li>
+                    <li><a class="dropdown-item" href="./pakingSpace.html">停車位管理&emsp;&ensp;<i class="fa-brands fa-product-hunt"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./nav-memo2-roles.html">用戶權限設定&ensp;<i
+                                class="fa-solid fa-people-robbery"></i></a></li>
+                    <li><a class="dropdown-item" href="#">用戶資料修改&ensp;<i class="fa-solid fa-address-book"></i></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="item">
+                <a class="link" href="#"><i class="fa-solid fa-file-shield"></i><span
+                        class="tooltiptext tooltip-right">LOG紀錄</span></a>
+            </li>
+            <li class="item">
+                <a class="link" href="#"><i class="fa-regular fa-paper-plane"></i><span
+                        class="tooltiptext tooltip-right">意見反應</span></a>
+            </li>
+            <li class="item">
+                <a class="link" href="./template-style.html"><i class="fa-solid fa-paint-roller"></i><span
+                        class="tooltiptext tooltip-right">樣式設計</span></a>
+            </li>
+
+            <li class="item">
+                <a class="link" href="./template-underConstruction.html"><i class="fa-solid fa-person-digging"></i><span
+                        class="tooltiptext tooltip-right">施工頁</span></a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- 側邊攔下方 -->
+    <div class="bottom">
+        <ul class="navigation">
+            <!-- 已登入 -->
+            <li class="item dropend">
+                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink9" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-regular fa-circle-user"></i></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink9">
+                    <li><a class="dropdown-item" href="#">設定&ensp;<i class="fa-solid fa-gear"></i></a></li>
+                    <li><a class="dropdown-item" href="#">登出&ensp;<i class="fa-solid fa-door-open"></i></a></li>
+                </ul>
+            </li>
+            <!-- 未登入 -->
+            <!-- <li class="item">
+                        <a class="link" href="./nav-memo2-login.html"><i class="fa-regular fa-circle-user"></i><span
+                                class="tooltiptext tooltip-right">登入&ensp;/&ensp;申請</span></a>
+                    </li> -->
+        </ul>
+    </div>
+</nav>
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-paint-roller"></i></i>&ensp;樣式設定</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-palette"></i>&ensp;設定集</li>
+                    </ol>
+                </div>
+
+                <!-- 列表 -->
+                <div class="tabs-box my-2r">
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>樣式設定<i
+                            class="fa-solid fa-quote-right"></i></h3>
+
+                    <div class="tabs section-border-radius section-padding">
+                        <form class="container-fluid" method="post" asp-controller="Job" asp-action="JobEdit">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-3">
+                                        <label for="idcardName" class="col-lg-auto col-form-label text-nowrap"
+                                            asp-for="IdCard_Name"><span
+                                                class="d-none d-lg-inline">&emsp;</span>項目A：</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="idcardName"
+                                                asp-for="IdCard_Name">
+                                            <span asp-validation-for="IdCard_Name" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="idcardEmail" class="col-lg-auto col-form-label text-nowrap"
+                                            asp-for="IdCard_Email"><span
+                                                class="d-none d-lg-inline">&emsp;</span>項目B：</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="idcardEmail"
+                                                asp-for="IdCard_Email">
+                                            <span asp-validation-for="IdCard_Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-3">
+                                        <label for="idcardPeriod" class="col-lg-auto col-form-label text-nowrap"
+                                            asp-for="IdCard_Period1"><span
+                                                class="d-none d-lg-inline">&emsp;</span>項目C：</label>
+                                        <div class="col">
+                                            <div class="row">
+                                                <span asp-validation-for="IdCard_Period1" class="text-danger"></span>
+                                                <div class="input-group mb-1">
+                                                    <span class="input-group-text">自</span>
+                                                    <input type="date" class="form-control" asp-for="IdCard_Period1">
+                                                    <span class="input-group-text">起</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <span asp-validation-for="IdCard_Period2" class="text-danger"></span>
+                                                <div class="input-group mb-1">
+                                                    <span class="input-group-text">至</span>
+                                                    <input type="date" class="form-control" asp-for="IdCard_Period2">
+                                                    <span class="input-group-text">止</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="idcardCultRoom" class="col-lg-auto col-form-label text-nowrap"
+                                            asp-for="IdCard_CultRoom"><span
+                                                class="d-none d-lg-inline">&emsp;</span>項目D：</label>
+                                        <div class="col">
+                                            <select class="form-control form-select" id="idcardCultRoom"
+                                                asp-for="IdCard_CultRoom">
+                                                <option value="請選擇" disabled selected>--- 請選擇 ---</option>
+                                                <optgroup label="青創基地">
+                                                    <option value="201">201</option>
+                                                    <option value="202">202</option>
+                                                    <option value="203">203</option>
+                                                </optgroup>
+
+                                            </select>
+                                            <span asp-validation-for="IdCard_CultRoom" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-1 align-items-center">
+                                        <label for="libraryRead" class="col-lg-auto col-form-label text-nowrap"
+                                            asp-for="IdCard_libraryRead">項目F：</label>
+                                        <div class="col">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="libraryRead"
+                                                    id="wantReadLibrary" value="1">
+                                                <label class="form-check-label" for="wantReadLibrary">申請</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="libraryRead"
+                                                    id="dontWantReadLibrary" value="0">
+                                                <label class="form-check-label" for="dontWantReadLibrary">不申請</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 salaryRadio px-2 py-2 mx-1 border-success">
+                                        <div>&#10551;&ensp;僅供圖書館內閱覽，不提供外借。</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row p-3 justify-content-center">
+                                <div class="col-12 fw-bold fs-5">說明A：</div>
+                                <div class="col-12">
+                                    <div class="row ms-3">
+                                        <div class="col-auto">1.</div>
+                                        <div class="col">
+                                            觀點依法目的庫存圖形積極之下平時一句，工程程式管理精華，一步怎麼樣親自請點擊文章好像號碼印象騎士，男生無派一眼通訊天氣一聲我市秘密當我該公司這裡看來調查，本月很少，受到部門本週促進更新時間屏幕住宅實在限制前後這個警方的說，是否一半好處目標死亡商務，不。
+                                        </div>
+                                    </div>
+                                    <div class="row ms-3">
+                                        <div class="col-auto">2.</div>
+                                        <div class="col">只有不滿輸出無關才。</div>
+                                    </div>
+                                    <div class="row ms-3">
+                                        <div class="col-auto">3.</div>
+                                        <div class="col">公佈增強幹什麼演唱會，權益思維提出，不。</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- 文字 -->
+                            <div class="row text-center p-3 justify-content-center">
+                                <div class="col-auto">
+                                    <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-lg btn-success">送出</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-outline-success js-btn-prev" type="button"
+                                        title="Prev">PREV</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-outline-secondary js-btn-next ms-2" type="button"
+                                        title="Next">NEXT</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-dark"
+                                        data-bs-dismiss="modal">關閉</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-outline-secondary">確認修改</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-lg btn-outline-info">預覽</button>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="./cultivationRoom.html"
+                                        class="btn btn-lg btn-outline-danger twoWord text-nowrap">返回</a>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-lg btn-success">更新</button>
+                                </div>
+                            </div>
+                            <!-- 圖形 -->
+                            <div class="row p-3 justify-content-center">
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-primary rounded-circle btn-sm"
+                                        data-bs-toggle="modal" data-bs-target="#vendorDetail"><i
+                                            class="fa-solid fa-paperclip"></i></button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-primary rounded-circle btn-sm"
+                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
+                                            class="fa-solid fa-info px-1"></i></button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-outline-danger col-auto goto_somewhere ms-5"><i
+                                            class="fa-regular fa-square-check"></i><i
+                                            class="fa-solid fa-arrow-right mx-1"></i><i
+                                            class="fa-regular fa-trash-can"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- 填滿 -->
+                            <div class="row p-3 justify-content-center">
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-primary">Primary</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-secondary">Secondary</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-success">Success</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-danger">Danger</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-warning">Warning</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-info">Info</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-light">Light</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-dark">Dark</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-link">Link</button>
+                                </div>
+                            </div>
+                            <!-- 外框線 -->
+                            <div class="row p-3 justify-content-center">
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-primary">Primary</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-success">Success</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-danger">Danger</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-warning">Warning</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-info">Info</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-light">Light</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-outline-dark">Dark</button>
+                                </div>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- <footer>
+    <ul>
+        <li>隱私權</li>
+    </ul>
+</footer> -->
+
+ <!-- TOP -->
+ <div class="top_button no_print">
+    <a id="btn_up"><img src="./images/TOP_LOGO_3.png" alt=""></a>
+</div>
+<!-- 頁尾 -->
+<div class="footer section-padding section-border-radius my-2r no_print">
+    <ul class="links">
+        <li><a href="#">大同大學</a></li>
+        <li><a href="./index.html">育成媒合</a></li>
+        <li><a href="./nav-memo2.html">帳戶總攬</a></li>
+    </ul>
+    <p class="copyright">
+        大同大學 版權所有&copy;2022 All Rights Reserved.<br>建議使用：IE9.0以上版本或Google
+        Chrome瀏覽器<span>(最佳螢幕解析1280*1024)</span>
+    </p>
+</div>
+
+        </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.1/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.1/js/responsive.bootstrap5.min.js"></script>
+<script src="./js/main.js"></script>
+
+    <script src="./js/myParkingSpaceList.js"></script>
+</body>
+
+</html>

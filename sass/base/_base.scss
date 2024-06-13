@@ -1,0 +1,156 @@
+/*css 註解*/
+// ======  設定變數 ======
+// 字體
+// 顏色
+// 斷點
+// grid col
+// 按鈕尺吋 顏色
+// 標題字 大小 顏色
+
+// //變數型態
+// $margin : 0; // list
+
+// // 斷點
+// $m : 500px;
+// $t : 1000px;
+
+
+// $layout : 90;
+
+// //border-radius
+// $border-radius-1 : 4px;
+// $border-radius-2 : 8px;
+// $border-radius-3 : 12px;
+// $border-radius-4 : 16px;
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #f5f6fa;
+    // color: #333;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+
+    &.btn {
+        &.oneWord {
+            width: 2rem;
+        }
+
+        &.twoWord {
+            width: 4.5rem;
+        }
+    }
+}
+
+
+.main {
+    padding: 25px;
+}
+
+.section-padding {
+    padding: 1rem;
+}
+
+.section-border-radius {
+    border-radius: 10px;
+}
+
+.section-header {
+    margin-bottom: 25px;
+    position: relative;
+    padding-left: 18px;
+    letter-spacing: .2em;
+    font-weight: 700;
+
+    i {
+        position: absolute;
+        font-size: .5em;
+        color: #f3969a;
+
+        &.fa-quote-left {
+            left: 0;
+        }
+
+        &.fa-quote-right {
+            bottom: 0;
+        }
+    }
+
+}
+
+.clear-float {
+    clear: both;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+
+    &.textarea-sm {
+        height: 4em;
+    }
+
+    &.textarea-md {
+        height: 6em;
+    }
+
+    &.textarea-lg {
+        height: 8em;
+    }
+}
+
+// margin Y軸：2rem
+.my-2r {
+    margin: 2rem 0;
+}
+
+
+
+
+
+
+// 覆寫Bootatrap
+.breadcrumb-item {
+    color: #bee1d8;
+}
+
+.w-30 {
+    width: 30% !important;
+}
+
+.w-15 {
+    width: 15% !important;
+}
+
+.w-35 {
+    width: 35% !important;
+}
+
+.align_center {
+    align-content: center;
+}
+

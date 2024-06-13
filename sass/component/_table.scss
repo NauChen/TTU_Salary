@@ -1,0 +1,28 @@
+// 覆寫database
+.dataTable {
+
+    thead,
+    tfoot {
+        // background-color: #bee1d8;
+        background-color: #e4f3ef;
+
+        .dt-column-title {
+            color: #5a5a5a;
+        }
+    }
+
+    thead {
+        tr {
+            th {
+                span {
+                    &.dt-column-order {
+                        &::before {
+                            margin-bottom: 2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

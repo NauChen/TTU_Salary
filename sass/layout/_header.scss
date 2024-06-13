@@ -1,0 +1,234 @@
+// header {
+//     @include layout(1200);
+//     display: flex;
+//     justify-content: space-between;
+
+//     h1.logo {
+//         width: 150px;
+//         height: 80px;
+//         background-color: #00ff95;
+//     }
+
+//     nav {
+//         ul {
+//             list-style: none;
+//             display: flex;
+
+//             li {
+//                 padding: 10px 20px;
+//                 text-align: center;
+//                 background-color: #794300;
+//                 color: #fff;
+//                 cursor: pointer;
+//                 transition: all .3s ease;
+
+//                 a {
+//                     text-decoration: none;
+//                     color: #fff
+//                 }
+
+//                 &:hover {
+//                     background-color: #ffe600;
+
+//                 }
+
+//                 &:nth-child(2) {
+//                     background-color: #2fff00;
+
+//                     &:hover {
+//                         background-color: #ca5800;
+//                     }
+//                 }
+//             }
+//         }
+
+
+//     }
+
+// }
+
+nav {
+    .nav-tabs {
+        .nav-link {
+            color: #5a5a5a;
+            letter-spacing: .1em;
+
+            &.active {
+                font-weight: 700;
+                color: #22523f;
+                font-size: 1.05em;
+            }
+        }
+    }
+}
+
+
+/* ::::::::::::::::::::::::::::: 側邊攔 */
+.main {
+    .nav-box {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        width: 70px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        padding: 10px 0;
+        background-color: #519864;
+
+        transition: transform 0.2s linear;
+
+        .navbar-logo,
+        .navbar-user {
+            max-width: 40px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .navbar-logo {
+            margin-bottom: 10px;
+        }
+
+        .navbar-user {
+            margin-top: 10px;
+        }
+
+        .navbar-logo img,
+        .navbar-user img {
+            border-radius: 50px;
+
+        }
+
+        .bottom {
+            padding-bottom: 50px;
+        }
+    }
+
+    .burger-menu {
+        position: absolute;
+        color: #fff;
+        font-size: 18px;
+        left: 100%;
+        // background-color: #2d3037;
+        background-color: #f3969a;
+        height: 35px;
+        width: 40px;
+        text-align: center;
+        line-height: 35px;
+        border-radius: 0 5px 5px 0;
+        display: none;
+    }
+
+    .navigation {
+        .link {
+            padding: 10px 8px;
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+            position: relative;
+
+            &:hover,
+            &.active {
+                color: #fff;
+            }
+
+            &::before,
+            &.active::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 0px;
+                border-radius: 0 5px 5px 0;
+                transition: width 0.2s linear;
+            }
+
+            &:hover::before,
+            &.active::before {
+                width: 5px;
+            }
+
+            &.active::before {
+                background-color: #f3969a;
+            }
+
+            &:hover::before {
+                // background-color: #33da6d;
+                background-color: #78c2ad;
+            }
+
+            /* nav -Tooltip text */
+            .tooltiptext {
+                visibility: hidden;
+                width: 120px;
+                background-color: #ff7851;
+                color: #fff;
+                text-align: center;
+                padding: 5px 0;
+                border-radius: 6px;
+
+                position: absolute;
+                z-index: 1001;
+
+                opacity: .9;
+
+                &.tooltip-right {
+                    top: 0px;
+                    left: 80%;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        right: 100%;
+                        margin-top: -5px;
+                        border-width: 5px;
+                        border-style: solid;
+                        border-color: transparent #ff7851 transparent transparent;
+                    }
+                }
+            }
+
+            &:hover .tooltiptext {
+                visibility: visible;
+            }
+
+            &.show {
+                &:hover .tooltiptext {
+                    visibility: hidden;
+                }
+            }
+        }
+
+        .dropdown-toggle {
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+}
+
+
+@media screen and (max-width: 700px) {
+    .main .nav-box {
+        transform: translateX(-100%);
+    }
+
+    .main .nav-box:hover {
+        transform: translateX(0);
+    }
+
+    .main .nav-box .burger-menu {
+        display: block;
+    }
+
+    .content {
+        padding-left: 0px;
+    }
+}

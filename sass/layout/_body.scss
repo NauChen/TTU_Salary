@@ -1,0 +1,162 @@
+// body {
+//     $font : $fontsize;
+//     font-family: $fontfamily;
+//     font-size: $fontsize;
+//     margin: $margin;
+//     padding: 0;
+//     color: $fontColor;
+//     background-color: $backgroundColor;
+
+//     @if $fontWeight {
+//         font-weight: 400
+//     }
+//     height: 1800px;
+// }
+
+// .wrapper {
+//    @include layout(100);
+//    @import 'header';
+//    @import 'footer';
+// }
+
+// .w30 {
+//   @include layout(30); 
+// }
+
+
+/* ::::::::::::::::::::::::::::: Content */
+.content {
+    padding-left: 70px;
+}
+
+.container {
+    padding: 0 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+
+/* ::::::::::::::::::::::::::::: breadcrumb */
+.breadcrumb-box {
+    // margin: 2rem 0;
+    background-color: #fff;
+
+    .breadcrumb {
+        margin: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* ::::::::::::::::::::::::::::: lightBox */
+.modal-dialog {
+    .modal-header {
+        .modal-title {
+            font-weight: 700;
+            letter-spacing: 0.2em;
+        }
+    }
+
+    .modal-body {
+        .container-fluid {
+            >.row {
+                border-radius: 10px;
+                border: 1px dotted #c9e7de;
+
+                @media (max-width: 992px) {
+                    &.multiple {
+                        border: none;
+
+                        .inlineLabel {
+                            border: 1px dotted #c9e7de;
+
+                        }
+
+                        .lightBoxItems {
+                            border: 1px dotted #c9e7de;
+                            border-radius: 0 0 10px 10px;
+                            margin-bottom: 0.25rem;
+
+                        }
+                    }
+                }
+
+                // .align_center {
+                //     align-content: center;
+                // }
+            }
+
+        }
+
+        .readOnly {
+            // color: #888;
+            color: #959aa9;
+        }
+    }
+
+    .lightBoxLabel {
+        font-weight: 700;
+        letter-spacing: .2em;
+        background-color: #ddf5eb;
+        border-radius: 10px 0 0 10px;
+
+        &.inlineLabel {
+            border-radius: 0;
+        }
+
+        @media (max-width: 992px) {
+            &.inlineLabel {
+                border-radius: 10px 10px 0 0;
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        .lightBoxLabel {
+            border-radius: 10px 10px 0 0;
+        }
+    }
+}
+
+
+
+/* ::::::::::::::::::::::::::::: 建設中 */
+.underConstructionPage {
+    .tabs {
+        img {
+            margin: 0 auto;
+            padding: 0;
+            width: 202px;
+            animation: move .8s linear infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-2deg);
+            }
+
+            50% {
+                transform: rotate(0deg);
+            }
+
+            75% {
+                transform: rotate(2deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+    }
+}

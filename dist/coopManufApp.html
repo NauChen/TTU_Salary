@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大同大學-校內育成媒合平台-已登職缺</title>
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/style.css">
+<!-- <link rel="stylesheet" href="./css/nav-memo2-main.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.1/css/responsive.bootstrap5.min.css">
+</head>
+
+<body>
+    <main class="main">
+        <!-- 側邊攔 -->
+        
+<!-- 側邊攔 -->
+<nav class="nav-box no_print">
+    <!-- RWD-MENU標籤 -->
+    <div class="burger-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+    <!-- 側邊攔上方 -->
+    <div class="top">
+        <a href="./index.html" class="navbar-logo">
+            <img src="./images/ttoLogo_2.png" class="navbar-brand">
+        </a>
+        <ul class="navigation navbar-top">
+            <li class="item">
+                <a class="link active" href="./index.html"><i class="fas fa-home"></i><span
+                        class="tooltiptext tooltip-right">儀錶板</span></a>
+            </li>
+            <li class="item dropend">
+                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-users"></i><span
+                        class="tooltiptext tooltip-right">職缺媒合</span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                    <li><a class="dropdown-item" href="./index.html">職缺總攬&ensp;<i
+                                class="fa-solid fa-users-line"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./myJob.html">刊登中&emsp;&ensp;<i
+                                class="fa-solid fa-users-viewfinder"></i></a></li>
+                </ul>
+            </li>
+            <li class="item dropend">
+                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink3" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-file-contract"></i><span
+                        class="tooltiptext tooltip-right">申請與查閱</span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
+                    <li><a class="dropdown-item" href="./idCard_inventory.html">識別證管理&ensp;<i
+                                class="fa-regular fa-address-card"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./parkingSpace_inventory.html">停車位管理&ensp;<i
+                                class="fa-solid fa-square-parking"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="#">續約申請&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="item">
+                <a class="link" href="#"><i class="fa-solid fa-spinner"></i><span
+                        class="tooltiptext tooltip-right">進度查詢</span></a>
+            </li>
+
+            <li class="item dropend">
+                <a class="link dropdown-toggle" role="button" id="dropdownMenuLink4" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-stamp"></i><span
+                        class="tooltiptext tooltip-right">資料審核</span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink4">
+                    <li><a class="dropdown-item" href="./coopManufApp.html">廠商審核&emsp;&ensp;<i
+                                class="fa-solid fa-user-tie"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./parkingSpaceApp.html">車位審核&emsp;&ensp;<i
+                                class="fa-solid fa-square-parking"></i></a></li>
+                    <li><a class="dropdown-item" href="#">空間審核&emsp;&ensp;<i class="fa-solid fa-building"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="#">續約審核&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="#">識別證審核&ensp;<i class="fa-regular fa-address-card"></i></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="item dropend">
+                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink5" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-briefcase"></i><span
+                        class="tooltiptext tooltip-right">資料管理</span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
+                    <li><a class="dropdown-item" href="./cultivationRoom.html">培育室管理&emsp;&ensp;<i
+                                class="fa-solid fa-tree-city"></i></a></li>
+                    <li><a class="dropdown-item" href="./pakingSpace.html">停車位管理&emsp;&ensp;<i class="fa-brands fa-product-hunt"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./nav-memo2-roles.html">用戶權限設定&ensp;<i
+                                class="fa-solid fa-people-robbery"></i></a></li>
+                    <li><a class="dropdown-item" href="#">用戶資料修改&ensp;<i class="fa-solid fa-address-book"></i></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="item">
+                <a class="link" href="#"><i class="fa-solid fa-file-shield"></i><span
+                        class="tooltiptext tooltip-right">LOG紀錄</span></a>
+            </li>
+            <li class="item">
+                <a class="link" href="#"><i class="fa-regular fa-paper-plane"></i><span
+                        class="tooltiptext tooltip-right">意見反應</span></a>
+            </li>
+            <li class="item">
+                <a class="link" href="./template-style.html"><i class="fa-solid fa-paint-roller"></i><span
+                        class="tooltiptext tooltip-right">樣式設計</span></a>
+            </li>
+
+            <li class="item">
+                <a class="link" href="./template-underConstruction.html"><i class="fa-solid fa-person-digging"></i><span
+                        class="tooltiptext tooltip-right">施工頁</span></a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- 側邊攔下方 -->
+    <div class="bottom">
+        <ul class="navigation">
+            <!-- 已登入 -->
+            <li class="item dropend">
+                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink9" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-regular fa-circle-user"></i></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink9">
+                    <li><a class="dropdown-item" href="#">設定&ensp;<i class="fa-solid fa-gear"></i></a></li>
+                    <li><a class="dropdown-item" href="#">登出&ensp;<i class="fa-solid fa-door-open"></i></a></li>
+                </ul>
+            </li>
+            <!-- 未登入 -->
+            <!-- <li class="item">
+                        <a class="link" href="./nav-memo2-login.html"><i class="fa-regular fa-circle-user"></i><span
+                                class="tooltiptext tooltip-right">登入&ensp;/&ensp;申請</span></a>
+                    </li> -->
+        </ul>
+    </div>
+</nav>
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-stamp"></i>&ensp;資料審核</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-user-tie"></i>&ensp;廠商審核</li>
+                    </ol>
+                </div>
+
+                <!-- 職缺列表 -->
+                <div class="tabs-box my-2r">
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>廠商申請列表<i
+                            class="fa-solid fa-quote-right"></i></h3>
+                    <div class="tabs section-border-radius section-padding">
+                        <table id="cooperativeManufacturersApplicationList"
+                            class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                        </table>
+
+                    </div>
+                </div>
+
+
+                <!-- Modal -->
+                <div class="modal fade vendorDetail" id="firmDetail_1" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="vendorDetailLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+                        <form class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="vendorDetailLabel">廠商申請資料</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <!-- 公司名稱、申請日期 -->
+                                    <div class="row mb-1 multiple">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                                            公司名稱
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center"
+                                            id="companyName">
+                                            好棒棒股份有限公司
+                                        </div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            申請日期
+                                        </div>
+                                        <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly">
+                                            2020/08/30
+                                        </div>
+                                    </div>
+                                    <!-- 主要營業項目 -->
+                                    <div class="row mb-1">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            主要<br class="d-none d-lg-block">營業項目
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeTextarea_lg_items">
+                                            顏色一時二級阿宅人民共和國，臉色全球兒子現代系統滿足楠雅回去離線過了消息。<br>想法如此實驗有機會我在今日說出消除主動可是作用法規，具體意味着註冊時間，你怎麼版面對比白色時期配合只能效率名稱出了，痛苦電話一本概念測試健康一場，教育活動事業經過促進，能不能，強烈。
+                                        </div>
+                                    </div>
+
+                                    <!-- 統編、成立日、資本額 -->
+                                    <div class="row mb-1 multiple">
+                                        <div class="col-12 col-lg-auto text-nowrap  lightBoxLabel p-3 align_center">
+                                            統一編號
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeNumber_items align_center">
+                                            23456780
+                                        </div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            成立日期
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeDate_items align_center">
+                                            2020/01/01
+                                        </div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            資本額
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeMoney_items align_center">
+                                            1,000,000
+                                        </div>
+                                    </div>
+
+                                    <!-- 員工數、負責人、推薦人 -->
+                                    <div class="row mb-1 multiple">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                                            員工人數
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeNumber_items align_center">
+                                            5
+                                        </div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            &emsp;負責人</div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
+                                            王大明
+                                        </div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            推薦人
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
+                                            王中明
+                                        </div>
+                                    </div>
+
+                                    <!-- 電話、E-mail、Line -->
+                                    <div class="row mb-1 multiple">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                                            聯絡電話
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changePhone_items align_center">
+                                            02-86710000
+                                        </div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            電子信箱
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeEmail_items align_center">
+                                            abc@gmail.com
+                                        </div>
+                                        <div
+                                            class="col-12 col-lg-1 text-nowrap lightBoxLabel inlineLabel align_center text-center">
+                                            <i class="fa-brands fa-line fs-1"></i></div>
+                                        <div class="col lightBoxItems p-3 changeLineID_items align_center">
+                                            abe123
+                                        </div>
+                                    </div>
+
+                                    <!-- 聯絡人、分機、職稱 -->
+                                    <div class="row mb-1 multiple">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                                            主聯絡人
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
+                                            王小妹
+                                        </div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            分機號碼
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeNumber_items align_center">
+                                            123
+                                        </div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            職務名
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
+                                            秘書
+                                        </div>
+                                    </div>
+
+
+                                    <!-- 登記地址 -->
+                                    <div class="row mb-1">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                                            登記地址
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
+                                            台北市台北區台北中路000巷11號0樓
+                                        </div>
+                                    </div>
+                                    <!-- 通訊地址 -->
+                                    <div class="row mb-1">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                                            通訊地址
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
+                                            台北市台北區台北中路000巷11號0樓
+                                        </div>
+                                    </div>
+
+                                    <!-- 輔導項目需求 -->
+                                    <div class="row mb-1">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            輔導項目<br class="d-none d-lg-block">需求
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeTextarea_lg_items">
+                                            最近進口數學上有全身來說學習百姓長沙，笑道涉及一個青春人氣，理論一場怎麼樣熟悉價格委託利用消除專家聽到條款平衡老公，傳統面前，選擇第二章是個措施幫你下了你們的一塊領先線上描述，農村本帖場所代理接口回去一時加快豪華，要有你可以國內不了，而在一股和平島成果一。
+                                        </div>
+                                    </div>
+
+                                    <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
+                                    <div class="row mb-1">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            檢附文件<br>下載
+                                        </div>
+                                        <div class="col lightBoxItems p-3">
+                                            <a class="d-inline me-3 text-nowrap" href="#">公司登記證&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
+                                            <a class="d-inline me-3 text-nowrap" href="#">營利事業登記證或預查名稱表影本&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
+                                            <a class="d-inline me-3 text-nowrap" href="#">企業與大同大學教職員簽訂之合作備忘錄&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update d-none">補</span></a>
+                                            <a class="d-inline me-3 text-nowrap" href="#">企業營運計畫構想書&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
+                                            <a class="d-inline me-3 text-nowrap" href="#">創新育成中心進駐申請書&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
+                                            <a class="d-inline me-3 text-nowrap" href="#">同意審查聲明書&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
+                                            <a class="d-inline text-nowrap" href="#">進駐審查費繳費證明&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
+                                        </div>
+                                    </div>
+                                    <!-- 補件上傳 若狀態為通過，不顯示此區塊-->
+                                    <div class="row mb-1">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            補件上傳
+                                        </div>
+                                        <div class="col lightBoxItems p-3">
+                                            <div class="row align-items-center my-1">
+                                                <label for="companyProof"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">公司登記證<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="companyProof"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo1').innerHTML = document.getElementById('companyProof').value;setFormHeight();}">
+                                                    <div id="fileInfo1" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center my-1">
+                                                <label for="memoUpload"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">企業與大同大學教職員簽訂之合作備忘錄<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="memoUpload"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo6').innerHTML = document.getElementById('memoUpload').value;setFormHeight();}">
+                                                    <div id="fileInfo6" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center my-1">
+                                                <label for="consentDoc"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">同意審查聲明書<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="consentDoc"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo3').innerHTML = document.getElementById('consentDoc').value;setFormHeight();}">
+                                                    <div id="fileInfo3" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center my-1">
+                                                <label for="businessProof"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">營利事業登記證或預查名稱表影本<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="businessProof"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo2').innerHTML = document.getElementById('businessProof').value;setFormHeight();}">
+                                                    <div id="fileInfo2" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center my-1">
+                                                <label for="planUpload"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">企業營運計畫構想書<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="planUpload"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo5').innerHTML = document.getElementById('planUpload').value;setFormHeight();}">
+                                                    <div id="fileInfo5" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center my-1">
+                                                <label for="entryForm"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">創新育成中心進駐申請書<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="entryForm"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo4').innerHTML = document.getElementById('entryForm').value;setFormHeight();}">
+                                                    <div id="fileInfo4" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center my-1">
+                                                <label for="payProof"
+                                                    class="col col-form-label text-nowrap upload-label py-0">進駐審查費繳費證明<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col-12">
+                                                    <input type="file" class="form-control d-none" id="payProof"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo7').innerHTML = document.getElementById('payProof').value;setFormHeight();}">
+                                                    <div id="fileInfo7" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1 multiple">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            審核進度
+                                        </div>
+                                        <div class="col-3 lightBoxItems p-2">
+                                            <select class="form-select">
+                                                <option value="2" selected disabled>待審中</option>
+                                                <option value="3">待補件</option>
+                                                <option value="4">不通過</option>
+                                                <option value="0">通過</option>
+                                            </select>
+                                        </div>
+                                        <!-- <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                                            <span class="">補</span>統一編號
+                                        </div>
+                                        <div class="col lightBoxItems p-2">
+                                            <input type="text" class="form-control add">
+                                        </div>
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                                            <span class="add">補</span>成立日期
+                                        </div>
+                                        <div class="col lightBoxItems p-2 ">
+                                            <input type="date" class="form-control add">
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                                <button class="btn btn-outline-secondary">確認修改</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+                <!-- <footer>
+    <ul>
+        <li>隱私權</li>
+    </ul>
+</footer> -->
+
+ <!-- TOP -->
+ <div class="top_button no_print">
+    <a id="btn_up"><img src="./images/TOP_LOGO_3.png" alt=""></a>
+</div>
+<!-- 頁尾 -->
+<div class="footer section-padding section-border-radius my-2r no_print">
+    <ul class="links">
+        <li><a href="#">大同大學</a></li>
+        <li><a href="./index.html">育成媒合</a></li>
+        <li><a href="./nav-memo2.html">帳戶總攬</a></li>
+    </ul>
+    <p class="copyright">
+        大同大學 版權所有&copy;2022 All Rights Reserved.<br>建議使用：IE9.0以上版本或Google
+        Chrome瀏覽器<span>(最佳螢幕解析1280*1024)</span>
+    </p>
+</div>
+
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.1/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.1/js/responsive.bootstrap5.min.js"></script>
+<script src="./js/main.js"></script>
+
+    <script src="./js/coopManufAppList.js"></script>
+</body>
+
+</html>

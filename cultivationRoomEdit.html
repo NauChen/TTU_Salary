@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/meta.html', {
+    "title": "大同大學-校內育成媒合平台-已登職缺",
+    })
+</head>
+
+<body>
+    <main class="main">
+        <!-- 側邊攔 -->
+        @@include('layout/header.html')
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
+                        <li class="breadcrumb-item"><a class="d-inline" href="./cultivationRoom.html"><i
+                                    class="fa-solid fa-tree-city"></i>&ensp;培育室管理</a></li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-wrench"></i>&ensp;修改</li>
+                    </ol>
+                </div>
+
+                <!-- 編輯培育室 -->
+                <div class="tabs-box my-2r">
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>培育室編輯<i
+                            class="fa-solid fa-quote-right"></i></h3>
+
+                    <div class="tabs section-border-radius section-padding">
+                        <form class="container-fluid" method="post">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-3">
+                                        <label for="cultivationSpaceBuilding"
+                                            class="col-lg-auto col-form-label text-nowrap">所在區域：</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="cultivationSpaceBuilding">
+                                            <span class="text-danger" id="danger_cultivationSpaceBuilding"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="cultivationSpaceRoom"
+                                            class="col-lg-auto col-form-label text-nowrap">&emsp;&emsp;&emsp;室：</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="cultivationSpaceRoom">
+                                            <span class="text-danger" id="danger_cultivationSpaceRoom"></span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-3">
+                                        <label for="cultivationSpaceRate"
+                                            class="col-lg-auto col-form-label text-nowrap">月服務費：</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="cultivationSpaceRate">
+                                            <span class="text-danger" id="danger_cultivationSpaceRate"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="cultivationSpaceSquareMeters"
+                                            class="col-lg-auto col-form-label text-nowrap">可用坪數：</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="cultivationSpaceSquareMeters">
+                                            <span class="text-danger" id="danger_cultivationSpaceSquareMeters"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-3">
+                                        <label for="cultivationSpaceRemark"
+                                            class="col-lg-auto col-form-label text-nowrap">&emsp;備&emsp;註：</label>
+                                        <div class="col">
+                                            <textarea class="form-control resize-none h-110"
+                                                id="cultivationSpaceRemark"></textarea>
+                                            <span class="text-danger" id="danger_cultivationSpaceRemark"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-center p-3 justify-content-center">
+                                <div class="col-auto">
+                                    <a href="./cultivationRoom.html"
+                                        class="btn btn-lg btn-outline-danger twoWord text-nowrap">返回</a>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-lg btn-success">更新</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                @@include('layout/footer.html')
+
+            </div>
+        </div>
+    </main>
+    @@include('layout/metaJS.html')
+
+    <!-- <script src="./js/myParkingSpaceList.js"></script> -->
+</body>
+
+</html>
