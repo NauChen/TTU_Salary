@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.1/css/responsive.bootstrap5.min.css">
+<!-- <link rel="stylesheet" href="./css/print.css" media="print"> -->
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css"> -->
 </head>
 
@@ -57,7 +58,7 @@
                     <li><a class="dropdown-item" href="./parkingSpace_inventory.html">停車位管理&ensp;<i
                                 class="fa-solid fa-square-parking"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="#">續約申請&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
+                    <li><a class="dropdown-item" href="./renewContract_apply.html">續約申請&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
                     </li>
                 </ul>
             </li>
@@ -188,7 +189,8 @@
                                         <label for="jobContent"
                                             class="col-lg-auto col-form-label text-nowrap">工作內容：</label>
                                         <div class="col">
-                                            <textarea class="form-control resize-none h-150 thisRequired" id="jobContent"></textarea>
+                                            <textarea class="form-control resize-none h_150 thisRequired"
+                                                id="jobContent"></textarea>
                                             <span class="text-danger" id="danger_jobContent"></span>
                                         </div>
                                     </div>
@@ -196,7 +198,7 @@
                                         <label for="jobLocation"
                                             class="col-lg-auto col-form-label text-nowrap">工作地點：</label>
                                         <div class="col">
-                                            <textarea class="form-control resize-none h-100 thisRequired"
+                                            <textarea class="form-control resize-none h_100 thisRequired"
                                                 id="jobLocation"></textarea>
                                             <span class="text-danger" id="danger_jobLocation"></span>
                                         </div>
@@ -271,7 +273,7 @@
                                             class="col-lg-auto col-form-label text-nowrap">附加條件<span
                                                 class="d-none d-lg-inline"><br>&emsp;</span>與其他：</label>
                                         <div class="col">
-                                            <textarea class="form-control resize-none h-150 thisRequired"
+                                            <textarea class="form-control resize-none h_150 thisRequired"
                                                 id="jobCondition"></textarea>
                                             <span class="text-danger" id="danger_jobCondition"></span>
                                         </div>
@@ -280,7 +282,8 @@
                                         <label for="jobConnect"
                                             class="col-lg-auto col-form-label text-nowrap">應徵方式：</label>
                                         <div class="col">
-                                            <textarea class="form-control resize-none h-100 thisRequired" id="jobConnect"></textarea>
+                                            <textarea class="form-control resize-none h_100 thisRequired"
+                                                id="jobConnect"></textarea>
                                             <span class="text-danger" id="danger_jobConnect"></span>
                                         </div>
                                     </div>
@@ -381,7 +384,8 @@
                                         <label for="applicationDeadline"
                                             class="col-lg-auto col-form-label text-nowrap">截止日期：</label>
                                         <div class="col">
-                                            <input type="date" id="applicationDeadline" class="form-control thisRequired">
+                                            <input type="date" id="applicationDeadline"
+                                                class="form-control thisRequired">
                                             <span class="text-danger" id="danger_applicationDeadline"></span>
                                         </div>
                                     </div>
@@ -436,6 +440,7 @@
 <script src="https://cdn.datatables.net/responsive/3.0.1/js/responsive.bootstrap5.min.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.all.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
 
     <script src="./js/jobEdit.js"></script>

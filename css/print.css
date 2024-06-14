@@ -1,0 +1,36 @@
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+@media print {
+    /* .main .no_print {
+        display: none;
+    } */
+
+    /* .main .content {
+        padding: 0;
+    } */
+
+    .main .print_template {
+        display: block;
+        width: 100%;
+    }
+
+    .main .print_table {
+        page-break-inside: avoid;
+    }
+    .break-inside-avoid {
+        break-inside: avoid;
+        /* page-break-inside: avoid; */
+    }
+
+    .break-before {
+        break-before: page;
+    }
+
+    .break-after {
+        break-after: page;
+    }
+
+}

@@ -9,7 +9,6 @@
 
 <body>
     <main class="main">
-        <!-- 側邊攔 -->
         @@include('layout/header.html')
         <div class="content">
             <div class="container">
@@ -124,11 +123,11 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-6 mb-3">
                                         <div class="row mb-3">
-                                            <label for="danger_idCardEmergContact"
+                                            <label for="idCardEmergContact"
                                                 class="col-lg-auto col-form-label text-nowrap">緊急聯絡人：</label>
                                             <div class="col">
                                                 <input type="text" class="form-control thisRequired"
-                                                    id="danger_idCardEmergContact">
+                                                    id="idCardEmergContact">
                                                 <span class="text-danger" id="danger_idCardEmergContact"></span>
                                             </div>
                                         </div>
@@ -241,8 +240,8 @@
                                                             id="output_text">2吋人頭照片</span><img id="output_img"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2" class=" h-2">好棒棒股份有限公司</td>
-                                                    <td colspan="2" class=" ">負責人先生</td>
+                                                    <td colspan="2" class="h-2">好棒棒股份有限公司</td>
+                                                    <td colspan="2" class="">負責人先生</td>
                                                     <td colspan="2" class="text-nowrap">02-26700000</td>
                                                 </tr>
                                                 <tr>
@@ -252,44 +251,40 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="h-2" id="idCardName_td">申請人先生</td>
-                                                    <td id="idCardJobName_td">打工人</td>
-                                                    <td colspan="4" id="idCardPhone_td">02-26700000</td>
+                                                    <td class="h-2" id="idCardName_td"></td>
+                                                    <td id="idCardJobName_td"></td>
+                                                    <td colspan="4" id="idCardPhone_td"></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center fw-bold  text-nowrap py-2">申請人E-mail信箱</td>
-                                                    <td colspan="6" class="h-2" id="idCardEmail_td">abc@gmail.com</td>
+                                                    <td colspan="6" class="h-2" id="idCardEmail_td"></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center fw-bold  text-nowrap py-2">申請人進駐期間</td>
                                                     <td colspan="6" class=" h-2">
-                                                        <span class="px-2" id="idCard_Period1_Y">2024</span>年<span
-                                                            class="px-2" id="idCard_Period1_m">06</span>月<span
+                                                        <span class="px-2" id="idCard_Period1_Y"></span>年<span
+                                                            class="px-2" id="idCard_Period1_m"></span>月<span
                                                             class="px-2"
-                                                            id="idCard_Period1_D">30</span>日&emsp;~&emsp;<span
-                                                            class="px-2" id="idCard_Period2_Y">2024</span>年<span
-                                                            class="px-2" id="idCard_Period2_m">08</span>月<span
-                                                            class="px-2" id="idCard_Period2_D">30</span>日
+                                                            id="idCard_Period1_D"></span>日&emsp;~&emsp;<span
+                                                            class="px-2" id="idCard_Period2_Y"></span>年<span
+                                                            class="px-2" id="idCard_Period2_m"></span>月<span
+                                                            class="px-2" id="idCard_Period2_D"></span>日
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center fw-bold  text-nowrap py-2">申請人進駐<br>培育室位置
                                                     </td>
-                                                    <td colspan="6" class=" h-2">
-                                                        <span class="px-3" id="idCardCultRoom_Building">青創</span>大樓<span
-                                                            class="px-3" id="idCardCultRoom_Room">201</span>室
+                                                    <td colspan="6" class="h-2">
+                                                        <span class="px-3" id="idCardCultRoom_Building"></span>大樓<span
+                                                            class="px-3" id="idCardCultRoom_Room"></span>室
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center fw-bold text-nowrap py-2">緊急聯絡人</td>
-                                                    <td colspan="2" class=" h-2" id="ICE_Person">
-                                                        王大明
-                                                    </td>
+                                                    <td colspan="2" class="h-2" id="ICE_Person"></td>
                                                     <td colspan="2" class="text-center fw-bold  text-nowrap py-2">聯絡電話
                                                     </td>
-                                                    <td colspan="2" class=" h-2" id="ICE_Phone">
-                                                        02-26700000
-                                                    </td>
+                                                    <td colspan="2" class="h-2" id="ICE_Phone"></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center fw-bold  text-nowrap py-2">圖書館閱覽</td>
@@ -351,6 +346,8 @@
     <section class="print_template"></section>
 
     @@include('layout/metaJS.html')
+    <script src="./js/formComm.js"></script>
+    <script src="./js/formPreview.js"></script>
     <script src="./js/idCardApply.js"></script>
 
     <!-- <script src="./js/formPreview.js"></script> -->

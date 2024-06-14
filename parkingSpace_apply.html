@@ -153,9 +153,6 @@
                                         <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
                                     </div>
                                     <div class="col-auto">
-                                        <!-- <button type="button" class="btn btn-lg btn-outline-info" data-bs-toggle="modal"
-                                            data-bs-target="#parkingSpaceApp_pdf"
-                                            id="confirm_parkingSpaceApp">預覽</button> -->
                                         <button type="button" class="btn btn-lg btn-outline-info"
                                             id="confirm_parkingSpaceApp">預覽</button>
                                     </div>
@@ -252,7 +249,6 @@
                                                 </tr>
                                             </table>
                                             <div class="row my-3 modal-minW">
-                                                <!-- <div class="col-12">申請流程：</div> -->
                                                 <div class="ms-2 col-12">
                                                     &emsp;&emsp;申請流程：填寫申請單→單位主管簽名→繳費→上傳繳費證明→總務處(收件)</div>
                                                 <div class="ms-2 col-12">
@@ -283,22 +279,8 @@
     @@include('layout/metaJS.html')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
-    <script src="./js/formPreview.js"></script>
-    <script>
-        $(function () {
-
-            // 調用函數，傳入 input 和 td 的 ID
-            syncInputValue('parkingSpaceName', 'parkingSpaceName_td');
-            syncInputValue('parkingSpaceJobName', 'parkingSpaceJobName_td');
-            syncInputValue('parkingSpacePhone', 'parkingSpacePhone_td');
-            syncInputValue('parkingSpaceIDNum', 'parkingSpaceIDNum_td');
-            syncInputValue('parkingSpaceEmail', 'parkingSpaceEmail_td');
-            syncInputValue('parkingSpaceExt', 'parkingSpaceExt_td');
-
-        });
-
-
-    </script>
+    <script src="./js/parkingSpaceApply.js"></script>
+    <!-- <script src="./js/formPreview.js"></script> -->
 
 </body>
 

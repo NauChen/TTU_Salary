@@ -1,6 +1,7 @@
 // const a = (x , y) =>  x * y;
 // console.log(a(20 , 10));
-document.write('<script type="text/javascript" src="./js/sweetAlert.js"></script>');
+// document.write('<script type="text/javascript" src="./js/sweetAlert.js"></script>');
+
 
 let commonSettingsTable = {
     layout: {
@@ -790,9 +791,9 @@ function theseRemoveClass(classNames, ids) {
 //         });
 //     }
 // });
-$(function() {
+$(function () {
     // 監聽滾動事件
-    $(window).on("scroll", function() {
+    $(window).on("scroll", function () {
         let btnUp = $(".top_button");
         if ($(this).scrollTop() > 0) {
             // 當畫面不在網頁最頂端時，加上 scroll-animation 類別來套用透明度變化的動畫
@@ -804,7 +805,7 @@ $(function() {
     });
 
     // 監聽 DOMContentLoaded 事件
-    $("#btn_up").on("click", function() {
+    $("#btn_up").on("click", function () {
         $("html, body").animate({ scrollTop: 0 }, "smooth");
     });
 });
@@ -816,32 +817,7 @@ $(function() {
 
 
 
-function openFile(event) {
-    var input = event.target; //取得上傳檔案
-    var reader = new FileReader(); //建立FileReader物件
-    // var pic_Text = $('#output_text');
 
-    reader.readAsDataURL(input.files[0]); //以.readAsDataURL將上傳檔案轉換為base64字串
-
-    reader.onload = function () { //FileReader取得上傳檔案後執行以下內容
-        var dataURL = reader.result; //設定變數dataURL為上傳圖檔的base64字串
-        $('#output_img').attr('src', dataURL).show(); //將img的src設定為dataURL並顯示
-        $('#output_text').attr('src', dataURL).hide();
-        // $('#output_text').attr('src', dataURL).addClass('opa_0');
-    };
-}
-
-function openFile2(event) {
-    var input = event.target; //取得上傳檔案
-    var reader = new FileReader(); //建立FileReader物件
-
-    reader.readAsDataURL(input.files[0]); //以.readAsDataURL將上傳檔案轉換為base64字串
-
-    reader.onload = function () { //FileReader取得上傳檔案後執行以下內容
-        var dataURL = reader.result; //設定變數dataURL為上傳圖檔的base64字串
-        $('#vehicleRegistratio_img').attr('src', dataURL).show(); //將img的src設定為dataURL並顯示
-    };
-}
 
 
 

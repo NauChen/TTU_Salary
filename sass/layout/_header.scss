@@ -215,20 +215,3 @@ nav {
 }
 
 
-@media screen and (max-width: 700px) {
-    .main .nav-box {
-        transform: translateX(-100%);
-    }
-
-    .main .nav-box:hover {
-        transform: translateX(0);
-    }
-
-    .main .nav-box .burger-menu {
-        display: block;
-    }
-
-    .content {
-        padding-left: 0px;
-    }
-}

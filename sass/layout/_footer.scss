@@ -114,3 +114,47 @@
 .top_button.scroll-animation {
     animation: fadeAnimation 1s linear infinite;
 }
+
+// RWD放最後確保覆蓋
+@media screen and (max-width: 700px) {
+    .main .nav-box {
+        transform: translateX(-100%);
+    }
+
+    .main .nav-box:hover {
+        transform: translateX(0);
+    }
+
+    .main .nav-box .burger-menu {
+        display: block;
+    }
+
+    .content {
+        padding-left: 0px;
+    }
+}
+
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+@media print {
+    .content {
+        padding-left: 0;
+    }
+
+    .no_print {
+        display: none;
+    }
+
+    .print_template {
+        display: block;
+        width: 100%;
+    }
+
+    .print_table {
+        page-break-inside: avoid;
+    }
+
+}

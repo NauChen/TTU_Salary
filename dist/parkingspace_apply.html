@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.1/css/responsive.bootstrap5.min.css">
+<!-- <link rel="stylesheet" href="./css/print.css" media="print"> -->
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
 </head>
@@ -58,7 +59,7 @@
                     <li><a class="dropdown-item" href="./parkingSpace_inventory.html">停車位管理&ensp;<i
                                 class="fa-solid fa-square-parking"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="#">續約申請&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
+                    <li><a class="dropdown-item" href="./renewContract_apply.html">續約申請&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
                     </li>
                 </ul>
             </li>
@@ -284,9 +285,6 @@
                                         <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
                                     </div>
                                     <div class="col-auto">
-                                        <!-- <button type="button" class="btn btn-lg btn-outline-info" data-bs-toggle="modal"
-                                            data-bs-target="#parkingSpaceApp_pdf"
-                                            id="confirm_parkingSpaceApp">預覽</button> -->
                                         <button type="button" class="btn btn-lg btn-outline-info"
                                             id="confirm_parkingSpaceApp">預覽</button>
                                     </div>
@@ -383,7 +381,6 @@
                                                 </tr>
                                             </table>
                                             <div class="row my-3 modal-minW">
-                                                <!-- <div class="col-12">申請流程：</div> -->
                                                 <div class="ms-2 col-12">
                                                     &emsp;&emsp;申請流程：填寫申請單→單位主管簽名→繳費→上傳繳費證明→總務處(收件)</div>
                                                 <div class="ms-2 col-12">
@@ -440,25 +437,12 @@
 <script src="https://cdn.datatables.net/responsive/3.0.1/js/responsive.bootstrap5.min.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.all.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
-    <script src="./js/formPreview.js"></script>
-    <script>
-        $(function () {
-
-            // 調用函數，傳入 input 和 td 的 ID
-            syncInputValue('parkingSpaceName', 'parkingSpaceName_td');
-            syncInputValue('parkingSpaceJobName', 'parkingSpaceJobName_td');
-            syncInputValue('parkingSpacePhone', 'parkingSpacePhone_td');
-            syncInputValue('parkingSpaceIDNum', 'parkingSpaceIDNum_td');
-            syncInputValue('parkingSpaceEmail', 'parkingSpaceEmail_td');
-            syncInputValue('parkingSpaceExt', 'parkingSpaceExt_td');
-
-        });
-
-
-    </script>
+    <script src="./js/parkingSpaceApply.js"></script>
+    <!-- <script src="./js/formPreview.js"></script> -->
 
 </body>
 

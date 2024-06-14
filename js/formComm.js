@@ -64,68 +64,133 @@ function validAllRequiredForm(submitButtonId, formId) {
 }
 
 // 表單預覽-全部必填-檢驗
+// function validAllRequiredFormPreview(confirmButtonId, formId, model_id) {
+//     $('#' + confirmButtonId).on('click', function () {
+//         var allFilled = true;
+
+//         // 遍歷所有帶有 .thisRequired 類別的元素
+//         $('#' + formId + ' .thisRequired').each(function () {
+//             if ($(this).is('select')) { // 如果是 <select> 元素
+//                 // console.log($(this).val());
+//                 if ($(this).val() === null) { // 檢查選擇的值是否為預設值
+//                     let AAA = $(this).val();
+//                     console.log(AAA);
+//                     allFilled = false;
+//                     return false; // 退出循環
+//                 }
+//             } else { // 對於其他輸入框（input 和 textarea）
+//                 if ($(this).val().trim() === '') { // 檢查值是否為空
+//                     let BBB = $(this).val().trim();
+//                     console.log(BBB);
+//                     allFilled = false;
+//                     return false; // 退出循環
+//                 }
+//             }
+//         });
+
+//         if (!allFilled) {
+//             // console.log('全部必填檢驗 allFilled ： ' + allFilled);
+//             swalToastWarning('請將所有欄位填上。', 'top');
+//             $('#' + confirmButtonId).removeAttr('data-bs-toggle').removeAttr('data-bs-target');
+//         } else {
+//             checkDangerElements(confirmButtonId, model_id);
+//             // 所有必填字段都有值，可以提交表單
+//             // console.log('所有欄位都已填寫，可以提交表單。');
+//             // 預覽表單的程式碼
+//             // $('#' + confirmButtonId).attr('data-bs-toggle', 'modal').attr('data-bs-target', '#' + model_id);
+//         }
+//     });
+// }
+
+// 表單預覽-全部必填-檢驗
 function validAllRequiredFormPreview(confirmButtonId, formId, model_id) {
-    $('#' + confirmButtonId).on('click', function () {
-        var allFilled = true;
+    var allFilled = true;
 
-
-        // 遍歷所有帶有 .thisRequired 類別的元素
-        $('#' + formId + ' .thisRequired').each(function () {
-            if ($(this).is('select')) { // 如果是 <select> 元素
-                // console.log($(this).val());
-                if ($(this).val() === null) { // 檢查選擇的值是否為預設值
-                    // console.log('請選擇');
-                    allFilled = false;
-                    return false; // 退出循環
-                }
-            } else { // 對於其他輸入框（input 和 textarea）
-                if ($(this).val().trim() === '') { // 檢查值是否為空
-                    allFilled = false;
-                    return false; // 退出循環
-                }
+    // 遍歷所有帶有 .thisRequired 類別的元素
+    // $('#' + formId + ' .thisRequired').each(function () {
+    //     if ($(this).is('select')) { // 如果是 <select> 元素
+    //         if ($(this).val() === null) { // 檢查選擇的值是否為預設值
+    //             allFilled = false;
+    //             return false; // 退出循環
+    //         }
+    //     } else { // 對於其他輸入框（input 和 textarea）
+    //         if ($(this).val().trim() === '') { // 檢查值是否為空
+    //             allFilled = false;
+    //             return false; // 退出循環
+    //         }
+    //     }
+    // });
+    $('#' + formId + ' .thisRequired').each(function () {
+        if ($(this).is('select')) { // 如果是 <select> 元素
+            if ($(this).val() === null) { // 檢查選擇的值是否為預設值
+                allFilled = false;
+                return false; // 退出循環
             }
-        });
-
-        if (!allFilled) {
-            swalToastWarning('請將所有欄位填上。', 'top');
-            $('#' + confirmButtonId).removeAttr('data-bs-toggle').removeAttr('data-bs-target');
-        } else {
-            // 所有必填字段都有值，可以提交表單
-            console.log('所有欄位都已填寫，可以提交表單。');
-            // 預覽表單的程式碼
-            $('#' + confirmButtonId).attr('data-bs-toggle', 'modal').attr('data-bs-target', '#' + model_id);
+        } else if ($(this).is('input[type="file"]')) { // 如果是 <input type="file">
+            if ($(this).get(0).files.length === 0) { // 檢查是否選擇了文件
+                allFilled = false;
+                return false; // 退出循環
+            }
+        } else { // 對於其他輸入框（input 和 textarea）
+            if ($(this).val().trim() === '') { // 檢查值是否為空
+                allFilled = false;
+                return false; // 退出循環
+            }
         }
     });
+
+    if (!allFilled) {
+        swalToastWarning('請將所有欄位填上。', 'top');
+        $('#' + confirmButtonId).removeAttr('data-bs-toggle').removeAttr('data-bs-target');
+    } else {
+        $('#' + confirmButtonId).attr('data-bs-toggle', 'modal').attr('data-bs-target', '#' + model_id);
+    }
+    return allFilled;
 }
 
 // 有錯誤訊息就不開燈箱
+// function checkDangerElements(confirmButtonId, model_id) {
+//     // var allFilled = false;
+//     var allFilled = true;
+//     $('[id^="danger_"]').each(function () {
+//         if ($(this).text().trim() !== '') {
+//             allFilled = false;
+//             return false; // 終止遍歷
+//         }
+//     });
+
+//     if (!allFilled) {
+//         $('#' + confirmButtonId).removeAttr('data-bs-toggle').removeAttr('data-bs-target');
+//     }
+// }
 function checkDangerElements(confirmButtonId, model_id) {
-    var anyFilled = false;
-    $('[id^="danger_"]').each(function() {
+    var allFilled = true;
+    $('[id^="danger_"]').each(function () {
         if ($(this).text().trim() !== '') {
-            anyFilled = true;
+            allFilled = false;
             return false; // 終止遍歷
         }
     });
 
-    if (anyFilled) {
+    if (!allFilled) {
         $('#' + confirmButtonId).removeAttr('data-bs-toggle').removeAttr('data-bs-target');
     }
+    return allFilled;
 }
 
 //這個必填
-function checkThisRequired() {
-    var inputItem = $(this); // 當前失去焦點的 input 元素
-    var inputId = inputItem.attr('id'); // 獲取 input 元素的 id
-    // var label = $("label[for='" + inputId + "']").text(); // 獲取與 input 元素相關聯的 label 的文本內容
-    var warningBox = $("#danger_" + inputId);
-    if (inputItem.val().trim() === '' || inputItem.val() === null) {
-        warningBox.text("(-`д´-) 這是必填欄位，請填上歐！").removeClass("d-none");
-        allRequiredValid = false;
-    } else {
-        warningBox.text("").addClass("d-none");
-    }
-}
+// function checkThisRequired() {
+//     var inputItem = $(this); // 當前失去焦點的 input 元素
+//     var inputId = inputItem.attr('id'); // 獲取 input 元素的 id
+//     // var label = $("label[for='" + inputId + "']").text(); // 獲取與 input 元素相關聯的 label 的文本內容
+//     var warningBox = $("#danger_" + inputId);
+//     if (inputItem.val().trim() === '' || inputItem.val() === null) {
+//         warningBox.text("(-`д´-) 這是必填欄位，請填上歐！").removeClass("d-none");
+//         allRequiredValid = false;
+//     } else {
+//         warningBox.text("").addClass("d-none");
+//     }
+// }
 
 
 // ※※※※※※=== 文字轉換 ===※※※※※※
@@ -216,11 +281,12 @@ function checkThisPhone() {
     var inputId = inputItem.attr('id'); // 獲取 input 元素的 id
     var warningBox = $("#danger_" + inputId);
     var phoneValue = inputItem.val(); // 取得 input 元素的值
+    var allFilled = true;
 
     if (validatePhone(phoneValue)) {
         warningBox.text("");
     } else {
-
+        // allFilled = false;
         warningBox.text('電話/手機 的格式不正確，請依正確的格式輸入：區碼-電話號碼 或 09XX-XXXXXX');
     }
 }
