@@ -353,3 +353,122 @@ function isValidLineID(lineID) {
     return validChars.test(lineID);
 }
 
+
+
+
+
+// 新函式
+// 驗證必填
+function validateRequiredFields() {
+    var isValid = true;
+
+    $('.thisRequired').each(function () {
+        var elementType = $(this).attr('type');
+
+        if ((elementType === 'text' || elementType === 'email' || elementType === 'file' || elementType === 'date' || elementType === 'time') && !$(this).val()) {
+            isValid = false;
+            return false; // 退出each循環
+        }
+
+        if ($(this).is('textarea') && !$(this).val()) {
+            isValid = false;
+            return false; // 退出each循環
+        }
+
+        if ($(this).is('select') && !$(this).val()) {
+            isValid = false;
+            return false; // 退出each循環
+        }
+    });
+
+    return isValid;
+}
+// 使用方法
+// $('#submitButton').click(function(event) {
+//     if (!validateRequiredFields()) {
+//         event.preventDefault();
+//         alert('請填寫所有必填欄位。');
+//     }
+// });
+
+// 驗證電話
+// function validatePhoneNumbers() {
+//     var phoneRegex = /^\d{2,4}-\d{6,8}$/;
+//     var isValid = true;
+
+//     $('.thisPhoneNum').each(function() {
+//         if (!phoneRegex.test($(this).val())) {
+//             isValid = false;
+//             return false; // 退出each循環
+//         }
+//     });
+
+//     return isValid;
+// }
+// 使用方法
+// $('#submitButton').click(function(event) {
+//     if (!validatePhoneNumbers()) {
+//         event.preventDefault(); // 阻止表單的默認提交行為
+//         alert('請輸入有效的電話號碼。');
+//     }
+// });
+
+function validatePhoneNumbers() {
+    var phoneRegex = /^\d{2,4}-\d{6,8}$/;
+    var isValid = true;
+
+    $('.thisPhoneNum').each(function() {
+        if (!phoneRegex.test($(this).val())) {
+            var inputId = $(this).attr('id');
+            var warningBox = $("#danger_" + inputId);
+            warningBox.text('電話/手機的格式不正確，請依正確的格式輸入：區碼-電話號碼 或 09XX-XXXXXX');
+            isValid = false;
+            return false; // 退出each循環
+        }
+    });
+
+    return isValid;
+}
+
+// $(document).ready(function() {
+//     // 在 input 元素失去焦點時進行檢查
+//     $('.thisPhoneNum').blur(function() {
+//         validatePhoneNumbers();
+//     });
+
+//     // 在提交表單時進行檢查
+//     $('#submitButton').click(function(event) {
+//         if (!validatePhoneNumbers()) {
+//             event.preventDefault(); // 阻止表單的默認提交行為
+//         }
+//     });
+// });
+
+
+
+
+
+
+
+
+// 驗證Email
+function validateEmails() {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var isValid = true;
+
+    $('.thisEmail').each(function() {
+        if (!emailRegex.test($(this).val())) {
+            isValid = false;
+            return false; // 退出each循環
+        }
+    });
+
+    return isValid;
+}
+// 使用方法
+// $('#submitButton').click(function(event) {
+//     if (!validateEmails()) {
+//         event.preventDefault(); // 阻止表單的默認提交行為
+//         alert('請輸入有效的電子郵件地址。');
+//     }
+// });
