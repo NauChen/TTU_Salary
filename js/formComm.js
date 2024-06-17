@@ -212,6 +212,17 @@ function verifyEmail(obj) {
     $(obj).val($(obj).val().replace(/[^a-zA-Z0-9._@-]/g, ""));
 }
 
+// 限制僅能輸入 數字 的字符。 禁開頭是0
+function restrictToNum(obj) {
+    var inputValue = $(obj).val().replace(/\D/g, ''); 
+    if (inputValue.startsWith('0')) {
+        inputValue = inputValue.replace(/^0+/, '');
+    }
+    $(obj).val(inputValue);
+}
+
+
+
 
 
 // ※※※※※※=== 職缺 ===※※※※※※
@@ -417,7 +428,7 @@ function validatePhoneNumbers() {
     var phoneRegex = /^\d{2,4}-\d{6,8}$/;
     var isValid = true;
 
-    $('.thisPhoneNum').each(function() {
+    $('.thisPhoneNum').each(function () {
         if (!phoneRegex.test($(this).val())) {
             var inputId = $(this).attr('id');
             var warningBox = $("#danger_" + inputId);
@@ -456,7 +467,7 @@ function validateEmails() {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var isValid = true;
 
-    $('.thisEmail').each(function() {
+    $('.thisEmail').each(function () {
         if (!emailRegex.test($(this).val())) {
             isValid = false;
             return false; // 退出each循環

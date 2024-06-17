@@ -203,81 +203,87 @@ var dataset_myParkingSpaceHistory = [
 
 
 $(function () {
-    const today = new Date();
-    dataset_myParkingSpaceHistory.forEach(item => {
-        const endDate = new Date(item.endDate);
-        const timeDiff = endDate.getTime() - today.getTime();
-        const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-        item.diffDays = diffDays < 0 ? null : ((-1) * diffDays);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const parkingSpaceId = String(urlParams.get('id'));
+
+    // 確保 jobId 存在
+    if (parkingSpaceId) {
+        // console.log('Job ID:', jobId);
+
+        let parkingSpaceData = dataset_myParkingSpaceHistory.find(parkingSpace => parkingSpace.id === parkingSpaceId);
+        if (parkingSpaceData) {
+            // console.log('Job data found:', jobData);
+            $('#parkingSpaceName').val(parkingSpaceData.name);
+            $('#parkingSpaceJobTitle').val(parkingSpaceData.jobTitle);
+            $('#parkingSpaceExt').text(parkingSpaceData.ext);
+            $('#jobLocation').text(parkingSpaceData.jobLocation);
+            $('#deptOf').val(parkingSpaceData.deptOf);
+            // 將組合時間拆開，function來自formComm.js
+            var splitTimes = splitJobTime(jobData.jobTime);
+            $('#jobTime1').val(splitTimes.jobTime1);
+            $('#jobTime2').val(splitTimes.jobTime2);
+
+            $('#vacationSystem').val(jobData.vacationSystem);
+            $('#jobCondition').text(jobData.jobCondition);
+            $('#jobConnect').text(jobData.jobConnect);
+
+            $('#salaryType').val(jobData.salaryType);
+            var selectedOption = $('#salaryType').val();
+
+            salaryTypeChoose(selectedOption);
+            handleSalaryDetails(jobData.salaryTypeItem, jobData.salaryAmount);
+
+            //限制截止日期不可小於當日
+            var today = new Date().toISOString().split('T')[0];
+            $('#applicationDeadline').attr('min', today);
+            $('#applicationDeadline').val(jobData.applicationDeadline);
+        } else {
+            console.error('Job data not found for id:', jobId);
+        }
+
+    } else {
+        console.error('Job ID not found in URL');
+    }
+
+
+
+
+    // 監聽 #salaryType 的 change 事件
+    $('#salaryType').change(function () {
+        // 取得選擇的選項值
+        var selectedOption = $(this).val();
+        handleSalaryChoose(selectedOption);
     });
 
-    $('#myParkingSpaceList').DataTable({
-        ...commonSettingsProvision,
-        layout: {
-            topStart: function () {
-                let provision = document.createElement('div');
-                provision.innerHTML = '<h6 class="fw-bold"><i class="fa-solid fa-circle-exclamation mx-1"></i>若要續用，請於車位到期前申請續約。</h6>';
-                return provision;
-            },
-        },
-        "data": dataset_myParkingSpaceHistory,
-        "columns": [
-            { data: 'paymentDate', title: "付款日", },
-            { data: 'type', title: "車位類型", },
-            { data: 'parkingSpaceNum', title: "車位號碼", },
-            { data: 'name', title: "登記使用人" },
-            { data: 'licensePlateNum', title: "車牌號碼", },
-            { data: 'endDate', title: "到期日", },
-            { data: 'remark', title: "備註", },
-            {
-                data: 'id', title: "續約",
-                render: function (data, type, row) {
-                    const diffDays = row.diffDays;
-                    if (diffDays === null) {
-                        return '<button type="button" class="btn btn-light rounded-circle btn-sm oneWord cursor_default" title="續約時間已過"><i class="fa-solid fa-hourglass-end"></i></button>';
-                    } else if (diffDays >= -10) {
-                        return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpace_edit.html?id=' + data + '" title="立即續約"><i class="fa-solid fa-repeat"></i></a>';
-                    } else {
-                        return '<button type="button" class="btn btn-light rounded-circle btn-sm oneWord cursor_default" title="續約時間未到"><i class="fa-solid fa-hourglass-half"></i></button>';
-                    }
-                },
-            },
-            { data: 'diffDays', visible: false },
-        ],
-        order: [[8, 'desc']],
-        "columnDefs": [
-            {
-                targets: [0],
-                responsivePriority: 1,
-            },
-            {
-                targets: [1],
-                responsivePriority: 2,
-            },
-            {
-                targets: [2],
-                responsivePriority: 3,
-            },
-            {
-                targets: [6],
-                className: "text-start",
-            },
-            { searchable: false, orderable: false, targets: [7] },
-            { className: "text-center", targets: [0, 1, 2, 3, 4, 5, 7] },
-        ],
-        createdRow: function (row, data, dataIndex) {
-            [0, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
-            });
-            [0, 1, 2, 4, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
-            });
-            $('td:eq(6)', row).css('min-width', '200px');
-            [7].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
-            });
-        },
+    // 切換選擇單選框(薪資金額輸入)時，更改必填class。 必填class用在formComm.js的function，添加class的function來自main.js
+    $('input[name="salaryTypeItem"]').on("change", function () {
+        var selectedValue = $(this).val();
+        switch (selectedValue) {
+            case "1":
+                theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+                theseAddClass(["thisRequired"], ["dollarsInput"]);
+                break;
+            case "2":
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+                theseAddClass(["thisRequired"], ["dollarsToDollars_1Input", "dollarsToDollars_2Input"]);
+                break;
+            case "3":
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'negotiableInput', 'dollarsPerCaseInput']);
+                theseAddClass(["thisRequired"], ["moreThenDollarsInput"]);
+                break;
+            case "4":
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'dollarsPerCaseInput']);
+                theseAddClass(["thisRequired"], ["negotiableInput"]);
+                break;
+            case "5":
+                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']);
+                theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
+                break;
+            default:
+                break;
+        }
     });
-    $('[data-bs-toggle="tooltip"]').tooltip();
+
+
 });
-

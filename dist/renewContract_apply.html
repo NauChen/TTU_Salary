@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.1/css/responsive.bootstrap5.min.css">
 <!-- <link rel="stylesheet" href="./css/print.css" media="print"> -->
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css"> -->
+    <!-- <link rel="stylesheet" href="./css/print.css"> -->
 </head>
 
 <body>
@@ -77,8 +78,8 @@
                     </li>
                     <li><a class="dropdown-item" href="./parkingSpaceApp.html">車位審核&emsp;&ensp;<i
                                 class="fa-solid fa-square-parking"></i></a></li>
-                    <li><a class="dropdown-item" href="#">空間審核&emsp;&ensp;<i class="fa-solid fa-building"></i></a>
-                    </li>
+                    <!-- <li><a class="dropdown-item" href="#">空間審核&emsp;&ensp;<i class="fa-solid fa-building"></i></a>
+                    </li> -->
                     <li><a class="dropdown-item" href="#">續約審核&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
                     </li>
                     <li><a class="dropdown-item" href="#">識別證審核&ensp;<i class="fa-regular fa-address-card"></i></a>
@@ -153,20 +154,20 @@
                 </div>
 
                 <div class="no_print">
-                    <!-- 識別證申請表單 -->
+                    <!-- 續約申請表單 -->
                     <div class="tabs-box my-2r no_print">
                         <div class="row mb-4 px-3">
                             <h3 class="section-header col-auto mb-0 lh-base"><i
                                     class="fa-solid fa-quote-left"></i>培育室續約<i class="fa-solid fa-quote-right"></i></h3>
                             <!-- 點擊後將勾選的id傳至後台 -->
                             <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
-                                href="./jobCreate.html"><i class="fa-solid fa-square-parking"></i><i
+                                href="./parkingSpace_inventory.html"><i class="fa-solid fa-square-parking"></i><i
                                     class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-repeat"></i><span
                                     class="tooltiptext tooltip-top">停車位續約</span></a>
-                            <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
+                            <!-- <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
                                 href="./jobCreate.html"><i class="fa-regular fa-address-card"></i><i
                                     class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-repeat"></i><span
-                                    class="tooltiptext tooltip-right">識別證展延</span></a>
+                                    class="tooltiptext tooltip-right">識別證展延</span></a> -->
                         </div>
 
                         <form method="post" id="renewContractApplyForm">
@@ -404,19 +405,19 @@
                                                                 for="surveyFormNo">否，</label>
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                    id="constructionFormCheckbox" value="option1">
+                                                                    id="constructionFormCheckbox" value="1">
                                                                 <label class="form-check-label"
                                                                     for="constructionFormCheckbox">環安衛施工單</label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                    id="visitorFormCheckbox" value="option2">
+                                                                    id="visitorFormCheckbox" value="1">
                                                                 <label class="form-check-label"
                                                                     for="visitorFormCheckbox">訪客入校申請單</label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                    id="chemicalSurveyCheckbox" value="option3">
+                                                                    id="chemicalSurveyCheckbox" value="1">
                                                                 <label class="form-check-label"
                                                                     for="chemicalSurveyCheckbox">實驗室化學調查清單</label>
                                                             </div>
@@ -453,9 +454,7 @@
 
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
                             <div class="tabs section-border-radius section-padding">
@@ -486,7 +485,7 @@
                                                     class="col-lg-auto col-form-label text-nowrap">聯絡電話/手機：</label>
                                                 <div class="col">
                                                     <input type="text" class="form-control thisRequired"
-                                                        id="contactPhone">
+                                                        id="contactPhone" onkeyup="verifyPhone(this)">
                                                     <span class="text-danger" id="danger_contactPhone"></span>
                                                 </div>
                                             </div>
@@ -495,7 +494,7 @@
                                                     class="col-lg-auto col-form-label text-nowrap">E-mail：</label>
                                                 <div class="col">
                                                     <input type="text" class="form-control thisRequired"
-                                                        id="contactEmail">
+                                                        id="contactEmail" onkeyup="verifyEmail(this)">
                                                     <span class="text-danger" id="danger_contactEmail"></span>
                                                 </div>
                                             </div>
@@ -518,28 +517,28 @@
                                                         <div class="input-group mb-1">
                                                             <span class="input-group-text">進駐首年</span>
                                                             <input type="text" class="form-control thisRequired"
-                                                                id="firstYearRevenue">
+                                                                id="firstYearRevenue" onkeyup="restrictToNum(this)">
                                                             <span class="input-group-text">仟元</span>
                                                         </div>
                                                         <div class="input-group mb-1">
                                                             <span class="input-group-text">目前</span>
                                                             <input type="text" class="form-control thisRequired"
-                                                                id="currentRevenue">
+                                                                id="currentRevenue" onkeyup="restrictToNum(this)">
                                                             <span class="input-group-text">仟元，</span>
                                                         </div>
                                                         <div class="form-check ms-3">
                                                             <input class="form-check-input" type="radio"
-                                                                name="profitStatus" id="breakEvenCheckbox"
+                                                                name="profitStatus" id="breakEvenRadio"
                                                                 value="breakEven">
                                                             <label class="form-check-label"
-                                                                for="breakEvenCheckbox">已達損益平衡</label>
+                                                                for="breakEvenRadio">已達損益平衡</label>
                                                         </div>
                                                         <div class="form-check ms-3">
                                                             <input class="form-check-input" type="radio"
-                                                                name="profitStatus" id="notBreakEvenCheckbox"
+                                                                name="profitStatus" id="notBreakEvenRadio"
                                                                 value="notBreakEven">
                                                             <label class="form-check-label"
-                                                                for="notBreakEvenCheckbox">尚未損益平衡</label>
+                                                                for="notBreakEvenRadio">尚未損益平衡</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -551,13 +550,14 @@
                                                         <div class="input-group mb-1">
                                                             <span class="input-group-text">進駐首年</span>
                                                             <input type="text" class="form-control thisRequired"
-                                                                id="firstYearEmployeeCount">
+                                                                id="firstYearEmployeeCount"
+                                                                onkeyup="restrictToNum(this)">
                                                             <span class="input-group-text">人</span>
                                                         </div>
                                                         <div class="input-group mb-1">
                                                             <span class="input-group-text">目前</span>
                                                             <input type="text" class="form-control thisRequired"
-                                                                id="currentEmployeeCount">
+                                                                id="currentEmployeeCount" onkeyup="restrictToNum(this)">
                                                             <span class="input-group-text">人</span>
                                                         </div>
                                                     </div>
@@ -621,6 +621,7 @@
                                     </div>
                                     <div class="modal-body-wrapper">
                                         <div class="modal-body">
+                                            <!-- 大同大學創新育成中心培育企業自我檢核表 -->
                                             <div class="table-responsive px-5 break-inside-avoid">
                                                 <div
                                                     class="row align-items-center justify-content-center mb-2 modal-minW">
@@ -629,6 +630,7 @@
                                                     <h3 class="col-auto text-center fw-bold text-nowrap mb-0">
                                                         大同大學創新育成中心培育企業自我檢核表</h3>
                                                 </div>
+                                                <div class="text-end version_number">113.06 V1</div>
                                                 <table
                                                     class="table table-sm table-bordered align-middle border border-3 border-dark modal-minW">
                                                     <tr class="py-2">
@@ -645,11 +647,14 @@
                                                     <tr>
                                                         <td rowspan="2" class="text-center">1.</td>
                                                         <td rowspan="2" class="w-40">營業項目是否與營運輔導合約相符</td>
-                                                        <td class=""><span id="">&#x2611;</span>是。</td>
+                                                        <td class=""><span
+                                                                id="businessComplianceYes_td">&#9744;</span>是。</td>
                                                         <td rowspan="2"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class=""><span id="">&#x2611;</span>否，原因：<span>AAAAA</span>。
+                                                        <td class=""><span
+                                                                id="businessComplianceNo_td">&#9745;</span>否，原因：<span
+                                                                id="businessComplianceReason_td"></span>。
                                                         </td>
                                                     </tr>
 
@@ -657,79 +662,87 @@
                                                         <td rowspan="2" class="text-center">2.</td>
                                                         <td rowspan="2">進駐期間有無違法情事，或違反大同大學相關規範與合約規定
                                                         </td>
-                                                        <td class=""><span id="">&#x2611;</span>是，原因：<span>AAAAA</span>。
+                                                        <td class=""><span id="violationYes_td">&#9744;</span>是，原因：<span
+                                                                id="violationReason_td"></span>。
                                                         </td>
                                                         <td rowspan="2"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class=""><span id="">&#x2611;</span>否。</td>
+                                                        <td class=""><span id="violationNo_td">&#9745;</span>否。</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td rowspan="2" class="text-center">3.</td>
                                                         <td rowspan="2">進駐期間與本校教師進行產學合作計畫或聘用本校學生工讀/實習/就業</td>
-                                                        <td class=""><span id="">&#x2611;</span>是，產學合作名稱：<span
-                                                                id="">BBBBB</span>。<br>工讀/實習/就業之本校學生人數：<span
-                                                                id="">CCCCC</span></td>
+                                                        <td><span
+                                                                id="academicCollaborationYes_td">&#9744;</span>是，產學合作名稱：<span
+                                                                id="collaborationName_td"></span>。<br>工讀/實習/就業之本校學生人數：<span
+                                                                id="studentCount_td"></span></td>
                                                         <td rowspan="2"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class=""><span id="">&#x2611;</span>否，原因：<span>AAAAA</span>。
+                                                        <td><span
+                                                                id="academicCollaborationNo_td">&#9745;</span>否，原因：<span
+                                                                id="collaborationReason_td"></span>。
                                                         </td>
                                                     </tr>
 
                                                     <tr>
                                                         <td rowspan="2" class="text-center">4.</td>
                                                         <td rowspan="2">會議室使用及物品借用符合使用規範，並準時返還</td>
-                                                        <td class=""><span id="">&#x2611;</span>是。</td>
+                                                        <td><span id="usageComplianceYes_td">&#9744;</span>是。</td>
                                                         <td rowspan="2"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class=""><span id="">&#x2611;</span>否，原因：<span>AAAAA</span>。
-                                                        </td>
+                                                        <td><span id="usageComplianceNo_td">&#9745;</span>否，原因：<span
+                                                                id="usageComplianceReason_td"></span>。</td>
                                                     </tr>
 
                                                     <tr>
                                                         <td rowspan="2" class="text-center">5.</td>
                                                         <td rowspan="2">依照合約規定按時繳進駐輔導費及其他費用<br>(ex場地維護費、電費⋯等)</td>
-                                                        <td class=""><span id="">&#x2611;</span>是。</td>
+                                                        <td><span id="feeComplianceYes_td">&#9744;</span>是。</td>
                                                         <td rowspan="2"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class=""><span id="">&#x2611;</span>否，原因：<span>AAAAA</span>。
+                                                        <td><span id="feeComplianceNo_td">&#9745;</span>否，原因：<span
+                                                                id="feeComplianceReason_td"></span>。
                                                         </td>
                                                     </tr>
 
                                                     <tr>
                                                         <td rowspan="2" class="text-center">6.</td>
                                                         <td rowspan="2">是否參加本校課程、成果發表會或其他活動</td>
-                                                        <td class=""><span id="">&#x2611;</span>是。</td>
+                                                        <td><span id="participationYes_td">&#9744;</span>是。</td>
                                                         <td rowspan="2"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class=""><span id="">&#x2611;</span>否，原因：<span>AAAAA</span>。
+                                                        <td><span id="participationNo_td">&#9745;</span>否，原因：<span
+                                                                id="participationReason_td"></span>。
                                                         </td>
                                                     </tr>
 
                                                     <tr>
                                                         <td rowspan="2" class="text-center">7.</td>
                                                         <td rowspan="2">配合本校企業輔導(ex諮詢輔導)</td>
-                                                        <td class=""><span id="">&#x2611;</span>是。</td>
+                                                        <td><span id="counselingYes_td">&#9744;</span>是。</td>
                                                         <td rowspan="2"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class=""><span id="">&#x2611;</span>否，原因：<span>AAAAA</span>。
+                                                        <td><span id="counselingNo_td">&#9745;</span>否，原因：<span
+                                                                id="counselingReason_td"></span>。
                                                         </td>
                                                     </tr>
 
                                                     <tr>
                                                         <td rowspan="2" class="text-center">8.</td>
                                                         <td rowspan="2">確實歸還離職員工識別證</td>
-                                                        <td class=""><span id="">&#x2611;</span>是。</td>
+                                                        <td><span id="badgeReturnYes_td">&#9744;</span>是。</td>
                                                         <td rowspan="2"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class=""><span id="">&#x2611;</span>否，原因：<span>AAAAA</span>。
+                                                        <td><span id="badgeReturnNo_td">&#9745;</span>否，原因：<span
+                                                                id="badgeReturnReason_td"></span>。
                                                         </td>
                                                     </tr>
 
@@ -737,25 +750,27 @@
                                                         <td rowspan="2" class="text-center">9.</td>
                                                         <td rowspan="2">確實填寫本校各項調查表單<br>(ex環安衛施工單、訪客入校申請單、實驗室化學調查清單等)
                                                         </td>
-                                                        <td class=""><span id="">&#x2611;</span>是。</td>
+                                                        <td><span id="surveyFormYes_td">&#9744;</span>是。</td>
                                                         <td rowspan="2"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class=""><span id="">&#x2611;</span>否：<span
-                                                                id="">&#x2611;</span>環安衛施工單、<span
-                                                                id="">&#x2611;</span>訪客入校申請單、<span
-                                                                id="">&#x2611;</span>實驗室化學調查清單。<br>原因：<span>AAAAA</span>。
+                                                        <td><span id="surveyFormNo_td">&#9745;</span>否：<span
+                                                                id="constructionFormCheckbox_td">&#9744;</span>環安衛施工單、<span
+                                                                id="visitorFormCheckbox_td">&#9744;</span>訪客入校申請單、<span
+                                                                id="chemicalSurveyCheckbox_td">&#9744;</span>實驗室化學調查清單。<br>原因：<span
+                                                                id="surveyFormReason_td"></span>。
                                                         </td>
                                                     </tr>
 
                                                     <tr>
                                                         <td rowspan="2" class="text-center">10.</td>
                                                         <td rowspan="2">願配合本校校務發展及教育方針，提供本校師生與企業鏈結機會</td>
-                                                        <td class=""><span id="">&#x2611;</span>是。</td>
+                                                        <td><span id="cooperationYes_td">&#9744;</span>是。</td>
                                                         <td rowspan="2"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class=""><span id="">&#x2611;</span>否，原因：<span>AAAAA</span>。
+                                                        <td><span id="cooperationNo_td">&#9745;</span>否，原因：<span
+                                                                id="cooperationReason_td"></span>。
                                                         </td>
                                                     </tr>
 
@@ -771,118 +786,195 @@
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            <!-- 大同大學創新育成中心延長進駐申請書 -->
                                             <div class="table-responsive px-5 pt-5 break-before">
                                                 <div
                                                     class="row align-items-center justify-content-center mb-2 modal-minW">
                                                     <div class="col-auto title_imgBox"><img src="./images/ttulogo.png">
                                                     </div>
                                                     <h3 class="col-auto text-center fw-bold text-nowrap mb-0">
-                                                        大同大學創新育成中心培育企業識別證申請表
+                                                        大同大學創新育成中心延長進駐申請書
                                                     </h3>
                                                 </div>
+                                                <div class="text-end version_number">F-A1410-015</div>
                                                 <table
                                                     class="table table-bordered align-middle border border-3 border-dark modal-minW">
                                                     <tr class="py-2">
-                                                        <td colspan="2" class="text-center fw-bold  text-nowrap">
-                                                            公司行號名稱(立案全銜)
+                                                        <td class="fw-bold text-nowrap w-30">
+                                                            <div class="row justify-content-between">
+                                                                <div class="col-auto">申</div>
+                                                                <div class="col-auto">請</div>
+                                                                <div class="col-auto">日</div>
+                                                                <div class="col-auto">期</div>
+                                                            </div>
                                                         </td>
-                                                        <td colspan="2" class="text-center fw-bold text-nowrap">負責人</td>
-                                                        <td colspan="2" class="text-center fw-bold text-nowrap">聯絡電話
-                                                        </td>
-                                                        <td rowspan="4" class="text-center fw-bold td_Pic"
-                                                            style="width: 190px; height:250px"><span
-                                                                id="output_text">2吋人頭照片</span><img id="output_img"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="h-2">好棒棒股份有限公司</td>
-                                                        <td colspan="2" class="">負責人先生</td>
-                                                        <td colspan="2" class="text-nowrap">02-26700000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center fw-bold text-nowrap py-2">申請人姓名</td>
-                                                        <td class="text-center fw-bold text-nowrap">申請人職稱</td>
-                                                        <td colspan="4" class="text-center fw-bold text-nowrap">申請人聯絡電話
+                                                        <td colspan="2" class="text-nowrap">
+                                                            <span class="px-2"></span>年<span class="px-2"></span>月<span
+                                                                class="px-2"></span>日
                                                         </td>
                                                     </tr>
+
                                                     <tr>
-                                                        <td class="h-2" id="idCardName_td"></td>
-                                                        <td id="idCardJobName_td"></td>
-                                                        <td colspan="4" id="idCardPhone_td"></td>
+                                                        <td class="fw-bold text-nowrap">
+                                                            <div class="row justify-content-between">
+                                                                <div class="col-auto">公</div>
+                                                                <div class="col-auto">司</div>
+                                                                <div class="col-auto">名</div>
+                                                                <div class="col-auto">稱</div>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="2"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-center fw-bold  text-nowrap py-2">申請人E-mail信箱
+                                                        <td class="fw-bold text-nowrap">
+                                                            <div class="row justify-content-between">
+                                                                <div class="col-auto">申</div>
+                                                                <div class="col-auto">請</div>
+                                                                <div class="col-auto">人</div>
+                                                            </div>
                                                         </td>
-                                                        <td colspan="6" class="h-2" id="idCardEmail_td"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center fw-bold  text-nowrap py-2">申請人進駐期間</td>
-                                                        <td colspan="6" class=" h-2">
-                                                            <span class="px-2" id="idCard_Period1_Y"></span>年<span
-                                                                class="px-2" id="idCard_Period1_m"></span>月<span
-                                                                class="px-2"
-                                                                id="idCard_Period1_D"></span>日&emsp;~&emsp;<span
-                                                                class="px-2" id="idCard_Period2_Y"></span>年<span
-                                                                class="px-2" id="idCard_Period2_m"></span>月<span
-                                                                class="px-2" id="idCard_Period2_D"></span>日
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center fw-bold  text-nowrap py-2">申請人進駐<br>培育室位置
-                                                        </td>
-                                                        <td colspan="6" class="h-2">
-                                                            <span class="px-3"
-                                                                id="idCardCultRoom_Building"></span>大樓<span class="px-3"
-                                                                id="idCardCultRoom_Room"></span>室
+                                                        <td colspan="2">
+                                                            <div class="row">
+                                                                <span class="col-auto">姓名：</span>
+                                                                <span class="col" id="applicantName_td"></span>
+                                                                <span class="col-auto">職稱：</span>
+                                                                <span class="col" id="applicantJobTitle_td"></span>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-center fw-bold text-nowrap py-2">緊急聯絡人</td>
-                                                        <td colspan="2" class="h-2" id="ICE_Person"></td>
-                                                        <td colspan="2" class="text-center fw-bold  text-nowrap py-2">
-                                                            聯絡電話
+                                                        <td rowspan="2" class="fw-bold text-nowrap">
+                                                            <div class="row justify-content-between">
+                                                                <div class="col-auto">聯</div>
+                                                                <div class="col-auto">絡</div>
+                                                                <div class="col-auto">方</div>
+                                                                <div class="col-auto">式</div>
+                                                            </div>
                                                         </td>
-                                                        <td colspan="2" class="h-2" id="ICE_Phone"></td>
+                                                        <td class="w-10 text-center">電&emsp;話</td>
+                                                        <td id="contactPhone_td"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-center fw-bold  text-nowrap py-2">圖書館閱覽</td>
-                                                        <td colspan="6" class=" h-2">
-                                                            <span id="wantYes" class="d-none"> &#x2611;</span><span
-                                                                id="wantNo">
-                                                                &#x2610;</span><span class="me-5 ms-1">申請</span><span
-                                                                id="dontWantYes">&#x2611;</span><span id="dontWantNo"
-                                                                class="d-none">&#x2610;</span><span
-                                                                class="me-5 ms-1">不申請</span><span>(僅提供圖書館閱覽功能，不提供外借功能)</span>
+                                                        <td class="text-center">E-mail</td>
+                                                        <td id="contactEmail_td"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold text-nowrap">
+                                                            <div class="row justify-content-between">
+                                                                <div class="col-auto">目</div>
+                                                                <div class="col-auto">前</div>
+                                                                <div class="col-auto">進</div>
+                                                                <div class="col-auto">駐</div>
+                                                                <div class="col-auto">期</div>
+                                                                <div class="col-auto">間</div>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="2">自<span class="px-2"></span>年<span
+                                                                class="px-2"></span>
+                                                            月<span class="px-2"></span>日進駐，預計至<span class="px-2"></span>
+                                                            年<span class="px-2"></span>
+                                                            月<span class="px-2"></span>日合約到期，<br>目前已延長進駐<span
+                                                                class="px-2"></span>年，共計進駐<span class="px-2"></span>年。
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold text-nowrap">
+                                                            <div class="row justify-content-between">
+                                                                <div class="col-auto">年</div>
+                                                                <div class="col-auto">營</div>
+                                                                <div class="col-auto">業</div>
+                                                                <div class="col-auto">額</div>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            進駐首年<span id="firstYearRevenue_td"
+                                                                class="px-2"></span>仟元，<br>目前<span
+                                                                id="currentRevenue_td" class="px-2"></span>仟元，<span
+                                                                id="breakEvenRadio_td"
+                                                                class="ps-2">&#9744;</span>已達損益平衡&ensp;/&ensp;<span
+                                                                id="notBreakEvenRadio_td">&#9744;</span>尚未損益平衡
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold text-nowrap">
+                                                            <div class="row justify-content-between">
+                                                                <div class="col-auto">員</div>
+                                                                <div class="col-auto">工</div>
+                                                                <div class="col-auto">人</div>
+                                                                <div class="col-auto">數</div>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            進駐首年<span id="firstYearEmployeeCount_td"
+                                                                class="px-2"></span>人，<br>目前<span
+                                                                id="currentEmployeeCount_td" class="px-2"></span>人。
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold text-nowrap">
+                                                            <div class="row justify-content-between">
+                                                                <div class="col-auto">申</div>
+                                                                <div class="col-auto">請</div>
+                                                                <div class="col-auto">延</div>
+                                                                <div class="col-auto">駐</div>
+                                                                <div class="col-auto">期</div>
+                                                                <div class="col-auto">限</div>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            申請延長進駐至<span id="extensionPeriod_Y"
+                                                                class="px-2"></span>年<span id="extensionPeriod_m"
+                                                                class="px-2"></span>月<span id="extensionPeriod_D"
+                                                                class="px-2"></span>日止。</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold text-nowrap">
+                                                            <div class="row justify-content-between">
+                                                                <div class="col-auto">申</div>
+                                                                <div class="col-auto">請</div>
+                                                                <div class="col-auto">延</div>
+                                                                <div class="col-auto">駐</div>
+                                                                <div class="col-auto">原</div>
+                                                                <div class="col-auto">由</div>
+                                                                <small class="col-12 fw-normal">※可述進駐期間成就等</small>
+                                                                <small
+                                                                    class="col-12 fw-normal">(例:申請政府補助計畫、與教師產學合作案等)</small>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="2" id="extensionReason_td"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold ">
+                                                            <div class="row justify-content-between">
+                                                                <div class="col-auto pe-0">其</div>
+                                                                <div class="col-auto px-0">他</div>
+                                                                <div class="col-auto px-0">有</div>
+                                                                <div class="col-auto px-0">利</div>
+                                                                <div class="col-auto px-0">審</div>
+                                                                <div class="col-auto px-0">核</div>
+                                                                <div class="col-auto px-0">項</div>
+                                                                <div class="col-auto ps-0">目</div>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="2" id="otherAdvantages_td"></td>
+                                                    </tr>
+                                                    <tr class="border_top_5">
+                                                        <td class="fw-bold text-nowrap">
+                                                            <div class="row justify-content-between fs-5">
+                                                                <div class="col-auto">審</div>
+                                                                <div class="col-auto">核</div>
+                                                            </div>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <div class="row">
+                                                                <div class="col-auto"><span>&#9745;</span>同意延長進駐</div>
+                                                                <div class="col-auto"><span>&#9744;</span>擇期再議：</div>
+                                                                <div class="col-12">創新育成中心：<br><br><br><br></div>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                <div class="row my-3 modal-minW">
-                                                    <div class="col-12">申請人聲明：</div>
-                                                    <div class="ms-2 col-12">
-                                                        &emsp;&emsp;本份資料均填寫屬實，進駐大同大學期間，願意完全遵守大同大學有關人事及校園安全規定條則，並不得任意使用大同大學名稱，如有違背，將立即喪失進駐資格，並歸還任何大同大學所核發校園出入等相關證件。
-                                                    </div>
-                                                    <div class="ms-2 col-12">
-                                                        &emsp;&emsp;申請人離職需將識別證繳回育成中心(代繳回本校人事室)。識別證為出入培育室使用，不作其他識別用途。請妥善保管，如遺失請依規定至本校出納組繳交<span
-                                                            class="fw-bold text-danger">300元</span>並申請補發。</div>
-                                                </div>
-                                                <div class="row my-2 mb-3 pb-5 modal-minW">
-                                                    <div class="col fw-bold text-dark text-nowrap">申請人簽名：</div>
-                                                    <div class="col"></div>
-                                                    <div class="col fw-bold text-dark text-nowrap">公司負責人簽名：</div>
-                                                    <div class="col"></div>
-                                                </div>
-                                                <div class="row p-2 modal-minW">
-                                                    <div class="col py-2 ps-3 border border-dark text-dark">
-                                                        大同大學創新育成中心審核：
-                                                    </div>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>

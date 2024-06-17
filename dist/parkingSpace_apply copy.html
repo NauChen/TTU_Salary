@@ -171,26 +171,30 @@
                                                 class="col-lg-auto col-form-label text-nowrap"><span
                                                     class="d-none d-lg-inline">&emsp;</span>姓名：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceName">
-                                                <span id="danger_parkingSpaceName" class="text-danger"></span>
+                                                <input type="text" class="form-control" id="parkingSpaceName"
+                                                    asp-for="parkingSpace_Name">
+                                                <span asp-validation-for="parkingSpace_Name" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="parkingSpaceJobTitle"
-                                                class="col-lg-auto col-form-label text-nowrap"><span
+                                            <label for="parkingSpaceJobName"
+                                                class="col-lg-auto col-form-label text-nowrap"
+                                                asp-for="parkingSpace_JobName"><span
                                                     class="d-none d-lg-inline">&emsp;</span>職稱：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceJobTitle">
-                                                <span id="danger_parkingSpaceJobTitle"
+                                                <input type="text" class="form-control" id="parkingSpaceJobName"
+                                                    asp-for="parkingSpace_JobName">
+                                                <span asp-validation-for="parkingSpace_JobName"
                                                     class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="parkingSpaceExt" class="col-lg-auto col-form-label text-nowrap"><span
+                                            <label for="parkingSpaceExt" class="col-lg-auto col-form-label text-nowrap"
+                                                asp-for="parkingSpace_Ext"><span
                                                     class="d-none d-lg-inline">&emsp;</span>分機：</label>
                                             <div class="col">
                                                 <input type="text" class="form-control" id="parkingSpaceExt">
-                                                <span id="danger_parkingSpaceExt" class="text-danger"></span>
+                                                <span asp-validation-for="parkingSpace_Ext" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -431,10 +435,10 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
-    <script src="./js/formComm.js"></script>
-    <script src="./js/formPreview.js"></script>
     <script src="./js/parkingSpaceApply.js"></script>
+    <!-- <script src="./js/formPreview.js"></script> -->
 
 </body>
 

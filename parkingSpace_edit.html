@@ -2,148 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>大同大學-校內育成媒合平台-已登職缺</title>
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<link rel="stylesheet" href="./css/style.css">
-<!-- <link rel="stylesheet" href="./css/nav-memo2-main.css"> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css" />
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.1/css/responsive.bootstrap5.min.css">
-<!-- <link rel="stylesheet" href="./css/print.css" media="print"> -->
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css"> -->
+    @@include('layout/meta.html', {
+    "title": "大同大學-校內育成媒合平台-已登職缺",
+    })
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
 </head>
 
 <body>
     <main class="main">
         <!-- 側邊攔 -->
-        
-<!-- 側邊攔 -->
-<nav class="nav-box no_print">
-    <!-- RWD-MENU標籤 -->
-    <div class="burger-menu">
-        <i class="fas fa-bars"></i>
-    </div>
-    <!-- 側邊攔上方 -->
-    <div class="top">
-        <a href="./index.html" class="navbar-logo">
-            <img src="./images/ttoLogo_2.png" class="navbar-brand">
-        </a>
-        <ul class="navigation navbar-top">
-            <li class="item">
-                <a class="link active" href="./index.html"><i class="fas fa-home"></i><span
-                        class="tooltiptext tooltip-right">儀錶板</span></a>
-            </li>
-            <li class="item dropend">
-                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa-solid fa-users"></i><span
-                        class="tooltiptext tooltip-right">職缺媒合</span></a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                    <li><a class="dropdown-item" href="./index.html">職缺總攬&ensp;<i
-                                class="fa-solid fa-users-line"></i></a>
-                    </li>
-                    <li><a class="dropdown-item" href="./myJob.html">刊登中&emsp;&ensp;<i
-                                class="fa-solid fa-users-viewfinder"></i></a></li>
-                </ul>
-            </li>
-            <li class="item dropend">
-                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink3" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa-solid fa-file-contract"></i><span
-                        class="tooltiptext tooltip-right">申請與查閱</span></a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
-                    <li><a class="dropdown-item" href="./idCard_inventory.html">識別證管理&ensp;<i
-                                class="fa-regular fa-address-card"></i></a>
-                    </li>
-                    <li><a class="dropdown-item" href="./parkingSpace_inventory.html">停車位管理&ensp;<i
-                                class="fa-solid fa-square-parking"></i></a>
-                    </li>
-                    <li><a class="dropdown-item" href="./renewContract_apply.html">續約申請&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="item">
-                <a class="link" href="#"><i class="fa-solid fa-spinner"></i><span
-                        class="tooltiptext tooltip-right">進度查詢</span></a>
-            </li>
-
-            <li class="item dropend">
-                <a class="link dropdown-toggle" role="button" id="dropdownMenuLink4" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa-solid fa-stamp"></i><span
-                        class="tooltiptext tooltip-right">資料審核</span></a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink4">
-                    <li><a class="dropdown-item" href="./coopManufApp.html">廠商審核&emsp;&ensp;<i
-                                class="fa-solid fa-user-tie"></i></a>
-                    </li>
-                    <li><a class="dropdown-item" href="./parkingSpaceApp.html">車位審核&emsp;&ensp;<i
-                                class="fa-solid fa-square-parking"></i></a></li>
-                    <!-- <li><a class="dropdown-item" href="#">空間審核&emsp;&ensp;<i class="fa-solid fa-building"></i></a>
-                    </li> -->
-                    <li><a class="dropdown-item" href="#">續約審核&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
-                    </li>
-                    <li><a class="dropdown-item" href="#">識別證審核&ensp;<i class="fa-regular fa-address-card"></i></a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="item dropend">
-                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink5" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa-solid fa-briefcase"></i><span
-                        class="tooltiptext tooltip-right">資料管理</span></a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
-                    <li><a class="dropdown-item" href="./cultivationRoom.html">培育室管理&emsp;&ensp;<i
-                                class="fa-solid fa-tree-city"></i></a></li>
-                    <li><a class="dropdown-item" href="./pakingSpace.html">停車位管理&emsp;&ensp;<i class="fa-brands fa-product-hunt"></i></a>
-                    </li>
-                    <li><a class="dropdown-item" href="./nav-memo2-roles.html">用戶權限設定&ensp;<i
-                                class="fa-solid fa-people-robbery"></i></a></li>
-                    <li><a class="dropdown-item" href="#">用戶資料修改&ensp;<i class="fa-solid fa-address-book"></i></a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="item">
-                <a class="link" href="#"><i class="fa-solid fa-file-shield"></i><span
-                        class="tooltiptext tooltip-right">LOG紀錄</span></a>
-            </li>
-            <li class="item">
-                <a class="link" href="#"><i class="fa-regular fa-paper-plane"></i><span
-                        class="tooltiptext tooltip-right">意見反應</span></a>
-            </li>
-            <li class="item">
-                <a class="link" href="./template-style.html"><i class="fa-solid fa-paint-roller"></i><span
-                        class="tooltiptext tooltip-right">樣式設計</span></a>
-            </li>
-
-            <li class="item">
-                <a class="link" href="./template-underConstruction.html"><i class="fa-solid fa-person-digging"></i><span
-                        class="tooltiptext tooltip-right">施工頁</span></a>
-            </li>
-        </ul>
-
-    </div>
-    <!-- 側邊攔下方 -->
-    <div class="bottom">
-        <ul class="navigation">
-            <!-- 已登入 -->
-            <li class="item dropend">
-                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink9" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa-regular fa-circle-user"></i></a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink9">
-                    <li><a class="dropdown-item" href="#">設定&ensp;<i class="fa-solid fa-gear"></i></a></li>
-                    <li><a class="dropdown-item" href="#">登出&ensp;<i class="fa-solid fa-door-open"></i></a></li>
-                </ul>
-            </li>
-            <!-- 未登入 -->
-            <!-- <li class="item">
-                        <a class="link" href="./nav-memo2-login.html"><i class="fa-regular fa-circle-user"></i><span
-                                class="tooltiptext tooltip-right">登入&ensp;/&ensp;申請</span></a>
-                    </li> -->
-        </ul>
-    </div>
-</nav>
+        @@include('layout/header.html')
         <div class="content">
             <div class="container">
 
@@ -393,48 +261,19 @@
                     </div>
                 </div>
 
-                <!-- <footer>
-    <ul>
-        <li>隱私權</li>
-    </ul>
-</footer> -->
-
- <!-- TOP -->
- <div class="top_button no_print">
-    <a id="btn_up"><img src="./images/TOP_LOGO_3.png" alt=""></a>
-</div>
-<!-- 頁尾 -->
-<div class="footer section-padding section-border-radius my-2r no_print">
-    <ul class="links">
-        <li><a href="#">大同大學</a></li>
-        <li><a href="./index.html">育成媒合</a></li>
-        <li><a href="./nav-memo2.html">帳戶總攬</a></li>
-    </ul>
-    <p class="copyright">
-        大同大學 版權所有&copy;2022 All Rights Reserved.<br>建議使用：IE9.0以上版本或Google
-        Chrome瀏覽器<span>(最佳螢幕解析1280*1024)</span>
-    </p>
-</div>
+                @@include('layout/footer.html')
 
             </div>
         </div>
     </main>
     <section class="print_template"></section>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="./js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/3.0.1/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/3.0.1/js/responsive.bootstrap5.min.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.all.min.js"></script> -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="./js/sweetAlert.js"></script>
-<script src="./js/main.js"></script>
+    @@include('layout/metaJS.html')
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
     <script src="./js/formComm.js"></script>
     <script src="./js/formPreview.js"></script>
-    <script src="./js/parkingSpaceApply.js"></script>
+    <script src="./js/parkingSpaceEdit.js"></script>
 
 </body>
 

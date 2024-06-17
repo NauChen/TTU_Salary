@@ -133,7 +133,7 @@ textarea {
 
 
 
-// 覆寫Bootatrap
+// 覆寫Bootstrap
 .breadcrumb-item {
     color: #bee1d8;
 }
@@ -154,7 +154,21 @@ textarea {
     width: 40% !important;
 }
 
+.w-10 {
+    width: 10% !important;
+}
+
 .align_center {
     align-content: center;
 }
 
+.cursor_not-allowed{
+    cursor: not-allowed !important;
+}
+.cursor_default{
+    cursor: default !important;
+}
+// .text_justify {
+//     text-align: justify;
+//default
+// }

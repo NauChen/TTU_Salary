@@ -68,15 +68,68 @@ function changeRoomName(room) {
     }
 }
 
-// function syncInputToTd(inputId, tdId) {
-//     var inputElement = $('#' + inputId);
-//     var tdElement = $('#' + tdId);
+//同步input radio
+function syncInputRadio(yesRadioId, noRadioId, yesTdId, noTdId) {
+    if ($('#' + yesRadioId).is(':checked')) {
+        $('#' + yesTdId).html('&#9745;');
+        $('#' + noTdId).html('&#9744;');
+    } else if ($('#' + noRadioId).is(':checked')) {
+        $('#' + yesTdId).html('&#9744;');
+        $('#' + noTdId).html('&#9745;');
+    }
+}
 
-//     inputElement.on('input', function () {
-//         var inputValue = $(this).val();
-//         tdElement.text(inputValue);
-//     });
-// }
+//同步input radio後 yes要同步文字
+function syncInputRadioYesValue(yesRadioId, noRadioId, yesTdId, noTdId, yesReason, yesReasonTd) {
+    if ($('#' + yesRadioId).is(':checked')) {
+        $('#' + yesTdId).html('&#9745;');
+        $('#' + noTdId).html('&#9744;');
+        var inputValue = $('#' + yesReason).val();
+        $('#' + yesReasonTd).text(inputValue);
+        syncInputValue(yesReason, yesReasonTd);
+    } else if ($('#' + noRadioId).is(':checked')) {
+        $('#' + yesTdId).html('&#9744;');
+        $('#' + noTdId).html('&#9745;');
+        $('#' + yesReasonTd).text('');
+    }
+}
+
+//同步input radio後 no要同步文字
+function syncInputRadioNoValue(yesRadioId, noRadioId, yesTdId, noTdId, noReason, noReasonTd) {
+    if ($('#' + noRadioId).is(':checked')) {
+        $('#' + noTdId).html('&#9745;');
+        $('#' + yesTdId).html('&#9744;');
+        var inputValue = $('#' + noReason).val();
+        $('#' + noReasonTd).text(inputValue);
+        syncInputValue(noReason, noReasonTd);
+    } else if ($('#' + yesRadioId).is(':checked')) {
+        $('#' + noTdId).html('&#9744;');
+        $('#' + yesTdId).html('&#9745;');
+        $('#' + noReasonTd).text('');
+    }
+}
+
+//同步input checkbox
+function syncInputCheckbox(checkboxId, tdId) {
+    $('#' + checkboxId).on('change', function () {
+        if ($('#' + checkboxId).is(':checked')) {
+            $('#' + tdId).html('&#9745;');
+        } else {
+            $('#' + tdId).html('&#9744;');
+        }
+    });
+}
+
+//同步input 加上仟分號
+function syncNumberWithCommas(inputId, tdId) {
+    $('#' + inputId).on('blur', function () {
+        var inputValue = $(this).val();
+        if (inputValue) {
+            var formattedValue = Number(inputValue).toLocaleString('en');
+            $('#' + tdId).text(formattedValue);
+        }
+    });
+}
 
 
 

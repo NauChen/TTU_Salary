@@ -26,3 +26,11 @@
     }
 
 }
+
+table {
+    tr {
+        &.border_top_5{
+            border-top: 3px solid black;
+        }
+    }
+}

@@ -39,31 +39,26 @@
                                                 class="col-lg-auto col-form-label text-nowrap"><span
                                                     class="d-none d-lg-inline">&emsp;</span>姓名：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceName"
-                                                    asp-for="parkingSpace_Name">
-                                                <span asp-validation-for="parkingSpace_Name" class="text-danger"></span>
+                                                <input type="text" class="form-control" id="parkingSpaceName">
+                                                <span id="danger_parkingSpaceName" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="parkingSpaceJobName"
-                                                class="col-lg-auto col-form-label text-nowrap"
-                                                asp-for="parkingSpace_JobName"><span
+                                            <label for="parkingSpaceJobTitle"
+                                                class="col-lg-auto col-form-label text-nowrap"><span
                                                     class="d-none d-lg-inline">&emsp;</span>職稱：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceJobName"
-                                                    asp-for="parkingSpace_JobName">
-                                                <span asp-validation-for="parkingSpace_JobName"
+                                                <input type="text" class="form-control" id="parkingSpaceJobTitle">
+                                                <span id="danger_parkingSpaceJobTitle"
                                                     class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="parkingSpaceExt" class="col-lg-auto col-form-label text-nowrap"
-                                                asp-for="parkingSpace_Ext"><span
+                                            <label for="parkingSpaceExt" class="col-lg-auto col-form-label text-nowrap"><span
                                                     class="d-none d-lg-inline">&emsp;</span>分機：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceExt"
-                                                    asp-for="parkingSpace_Ext">
-                                                <span asp-validation-for="parkingSpace_Ext" class="text-danger"></span>
+                                                <input type="text" class="form-control" id="parkingSpaceExt">
+                                                <span id="danger_parkingSpaceExt" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -72,8 +67,7 @@
                                                 asp-for="parkingSpace_Phone"><span
                                                     class="d-none d-lg-inline">&emsp;</span>電話：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpacePhone"
-                                                    asp-for="parkingSpace_Phone">
+                                                <input type="text" class="form-control" id="parkingSpacePhone">
                                                 <span asp-validation-for="parkingSpace_Phone"
                                                     class="text-danger"></span>
                                             </div>
@@ -83,8 +77,7 @@
                                                 class="col-lg-auto col-form-label text-nowrap"
                                                 asp-for="parkingSpace_Email">E-mail：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceEmail"
-                                                    asp-for="parkingSpace_Email">
+                                                <input type="text" class="form-control" id="parkingSpaceEmail">
                                                 <span asp-validation-for="parkingSpace_Email"
                                                     class="text-danger"></span>
                                             </div>
@@ -94,8 +87,7 @@
                                                 class="col-lg-auto col-form-label text-nowrap"
                                                 asp-for="parkingSpace_IDNum">身分證字號：</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceIDNum"
-                                                    asp-for="parkingSpace_IDNum">
+                                                <input type="text" class="form-control" id="parkingSpaceIDNum">
                                                 <span asp-validation-for="parkingSpace_IDNum"
                                                     class="text-danger"></span>
                                             </div>
@@ -277,10 +269,10 @@
     <section class="print_template"></section>
 
     @@include('layout/metaJS.html')
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+    <script src="./js/formComm.js"></script>
+    <script src="./js/formPreview.js"></script>
     <script src="./js/parkingSpaceApply.js"></script>
-    <!-- <script src="./js/formPreview.js"></script> -->
 
 </body>
 
