@@ -131,6 +131,7 @@
                 <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink9" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fa-regular fa-circle-user"></i></a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink9">
+                    <li><a class="dropdown-item" href="./login.html">登入&ensp;<i class="fa-solid fa-right-to-bracket"></i></a></li>
                     <li><a class="dropdown-item" href="#">設定&ensp;<i class="fa-solid fa-gear"></i></a></li>
                     <li><a class="dropdown-item" href="#">登出&ensp;<i class="fa-solid fa-door-open"></i></a></li>
                 </ul>
@@ -168,7 +169,7 @@
 
 
                 <!-- Modal -->
-                <div class="modal fade vendorDetail" id="firmDetail_1" data-bs-backdrop="static"
+                <div class="modal fade vendorDetail" id="vendorDetailModal" data-bs-backdrop="static"
                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="vendorDetailLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <form class="modal-content">
@@ -184,26 +185,18 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                                             公司名稱
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeInput_items align_center"
-                                            id="companyName">
-                                            好棒棒股份有限公司
-                                        </div>
-                                        <div
-                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center" id="companyName"></div>
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             申請日期
                                         </div>
-                                        <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly">
-                                            2020/08/30
-                                        </div>
+                                        <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="createDate"></div>
                                     </div>
                                     <!-- 主要營業項目 -->
                                     <div class="row mb-1">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             主要<br class="d-none d-lg-block">營業項目
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeTextarea_lg_items">
-                                            顏色一時二級阿宅人民共和國，臉色全球兒子現代系統滿足楠雅回去離線過了消息。<br>想法如此實驗有機會我在今日說出消除主動可是作用法規，具體意味着註冊時間，你怎麼版面對比白色時期配合只能效率名稱出了，痛苦電話一本概念測試健康一場，教育活動事業經過促進，能不能，強烈。
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeTextarea_lg_items" id="companyDescription"></div>
                                     </div>
 
                                     <!-- 統編、成立日、資本額 -->
@@ -211,23 +204,17 @@
                                         <div class="col-12 col-lg-auto text-nowrap  lightBoxLabel p-3 align_center">
                                             統一編號
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeNumber_items align_center">
-                                            23456780
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeNumber_items align_center" id="uniformNum"></div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             成立日期
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeDate_items align_center">
-                                            2020/01/01
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeDate_items align_center" id="creationDate"></div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             資本額
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeMoney_items align_center">
-                                            1,000,000
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeMoney_items align_center" id="capitalAmount"></div>
                                     </div>
 
                                     <!-- 員工數、負責人、推薦人 -->
@@ -235,22 +222,16 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                                             員工人數
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeNumber_items align_center">
-                                            5
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeMoney_items align_center" id="employeesNum"></div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             &emsp;負責人</div>
-                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
-                                            王大明
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center" id="responsiblePerson"></div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             推薦人
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
-                                            王中明
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center" id="referrer"></div>
                                     </div>
 
                                     <!-- 電話、E-mail、Line -->
@@ -258,22 +239,16 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                                             聯絡電話
                                         </div>
-                                        <div class="col lightBoxItems p-3 changePhone_items align_center">
-                                            02-86710000
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changePhone_items align_center" id="phoneNum"></div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             電子信箱
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeEmail_items align_center">
-                                            abc@gmail.com
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeEmail_items align_center" id="companyEmail"></div>
                                         <div
                                             class="col-12 col-lg-1 text-nowrap lightBoxLabel inlineLabel align_center text-center">
                                             <i class="fa-brands fa-line fs-1"></i></div>
-                                        <div class="col lightBoxItems p-3 changeLineID_items align_center">
-                                            abe123
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeLineID_items align_center" id="lineId"></div>
                                     </div>
 
                                     <!-- 聯絡人、分機、職稱 -->
@@ -281,23 +256,17 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                                             主聯絡人
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
-                                            王小妹
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center" id="contactPerson"></div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             分機號碼
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeNumber_items align_center">
-                                            123
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeNumber_items align_center" id="ext"></div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             職務名
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
-                                            秘書
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center" id="jobTitle"></div>
                                     </div>
 
 
@@ -306,18 +275,14 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                                             登記地址
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
-                                            台北市台北區台北中路000巷11號0樓
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center" id="companyAdd"></div>
                                     </div>
                                     <!-- 通訊地址 -->
                                     <div class="row mb-1">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                                             通訊地址
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
-                                            台北市台北區台北中路000巷11號0樓
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center" id="locationOfCompany"></div>
                                     </div>
 
                                     <!-- 輔導項目需求 -->
@@ -325,9 +290,7 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             輔導項目<br class="d-none d-lg-block">需求
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeTextarea_lg_items">
-                                            最近進口數學上有全身來說學習百姓長沙，笑道涉及一個青春人氣，理論一場怎麼樣熟悉價格委託利用消除專家聽到條款平衡老公，傳統面前，選擇第二章是個措施幫你下了你們的一塊領先線上描述，農村本帖場所代理接口回去一時加快豪華，要有你可以國內不了，而在一股和平島成果一。
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeTextarea_lg_items" id="helpItems"></div>
                                     </div>
 
                                     <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
@@ -360,7 +323,7 @@
                                         </div>
                                     </div>
                                     <!-- 補件上傳 若狀態為通過，不顯示此區塊-->
-                                    <div class="row mb-1">
+                                    <div class="row mb-1" id="supplementaryFilesBox">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             補件上傳
                                         </div>
@@ -461,13 +424,14 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             審核進度
                                         </div>
-                                        <div class="col-3 lightBoxItems p-2">
-                                            <select class="form-select">
-                                                <option value="2" selected disabled>待審中</option>
-                                                <option value="3">待補件</option>
-                                                <option value="4">不通過</option>
-                                                <option value="0">通過</option>
+                                        <div class="col-3 lightBoxItems p-2 align_center">
+                                            <select class="form-select" id="status">
+                                                <option selected disabled>待審中</option>
+                                                <option value="待補件">待補件</option>
+                                                <option value="不通過">不通過</option>
+                                                <option value="通過">通過</option>
                                             </select>
+                                            <div id="statusText" class="p-1"></div>
                                         </div>
                                         <!-- <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             <span class="">補</span>統一編號
@@ -486,7 +450,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
-                                <button class="btn btn-outline-secondary">確認修改</button>
+                                <button class="btn btn-outline-secondary" id="updateBtn">確認修改</button>
                             </div>
                         </form>
                     </div>
@@ -529,7 +493,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
-
+    <script src="./js/formComm.js"></script>
     <script src="./js/coopManufAppList.js"></script>
 </body>
 

@@ -148,6 +148,19 @@ function validAllRequiredFormPreview(confirmButtonId, formId, model_id) {
     return allFilled;
 }
 
+//這個必填
+// function checkThisRequired() {
+//     var inputItem = $(this); // 當前失去焦點的 input 元素
+//     var inputId = inputItem.attr('id'); // 獲取 input 元素的 id
+//     // var label = $("label[for='" + inputId + "']").text(); // 獲取與 input 元素相關聯的 label 的文本內容
+//     var warningBox = $("#danger_" + inputId);
+//     if (inputItem.val().trim() === '' || inputItem.val() === null) {
+//         warningBox.text("(-`д´-) 這是必填欄位，請填上歐！").removeClass("d-none");
+//         allRequiredValid = false;
+//     } else {
+//         warningBox.text("").addClass("d-none");
+//     }
+// }
 // 有錯誤訊息就不開燈箱
 // function checkDangerElements(confirmButtonId, model_id) {
 //     // var allFilled = false;
@@ -178,19 +191,6 @@ function checkDangerElements(confirmButtonId, model_id) {
     return allFilled;
 }
 
-//這個必填
-// function checkThisRequired() {
-//     var inputItem = $(this); // 當前失去焦點的 input 元素
-//     var inputId = inputItem.attr('id'); // 獲取 input 元素的 id
-//     // var label = $("label[for='" + inputId + "']").text(); // 獲取與 input 元素相關聯的 label 的文本內容
-//     var warningBox = $("#danger_" + inputId);
-//     if (inputItem.val().trim() === '' || inputItem.val() === null) {
-//         warningBox.text("(-`д´-) 這是必填欄位，請填上歐！").removeClass("d-none");
-//         allRequiredValid = false;
-//     } else {
-//         warningBox.text("").addClass("d-none");
-//     }
-// }
 
 
 // ※※※※※※=== 文字轉換 ===※※※※※※
@@ -221,8 +221,14 @@ function restrictToNum(obj) {
     $(obj).val(inputValue);
 }
 
-
-
+//增加仟分號
+function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+//刪除仟分號
+function unformatNumber(str) {
+    return str.replace(/,/g, '');
+}
 
 
 // ※※※※※※=== 職缺 ===※※※※※※
@@ -476,6 +482,7 @@ function validateEmails() {
 
     return isValid;
 }
+
 // 使用方法
 // $('#submitButton').click(function(event) {
 //     if (!validateEmails()) {
@@ -483,3 +490,626 @@ function validateEmails() {
 //         alert('請輸入有效的電子郵件地址。');
 //     }
 // });
+
+
+
+// ================燈箱文字 切換輸入 審核區域 
+// $(function () {
+//     // ================ 文字切換輸入框
+//     $('.changeInput_items').on('click', function () {
+//         var $this = $(this);
+//         var currentText = $this.text().trim();
+
+//         // 檢查是否已經有輸入框，避免重複創建
+//         if ($this.find('input').length === 0) {
+//             // 建立輸入框
+//             var $input = $('<input type="text" class="form-control" />').val(currentText);
+
+//             // 替換當前文本內容為輸入框
+//             $this.html($input);
+
+//             // 聚焦並選擇輸入框內的文本
+//             $input.focus().select();
+
+//             // 輸入框失去焦點時更新文本內容
+//             $input.on('blur', function () {
+//                 var newText = $input.val().trim();
+//                 $this.text(newText);
+//             });
+
+//             // 按下 Enter 鍵時也更新文本內容並失去焦點
+//             $input.on('keypress', function (e) {
+//                 if (e.which === 13) { // Enter 鍵的 keycode 是 13
+//                     var newText = $input.val().trim();
+//                     $this.text(newText);
+//                 }
+//             });
+//         }
+//     });
+
+//     $('.changeRadio_items').on('click', function () {
+//         var $this = $(this);
+//         var currentText = $this.text().trim();
+
+//         // 檢查是否已經有單選選項，避免重複創建
+//         if ($this.find('input[type="radio"]').length === 0) {
+//             var radioOptions = `
+//                 <div class="form-check form-check-inline">
+//                     <input class="form-check-input" type="radio" name="parkingType" id="car" value="汽車" ${currentText === '汽車' ? 'checked' : ''}>
+//                     <label class="form-check-label" for="car">汽車</label>
+//                 </div>
+//                 <div class="form-check form-check-inline">
+//                     <input class="form-check-input" type="radio" name="parkingType" id="moto" value="機車" ${currentText === '機車' ? 'checked' : ''}>
+//                     <label class="form-check-label" for="moto">機車</label>
+//                 </div>`;
+
+//             // 替換當前文本內容為單選選項
+//             $this.html(radioOptions);
+
+//             // 當選擇新選項並改變選項時，立即更新文本內容
+//             $this.find('input[type="radio"]').on('change', function () {
+//                 var newText = $(this).val().trim();
+//                 $this.html(newText);
+//             });
+
+//             // 點擊外部時更新文本內容
+//             $(document).on('click', function (e) {
+//                 if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+//                     var checkedRadio = $this.find('input[type="radio"]:checked');
+//                     if (checkedRadio.length) {
+//                         var newText = checkedRadio.val().trim();
+//                         $this.html(newText);
+//                     }
+//                     $(document).off('click'); // 解除事件綁定
+//                 }
+//             });
+//         }
+//     });
+
+//     $('.changeDate_items').on('click', function () {
+//         var $this = $(this);
+//         var currentText = $this.text().trim();
+
+//         console.log('currentText:', currentText); // 打印 currentText 以確認是否成功抓取
+
+//         // 檢查是否已經有輸入框，避免重複創建
+//         if ($this.find('input[type="date"]').length === 0) {
+//             // 建立日期輸入框
+//             var $input = $('<input type="date" class="form-control" />').val(currentText);
+
+//             // 替換當前文本內容為日期輸入框
+//             $this.html($input);
+
+//             // 聚焦日期輸入框
+//             $input.focus();
+
+//             // 日期輸入框失去焦點時更新文本內容
+//             $input.on('blur', function () {
+//                 var newText = $input.val().trim();
+
+//                 // console.log('newText:', newText);
+
+//                 if (newText) {
+//                     $this.text(newText);
+//                 } else {
+//                     $this.text(currentText);
+//                 }
+//             });
+
+//             // 按下 Enter 鍵時也更新文本內容並失去焦點
+//             $input.on('keypress', function (e) {
+//                 if (e.which === 13) { // Enter 鍵的 keycode 是 13
+//                     var newText = $input.val().trim();
+//                     if (newText) {
+//                         $this.text(newText);
+//                     } else {
+//                         $this.text(currentText);
+//                     }
+//                     $input.blur();
+//                 }
+//             });
+//         }
+//     });
+
+//     $('.changeMoney_items').on('click', function () {
+//         var $this = $(this);
+//         var currentText = unformatNumber($this.text().trim());
+
+//         // 檢查是否已經有輸入框，避免重複創建
+//         if ($this.find('input').length === 0) {
+//             // 建立數字輸入框
+//             var $input = $('<input type="text" class="form-control" />').val(currentText);
+
+//             // 替換當前文本內容為輸入框
+//             $this.html($input);
+
+//             // 聚焦並選擇輸入框內的文本
+//             $input.focus().select();
+
+//             // 限制輸入框只能輸入數字
+//             $input.on('input', function () {
+//                 this.value = this.value.replace(/[^0-9]/g, '');
+//             });
+
+//             // 輸入框失去焦點時更新文本內容
+//             $input.on('blur', function () {
+//                 var newText = formatNumber($input.val().trim());
+//                 if (newText) {
+//                     $this.text(newText);
+//                 } else {
+//                     $this.text(formatNumber(currentText));
+//                 }
+//             });
+
+//             // 按下 Enter 鍵時也更新文本內容並失去焦點
+//             $input.on('keypress', function (e) {
+//                 if (e.which === 13) { // Enter 鍵的 keycode 是 13
+//                     var newText = formatNumber($input.val().trim());
+//                     if (newText) {
+//                         $this.text(newText);
+//                     } else {
+//                         $this.text(formatNumber(currentText));
+//                     }
+//                     $input.blur();
+//                 }
+//             });
+//         }
+//     });
+
+//     $('.changeTextarea_lg_items').on('click', function () {
+//         var $this = $(this);
+//         var currentText = $this.html().replace(/<br\s*[\/]?>/gi, '\n').trim();
+
+//         // 檢查是否已經有textarea，避免重複創建
+//         if ($this.find('textarea').length === 0) {
+//             // 建立textarea
+//             var $textarea = $('<textarea class="form-control textarea-lg" rows="5"></textarea>').val(currentText);
+
+//             // 替換當前文本內容為textarea
+//             $this.html($textarea);
+
+//             // 聚焦並選擇textarea內的文本
+//             $textarea.focus().select();
+
+//             // textarea失去焦點時更新文本內容
+//             $textarea.on('blur', function () {
+//                 var newText = $textarea.val().trim().replace(/\n/g, '<br>');
+//                 $this.html(newText);
+//             });
+
+//             // 按下 Enter 鍵且同時按下 Ctrl 鍵時也更新文本內容並失去焦點
+//             $textarea.on('keydown', function (e) {
+//                 if (e.key === 'Enter' && e.ctrlKey) {
+//                     var newText = $textarea.val().trim().replace(/\n/g, '<br>');
+//                     $this.html(newText);
+//                     $textarea.blur();
+//                 }
+//             });
+//         }
+//     });
+
+//     $('.changeNumber_items').on('click', function () {
+//         var $this = $(this);
+//         var currentText = $this.text().trim();
+
+//         // 檢查是否已經有輸入框，避免重複創建
+//         if ($this.find('input').length === 0) {
+//             // 建立數字輸入框
+//             var $input = $('<input type="text" class="form-control" />').val(currentText);
+
+//             // 替換當前文本內容為輸入框
+//             $this.html($input);
+
+//             // 聚焦並選擇輸入框內的文本
+//             $input.focus().select();
+
+//             // 限制輸入框只能輸入數字
+//             $input.on('input', function () {
+//                 this.value = this.value.replace(/[^0-9]/g, '');
+//             });
+
+//             // 輸入框失去焦點時更新文本內容
+//             $input.on('blur', function () {
+//                 var newText = $input.val().trim();
+//                 $this.text(newText);
+//             });
+
+//             // 按下 Enter 鍵時也更新文本內容並失去焦點
+//             // $input.on('keypress', function (e) {
+//             //     if (e.which === 13) { // Enter 鍵的 keycode 是 13
+//             //         var newText = formatNumber($input.val().trim());
+//             //         if (newText) {
+//             //             $this.text(newText);
+//             //         } else {
+//             //             $this.text(formatNumber(currentText));
+//             //         }
+//             //         $input.blur();
+//             //     }
+//             // });
+//         }
+//     });
+
+//     $('.changePhone_items').on('click', function () {
+//         var $this = $(this);
+//         var currentText = $this.text().trim();
+
+//         // 檢查是否已經有輸入框，避免重複創建
+//         if ($this.find('input').length === 0) {
+//             // 建立輸入框
+//             var $input = $('<input type="text" class="form-control" onkeyup="verifyPhone(this)">').val(currentText);
+
+//             // 替換當前文本內容為輸入框
+//             $this.html($input);
+
+//             // 聚焦並選擇輸入框內的文本
+//             $input.focus().select();
+
+//             // 輸入框失去焦點時更新文本內容
+//             $input.on('blur', function () {
+//                 var newText = $input.val().trim();
+//                 if (validatePhone(newText)) {
+//                     $this.text(newText);
+//                 } else {
+//                     $this.text(currentText); // 恢復原始文本
+//                     // alert('電話格式不正確，請輸入正確的格式：區碼-電話號碼 或 09XX-XXXXXX');
+//                     swalToastWarning('電話格式不正確，請輸入正確的格式：區碼-電話號碼 或 09XX-XXXXXX', 'top');
+//                 }
+//             });
+
+//             // 限制輸入格式
+//             $input.on('input', function () {
+//                 var val = $input.val();
+//                 $input.val(val.replace(/[^0-9-]/g, '')); // 只允許輸入數字和 '-'
+//             });
+//         }
+//     });
+
+//     $('.changeEmail_items').on('click', function () {
+//         var $this = $(this);
+//         var currentText = $this.text().trim();
+
+//         // 檢查是否已經有輸入框，避免重複創建
+//         if ($this.find('input').length === 0) {
+//             // 建立輸入框
+//             var $input = $('<input type="email" class="form-control" onkeyup="verifyEmail(this)">').val(currentText);
+
+//             // 替換當前文本內容為輸入框
+//             $this.html($input);
+
+//             // 聚焦並選擇輸入框內的文本
+//             $input.focus().select();
+
+//             // 輸入框失去焦點時更新文本內容
+//             $input.on('blur', function () {
+//                 var newText = $input.val().trim();
+//                 newText = convertEmail(newText); // 轉換大寫字母為小寫
+
+//                 if (validateEmail(newText)) {
+//                     $this.text(newText);
+//                 } else {
+//                     $this.text(currentText); // 恢復原始文本
+//                     // alert('請輸入有效的電子郵件地址！');
+//                     swalToastWarning('請輸入有效的電子郵件地址！', 'top');
+//                 }
+//             });
+//         }
+//     });
+
+//     $('.changeLineID_items').on('click', function () {
+//         var $this = $(this);
+//         var currentText = $this.text().trim();
+
+//         // 检查是否已经有输入框，避免重复创建
+//         if ($this.find('input').length === 0) {
+//             var $input = $('<input type="text" class="form-control" onkeyup="verifyEmail(this)">').val(currentText);
+//             $this.html($input);
+//             $input.focus().select();
+
+//             // 失去焦點時更新文本内容
+//             $input.on('blur', function () {
+//                 var newText = $input.val().trim();
+//                 if (isValidLineID(newText)) {
+//                     $this.text(newText);
+//                 } else {
+//                     $this.text(currentText); // 恢复原始文本
+//                     // alert('請輸入有效的LINE ID！');
+//                     swalToastWarning('請輸入有效的LINE ID！', 'top');
+//                 }
+//             });
+//         }
+//     });
+// });
+
+
+// ================燈箱文字 切換輸入 審核區域 
+
+var CustomInputHandlers = {
+    init: function () {
+        this.bindChangeInputItems();
+        this.bindChangeRadioItems();
+        this.bindChangeDateItems();
+        this.bindChangeMoneyItems();
+        this.bindChangeTextareaItems();
+        this.bindChangeNumberItems();
+        this.bindChangePhoneItems();
+        this.bindChangeEmailItems();
+        this.bindChangeLineIDItems();
+    },
+    bindChangeInputItems: function () {
+        $('.changeInput_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input').length === 0) {
+                var $input = $('<input type="text" class="form-control" />').val(currentText);
+                $this.html($input);
+                $input.focus().select();
+
+                $input.on('blur', function () {
+                    var newText = $input.val().trim();
+                    $this.text(newText);
+                });
+
+                $input.on('keypress', function (e) {
+                    if (e.which === 13) {
+                        var newText = $input.val().trim();
+                        $this.text(newText);
+                    }
+                });
+            }
+        });
+    },
+    bindChangeRadioItems: function () {
+        $('.changeRadio_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input[type="radio"]').length === 0) {
+                var radioOptions = `
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="parkingType" id="car" value="汽車" ${currentText === '汽車' ? 'checked' : ''}>
+                        <label class="form-check-label" for="car">汽車</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="parkingType" id="moto" value="機車" ${currentText === '機車' ? 'checked' : ''}>
+                        <label class="form-check-label" for="moto">機車</label>
+                    </div>`;
+
+                $this.html(radioOptions);
+
+                $this.find('input[type="radio"]').on('change', function () {
+                    var newText = $(this).val().trim();
+                    $this.html(newText);
+                });
+
+                $(document).on('click', function (e) {
+                    if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+                        var checkedRadio = $this.find('input[type="radio"]:checked');
+                        if (checkedRadio.length) {
+                            var newText = checkedRadio.val().trim();
+                            $this.html(newText);
+                        }
+                        $(document).off('click');
+                    }
+                });
+            }
+        });
+    },
+    bindChangeDateItems: function () {
+        $('.changeDate_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input[type="date"]').length === 0) {
+                var $input = $('<input type="date" class="form-control" />').val(currentText);
+                $this.html($input);
+                $input.focus();
+
+                $input.on('blur', function () {
+                    var newText = $input.val().trim();
+                    if (newText) {
+                        $this.text(newText);
+                    } else {
+                        $this.text(currentText);
+                    }
+                });
+
+                $input.on('keypress', function (e) {
+                    if (e.which === 13) {
+                        var newText = $input.val().trim();
+                        if (newText) {
+                            $this.text(newText);
+                        } else {
+                            $this.text(currentText);
+                        }
+                        $input.blur();
+                    }
+                });
+            }
+        });
+    },
+    bindChangeMoneyItems: function () {
+        $('.changeMoney_items').on('click', function () {
+            var $this = $(this);
+            var currentText = unformatNumber($this.text().trim());
+
+            if ($this.find('input').length === 0) {
+                var $input = $('<input type="text" class="form-control" />').val(currentText);
+                $this.html($input);
+                $input.focus().select();
+
+                $input.on('input', function () {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                });
+
+                $input.on('blur', function () {
+                    var newText = formatNumber($input.val().trim());
+                    if (newText) {
+                        $this.text(newText);
+                    } else {
+                        $this.text(formatNumber(currentText));
+                    }
+                });
+
+                $input.on('keypress', function (e) {
+                    if (e.which === 13) {
+                        var newText = formatNumber($input.val().trim());
+                        if (newText) {
+                            $this.text(newText);
+                        } else {
+                            $this.text(formatNumber(currentText));
+                        }
+                        $input.blur();
+                    }
+                });
+            }
+        });
+    },
+    bindChangeTextareaItems: function () {
+        $('.changeTextarea_lg_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.html().replace(/<br\s*[\/]?>/gi, '\n').trim();
+
+            if ($this.find('textarea').length === 0) {
+                var $textarea = $('<textarea class="form-control textarea-lg" rows="5"></textarea>').val(currentText);
+                $this.html($textarea);
+                $textarea.focus().select();
+
+                $textarea.on('blur', function () {
+                    var newText = $textarea.val().trim().replace(/\n/g, '<br>');
+                    $this.html(newText);
+                });
+
+                $textarea.on('keydown', function (e) {
+                    if (e.key === 'Enter' && e.ctrlKey) {
+                        var newText = $textarea.val().trim().replace(/\n/g, '<br>');
+                        $this.html(newText);
+                        $textarea.blur();
+                    }
+                });
+            }
+        });
+    },
+    bindChangeNumberItems: function () {
+        $('.changeNumber_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input').length === 0) {
+                var $input = $('<input type="text" class="form-control" />').val(currentText);
+                $this.html($input);
+                $input.focus().select();
+
+                $input.on('input', function () {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                });
+
+                $input.on('blur', function () {
+                    var newText = $input.val().trim();
+                    $this.text(newText);
+                });
+            }
+        });
+    },
+    bindChangePhoneItems: function () {
+        $('.changePhone_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input').length === 0) {
+                var $input = $('<input type="text" class="form-control" onkeyup="verifyPhone(this)">').val(currentText);
+                $this.html($input);
+                $input.focus().select();
+
+                $input.on('blur', function () {
+                    var newText = $input.val().trim();
+                    if (validatePhone(newText)) {
+                        $this.text(newText);
+                    } else {
+                        $this.text(currentText);
+                        swalToastWarning('電話格式不正確，請輸入正確的格式：區碼-電話號碼 或 09XX-XXXXXX', 'top');
+                    }
+                });
+
+                // $input.on('input', function () {
+                //     var val = $input.val();
+                //     $input.val(val.replace(/[^0-9-]/g, ''));
+                // });
+            }
+        });
+    },
+    bindChangeEmailItems: function () {
+        $('.changeEmail_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input').length === 0) {
+                var $input = $('<input type="email" class="form-control" onkeyup="verifyEmail(this)">').val(currentText);
+                $this.html($input);
+                $input.focus().select();
+
+                $input.on('blur', function () {
+                    var newText = $input.val().trim();
+                    newText = CconvertEmail(newText);
+
+                    if (validateEmail(newText)) {
+                        $this.text(newText);
+                    } else {
+                        $this.text(currentText);
+                        swalToastWarning('請輸入有效的電子郵件地址！', 'top');
+                    }
+                });
+            }
+        });
+    },
+    bindChangeLineIDItems: function () {
+        $('.changeLineID_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input').length === 0) {
+                var $input = $('<input type="text" class="form-control" onkeyup="verifyEmail(this)">').val(currentText);
+                $this.html($input);
+                $input.focus().select();
+
+                $input.on('blur', function () {
+                    var newText = $input.val().trim();
+                    if (isValidLineID(newText)) {
+                        $this.text(newText);
+                    } else {
+                        $this.text(currentText);
+                        swalToastWarning('請輸入有效的LINE ID！', 'top');
+                    }
+                });
+            }
+        });
+    },
+
+    // unformatNumber: function(number) {
+    //     // Implement your unformat logic here
+    //     return number.replace(/,/g, '');
+    // },
+    // formatNumber: function(number) {
+    //     // Implement your format logic here
+    //     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    // },
+    // validatePhone: function(phone) {
+    //     // Implement your phone validation logic here
+    //     var phoneRegex = /^(\d{2,4}-\d{3,4}-\d{3,4}|\d{4}-\d{3,4}-\d{3,4})$/;
+    //     return phoneRegex.test(phone);
+    // },
+    // validateEmail: function(email) {
+    //     // Implement your email validation logic here
+    //     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //     return emailRegex.test(email);
+    // },
+    // convertEmail: function(email) {
+    //     // Convert email to lower case
+    //     return email.toLowerCase();
+    // },
+    // isValidLineID: function(lineID) {
+    //     // Implement your LINE ID validation logic here
+    //     var lineIDRegex = /^[a-zA-Z0-9-_]{4,20}$/;
+    //     return lineIDRegex.test(lineID);
+    // }
+};

@@ -132,6 +132,7 @@
                 <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink9" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fa-regular fa-circle-user"></i></a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink9">
+                    <li><a class="dropdown-item" href="./login.html">登入&ensp;<i class="fa-solid fa-right-to-bracket"></i></a></li>
                     <li><a class="dropdown-item" href="#">設定&ensp;<i class="fa-solid fa-gear"></i></a></li>
                     <li><a class="dropdown-item" href="#">登出&ensp;<i class="fa-solid fa-door-open"></i></a></li>
                 </ul>
@@ -165,122 +166,116 @@
                         <div class="tabs section-border-radius section-padding">
                             <form class="container-fluid" method="post">
                                 <div class="row">
-                                    <div class="col-xl-4 mb-3">
-                                        <div class="row mb-3">
-                                            <label for="parkingSpaceName"
-                                                class="col-lg-auto col-form-label text-nowrap"><span
-                                                    class="d-none d-lg-inline">&emsp;</span>姓名：</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceName">
-                                                <span id="danger_parkingSpaceName" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="parkingSpaceJobTitle"
-                                                class="col-lg-auto col-form-label text-nowrap"><span
-                                                    class="d-none d-lg-inline">&emsp;</span>職稱：</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceJobTitle">
-                                                <span id="danger_parkingSpaceJobTitle"
-                                                    class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="parkingSpaceExt" class="col-lg-auto col-form-label text-nowrap"><span
-                                                    class="d-none d-lg-inline">&emsp;</span>分機：</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceExt">
-                                                <span id="danger_parkingSpaceExt" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="parkingSpacePhone"
-                                                class="col-lg-auto col-form-label text-nowrap"
-                                                asp-for="parkingSpace_Phone"><span
-                                                    class="d-none d-lg-inline">&emsp;</span>電話：</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpacePhone">
-                                                <span asp-validation-for="parkingSpace_Phone"
-                                                    class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="parkingSpaceEmail"
-                                                class="col-lg-auto col-form-label text-nowrap"
-                                                asp-for="parkingSpace_Email">E-mail：</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceEmail">
-                                                <span asp-validation-for="parkingSpace_Email"
-                                                    class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="parkingSpaceIDNum"
-                                                class="col-lg-auto col-form-label text-nowrap"
-                                                asp-for="parkingSpace_IDNum">身分證字號：</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control" id="parkingSpaceIDNum">
-                                                <span asp-validation-for="parkingSpace_IDNum"
-                                                    class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-8 mb-3">
-                                        <div class="row mb-3">
-                                            <label for="upload_img"
-                                                class="col-auto col-form-label text-nowrap">上傳行照內頁：</label>
-                                            <div class="col col-sm-auto">
-                                                <label id="car_upload_label" class="btn btn-outline-secondary">
-                                                    <input id="upload_car_img" type="file" accept="image/*"
-                                                        class="d-none">
-                                                    <i class="fa-solid fa-car mx-1"></i>行照
-                                                </label>
-                                            </div>
-                                            <div class="col">
-                                                <label id="bike_upload_label" class="btn btn-outline-secondary">
-                                                    <input id="upload_moto_img" type="file" accept="image/*"
-                                                        class="d-none"><i class="fa-solid fa-motorcycle mx-1"></i>行照
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div id="croppie-container" class="mb-3"></div>
-                                        </div>
-                                        <div class="row mb-3 justify-content-around">
-                                            <button id="crop_img" class="btn btn-secondary col-auto"><i
-                                                    class="fa-solid fa-scissors"></i>&ensp;裁剪圖片</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row p-3 justify-content-center">
-                                    <div class="col-12 fw-bold  ">申請人聲明：</div>
-                                    <div class="col-12">
-                                        <div class="row ms-3">
-                                            <div class="col-auto">1.</div>
-                                            <div class="col">
-                                                本份資料均填寫屬實，進駐大同大學期間，願意完全遵守大同大學有關人事及校園安全規定條則，並不得任意使用大同大學名稱，如有違背，將立即喪失進駐資格，並歸還任何大同大學所核發校園出入等相關證件與權限。
-                                            </div>
-                                        </div>
-                                        <div class="row ms-3">
-                                            <div class="col-auto">2.</div>
-                                            <div class="col">此為出入停車場並停放車輛與指定位置之用，不作其他識別用途。</div>
-                                        </div>
-                                        <div class="row ms-3">
-                                            <div class="col-auto">3.</div>
-                                            <div class="col text-decoration-underline fw-bold">印出申請書並簽名後，繳費完後交至<span
-                                                    class="fw-bold text-danger">大同大學研發處</span>，才算申請完成喔！</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row text-center p-3 justify-content-center">
-                                    <div class="col-auto">
-                                        <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
-                                    </div>
-                                    <div class="col-auto">
-                                        <button type="button" class="btn btn-lg btn-outline-info"
-                                            id="confirm_parkingSpaceApp">預覽</button>
-                                    </div>
-                                </div>
+    <div class="col-xl-4 mb-3">
+        <div class="row mb-3">
+            <label for="parkingSpaceName"
+                class="col-lg-auto col-form-label text-nowrap"><span
+                    class="d-none d-lg-inline">&emsp;</span>姓名：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="parkingSpaceName">
+                <span id="danger_parkingSpaceName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="parkingSpaceJobTitle"
+                class="col-lg-auto col-form-label text-nowrap"><span
+                    class="d-none d-lg-inline">&emsp;</span>職稱：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="parkingSpaceJobTitle">
+                <span id="danger_parkingSpaceJobTitle"
+                    class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="parkingSpaceExt" class="col-lg-auto col-form-label text-nowrap"><span
+                    class="d-none d-lg-inline">&emsp;</span>分機：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="parkingSpaceExt">
+                <span id="danger_parkingSpaceExt" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="parkingSpacePhone"
+                class="col-lg-auto col-form-label text-nowrap"><span
+                    class="d-none d-lg-inline">&emsp;</span>電話：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="parkingSpacePhone">
+                <span id="danger_parkingSpacePhone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="parkingSpaceEmail"
+                class="col-lg-auto col-form-label text-nowrap">E-mail：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="parkingSpaceEmail">
+                <span id="danger_parkingSpaceEmail" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="parkingSpaceIDNum"
+                class="col-lg-auto col-form-label text-nowrap">身分證字號：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="parkingSpaceIDNum">
+                <span id="danger_parkingSpaceIDNum" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-8 mb-3">
+        <div class="row mb-3">
+            <label for="upload_img"
+                class="col-auto col-form-label text-nowrap">上傳行照內頁：</label>
+            <div class="col col-sm-auto">
+                <label id="car_upload_label" class="btn btn-outline-secondary">
+                    <input id="upload_car_img" type="file" accept="image/*"
+                        class="d-none">
+                    <i class="fa-solid fa-car mx-1"></i>行照
+                </label>
+            </div>
+            <div class="col">
+                <label id="bike_upload_label" class="btn btn-outline-secondary">
+                    <input id="upload_moto_img" type="file" accept="image/*"
+                        class="d-none"><i class="fa-solid fa-motorcycle mx-1"></i>行照
+                </label>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div id="croppie-container" class="mb-3"></div>
+        </div>
+        <div class="row mb-3 justify-content-around">
+            <button id="crop_img" class="btn btn-secondary col-auto"><i
+                    class="fa-solid fa-scissors"></i>&ensp;裁剪圖片</button>
+        </div>
+    </div>
+</div>
+<div class="row p-3 justify-content-center">
+    <div class="col-12 fw-bold  ">申請人聲明：</div>
+    <div class="col-12">
+        <div class="row ms-3">
+            <div class="col-auto">1.</div>
+            <div class="col">
+                本份資料均填寫屬實，進駐大同大學期間，願意完全遵守大同大學有關人事及校園安全規定條則，並不得任意使用大同大學名稱，如有違背，將立即喪失進駐資格，並歸還任何大同大學所核發校園出入等相關證件與權限。
+            </div>
+        </div>
+        <div class="row ms-3">
+            <div class="col-auto">2.</div>
+            <div class="col">此為出入停車場並停放車輛與指定位置之用，不作其他識別用途。</div>
+        </div>
+        <div class="row ms-3">
+            <div class="col-auto">3.</div>
+            <div class="col text-decoration-underline fw-bold">印出申請書並簽名後，繳費完後交至<span
+                    class="fw-bold text-danger">大同大學研發處</span>，才算申請完成喔！</div>
+        </div>
+    </div>
+</div>
+<div class="row text-center p-3 justify-content-center">
+    <div class="col-auto">
+        <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
+    </div>
+    <div class="col-auto">
+        <button type="button" class="btn btn-lg btn-outline-info"
+            id="confirm_parkingSpaceApp">預覽</button>
+    </div>
+</div>
                             </form>
                         </div>
                     </div>

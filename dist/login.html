@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大同大學-校內育成媒合平台-登入</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/login.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger validation-summary-errors">
+            (ó㉨ò)　登入失敗，請檢查您的帳號或密碼。</div>
+        <div class="formBox level-login">
+            <div class="page pageShaddow"></div>
+            <div class="page loginBox">
+                <a href="./index.html" class="titleLink">
+                    <picture>
+                        <source srcset="./images/logo8.png" media="(min-width: 960px)">
+                        <source srcset="./images/logo8-s.png" media="(max-width: 480px)">
+                        <img src="./images/logo8.png" alt="My default image">
+                    </picture>
+                    <!-- <img src="./img/logo6.png" class="logo-titleimg"> -->
+                </a>
+                <h2>使用者登入</h2>
+                <form class="formpage">
+                    <div class="f_row">
+                        <label>帳號</label>
+                        <input type="email" class="input-field" required>
+                        <u></u>
+                    </div>
+                    <div class="f_row last">
+                        <label>密碼</label>
+                        <input type="password" class="input-field" required>
+                        <u></u>
+                    </div>
+                    <button class="btn-trans"><span>登入</span><u></u>
+                    </button>
+                    <div class="f_link">
+                        <a href="" class="resetTag">忘記密碼</a>
+                    </div>
+                </form>
+            </div>
+            <div class="page forgetbox">
+                <a href="#" class="back icon-back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <h2>重置密碼</h2>
+                <form class="formpage">
+                    <p>請填上申請時登記的E-mail，系統會將重置密碼信件寄至信箱，請用信箱內的連結以及臨時密碼登入，並於登入後修改正確密碼。</p>
+                    <div class="f_row last">
+                        <label>Email</label>
+                        <input type="text" class="input-field" required>
+                        <u></u>
+                    </div>
+                    <button class="btn-trans"><span>發送重置密碼信</span><u></u></button>
+                </form>
+            </div>
+            <div class="page consentBox">
+                <span class="reg_bg"></span>
+                <h2>加入須知</h2>
+                <form class="formpage">
+                    <div class="memo mb-2"><i class="fa-solid fa-circle-exclamation"></i>請詳閱個資規定，並確認已備妥下列文件的電子檔案：</div>
+                    <div class="row justify-content-between align-items-center my-2">
+                        <a href="#" class="col" data-bs-toggle="modal" data-bs-target="#PIPBox">個資規範<i
+                                class="fa-solid fa-eye"></i></a>
+                        <label class="col-auto align-center">同意
+                            <input type="checkbox" class="form-check-input">
+                        </label>
+                    </div>
+
+                    <div class="row justify-content-between align-items-center my-2">
+                        <a href="#" class="col">企業與大同大學教職員簽訂之合作備忘錄<i class="fa-solid fa-download"></i></a>
+                        <label class="col-auto align-center">備妥
+                            <input type="checkbox" class="form-check-input">
+                        </label>
+                    </div>
+                    <div class="row justify-content-between align-items-center my-2">
+                        <a href="#" class="col">企業營運計畫構想書<i class="fa-solid fa-download"></i></a>
+                        <label class="col-auto align-center">備妥
+                            <input type="checkbox" class="form-check-input">
+                        </label>
+                    </div>
+                    <div class="row justify-content-between align-items-center my-2">
+                        <a href="#" class="col">同意審查聲明書<i class="fa-solid fa-download"></i></a>
+                        <label class="col-auto align-center">備妥
+                            <input type="checkbox" class="form-check-input">
+                        </label>
+                    </div>
+                    <div class="row justify-content-between align-items-center my-2">
+                        <a href="#" class="col">創新育成中心進駐申請書<i class="fa-solid fa-download"></i></a>
+                        <label class="col-auto align-center">備妥
+                            <input type="checkbox" class="form-check-input">
+                        </label>
+                    </div>
+                    <div class="row justify-content-between align-items-center my-2">
+                        <p class="col">公司登記證</p>
+                        <label class="col-auto align-center">備妥
+                            <input type="checkbox" class="form-check-input">
+                        </label>
+                    </div>
+                    <div class="row justify-content-between align-items-center my-2">
+                        <p class="col mb-0">進駐審查費繳費證明</p>
+                        <label class="col-auto align-center">備妥
+                            <input type="checkbox" class="form-check-input">
+                        </label>
+                    </div>
+                    <div class="row justify-content-between align-items-center my-2">
+                        <p class="col mb-0">營利事業登記證或預查名稱表影本</p>
+                        <label class="col-auto align-center">備妥
+                            <input type="checkbox" class="form-check-input">
+                        </label>
+                    </div>
+
+                    <a href="./register.html">
+                        <button class="btn-large mt-4" type="button">NEXT</button>
+                    </a>
+                </form>
+            </div>
+            <a href="#" class="regTag icon-add">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="PIPBox" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="PIPLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="PIPLabel">個資法聲明</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-12 fw-bold">
+                                歡迎加入成為大同大學的合作廠商！
+                            </div>
+                            <div class="col-12">
+                                本網站係由「大同大學 創新設計與系統整合研究中心」（大同大學以下稱本校）所建置提供。
+                            </div>
+                            <div class="col-12">
+                                依據本服務使用條款（以下稱本條款）所提供的服務，本條款訂定之目的，即在於盡可能保護會員的權益，同時確認本公司與使用者之間的契約關係。
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12 fw-bold">
+                                所有申請使用本網站(以下稱本站)服務之使用者(以下稱成員)，都應該詳細閱讀下列使用條款。
+                            </div>
+                            <div class="col-12 fw-bold text-danger mb-1">
+                                成員完成註冊手續、或開始使用本校所提供之服務時，即視為已知悉、並完全同意本使用條款的所有約定並完全接受本站現有與未來衍生之服務項目。
+                            </div>
+                            <div class="col-12">
+                                若您為未滿二十歲，應於您的法定代理人閱讀、瞭解並同意本約定書之所有內容及其後修改變更後，方得使用或繼續使用。
+                            </div>
+                            <div class="col-12">
+                                當您使用或繼續使用本站時，即表示您的法定代理人已閱讀、瞭解並同意接受本約定書之所有內容及其後修改變更。
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12 fw-bold">
+                                一、 個人資料蒐集目的
+                                <div class="row fw-normal ms-1">
+                                    <div class="col-1">（一）</div>
+                                    <div class="col-11">採集證申請時審核身份用。</div>
+                                    <div class="col-1">（二）</div>
+                                    <div class="col-11">上述之相關業務或其他符合營業項目所定義之工作範圍。</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12 fw-bold">
+                                二、 個人資料蒐集類別
+                                <div class="row fw-normal ms-1">
+                                    <div class="col-1">（一）</div>
+                                    <div class="col-11">
+                                        識別類（例如：中、英文姓名、學生或員工證號、聯絡電話號碼、地址、電子郵遞地址、帳戶號碼與戶名、其它識別證號或電子識別標章）、社會情況類（例如：職業）、財務細節類（例如：公司帳號、戶名或與本蒐集目的相關之財務資訊）等。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12 fw-bold">
+                                三、 個人資料利用之期間、地區、對象及方式
+                                <div class="row fw-normal ms-1">
+                                    <div class="col-1">（一）</div>
+                                    <div class="col-11">期間：利用期間為本單位或業務所必須之保存期間。</div>
+                                    <div class="col-1">（二）</div>
+                                    <div class="col-11">地區：您的個人資料將用於本單位提供服務之地區。</div>
+                                    <div class="col-1">（三）</div>
+                                    <div class="col-11">對象：本單位之共同行銷、交互運用客戶資料公司、合作推廣單位、業務往來機構、依法有調查權機關或金融監理機關。</div>
+                                    <div class="col-1">（四）</div>
+                                    <div class="col-11">方式：電子文件、紙本，或以自動化機器或其他非自動化之利用方式。</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12 fw-bold">
+                                四、 依據個資法第三條規定，您就本單位保有您的個人資料得行使下列權利
+                                <div class="row fw-normal ms-1">
+                                    <div class="col-1">（一）</div>
+                                    <div class="col-11">查詢、閱覽、複本、補充、更正、請求停止蒐集、請求停止處理、請求停止利用、請求刪除等權利。</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12 fw-bold">
+                                五、 個資保護之措施：
+
+                            </div>
+                            <div class="col-12">
+                                本單位已採購個資盤點工具，並且針對個資保護有以下應盡之措施：
+                                <div class="row fw-normal ms-1">
+                                    <div class="col-1">（一）</div>
+                                    <div class="col-11">配置管理之人員及相當資源</div>
+                                    <div class="col-1">（二）</div>
+                                    <div class="col-11">界定個人資料之範圍</div>
+                                    <div class="col-1">（三）</div>
+                                    <div class="col-11">個人資料之風險評估及管理機制</div>
+                                    <div class="col-1">（四）</div>
+                                    <div class="col-11">個人資料蒐集、處理及利用之內部管理程序</div>
+                                    <div class="col-1">（五）</div>
+                                    <div class="col-11">資料安全管理以及人員管理</div>
+                                    <div class="col-1">（六）</div>
+                                    <div class="col-11">資料安全稽核機制</div>
+                                    <div class="col-1">（七）</div>
+                                    <div class="col-11">使用紀錄、軌跡資料及證據保存</div>
+                                    <div class="col-1">（八）</div>
+                                    <div class="col-11">個人資料安全維護之整體持續改善</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" id="readAll">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">已了解</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.1/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.1/js/responsive.bootstrap5.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.all.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./js/sweetAlert.js"></script>
+<script src="./js/main.js"></script>
+    <script src="./js/login.js"></script>
+</body>
+
+</html>
