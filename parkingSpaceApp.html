@@ -3,7 +3,7 @@
 
 <head>
     @@include('layout/meta.html', {
-    "title": "大同大學-校內育成媒合平台-已登職缺",
+    "title": "大同大學-校內育成媒合平台",
     })
 </head>
 
@@ -35,37 +35,32 @@
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade parkingSpaceDetail" id="parkingSpaceDetail_1" data-bs-backdrop="static"
-                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="parkingSpaceDetailLabel" aria-hidden="true">
+                <div class="modal fade parkingSpaceDetail" id="parkingSpaceDetailModel" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="parkingSpaceDetailModelLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <form class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="parkingSpaceDetailLabel">車位申請詳情</h4>
+                                <h4 class="modal-title" id="parkingSpaceDetailModelLabel">車位申請詳情</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="container-fluid">
-                                    <!-- 公司名稱、統編、申請日期 (不可改) -->
+                                    <!-- 公司名稱、統編、申請日期 (都不可改) -->
                                     <div class="row mb-1 multiple">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             承租人企業
                                         </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="companyName">
-                                            好棒棒股份有限公司
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="companyName"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             統一編號
                                         </div>
-                                        <div class="col col-lg-2 lightBoxItems p-3 readOnly">
-                                            23456780
-                                        </div>
+                                        <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="uniformNum"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             申請日期
                                         </div>
-                                        <div class="col col-lg-auto lightBoxItems p-3 readOnly">
-                                            2020/08/30
-                                        </div>
+                                        <div class="col col-lg-auto lightBoxItems p-3 readOnly" id="createDate"></div>
                                     </div>
 
                                     <!-- 姓名、電話、分機 (可改) -->
@@ -73,21 +68,18 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                                             承租人姓名
                                         </div>
-                                        <div class="col col-lg-3 lightBoxItems p-3 changeInput_items align_center">
-                                            孫小美
-                                        </div>
+                                        <div class="col col-lg-3 lightBoxItems p-3 changeInput_items align_center"
+                                            id="name"></div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             電話/手機
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
-                                            02-86710000
+                                        <div class="col lightBoxItems p-3 changePhone_items align_center" id="phoneNum">
                                         </div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             分&emsp;機</div>
-                                        <div class="col lightBoxItems changeInput_items p-3 align_center">
-                                            12345
+                                        <div class="col lightBoxItems changeNumber_items p-3 align_center" id="ext">
                                         </div>
 
                                     </div>
@@ -97,63 +89,51 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                                             身分證字號
                                         </div>
-                                        <div class="col col-lg-3 lightBoxItems p-3 changeInput_items align_center">
-                                            A123456789
-                                        </div>
+                                        <div class="col col-lg-3 lightBoxItems p-3 changeInput_items align_center"
+                                            id="idNumber"></div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             &ensp;電子信箱
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
-                                            abc@gmail.com
+                                        <div class="col lightBoxItems p-3 changeEmail_items align_center" id="email">
                                         </div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             職務名
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeInput_items align_center">
-                                            秘書
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center" id="jobTitle">
                                         </div>
                                     </div>
-
 
                                     <!-- 車位種類 車位號碼 車位費用 (可改)-->
                                     <div class="row mb-1">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                                             &emsp;車位種類
                                         </div>
-                                        <div class="col col-lg-3 lightBoxItems p-3 changeRadio_items align_center">
-                                            汽車
-                                        </div>
+                                        <div class="col col-lg-3 lightBoxItems p-3 changeRadio_items align_center"
+                                            id="carType"></div>
                                         <div
                                             class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                                             &ensp;車位號碼
                                         </div>
-                                        <div
-                                            class="col lightBoxItems p-3 changeInput_items changeInput_items align_center">
-                                            B1-01
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center"
+                                            id="parkingSpaceNum"></div>
                                     </div>
+
                                     <!-- 到期日 付款日 金額 -->
                                     <div class="row mb-1">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             車位到期日
                                         </div>
-                                        <div class="col col-lg-3 lightBoxItems p-3 changeDate_items">
-                                            2024-08-30
-                                        </div>
+                                        <div class="col col-lg-3 lightBoxItems p-3 changeDate_items" id="endDate"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             &ensp;付款日期
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeDate_items">
-                                            2024-07-25
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeDate_items" id="paymentDate"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             車位費用/月
                                         </div>
-                                        <div class="col lightBoxItems p-3 changeMoney_items">
-                                            2,500
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeMoney_items" id="rate"></div>
                                     </div>
 
 
@@ -175,7 +155,7 @@
                                         </div>
                                     </div>
                                     <!-- 補件上傳 若狀態為通過，不顯示此區塊-->
-                                    <div class="row mb-1">
+                                    <div class="row mb-1" id="supplementaryFilesBox">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             &emsp;補件上傳
                                         </div>
@@ -224,21 +204,22 @@
                                     <!-- 審核 -->
                                     <div class="row mb-1 multiple">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            &emsp;備&emsp;註&emsp;
+                                            &emsp;管理註記
                                         </div>
-                                        <div class="col lightBoxItems p-2">
-                                            <input type="text" class="form-control add">
+                                        <div class="col lightBoxItems p-3 align_center changeInput_items"
+                                            id="adminNote">
                                         </div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             審核進度
                                         </div>
-                                        <div class="col col-lg-2 lightBoxItems p-2">
-                                            <select class="form-select">
-                                                <option value="2" selected disabled>收件，待審中</option>
-                                                <option value="3">待補件</option>
-                                                <option value="4">不通過</option>
-                                                <option value="0">通過</option>
+                                        <div class="col col-lg-2 lightBoxItems p-2 align_center">
+                                            <select class="form-select" id="status">
+                                                <option selected disabled>收件，待審中</option>
+                                                <option value="待補件">待補件</option>
+                                                <option value="不通過">不通過</option>
+                                                <option value="通過">通過</option>
                                             </select>
+                                            <div id="statusText" class="p-1"></div>
                                         </div>
                                     </div>
 
@@ -246,7 +227,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
-                                <button class="btn btn-outline-secondary">確認修改</button>
+                                <button type="button" class="btn btn-outline-secondary" id="updateBtn">確認修改</button>
                             </div>
                         </form>
                     </div>
@@ -258,7 +239,7 @@
         </div>
     </main>
     @@include('layout/metaJS.html')
-
+    <script src="./js/formComm.js"></script>
     <script src="./js/parkingSpaceApp.js"></script>
 </body>
 

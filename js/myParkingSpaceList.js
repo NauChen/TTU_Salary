@@ -321,7 +321,7 @@ $(function () {
                     if (diffDays === null) {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm oneWord cursor_default" title="續約時間已過"><i class="fa-solid fa-hourglass-end"></i></button>';
                     } else if (diffDays >= -10) {
-                        return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpace_edit.html?id=' + data + '" title="立即續約"><i class="fa-solid fa-repeat"></i></a>';
+                        return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpaceEdit.html?id=' + data + '" title="立即續約"><i class="fa-solid fa-repeat"></i></a>';
                     } else {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm oneWord cursor_default" title="續約時間未到"><i class="fa-solid fa-hourglass-half"></i></button>';
                     }

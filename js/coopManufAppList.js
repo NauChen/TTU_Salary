@@ -461,6 +461,8 @@ $(function () {
         let firmId = String(button.data('id'));
         // console.log('Button clicked, firmId:', firmId);
 
+        // 解除先前綁定的點擊事件
+        $('#updateBtn').off('click');
 
         let firmData = dataset_coopManufApp.find(firm => firm.id === firmId);
 
@@ -520,6 +522,54 @@ $(function () {
             $('#status').show();
             $('#statusText').hide();
         }
+
+        $('#updateBtn').on('click', function () {
+            // console.log('firmId 2 :', firmId); // 確認 psId 是否正確獲取
+            // 清除上次的資料
+            updatedData = {};
+            // 獲取所有欄位的目前值
+            updatedData.id = firmId;
+            updatedData.companyName = $('#companyName').text();
+            updatedData.createDate = $('#createDate').text();
+            updatedData.companyDescription = $('#companyDescription').text();
+            updatedData.uniformNum = $('#uniformNum').text();
+            updatedData.creationDate = $('#creationDate').text();
+            updatedData.capitalAmount = $('#capitalAmount').text();
+            updatedData.employeesNum = $('#employeesNum').text();
+            updatedData.responsiblePerson = $('#responsiblePerson').text();
+            updatedData.referrer = $('#referrer').text();
+            updatedData.phone = $('#phoneNum').text();
+            updatedData.companyEmail = $('#companyEmail').text();
+            updatedData.lineId = $('#lineId').text();
+            updatedData.contactPerson = $('#contactPerson').text();
+            updatedData.ext = $('#ext').text();
+            updatedData.jobTitle = $('#jobTitle').val();
+            updatedData.companyAdd = $('#companyAdd').text();
+            updatedData.locationOfCompany = $('#locationOfCompany').val();
+            updatedData.helpItems = $('#helpItems').val();
+            // updatedData.adminNote = $('#adminNote').text();
+
+            console.log(updatedData);
+
+            // 將更新的資料送到後端
+            // $.ajax({
+            //     url: '您的後端URL', // 替換成您的後端接收更新請求的URL
+            //     type: 'POST', // 或者 'PUT'，根據您的後端接口設計來決定
+            //     contentType: 'application/json',
+            //     data: JSON.stringify(updatedData),
+            //     success: function (response) {
+            //         // 處理成功回應
+            //         console.log('更新成功:', response);
+            //         // 根據需要執行其他操作，例如顯示成功訊息
+            //     },
+            //     error: function (xhr, status, error) {
+            //         // 處理錯誤情況
+            //         console.error('更新失敗:', error);
+            //         // 根據需要顯示錯誤訊息或執行其他操作
+            //     }
+            // });
+        });
+        
     });
 
 });

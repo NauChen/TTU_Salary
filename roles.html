@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/meta.html', {
+    "title": "大同大學-校內育成媒合平台-已登職缺",
+    })
+</head>
+
+<body>
+    <main class="main">
+        <!-- 側邊攔 -->
+        @@include('layout/header.html')
+        <div class="content">
+            <div class="container">
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-people-robbery"></i>&ensp;權限設定</li>
+                    </ol>
+                </div>
+
+                <!-- 使用者列表 -->
+                <div class="tabs-box my-2r">
+                    <h3 class="section-header">使用者列表</h3>
+                    <div class="tabs section-border-radius section-padding">
+                        <table id="rolesList" class="table table-hover table-bordered responsive align-middle"
+                            style="width:100%">
+
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+                @@include('layout/footer.html')
+
+            </div>
+        </div>
+    </main>
+    @@include('layout/metaJS.html')
+
+    <script src="./js/roles.js"></script>
+</body>
+
+</html>
