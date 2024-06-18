@@ -17,7 +17,6 @@
 
 <body>
     <main class="main">
-        <!-- 側邊攔 -->
         
 <!-- 側邊攔 -->
 <nav class="nav-box no_print">
@@ -52,13 +51,13 @@
                     aria-expanded="false"><i class="fa-solid fa-file-contract"></i><span
                         class="tooltiptext tooltip-right">申請與查閱</span></a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
-                    <li><a class="dropdown-item" href="./idCardInventory.html">識別證管理&ensp;<i
+                    <li><a class="dropdown-item" href="./idCard_inventory.html">識別證管理&ensp;<i
                                 class="fa-regular fa-address-card"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="./parkingSpaceInventory.html">停車位管理&ensp;<i
+                    <li><a class="dropdown-item" href="./parkingSpace_inventory.html">停車位管理&ensp;<i
                                 class="fa-solid fa-square-parking"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="./renewContractApply.html">續約申請&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
+                    <li><a class="dropdown-item" href="./renewContract_apply.html">續約申請&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
                     </li>
                 </ul>
             </li>
@@ -96,7 +95,7 @@
                                 class="fa-solid fa-tree-city"></i></a></li>
                     <li><a class="dropdown-item" href="./pakingSpace.html">停車位管理&emsp;&ensp;<i class="fa-brands fa-product-hunt"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="./roles.html">用戶權限設定&ensp;<i
+                    <li><a class="dropdown-item" href="./nav-memo2-roles.html">用戶權限設定&ensp;<i
                                 class="fa-solid fa-people-robbery"></i></a></li>
                     <li><a class="dropdown-item" href="#">用戶資料修改&ensp;<i class="fa-solid fa-address-book"></i></a>
                     </li>
@@ -148,231 +147,126 @@
             <div class="container">
 
                 <!-- 麵包屑 -->
-                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
-                        <li class="breadcrumb-item active"><i class="fa-solid fa-tree-city"></i>&ensp;培育室管理</li>
+                        <li class="breadcrumb-item"><i class="fa-solid fa-users"></i>&ensp;職缺媒合</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-users-viewfinder"></i>&ensp;刊登中</li>
                     </ol>
                 </div>
-                <div>
-                    <!-- 培育室啟用列表 -->
-                    <div class="tabs-box my-2r no_print">
-                        <div class="row mb-4 px-3">
-                            <h3 class="section-header col-auto mb-0 lh-base"><i
-                                    class="fa-solid fa-quote-left"></i>啟用中列表<i class="fa-solid fa-quote-right"></i></h3>
-                            <a class="btn btn-outline-info col-auto goto_somewhere ms-5 py-2" role="button" href="./cultivationRoomCreate.html"><i
-                                    class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
-                                    class="fa-solid fa-tree-city"></i><span
-                                    class="tooltiptext tooltip-right">新增培育室</span></a>
-                        </div>
-                        <div class="tabs section-border-radius section-padding">
-                            <table id="cultivationRoom_OpenList"
-                                class="table table-hover table-bordered responsive align-middle" style="width:100%">
-                            </table>
-                        </div>
-                    </div>
-                    <hr class="my-5">
-                    <!-- 培育室停用列表 -->
-                    <div class="tabs-box my-2r no_print">
-                        <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>停用中列表<i
+
+                <!-- 刊登中列表 -->
+                <div class="tabs-box my-2r">
+                    <div class="row mb-4 px-3">
+                        <h3 class="section-header col-auto mb-0 lh-base"><i class="fa-solid fa-quote-left"></i>現正招聘<i
                                 class="fa-solid fa-quote-right"></i></h3>
-                        <div class="tabs section-border-radius section-padding">
-                            <table id="cultivationRoom_CloseList"
-                                class="table table-hover table-bordered responsive align-middle" style="width:100%">
-                            </table>
-                        </div>
+                        <!-- 點擊後將勾選的id傳至後台 -->
+                        <button class="btn btn-outline-danger col-auto goto_somewhere ms-5" id="deleteTheseJobs"><i
+                                class="fa-regular fa-square-check"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-regular fa-trash-can"></i><span
+                                class="tooltiptext tooltip-top">刪除職缺</span></button>
+                        <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
+                            href="./jobCreate.html"><i class="fa-solid fa-plus"></i><i
+                                class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-solid fa-users-viewfinder"></i><span
+                                class="tooltiptext tooltip-right">新增職缺</span></a>
                     </div>
-                </div>
-                <!-- Modal 1 -->
-                <div class="modal fade" id="openRoom_Details" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="openRoom_DetailsLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="openRoom_DetailsLabel">培育室詳情</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <!-- 培育室基本資料 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            所在區域
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="companyName">
-                                            青創基地
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            室
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            101
-                                        </div>
 
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            服務費用/月
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            80,000
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            坪數
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            15.28
-                                        </div>
-                                    </div>
-                                    <!-- 培育企業相關 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            培育企業
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            馳晶科技股份有限公司
-                                        </div>
-
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            培育期間
-                                        </div>
-                                        <div class="col-auto lightBoxItems p-3">
-                                            起：<span class="me-2">2021-01-01</span><br
-                                                class="d-none d-lg-block d-xxl-none">
-                                            訖：<span>2021-12-31</span>
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            企業代表
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            康弘昇
-                                        </div>
-                                    </div>
-                                    <!-- 備註 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            備註事項
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            R101、R104、R105 三間培育室每月輔導服務費合算80,000元
-                                        </div>
-                                    </div>
-                                    <!-- 建立人員和建立日期 -->
-                                    <div class="row mb-1 multiple">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            建立人員
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            王小明
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            建立日期
-                                        </div>
-                                        <div class="col-12 col-lg-2 lightBoxItems p-3">
-                                            2011-06-30
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container mt-4 border p-3 rounded">
-                                    <table id="roomHistoryList"
-                                        class="table table-hover table-bordered responsive align-middle" style="width:100%">
-                                    </table>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary"
-                                    data-bs-dismiss="modal">關閉視窗</button>
-                            </div>
-                        </div>
+                    <div class="tabs section-border-radius section-padding">
+                        <table id="myJobList" class="table table-hover table-bordered responsive align-middle"
+                            style="width:100%">
+                        </table>
                     </div>
                 </div>
 
-                <!-- Modal 2 -->
-                <div class="modal fade" id="closeRoom_Details" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="closeRoom_DetailsLabel" aria-hidden="true">
+                <!-- Modal -->
+                <div class="modal fade" id="myJobDetailsModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="myJobDetailsModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="closeRoom_DetailsLabel">培育室紀錄</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <h4 class="modal-title" id="myJobDetailsModalLabel">職缺內容</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="container-fluid">
-                                    <!-- 培育室基本資料 -->
+                                    <!-- 公司名稱和公司簡介 -->
                                     <div class="row mb-1">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            所在區域
+                                            公司名稱
                                         </div>
-                                        <div class="col lightBoxItems p-3" id="companyName">
-                                            青創基地
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            室
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            101
-                                        </div>
-
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            服務費用/月
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            80,000
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            坪數
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            15.2
-                                        </div>
+                                        <div class="col lightBoxItems p-3" id="companyName"></div>
                                     </div>
-                                    <!-- 備註 -->
                                     <div class="row mb-1">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            備註事項
+                                            公司簡介
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            R101、R104、R105 三間培育室每月輔導服務費合算80,000元
-                                        </div>
+                                        <div class="col lightBoxItems p-3" id="companyDescription"></div>
                                     </div>
 
-                                    <!-- 建立與關閉 -->
+                                    <!-- 職務相關資訊 -->
                                     <div class="row mb-1 multiple">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            創建日期
+                                            職務名稱
                                         </div>
-                                        <div class="col col-lg-2 text-nowrap lightBoxItems p-3">
-                                            2011-06-30
-                                        </div>
+                                        <div class="col lightBoxItems p-3" id="jobTitle"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            創建人員
+                                            工作性質
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            王小明
-                                        </div>
+                                        <div class="col lightBoxItems p-3" id="jobEmployment"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            最後停用日
+                                            科系限制
                                         </div>
-                                        <div class="col col-lg-auto text-nowrap lightBoxItems p-3">
-                                            2011-06-30
+                                        <div class="col lightBoxItems p-3" id="deptOf"></div>
+                                    </div>
+
+                                    <!-- 工作時間、休假制度、工作待遇 -->
+                                    <div class="row mb-1 multiple">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            工作時間
                                         </div>
+                                        <div class="col lightBoxItems p-3" id="jobTime"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            最後停用者
+                                            休假制度
                                         </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            王小明
+                                        <div class="col lightBoxItems p-3" id="vacationSystem"></div>
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                                            工作待遇
                                         </div>
+                                        <div class="col lightBoxItems p-3" id="salaryDetails"></div>
+                                    </div>
+
+                                    <!-- 工作內容、附加條件、應徵方式 -->
+                                    <div class="row mb-1">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            工作內容
+                                        </div>
+                                        <div class="col lightBoxItems p-3" id="jobContent"></div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            附加條件
+                                        </div>
+                                        <div class="col lightBoxItems p-3" id="jobCondition"></div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            應徵方式
+                                        </div>
+                                        <div class="col lightBoxItems p-3" id="jobConnect"></div>
+                                    </div>
+
+                                    <!-- 工作地點和截止日期 -->
+                                    <div class="row mb-1 multiple">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            工作地點
+                                        </div>
+                                        <div class="col lightBoxItems p-3" id="jobLocation"></div>
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                                            截止日期
+                                        </div>
+                                        <div class="col-12 col-lg-auto lightBoxItems p-3" id="applicationDeadline"></div>
                                     </div>
                                 </div>
-                                <div class="container-fluid mt-4 border p-3 rounded">
-                                    <table id="roomHistoryList2"
-                                        class="table table-hover table-bordered responsive align-middle"
-                                        style="width:100%">
-
-                                    </table>
-                                </div>
-
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary"
@@ -419,7 +313,7 @@
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
 
-    <script src="./js/cultivationRoom.js"></script>
+    <script src="./js/myJobList.js"></script>
 </body>
 
 </html>
