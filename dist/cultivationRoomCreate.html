@@ -81,7 +81,7 @@
                                 class="fa-solid fa-square-parking"></i></a></li>
                     <!-- <li><a class="dropdown-item" href="#">空間審核&emsp;&ensp;<i class="fa-solid fa-building"></i></a>
                     </li> -->
-                    <li><a class="dropdown-item" href="#">續約審核&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
+                    <li><a class="dropdown-item" href="./renewContractApp.html">續約審核&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
                     </li>
                     <li><a class="dropdown-item" href="#">識別證審核&ensp;<i class="fa-regular fa-address-card"></i></a>
                     </li>
@@ -166,56 +166,56 @@
                     <div class="tabs section-border-radius section-padding">
                         <form class="container-fluid" method="post">
                             <div class="row">
-                                <div class="col-xl-4 col-lg-6 mb-3">
-                                    <div class="row mb-3">
-                                        <label for="cultivationSpaceBuilding"
-                                            class="col-lg-auto col-form-label text-nowrap">所在區域：</label>
-                                        <div class="col">
-                                            <input type="text" class="form-control" id="cultivationSpaceBuilding">
-                                            <span class="text-danger" id="danger_cultivationSpaceBuilding"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="cultivationSpaceRoom"
-                                            class="col-lg-auto col-form-label text-nowrap">&emsp;&emsp;&emsp;室：</label>
-                                        <div class="col">
-                                            <input type="text" class="form-control" id="cultivationSpaceRoom">
-                                            <span class="text-danger" id="danger_cultivationSpaceRoom"></span>
-                                        </div>
-                                    </div>
-    
-    
-                                </div>
-                                <div class="col-xl-4 col-lg-6 mb-3">
-                                    <div class="row mb-3">
-                                        <label for="cultivationSpaceRate"
-                                            class="col-lg-auto col-form-label text-nowrap">月服務費：</label>
-                                        <div class="col">
-                                            <input type="text" class="form-control" id="cultivationSpaceRate">
-                                            <span class="text-danger" id="danger_cultivationSpaceRate"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="cultivationSpaceSquareMeters"
-                                            class="col-lg-auto col-form-label text-nowrap">可用坪數：</label>
-                                        <div class="col">
-                                            <input type="text" class="form-control" id="cultivationSpaceSquareMeters">
-                                            <span class="text-danger" id="danger_cultivationSpaceSquareMeters"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 mb-3">
-                                    <div class="row mb-3">
-                                        <label for="cultivationSpaceRemark"
-                                            class="col-lg-auto col-form-label text-nowrap">&emsp;備&emsp;註：</label>
-                                        <div class="col">
-                                            <textarea class="form-control resize-none h_110"
-                                                id="cultivationSpaceRemark"></textarea>
-                                            <span class="text-danger" id="danger_cultivationSpaceRemark"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3">
+            <label for="cultivationSpaceBuilding"
+                class="col-lg-auto col-form-label text-nowrap">所在區域：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="cultivationSpaceBuilding">
+                <span class="text-danger" id="danger_cultivationSpaceBuilding"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="cultivationSpaceRoom"
+                class="col-lg-auto col-form-label text-nowrap">&emsp;&emsp;&emsp;室：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="cultivationSpaceRoom">
+                <span class="text-danger" id="danger_cultivationSpaceRoom"></span>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3">
+            <label for="cultivationSpaceRate"
+                class="col-lg-auto col-form-label text-nowrap">月服務費：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="cultivationSpaceRate">
+                <span class="text-danger" id="danger_cultivationSpaceRate"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="cultivationSpaceSquareMeters"
+                class="col-lg-auto col-form-label text-nowrap">可用坪數：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="cultivationSpaceSquareMeters">
+                <span class="text-danger" id="danger_cultivationSpaceSquareMeters"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3">
+            <label for="cultivationSpaceRemark"
+                class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
+            <div class="col">
+                <textarea class="form-control resize-none h_110"
+                    id="cultivationSpaceRemark"></textarea>
+                <span class="text-danger" id="danger_cultivationSpaceRemark"></span>
+            </div>
+        </div>
+    </div>
+</div>
                             <div class="row text-center p-3 justify-content-center">
                                 <div class="col-auto">
                                     <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
@@ -265,7 +265,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
-
+    <script src="./js/formComm.js"></script>
     <!-- <script src="./js/myParkingSpaceList.js"></script> -->
 </body>
 

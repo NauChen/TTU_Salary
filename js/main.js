@@ -2,7 +2,7 @@
 // console.log(a(20 , 10));
 // document.write('<script type="text/javascript" src="./js/sweetAlert.js"></script>');
 
-
+// DataTable設定 - 搜尋左上，無自選顯示個數(預設10筆)
 let commonSettingsTable = {
     layout: {
         topStart: {
@@ -49,6 +49,8 @@ let commonSettingsTable = {
         $(thead).find('th').addClass('text-center text-nowrap align-middle');
     },
 };
+
+// DataTable設定 - 搜尋右上，無自選顯示個數(預設10筆)，左上標題"歷程記錄"
 let commonSettingsHistory = {
     layout: {
         topStart: function () {
@@ -141,6 +143,7 @@ let commonSettingsHistory = {
         $('td:eq(1)', row).css('min-width', '80px');
     },
 };
+// DataTable設定 - 搜尋右上，無自選顯示個數(預設10筆)，左上可再另行設定提示文字
 let commonSettingsProvision = {
     layout: {
         topEnd: {

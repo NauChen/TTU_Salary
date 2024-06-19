@@ -30,7 +30,7 @@
 
                     <div class="tabs section-border-radius section-padding">
                         <form class="container-fluid" method="post" id="editJobForm">
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-xl-4 col-lg-6 mb-3">
                                     <div class="row mb-3">
                                         <label for="jobTitle"
@@ -163,16 +163,9 @@
                                             <select class="form-control form-select thisRequired" id="salaryType">
                                                 <option value="請選擇" disabled selected>--- 請選擇 ---</option>
                                                 <option value="時薪">時薪</option>
-                                                <!-- 元 -->
                                                 <option value="日薪">日薪</option>
-                                                <!-- 元 -->
                                                 <option value="月薪">月薪</option>
-                                                <!-- 元 -->
-                                                <!-- 元 至 元-->
-                                                <!-- 元以上 -->
-                                                <!-- 面議 元以上 -->
                                                 <option value="按件計酬">按件計酬</option>
-                                                <!-- 元/件 -->
                                             </select>
                                             <span class="text-danger" id="danger_salaryType"></span>
                                         </div>
@@ -257,7 +250,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+
+                            @@include('layout/job_form.html')
+
                             <div class="row text-center p-3 justify-content-center">
                                 <div class="col-auto">
                                     <a href="./myjob.html"

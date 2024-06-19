@@ -81,7 +81,7 @@
                                 class="fa-solid fa-square-parking"></i></a></li>
                     <!-- <li><a class="dropdown-item" href="#">空間審核&emsp;&ensp;<i class="fa-solid fa-building"></i></a>
                     </li> -->
-                    <li><a class="dropdown-item" href="#">續約審核&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
+                    <li><a class="dropdown-item" href="./renewContractApp.html">續約審核&emsp;&ensp;<i class="fa-solid fa-file-signature"></i></a>
                     </li>
                     <li><a class="dropdown-item" href="#">識別證審核&ensp;<i class="fa-regular fa-address-card"></i></a>
                     </li>
@@ -161,9 +161,9 @@
                         <div class="row mb-4 px-3">
                             <h3 class="section-header col-auto mb-0 lh-base"><i
                                     class="fa-solid fa-quote-left"></i>啟用中列表<i class="fa-solid fa-quote-right"></i></h3>
-                            <a class="btn btn-outline-info col-auto goto_somewhere ms-5 py-2" role="button" href="./cultivationRoomCreate.html"><i
-                                    class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
-                                    class="fa-solid fa-tree-city"></i><span
+                            <a class="btn btn-outline-info col-auto goto_somewhere ms-5 py-2" role="button"
+                                href="./cultivationRoomCreate.html"><i class="fa-solid fa-plus"></i><i
+                                    class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-tree-city"></i><span
                                     class="tooltiptext tooltip-right">新增培育室</span></a>
                         </div>
                         <div class="tabs section-border-radius section-padding">
@@ -185,12 +185,12 @@
                     </div>
                 </div>
                 <!-- Modal 1 -->
-                <div class="modal fade" id="openRoom_Details" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="openRoom_DetailsLabel" aria-hidden="true">
+                <div class="modal fade" id="openRoom_DetailsModel" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="openRoom_DetailsModelLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="openRoom_DetailsLabel">培育室詳情</h4>
+                                <h4 class="modal-title" id="openRoom_DetailsModelLabel">培育室詳情</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -201,81 +201,64 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             所在區域
                                         </div>
-                                        <div class="col lightBoxItems p-3" id="companyName">
-                                            青創基地
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="building"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             室
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            101
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="room"></div>
 
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             服務費用/月
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            80,000
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="rate"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             坪數
                                         </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            15.28
-                                        </div>
+                                        <div class="col col-lg-1 lightBoxItems p-3 readOnly" id="squareMeters"></div>
                                     </div>
                                     <!-- 培育企業相關 -->
                                     <div class="row mb-1">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             培育企業
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            馳晶科技股份有限公司
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="companyName"></div>
 
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             培育期間
                                         </div>
                                         <div class="col-auto lightBoxItems p-3">
-                                            起：<span class="me-2">2021-01-01</span><br
+                                            起：<span class="me-2 readOnly" id="startDate"></span><br
                                                 class="d-none d-lg-block d-xxl-none">
-                                            訖：<span>2021-12-31</span>
+                                            訖：<span class="readOnly" id="endDate"></span>
                                         </div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             企業代表
                                         </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            康弘昇
-                                        </div>
+                                        <div class="col col-lg-1 lightBoxItems p-3 readOnly" id="responsiblePerson"></div>
                                     </div>
                                     <!-- 備註 -->
                                     <div class="row mb-1">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            備註事項
+                                            管理備註
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            R101、R104、R105 三間培育室每月輔導服務費合算80,000元
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="adminNote"></div>
                                     </div>
                                     <!-- 建立人員和建立日期 -->
                                     <div class="row mb-1 multiple">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             建立人員
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            王小明
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="createBy"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             建立日期
                                         </div>
-                                        <div class="col-12 col-lg-2 lightBoxItems p-3">
-                                            2011-06-30
-                                        </div>
+                                        <div class="col-12 col-lg-2 lightBoxItems p-3 readOnly" id="createDate"></div>
                                     </div>
                                 </div>
                                 <div class="container mt-4 border p-3 rounded">
                                     <table id="roomHistoryList"
-                                        class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                                        class="table table-hover table-bordered responsive align-middle"
+                                        style="width:100%">
                                     </table>
                                 </div>
 
@@ -289,12 +272,12 @@
                 </div>
 
                 <!-- Modal 2 -->
-                <div class="modal fade" id="closeRoom_Details" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="closeRoom_DetailsLabel" aria-hidden="true">
+                <div class="modal fade" id="closeRoom_DetailsModel" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="closeRoom_DetailsModelLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="closeRoom_DetailsLabel">培育室紀錄</h4>
+                                <h4 class="modal-title" id="closeRoom_DetailsModelLabel">培育室紀錄</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -305,37 +288,26 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             所在區域
                                         </div>
-                                        <div class="col lightBoxItems p-3" id="companyName">
-                                            青創基地
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="close_building"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             室
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            101
-                                        </div>
-
+                                        <div class="col lightBoxItems p-3 readOnly" id="close_room"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             服務費用/月
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            80,000
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="close_rate"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             坪數
                                         </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            15.2
-                                        </div>
+                                        <div class="col col-lg-1 lightBoxItems p-3 readOnly" id="close_squareMeters"></div>
                                     </div>
                                     <!-- 備註 -->
                                     <div class="row mb-1">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             備註事項
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            R101、R104、R105 三間培育室每月輔導服務費合算80,000元
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="close_adminNote"></div>
                                     </div>
 
                                     <!-- 建立與關閉 -->
@@ -343,27 +315,19 @@
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
                                             創建日期
                                         </div>
-                                        <div class="col col-lg-2 text-nowrap lightBoxItems p-3">
-                                            2011-06-30
-                                        </div>
+                                        <div class="col col-lg-2 text-nowrap lightBoxItems p-3 readOnly" id="close_createDate"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             創建人員
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            王小明
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="close_createBy"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             最後停用日
                                         </div>
-                                        <div class="col col-lg-auto text-nowrap lightBoxItems p-3">
-                                            2011-06-30
-                                        </div>
+                                        <div class="col col-lg-auto text-nowrap lightBoxItems p-3 readOnly" id="close_removeDate"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
                                             最後停用者
                                         </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            王小明
-                                        </div>
+                                        <div class="col col-lg-1 lightBoxItems p-3 readOnly" id="close_removeBy"></div>
                                     </div>
                                 </div>
                                 <div class="container-fluid mt-4 border p-3 rounded">
@@ -419,7 +383,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
-
+    <script src="./js/formComm.js"></script>
     <script src="./js/cultivationRoom.js"></script>
 </body>
 
