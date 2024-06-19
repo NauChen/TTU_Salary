@@ -10,6 +10,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 // console.log(a(20 , 10));
 // document.write('<script type="text/javascript" src="./js/sweetAlert.js"></script>');
 
+// DataTable設定 - 搜尋左上，無自選顯示個數(預設10筆)
 var commonSettingsTable = {
   layout: {
     topStart: {
@@ -56,6 +57,8 @@ var commonSettingsTable = {
     $(thead).find('th').addClass('text-center text-nowrap align-middle');
   }
 };
+
+// DataTable設定 - 搜尋右上，無自選顯示個數(預設10筆)，左上標題"歷程記錄"
 var commonSettingsHistory = {
   layout: {
     topStart: function topStart() {
@@ -164,6 +167,7 @@ var commonSettingsHistory = {
     $('td:eq(1)', row).css('min-width', '80px');
   }
 };
+// DataTable設定 - 搜尋右上，無自選顯示個數(預設10筆)，左上可再另行設定提示文字
 var commonSettingsProvision = {
   layout: {
     topEnd: {

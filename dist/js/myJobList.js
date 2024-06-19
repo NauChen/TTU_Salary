@@ -440,6 +440,9 @@ $(function () {
       data: 'createDate',
       title: "刊登日期"
     }, {
+      data: 'deptOf',
+      title: "科系限制"
+    }, {
       data: 'jobTitle',
       title: "職務名稱"
     }, {
@@ -460,39 +463,36 @@ $(function () {
     }, {
       data: 'id',
       title: "修改",
-      // render: function (data) {
-      //     return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./jobEdit.html" data-id="' + data + '"><i class="fa-solid fa-wrench"></i></a>'
-      // },
       render: function render(data) {
         return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./jobEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';
       }
     }],
-    "order": [[1, "desc"]],
+    "order": [[1, "desc"], [2, "asc"]],
     "columnDefs": [{
       targets: [0],
       responsivePriority: 1
     }, {
-      targets: [2],
-      responsivePriority: 2
-    }, {
       targets: [3],
       responsivePriority: 2
     }, {
+      targets: [4],
+      responsivePriority: 3
+    }, {
       searchable: false,
       orderable: false,
-      targets: [0, 6, 7]
+      targets: [0, 7, 8]
     }, {
       className: "text-nowrap",
-      targets: [1, 4, 5]
+      targets: [1, 5, 6]
     }, {
       className: "text-center",
-      targets: [0, 1, 4, 5, 6, 7]
+      targets: [0, 1, 4, 5, 6, 7, 8]
     }],
     createdRow: function createdRow(row, data, dataIndex) {
-      [0, 6, 7].forEach(function (colIdx) {
+      [0, 7, 8].forEach(function (colIdx) {
         $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
       });
-      [1, 4, 5].forEach(function (colIdx) {
+      [1, 5, 6].forEach(function (colIdx) {
         $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
       });
     }

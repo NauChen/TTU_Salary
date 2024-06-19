@@ -799,6 +799,7 @@ var CustomInputHandlers = {
     this.bindChangePhoneItems();
     this.bindChangeEmailItems();
     this.bindChangeLineIDItems();
+    this.bindChangeSelectItems();
   },
   bindChangeInputItems: function bindChangeInputItems() {
     $('.changeInput_items').on('click', function () {
@@ -1013,33 +1014,58 @@ var CustomInputHandlers = {
         });
       }
     });
-  }
+  },
+  bindChangeSelectItems: function bindChangeSelectItems() {
+    $('.changeSelect_items').on('click', function () {
+      var $this = $(this);
+      var currentText = $this.text().trim();
+      if ($this.find('select').length === 0) {
+        var selectOptions = "\n                    <select class=\"form-control form-select\">\n                    </select>";
+        var $select = $(selectOptions);
 
-  // unformatNumber: function(number) {
-  //     // Implement your unformat logic here
-  //     return number.replace(/,/g, '');
-  // },
-  // formatNumber: function(number) {
-  //     // Implement your format logic here
-  //     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  // },
-  // validatePhone: function(phone) {
-  //     // Implement your phone validation logic here
-  //     var phoneRegex = /^(\d{2,4}-\d{3,4}-\d{3,4}|\d{4}-\d{3,4}-\d{3,4})$/;
-  //     return phoneRegex.test(phone);
-  // },
-  // validateEmail: function(email) {
-  //     // Implement your email validation logic here
-  //     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //     return emailRegex.test(email);
-  // },
-  // convertEmail: function(email) {
-  //     // Convert email to lower case
-  //     return email.toLowerCase();
-  // },
-  // isValidLineID: function(lineID) {
-  //     // Implement your LINE ID validation logic here
-  //     var lineIDRegex = /^[a-zA-Z0-9-_]{4,20}$/;
-  //     return lineIDRegex.test(lineID);
-  // }
+        // var selectOption = [
+        //     { 'optigroup': '新德惠大樓', 'option': 'B1-01' },
+        //     { 'optigroup': '新德惠大樓', 'option': 'B1-05' },
+        //     { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
+        //     { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
+        //     { 'optigroup': '新德惠大樓', 'option': 'B3-01' },
+        //     { 'optigroup': '新德惠大樓', 'option': 'B3-10' },
+        //     { 'optigroup': '新德惠大樓', 'option': 'B2-05' },
+        //     { 'optigroup': '青創大樓', 'option': 'B4-01' },
+        // ];
+
+        var groupedOptions = {};
+        selectOption.forEach(function (item) {
+          if (!groupedOptions[item.optigroup]) {
+            groupedOptions[item.optigroup] = [];
+          }
+          groupedOptions[item.optigroup].push(item.option);
+        });
+        for (var group in groupedOptions) {
+          var optgroup = $('<optgroup>').attr('label', group);
+          groupedOptions[group].forEach(function (option) {
+            var optionElement = $('<option>').attr('value', option).text(option);
+            if (option === currentText) {
+              optionElement.attr('selected', 'selected');
+            }
+            optgroup.append(optionElement);
+          });
+          $select.append(optgroup);
+        }
+        $this.html($select);
+        $select.focus();
+        $select.on('change', function () {
+          var newText = $select.val();
+          $this.html(newText);
+        });
+        $(document).on('click.select', function (e) {
+          if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+            var newText = $select.val();
+            $this.html(newText ? newText : currentText);
+            $(document).off('click.select');
+          }
+        });
+      }
+    });
+  }
 };
