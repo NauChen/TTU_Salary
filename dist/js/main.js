@@ -1,1 +1,645 @@
-let commonSettingsTable={layout:{topStart:{search:{placeholder:"關鍵字搜尋"}},topEnd:null,bottomStart:"info",bottomEnd:{paging:{numbers:5}}},order:[[0,"desc"]],responsive:!0,language:{lengthMenu:"顯示 _MENU_ 筆",sProcessing:"處理中...",loadingRecords:"載入中...",sZeroRecords:"OOPS！没有匹配的结果",sInfo:"共有 _MAX_ 筆",sInfoEmpty:"共有 0 筆",sInfoFiltered:" ",sInfoPostFix:"",sSearch:'<i class="fa fa-search px-1" aria-hidden="true"></i>',sUrl:"",sEmptyTable:"尚未有資料紀錄存在",sLoadingRecords:"載入中...",sInfoThousands:",",oPaginate:{sFirst:'<i class="fa fa-step-backward" aria-hidden="true"></i>',sPrevious:'<i class="fa fa-caret-left" aria-hidden="true"></i>',sNext:'<i class="fa fa-caret-right" aria-hidden="true"></i>',sLast:'<i class="fa fa-step-forward" aria-hidden="true"></i>'},oAria:{sSortAscending:": 以升序排列此列",sSortDescending:": 以降序排列此列"}},headerCallback:function(t,a,e,s,n){$(t).find("th").addClass("text-center text-nowrap align-middle")}},commonSettingsHistory={layout:{topStart:function(){var t=document.createElement("div");return t.innerHTML='<h5 class="fw-bold"><i class="fa-solid fa-clock-rotate-left me-2"></i>歷程記錄</h5>',t},topEnd:{search:{placeholder:"關鍵字搜尋"}},bottomStart:"info",bottomEnd:{paging:{numbers:5}}},columns:[{data:"createDate",title:"紀錄日期"},{data:"squareMeters",title:"坪數"},{data:"rate",title:"服務費"},{data:"startDate",title:"培育開始"},{data:"endDate",title:"培育結束"},{data:"company",title:"培育企業"},{data:"responsiblePerson",title:"企業代表"},{data:"remark",title:"備註"},{data:"createBy",title:"操作者"}],order:[[0,"desc"]],columnDefs:[{targets:[0],responsivePriority:1},{targets:[1],responsivePriority:2},{targets:[2],responsivePriority:3},{targets:[5]},{orderable:!1,targets:[1,2,3,4,5,6,7,8]},{className:"text-center",targets:[0,3,4,6,8]}],responsive:!0,language:{lengthMenu:"顯示 _MENU_ 筆",sProcessing:"處理中...",loadingRecords:"載入中...",sZeroRecords:"OOPS！没有匹配的结果",sInfo:"共有 _MAX_ 筆",sInfoEmpty:"共有 0 筆",sInfoFiltered:" ",sInfoPostFix:"",sSearch:'<i class="fa fa-search px-1" aria-hidden="true"></i>',sUrl:"",sEmptyTable:"尚未有資料紀錄存在",sLoadingRecords:"載入中...",sInfoThousands:",",oPaginate:{sFirst:'<i class="fa fa-step-backward" aria-hidden="true"></i>',sPrevious:'<i class="fa fa-caret-left" aria-hidden="true"></i>',sNext:'<i class="fa fa-caret-right" aria-hidden="true"></i>',sLast:'<i class="fa fa-step-forward" aria-hidden="true"></i>'},oAria:{sSortAscending:": 以升序排列此列",sSortDescending:": 以降序排列此列"}},headerCallback:function(t,a,e,s,n){$(t).find("th").addClass("text-center text-nowrap align-middle")},createdRow:function(a,t,e){[0,3,4,6,8].forEach(function(t){$("td:eq("+t+")",a).css("font-size",".95em")}),[0,1,2,3,4].forEach(function(t){$("td:eq("+t+")",a).addClass("text-nowrap")}),[5,7].forEach(function(t){$("td:eq("+t+")",a).css("min-width","150px")}),$("td:eq(1)",a).css("min-width","80px")}},commonSettingsProvision={layout:{topEnd:{search:{placeholder:"關鍵字搜尋"}},bottomStart:"info",bottomEnd:{paging:{numbers:5}}},order:[[0,"desc"]],responsive:!0,language:{lengthMenu:"顯示 _MENU_ 筆",sProcessing:"處理中...",loadingRecords:"載入中...",sZeroRecords:"OOPS！没有匹配的结果",sInfo:"共有 _MAX_ 筆",sInfoEmpty:"共有 0 筆",sInfoFiltered:" ",sInfoPostFix:"",sSearch:'<i class="fa fa-search px-1" aria-hidden="true"></i>',sUrl:"",sEmptyTable:"尚未有資料紀錄存在",sLoadingRecords:"載入中...",sInfoThousands:",",oPaginate:{sFirst:'<i class="fa fa-step-backward" aria-hidden="true"></i>',sPrevious:'<i class="fa fa-caret-left" aria-hidden="true"></i>',sNext:'<i class="fa fa-caret-right" aria-hidden="true"></i>',sLast:'<i class="fa fa-step-forward" aria-hidden="true"></i>'},oAria:{sSortAscending:": 以升序排列此列",sSortDescending:": 以降序排列此列"}},headerCallback:function(t,a,e,s,n){$(t).find("th").addClass("text-center text-nowrap align-middle")}};function theseAddClass(e,t){t.forEach(function(t){var a=document.getElementById(t);a&&e.forEach(function(t){a.classList.add(t)})})}function theseRemoveClass(e,t){t.forEach(function(t){var a=document.getElementById(t);a&&e.forEach(function(t){a.classList.remove(t)})})}$(function(){$("#myContractList").DataTable({...commonSettingsTable,data:[{id:"1",contractType:"培育室",type:"青創",num:"101",endDate:"2024-08-31",paymentDate:"2023-07-15",status:"快到期，快來續約吧！"}],columns:[{data:"contractType",title:"合約類型"},{data:"type",title:"細項"},{data:"num",title:"號碼"},{data:"endDate",title:"到期日"},{data:"paymentDate",title:"付款日"},{data:"status",title:"狀態"},{data:"id",title:"續約",render:function(t){return'<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#parkingSpaceDetail_'+t+'"><i class="fa-solid fa-handshake-simple"></i></button>'},className:"text-center text-nowrap"}],columnDefs:[{targets:[1],responsivePriority:1},{targets:[2],responsivePriority:2},{targets:[4],responsivePriority:3},{searchable:!1,orderable:!1,targets:[6]},{className:"text-center",targets:[2,3,4,5,6]},{className:"text-nowrap",targets:[2,3,4,5]}],createdRow:function(a,t,e){$("td:eq(6)",a).css("max-width","70px"),[3,4].forEach(function(t){$("td:eq("+t+")",a).css("min-width","130px")})}}),$("#openRoom_Details").on("shown.bs.modal",function(){$("#roomHistoryList").DataTable().columns.adjust()}),$("#closeRoom_Details").on("shown.bs.modal",function(){$("#roomHistoryList2").DataTable().columns.adjust()})}),$(function(){$(window).on("scroll",function(){var t=$(".top_button");0<$(this).scrollTop()?t.addClass("scroll-animation").removeClass("d-none"):t.removeClass("scroll-animation").addClass("d-none")}),$("#btn_up").on("click",function(){$("html, body").animate({scrollTop:0},"smooth")})});
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+// const a = (x , y) =>  x * y;
+// console.log(a(20 , 10));
+// document.write('<script type="text/javascript" src="./js/sweetAlert.js"></script>');
+
+var commonSettingsTable = {
+  layout: {
+    topStart: {
+      search: {
+        placeholder: '關鍵字搜尋'
+      }
+    },
+    topEnd: null,
+    bottomStart: 'info',
+    bottomEnd: {
+      paging: {
+        numbers: 5
+      }
+    }
+  },
+  "order": [[0, "desc"]],
+  responsive: true,
+  language: {
+    lengthMenu: "顯示 _MENU_ 筆",
+    sProcessing: "處理中...",
+    loadingRecords: "載入中...",
+    sZeroRecords: "OOPS！没有匹配的结果",
+    sInfo: "共有 _MAX_ 筆",
+    sInfoEmpty: "共有 0 筆",
+    sInfoFiltered: " ",
+    sInfoPostFix: "",
+    sSearch: '<i class="fa fa-search px-1" aria-hidden="true"></i>',
+    sUrl: "",
+    sEmptyTable: "尚未有資料紀錄存在",
+    sLoadingRecords: "載入中...",
+    sInfoThousands: ",",
+    oPaginate: {
+      sFirst: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
+      sPrevious: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+      sNext: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+      sLast: '<i class="fa fa-step-forward" aria-hidden="true"></i>'
+    },
+    oAria: {
+      sSortAscending: ": 以升序排列此列",
+      sSortDescending: ": 以降序排列此列"
+    }
+  },
+  "headerCallback": function headerCallback(thead, data, start, end, display) {
+    $(thead).find('th').addClass('text-center text-nowrap align-middle');
+  }
+};
+var commonSettingsHistory = {
+  layout: {
+    topStart: function topStart() {
+      var toolbar = document.createElement('div');
+      toolbar.innerHTML = '<h5 class="fw-bold"><i class="fa-solid fa-clock-rotate-left me-2"></i>歷程記錄</h5>';
+      return toolbar;
+    },
+    topEnd: {
+      search: {
+        placeholder: '關鍵字搜尋'
+      }
+    },
+    bottomStart: 'info',
+    bottomEnd: {
+      paging: {
+        numbers: 5
+      }
+    }
+  },
+  "columns": [{
+    data: 'createDate',
+    title: "紀錄日期"
+  }, {
+    data: 'squareMeters',
+    title: "坪數"
+  }, {
+    data: 'rate',
+    title: "服務費"
+  }, {
+    data: 'startDate',
+    title: "培育開始"
+  }, {
+    data: 'endDate',
+    title: "培育結束"
+  }, {
+    data: 'company',
+    title: "培育企業"
+  }, {
+    data: 'responsiblePerson',
+    title: "企業代表"
+  }, {
+    data: 'remark',
+    title: "備註"
+  }, {
+    data: 'createBy',
+    title: "操作者"
+  }],
+  "order": [[0, "desc"]],
+  "columnDefs": [{
+    targets: [0],
+    responsivePriority: 1
+  }, {
+    targets: [1],
+    responsivePriority: 2
+  }, {
+    targets: [2],
+    responsivePriority: 3
+  }, {
+    targets: [5]
+  }, {
+    orderable: false,
+    targets: [1, 2, 3, 4, 5, 6, 7, 8]
+  }, {
+    className: "text-center",
+    targets: [0, 3, 4, 6, 8]
+  }],
+  "responsive": true,
+  language: {
+    lengthMenu: "顯示 _MENU_ 筆",
+    sProcessing: "處理中...",
+    loadingRecords: "載入中...",
+    sZeroRecords: "OOPS！没有匹配的结果",
+    sInfo: "共有 _MAX_ 筆",
+    sInfoEmpty: "共有 0 筆",
+    sInfoFiltered: " ",
+    sInfoPostFix: "",
+    sSearch: '<i class="fa fa-search px-1" aria-hidden="true"></i>',
+    sUrl: "",
+    sEmptyTable: "尚未有資料紀錄存在",
+    sLoadingRecords: "載入中...",
+    sInfoThousands: ",",
+    oPaginate: {
+      sFirst: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
+      sPrevious: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+      sNext: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+      sLast: '<i class="fa fa-step-forward" aria-hidden="true"></i>'
+    },
+    oAria: {
+      sSortAscending: ": 以升序排列此列",
+      sSortDescending: ": 以降序排列此列"
+    }
+  },
+  "headerCallback": function headerCallback(thead, data, start, end, display) {
+    $(thead).find('th').addClass('text-center text-nowrap align-middle');
+  },
+  createdRow: function createdRow(row, data, dataIndex) {
+    [0, 3, 4, 6, 8].forEach(function (colIdx) {
+      $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
+    });
+    [0, 1, 2, 3, 4].forEach(function (colIdx) {
+      $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
+    });
+    [5, 7].forEach(function (colIdx) {
+      $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
+    });
+    $('td:eq(1)', row).css('min-width', '80px');
+  }
+};
+var commonSettingsProvision = {
+  layout: {
+    topEnd: {
+      search: {
+        placeholder: '關鍵字搜尋'
+      }
+    },
+    bottomStart: 'info',
+    bottomEnd: {
+      paging: {
+        numbers: 5
+      }
+    }
+  },
+  "order": [[0, "desc"]],
+  "responsive": true,
+  language: {
+    lengthMenu: "顯示 _MENU_ 筆",
+    sProcessing: "處理中...",
+    loadingRecords: "載入中...",
+    sZeroRecords: "OOPS！没有匹配的结果",
+    sInfo: "共有 _MAX_ 筆",
+    sInfoEmpty: "共有 0 筆",
+    sInfoFiltered: " ",
+    sInfoPostFix: "",
+    sSearch: '<i class="fa fa-search px-1" aria-hidden="true"></i>',
+    sUrl: "",
+    sEmptyTable: "尚未有資料紀錄存在",
+    sLoadingRecords: "載入中...",
+    sInfoThousands: ",",
+    oPaginate: {
+      sFirst: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
+      sPrevious: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+      sNext: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+      sLast: '<i class="fa fa-step-forward" aria-hidden="true"></i>'
+    },
+    oAria: {
+      sSortAscending: ": 以升序排列此列",
+      sSortDescending: ": 以降序排列此列"
+    }
+  },
+  "headerCallback": function headerCallback(thead, data, start, end, display) {
+    $(thead).find('th').addClass('text-center text-nowrap align-middle');
+  }
+};
+$(function () {
+  var dataset_myContractList = [{
+    'id': '1',
+    'contractType': '培育室',
+    'type': '青創',
+    'num': '101',
+    'endDate': '2024-08-31',
+    'paymentDate': '2023-07-15',
+    'status': '快到期，快來續約吧！'
+  }];
+
+  // let commonSettingsTable = {
+  //     layout: {
+  //         topStart: {
+  //             search: {
+  //                 placeholder: '關鍵字搜尋'
+  //             }
+  //         },
+  //         topEnd: null,
+  //         bottomStart: 'info',
+  //         bottomEnd: {
+  //             paging: {
+  //                 numbers: 5
+  //             }
+  //         }
+  //     },
+  //     "order": [[0, "desc"]],
+  //     responsive: true,
+  //     language: {
+  //         lengthMenu: "顯示 _MENU_ 筆",
+  //         sProcessing: "處理中...",
+  //         loadingRecords: "載入中...",
+  //         sZeroRecords: "OOPS！没有匹配的结果",
+  //         sInfo: "共有 _MAX_ 筆",
+  //         sInfoEmpty: "共有 0 筆",
+  //         sInfoFiltered: " ",
+  //         sInfoPostFix: "",
+  //         sSearch: '<i class="fa fa-search px-1" aria-hidden="true"></i>',
+  //         sUrl: "",
+  //         sEmptyTable: "尚未有資料紀錄存在",
+  //         sLoadingRecords: "載入中...",
+  //         sInfoThousands: ",",
+  //         oPaginate: {
+  //             sFirst: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
+  //             sPrevious: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+  //             sNext: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+  //             sLast: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
+  //         },
+  //         oAria: {
+  //             sSortAscending: ": 以升序排列此列",
+  //             sSortDescending: ": 以降序排列此列",
+  //         },
+  //     },
+  //     "headerCallback": function (thead, data, start, end, display) {
+  //         $(thead).find('th').addClass('text-center text-nowrap align-middle');
+  //     },
+  // };
+  // let commonSettingsHistory = {
+  //     layout: {
+  //         topStart: function () {
+  //             let toolbar = document.createElement('div');
+  //             toolbar.innerHTML = '<h5 class="fw-bold"><i class="fa-solid fa-clock-rotate-left me-2"></i>歷程記錄</h5>';
+  //             return toolbar;
+  //         },
+  //         topEnd: {
+  //             search: {
+  //                 placeholder: '關鍵字搜尋'
+  //             }
+  //         },
+  //         bottomStart: 'info',
+  //         bottomEnd: {
+  //             paging: {
+  //                 numbers: 5
+  //             }
+  //         }
+  //     },
+  //     "columns": [
+  //         { data: 'createDate', title: "紀錄日期" },
+  //         { data: 'squareMeters', title: "坪數" },
+  //         { data: 'rate', title: "服務費", },
+  //         { data: 'startDate', title: "培育開始", },
+  //         { data: 'endDate', title: "培育結束", },
+  //         { data: 'company', title: "培育企業", },
+  //         { data: 'responsiblePerson', title: "企業代表", },
+  //         { data: 'remark', title: "備註", },
+  //         { data: 'createBy', title: "操作者", },
+  //     ],
+  //     "order": [[0, "desc"]],
+  //     "columnDefs": [
+  //         {
+  //             targets: [0],
+  //             responsivePriority: 1,
+  //         },
+  //         {
+  //             targets: [1],
+  //             responsivePriority: 2,
+  //         },
+  //         {
+  //             targets: [2],
+  //             responsivePriority: 3,
+  //         },
+  //         {
+  //             targets: [5],
+  //         },
+  //         { orderable: false, targets: [1, 2, 3, 4, 5, 6, 7, 8] },
+  //         { className: "text-center", targets: [0, 3, 4, 6, 8] },
+  //     ],
+  //     "responsive": true,
+  //     language: {
+  //         lengthMenu: "顯示 _MENU_ 筆",
+  //         sProcessing: "處理中...",
+  //         loadingRecords: "載入中...",
+  //         sZeroRecords: "OOPS！没有匹配的结果",
+  //         sInfo: "共有 _MAX_ 筆",
+  //         sInfoEmpty: "共有 0 筆",
+  //         sInfoFiltered: " ",
+  //         sInfoPostFix: "",
+  //         sSearch: '<i class="fa fa-search px-1" aria-hidden="true"></i>',
+  //         sUrl: "",
+  //         sEmptyTable: "尚未有資料紀錄存在",
+  //         sLoadingRecords: "載入中...",
+  //         sInfoThousands: ",",
+  //         oPaginate: {
+  //             sFirst: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
+  //             sPrevious: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+  //             sNext: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+  //             sLast: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
+  //         },
+  //         oAria: {
+  //             sSortAscending: ": 以升序排列此列",
+  //             sSortDescending: ": 以降序排列此列",
+  //         },
+  //     },
+  //     "headerCallback": function (thead, data, start, end, display) {
+  //         $(thead).find('th').addClass('text-center text-nowrap align-middle');
+  //     },
+  //     createdRow: function (row, data, dataIndex) {
+  //         [0, 3, 4, 6, 8].forEach(function (colIdx) {
+  //             $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
+  //         });
+  //         [0, 1, 2, 3, 4].forEach(function (colIdx) {
+  //             $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
+  //         });
+  //         [5, 7].forEach(function (colIdx) {
+  //             $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
+  //         });
+  //         $('td:eq(1)', row).css('min-width', '80px');
+  //     },
+  // };
+  // let commonSettingsProvision = {
+  //     layout: {
+  //         topEnd: {
+  //             search: {
+  //                 placeholder: '關鍵字搜尋'
+  //             }
+  //         },
+  //         bottomStart: 'info',
+  //         bottomEnd: {
+  //             paging: {
+  //                 numbers: 5
+  //             }
+  //         }
+  //     },
+  //     "order": [[0, "desc"]],
+  //     "responsive": true,
+  //     language: {
+  //         lengthMenu: "顯示 _MENU_ 筆",
+  //         sProcessing: "處理中...",
+  //         loadingRecords: "載入中...",
+  //         sZeroRecords: "OOPS！没有匹配的结果",
+  //         sInfo: "共有 _MAX_ 筆",
+  //         sInfoEmpty: "共有 0 筆",
+  //         sInfoFiltered: " ",
+  //         sInfoPostFix: "",
+  //         sSearch: '<i class="fa fa-search px-1" aria-hidden="true"></i>',
+  //         sUrl: "",
+  //         sEmptyTable: "尚未有資料紀錄存在",
+  //         sLoadingRecords: "載入中...",
+  //         sInfoThousands: ",",
+  //         oPaginate: {
+  //             sFirst: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
+  //             sPrevious: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+  //             sNext: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+  //             sLast: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
+  //         },
+  //         oAria: {
+  //             sSortAscending: ": 以升序排列此列",
+  //             sSortDescending: ": 以降序排列此列",
+  //         },
+  //     },
+  //     "headerCallback": function (thead, data, start, end, display) {
+  //         $(thead).find('th').addClass('text-center text-nowrap align-middle');
+  //     },
+
+  // };
+  // let commonSettingCheckboxProvision = {
+  //     layout: {
+  //         topEnd: {
+  //             search: {
+  //                 placeholder: '關鍵字搜尋'
+  //             }
+  //         },
+  //         bottomStart: 'info',
+  //         bottomEnd: {
+  //             paging: {
+  //                 numbers: 5
+  //             }
+  //         }
+  //     },
+  //     "order": [[1, "desc"]],
+  //     "responsive": true,
+  //     responsive: {
+  //         details: {
+  //             type: 'column',
+  //             target: 1
+  //         }
+  //     },
+  //     language: {
+  //         lengthMenu: "顯示 _MENU_ 筆",
+  //         sProcessing: "處理中...",
+  //         loadingRecords: "載入中...",
+  //         sZeroRecords: "OOPS！没有匹配的结果",
+  //         sInfo: "共有 _MAX_ 筆",
+  //         sInfoEmpty: "共有 0 筆",
+  //         sInfoFiltered: " ",
+  //         sInfoPostFix: "",
+  //         sSearch: '<i class="fa fa-search px-1" aria-hidden="true"></i>',
+  //         sUrl: "",
+  //         sEmptyTable: "尚未有資料紀錄存在",
+  //         sLoadingRecords: "載入中...",
+  //         sInfoThousands: ",",
+  //         oPaginate: {
+  //             sFirst: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
+  //             sPrevious: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+  //             sNext: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+  //             sLast: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
+  //         },
+  //         oAria: {
+  //             sSortAscending: ": 以升序排列此列",
+  //             sSortDescending: ": 以降序排列此列",
+  //         },
+  //     },
+  //     "headerCallback": function (thead, data, start, end, display) {
+  //         $(thead).find('th').addClass('text-center text-nowrap align-middle');
+  //     },
+  //     // createdRow: function (row, data, dataIndex) {
+  //     //     $('td:eq(1)', row).addClass('dtr-control');
+  //     // },
+  // }
+
+  // $('#jobList').DataTable({
+  //     ...commonSettingsTable,
+  //     "data": dataset_jobList,
+  //     "columns": [
+  //         { data: 'createDate', title: "刊登日期", },
+  //         { data: 'company', title: "公司名稱", },
+  //         { data: 'jobTitle', title: "職務名稱", },
+  //         { data: 'jobEmployment', title: "工作性質", },
+  //         { data: 'jobTime', title: "工作時間", },
+  //         { data: 'jobRemoveDate', title: "截止日期", },
+  //         {
+  //             data: 'id', title: "詳情",
+  //             render: function (data) {
+  //                 return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop_' + data + '"><i class="fa-solid fa-info px-1"></i></button>'
+  //             }
+  //         },
+  //     ],
+  //     "columnDefs": [
+  //         {
+  //             targets: [0],
+  //             responsivePriority: 3,
+  //         },
+  //         {
+  //             targets: [3],
+  //             responsivePriority: 1,
+  //         },
+  //         {
+  //             targets: [4],
+  //             responsivePriority: 2,
+  //         },
+  //         { searchable: false, orderable: false, targets: [6] },
+  //         { className: "text-nowrap ", targets: [0, 3, 4, 5] },
+  //         { className: "text-center", targets: [0, 3, 4, 5, 6] },
+
+  //     ],
+  //     createdRow: function (row, data, dataIndex) {
+  //         $('td:eq(6)', row).css('max-width', '70px');
+  //         $('td:eq(0)', row).css('min-width', '130px');
+  //         [4, 5].forEach(function (colIdx) {
+  //             $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
+  //         });
+  //     }
+  // });
+
+  $('#myContractList').DataTable(_objectSpread(_objectSpread({}, commonSettingsTable), {}, {
+    "data": dataset_myContractList,
+    "columns": [
+    // { data: 'createDate', title: "申請日期" },
+    // { data: 'company', title: "承租人企業", },
+    {
+      data: 'contractType',
+      title: "合約類型"
+    }, {
+      data: 'type',
+      title: "細項"
+    }, {
+      data: 'num',
+      title: "號碼"
+    }, {
+      data: 'endDate',
+      title: "到期日"
+    }, {
+      data: 'paymentDate',
+      title: "付款日"
+    }, {
+      data: 'status',
+      title: "狀態"
+    }, {
+      data: 'id',
+      title: "續約",
+      render: function render(data) {
+        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#parkingSpaceDetail_' + data + '"><i class="fa-solid fa-handshake-simple"></i></button>';
+      },
+      className: 'text-center text-nowrap'
+    }],
+    "columnDefs": [{
+      targets: [1],
+      responsivePriority: 1
+    }, {
+      targets: [2],
+      responsivePriority: 2
+    }, {
+      targets: [4],
+      responsivePriority: 3
+    }, {
+      searchable: false,
+      orderable: false,
+      targets: [6]
+    }, {
+      className: "text-center",
+      targets: [2, 3, 4, 5, 6]
+    }, {
+      className: "text-nowrap",
+      targets: [2, 3, 4, 5]
+    }],
+    createdRow: function createdRow(row, data, dataIndex) {
+      // $('td:eq(6)', row).css('min-width', '70px');
+      $('td:eq(6)', row).css('max-width', '70px');
+      // $('td:eq(3)', row).addClass('pe-5');
+      // [5, 6].forEach(function (colIdx) {
+      //     $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
+      // });
+      [3, 4].forEach(function (colIdx) {
+        $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
+      });
+    }
+  }));
+  $('#openRoom_Details').on('shown.bs.modal', function () {
+    $('#roomHistoryList').DataTable().columns.adjust();
+  });
+  $('#closeRoom_Details').on('shown.bs.modal', function () {
+    $('#roomHistoryList2').DataTable().columns.adjust();
+  });
+});
+
+// 指定id群，加指定class
+function theseAddClass(classNames, ids) {
+  ids.forEach(function (id) {
+    var element = document.getElementById(id);
+    if (element) {
+      classNames.forEach(function (className) {
+        element.classList.add(className);
+      });
+    }
+  });
+}
+
+//指定id群，移除指定class
+function theseRemoveClass(classNames, ids) {
+  ids.forEach(function (id) {
+    var element = document.getElementById(id);
+    if (element) {
+      classNames.forEach(function (className) {
+        element.classList.remove(className);
+      });
+    }
+  });
+}
+
+// ※※※※※※===TOP 按鈕===※※※※※※
+// window.addEventListener("scroll", function () {
+//     let btnUp = document.querySelector(".top_button");
+//     if (window.scrollY > 0) {
+//         // 當畫面不在網頁最頂端時，加上 scroll-animation 類別來套用透明度變化的動畫
+//         btnUp.classList.add("scroll-animation");
+//         btnUp.classList.remove("d-none");
+//     } else {
+//         // 畫面在網頁最頂端時，移除 scroll-animation 類別
+//         btnUp.classList.remove("scroll-animation");
+//         btnUp.classList.add("d-none");
+//     }
+// });
+// document.addEventListener("DOMContentLoaded", function () {
+//     let btn_up_el = document.getElementById("btn_up");
+//     if (btn_up_el) {
+//         btn_up_el.addEventListener("click", function () {
+//             let html_el = document.getElementsByTagName("html")[0];
+//             html_el.scrollTo({
+//                 top: 0,
+//                 behavior: "smooth"
+//             });
+//         });
+//     }
+// });
+$(function () {
+  // 監聽滾動事件
+  $(window).on("scroll", function () {
+    var btnUp = $(".top_button");
+    if ($(this).scrollTop() > 0) {
+      // 當畫面不在網頁最頂端時，加上 scroll-animation 類別來套用透明度變化的動畫
+      btnUp.addClass("scroll-animation").removeClass("d-none");
+    } else {
+      // 畫面在網頁最頂端時，移除 scroll-animation 類別
+      btnUp.removeClass("scroll-animation").addClass("d-none");
+    }
+  });
+
+  // 監聽 DOMContentLoaded 事件
+  $("#btn_up").on("click", function () {
+    $("html, body").animate({
+      scrollTop: 0
+    }, "smooth");
+  });
+});

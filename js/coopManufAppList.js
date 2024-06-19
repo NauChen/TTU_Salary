@@ -502,7 +502,8 @@ $(function () {
             theseRemoveClass(["changeDate_items"], ['creationDate']);
             theseRemoveClass(["changeMoney_items"], ['capitalAmount', 'employeesNum']);
             theseRemoveClass(["changePhone_items"], ['phoneNum']);
-            theseRemoveClass(["changeEmail_items"], ['companyEmail']);
+            theseRemoveClass(["changeEmail_items"], ['companyEmail', 'lineId']);
+            theseAddClass(["readOnly"], ['companyName', 'responsiblePerson', 'referrer', 'contactPerson', 'jobTitle', 'companyAdd', 'locationOfCompany', 'companyDescription', 'helpItems', 'uniformNum', 'ext', 'creationDate', 'capitalAmount', 'employeesNum', 'phoneNum', 'companyEmail', 'lineId']);
             $('#updateBtn').hide();
             $('#supplementaryFilesBox').hide();
             $('#status').hide();
@@ -515,7 +516,8 @@ $(function () {
             theseAddClass(["changeDate_items"], ['creationDate']);
             theseAddClass(["changeMoney_items"], ['capitalAmount', 'employeesNum']);
             theseAddClass(["changePhone_items"], ['phoneNum']);
-            theseAddClass(["changeEmail_items"], ['companyEmail']);
+            theseAddClass(["changeEmail_items"], ['companyEmail', 'lineId']);
+            theseRemoveClass(["readOnly"], ['companyName', 'responsiblePerson', 'referrer', 'contactPerson', 'jobTitle', 'companyAdd', 'locationOfCompany', 'companyDescription', 'helpItems', 'uniformNum', 'ext', 'creationDate', 'capitalAmount', 'employeesNum', 'phoneNum', 'companyEmail', 'lineId']);
             CustomInputHandlers.init();
             $('#updateBtn').show();
             $('#supplementaryFilesBox').show();
@@ -569,7 +571,7 @@ $(function () {
             //     }
             // });
         });
-        
+
     });
 
 });

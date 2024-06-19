@@ -3,13 +3,12 @@
 
 <head>
     @@include('layout/meta.html', {
-    "title": "大同大學-校內育成媒合平台",
+    "title": "大同大學-校內育成媒合平台-審核車位申請",
     })
 </head>
 
 <body>
     <main class="main">
-        <!-- 側邊攔 -->
         @@include('layout/header.html')
         <div class="content">
             <div class="container">
@@ -219,7 +218,7 @@
                                                 <option value="不通過">不通過</option>
                                                 <option value="通過">通過</option>
                                             </select>
-                                            <div id="statusText" class="p-1"></div>
+                                            <div id="statusText" class="p-1 readOnly"></div>
                                         </div>
                                     </div>
 

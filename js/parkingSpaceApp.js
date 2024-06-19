@@ -337,12 +337,13 @@ $(function () {
 
         if (parkingSpaceData.status === "通過" || parkingSpaceData.status === "不通過") {
             theseRemoveClass(["changeInput_items"], ['name', 'idNumber', 'jobTitle', 'parkingSpaceNum', 'adminNote']);
-            theseRemoveClass(["changeNumber_items"], ['uniformNum', 'ext']);
+            theseRemoveClass(["changeNumber_items"], ['ext']);
             theseRemoveClass(["changeDate_items"], ['endDate', 'paymentDate']);
             theseRemoveClass(["changeMoney_items"], ['rate']);
             theseRemoveClass(["changePhone_items"], ['phoneNum']);
             theseRemoveClass(["changeEmail_items"], ['email']);
             theseRemoveClass(["changeRadio_items"], ['carType']);
+            theseAddClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'parkingSpaceNum', 'adminNote', 'ext', 'endDate', 'paymentDate', 'rate', 'phoneNum', 'email', 'carType']);
             $('#updateBtn').hide();
             $('#supplementaryFilesBox').hide();
             $('#status').hide();
@@ -350,12 +351,13 @@ $(function () {
 
         } else {
             theseAddClass(["changeInput_items"], ['name', 'idNumber', 'jobTitle', 'parkingSpaceNum', 'adminNote']);
-            theseAddClass(["changeNumber_items"], ['uniformNum', 'ext']);
+            theseAddClass(["changeNumber_items"], ['ext']);
             theseAddClass(["changeDate_items"], ['endDate', 'paymentDate']);
             theseAddClass(["changeMoney_items"], ['rate']);
             theseAddClass(["changePhone_items"], ['phoneNum']);
             theseAddClass(["changeEmail_items"], ['email']);
             theseAddClass(["changeRadio_items"], ['carType']);
+            theseRemoveClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'parkingSpaceNum', 'adminNote', 'ext', 'endDate', 'paymentDate', 'rate', 'phoneNum', 'email', 'carType']);
             CustomInputHandlers.init();
             $('#updateBtn').show();
             $('#supplementaryFilesBox').show();
@@ -386,7 +388,7 @@ $(function () {
             updatedData.adminNote = $('#adminNote').text();
             updatedData.status = $('#status').val();
 
-            // console.log(updatedData);
+            console.log(updatedData);
 
 
 
