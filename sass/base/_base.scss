@@ -128,7 +128,9 @@ textarea {
     margin: 2rem 0;
 }
 
-
+.upload-label {
+    cursor: pointer;
+}
 
 
 
@@ -162,12 +164,14 @@ textarea {
     align-content: center;
 }
 
-.cursor_not-allowed{
+.cursor_not-allowed {
     cursor: not-allowed !important;
 }
-.cursor_default{
+
+.cursor_default {
     cursor: default !important;
 }
+
 // .text_justify {
 //     text-align: justify;
 //default

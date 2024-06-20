@@ -18,8 +18,6 @@ var dataset_renewContractApp = [
         'endDate': '2024-06-28',
         'paymentDate': '2024-07-07',
         'status': '待審核'
-
-
     },
     {
         'id': '2',

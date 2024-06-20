@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/meta.html', {
+    "title": "大同大學-校內育成媒合平台-查詢申請進度",
+    })
+</head>
+
+<body>
+    <main class="main">
+        @@include('layout/header.html')
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-users-line"></i>&ensp;進度查詢</li>
+                    </ol>
+                </div>
+                <!-- 已申請列表 -->
+                <div class="tabs-box my-2r">
+                    <div class="row mb-4 px-3">
+                        <h3 class="section-header col-auto mb-0 lh-base"><i class="fa-solid fa-quote-left"></i>已申請列表<i
+                                class="fa-solid fa-quote-right"></i></h3>
+                        <button class="btn btn-outline-danger col-auto goto_somewhere ms-5" id="deleteTheseApplication"><i
+                                class="fa-regular fa-square-check"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-regular fa-trash-can"></i><span
+                                class="tooltiptext tooltip-right">取消申請</span></button>
+                    </div>
+                    <div class="tabs section-border-radius section-padding">
+                        <table id="progressCheckList" class="table table-hover table-bordered responsive align-middle"
+                            style="width:100%">
+                        </table>
+
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="remittanceModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="remittanceModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <form class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="remittanceModalLabel">上傳匯款憑證</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <!-- 公司名稱、統編、培育室位置、申請日期 (都不可改) -->
+                                    <div class="row mb-1">
+                                        <div class="col-12 text-nowrap lightBoxLabel p-3 align_center">
+                                            匯款日期
+                                        </div>
+                                        <div class="col lightBoxItems p-3" id="companyName">
+                                            <input type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div
+                                            class="col-12 text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            匯款憑證檔案
+                                        </div>
+                                        <div class="col lightBoxItems p-3 align_center" id="ECPhone">
+                                            <div class="row align-items-center my-1">
+                                                <label for="parkingSpaceForm"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0 align_center">請點此上傳pdf檔<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col-12">
+                                                    <input type="file" class="form-control d-none" id="parkingSpaceForm"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('parkingSpace_fileInfo1').innerHTML = document.getElementById('parkingSpaceForm').value;setFormHeight();}">
+                                                    <div id="parkingSpace_fileInfo1" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                                <button type="button" class="btn btn-outline-secondary" id="updateBtn">確認上傳</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                @@include('layout/footer.html')
+
+            </div>
+        </div>
+    </main>
+    @@include('layout/metaJS.html')
+    <script src="./js/formComm.js"></script>
+    <script src="./js/progressCheck.js"></script>
+</body>
+
+</html>

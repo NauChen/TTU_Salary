@@ -35,7 +35,7 @@ var dataset_idCardApp = [
         'email': 'wangdameng@example.com',
         'idCardPhoto': '20240702ID2',
         'emergContact': '陳美麗',
-        'ECPhone': '0918765432',
+        'ECPhone': '0918-765432',
         'readLibrary': '不申請',
         'adminNote': '需補充文件'
     },
@@ -55,7 +55,7 @@ var dataset_idCardApp = [
         'email': 'lizhiwei@example.com',
         'idCardPhoto': '20240703ID3',
         'emergContact': '張建國',
-        'ECPhone': '0912341234',
+        'ECPhone': '0912-341234',
         'readLibrary': '申請',
         'adminNote': '申請順利通過'
     },
@@ -75,7 +75,7 @@ var dataset_idCardApp = [
         'email': 'liumin@example.com',
         'idCardPhoto': '20240704ID4',
         'emergContact': '林月嬌',
-        'ECPhone': '0915678901',
+        'ECPhone': '0915-678901',
         'readLibrary': '不申請',
         'adminNote': '需補交簽名文件'
     },
@@ -95,7 +95,7 @@ var dataset_idCardApp = [
         'email': 'zhouhai@example.com',
         'idCardPhoto': '20240705ID5',
         'emergContact': '趙雪芬',
-        'ECPhone': '0916789012',
+        'ECPhone': '0916-789012',
         'readLibrary': '申請',
         'adminNote': '審核通過，發送通知'
     }

@@ -98,6 +98,16 @@
                 padding: 0;
             }
         }
+// 匯款憑證
+        &.remittance_voucher {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+
+            i {
+                line-height: 1.3;
+            }
+        }
     }
 }
 
