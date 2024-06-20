@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/meta.html', {
+    "title": "大同大學-校內育成媒合平台-已登職缺",
+    })
+</head>
+
+<body>
+    <main class="main">
+        @@include('layout/header.html')
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-stamp"></i>&ensp;資料審核</li>
+                        <li class="breadcrumb-item active"><i class="fa-regular fa-address-card"></i>&ensp;識別證審核</li>
+                    </ol>
+                </div>
+
+                <!-- 識別證申請列表 -->
+                <div class="tabs-box my-2r">
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>識別證申請列表<i
+                            class="fa-solid fa-quote-right"></i></h3>
+                    <div class="tabs section-border-radius section-padding">
+                        <table id="idCardApplicationList"
+                            class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                        </table>
+
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="idCardDetailModel" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="idCardDetailModelLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+                        <form class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="idCardDetailModelLabel">識別證申請詳情</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <!-- 公司名稱、統編、培育室位置、申請日期 (都不可改) -->
+                                    <div class="row mb-1 multiple">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            申請人企業
+                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="companyName"></div>
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                                            統一編號
+                                        </div>
+                                        <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="uniformNum"></div>
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3">
+                                            培育室位置
+                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="place"></div>
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                                            申請日期
+                                        </div>
+                                        <div class="col col-lg-auto lightBoxItems p-3 readOnly" id="createDate"></div>
+                                    </div>
+
+                                    <!-- 姓名、職稱、電子信箱 (可改) -->
+                                    <div class="row mb-1 multiple">
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center align_center">
+                                            申請人姓名
+                                        </div>
+                                        <div class="col col-lg-3 lightBoxItems p-3 align_center" id="name"></div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            &emsp;職務名稱
+                                        </div>
+                                        <div class="col col-lg-2 lightBoxItems p-3 align_center" id="jobTitle"></div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
+                                            &ensp;電子信箱
+                                        </div>
+                                        <div class="col lightBoxItems p-3 align_center" id="email"></div>
+                                    </div>
+                                    <!-- 電話、緊急聯絡人、緊急聯絡電話 -->
+                                    <div class="row mb-1">
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3  align_center align_center">
+                                            電話或手機
+                                        </div>
+                                        <div class="col col-lg-3 lightBoxItems p-3 align_center" id="phoneNum"></div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
+                                            緊急聯絡人
+                                        </div>
+                                        <div class="col col-lg-2 lightBoxItems p-3 align_center" id="emergContact"></div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            緊急聯絡電話
+                                        </div>
+                                        <div class="col lightBoxItems p-3 align_center" id="ECPhone"></div>
+                                    </div>
+                                    <!-- 進駐開始日、進駐結束日、付款日期 (可改)-->
+                                    <div class="row mb-1 multiple">
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
+                                            進駐開始日
+                                        </div>
+                                        <div class="col col-lg-3 lightBoxItems p-3 align_center" id="startDate"></div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
+                                            進駐結束日
+                                        </div>
+                                        <div class="col col-lg-2 lightBoxItems p-3 align_center" id="endDate"></div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
+                                            &ensp;付款日期
+                                        </div>
+                                        <div class="col lightBoxItems p-3 align_center" id="paymentDate"></div>
+
+                                    </div>
+
+                                    <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
+                                    <div class="row mb-1">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                                            圖書館閱覽
+                                        </div>
+                                        <div class="col col-lg-3 lightBoxItems p-3 align_center" id="readLibrary"></div>
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3">
+                                            &emsp;檢附文件
+                                        </div>
+                                        <div class="col lightBoxItems p-3">
+                                            <a class="d-inline me-3 text-nowrap" href="#">申請書&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
+                                            <a class="d-inline me-3 text-nowrap" href="#">證件照&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
+                                            <a class="d-inline me-3 text-nowrap" href="#">繳費證明&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
+                                        </div>
+
+                                    </div>
+                                    <!-- 補件上傳 若狀態為通過，不顯示此區塊-->
+                                    <div class="row mb-1" id="supplementaryFilesBox">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            &emsp;補件上傳
+                                        </div>
+                                        <div class="col lightBoxItems p-3">
+                                            <div class="row align-items-center my-1">
+                                                <label for="parkingSpaceForm"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">申請書<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="parkingSpaceForm"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('parkingSpace_fileInfo1').innerHTML = document.getElementById('parkingSpaceForm').value;setFormHeight();}">
+                                                    <div id="parkingSpace_fileInfo1" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center my-1">
+                                                <label for="memoUpload"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">證件照<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="memoUpload"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo6').innerHTML = document.getElementById('memoUpload').value;setFormHeight();}">
+                                                    <div id="fileInfo6" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center my-1">
+                                                <label for="consentDoc"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">繳費證明<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="consentDoc"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo3').innerHTML = document.getElementById('consentDoc').value;setFormHeight();}">
+                                                    <div id="fileInfo3" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- 審核 -->
+                                    <div class="row mb-1 multiple">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                                            &emsp;管理註記
+                                        </div>
+                                        <div class="col lightBoxItems p-3 align_center" id="adminNote"></div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            審核進度
+                                        </div>
+                                        <div class="col col-lg-2 lightBoxItems p-2 align_center">
+                                            <select class="form-select" id="status">
+                                                <option value="待審核">待審核</option>
+                                                <option value="待補件">待補件</option>
+                                                <option value="不通過">不通過</option>
+                                                <option value="通過">通過</option>
+                                            </select>
+                                            <div id="statusText" class="p-1 readOnly"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                                <button type="button" class="btn btn-outline-secondary" id="updateBtn">確認修改</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                @@include('layout/footer.html')
+
+            </div>
+        </div>
+    </main>
+    @@include('layout/metaJS.html')
+
+    <script src="./js/formComm.js"></script>
+    <script src="./js/idCardApp.js"></script>
+</body>
+
+</html>
