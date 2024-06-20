@@ -58,7 +58,7 @@ var commonSettingsTable = {
   }
 };
 
-// DataTable設定 - 搜尋右上，無自選顯示個數(預設10筆)，左上標題"歷程記錄"
+// DataTable設定 - 搜尋右上，無自選顯示個數(預設10筆)，左上標題"歷程記錄"，所有欄位已定好
 var commonSettingsHistory = {
   layout: {
     topStart: function topStart() {
@@ -81,31 +81,44 @@ var commonSettingsHistory = {
   "columns": [{
     data: 'createDate',
     title: "紀錄日期"
-  }, {
+  },
+  //0
+  {
     data: 'squareMeters',
     title: "坪數"
-  }, {
+  },
+  //1
+  {
     data: 'rate',
     title: "服務費"
-  }, {
+  },
+  //2
+  {
     data: 'startDate',
     title: "培育開始"
-  }, {
+  },
+  //3
+  {
     data: 'endDate',
     title: "培育結束"
-  }, {
+  },
+  //4
+  {
     data: 'company',
     title: "培育企業"
-  }, {
-    data: 'responsiblePerson',
-    title: "企業代表"
-  }, {
+  },
+  //5
+  {
     data: 'remark',
-    title: "備註"
-  }, {
+    title: "操作"
+  },
+  //6
+  {
     data: 'createBy',
     title: "操作者"
-  }],
+  } //7
+  // { data: 'responsiblePerson', title: "企業代表", },
+  ],
   "order": [[0, "desc"]],
   "columnDefs": [{
     targets: [0],
@@ -117,13 +130,11 @@ var commonSettingsHistory = {
     targets: [2],
     responsivePriority: 3
   }, {
-    targets: [5]
-  }, {
     orderable: false,
-    targets: [1, 2, 3, 4, 5, 6, 7, 8]
+    targets: [1, 2, 3, 4, 6, 7]
   }, {
     className: "text-center",
-    targets: [0, 3, 4, 6, 8]
+    targets: [0, 3, 4, 7]
   }],
   "responsive": true,
   language: {
@@ -155,16 +166,19 @@ var commonSettingsHistory = {
     $(thead).find('th').addClass('text-center text-nowrap align-middle');
   },
   createdRow: function createdRow(row, data, dataIndex) {
-    [0, 3, 4, 6, 8].forEach(function (colIdx) {
+    [0, 1, 2, 3, 4, 5, 6, 7].forEach(function (colIdx) {
       $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
     });
-    [0, 1, 2, 3, 4].forEach(function (colIdx) {
+    [0, 1, 2, 4, 5].forEach(function (colIdx) {
       $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
     });
-    [5, 7].forEach(function (colIdx) {
+    [5, 6].forEach(function (colIdx) {
       $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
     });
-    $('td:eq(1)', row).css('min-width', '80px');
+    [0, 3, 4].forEach(function (colIdx) {
+      $('td:eq(' + colIdx + ')', row).css('min-width', '100px');
+    });
+    // $('td:eq(1)', row).css('min-width', '80px');
   }
 };
 // DataTable設定 - 搜尋右上，無自選顯示個數(預設10筆)，左上可再另行設定提示文字
@@ -223,290 +237,6 @@ $(function () {
     'paymentDate': '2023-07-15',
     'status': '快到期，快來續約吧！'
   }];
-
-  // let commonSettingsTable = {
-  //     layout: {
-  //         topStart: {
-  //             search: {
-  //                 placeholder: '關鍵字搜尋'
-  //             }
-  //         },
-  //         topEnd: null,
-  //         bottomStart: 'info',
-  //         bottomEnd: {
-  //             paging: {
-  //                 numbers: 5
-  //             }
-  //         }
-  //     },
-  //     "order": [[0, "desc"]],
-  //     responsive: true,
-  //     language: {
-  //         lengthMenu: "顯示 _MENU_ 筆",
-  //         sProcessing: "處理中...",
-  //         loadingRecords: "載入中...",
-  //         sZeroRecords: "OOPS！没有匹配的结果",
-  //         sInfo: "共有 _MAX_ 筆",
-  //         sInfoEmpty: "共有 0 筆",
-  //         sInfoFiltered: " ",
-  //         sInfoPostFix: "",
-  //         sSearch: '<i class="fa fa-search px-1" aria-hidden="true"></i>',
-  //         sUrl: "",
-  //         sEmptyTable: "尚未有資料紀錄存在",
-  //         sLoadingRecords: "載入中...",
-  //         sInfoThousands: ",",
-  //         oPaginate: {
-  //             sFirst: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
-  //             sPrevious: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
-  //             sNext: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
-  //             sLast: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
-  //         },
-  //         oAria: {
-  //             sSortAscending: ": 以升序排列此列",
-  //             sSortDescending: ": 以降序排列此列",
-  //         },
-  //     },
-  //     "headerCallback": function (thead, data, start, end, display) {
-  //         $(thead).find('th').addClass('text-center text-nowrap align-middle');
-  //     },
-  // };
-  // let commonSettingsHistory = {
-  //     layout: {
-  //         topStart: function () {
-  //             let toolbar = document.createElement('div');
-  //             toolbar.innerHTML = '<h5 class="fw-bold"><i class="fa-solid fa-clock-rotate-left me-2"></i>歷程記錄</h5>';
-  //             return toolbar;
-  //         },
-  //         topEnd: {
-  //             search: {
-  //                 placeholder: '關鍵字搜尋'
-  //             }
-  //         },
-  //         bottomStart: 'info',
-  //         bottomEnd: {
-  //             paging: {
-  //                 numbers: 5
-  //             }
-  //         }
-  //     },
-  //     "columns": [
-  //         { data: 'createDate', title: "紀錄日期" },
-  //         { data: 'squareMeters', title: "坪數" },
-  //         { data: 'rate', title: "服務費", },
-  //         { data: 'startDate', title: "培育開始", },
-  //         { data: 'endDate', title: "培育結束", },
-  //         { data: 'company', title: "培育企業", },
-  //         { data: 'responsiblePerson', title: "企業代表", },
-  //         { data: 'remark', title: "備註", },
-  //         { data: 'createBy', title: "操作者", },
-  //     ],
-  //     "order": [[0, "desc"]],
-  //     "columnDefs": [
-  //         {
-  //             targets: [0],
-  //             responsivePriority: 1,
-  //         },
-  //         {
-  //             targets: [1],
-  //             responsivePriority: 2,
-  //         },
-  //         {
-  //             targets: [2],
-  //             responsivePriority: 3,
-  //         },
-  //         {
-  //             targets: [5],
-  //         },
-  //         { orderable: false, targets: [1, 2, 3, 4, 5, 6, 7, 8] },
-  //         { className: "text-center", targets: [0, 3, 4, 6, 8] },
-  //     ],
-  //     "responsive": true,
-  //     language: {
-  //         lengthMenu: "顯示 _MENU_ 筆",
-  //         sProcessing: "處理中...",
-  //         loadingRecords: "載入中...",
-  //         sZeroRecords: "OOPS！没有匹配的结果",
-  //         sInfo: "共有 _MAX_ 筆",
-  //         sInfoEmpty: "共有 0 筆",
-  //         sInfoFiltered: " ",
-  //         sInfoPostFix: "",
-  //         sSearch: '<i class="fa fa-search px-1" aria-hidden="true"></i>',
-  //         sUrl: "",
-  //         sEmptyTable: "尚未有資料紀錄存在",
-  //         sLoadingRecords: "載入中...",
-  //         sInfoThousands: ",",
-  //         oPaginate: {
-  //             sFirst: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
-  //             sPrevious: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
-  //             sNext: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
-  //             sLast: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
-  //         },
-  //         oAria: {
-  //             sSortAscending: ": 以升序排列此列",
-  //             sSortDescending: ": 以降序排列此列",
-  //         },
-  //     },
-  //     "headerCallback": function (thead, data, start, end, display) {
-  //         $(thead).find('th').addClass('text-center text-nowrap align-middle');
-  //     },
-  //     createdRow: function (row, data, dataIndex) {
-  //         [0, 3, 4, 6, 8].forEach(function (colIdx) {
-  //             $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
-  //         });
-  //         [0, 1, 2, 3, 4].forEach(function (colIdx) {
-  //             $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
-  //         });
-  //         [5, 7].forEach(function (colIdx) {
-  //             $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
-  //         });
-  //         $('td:eq(1)', row).css('min-width', '80px');
-  //     },
-  // };
-  // let commonSettingsProvision = {
-  //     layout: {
-  //         topEnd: {
-  //             search: {
-  //                 placeholder: '關鍵字搜尋'
-  //             }
-  //         },
-  //         bottomStart: 'info',
-  //         bottomEnd: {
-  //             paging: {
-  //                 numbers: 5
-  //             }
-  //         }
-  //     },
-  //     "order": [[0, "desc"]],
-  //     "responsive": true,
-  //     language: {
-  //         lengthMenu: "顯示 _MENU_ 筆",
-  //         sProcessing: "處理中...",
-  //         loadingRecords: "載入中...",
-  //         sZeroRecords: "OOPS！没有匹配的结果",
-  //         sInfo: "共有 _MAX_ 筆",
-  //         sInfoEmpty: "共有 0 筆",
-  //         sInfoFiltered: " ",
-  //         sInfoPostFix: "",
-  //         sSearch: '<i class="fa fa-search px-1" aria-hidden="true"></i>',
-  //         sUrl: "",
-  //         sEmptyTable: "尚未有資料紀錄存在",
-  //         sLoadingRecords: "載入中...",
-  //         sInfoThousands: ",",
-  //         oPaginate: {
-  //             sFirst: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
-  //             sPrevious: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
-  //             sNext: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
-  //             sLast: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
-  //         },
-  //         oAria: {
-  //             sSortAscending: ": 以升序排列此列",
-  //             sSortDescending: ": 以降序排列此列",
-  //         },
-  //     },
-  //     "headerCallback": function (thead, data, start, end, display) {
-  //         $(thead).find('th').addClass('text-center text-nowrap align-middle');
-  //     },
-
-  // };
-  // let commonSettingCheckboxProvision = {
-  //     layout: {
-  //         topEnd: {
-  //             search: {
-  //                 placeholder: '關鍵字搜尋'
-  //             }
-  //         },
-  //         bottomStart: 'info',
-  //         bottomEnd: {
-  //             paging: {
-  //                 numbers: 5
-  //             }
-  //         }
-  //     },
-  //     "order": [[1, "desc"]],
-  //     "responsive": true,
-  //     responsive: {
-  //         details: {
-  //             type: 'column',
-  //             target: 1
-  //         }
-  //     },
-  //     language: {
-  //         lengthMenu: "顯示 _MENU_ 筆",
-  //         sProcessing: "處理中...",
-  //         loadingRecords: "載入中...",
-  //         sZeroRecords: "OOPS！没有匹配的结果",
-  //         sInfo: "共有 _MAX_ 筆",
-  //         sInfoEmpty: "共有 0 筆",
-  //         sInfoFiltered: " ",
-  //         sInfoPostFix: "",
-  //         sSearch: '<i class="fa fa-search px-1" aria-hidden="true"></i>',
-  //         sUrl: "",
-  //         sEmptyTable: "尚未有資料紀錄存在",
-  //         sLoadingRecords: "載入中...",
-  //         sInfoThousands: ",",
-  //         oPaginate: {
-  //             sFirst: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
-  //             sPrevious: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
-  //             sNext: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
-  //             sLast: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
-  //         },
-  //         oAria: {
-  //             sSortAscending: ": 以升序排列此列",
-  //             sSortDescending: ": 以降序排列此列",
-  //         },
-  //     },
-  //     "headerCallback": function (thead, data, start, end, display) {
-  //         $(thead).find('th').addClass('text-center text-nowrap align-middle');
-  //     },
-  //     // createdRow: function (row, data, dataIndex) {
-  //     //     $('td:eq(1)', row).addClass('dtr-control');
-  //     // },
-  // }
-
-  // $('#jobList').DataTable({
-  //     ...commonSettingsTable,
-  //     "data": dataset_jobList,
-  //     "columns": [
-  //         { data: 'createDate', title: "刊登日期", },
-  //         { data: 'company', title: "公司名稱", },
-  //         { data: 'jobTitle', title: "職務名稱", },
-  //         { data: 'jobEmployment', title: "工作性質", },
-  //         { data: 'jobTime', title: "工作時間", },
-  //         { data: 'jobRemoveDate', title: "截止日期", },
-  //         {
-  //             data: 'id', title: "詳情",
-  //             render: function (data) {
-  //                 return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop_' + data + '"><i class="fa-solid fa-info px-1"></i></button>'
-  //             }
-  //         },
-  //     ],
-  //     "columnDefs": [
-  //         {
-  //             targets: [0],
-  //             responsivePriority: 3,
-  //         },
-  //         {
-  //             targets: [3],
-  //             responsivePriority: 1,
-  //         },
-  //         {
-  //             targets: [4],
-  //             responsivePriority: 2,
-  //         },
-  //         { searchable: false, orderable: false, targets: [6] },
-  //         { className: "text-nowrap ", targets: [0, 3, 4, 5] },
-  //         { className: "text-center", targets: [0, 3, 4, 5, 6] },
-
-  //     ],
-  //     createdRow: function (row, data, dataIndex) {
-  //         $('td:eq(6)', row).css('max-width', '70px');
-  //         $('td:eq(0)', row).css('min-width', '130px');
-  //         [4, 5].forEach(function (colIdx) {
-  //             $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
-  //         });
-  //     }
-  // });
-
   $('#myContractList').DataTable(_objectSpread(_objectSpread({}, commonSettingsTable), {}, {
     "data": dataset_myContractList,
     "columns": [

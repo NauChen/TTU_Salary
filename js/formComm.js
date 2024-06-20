@@ -835,6 +835,7 @@ var CustomInputHandlers = {
         this.bindChangeEmailItems();
         this.bindChangeLineIDItems();
         this.bindChangeSelectItems();
+        this.bindChangeRadioApplyItems();
     },
     bindChangeInputItems: function () {
         $('.changeInput_items').on('click', function () {
@@ -874,6 +875,42 @@ var CustomInputHandlers = {
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="parkingType" id="moto" value="機車" ${currentText === '機車' ? 'checked' : ''}>
                         <label class="form-check-label" for="moto">機車</label>
+                    </div>`;
+
+                $this.html(radioOptions);
+
+                $this.find('input[type="radio"]').on('change', function () {
+                    var newText = $(this).val().trim();
+                    $this.html(newText);
+                });
+
+                $(document).on('click', function (e) {
+                    if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+                        var checkedRadio = $this.find('input[type="radio"]:checked');
+                        if (checkedRadio.length) {
+                            var newText = checkedRadio.val().trim();
+                            $this.html(newText);
+                        }
+                        $(document).off('click');
+                    }
+                });
+            }
+        });
+    },
+    bindChangeRadioApplyItems: function () {
+        $('.changeRadioApply_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input[type="radio"]').length === 0) {
+                var radioOptions = `
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="applyType" id="radioYes" value="申請" ${currentText === '申請' ? 'checked' : ''}>
+                        <label class="form-check-label" for="radioYes">申請</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="applyType" id="radioNo" value="不申請" ${currentText === '不申請' ? 'checked' : ''}>
+                        <label class="form-check-label" for="radioNo">不申請</label>
                     </div>`;
 
                 $this.html(radioOptions);

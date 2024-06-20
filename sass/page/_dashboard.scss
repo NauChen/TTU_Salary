@@ -1,9 +1,5 @@
-
-
-/* ::::::::::::::::::::::::::::: Analytics */
+/* ::::::::::::::::::::::::::::: 快速窗口 */
 .quicklinks {
-    // margin: 2rem 0;
-
     .list-quicklinks {
         display: flex;
         justify-content: space-between;
@@ -16,11 +12,34 @@
             padding: 2rem 1rem;
             transition: box-shadow 0.2s ease-in;
 
+            .icon {
+                height: 40px;
+                width: 40px;
+                display: inline-block;
+                text-align: center;
+                line-height: 40px;
+                border-radius: 50%;
+            }
+
+            .icon-change {
+                i {
+
+                    &.first {
+                        transform: translateX(-10px);
+                    }
+
+                    &.second {
+                        transform: translateX(-30px);
+                        opacity: 0;
+                    }
+                }
+            }
+
             &:hover {
                 box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
                     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 
-                .icon {
+                .icon-big {
                     i {
                         transform: scale(1.75, 1.75);
                         transition: transform .5s;
@@ -33,16 +52,134 @@
                         transition: transform 3s;
                     }
                 }
+
+                .icon-change {
+                    i {
+                        &.first {
+                            animation-name: CarGo;
+                            /* 套用的 keyframe */
+                            animation-duration: 2s;
+                            /* 動畫持續時間 */
+                            animation-iteration-count: infinite;
+                            // animation-iteration-count: 2;
+                            /* 動畫播放次數 */
+                            animation-timing-function: linear;
+                            /* 影片加速速率 */
+                            // animation-fill-mode: forwards; 
+                        }
+
+                        &.second {
+                            animation-name: motoCome;
+                            /* 套用的 keyframe */
+                            animation-duration: 2s;
+                            /* 動畫持續時間 */
+                            animation-iteration-count: infinite;
+                            // animation-iteration-count: 2;
+                            /* 動畫播放次數 */
+                            animation-timing-function: linear;
+                            /* 影片加速速率 */
+                            // animation-fill-mode: forwards; 
+                        }
+                    }
+                }
             }
 
-            .icon {
-                height: 40px;
-                width: 40px;
-                display: inline-block;
-                text-align: center;
-                line-height: 40px;
-                border-radius: 50%;
+            @keyframes CarGo {
+                0% {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+
+                15% {
+                    transform: translateX(20px);
+                }
+
+                25% {
+                    opacity: .5;
+                    transform: translateX(25px);
+                }
+
+                30% {
+                    opacity: .3;
+                }
+
+                45% {
+                    opacity: 0;
+                    transform: translateX(30px);
+                }
+
+                50% {
+                    opacity: 0;
+                    transform: translateX(-50px);
+                }
+
+                65% {
+                    transform: translateX(-40px);
+                }
+
+                75% {
+                    opacity: .3;
+                    transform: translateX(-15px);
+                }
+
+                80% {
+                    opacity: .5;
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
             }
+
+            @keyframes motoCome {
+                0% {
+                    opacity: 0;
+                    transform: translateX(-30px);
+                }
+
+                15% {
+                    transform: translateX(-20px);
+                }
+
+                25% {
+                    opacity: .3;
+                    transform: translateX(0px);
+                }
+
+                30% {
+                    opacity: .5;
+                }
+
+                45% {
+                    opacity: 1;
+                    transform: translateX(10px);
+                }
+
+                50% {
+                    transform: translateX(20px);
+                }
+
+                65% {
+                    transform: translateX(30px);
+                }
+
+                75% {
+                    opacity: .5;
+                }
+
+                80% {
+                    opacity: .3;
+                    transform: translateX(40px);
+                }
+
+                100% {
+                    opacity: 0;
+                    transform: translateX(50px);
+                }
+            }
+
+
 
             .num {
                 font-size: 40px;
@@ -169,20 +306,20 @@
         }
     }
 
-    .icon-close {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 20px;
-        background-color: rgba(255, 255, 255, 0.2);
-        font-size: 10px;
-        color: #fff;
-        cursor: pointer;
-    }
+    // .icon-close {
+    //     position: absolute;
+    //     top: 1rem;
+    //     right: 1rem;
+    //     height: 20px;
+    //     width: 20px;
+    //     border-radius: 50%;
+    //     text-align: center;
+    //     line-height: 20px;
+    //     background-color: rgba(255, 255, 255, 0.2);
+    //     font-size: 10px;
+    //     color: #fff;
+    //     cursor: pointer;
+    // }
 }
 
 
@@ -657,4 +794,3 @@
         margin-bottom: 20px;
     }
 }
-

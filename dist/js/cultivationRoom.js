@@ -111,66 +111,87 @@ var dataset_cultivationRoomClose = [{
   'createBy': '孫小美',
   'removeBy': '李小光'
 }];
-var dataset_roomHistoryList1 = [{
+var dataset_roomHistoryListOpen = [{
   "createDate": "2019-01-19",
   "squareMeters": "56.4",
   "rate": "30,000",
-  "startDate": "-",
-  "endDate": "-",
-  "company": "-",
-  "responsiblePerson": "-",
+  "startDate": "",
+  "endDate": "",
+  "company": "",
   "remark": "啟用",
   "createBy": "王大明"
 }, {
-  "createDate": "2020-01-20",
+  "createDate": "2019-08-20",
   "squareMeters": "56.4",
   "rate": "1,300,000",
-  "startDate": "2020-03-01",
-  "endDate": "2020-09-30",
+  "startDate": "2019-09-01",
+  "endDate": "2020-08-31",
   "company": "冠陞企業管理顧問股份有限公司",
-  "responsiblePerson": "陳智揚",
-  "remark": "-",
+  "remark": "廠商進駐",
   "createBy": "王大明"
 }, {
-  "createDate": "2020-02-20",
+  "createDate": "2020-08-20",
   "squareMeters": "56.4",
   "rate": "1,300,000",
-  "startDate": "2020-03-01",
-  "endDate": "2020-09-30",
+  "startDate": "2020-09-01",
+  "endDate": "2021-08-31",
   "company": "冠陞企業管理顧問股份有限公司",
-  "responsiblePerson": "陳智揚",
-  "remark": "一位躺在大門財富也能體驗高速，起點他的。",
+  "remark": "廠商進駐",
+  "createBy": "王大明"
+}, {
+  "createDate": "2021-10-20",
+  "squareMeters": "20.2",
+  "rate": "",
+  "startDate": "",
+  "endDate": "",
+  "company": "",
+  "remark": "改坪數",
   "createBy": "王大明"
 }];
-var dataset_roomHistoryList2 = [{
+var dataset_roomHistoryListClose = [{
   "createDate": "2019-01-19",
   "squareMeters": "56.4",
   "rate": "30,000",
-  "startDate": "-",
-  "endDate": "-",
-  "company": "-",
-  "responsiblePerson": "-",
+  "startDate": "",
+  "endDate": "",
+  "company": "",
   "remark": "啟用",
   "createBy": "王大明"
 }, {
-  "createDate": "2019-01-20",
+  "createDate": "2019-08-20",
   "squareMeters": "56.4",
-  "rate": "30,000",
-  "startDate": "2020-03-01",
-  "endDate": "2020-09-30",
+  "rate": "1,300,000",
+  "startDate": "2019-09-01",
+  "endDate": "2020-08-31",
   "company": "冠陞企業管理顧問股份有限公司",
-  "responsiblePerson": "陳智揚",
-  "remark": "-",
+  "remark": "廠商進駐",
   "createBy": "王大明"
 }, {
-  "createDate": "2020-05-18",
-  "squareMeters": "15.28",
-  "rate": "30,000",
-  "startDate": "2019-10-01",
-  "endDate": "2020-09-30",
+  "createDate": "2020-08-20",
+  "squareMeters": "56.4",
+  "rate": "1,300,000",
+  "startDate": "2020-09-01",
+  "endDate": "2021-08-31",
   "company": "冠陞企業管理顧問股份有限公司",
-  "responsiblePerson": "陳智揚",
-  "remark": "-",
+  "remark": "廠商進駐",
+  "createBy": "王大明"
+}, {
+  "createDate": "2021-10-20",
+  "squareMeters": "20.2",
+  "rate": "",
+  "startDate": "",
+  "endDate": "",
+  "company": "",
+  "remark": "改坪數",
+  "createBy": "王大明"
+}, {
+  "createDate": "2022-10-20",
+  "squareMeters": "20.2",
+  "rate": "",
+  "startDate": "",
+  "endDate": "",
+  "company": "",
+  "remark": "停用",
   "createBy": "王大明"
 }];
 $(function () {
@@ -313,10 +334,10 @@ $(function () {
     }
   }));
   $('#roomHistoryList').DataTable(_objectSpread(_objectSpread({}, commonSettingsHistory), {}, {
-    "data": dataset_roomHistoryList1
+    "data": dataset_roomHistoryListOpen
   }));
   $('#roomHistoryList2').DataTable(_objectSpread(_objectSpread({}, commonSettingsHistory), {}, {
-    "data": dataset_roomHistoryList2
+    "data": dataset_roomHistoryListClose
   }));
 
   // 同步燈箱顯示資料
@@ -339,6 +360,8 @@ $(function () {
       $('#adminNote').text(openRoomData.adminNote);
       $('#createBy').text(openRoomData.createBy);
       $('#createDate').text(openRoomData.createDate);
+
+      //要加上用openRoomId去資料庫撈此id的歷史紀錄，放入dataset_roomHistoryListOpen
     } else {
       console.error('openRoomData data not found for id:', openRoomId);
     }
@@ -361,6 +384,8 @@ $(function () {
       $('#close_createBy').text(closeRoomData.createBy);
       $('#close_removeDate').text(closeRoomData.removeDate);
       $('#close_removeBy').text(closeRoomData.removeBy);
+
+      //要加上用closeRoomId去資料庫撈此id的歷史紀錄，放入dataset_roomHistoryListClose
     } else {
       console.error('closeRoomData data not found for id:', closeRoomId);
     }

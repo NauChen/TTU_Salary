@@ -800,6 +800,7 @@ var CustomInputHandlers = {
     this.bindChangeEmailItems();
     this.bindChangeLineIDItems();
     this.bindChangeSelectItems();
+    this.bindChangeRadioApplyItems();
   },
   bindChangeInputItems: function bindChangeInputItems() {
     $('.changeInput_items').on('click', function () {
@@ -828,6 +829,30 @@ var CustomInputHandlers = {
       var currentText = $this.text().trim();
       if ($this.find('input[type="radio"]').length === 0) {
         var radioOptions = "\n                    <div class=\"form-check form-check-inline\">\n                        <input class=\"form-check-input\" type=\"radio\" name=\"parkingType\" id=\"car\" value=\"\u6C7D\u8ECA\" ".concat(currentText === '汽車' ? 'checked' : '', ">\n                        <label class=\"form-check-label\" for=\"car\">\u6C7D\u8ECA</label>\n                    </div>\n                    <div class=\"form-check form-check-inline\">\n                        <input class=\"form-check-input\" type=\"radio\" name=\"parkingType\" id=\"moto\" value=\"\u6A5F\u8ECA\" ").concat(currentText === '機車' ? 'checked' : '', ">\n                        <label class=\"form-check-label\" for=\"moto\">\u6A5F\u8ECA</label>\n                    </div>");
+        $this.html(radioOptions);
+        $this.find('input[type="radio"]').on('change', function () {
+          var newText = $(this).val().trim();
+          $this.html(newText);
+        });
+        $(document).on('click', function (e) {
+          if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+            var checkedRadio = $this.find('input[type="radio"]:checked');
+            if (checkedRadio.length) {
+              var newText = checkedRadio.val().trim();
+              $this.html(newText);
+            }
+            $(document).off('click');
+          }
+        });
+      }
+    });
+  },
+  bindChangeRadioApplyItems: function bindChangeRadioApplyItems() {
+    $('.changeRadioApply_items').on('click', function () {
+      var $this = $(this);
+      var currentText = $this.text().trim();
+      if ($this.find('input[type="radio"]').length === 0) {
+        var radioOptions = "\n                    <div class=\"form-check form-check-inline\">\n                        <input class=\"form-check-input\" type=\"radio\" name=\"applyType\" id=\"radioYes\" value=\"\u7533\u8ACB\" ".concat(currentText === '申請' ? 'checked' : '', ">\n                        <label class=\"form-check-label\" for=\"radioYes\">\u7533\u8ACB</label>\n                    </div>\n                    <div class=\"form-check form-check-inline\">\n                        <input class=\"form-check-input\" type=\"radio\" name=\"applyType\" id=\"radioNo\" value=\"\u4E0D\u7533\u8ACB\" ").concat(currentText === '不申請' ? 'checked' : '', ">\n                        <label class=\"form-check-label\" for=\"radioNo\">\u4E0D\u7533\u8ACB</label>\n                    </div>");
         $this.html(radioOptions);
         $this.find('input[type="radio"]').on('change', function () {
           var newText = $(this).val().trim();
