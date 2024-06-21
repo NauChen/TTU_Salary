@@ -31,6 +31,56 @@
                     <div class="tabs section-border-radius section-padding">
                         <form class="container-fluid" method="post">
                             @@include('layout/cultivationRoom_form.html')
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-3">
+                                        <label for="cultivationSpaceBuilding"
+                                            class="col-lg-auto col-form-label text-nowrap">進駐廠商：</label>
+                                        <div class="col">
+                                            <select class="form-select" name="" id=""></select>
+                                            <span class="text-danger" id="danger_cultivationSpaceBuilding"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="cultivationSpaceRoom"
+                                            class="col-lg-auto col-form-label text-nowrap">廠商統編：</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="cultivationSpaceRoom">
+                                            <span class="text-danger" id="danger_cultivationSpaceRoom"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-3">
+                                        <label for="cultivationSpaceRate"
+                                            class="col-lg-auto col-form-label text-nowrap">進駐起始：</label>
+                                        <div class="col">
+                                            <input type="date" class="form-control" id="cultivationSpaceRate">
+                                            <span class="text-danger" id="danger_cultivationSpaceRate"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="cultivationSpaceSquareMeters"
+                                            class="col-lg-auto col-form-label text-nowrap">進駐結束：</label>
+                                        <div class="col">
+                                            <input type="date" class="form-control" id="cultivationSpaceSquareMeters">
+                                            <span class="text-danger" id="danger_cultivationSpaceSquareMeters"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-3">
+                                        <label for="cultivationSpaceRemark"
+                                            class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
+                                        <div class="col">
+                                            <textarea class="form-control resize-none h_110"
+                                                id="cultivationSpaceRemark"></textarea>
+                                            <span class="text-danger" id="danger_cultivationSpaceRemark"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row text-center p-3 justify-content-center">
                                 <div class="col-auto">
                                     <a href="./cultivationRoom.html"

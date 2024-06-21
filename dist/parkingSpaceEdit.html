@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>大同大學校內育成媒合平台-續約停車位</title>
+<title>大同大學校內育成媒合平台-修改停車位</title>
 <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.1/css/responsive.bootstrap5.min.css">
 <!-- <link rel="stylesheet" href="./css/print.css" media="print"> -->
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
 </head>
 
 <body>
@@ -59,7 +58,7 @@
                     <li><a class="dropdown-item" href="./parkingSpaceInventory.html">停車位管理&ensp;<i
                                 class="fa-solid fa-square-parking"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="./renewContractApply.html">續約申請&emsp;&ensp;<i
+                    <li><a class="dropdown-item" href="./cultivationRoomInventory.html">培育室管理&ensp;<i
                                 class="fa-solid fa-file-signature"></i></a>
                     </li>
                 </ul>
@@ -86,6 +85,9 @@
                     <li><a class="dropdown-item" href="./idCardApp.html">識別證審核&ensp;<i
                                 class="fa-regular fa-address-card"></i></a>
                     </li>
+                    <li><a class="dropdown-item" href="./confirmPayment.html">收款與收據&ensp;<i
+                                class="fa-solid fa-magnifying-glass-dollar"></i></a>
+                    </li>
                 </ul>
             </li>
 
@@ -94,9 +96,9 @@
                     aria-expanded="false"><i class="fa-solid fa-briefcase"></i><span
                         class="tooltiptext tooltip-right">資料管理</span></a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
-                    <li><a class="dropdown-item" href="./cultivationRoom.html">培育室管理&emsp;&ensp;<i
+                    <li><a class="dropdown-item" href="./cultivationRoom.html">全部培育室&emsp;&ensp;<i
                                 class="fa-solid fa-tree-city"></i></a></li>
-                    <li><a class="dropdown-item" href="./pakingSpace.html">停車位管理&emsp;&ensp;<i
+                    <li><a class="dropdown-item" href="./parkingSpace.html">全部停車位&emsp;&ensp;<i
                                 class="fa-brands fa-product-hunt"></i></a>
                     </li>
                     <li><a class="dropdown-item" href="./roles.html">用戶權限設定&ensp;<i
@@ -150,247 +152,96 @@
 </nav>
         <div class="content">
             <div class="container">
-
                 <!-- 麵包屑 -->
                 <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fa-solid fa-file-contract"></i>&ensp;申請與查閱</li>
-                        <li class="breadcrumb-item"><a class="d-inline" href="./parkingSpace_inventory.html"><i
-                                    class="fa-solid fa-square-parking"></i>&ensp;停車位管理</a></li>
-                        <li class="breadcrumb-item active"><i class="fa-solid fa-car-side"></i>&nbsp;<i
-                                class="fa-solid fa-motorcycle"></i>&ensp;停車位續約</li>
+                        <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
+                        <li class="breadcrumb-item"><a class="d-inline" href="./parkingSpace.html"><i
+                                    class="fa-solid fa-square-parking"></i>&ensp;全部停車位</a></li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-wrench"></i>&ensp;修改</li>
                     </ol>
                 </div>
-                <div class="no_print">
-                    <!-- 停車位列表 -->
-                    <div class="tabs-box my-2r no_print">
-                        <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>申請人資料<i
-                                class="fa-solid fa-quote-right"></i></h3>
-                        <div class="tabs section-border-radius section-padding">
-                            <form class="container-fluid" method="post">
-                                <div class="row">
-    <div class="col-xl-4 mb-3">
-        <div class="row mb-3">
-            <label for="parkingSpaceName"
-                class="col-lg-auto col-form-label text-nowrap"><span
-                    class="d-none d-lg-inline">&emsp;</span>姓名：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceName">
-                <span id="danger_parkingSpaceName" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="parkingSpaceJobTitle"
-                class="col-lg-auto col-form-label text-nowrap"><span
-                    class="d-none d-lg-inline">&emsp;</span>職稱：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceJobTitle">
-                <span id="danger_parkingSpaceJobTitle"
-                    class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="parkingSpaceExt" class="col-lg-auto col-form-label text-nowrap"><span
-                    class="d-none d-lg-inline">&emsp;</span>分機：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceExt">
-                <span id="danger_parkingSpaceExt" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="parkingSpacePhone"
-                class="col-lg-auto col-form-label text-nowrap"><span
-                    class="d-none d-lg-inline">&emsp;</span>電話：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="parkingSpacePhone">
-                <span id="danger_parkingSpacePhone" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="parkingSpaceEmail"
-                class="col-lg-auto col-form-label text-nowrap">E-mail：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceEmail">
-                <span id="danger_parkingSpaceEmail" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="parkingSpaceIDNum"
-                class="col-lg-auto col-form-label text-nowrap">身分證字號：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceIDNum">
-                <span id="danger_parkingSpaceIDNum" class="text-danger"></span>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-8 mb-3">
-        <div class="row mb-3">
-            <label for="upload_img"
-                class="col-auto col-form-label text-nowrap">上傳行照內頁：</label>
-            <div class="col col-sm-auto">
-                <label id="car_upload_label" class="btn btn-outline-secondary">
-                    <input id="upload_car_img" type="file" accept="image/*"
-                        class="d-none">
-                    <i class="fa-solid fa-car mx-1"></i>行照
-                </label>
-            </div>
-            <div class="col">
-                <label id="bike_upload_label" class="btn btn-outline-secondary">
-                    <input id="upload_moto_img" type="file" accept="image/*"
-                        class="d-none"><i class="fa-solid fa-motorcycle mx-1"></i>行照
-                </label>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div id="croppie-container" class="mb-3"></div>
-        </div>
-        <div class="row mb-3 justify-content-around">
-            <button id="crop_img" class="btn btn-secondary col-auto"><i
-                    class="fa-solid fa-scissors"></i>&ensp;裁剪圖片</button>
-        </div>
-    </div>
-</div>
-<div class="row p-3 justify-content-center">
-    <div class="col-12 fw-bold  ">申請人聲明：</div>
-    <div class="col-12">
-        <div class="row ms-3">
-            <div class="col-auto">1.</div>
-            <div class="col">
-                本份資料均填寫屬實，進駐大同大學期間，願意完全遵守大同大學有關人事及校園安全規定條則，並不得任意使用大同大學名稱，如有違背，將立即喪失進駐資格，並歸還任何大同大學所核發校園出入等相關證件與權限。
-            </div>
-        </div>
-        <div class="row ms-3">
-            <div class="col-auto">2.</div>
-            <div class="col">此為出入停車場並停放車輛與指定位置之用，不作其他識別用途。</div>
-        </div>
-        <div class="row ms-3">
-            <div class="col-auto">3.</div>
-            <div class="col text-decoration-underline fw-bold">印出申請書並簽名後，繳費完後交至<span
-                    class="fw-bold text-danger">大同大學研發處</span>，才算申請完成喔！</div>
-        </div>
-    </div>
-</div>
-<div class="row text-center p-3 justify-content-center">
-    <div class="col-auto">
-        <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
-    </div>
-    <div class="col-auto">
-        <button type="button" class="btn btn-lg btn-outline-info"
-            id="confirm_parkingSpaceApp">預覽</button>
-    </div>
-</div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="parkingSpaceApp_pdf" tabindex="-1"
-                        aria-labelledby="parkingSpaceApp_pdfLabel" data-bs-backdrop="static" data-bs-keyboard="false"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="parkingSpaceApp_pdfLabel"><i
-                                            class="fa-regular fa-file-pdf me-2"></i>申請書預覽
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body-wrapper">
-                                    <div class="modal-body">
-                                        <div class="table-responsive px-5">
-                                            <div class="row align-items-center justify-content-center mb-2 modal-minW">
-                                                <div class="col-auto title_imgBox"><img src="./images/ttulogo.png"></div>
-                                                <h3 class="col-auto text-center fw-bold text-nowrap mb-0">
-                                                    大同大學新德惠汽車停車場停車位申請單
-                                                </h3>
-                                            </div>
-                                            <div class="my-3 fs-5">主管簽名：</div>
-                                            <table
-                                                class="table table-bordered align-middle border border-3 border-dark modal-minW print_table">
-                                                <tr>
-                                                    <td rowspan="2" class="fw-bold  text-center w-15">單位</td>
-                                                    <td class="">好棒棒股份有限公司</td>
-                                                    <td rowspan="2" class="fw-bold  text-center w-15">停車位<br>編&emsp;號
-                                                    </td>
-                                                    <td class="fw-bold  text-center w-35">
-                                                        地下&emsp;&emsp;樓</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="">培育廠商</td>
-                                                    <td class="fw-bold  text-center">
-                                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;號</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="fw-bold  text-nowrap text-center px-4">職&emsp;稱
-                                                    </td>
-                                                    <td id="parkingSpaceJobName_td"></td>
-                                                    <td class="fw-bold  text-nowrap text-center">聯絡電話</td>
-                                                    <td id="parkingSpacePhone_td"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="fw-bold  text-nowrap text-center">姓&emsp;名</td>
-                                                    <td id="parkingSpaceName_td"></td>
-                                                    <td class="fw-bold text-nowrap text-center">分&emsp;機</td>
-                                                    <td id="parkingSpaceExt_td"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="fw-bold text-nowrap text-center">身份證<br>統一編號</td>
-                                                    <td id="parkingSpaceIDNum_td"></td>
-                                                    <td class="fw-bold text-nowrap text-center">電子信箱</td>
-                                                    <td id="parkingSpaceEmail_td"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4" class="fw-bold px-3 py-1">行照內頁
-                                                        <div id="newImg"></div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td rowspan="4" class="fw-bold fs-4 text-nowrap text-center">
-                                                        備<br><br>註</td>
-                                                    <td colspan="3" class="">
+                <!-- 新增停車位 -->
+                <div class="tabs-box my-2r">
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>新增停車位<i
+                            class="fa-solid fa-quote-right"></i></h3>
 
-                                                        <div class="row">
-                                                            <div class="col-auto pe-0">一、</div>
-                                                            <div class="col">申請單各欄應詳填，並附行車執照內頁影本一份。</div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-auto pe-0">二、</div>
-                                                            <div class="col">行車執照內頁，如車主姓名非申請人或其配偶，請速向監理單位辦理
-                                                                車主變更，否則即由次位遞補，敬請配合。</div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-auto pe-0">三、</div>
-                                                            <div class="col">如因離調異動請通知，以便更正資料或安排候補車位，如因車輛資料
-                                                                異動請補附行車執照內頁影本送總務處浮貼，據以辦理更正。</div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-auto pe-0">四、</div>
-                                                            <div class="col">如有空位時依據候補申請單順序發證。</div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <div class="row my-3 modal-minW">
-                                                <div class="ms-2 col-12">
-                                                    &emsp;&emsp;申請流程：填寫申請單→單位主管簽名→繳費→上傳繳費證明→總務處(收件)</div>
-                                                <div class="ms-2 col-12">
-                                                    &emsp;&emsp;學校總務處承辦人：事務組陳朝宗　聯絡電話：3460,2350分機</div>
-                                            </div>
+                    <div class="tabs section-border-radius section-padding">
+                        <form class="container-fluid" method="post">
+                            <div class="row">
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3 align-items-center">
+            <div class="col-lg-auto col-form-label text-nowrap">所在區域：</div>
+            <div class="col">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="BuildingName" id="originalBuilding" checked>
+                    <label class="form-check-label" for="originalBuilding">選擇既有</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="BuildingName" id="newBuilding">
+                    <label class="form-check-label" for="newBuilding">另行輸入</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12" id="originalBuildingBox">
+                <select name="" id="parkingSpaceBuilding" class="form-select">
+                    <option selected disabled>--- 請選擇 ---</option>
+                    <option value="新德惠大樓">新德惠大樓</option>
+                </select>
+                <span class="text-danger" id="danger_parkingSpaceBuilding"></span>
+            </div>
 
-                                        </div>
-                                    </div>
+            <div class="col-12" id="newBuildingBox">
+                <input type="text" class="form-control" id="parkingSpaceBuildingNew">
+                <span class="text-danger" id="danger_parkingSpaceBuildingNew"></span>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3">
+            <label for="cultivationSpaceRoom" class="col-lg-auto col-form-label text-nowrap">車位號碼：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="cultivationSpaceRoom">
+                <span class="text-danger" id="danger_cultivationSpaceRoom"></span>
+            </div>
+        </div>
+        <div class="row mb-3 salaryRadio px-2 py-2 mx-1 border-success">
+            <div>&#10551;&ensp;請依格式輸入，例：B1-01。</div>
+        </div>
+        <div class="row mb-3">
+            <label for="cultivationSpaceRate" class="col-lg-auto col-form-label text-nowrap">月服務費：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="cultivationSpaceRate">
+                <span class="text-danger" id="danger_cultivationSpaceRate"></span>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3">
+            <label for="cultivationSpaceRemark" class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
+            <div class="col">
+                <textarea class="form-control resize-none h_110" id="cultivationSpaceRemark"></textarea>
+                <span class="text-danger" id="danger_cultivationSpaceRemark"></span>
+            </div>
+        </div>
+    </div>
+</div>
+                            <div class="row text-center p-3 justify-content-center">
+                                <div class="col-auto">
+                                    <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-dark"
-                                        data-bs-dismiss="modal">關閉</button>
-                                    <button type="button" class="btn btn-primary print"
-                                        id="printIdCard">列印並送出申請</button>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-lg btn-success">送出</button>
                                 </div>
                             </div>
-                        </div>
+
+                        </form>
                     </div>
                 </div>
-
                 <!-- <footer>
     <ul>
         <li>隱私權</li>
@@ -417,8 +268,6 @@
             </div>
         </div>
     </main>
-    <section class="print_template"></section>
-
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
@@ -430,13 +279,38 @@
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
     <script src="./js/formComm.js"></script>
-    <script src="./js/formPreview.js"></script>
-    <script src="./js/parkingSpaceEdit.js"></script>
+    <!-- <script src="./js/myParkingSpaceList.js"></script> -->
+    <script>
+        $(function () {
+            toggleBuildingOptions('originalBuilding', 'newBuilding', 'originalBuildingBox', 'newBuildingBox');
 
+
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const parkingSpaceId = String(urlParams.get('id'));
+
+            // 確保 jobId 存在
+            if (parkingSpaceId) {
+                // console.log('Room ID:', parkingSpaceId);
+
+                let cultivationRoomData = dataset_cultivationRoomOpen.find(parkingSpace => parkingSpace.id === parkingSpaceId);
+                if (cultivationRoomData) {
+                    $('#cultivationSpaceBuilding').val(cultivationRoomData.building);
+                    $('#cultivationSpaceRoom').val(cultivationRoomData.room);
+                    $('#cultivationSpaceRate').val(cultivationRoomData.rate);
+                    $('#cultivationSpaceSquareMeters').val(cultivationRoomData.squareMeters);
+                    $('#cultivationSpaceRemark').val(cultivationRoomData.adminNote);
+
+                } else {
+                    console.error('Job data not found for id:', jobId);
+                }
+
+            } else {
+                console.error('Job ID not found in URL');
+            }
+        });
+    </script>
 </body>
-
-
 
 </html>

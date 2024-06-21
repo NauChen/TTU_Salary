@@ -821,8 +821,35 @@ function validateEmails() {
 // });
 
 
-// ================燈箱文字 切換輸入 審核區域 
 
+function toggleBuildingOptions(originalBuildingId, newBuildingId, originalBuildingBoxId, newBuildingBoxId) {
+    // 單選切換顯示
+    const $originalBuilding = $('#' + originalBuildingId);
+    const $newBuilding = $('#' + newBuildingId);
+    const $originalBuildingBox = $('#' + originalBuildingBoxId);
+    const $newBuildingBox = $('#' + newBuildingBoxId);
+
+    function updateVisibility() {
+        if ($originalBuilding.is(':checked')) {
+            $originalBuildingBox.show();
+            $newBuildingBox.hide();
+        } else if ($newBuilding.is(':checked')) {
+            $originalBuildingBox.hide();
+            $newBuildingBox.show();
+        }
+    }
+
+    // 初始化顯示狀態
+    updateVisibility();
+
+    // 綁定事件監聽器
+    $originalBuilding.on('change', updateVisibility);
+    $newBuilding.on('change', updateVisibility);
+}
+
+
+
+// ================燈箱文字 切換輸入 審核區域 
 var CustomInputHandlers = {
     init: function () {
         this.bindChangeInputItems();

@@ -3,7 +3,7 @@
 
 <head>
     @@include('layout/meta.html', {
-    "title": "大同大學校內育成媒合平台-修改停車位",
+    "title": "大同大學校內育成媒合平台-新增停車位",
     })
 </head>
 
@@ -17,8 +17,9 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
                         <li class="breadcrumb-item"><a class="d-inline" href="./parkingSpace.html"><i
-                                    class="fa-solid fa-square-parking"></i>&ensp;全部停車位</a></li>
-                        <li class="breadcrumb-item active"><i class="fa-solid fa-wrench"></i>&ensp;修改</li>
+                                    class="fa-solid fa-square-parking"></i>&ensp;停車位管理</a></li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-car-side"></i>&nbsp;<i
+                                class="fa-solid fa-motorcycle"></i>&ensp;新增停車位</li>
                     </ol>
                 </div>
                 <!-- 新增停車位 -->
@@ -41,6 +42,8 @@
                         </form>
                     </div>
                 </div>
+
+
                 @@include('layout/footer.html')
 
             </div>
@@ -53,31 +56,6 @@
     <script>
         $(function () {
             toggleBuildingOptions('originalBuilding', 'newBuilding', 'originalBuildingBox', 'newBuildingBox');
-
-
-
-            const urlParams = new URLSearchParams(window.location.search);
-            const parkingSpaceId = String(urlParams.get('id'));
-
-            // 確保 jobId 存在
-            if (parkingSpaceId) {
-                // console.log('Room ID:', parkingSpaceId);
-
-                let cultivationRoomData = dataset_cultivationRoomOpen.find(parkingSpace => parkingSpace.id === parkingSpaceId);
-                if (cultivationRoomData) {
-                    $('#cultivationSpaceBuilding').val(cultivationRoomData.building);
-                    $('#cultivationSpaceRoom').val(cultivationRoomData.room);
-                    $('#cultivationSpaceRate').val(cultivationRoomData.rate);
-                    $('#cultivationSpaceSquareMeters').val(cultivationRoomData.squareMeters);
-                    $('#cultivationSpaceRemark').val(cultivationRoomData.adminNote);
-
-                } else {
-                    console.error('Job data not found for id:', jobId);
-                }
-
-            } else {
-                console.error('Job ID not found in URL');
-            }
         });
     </script>
 </body>

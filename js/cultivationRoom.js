@@ -74,6 +74,21 @@ var dataset_cultivationRoomOpen = [
         'createBy': '孫小明',
         'createDate': '2023-01-15',
     },
+    {
+        'id': '5',
+        'building': '青創基地',
+        'room': '501',
+        'company': '',
+        'rate': '80,000',
+        'status': '尚未培育',
+        'squareMeters': '12.5',
+        'adminNote': '',
+        'startDate': '',
+        'endDate': '',
+        'responsiblePerson': '',
+        'createBy': '孫小明',
+        'createDate': '2023-01-15',
+    },
 ];
 var dataset_cultivationRoomClose = [
     {
@@ -229,7 +244,15 @@ $(function () {
                 data: 'id', title: "修改",
                 render: function (data) {
                     return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./cultivationRoomEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>'
-                },
+                }
+                // render: function (data, type, row) {
+                //     const status = row.status;
+                //     if (status === '已培育') {
+                //         return '<button class="btn btn-light rounded-circle btn-sm cannotChange" title="培育中不可修改歐！"><i class="fa-solid fa-wrench"></i></button>';
+                //     } else {
+                //         return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./cultivationRoomEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';
+                //     }
+                // }
             },
         ],
         "order": [[0, "desc"], [1, "asc"]],
@@ -263,6 +286,10 @@ $(function () {
             $('td:eq(2)', row).css('min-width', '280px');
         }
     });
+
+    // $('.cannotChange').click(function () {
+    //     swalToastWarning('培育中不可修改歐！', 'top');
+    // });
 
     $('#cultivationRoom_CloseList').DataTable({
         ...commonSettingsTable,

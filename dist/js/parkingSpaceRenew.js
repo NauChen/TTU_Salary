@@ -1,11 +1,5 @@
 "use strict";
 
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var dataset_myParkingSpaceHistory = [{
   'paymentDate': '2024-05-28',
   'carType': '汽車',
@@ -268,94 +262,28 @@ var dataset_myParkingSpaceHistory = [{
   'email': 'chenjianhong@example.com'
 }];
 $(function () {
-  var today = new Date();
-  dataset_myParkingSpaceHistory.forEach(function (item) {
-    var endDate = new Date(item.endDate);
-    var timeDiff = endDate.getTime() - today.getTime();
-    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-    item.diffDays = diffDays < 0 ? null : -1 * diffDays;
-    console.log('id = ' + item.id + ' ，結束日期： ' + item.endDate + ' ，今日： 2024-06-18' + ' ，差： ' + item.diffDays);
-  });
-  $('#myParkingSpaceList').DataTable(_objectSpread(_objectSpread({}, commonSettingsProvision), {}, {
-    layout: {
-      topStart: function topStart() {
-        var provision = document.createElement('div');
-        provision.innerHTML = '<h6 class="fw-bold"><i class="fa-solid fa-circle-exclamation mx-1"></i>若要續用，請於車位到期前申請續約。</h6>';
-        return provision;
-      }
-    },
-    "data": dataset_myParkingSpaceHistory,
-    "columns": [{
-      data: 'paymentDate',
-      title: "付款日"
-    }, {
-      data: 'carType',
-      title: "車位類型"
-    }, {
-      data: 'parkingSpaceNum',
-      title: "車位號碼"
-    }, {
-      data: 'name',
-      title: "登記使用人"
-    }, {
-      data: 'licensePlateNum',
-      title: "車牌號碼"
-    }, {
-      data: 'endDate',
-      title: "到期日"
-    }, {
-      data: 'remark',
-      title: "備註"
-    }, {
-      data: 'id',
-      title: "續約",
-      render: function render(data, type, row) {
-        var diffDays = row.diffDays;
-        if (diffDays === null) {
-          return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間已過"><i class="fa-solid fa-hourglass-end"></i></button>';
-        } else if (diffDays >= -10) {
-          return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpaceRenew.html?id=' + data + '" title="立即續約"><i class="fa-solid fa-repeat"></i></a>';
-        } else {
-          return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間未到"><i class="fa-solid fa-hourglass-half"></i></button>';
-        }
-      }
-    }, {
-      data: 'diffDays',
-      visible: false
-    }],
-    order: [[8, 'desc']],
-    "columnDefs": [{
-      targets: [0],
-      responsivePriority: 1
-    }, {
-      targets: [1],
-      responsivePriority: 2
-    }, {
-      targets: [2],
-      responsivePriority: 3
-    }, {
-      targets: [6],
-      className: "text-start"
-    }, {
-      searchable: false,
-      orderable: false,
-      targets: [7]
-    }, {
-      className: "text-center",
-      targets: [0, 1, 2, 3, 4, 5, 7]
-    }],
-    createdRow: function createdRow(row, data, dataIndex) {
-      [0, 5].forEach(function (colIdx) {
-        $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
-      });
-      [0, 1, 2, 4, 5].forEach(function (colIdx) {
-        $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
-      });
-      $('td:eq(6)', row).css('min-width', '200px');
-      [7].forEach(function (colIdx) {
-        $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
-      });
+  var urlParams = new URLSearchParams(window.location.search);
+  var parkingSpaceId = String(urlParams.get('id'));
+
+  // 確保 jobId 存在
+  if (parkingSpaceId) {
+    // console.log('Job ID:', jobId);
+
+    var parkingSpaceData = dataset_myParkingSpaceHistory.find(function (parkingSpace) {
+      return parkingSpace.id === parkingSpaceId;
+    });
+    if (parkingSpaceData) {
+      // console.log('Job data found:', jobData);
+      $('#parkingSpaceName').val(parkingSpaceData.name);
+      $('#parkingSpaceJobTitle').val(parkingSpaceData.jobTitle);
+      $('#parkingSpaceExt').val(parkingSpaceData.ext);
+      $('#parkingSpacePhone').val(parkingSpaceData.phone);
+      $('#parkingSpaceEmail').val(parkingSpaceData.email);
+      // $('#parkingSpaceIDNum').val(parkingSpaceData.IdNum);
+    } else {
+      console.error('Job data not found for id:', jobId);
     }
-  }));
-  // $('[data-bs-toggle="tooltip"]').tooltip();
+  } else {
+    console.error('Job ID not found in URL');
+  }
 });

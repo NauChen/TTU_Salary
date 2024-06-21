@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>大同大學校內育成媒合平台-停車位管理</title>
+<title>大同大學校內育成媒合平台-確認付款</title>
 <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -58,7 +58,7 @@
                     <li><a class="dropdown-item" href="./parkingSpaceInventory.html">停車位管理&ensp;<i
                                 class="fa-solid fa-square-parking"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="./renewContractApply.html">續約申請&emsp;&ensp;<i
+                    <li><a class="dropdown-item" href="./cultivationRoomInventory.html">培育室管理&ensp;<i
                                 class="fa-solid fa-file-signature"></i></a>
                     </li>
                 </ul>
@@ -85,6 +85,9 @@
                     <li><a class="dropdown-item" href="./idCardApp.html">識別證審核&ensp;<i
                                 class="fa-regular fa-address-card"></i></a>
                     </li>
+                    <li><a class="dropdown-item" href="./confirmPayment.html">收款與收據&ensp;<i
+                                class="fa-solid fa-magnifying-glass-dollar"></i></a>
+                    </li>
                 </ul>
             </li>
 
@@ -93,9 +96,9 @@
                     aria-expanded="false"><i class="fa-solid fa-briefcase"></i><span
                         class="tooltiptext tooltip-right">資料管理</span></a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
-                    <li><a class="dropdown-item" href="./cultivationRoom.html">培育室管理&emsp;&ensp;<i
+                    <li><a class="dropdown-item" href="./cultivationRoom.html">全部培育室&emsp;&ensp;<i
                                 class="fa-solid fa-tree-city"></i></a></li>
-                    <li><a class="dropdown-item" href="./pakingSpace.html">停車位管理&emsp;&ensp;<i
+                    <li><a class="dropdown-item" href="./parkingSpace.html">全部停車位&emsp;&ensp;<i
                                 class="fa-brands fa-product-hunt"></i></a>
                     </li>
                     <li><a class="dropdown-item" href="./roles.html">用戶權限設定&ensp;<i
@@ -151,236 +154,215 @@
             <div class="container">
 
                 <!-- 麵包屑 -->
-                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
-                        <li class="breadcrumb-item active"><i class="fa-brands fa-product-hunt"></i>&ensp;停車位管理</li>
+                        <li class="breadcrumb-item active"><i
+                                class="fa-solid fa-magnifying-glass-dollar"></i>&ensp;收款與收據</li>
                     </ol>
                 </div>
-                <div>
-                    <!-- 培育室啟用列表 -->
-                    <div class="tabs-box my-2r no_print">
-                        <div class="row mb-4 px-3">
-                            <h3 class="section-header col-auto mb-0 lh-base"><i
-                                    class="fa-solid fa-quote-left"></i>啟用中列表<i class="fa-solid fa-quote-right"></i></h3>
-                            <a class="btn btn-outline-info col-auto goto_somewhere ms-5 py-2" role="button" href="./parkingSpaceCreate.html"><i
-                                    class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-p"></i><span
-                                    class="tooltiptext tooltip-right">新增停車位</span></a>
-                        </div>
-                        <div class="tabs section-border-radius section-padding">
-                            <table id="parkingSpace_OpenList"
-                                class="table table-hover table-bordered responsive align-middle" style="width:100%">
-                            </table>
-                        </div>
-                    </div>
-                    <hr class="my-5">
-                    <!-- 培育室停用列表 -->
-                    <div class="tabs-box my-2r no_print">
-                        <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>停用中列表<i
-                                class="fa-solid fa-quote-right"></i></h3>
-                        <div class="tabs section-border-radius section-padding">
-                            <table id="cultivationRoom_CloseList"
-                                class="table table-hover table-bordered responsive align-middle" style="width:100%">
-                            </table>
-                        </div>
+
+                <!-- 付款列表 -->
+                <!-- 培育室 -->
+                <div class="tabs-box my-2r">
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>進駐付款查核<i
+                            class="fa-solid fa-quote-right"></i></h3>
+                    <div class="tabs section-border-radius section-padding">
+                        <table id="confirmPaymentCultivationRoomList"
+                            class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                        </table>
+
                     </div>
                 </div>
-                <!-- Modal 1 -->
-                <div class="modal fade" id="openRoom_Details" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="openRoom_DetailsLabel" aria-hidden="true">
+                <!-- 車位、識別證 -->
+                <div class="tabs-box my-2r">
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>其它付款查核<i
+                            class="fa-solid fa-quote-right"></i></h3>
+                    <div class="tabs section-border-radius section-padding">
+                        <table id="confirmPaymentOtherList"
+                            class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                        </table>
+
+                    </div>
+                </div>
+
+
+                <!-- Modal 培育室 -->
+                <div class="modal fade" id="confirmPaymentCultivationModel" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmPaymentCultivationModelLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
-                        <div class="modal-content">
+                        <form class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="openRoom_DetailsLabel">培育室詳情</h4>
+                                <h4 class="modal-title" id="confirmPaymentCultivationModelLabel">續約申請詳情</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="container-fluid">
-                                    <!-- 培育室基本資料 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            所在區域
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="companyName">
-                                            青創基地
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            室
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            101
-                                        </div>
-
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            服務費用/月
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            80,000
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            坪數
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            15.28
-                                        </div>
-                                    </div>
-                                    <!-- 培育企業相關 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            培育企業
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            馳晶科技股份有限公司
-                                        </div>
-
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            培育期間
-                                        </div>
-                                        <div class="col-auto lightBoxItems p-3">
-                                            起：<span class="me-2">2021-01-01</span><br
-                                                class="d-none d-lg-block d-xxl-none">
-                                            訖：<span>2021-12-31</span>
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            企業代表
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            康弘昇
-                                        </div>
-                                    </div>
-                                    <!-- 備註 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            備註事項
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            R101、R104、R105 三間培育室每月輔導服務費合算80,000元
-                                        </div>
-                                    </div>
-                                    <!-- 建立人員和建立日期 -->
+                                    <!-- 公司名稱、統編、申請日期 (都不可改) -->
                                     <div class="row mb-1 multiple">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            建立人員
+                                            公司名稱
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            王小明
-                                        </div>
+                                        <div class="col lightBoxItems p-3 readOnly" id="companyName"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            建立日期
+                                            統一編號
                                         </div>
-                                        <div class="col-12 col-lg-2 lightBoxItems p-3">
-                                            2011-06-30
+                                        <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="uniformNum"></div>
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                                            付款日期
+                                        </div>
+                                        <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="createDate"></div>
+                                    </div>
+
+
+                                    <!-- 身分證字號、E-mail、職稱 (可改)-->
+                                    <div class="row mb-1 multiple">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                                            付款日期
+                                        </div>
+                                        <div class="col col-lg-3 lightBoxItems p-3 changeInput_items align_center"
+                                            id="idNumber"></div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            付款金額
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeEmail_items align_center" id="email">
+                                        </div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            職務名
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center" id="jobTitle">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="container mt-4 border p-3 rounded">
-                                    <table id="roomHistoryList"
-                                        class="table table-hover table-bordered responsive align-middle" style="width:100%">
-                                    </table>
-                                </div>
 
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary"
-                                    data-bs-dismiss="modal">關閉視窗</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    <!-- 車位種類 車位號碼 車位費用 (可改)-->
+                                    <div class="row mb-1">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                                            &emsp;車位種類
+                                        </div>
+                                        <div class="col col-lg-3 lightBoxItems p-3 changeRadio_items align_center"
+                                            id="carType"></div>
+                                        <div
+                                            class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                                            &ensp;車位號碼
+                                        </div>
+                                        <div class="col lightBoxItems p-3 changeInput_items align_center"
+                                            id="parkingSpaceNum"></div>
+                                    </div>
 
-                <!-- Modal 2 -->
-                <div class="modal fade" id="closeRoom_Details" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="closeRoom_DetailsLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="closeRoom_DetailsLabel">培育室紀錄</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <!-- 培育室基本資料 -->
+                                    <!-- 到期日 付款日 金額 -->
                                     <div class="row mb-1">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            所在區域
+                                            車位到期日
                                         </div>
-                                        <div class="col lightBoxItems p-3" id="companyName">
-                                            青創基地
-                                        </div>
+                                        <div class="col col-lg-3 lightBoxItems p-3 changeDate_items" id="endDate"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            室
+                                            &ensp;付款日期
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            101
-                                        </div>
-
+                                        <div class="col lightBoxItems p-3 changeDate_items" id="paymentDate"></div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            服務費用/月
+                                            車位費用/月
                                         </div>
-                                        <div class="col lightBoxItems p-3">
-                                            80,000
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            坪數
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            15.2
-                                        </div>
+                                        <div class="col lightBoxItems p-3 changeMoney_items" id="rate"></div>
                                     </div>
-                                    <!-- 備註 -->
+
+
+                                    <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
                                     <div class="row mb-1">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            備註事項
+                                            &emsp;檢附文件
                                         </div>
                                         <div class="col lightBoxItems p-3">
-                                            R101、R104、R105 三間培育室每月輔導服務費合算80,000元
+                                            <a class="d-inline me-3 text-nowrap" href="#">申請書&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
+                                            <a class="d-inline me-3 text-nowrap" href="#">行照&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
+                                            <a class="d-inline me-3 text-nowrap" href="#">繳費證明&ensp;<i
+                                                    class="fa-solid fa-download"></i><span
+                                                    class="mx-1 update">補</span></a>
                                         </div>
                                     </div>
+                                    <!-- 補件上傳 若狀態為通過，不顯示此區塊-->
+                                    <div class="row mb-1" id="supplementaryFilesBox">
+                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                                            &emsp;補件上傳
+                                        </div>
+                                        <div class="col lightBoxItems p-3">
+                                            <div class="row align-items-center my-1">
+                                                <label for="parkingSpaceForm"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">申請書<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="parkingSpaceForm"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('parkingSpace_fileInfo1').innerHTML = document.getElementById('parkingSpaceForm').value;setFormHeight();}">
+                                                    <div id="parkingSpace_fileInfo1" class="fileInfo"></div>
+                                                </div>
+                                            </div>
 
-                                    <!-- 建立與關閉 -->
+                                            <div class="row align-items-center my-1">
+                                                <label for="memoUpload"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">行照<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="memoUpload"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo6').innerHTML = document.getElementById('memoUpload').value;setFormHeight();}">
+                                                    <div id="fileInfo6" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center my-1">
+                                                <label for="consentDoc"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0">繳費證明<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col">
+                                                    <input type="file" class="form-control d-none" id="consentDoc"
+                                                        accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo3').innerHTML = document.getElementById('consentDoc').value;setFormHeight();}">
+                                                    <div id="fileInfo3" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- 審核 -->
                                     <div class="row mb-1 multiple">
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            創建日期
+                                            &emsp;管理註記
                                         </div>
-                                        <div class="col col-lg-2 text-nowrap lightBoxItems p-3">
-                                            2011-06-30
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            創建人員
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            王小明
+                                        <div class="col lightBoxItems p-3 align_center changeInput_items"
+                                            id="adminNote">
                                         </div>
                                         <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            最後停用日
+                                            審核進度
                                         </div>
-                                        <div class="col col-lg-auto text-nowrap lightBoxItems p-3">
-                                            2011-06-30
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            最後停用者
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            王小明
+                                        <div class="col col-lg-2 lightBoxItems p-2 align_center">
+                                            <select class="form-select" id="status">
+                                                <option selected disabled>收件，待審中</option>
+                                                <option value="待補件">待補件</option>
+                                                <option value="不通過">不通過</option>
+                                                <option value="通過">通過</option>
+                                            </select>
+                                            <div id="statusText" class="p-1 readOnly"></div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="container-fluid mt-4 border p-3 rounded">
-                                    <table id="roomHistoryList2"
-                                        class="table table-hover table-bordered responsive align-middle"
-                                        style="width:100%">
 
-                                    </table>
                                 </div>
-
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary"
-                                    data-bs-dismiss="modal">關閉視窗</button>
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                                <button type="button" class="btn btn-outline-secondary" id="updateBtn">確認修改</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
@@ -421,7 +403,8 @@
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
 
-    <script src="./js/parkingSpace.js"></script>
+    <script src="./js/formComm.js"></script>
+    <script src="./js/confirmPayment.js"></script>
 </body>
 
 </html>

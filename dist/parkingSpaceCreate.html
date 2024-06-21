@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>大同大學校內育成媒合平台-審核停車位</title>
+<title>大同大學校內育成媒合平台-新增停車位</title>
 <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -152,205 +152,98 @@
 </nav>
         <div class="content">
             <div class="container">
-
                 <!-- 麵包屑 -->
-                <div class="breadcrumb-box section-padding section-border-radius my-2r">
+                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fa-solid fa-stamp"></i>&ensp;資料審核</li>
-                        <li class="breadcrumb-item active"><i class="fa-solid fa-square-parking"></i>&ensp;車位審核</li>
+                        <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
+                        <li class="breadcrumb-item"><a class="d-inline" href="./parkingSpace.html"><i
+                                    class="fa-solid fa-square-parking"></i>&ensp;停車位管理</a></li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-car-side"></i>&nbsp;<i
+                                class="fa-solid fa-motorcycle"></i>&ensp;新增停車位</li>
                     </ol>
                 </div>
-
-                <!-- 車位申請列表 -->
+                <!-- 新增停車位 -->
                 <div class="tabs-box my-2r">
-                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>車位申請列表<i
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>新增停車位<i
                             class="fa-solid fa-quote-right"></i></h3>
+
                     <div class="tabs section-border-radius section-padding">
-                        <table id="parkingSpaceApplicationList"
-                            class="table table-hover table-bordered responsive align-middle" style="width:100%">
-                        </table>
-
-                    </div>
+                        <form class="container-fluid" method="post">
+                            <div class="row">
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3 align-items-center">
+            <div class="col-lg-auto col-form-label text-nowrap">所在區域：</div>
+            <div class="col">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="BuildingName" id="originalBuilding" checked>
+                    <label class="form-check-label" for="originalBuilding">選擇既有</label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="BuildingName" id="newBuilding">
+                    <label class="form-check-label" for="newBuilding">另行輸入</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12" id="originalBuildingBox">
+                <select name="" id="parkingSpaceBuilding" class="form-select">
+                    <option selected disabled>--- 請選擇 ---</option>
+                    <option value="新德惠大樓">新德惠大樓</option>
+                </select>
+                <span class="text-danger" id="danger_parkingSpaceBuilding"></span>
+            </div>
 
-                <!-- Modal -->
-                <div class="modal fade parkingSpaceDetail" id="parkingSpaceDetailModel" data-bs-backdrop="static"
-                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="parkingSpaceDetailModelLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
-                        <form class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="parkingSpaceDetailModelLabel">車位申請詳情</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <!-- 公司名稱、統編、申請日期 (都不可改) -->
-<div class="row mb-1 multiple">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-        承租人企業
-    </div>
-    <div class="col lightBoxItems p-3 readOnly" id="companyName"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-        統一編號
-    </div>
-    <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="uniformNum"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-        申請日期
-    </div>
-    <div class="col col-lg-auto lightBoxItems p-3 readOnly" id="createDate"></div>
-</div>
-
-<!-- 姓名、電話、分機 (可改) -->
-<div class="row mb-1 multiple">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center align_center">
-        承租人姓名
-    </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="name"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center align_center">
-        電話/手機
-    </div>
-    <div class="col lightBoxItems p-3 align_center" id="phoneNum">
-    </div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center align_center">
-        分&emsp;機</div>
-    <div class="col lightBoxItems p-3 align_center" id="ext">
-    </div>
-
-</div>
-
-<!-- 身分證字號、E-mail、職稱 (可改)-->
-<div class="row mb-1 multiple">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        身分證字號
-    </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="idNumber"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        &ensp;電子信箱
-    </div>
-    <div class="col lightBoxItems p-3 align_center" id="email">
-    </div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        職務名
-    </div>
-    <div class="col lightBoxItems p-3 align_center" id="jobTitle">
-    </div>
-</div>
-
-<!-- 車位種類 車位號碼 車位費用 (可改)-->
-<div class="row mb-1">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        &emsp;車位種類
-    </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="carType"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        &ensp;車位號碼
-    </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="parkingSpaceNum"></div>
-</div>
-
-<!-- 到期日 付款日 金額 -->
-<div class="row mb-1">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        車位到期日
-    </div>
-    <div class="col col-lg-3 lightBoxItems p-3" id="endDate"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        &ensp;付款日期
-    </div>
-    <div class="col lightBoxItems p-3" id="paymentDate"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        車位費用/月
-    </div>
-    <div class="col lightBoxItems p-3" id="rate"></div>
-</div>
-
-
-<!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
-<div class="row mb-1">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-        &emsp;檢附文件
-    </div>
-    <div class="col lightBoxItems p-3">
-        <a class="d-inline me-3 text-nowrap" href="#">申請書&ensp;<i class="fa-solid fa-download"></i><span
-                class="mx-1 update">補</span></a>
-        <a class="d-inline me-3 text-nowrap" href="#">行照&ensp;<i class="fa-solid fa-download"></i><span
-                class="mx-1 update">補</span></a>
-        <a class="d-inline me-3 text-nowrap" href="#">繳費證明&ensp;<i class="fa-solid fa-download"></i><span
-                class="mx-1 update">補</span></a>
-    </div>
-</div>
-<!-- 補件上傳 若狀態為通過，不顯示此區塊-->
-<div class="row mb-1" id="supplementaryFilesBox">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-        &emsp;補件上傳
-    </div>
-    <div class="col lightBoxItems p-3">
-        <div class="row align-items-center my-1">
-            <label for="parkingSpaceForm" class="col-auto col-form-label text-nowrap upload-label py-0">申請書<i
-                    class="fa-solid fa-upload mx-1"></i>
-            </label>
-            <div class="col">
-                <input type="file" class="form-control d-none" id="parkingSpaceForm" accept=".pdf"
-                    onchange="javascript:{document.getElementById('parkingSpace_fileInfo1').innerHTML = document.getElementById('parkingSpaceForm').value;setFormHeight();}">
-                <div id="parkingSpace_fileInfo1" class="fileInfo"></div>
+            <div class="col-12" id="newBuildingBox">
+                <input type="text" class="form-control" id="parkingSpaceBuildingNew">
+                <span class="text-danger" id="danger_parkingSpaceBuildingNew"></span>
             </div>
         </div>
 
-        <div class="row align-items-center my-1">
-            <label for="memoUpload" class="col-auto col-form-label text-nowrap upload-label py-0">行照<i
-                    class="fa-solid fa-upload mx-1"></i>
-            </label>
+
+    </div>
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3">
+            <label for="cultivationSpaceRoom" class="col-lg-auto col-form-label text-nowrap">車位號碼：</label>
             <div class="col">
-                <input type="file" class="form-control d-none" id="memoUpload" accept=".pdf"
-                    onchange="javascript:{document.getElementById('fileInfo6').innerHTML = document.getElementById('memoUpload').value;setFormHeight();}">
-                <div id="fileInfo6" class="fileInfo"></div>
+                <input type="text" class="form-control" id="cultivationSpaceRoom">
+                <span class="text-danger" id="danger_cultivationSpaceRoom"></span>
             </div>
         </div>
-
-        <div class="row align-items-center my-1">
-            <label for="consentDoc" class="col-auto col-form-label text-nowrap upload-label py-0">繳費證明<i
-                    class="fa-solid fa-upload mx-1"></i>
-            </label>
+        <div class="row mb-3 salaryRadio px-2 py-2 mx-1 border-success">
+            <div>&#10551;&ensp;請依格式輸入，例：B1-01。</div>
+        </div>
+        <div class="row mb-3">
+            <label for="cultivationSpaceRate" class="col-lg-auto col-form-label text-nowrap">月服務費：</label>
             <div class="col">
-                <input type="file" class="form-control d-none" id="consentDoc" accept=".pdf"
-                    onchange="javascript:{document.getElementById('fileInfo3').innerHTML = document.getElementById('consentDoc').value;setFormHeight();}">
-                <div id="fileInfo3" class="fileInfo"></div>
+                <input type="text" class="form-control" id="cultivationSpaceRate">
+                <span class="text-danger" id="danger_cultivationSpaceRate"></span>
             </div>
         </div>
 
     </div>
-</div>
-<!-- 審核 -->
-<div class="row mb-1 multiple">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        &emsp;管理註記
-    </div>
-    <div class="col lightBoxItems p-3 align_center" id="adminNote">
-    </div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        審核進度
-    </div>
-    <div class="col col-lg-2 lightBoxItems p-2 align_center">
-        <select class="form-select" id="status">
-            <option value="待審核">待審核</option>
-            <option value="待補件">待補件</option>
-            <option value="不通過">不通過</option>
-            <option value="通過">通過</option>
-        </select>
-        <div id="statusText" class="p-1 readOnly"></div>
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3">
+            <label for="cultivationSpaceRemark" class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
+            <div class="col">
+                <textarea class="form-control resize-none h_110" id="cultivationSpaceRemark"></textarea>
+                <span class="text-danger" id="danger_cultivationSpaceRemark"></span>
+            </div>
+        </div>
     </div>
 </div>
+                            <div class="row text-center p-3 justify-content-center">
+                                <div class="col-auto">
+                                    <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-lg btn-success">送出</button>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
-                                <button type="button" class="btn btn-outline-secondary" id="updateBtn">確認修改</button>
-                            </div>
+
                         </form>
                     </div>
                 </div>
+
 
                 <!-- <footer>
     <ul>
@@ -390,7 +283,12 @@
 <script src="./js/main.js"></script>
 
     <script src="./js/formComm.js"></script>
-    <script src="./js/parkingSpaceApp.js"></script>
+    <!-- <script src="./js/myParkingSpaceList.js"></script> -->
+    <script>
+        $(function () {
+            toggleBuildingOptions('originalBuilding', 'newBuilding', 'originalBuildingBox', 'newBuildingBox');
+        });
+    </script>
 </body>
 
 </html>
