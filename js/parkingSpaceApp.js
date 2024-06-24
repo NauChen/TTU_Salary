@@ -265,10 +265,10 @@ $(function () {
         ...commonSettingsTable,
         "data": dataset_parkingSpaceApp,
         "columns": [
-            { data: 'createDate', title: "申請日期" },
-            { data: 'company', title: "承租人企業", },
-            { data: 'carType', title: "車位類型", },
-            { data: 'licensePlateNum', title: "車牌號碼", },
+            { data: 'createDate', title: "申請日期" }, // 0
+            { data: 'company', title: "承租人企業", }, // 1
+            { data: 'carType', title: "車位類型", }, // 2
+            { data: 'licensePlateNum', title: "車牌號碼", }, // 3
             { data: 'parkingSpaceNum', title: "車位號碼", },
             { data: 'endDate', title: "到期日", },
             { data: 'paymentDate', title: "付款日", },

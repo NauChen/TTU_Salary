@@ -73,8 +73,8 @@ var dataset_myCultivationRoom = [
         'room': 'A4-102',
         'firstDeadline': '2024-05-22',
         'paymentDateFirst': '2024-05-19',
-        'secondDeadline': '2024-12-01',
-        'paymentDateSecond': '2024-11-28'
+        'secondDeadline': '2024-07-01',
+        'paymentDateSecond': ''
     },
     {
         'id': '8',
@@ -95,7 +95,7 @@ var dataset_myCultivationRoom = [
         'room': '714',
         'firstDeadline': '2024-05-22',
         'paymentDateFirst': '2024-05-19',
-        'secondDeadline': '2024-12-01',
+        'secondDeadline': '2024-07-01',
         'paymentDateSecond': '2024-11-28'
     },
     {
@@ -123,7 +123,13 @@ $(function () {
         const timeDiff = endDate.getTime() - today.getTime();
         const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
         item.diffDays = diffDays < 0 ? null : ((-1) * diffDays);
-        console.log('id = ' + item.id + ' ，結束日期： ' + item.endDate + ' ，今日： 2024-06-18' + ' ，差： ' + item.diffDays);
+        console.log('id = ' + item.id + ' ，結束日期： ' + item.endDate + ' ，今日： 2024-06-24' + ' ，差： ' + item.diffDays);
+
+        const secondDeadline = new Date(item.secondDeadline);
+        const deadLineDiff = secondDeadline.getTime() - today.getTime();
+        const deadLineDiffDays = Math.ceil(deadLineDiff / (1000 * 3600 * 24));
+        item.deadLineDiffDays = deadLineDiffDays < 0 ? null : ((-1) * deadLineDiffDays);
+        // console.log('id = ' + item.id + ' ，截止日期： ' + item.secondDeadline + ' ，今日： 2024-06-24' + ' ，差： ' + item.deadLineDiffDays);
     });
 
     $('#myRenewContracList').DataTable({
@@ -146,13 +152,21 @@ $(function () {
             { data: 'secondDeadline', title: "第二階段<br>到期日", }, // 6
             { data: 'paymentDateSecond', title: "付款日", }, // 7
             {
-                data: 'id', title: "續約", // 8
+                data: 'id', title: "操作", // 8
                 render: function (data, type, row) {
                     const diffDays = row.diffDays;
+                    const deadLineDiffDays = row.deadLineDiffDays;
+                    const paymentDateSecond = row.paymentDateSecond;
                     if (diffDays === null) {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間已過"><i class="fa-solid fa-hourglass-end"></i></button>';
                     } else if (diffDays >= -10) {
                         return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./renewContractApply.html?id=' + data + '" title="立即續約"><i class="fa-solid fa-repeat"></i></a>';
+                    } else if (deadLineDiffDays >= -30) {
+                        if (paymentDateSecond === '' || paymentDateSecond === null) {
+                            return '<button type="button" class="btn btn-outline-primary rounded-circle remittance_voucher align_center" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
+                        } else {
+                            return '<button type="button" class="btn btn-light rounded-circle remittance_voucher align_center alreadyHave" title="再次上傳匯款憑證" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
+                        }
                     } else {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間未到"><i class="fa-solid fa-hourglass-half"></i></button>';
                     }
@@ -192,5 +206,24 @@ $(function () {
         },
     });
     // $('[data-bs-toggle="tooltip"]').tooltip();
+
+
+    $('.alreadyHave').click(function (event) {
+        event.preventDefault(); // 阻止默認行為
+
+        let button = $(this);
+        let dataId = button.data('id'); // 獲取按鈕的 data-id 屬性
+
+        swalConfirm(
+            '曾填過匯款通知，要再填一次嗎?', // 顯示的問題
+            '對，我要重新填寫上傳。', // YES按鈕的文字
+            '不，回到上一步。', // NO按鈕的文字
+            function () {
+                // YES按鈕點擊後開啟燈箱
+                $('#remittanceModal').modal('show');
+                $('#remittanceModal').data('id', dataId); // 可以選擇傳遞 data-id 到燈箱中
+            }
+        );
+    });
 });
 

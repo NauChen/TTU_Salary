@@ -1,3 +1,4 @@
+// status 在後端先將 審核進度 跟 給廠商的話 做字串串接再傳來
 var dataset_progressCheck = [
     {
         'id': '1',
@@ -6,7 +7,7 @@ var dataset_progressCheck = [
         'name': '孫小美',
         'remark': '續約：B1-01',
         'paymentDate': '2024-07-07',
-        'status': '待補件',
+        'status': '待補件。匯款證明',
         'remittanceFile': '20240710RF2',
     },
     {
@@ -16,7 +17,7 @@ var dataset_progressCheck = [
         'name': '孫中美',
         'remark': '首次申請',
         'paymentDate': '',
-        'status': '待補件',
+        'status': '待補件。匯款證明',
         'remittanceFile': '20240710RF1',
     },
     {
@@ -36,7 +37,7 @@ var dataset_progressCheck = [
         'name': '王小明',
         'remark': '首次申請',
         'paymentDate': '2024-07-17',
-        'status': '不通過',
+        'status': '不通過。使用者取消。',
         'remittanceFile': '',
     },
     {
@@ -66,7 +67,7 @@ var dataset_progressCheck = [
         'name': '好棒棒股份有限公司',
         'remark': '續約：培育室',
         'paymentDate': '',
-        'status': '待補件',
+        'status': '待補件。繳費證明',
         'remittanceFile': '20240710RF5',
     }
 ];
@@ -92,9 +93,9 @@ $(function () {
                 render: function (data, type, row) {
                     const remittanceFile = row.remittanceFile;
                     if (remittanceFile == '') {
-                        return '<button type="button" class="btn btn-light rounded-circle remittance_voucher align_center alreadyHave" title="再次上傳匯款憑證" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar fs-4"></i></button>';
+                        return '<button type="button" class="btn btn-light rounded-circle remittance_voucher align_center alreadyHave" title="再次上傳匯款憑證" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
                     } else {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle remittance_voucher align_center" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar fs-4"></i></button>';
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle remittance_voucher align_center" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
                     }
                 }, className: 'text-center text-nowrap'
             },

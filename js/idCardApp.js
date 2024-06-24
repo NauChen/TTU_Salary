@@ -179,6 +179,8 @@ $(function () {
             $('#readLibrary').text(idCardApplyData.readLibrary);
             $('#paymentDate').text(idCardApplyData.paymentDate);
 
+            $('#remarkNote').text(idCardApplyData.remark);
+
             $('#adminNote').text(idCardApplyData.adminNote);
 
             $('#status').val(idCardApplyData.status);
@@ -194,12 +196,12 @@ $(function () {
             $('.changePhone_items').off('click');
             $('.changeEmail_items').off('click');
             $('.changeRadioApply_items').off('click');
-            theseRemoveClass(["changeInput_items"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote']);
+            theseRemoveClass(["changeInput_items"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote', 'remarkNote']);
             theseRemoveClass(["changeDate_items"], ['startDate', 'endDate', 'paymentDate']);
             theseRemoveClass(["changePhone_items"], ['phoneNum', 'ECPhone']);
             theseRemoveClass(["changeEmail_items"], ['email']);
             theseRemoveClass(["changeRadioApply_items"], ['readLibrary']);
-            theseAddClass(["readOnly"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote', 'eadminNotext', 'startDate', 'endDate', 'paymentDate', 'phoneNum', 'ECPhone', 'email', 'readLibrary',]);
+            theseAddClass(["readOnly"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote', 'remarkNote', 'adminNote', 'startDate', 'endDate', 'paymentDate', 'phoneNum', 'ECPhone', 'email', 'readLibrary',]);
             $('#updateBtn').hide();
             $('#supplementaryFilesBox').hide();
             $('#status').hide();
@@ -208,12 +210,12 @@ $(function () {
 
 
         } else {
-            theseAddClass(["changeInput_items"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote']);
+            theseAddClass(["changeInput_items"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote', 'remarkNote']);
             theseAddClass(["changeDate_items"], ['startDate', 'endDate', 'paymentDate']);
             theseAddClass(["changePhone_items"], ['phoneNum', 'ECPhone']);
             theseAddClass(["changeEmail_items"], ['email']);
             theseAddClass(["changeRadioApply_items"], ['readLibrary']);
-            theseRemoveClass(["readOnly"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote', 'eadminNotext', 'startDate', 'endDate', 'paymentDate', 'phoneNum', 'ECPhone', 'email', 'readLibrary',]);
+            theseRemoveClass(["readOnly"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote', 'remarkNote', 'adminNote', 'startDate', 'endDate', 'paymentDate', 'phoneNum', 'ECPhone', 'email', 'readLibrary',]);
             CustomInputHandlers.init();
             $('#updateBtn').show();
             $('#supplementaryFilesBox').show();
@@ -244,6 +246,8 @@ $(function () {
             updatedData.endDate = $('#endDate').text();
             updatedData.readLibrary = $('#readLibrary').text();
             updatedData.paymentDate = $('#paymentDate').text();
+
+            updatedData.paymentDate = $('#remarkNote').text();
 
             updatedData.adminNote = $('#adminNote').text();
             updatedData.status = $('#status').val();

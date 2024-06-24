@@ -36,7 +36,7 @@
                         class="tooltiptext tooltip-right">儀錶板</span></a>
             </li>
             <li class="item dropend">
-                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
+                <a class="link dropdown-toggle" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fa-solid fa-users"></i><span
                         class="tooltiptext tooltip-right">職缺媒合</span></a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
@@ -48,7 +48,7 @@
                 </ul>
             </li>
             <li class="item dropend">
-                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink3" data-bs-toggle="dropdown"
+                <a class="link dropdown-toggle" role="button" id="dropdownMenuLink3" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fa-solid fa-file-contract"></i><span
                         class="tooltiptext tooltip-right">申請與查閱</span></a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
@@ -92,7 +92,7 @@
             </li>
 
             <li class="item dropend">
-                <a class="link dropdown-toggle" href="#" role="button" id="dropdownMenuLink5" data-bs-toggle="dropdown"
+                <a class="link dropdown-toggle" role="button" id="dropdownMenuLink5" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fa-solid fa-briefcase"></i><span
                         class="tooltiptext tooltip-right">資料管理</span></a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
@@ -101,19 +101,22 @@
                     <li><a class="dropdown-item" href="./parkingSpace.html">全部停車位&emsp;&ensp;<i
                                 class="fa-brands fa-product-hunt"></i></a>
                     </li>
+                    <li><a class="dropdown-item" href="./template-underConstruction.html">全部識別證&emsp;&ensp;<i
+                        class="fa-regular fa-address-card"></i></a>
+            </li>
                     <li><a class="dropdown-item" href="./roles.html">用戶權限設定&ensp;<i
                                 class="fa-solid fa-people-robbery"></i></a></li>
-                    <li><a class="dropdown-item" href="#">用戶資料修改&ensp;<i class="fa-solid fa-address-book"></i></a>
+                    <li><a class="dropdown-item" href="./template-underConstruction.html">用戶資料修改&ensp;<i class="fa-solid fa-address-book"></i></a>
                     </li>
                 </ul>
             </li>
 
             <li class="item">
-                <a class="link" href="#"><i class="fa-solid fa-file-shield"></i><span
+                <a class="link" href="./template-underConstruction.html"><i class="fa-solid fa-file-shield"></i><span
                         class="tooltiptext tooltip-right">LOG紀錄</span></a>
             </li>
             <li class="item">
-                <a class="link" href="#"><i class="fa-regular fa-paper-plane"></i><span
+                <a class="link" href="./template-underConstruction.html"><i class="fa-regular fa-paper-plane"></i><span
                         class="tooltiptext tooltip-right">意見反應</span></a>
             </li>
             <li class="item">
@@ -176,9 +179,56 @@
 
                     </div>
                 </div>
-
                 <!-- Modal -->
-                <div class="modal fade" id="remittanceModal" data-bs-backdrop="static" data-bs-keyboard="false"
+<div class="modal fade" id="remittanceModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="remittanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <form class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="remittanceModalLabel">上傳匯款憑證</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <!-- 公司名稱、統編、培育室位置、申請日期 (都不可改) -->
+                    <div class="row mb-1">
+                        <div class="col-12 text-nowrap lightBoxLabel p-3 align_center">
+                            匯款日期
+                        </div>
+                        <div class="col lightBoxItems p-3" id="companyName">
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12 text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                            匯款憑證檔案
+                        </div>
+                        <div class="col lightBoxItems p-3 align_center" id="ECPhone">
+                            <div class="row align-items-center my-1">
+                                <label for="parkingSpaceForm"
+                                    class="col-auto col-form-label text-nowrap upload-label py-0 align_center">請點此上傳pdf檔<i
+                                        class="fa-solid fa-upload mx-1"></i>
+                                </label>
+                                <div class="col-12">
+                                    <input type="file" class="form-control d-none" id="parkingSpaceForm" accept=".pdf"
+                                        onchange="javascript:{document.getElementById('parkingSpace_fileInfo1').innerHTML = document.getElementById('parkingSpaceForm').value;setFormHeight();}">
+                                    <div id="parkingSpace_fileInfo1" class="fileInfo"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                <button type="button" class="btn btn-outline-secondary" id="updateBtn">確認上傳</button>
+            </div>
+        </form>
+    </div>
+</div>
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="remittanceModal" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="remittanceModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <form class="modal-content">
@@ -189,7 +239,7 @@
                             </div>
                             <div class="modal-body">
                                 <div class="container-fluid">
-                                    <!-- 公司名稱、統編、培育室位置、申請日期 (都不可改) -->
+                                    公司名稱、統編、培育室位置、申請日期 (都不可改)
                                     <div class="row mb-1">
                                         <div class="col-12 text-nowrap lightBoxLabel p-3 align_center">
                                             匯款日期
@@ -227,7 +277,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> -->
 
 
                 <!-- <footer>

@@ -863,6 +863,7 @@ var CustomInputHandlers = {
         this.bindChangeLineIDItems();
         this.bindChangeSelectItems();
         this.bindChangeRadioApplyItems();
+        this.bindChangeSelectRoomItems();
     },
     bindChangeInputItems: function () {
         $('.changeInput_items').on('click', function () {
@@ -1209,6 +1210,58 @@ var CustomInputHandlers = {
                 });
             }
         });
+    },
+    bindChangeSelectRoomItems: function () {
+        $('.changeSelectRoom_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+    
+            if ($this.find('select').length === 0) {
+                var selectOptions = `
+                    <select class="form-control form-select">
+                    </select>`;
+    
+                var $select = $(selectOptions);
+    
+                var groupedOptions = {};
+                selectOptionRoom.forEach(function (item) {
+                    if (!groupedOptions[item.optigroup]) {
+                        groupedOptions[item.optigroup] = [];
+                    }
+                    groupedOptions[item.optigroup].push(item.option);
+                });
+    
+                for (var group in groupedOptions) {
+                    var optgroup = $('<optgroup>').attr('label', group);
+                    groupedOptions[group].forEach(function (option) {
+                        var optionValue = group + ' ' + option;
+                        var optionElement = $('<option>').attr('value', optionValue).text(option);
+                        if (optionValue === currentText) {
+                            optionElement.attr('selected', 'selected');
+                        }
+                        optgroup.append(optionElement);
+                    });
+                    $select.append(optgroup);
+                }
+    
+                $this.html($select);
+                $select.focus();
+    
+                $select.on('change', function () {
+                    var newText = $select.val();
+                    $this.html(newText);
+                });
+    
+                $(document).on('click.select', function (e) {
+                    if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+                        var newText = $select.val();
+                        $this.html(newText ? newText : currentText);
+                        $(document).off('click.select');
+                    }
+                });
+            }
+        });
     }
+
 
 };
