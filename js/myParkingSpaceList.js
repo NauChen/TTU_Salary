@@ -352,7 +352,7 @@ $(function () {
         ],
         createdRow: function (row, data, dataIndex) {
             [0, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
+                $('td:eq(' + colIdx + ')', row).css('font-size', '.95em').css('min-width', '130px');
             });
             [0, 1, 2, 4, 5].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');

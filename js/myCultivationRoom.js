@@ -137,7 +137,7 @@ $(function () {
         layout: {
             topStart: function () {
                 let provision = document.createElement('div');
-                provision.innerHTML = '<h6 class="fw-bold"><i class="fa-solid fa-circle-exclamation mx-1"></i>若要續用，請於車位到期前申請續約。</h6>';
+                provision.innerHTML = '<h6 class="fw-bold"><i class="fa-solid fa-circle-exclamation mx-1"></i>若要續用，請於到期前申請續約。</h6>';
                 return provision;
             },
         },

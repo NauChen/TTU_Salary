@@ -269,12 +269,12 @@ $(function () {
             { data: 'company', title: "承租人企業", }, // 1
             { data: 'carType', title: "車位類型", }, // 2
             { data: 'licensePlateNum', title: "車牌號碼", }, // 3
-            { data: 'parkingSpaceNum', title: "車位號碼", },
-            { data: 'endDate', title: "到期日", },
-            { data: 'paymentDate', title: "付款日", },
-            { data: 'status', title: "審核進度", },
+            { data: 'name', title: "申請人", }, // 4
+            { data: 'phone', title: "申請人電話", }, // 5
+            // { data: 'paymentDate', title: "付款日", },
+            { data: 'status', title: "審核進度", }, // 6
             {
-                data: 'id', title: "檢閱",
+                data: 'id', title: "檢閱", // 7
                 render: function (data) {
                     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#parkingSpaceDetailModel" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
                 }, className: 'text-center text-nowrap'
@@ -293,16 +293,14 @@ $(function () {
                 targets: [4],
                 responsivePriority: 3,
             },
-            {
-                targets: [7],
-                className: "text-start",
-            },
-            { searchable: false, orderable: false, targets: [8] },
-            { className: "text-center", targets: [2, 3, 4, 5, 6, 7] },
-            { className: "text-nowrap", targets: [2, 3, 4, 5, 6] },
+
+            { searchable: false, orderable: false, targets: [7] },
+            { className: "text-center", targets: [0, 2, 3, 4, 5] },
+            { className: "text-nowrap", targets: [0, 2, 3, 4, 5] },
         ],
         createdRow: function (row, data, dataIndex) {
-            $('td:eq(8)', row).css('min-width', '70px');
+            $('td:eq(7)', row).css('min-width', '70px');
+            $('td:eq(0)', row).css('font-size', '.95em');
             // $('td:eq(3)', row).addClass('pe-5');
             // [5, 6].forEach(function (colIdx) {
             //     $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
@@ -338,11 +336,11 @@ $(function () {
             $('#jobTitle').text(parkingSpaceData.jobTitle);
             $('#carType').text(parkingSpaceData.carType);
 
-            $('#parkingSpaceNum').text(parkingSpaceData.parkingSpaceNum);
+            // $('#parkingSpaceNum').text(parkingSpaceData.parkingSpaceNum);
 
-            $('#endDate').text(parkingSpaceData.endDate);
-            $('#paymentDate').text(parkingSpaceData.paymentDate);
-            $('#rate').text(parkingSpaceData.amount);
+            // $('#endDate').text(parkingSpaceData.endDate);
+            // $('#paymentDate').text(parkingSpaceData.paymentDate);
+            // $('#rate').text(parkingSpaceData.amount);
             $('#adminNote').text(parkingSpaceData.adminNote);
 
             $('#status').val(parkingSpaceData.status);
@@ -367,12 +365,12 @@ $(function () {
             $('.changeSelect_items').off('click');
             theseRemoveClass(["changeInput_items"], ['name', 'idNumber', 'jobTitle', 'parkingSpaceNum', 'adminNote']);
             theseRemoveClass(["changeNumber_items"], ['ext']);
-            theseRemoveClass(["changeDate_items"], ['endDate', 'paymentDate']);
+            // theseRemoveClass(["changeDate_items"], ['endDate', 'paymentDate']);
             theseRemoveClass(["changeMoney_items"], ['rate']);
             theseRemoveClass(["changePhone_items"], ['phoneNum']);
             theseRemoveClass(["changeEmail_items"], ['email']);
             theseRemoveClass(["changeRadio_items"], ['carType']);
-            theseRemoveClass(["changeSelect_items"], ['parkingSpaceNum']);
+            // theseRemoveClass(["changeSelect_items"], ['parkingSpaceNum']);
             theseAddClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'parkingSpaceNum', 'adminNote', 'ext', 'endDate', 'paymentDate', 'rate', 'phoneNum', 'email', 'carType']);
             $('#updateBtn').hide();
             $('#supplementaryFilesBox').hide();
@@ -384,12 +382,12 @@ $(function () {
         } else {
             theseAddClass(["changeInput_items"], ['name', 'idNumber', 'jobTitle', 'adminNote']);
             theseAddClass(["changeNumber_items"], ['ext']);
-            theseAddClass(["changeDate_items"], ['endDate', 'paymentDate']);
+            // theseAddClass(["changeDate_items"], ['endDate', 'paymentDate']);
             theseAddClass(["changeMoney_items"], ['rate']);
             theseAddClass(["changePhone_items"], ['phoneNum']);
             theseAddClass(["changeEmail_items"], ['email']);
             theseAddClass(["changeRadio_items"], ['carType']);
-            theseAddClass(["changeSelect_items"], ['parkingSpaceNum']);
+            // theseAddClass(["changeSelect_items"], ['parkingSpaceNum']);
             theseRemoveClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'parkingSpaceNum', 'adminNote', 'ext', 'endDate', 'paymentDate', 'rate', 'phoneNum', 'email', 'carType']);
             CustomInputHandlers.init();
             $('#updateBtn').show();
@@ -414,10 +412,10 @@ $(function () {
             updatedData.email = $('#email').text();
             updatedData.jobTitle = $('#jobTitle').text();
             updatedData.carType = $('#carType').text();
-            updatedData.parkingSpaceNum = $('#parkingSpaceNum').text();
-            updatedData.endDate = $('#endDate').text();
-            updatedData.paymentDate = $('#paymentDate').text();
-            updatedData.rate = $('#rate').text();
+            // updatedData.parkingSpaceNum = $('#parkingSpaceNum').text();
+            // updatedData.endDate = $('#endDate').text();
+            // updatedData.paymentDate = $('#paymentDate').text();
+            // updatedData.rate = $('#rate').text();
             updatedData.adminNote = $('#adminNote').text();
             updatedData.status = $('#status').val();
 

@@ -187,7 +187,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mb-3">
+        <div class="row">
             <div class="col-12" id="originalBuildingBox">
                 <select name="" id="parkingSpaceBuilding" class="form-select">
                     <option selected disabled>--- 請選擇 ---</option>
@@ -195,41 +195,54 @@
                 </select>
                 <span class="text-danger" id="danger_parkingSpaceBuilding"></span>
             </div>
-
+        </div>
+        <div class="row mb-3">
             <div class="col-12" id="newBuildingBox">
                 <input type="text" class="form-control" id="parkingSpaceBuildingNew">
                 <span class="text-danger" id="danger_parkingSpaceBuildingNew"></span>
             </div>
         </div>
-
-
+        <div class="row mb-3 align-items-center">
+            <div class="col-lg-auto col-form-label text-nowrap">車位種類：</div>
+            <div class="col">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="carType" id="car" value="汽車" checked>
+                    <label class="form-check-label" for="car">汽車</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="carType" id="moto" value="機車">
+                    <label class="form-check-label" for="moto">機車</label>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-xl-4 col-lg-6 mb-3">
         <div class="row mb-3">
-            <label for="cultivationSpaceRoom" class="col-lg-auto col-form-label text-nowrap">車位號碼：</label>
+            <label for="basementNum" class="col-lg-auto col-form-label text-nowrap">車位號碼：</label>
             <div class="col">
-                <input type="text" class="form-control" id="cultivationSpaceRoom">
-                <span class="text-danger" id="danger_cultivationSpaceRoom"></span>
+                <input type="text" class="form-control" id="basementNum">
+                <span class="text-danger" id="danger_basementNum"></span>
             </div>
         </div>
         <div class="row mb-3 salaryRadio px-2 py-2 mx-1 border-success">
             <div>&#10551;&ensp;請依格式輸入，例：B1-01。</div>
         </div>
+
         <div class="row mb-3">
-            <label for="cultivationSpaceRate" class="col-lg-auto col-form-label text-nowrap">月服務費：</label>
+            <label for="parkingSpaceRate" class="col-lg-auto col-form-label text-nowrap">月服務費：</label>
             <div class="col">
-                <input type="text" class="form-control" id="cultivationSpaceRate">
-                <span class="text-danger" id="danger_cultivationSpaceRate"></span>
+                <input type="text" class="form-control" id="parkingSpaceRate">
+                <span class="text-danger" id="danger_parkingSpaceRate"></span>
             </div>
         </div>
 
     </div>
     <div class="col-xl-4 col-lg-6 mb-3">
         <div class="row mb-3">
-            <label for="cultivationSpaceRemark" class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
+            <label for="parkingSpaceRemark" class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
             <div class="col">
-                <textarea class="form-control resize-none h_110" id="cultivationSpaceRemark"></textarea>
-                <span class="text-danger" id="danger_cultivationSpaceRemark"></span>
+                <textarea class="form-control resize-none h_110" id="parkingSpaceRemark"></textarea>
+                <span class="text-danger" id="danger_parkingSpaceRemark"></span>
             </div>
         </div>
     </div>

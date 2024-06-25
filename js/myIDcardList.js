@@ -119,7 +119,7 @@ $(function () {
         "data": dataset_myIDcardHistory,
         "columns": [
             {
-                data: 'id', title: "勾選", render: function (data, type, row, meta) {
+                data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data, type, row, meta) {
                     return '<input type="checkbox" class="form-check-input border-primary idCard-checkbox" value=' + data + '>'
                 },
             },
@@ -151,14 +151,11 @@ $(function () {
             { className: "text-center", targets: [0, 1, 2, 3, 4, 5, 6, 7, 9] },
         ],
         createdRow: function (row, data, dataIndex) {
-            [1, 4, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
+            [1, 5, 6].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('font-size', '.95em').css('min-width', '130px');
             });
             [1, 2, 4, 5, 6].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
-            });
-            [1, 5, 6].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
             });
             $('td:eq(7)', row).css('max-width', '130px');
         },

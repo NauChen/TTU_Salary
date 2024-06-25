@@ -84,7 +84,7 @@ var dataset_parkingSpaceOpen = [
         'building': '新德惠大樓',
         'basementNum': 'B2-15',
         'company': '',
-        'rate': '',
+        'rate': '3,000',
         'status': '未承租',
         'carType': '汽車',
         'name': '',
@@ -178,7 +178,7 @@ var dataset_parkingSpaceOpen = [
         'building': '新德惠大樓',
         'basementNum': 'B3-14',
         'company': '',
-        'rate': '',
+        'rate': '2,500',
         'status': '未承租',
         'carType': '汽車',
         'name': '',
@@ -273,7 +273,7 @@ var dataset_parkingSpaceOpen = [
         'building': '新德惠大樓',
         'basementNum': 'B2-07',
         'company': '',
-        'rate': '',
+        'rate': '100',
         'status': '未承租',
         'carType': '機車',
         'name': '',
@@ -287,6 +287,7 @@ var dataset_parkingSpaceOpen = [
         'licensePlateNum': ''
     }
 ];
+
 var dataset_cultivationRoomClose = [
     {
         'id': '1',

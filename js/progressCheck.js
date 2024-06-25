@@ -78,7 +78,7 @@ $(function () {
         "data": dataset_progressCheck,
         "columns": [
             {
-                data: 'id', title: "勾選", render: function (data, type, row, meta) { // 0
+                data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data, type, row, meta) { // 0
                     return '<input type="checkbox" class="form-check-input border-primary application-checkbox" value=' + data + '>'
                 },
             },
@@ -122,7 +122,7 @@ $(function () {
             $('td:eq(8)', row).css('min-width', '70px');
             $('td:eq(6)', row).css('min-width', '200px');
             [1, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
+                $('td:eq(' + colIdx + ')', row).css('min-width', '130px').css('font-size', '.95em');
             });
         }
     });

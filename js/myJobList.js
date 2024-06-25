@@ -449,7 +449,7 @@ $(function () {
         "data": dataset_myJob,
         "columns": [
             {
-                data: 'id', title: "勾選", render: function (data) {
+                data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data) {
                     return '<input type="checkbox" class="form-check-input border-primary job-checkbox" value=' + data + '>'
                 },
             },
@@ -486,8 +486,11 @@ $(function () {
                 $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
             });
             [1, 5, 6].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
+                $('td:eq(' + colIdx + ')', row).css('min-width', '150px').css('font-size', '.95em');
             });
+            // [1, 5, 6].forEach(function (colIdx) {
+            //     $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
+            // });
         }
     });
 

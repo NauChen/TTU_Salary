@@ -395,6 +395,9 @@ $(function () {
             [4, 5].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
             });
+            [0, 4, 5].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
+            });
         }
     });
 

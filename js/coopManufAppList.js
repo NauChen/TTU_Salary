@@ -431,9 +431,17 @@ $(function () {
             { data: 'status', title: "審核進度", },
             {
                 data: 'id', title: "檢閱",
-                render: function (data) {
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#vendorDetailModal" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
-                }, className: 'text-center text-nowrap'
+                // render: function (data) {
+                //     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#vendorDetailModal" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
+                // }, className: 'text-center text-nowrap'
+                render: function (data, type, row) {
+                    const status = row.status;
+                    if (status == '通過' || status == '不通過') {
+                         return '<button type="button" class="btn btn-info rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#vendorDetailModal" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
+                    } else {
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#vendorDetailModal" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
+                    }
+                }
             },
         ],
         "columnDefs": [
