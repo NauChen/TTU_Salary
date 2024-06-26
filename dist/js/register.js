@@ -99,18 +99,37 @@ function checkTheEmail() {
   // 未接資料庫暫用此測試。
   var checkEmail = $("#checkEmailResults");
   var nextButton = $("#submitBtn");
-  var checkEmailText = checkEmail.text();
-  switch (checkEmailText) {
-    case "檢查":
+  var checkEmailValue = $('#companyEmail').val();
+  // var checkEmailText = checkEmail.text();
+  // switch (checkEmailText) {
+  //     case "檢查":
+  //         checkEmail.text("檢查").removeClass("invalid").removeClass("valid");
+  //         nextButton.prop("disabled", true);
+  //         break;
+  //     case '相異': //沒有相同
+  //         checkEmail.text("檢查").removeClass("invalid").addClass("valid");
+  //         nextButton.prop("disabled", false);
+  //         break;
+  //     case '此Email已註冊過。':
+  //         checkEmail.text("此Email已註冊過。").removeClass("valid").addClass("invalid");
+  //         nextButton.prop("disabled", true);
+  //         break;
+  //     default:
+  //         checkEmail.text("Email格式不正確。").removeClass("valid").addClass("invalid");
+  //         nextButton.prop("disabled", true);
+  //         break;
+  // }
+  switch (checkEmailValue) {
+    case "":
       checkEmail.text("檢查").removeClass("invalid").removeClass("valid");
       nextButton.prop("disabled", true);
       break;
-    case '相異':
+    case '1':
       //沒有相同
       checkEmail.text("檢查").removeClass("invalid").addClass("valid");
       nextButton.prop("disabled", false);
       break;
-    case '此Email已註冊過。':
+    case '2':
       checkEmail.text("此Email已註冊過。").removeClass("valid").addClass("invalid");
       nextButton.prop("disabled", true);
       break;
@@ -171,7 +190,7 @@ $(function () {
     // 最後檢查 danger_ 開頭元素的文字內容
     if (checkDangerElements()) {
       // 如果返回 true，送出表單資料
-      $('#myForm').submit(); // 提交表單
+      $('#form_Register').submit(); // 提交表單
       console.log('表單資料已送出');
     } else {
       // 如果返回 false，顯示警告訊息
