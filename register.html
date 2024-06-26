@@ -114,7 +114,8 @@
                                                 class="col-12 col-md-2 col-form-label text-nowrap"><span>*</span>通訊地址</label>
                                             <div class="col">
                                                 <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="sameAdd" disabled>
+                                                    <input type="checkbox" class="form-check-input" id="sameAdd"
+                                                        disabled>
                                                     <label for="sameAdd" class="form-check-label">通訊地址同上</label>
                                                 </div>
                                                 <input type="text" class="col form-control thisRequired"
@@ -265,8 +266,8 @@
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none thisRequired" id="companyProof"
-                                                        accept=".pdf"
+                                                    <input type="file" class="form-control d-none thisRequired"
+                                                        id="companyProof" accept=".pdf"
                                                         onchange="javascript:{document.getElementById('fileInfo_companyProof').innerHTML = document.getElementById('companyProof').value;}">
                                                     <div id="fileInfo_companyProof" class="fileInfo"></div>
                                                     <span class="text-danger" id="danger_companyProof"></span>
@@ -276,16 +277,16 @@
                                         <!-- 18 -->
                                         <div class="col-auto">
                                             <div class="row align-items-center">
-                                                <label for="memoUpload"
+                                                <label for="memoOfCooperation"
                                                     class="col col-form-label text-nowrap upload-label">企業與大同大學教職員簽訂之合作備忘錄<i
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none thisRequired" id="memoUpload"
-                                                        accept=".pdf"
-                                                        onchange="javascript:{document.getElementById('fileInfo_memoUpload').innerHTML = document.getElementById('memoUpload').value;}">
-                                                    <div id="fileInfo_memoUpload" class="fileInfo"></div>
-                                                    <span class="text-danger" id="danger_memoUpload"></span>
+                                                    <input type="file" class="form-control d-none thisRequired"
+                                                        id="memoOfCooperation" accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo_memoOfCooperation').innerHTML = document.getElementById('memoOfCooperation').value;}">
+                                                    <div id="fileInfo_memoOfCooperation" class="fileInfo"></div>
+                                                    <span class="text-danger" id="danger_memoOfCooperation"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -298,10 +299,11 @@
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none thisRequired" id="consentDoc"
-                                                        accept=".pdf"
+                                                    <input type="file" class="form-control d-none thisRequired"
+                                                        id="consentDoc" accept=".pdf"
                                                         onchange="javascript:{document.getElementById('fileInfo_consentDoc').innerHTML = document.getElementById('consentDoc').value;}">
                                                     <div id="fileInfo_consentDoc" class="fileInfo"></div>
+                                                    <span class="text-danger" id="danger_consentDoc"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -313,10 +315,11 @@
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none thisRequired" id="businessProof"
-                                                        accept=".pdf"
+                                                    <input type="file" class="form-control d-none thisRequired"
+                                                        id="businessProof" accept=".pdf"
                                                         onchange="javascript:{document.getElementById('fileInfo_businessProof').innerHTML = document.getElementById('businessProof').value;}">
                                                     <div id="fileInfo_businessProof" class="fileInfo"></div>
+                                                    <span class="text-danger" id="danger_businessProof"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -324,15 +327,16 @@
                                         <!-- 9 -->
                                         <div class="col-auto">
                                             <div class="row align-items-center">
-                                                <label for="planUpload"
+                                                <label for="planConcept"
                                                     class="col col-form-label text-nowrap upload-label">企業營運計畫構想書<i
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none thisRequired" id="planUpload"
-                                                        accept=".pdf"
-                                                        onchange="javascript:{document.getElementById('fileInfo_planUpload').innerHTML = document.getElementById('planUpload').value;}">
-                                                    <div id="fileInfo_planUpload" class="fileInfo"></div>
+                                                    <input type="file" class="form-control d-none thisRequired"
+                                                        id="planConcept" accept=".pdf"
+                                                        onchange="javascript:{document.getElementById('fileInfo_planConcept').innerHTML = document.getElementById('planConcept').value;}">
+                                                    <div id="fileInfo_planConcept" class="fileInfo"></div>
+                                                    <span class="text-danger" id="danger_planConcept"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -344,10 +348,11 @@
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none thisRequired" id="entryForm"
-                                                        accept=".pdf"
+                                                    <input type="file" class="form-control d-none thisRequired"
+                                                        id="entryForm" accept=".pdf"
                                                         onchange="javascript:{document.getElementById('fileInfo_entryForm').innerHTML = document.getElementById('entryForm').value;}">
                                                     <div id="fileInfo_entryForm" class="fileInfo"></div>
+                                                    <span class="text-danger" id="danger_entryForm"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -396,7 +401,7 @@
 
 
     @@include('layout/metaJS.html')
-
+    <script src="./js/formValidation.js"></script>
     <script src="./js/register.js"></script>
 </body>
 
