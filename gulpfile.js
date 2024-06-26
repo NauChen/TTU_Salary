@@ -26,33 +26,33 @@ function taskB(cb) {
 }
 
 //同時
-exports.sync = parallel(taskA , taskB);
+exports.sync = parallel(taskA, taskB);
 
 //順序
-exports.async = series(taskA , taskB);
+exports.async = series(taskA, taskB);
 
 
 // 搬家
-function copy(){
-    return src(['*.html' , '*.js' , '!main.js' , '**/*.scss']).pipe(dest('dist'))
+function copy() {
+    return src(['*.html', '*.js', '!main.js', '**/*.scss']).pipe(dest('dist'))
 }
 //  過去檔案會有index about gulpfile 不會有main.js
 
 exports.m = copy;
 
 //圖片打包
-function img_copy(){
-    return src(['images/*.*' , 'images/**/*.*']).pipe(dest('dist/images'))
+function img_copy() {
+    return src(['images/*.*', 'images/**/*.*']).pipe(dest('dist/images'))
 }
 
 //css 壓縮
 
 const cleanCSS = require('gulp-clean-css');
 
-function minify(){
-   return src('css/*.css')
-     .pipe(cleanCSS())
-     .pipe(dest('dist/css'))
+function minify() {
+    return src('css/*.css')
+        .pipe(cleanCSS())
+        .pipe(dest('dist/css'))
 }
 
 exports.cssmini = minify;
@@ -60,10 +60,10 @@ exports.cssmini = minify;
 const uglify = require('gulp-uglify');
 
 
-function minijs(){
- return  src('js/*.js')
-    .pipe(uglify())
-    .pipe(dest('dist/js'))
+function minijs() {
+    return src('js/*.js')
+        .pipe(uglify())
+        .pipe(dest('dist/js'))
 }
 exports.js = minijs;
 
@@ -104,10 +104,10 @@ function includeHTML() {
 
 exports.html = includeHTML;
 
-function watchfile(){
-   watch(['*.html' , 'layout/*.html'], includeHTML);
-   watch(['sass/*.scss' , 'sass/**/*.scss'], styleSass);
-//    watch('js/*.js' , minijs);
+function watchfile() {
+    watch(['*.html', 'layout/*.html'], includeHTML);
+    watch(['sass/*.scss', 'sass/**/*.scss'], styleSass);
+    //    watch('js/*.js' , minijs);
 }
 exports.w = watchfile;
 
@@ -115,7 +115,6 @@ exports.w = watchfile;
 //同步瀏覽器
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
-
 
 function browser(done) {
     browserSync.init({
@@ -125,27 +124,25 @@ function browser(done) {
         },
         port: 3000
     });
-    watch(['*.html' , 'layout/*.html'], includeHTML).on('change' , reload)
-    watch(['sass/*.scss' , 'sass/**/*.scss'], styleSass).on('change' , reload)
-    watch(['images/*.*' , 'images/**/*.*'], img_copy).on('change' , reload)
-    watch('js/*.js', minijs).on('change' , reload)
+    watch(['*.html', 'layout/*.html'], includeHTML).on('change', reload)
+    watch(['sass/*.scss', 'sass/**/*.scss'], styleSass).on('change', reload)
+    watch(['images/*.*', 'images/**/*.*'], img_copy).on('change', reload)
+    watch('js/*.js', minijs).on('change', reload)
     done();
 }
 
 exports.default = browser;
 
-
 //壓縮圖片
 const imagemin = require('gulp-imagemin');
 
-function min_images(){
+function min_images() {
     return src('images/*.*')
-    .pipe(imagemin([
-        imagemin.mozjpeg({quality: 70, progressive: true}) // 壓縮品質      quality越低 -> 壓縮越大 -> 品質越差 
-    ]))
-    .pipe(dest('dist/images'))
+        .pipe(imagemin([
+            imagemin.mozjpeg({ quality: 70, progressive: true }) // 壓縮品質      quality越低 -> 壓縮越大 -> 品質越差 
+        ]))
+        .pipe(dest('dist/images'))
 }
-
 
 exports.pic = min_images
 
@@ -161,7 +158,6 @@ function babel5() {
         .pipe(dest('dist/js'));
 }
 
-
 exports.es = babel5;
 
 
@@ -169,43 +165,28 @@ exports.es = babel5;
 const clean = require('gulp-clean');
 
 function clear() {
-  return src('dist' ,{ read: false ,allowEmpty: true })//不去讀檔案結構，增加刪除效率  / allowEmpty : 允許刪除空的檔案
-  .pipe(clean({force: true})); //強制刪除檔案 
+    return src('dist', { read: false, allowEmpty: true })//不去讀檔案結構，增加刪除效率  / allowEmpty : 允許刪除空的檔案
+        .pipe(clean({ force: true })); //強制刪除檔案 
 }
 
 exports.c = clear;
 
 
-
-
-
-
+function copyWebfonts() {
+    return src('webfonts/**/*')
+        .pipe(dest('dist/webfonts'));
+}
 
 //開發用
 //exports.dev = series(parallel(includeHTML , styleSass , minijs , img_copy) , browser);
-
-
-
 //上線用
 //exports.online = series(clear ,parallel(includeHTML , styleSass , babel5 , min_images))
 
 
 // 開發用
-exports.dev = series(parallel(includeHTML, styleSass, minijs, img_copy, minify), browser);
+// exports.dev = series(parallel(includeHTML, styleSass, minijs, img_copy, minify), browser);
+exports.dev = series(parallel(includeHTML, styleSass, minijs, img_copy, minify, copyWebfonts), browser);
 
 // 上線用
-exports.online = series(clear, parallel(includeHTML, styleSass, babel5, min_images, minify));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// exports.online = series(clear, parallel(includeHTML, styleSass, babel5, min_images, minify));
+exports.online = series(clear, parallel(includeHTML, styleSass, babel5, min_images, minify, copyWebfonts));
