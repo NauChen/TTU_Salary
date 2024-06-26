@@ -1,4 +1,4 @@
-document.write('<script type="text/javascript" src="./js/formComm.js"></script>');
+// document.write('<script type="text/javascript" src="./js/formComm.js"></script>');
 // ***********************************確定後再合併$(function(){ });
 
 /* ::::::::::::::::::::::::::::: 新增/修改職缺 */

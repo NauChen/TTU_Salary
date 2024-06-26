@@ -295,6 +295,24 @@ function theseRemoveClass(classNames, ids) {
 
 
 // ※※※※※※===TOP 按鈕===※※※※※※
+$(function () {
+    // 監聽滾動事件
+    $(window).on("scroll", function () {
+        let btnUp = $(".top_button");
+        if ($(this).scrollTop() > 0) {
+            // 當畫面不在網頁最頂端時，加上 scroll-animation 類別來套用透明度變化的動畫
+            btnUp.addClass("scroll-animation").removeClass("d-none");
+        } else {
+            // 畫面在網頁最頂端時，移除 scroll-animation 類別
+            btnUp.removeClass("scroll-animation").addClass("d-none");
+        }
+    });
+
+    // 監聽 DOMContentLoaded 事件
+    $("#btn_up").on("click", function () {
+        $("html, body").animate({ scrollTop: 0 }, "smooth");
+    });
+});
 // window.addEventListener("scroll", function () {
 //     let btnUp = document.querySelector(".top_button");
 //     if (window.scrollY > 0) {
@@ -319,24 +337,7 @@ function theseRemoveClass(classNames, ids) {
 //         });
 //     }
 // });
-$(function () {
-    // 監聽滾動事件
-    $(window).on("scroll", function () {
-        let btnUp = $(".top_button");
-        if ($(this).scrollTop() > 0) {
-            // 當畫面不在網頁最頂端時，加上 scroll-animation 類別來套用透明度變化的動畫
-            btnUp.addClass("scroll-animation").removeClass("d-none");
-        } else {
-            // 畫面在網頁最頂端時，移除 scroll-animation 類別
-            btnUp.removeClass("scroll-animation").addClass("d-none");
-        }
-    });
 
-    // 監聽 DOMContentLoaded 事件
-    $("#btn_up").on("click", function () {
-        $("html, body").animate({ scrollTop: 0 }, "smooth");
-    });
-});
 
 
 
