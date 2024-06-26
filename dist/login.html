@@ -6,8 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>大同大學校內育成媒合平台-登入</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> -->
+    <link rel="stylesheet" href="./css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/login.css">
 
 
@@ -15,7 +18,7 @@
 
 <body>
     <div class="container">
-        <div asp-validation-summary="ModelOnly" class="alert alert-danger validation-summary-errors">
+        <div class="alert alert-danger validation-summary-errors" id="danger_loginPage">
             (ó㉨ò)　登入失敗，請檢查您的帳號或密碼。</div>
         <div class="formBox level-login">
             <div class="page pageShaddow"></div>
@@ -32,12 +35,12 @@
                 <form class="formpage">
                     <div class="f_row">
                         <label>帳號</label>
-                        <input type="email" class="input-field" required>
+                        <input type="text" class="input-field" required autocomplete="current-password" id="account">
                         <u></u>
                     </div>
                     <div class="f_row last">
                         <label>密碼</label>
-                        <input type="password" class="input-field" required>
+                        <input type="password" class="input-field" required autocomplete="current-password">
                         <u></u>
                     </div>
                     <button class="btn-trans"><span>登入</span><u></u>
@@ -71,32 +74,37 @@
                         <a href="#" class="col" data-bs-toggle="modal" data-bs-target="#PIPBox">個資規範<i
                                 class="fa-solid fa-eye"></i></a>
                         <label class="col-auto align-center">同意
-                            <input type="checkbox" class="form-check-input">
-                        </label>
-                    </div>
-
-                    <div class="row justify-content-between align-items-center my-2">
-                        <a href="#" class="col">企業與大同大學教職員簽訂之合作備忘錄<i class="fa-solid fa-download"></i></a>
-                        <label class="col-auto align-center">備妥
-                            <input type="checkbox" class="form-check-input">
+                            <input type="checkbox" class="form-check-input" id="checkbox_PIP">
                         </label>
                     </div>
                     <div class="row justify-content-between align-items-center my-2">
-                        <a href="#" class="col">企業營運計畫構想書<i class="fa-solid fa-download"></i></a>
+                        <a href="./file_download/F-A1410-005大同大學創新育成中心企業與教職員合作備忘錄.odt" class="col">企業與大同大學教職員簽訂之合作備忘錄<i class="fa-solid fa-download"></i></a>
                         <label class="col-auto align-center">備妥
-                            <input type="checkbox" class="form-check-input">
+                            <input type="checkbox" class="form-check-input" id="checkbox_memoOfCooperation">
                         </label>
                     </div>
                     <div class="row justify-content-between align-items-center my-2">
-                        <a href="#" class="col">同意審查聲明書<i class="fa-solid fa-download"></i></a>
+                        <a href="./file_download/F-A1410-004大同大學創新育成中心企業申請進駐營運計畫書.odt" class="col">企業營運計畫構想書<i class="fa-solid fa-download"></i></a>
                         <label class="col-auto align-center">備妥
-                            <input type="checkbox" class="form-check-input">
+                            <input type="checkbox" class="form-check-input" id="check_planConcept">
                         </label>
                     </div>
                     <div class="row justify-content-between align-items-center my-2">
-                        <a href="#" class="col">創新育成中心進駐申請書<i class="fa-solid fa-download"></i></a>
+                        <a href="./file_download/F-A1410-002大同大學創新育成中心企業同意審查聲明書.odt" class="col">同意審查聲明書<i class="fa-solid fa-download"></i></a>
                         <label class="col-auto align-center">備妥
-                            <input type="checkbox" class="form-check-input">
+                            <input type="checkbox" class="form-check-input" id="checkbox_consentDoc">
+                        </label>
+                    </div>
+                    <div class="row justify-content-between align-items-center my-2">
+                        <a href="./file_download/F-A1410-003大同大學創新育成中心企業進駐申請書.odt" class="col">創新育成中心進駐申請書<i class="fa-solid fa-download"></i></a>
+                        <label class="col-auto align-center">備妥
+                            <input type="checkbox" class="form-check-input" id="checkbox_entryForm">
+                        </label>
+                    </div>
+                    <div class="row justify-content-between align-items-center my-2">
+                        <p class="col mb-0">營利事業登記證或預查名稱表影本</p>
+                        <label class="col-auto align-center">備妥
+                            <input type="checkbox" class="form-check-input" id="checkbox_businessProof">
                         </label>
                     </div>
                     <div class="row justify-content-between align-items-center my-2">
@@ -105,21 +113,9 @@
                             <input type="checkbox" class="form-check-input">
                         </label>
                     </div>
-                    <div class="row justify-content-between align-items-center my-2">
-                        <p class="col mb-0">進駐審查費繳費證明</p>
-                        <label class="col-auto align-center">備妥
-                            <input type="checkbox" class="form-check-input">
-                        </label>
-                    </div>
-                    <div class="row justify-content-between align-items-center my-2">
-                        <p class="col mb-0">營利事業登記證或預查名稱表影本</p>
-                        <label class="col-auto align-center">備妥
-                            <input type="checkbox" class="form-check-input">
-                        </label>
-                    </div>
 
-                    <a href="./register.html">
-                        <button class="btn-large mt-4" type="button">NEXT</button>
+                    <a href="./register.html" id="nextLink">
+                        <button class="btn-large mt-4" type="button" id="nextButton">NEXT</button>
                     </a>
                 </form>
             </div>
@@ -241,7 +237,7 @@
                     </div>
                 </div>
                 <div class="modal-footer" id="readAll">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">已了解</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="iAgree">已了解</button>
                 </div>
             </div>
         </div>

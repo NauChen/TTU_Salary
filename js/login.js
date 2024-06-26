@@ -64,27 +64,71 @@ $('.btn').each(function () {
     });
 });
 
-// $(document).ready(function () {
-//     $('.modal-dialog-scrollable').on('scroll', function () {
-//         var button = $('.modal-footer button');
-//         if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-//             button.removeAttr('disabled');
-//         } else {
-//             button.attr('disabled', true);
-//         }
-//     });
-// });
 
-// var scrollSpy = new bootstrap.ScrollSpy(document.body, {
-//     target: '#navbar-example'
-// })
-// $('#staticBackdrop').on('shown.bs.modal', function () {
-//     $(this).find('.modal-dialog-scrollable').on('scroll', function () {
-//         var button = $('.modal-footer button');
-//         if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-//             button.removeAttr('disabled');
-//         } else {
-//             button.attr('disabled', true);
-//         }
-//     });
-// });
+$(function () {
+    // ※※※ 個資規範至底才能點擊確認，確認完自動勾同意 ※※※
+    var checkbox = $('#checkbox_PIP');
+    var modalBody = $('.modal-body');
+    var understandBtn = $('#iAgree');
+
+    checkbox.prop('disabled', true);
+    understandBtn.prop('disabled', true);
+
+    modalBody.on('scroll', function () {
+        if (modalBody.prop('scrollHeight') - modalBody.scrollTop() === modalBody.innerHeight()) {
+            understandBtn.prop('disabled', false);
+        }
+    });
+
+    understandBtn.on('click', function () {
+        checkbox.prop('checked', true);
+        checkbox.prop('disabled', false);
+    });
+
+    modalBody.append('<div style="height:100px;"></div>');
+
+
+
+    // ※※※ 是否進入申請頁面 ※※※
+    $('#danger_loginPage').hide();
+    $('#nextButton').click(function (event) {
+        var allChecked = true;
+        var agreePIP = $('#checkbox_PIP');
+
+        var checkboxes = [
+            // '#checkbox_PIP',
+            '#checkbox_memoOfCooperation',
+            '#check_planConcept',
+            '#checkbox_consentDoc',
+            '#checkbox_entryForm',
+            '#checkbox_businessProof',
+        ];
+
+        checkboxes.forEach(function (selector) {
+            if (!$(selector).is(':checked')) {
+                allChecked = false;
+            }
+        });
+
+        if (agreePIP.is(':checked')) {
+            if (!allChecked) {
+                event.preventDefault();
+                $('#danger_loginPage').show().text('(ó㉨ò)　請確認備齊文件再申請唷！');
+            } else {
+                $('#danger_loginPage').hide();
+                window.location.href = $('#nextLink').attr('href');
+            }
+        } else {
+            event.preventDefault();
+            $('#danger_loginPage').show().text('(ó㉨ò)　需詳閱並同意個資規範唷！');
+        }
+    });
+
+
+});
+
+
+$(function () {
+
+
+});

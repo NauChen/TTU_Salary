@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>大同大學-校內育成媒合平台-申請加入</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> -->
+    <link rel="stylesheet" href="./css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/register.css">
 
 
@@ -37,11 +40,11 @@
                                 <div class="row align-items-center">
                                     <div class="col-12 formItems">
                                         <div class="row">
-                                            <label for="companyName" class="col-md-2 col-form-label text-nowrap"
-                                                asp-for="CompanyName"><span>*</span>公司名稱</label>
+                                            <label for="companyName"
+                                                class="col-md-2 col-form-label text-nowrap"><span>*</span>公司名稱</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="companyName">
-                                                <span asp-validation-for="CompanyName" class="text-danger"></span>
+                                                <input type="text" class="form-control thisRequired" id="companyName">
+                                                <span class="text-danger" id="danger_companyName"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -50,14 +53,14 @@
                                             <label for="creationDate"
                                                 class="col-md-2 col-form-label text-nowrap"><span>*</span>成立日期</label>
                                             <div class="col">
-                                                <input type="date" class="form-control" id="creationDate">
+                                                <input type="date" class="form-control thisRequired" id="creationDate">
+                                                <span class="text-danger" id="danger_creationDate"></span>
                                             </div>
                                             <div class="col-6 col-md-3 col-lg-4">
                                                 <label for="creationDateYet" class="col text-nowrap">
                                                     <input type="checkbox" class="form-check-input"
                                                         id="creationDateYet">
                                                     辦理公司登記中</label>
-
                                             </div>
                                         </div>
                                     </div>
@@ -66,7 +69,10 @@
                                             <label for="capitalAmount"
                                                 class="col-4 col-form-label text-nowrap"><span>*</span>資本額</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="capitalAmount">
+                                                <input type="text" class="form-control thisRequired" id="capitalAmount"
+                                                    onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)"
+                                                    onblur="formatOnBlur(this)">
+                                                <span class="text-danger" id="danger_capitalAmount"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +81,9 @@
                                             <label for="uniformNum"
                                                 class="col-4 col-form-label text-nowrap"><span>*</span>統一編號</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="uniformNum">
+                                                <input type="text" class="form-control thisRequired" id="uniformNum"
+                                                    onkeyup="restrictToUniformNum(this)">
+                                                <span class="text-danger" id="danger_uniformNum"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -84,25 +92,19 @@
                                             <label for="responsiblePerson"
                                                 class="col-4 col-form-label text-nowrap"><span>*</span>負責人</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="responsiblePerson">
+                                                <input type="text" class="form-control thisRequired"
+                                                    id="responsiblePerson">
+                                                <span class="text-danger" id="danger_responsiblePerson"></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-6 formItems">
-                                        <div class="row">
-                                            <label for="majorShareholder"
-                                                class="col-4 col-form-label text-nowrap"><span>*</span>主要股東</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control" id="majorShareholder">
-                                            </div>
-                                        </div>
-                                    </div> -->
                                     <div class="col-12 formItems">
                                         <div class="row">
                                             <label for="companyAdd"
                                                 class="col-12 col-md-2 col-form-label text-nowrap"><span>*</span>登記地址</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="companyAdd">
+                                                <input type="text" class="form-control thisRequired" id="companyAdd">
+                                                <span class="text-danger" id="danger_companyAdd"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -111,10 +113,13 @@
                                             <label for="locationOfCompany"
                                                 class="col-12 col-md-2 col-form-label text-nowrap"><span>*</span>通訊地址</label>
                                             <div class="col">
-                                                <label for="sameAdd" class="col-12">
-                                                    <input type="checkbox" class="form-check-input" id="sameAdd">
-                                                    通訊地址同上</label>
-                                                <input type="text" class="col form-control" id="locationOfCompany">
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="sameAdd" disabled>
+                                                    <label for="sameAdd" class="form-check-label">通訊地址同上</label>
+                                                </div>
+                                                <input type="text" class="col form-control thisRequired"
+                                                    id="locationOfCompany">
+                                                <span class="text-danger" id="danger_locationOfCompany"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +128,10 @@
                                             <label for="employeesNum"
                                                 class="col-4 col-form-label text-nowrap"><span>*</span>員工人數</label>
                                             <div class="col-5">
-                                                <input type="text" class="form-control" id="employeesNum">
+                                                <input type="text" class="form-control thisRequired" id="employeesNum"
+                                                    onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)"
+                                                    onblur="formatOnBlur(this)">
+                                                <span class="text-danger" id="danger_employeesNum"></span>
                                             </div>
                                             <span class="col">人</span>
                                         </div>
@@ -139,7 +147,8 @@
                                             <label for="contactPerson"
                                                 class="col-3 col-form-label text-nowrap"><span>*</span>聯絡人</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="contactPerson">
+                                                <input type="text" class="form-control thisRequired" id="contactPerson">
+                                                <span class="text-danger" id="danger_contactPerson"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -147,7 +156,8 @@
                                         <div class="row">
                                             <label for="ext" class="col-3 col-form-label text-nowrap">&ensp;分機</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="ext">
+                                                <input type="text" class="form-control" id="ext"
+                                                    onkeyup="restrictToUniformNum(this)">
                                             </div>
                                         </div>
                                     </div>
@@ -156,7 +166,8 @@
                                             <label for="jobTitle"
                                                 class="col-3 col-form-label text-nowrap"><span>*</span>職稱</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="jobTitle">
+                                                <input type="text" class="form-control thisRequired" id="jobTitle">
+                                                <span class="text-danger" id="danger_jobTitle"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -165,7 +176,10 @@
                                             <label for="phoneNum"
                                                 class="col-3 col-form-label text-nowrap"><span>*</span>電話/手機</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="phoneNum">
+                                                <input type="text" class="form-control thisRequired thisPhone"
+                                                    id="phoneNum" onkeyup="restrictToNumberHyphen(this)"
+                                                    onblur="checkThisPhone.call(this)">
+                                                <span class="text-danger" id="danger_phoneNum"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -173,25 +187,31 @@
                                         <div class="row">
                                             <label for="lineId" class="col-3 col-form-label text-nowrap">LineID</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="lineId">
+                                                <input type="text" class="form-control" id="lineId"
+                                                    onkeyup="restrictToValidChars(this)">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 formItems">
                                         <div class="row align-items-center">
-                                            <label for="email"
+                                            <label for="companyEmail"
                                                 class="col-auto col-form-label text-nowrap"><span>*</span>E-mail&ensp;</label>
                                             <div class="col">
-                                                <input type="email" class="form-control" id="email">
+                                                <input type="email" class="form-control" id="companyEmail"
+                                                    onkeyup="restrictToValidChars(this)" onblur="checkTheEmail()">
+                                                <!-- <span class="text-danger" id="danger_companyEmail"></span> -->
                                             </div>
                                             <div class="col-md-auto">
-                                                <!-- <div class="checkEmail valid text-nowrap">檢查</div> -->
-                                                <div class="checkEmail invalid text-nowrap">Email格式不正確。</div>
+                                                <!-- <div class="valid text-nowrap" id="checkEmailResults">檢查</div> -->
+                                                <div class="valid text-nowrap" id="checkEmailResults">相異</div>
+                                                <!-- <div class="invalid text-nowrap" id="checkEmailResults">Email格式不正確。</div> -->
+                                                <!-- <div class="invalid text-nowrap" id="checkEmailResults">此Email已註冊過。</div> -->
+
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 formItems bg-warning fw-bold">
-                                        ※此E-mail會作為未來大同大學與貴司主要聯絡之用，請謹慎填寫。
+                                    <div class="col-12 formItems bg-warning mx-2 rounded">
+                                        &ensp;&#10551;此E-mail是未來本校與貴司主要聯絡之用，請謹慎填寫。
                                     </div>
 
                                 </div>
@@ -205,8 +225,9 @@
                                             <label for="businessItems"
                                                 class="col-md-3 col-form-label text-nowrap"><span>*</span>主要營業項目</label>
                                             <div class="col">
-                                                <textarea class="form-control textarea-sm" id="businessItems"
-                                                    placeholder="※請簡述"></textarea>
+                                                <textarea class="form-control textarea-sm thisRequired"
+                                                    id="businessItems" placeholder="※請簡述"></textarea>
+                                                <span class="text-danger" id="danger_businessItems"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -218,16 +239,6 @@
                                             <div class="col">
                                                 <textarea class="form-control textarea-md" id="helpItems"
                                                     placeholder="※技術、行銷、財務或商務支援等，請簡要敘述。"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 formItems">
-                                        <div class="row">
-                                            <label for="createId"
-                                                class="col-md-3 col-form-label text-nowrap"><span>*</span>使用者代號</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control" id="createId"
-                                                    placeholder="※僅接受小寫字母、數字與下底線的組合。">
                                             </div>
                                         </div>
                                     </div>
@@ -247,17 +258,18 @@
                                 <div class="row align-items-center">
                                     <div class="row py-3 px-4">
                                         <!-- 5 -->
-                                        <div class="col-auto">
+                                        <div class="col-auto" id="companyProofBox">
                                             <div class="row">
                                                 <label for="companyProof"
                                                     class="col col-form-label text-nowrap upload-label">公司登記證<i
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none" id="companyProof"
+                                                    <input type="file" class="form-control d-none thisRequired" id="companyProof"
                                                         accept=".pdf"
-                                                        onchange="javascript:{document.getElementById('fileInfo1').innerHTML = document.getElementById('companyProof').value;setFormHeight();}">
-                                                    <div id="fileInfo1" class="fileInfo"></div>
+                                                        onchange="javascript:{document.getElementById('fileInfo_companyProof').innerHTML = document.getElementById('companyProof').value;}">
+                                                    <div id="fileInfo_companyProof" class="fileInfo"></div>
+                                                    <span class="text-danger" id="danger_companyProof"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -269,10 +281,11 @@
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none" id="memoUpload"
+                                                    <input type="file" class="form-control d-none thisRequired" id="memoUpload"
                                                         accept=".pdf"
-                                                        onchange="javascript:{document.getElementById('fileInfo6').innerHTML = document.getElementById('memoUpload').value;setFormHeight();}">
-                                                    <div id="fileInfo6" class="fileInfo"></div>
+                                                        onchange="javascript:{document.getElementById('fileInfo_memoUpload').innerHTML = document.getElementById('memoUpload').value;}">
+                                                    <div id="fileInfo_memoUpload" class="fileInfo"></div>
+                                                    <span class="text-danger" id="danger_memoUpload"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -285,10 +298,10 @@
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none" id="consentDoc"
+                                                    <input type="file" class="form-control d-none thisRequired" id="consentDoc"
                                                         accept=".pdf"
-                                                        onchange="javascript:{document.getElementById('fileInfo3').innerHTML = document.getElementById('consentDoc').value;setFormHeight();}">
-                                                    <div id="fileInfo3" class="fileInfo"></div>
+                                                        onchange="javascript:{document.getElementById('fileInfo_consentDoc').innerHTML = document.getElementById('consentDoc').value;}">
+                                                    <div id="fileInfo_consentDoc" class="fileInfo"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -300,10 +313,10 @@
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none" id="businessProof"
+                                                    <input type="file" class="form-control d-none thisRequired" id="businessProof"
                                                         accept=".pdf"
-                                                        onchange="javascript:{document.getElementById('fileInfo2').innerHTML = document.getElementById('businessProof').value;setFormHeight();}">
-                                                    <div id="fileInfo2" class="fileInfo"></div>
+                                                        onchange="javascript:{document.getElementById('fileInfo_businessProof').innerHTML = document.getElementById('businessProof').value;}">
+                                                    <div id="fileInfo_businessProof" class="fileInfo"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -316,10 +329,10 @@
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none" id="planUpload"
+                                                    <input type="file" class="form-control d-none thisRequired" id="planUpload"
                                                         accept=".pdf"
-                                                        onchange="javascript:{document.getElementById('fileInfo5').innerHTML = document.getElementById('planUpload').value;setFormHeight();}">
-                                                    <div id="fileInfo5" class="fileInfo"></div>
+                                                        onchange="javascript:{document.getElementById('fileInfo_planUpload').innerHTML = document.getElementById('planUpload').value;}">
+                                                    <div id="fileInfo_planUpload" class="fileInfo"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -331,16 +344,16 @@
                                                         class="fa-solid fa-upload mx-1"></i>
                                                 </label>
                                                 <div class="col-12">
-                                                    <input type="file" class="form-control d-none" id="entryForm"
+                                                    <input type="file" class="form-control d-none thisRequired" id="entryForm"
                                                         accept=".pdf"
-                                                        onchange="javascript:{document.getElementById('fileInfo4').innerHTML = document.getElementById('entryForm').value;setFormHeight();}">
-                                                    <div id="fileInfo4" class="fileInfo"></div>
+                                                        onchange="javascript:{document.getElementById('fileInfo_entryForm').innerHTML = document.getElementById('entryForm').value;}">
+                                                    <div id="fileInfo_entryForm" class="fileInfo"></div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <!-- 9 -->
-                                        <div class="col-auto">
+                                        <!-- <div class="col-auto">
                                             <div class="row">
                                                 <label for="payProof"
                                                     class="col col-form-label text-nowrap upload-label">進駐審查費繳費證明<i
@@ -349,19 +362,19 @@
                                                 <div class="col-12">
                                                     <input type="file" class="form-control d-none" id="payProof"
                                                         accept=".pdf"
-                                                        onchange="javascript:{document.getElementById('fileInfo7').innerHTML = document.getElementById('payProof').value;setFormHeight();}">
-                                                    <div id="fileInfo7" class="fileInfo"></div>
+                                                        onchange="javascript:{document.getElementById('fileInfo_payProof').innerHTML = document.getElementById('payProof').value;setFormHeight();}">
+                                                    <div id="fileInfo_payProof" class="fileInfo"></div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <!-- button group -->
                                     <div class="mt-4 d-flex justify-content-end">
-                                        <a href="./login.html" class="btn btn-outline-success js-btn-prev"
-                                            type="button" title="Prev">返回</a>
-                                        <button class="btn btn-secondary ml-auto ms-2" type="button"
-                                            title="Send">送出</button>
+                                        <a href="./login.html" class="btn btn-outline-success js-btn-prev" type="button"
+                                            title="Prev">返回</a>
+                                        <button class="btn btn-secondary ml-auto ms-2" type="button" title="Send"
+                                            id="submitBtn">送出</button>
                                     </div>
                                 </div>
                             </div>
@@ -383,6 +396,7 @@
 
 
     @@include('layout/metaJS.html')
+
     <script src="./js/register.js"></script>
 </body>
 
