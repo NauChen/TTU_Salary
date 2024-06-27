@@ -277,13 +277,13 @@ function checkThisPhone() {
 
 
 // ※※※※※※=== 日期 ===※※※※※※
-//限制截止日期不可小於開始日期
-function restrictEndDate(startDateId, endDateId) {
-    $('#' + startDateId).on('change', function () {
-        var startDate = $(this).val();
-        $('#' + endDateId).attr('min', startDate);
-    });
-}
+            //限制截止日期不可小於開始日期
+            // function restrictEndDate(startDateId, endDateId) {
+            //     $('#' + startDateId).on('change', function () {
+            //         var startDate = $(this).val();
+            //         $('#' + endDateId).attr('min', startDate);
+            //     });
+            // }
 
 
 

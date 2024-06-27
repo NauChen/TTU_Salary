@@ -102,6 +102,58 @@ function splitJobTime(jobTime) {
     }
 }
 
+// ※※ 日期函式 - 起訖日期專用 ※※
+
+//   限制可選日期不可早於當前日期
+function setMinDateToToday(inputId) {
+    // 獲取當前日期
+    var today = new Date();
+
+    // 格式化日期為 YYYY-MM-DD
+    var yyyy = today.getFullYear();
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); // 獲取月份，並確保格式為兩位數
+    var dd = String(today.getDate()).padStart(2, '0'); // 獲取日期，並確保格式為兩位數
+    var formattedDate = yyyy + '-' + mm + '-' + dd;
+
+    // 設置 input 元素的 min 屬性
+    $('#' + inputId).attr('min', formattedDate);
+}
+//   確保選擇 開始日期 之前 不能選擇 結束日期，會跳Toast提示。選擇結束日期後開始日期加上max限制，避免逆選漏洞。
+function enforceStartDateFirst(startDateId, endDateId) {
+    var startDate = $('#' + startDateId);
+    var endDate = $('#' + endDateId);
+
+    // 當結束日期的 input 被點擊時
+    endDate.on('mousedown', function(e) {
+        // 如果起始日期為空，顯示警告訊息並防止日期選擇器展開
+        if (startDate.val() === '') {
+            e.preventDefault(); // 阻止事件的默認行為
+            endDate.attr('readonly', true); // 設置結束日期為只讀
+            swalToastWarning('請先選取開始日期。', 'top');
+        } else {
+            endDate.attr('readonly', false); // 否則結束日期可選
+        }
+    });
+
+    // 當起始日期改變時，更新結束日期的 min 屬性並取消只讀屬性
+    startDate.on('change', function() {
+        if (startDate.val() !== '') {
+            endDate.attr('min', startDate.val());
+            endDate.attr('readonly', false); // 啟用結束日期的輸入
+        } else {
+            endDate.removeAttr('min');
+            endDate.attr('readonly', true); // 禁用結束日期的輸入
+        }
+    });
+    endDate.on('change', function() {
+        if (endDate.val() !== '') {
+            startDate.attr('max', endDate.val());
+        } else {
+            startDate.removeAttr('max');
+        }
+    });
+}
+
 // ※※ 文字轉換函式 - 存取資料專用 ※※
 // 將資料庫的文字內的 \n 轉成 <br>
 function convertNewlinesToBreaks(text) {

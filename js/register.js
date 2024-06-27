@@ -63,7 +63,7 @@ $(function () {
 });
 
 // 限定函式 - 檢查Email
-function checkTheEmail() {
+function checkRegisterEmail() {
     // 接資料庫後改用此。
     // var email = $("#companyEmail").val();
     // $.ajax({
@@ -100,25 +100,6 @@ function checkTheEmail() {
     var checkEmail = $("#checkEmailResults");
     var nextButton = $("#submitBtn");
     var checkEmailValue = $('#companyEmail').val();
-    // var checkEmailText = checkEmail.text();
-    // switch (checkEmailText) {
-    //     case "檢查":
-    //         checkEmail.text("檢查").removeClass("invalid").removeClass("valid");
-    //         nextButton.prop("disabled", true);
-    //         break;
-    //     case '相異': //沒有相同
-    //         checkEmail.text("檢查").removeClass("invalid").addClass("valid");
-    //         nextButton.prop("disabled", false);
-    //         break;
-    //     case '此Email已註冊過。':
-    //         checkEmail.text("此Email已註冊過。").removeClass("valid").addClass("invalid");
-    //         nextButton.prop("disabled", true);
-    //         break;
-    //     default:
-    //         checkEmail.text("Email格式不正確。").removeClass("valid").addClass("invalid");
-    //         nextButton.prop("disabled", true);
-    //         break;
-    // }
     switch (checkEmailValue) {
         case "":
             checkEmail.text("檢查").removeClass("invalid").removeClass("valid");
@@ -143,11 +124,11 @@ function checkTheEmail() {
 
 $(function () {
     // 載入完畢後，執行一次檢查email
-    checkTheEmail();
+    checkRegisterEmail();
 
     // 當 #companyEmail 失去焦點時，再次執行檢查
     $('#companyEmail').on('blur', function () {
-        checkTheEmail();
+        checkRegisterEmail();
     });
     // 當 .thisRequired 更改時，再次執行檢查
     $('.thisRequired').on('input change', function () {

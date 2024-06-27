@@ -137,6 +137,7 @@
 @page {
     size: A4 portrait;
     margin: 0;
+    margin-top: 20px;
 }
 
 @media print {
@@ -149,6 +150,7 @@
     }
 
     .print_template {
+        padding-top: 50px;
         display: block;
         width: 100%;
     }

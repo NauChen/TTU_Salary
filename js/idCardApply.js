@@ -1,4 +1,3 @@
-// document.write('<script type="text/javascript" src="./js/formComm.js"></script>');
 // document.write('<script type="text/javascript" src="./js/formPreview.js"></script>');
 
 
@@ -216,16 +215,18 @@
 //     //         warningBox.text('電話/手機 的格式不正確，請依正確的格式輸入：區碼-電話號碼 或 09XX-XXXXXX');
 //     //     }
 //     // }
-// });
+// // });
 
 // idCardApply.js
 $(function () {
-    // $.getScript('./js/formComm.js')
-    //     .done(function() {
-    //         // formComm.js 加載完成後加載 formPreview.js
-    //         $.getScript('./js/formPreview.js')
-    //             .done(function() {
-    // formPreview.js 加載完成後執行主邏輯
+    setMinDateToToday('idCard_Period1');
+    setMinDateToToday('idCard_Period2');
+    // 限制截止日期不可小於開始日期
+    // restrictEndDate('idCard_Period1', 'idCard_Period2');
+    // 確保選擇開始日期之前不能選擇結束日期
+    enforceStartDateFirst('idCard_Period1', 'idCard_Period2');
+
+
     // 同步輸入框跟預覽td
     syncInputValue('idCardName', 'idCardName_td');
     syncInputValue('idCardJobName', 'idCardJobName_td');
@@ -240,32 +241,78 @@ $(function () {
     // 圖書館閱覽申請切換
     $('input[name="libraryRead"]').on('change', function () {
         if ($('#wantReadLibrary').is(':checked')) {
-            theseAddClass(["d-none"], ['wantNo', 'dontWantYes']);
-            theseRemoveClass(["d-none"], ['wantYes', 'dontWantNo']);
+            $("#wantNo, #dontWantYes").addClass("d-none");
+            $("#wantYes, #dontWantNo").removeClass("d-none");
+            // theseAddClass(["d-none"], ['wantNo', 'dontWantYes']);
+            // theseRemoveClass(["d-none"], ['wantYes', 'dontWantNo']);
         } else if ($('#dontWantReadLibrary').is(':checked')) {
-            theseAddClass(["d-none"], ['wantYes', 'dontWantNo']);
-            theseRemoveClass(["d-none"], ['wantNo', 'dontWantYes']);
+            $("#wantYes, #dontWantNo").addClass("d-none");
+            $("#wantNo, #dontWantYes").removeClass("d-none");
+            // theseAddClass(["d-none"], ['wantYes', 'dontWantNo']);
+            // theseRemoveClass(["d-none"], ['wantNo', 'dontWantYes']);
         }
+    });  
+
+    $('.thisRequired').on('input change', function () {
+        checkThisRequiredElements.call(this);
     });
 
-    $('#confirm_idCardApp').on('click', function (event) {
-        if (!$(this).attr('data-bs-toggle') || !$(this).attr('data-bs-target')) {
-            event.preventDefault();
-            swalToastWarning('請填上所有欄位，並上傳清晰證件照。', 'top');
-        }
+    $('#confirm_idCardApp').click(function (event) {
+        // // 先檢查必填項
+        // if (!checkRequiredElements()) {
+        //     swalToastWarning('請將必填欄位補上唷！', 'top');
+        //     return; // 如果必填項有未填寫的，直接返回，不再繼續
+        // }
+        // // 最後檢查 danger_ 開頭元素的文字內容
+        // if (checkDangerElements()) {
+        //     // 如果返回 true，開啟燈箱
+        //     $('#idCardApp_pdf').modal('show');
+        // } else {
+        //     // 如果返回 false，顯示警告訊息
+        //     swalToastWarning('請填上正確資料唷！', 'top');
+        // }
+        $('#idCardApp_pdf').modal('show');
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // $('#confirm_idCardApp').on('click', function (event) {
+    //     if (!$(this).attr('data-bs-toggle') || !$(this).attr('data-bs-target')) {
+    //         event.preventDefault();
+    //         swalToastWarning('請填上所有欄位，並上傳清晰證件照。', 'top');
+    //     }
+    // });
 
     // 驗證電話
-    $('.checkPhone').on('blur input', checkThisPhone);
+    // $('.checkPhone').on('blur input', checkThisPhone);
 
-    // 限制截止日期不可小於開始日期
-    restrictEndDate('idCard_Period1', 'idCard_Period2');
+
 
     // 表單預覽-全部必填-檢驗
-    validAllRequiredFormPreview('confirm_idCardApp', 'createJobForm', 'idCardApp_pdf');
+    // validAllRequiredFormPreview('confirm_idCardApp', 'createJobForm', 'idCardApp_pdf');
 
     // 有錯誤訊息就不開燈箱
-    checkDangerElements('confirm_idCardApp', 'idCardApp_pdf');
+    // checkDangerElements('confirm_idCardApp', 'idCardApp_pdf');
     //         })
     //         .fail(function() {
     //             console.error('Failed to load formPreview.js');

@@ -1,11 +1,11 @@
 // ================列印畫面
-$(document).on("click", ".print", function () {
+$(document).on("click", "#printAndSubmit", function () {
     const section = $("section");
-    const modalBody = $(".modal-body").detach();
-    section.append(modalBody);
+    const printBody = $("#printWrapper").detach();
+    section.append(printBody);
     window.print();
     section.empty();
-    $(".modal-body-wrapper").append(modalBody);
+    $("#returnThisBox").append(printBody);
 });
 
 
@@ -45,7 +45,6 @@ function syncSelectValue(selectId, tdgroupId, tdvalueId) {
         $('#' + tdvalueId).text(optionValue);
     });
 }
-
 //基地培育區 轉 大樓名
 function changeRoomName(room) {
     switch (room) {
@@ -67,7 +66,6 @@ function changeRoomName(room) {
             return '待新增';
     }
 }
-
 //同步input radio
 function syncInputRadio(yesRadioId, noRadioId, yesTdId, noTdId) {
     if ($('#' + yesRadioId).is(':checked')) {
@@ -78,7 +76,6 @@ function syncInputRadio(yesRadioId, noRadioId, yesTdId, noTdId) {
         $('#' + noTdId).html('&#9745;');
     }
 }
-
 //同步input radio後 yes要同步文字
 function syncInputRadioYesValue(yesRadioId, noRadioId, yesTdId, noTdId, yesReason, yesReasonTd) {
     if ($('#' + yesRadioId).is(':checked')) {
@@ -93,7 +90,6 @@ function syncInputRadioYesValue(yesRadioId, noRadioId, yesTdId, noTdId, yesReaso
         $('#' + yesReasonTd).text('');
     }
 }
-
 //同步input radio後 no要同步文字
 function syncInputRadioNoValue(yesRadioId, noRadioId, yesTdId, noTdId, noReason, noReasonTd) {
     if ($('#' + noRadioId).is(':checked')) {
@@ -108,7 +104,6 @@ function syncInputRadioNoValue(yesRadioId, noRadioId, yesTdId, noTdId, noReason,
         $('#' + noReasonTd).text('');
     }
 }
-
 //同步input checkbox
 function syncInputCheckbox(checkboxId, tdId) {
     $('#' + checkboxId).on('change', function () {
@@ -119,7 +114,6 @@ function syncInputCheckbox(checkboxId, tdId) {
         }
     });
 }
-
 //同步input 加上仟分號
 function syncNumberWithCommas(inputId, tdId) {
     $('#' + inputId).on('blur', function () {

@@ -10,6 +10,7 @@ var dataset_myIDcardHistory = [
         'library': '未申請',
         'status': '已選停用，請至研發處歸還。',
         'print': '1',
+        'idCardNum': 'ABC101',
     },
     {
         'id': '2',
@@ -22,6 +23,7 @@ var dataset_myIDcardHistory = [
         'library': '已開放',
         'status': '未到期。',
         'print': '-',
+        'idCardNum': 'ABC102',
     },
     {
         'id': '3',
@@ -34,6 +36,7 @@ var dataset_myIDcardHistory = [
         'library': '已開放',
         'status': '未到期。',
         'print': '-',
+        'idCardNum': 'ABC103',
     },
     {
         'id': '4',
@@ -46,67 +49,11 @@ var dataset_myIDcardHistory = [
         'library': '已開放',
         'status': '已到期，請至研發處延期或歸還。',
         'print': '3',
+        'idCardNum': 'ABC104',
     },
 ];
 
 $(function () {
-    // $('#myIDcardList').DataTable({
-    //     ...commonSettingsProvision,
-    //     layout: {
-    //         topStart: function () {
-    //             let provision = document.createElement('div');
-    //             provision.innerHTML = '<h6 class="fw-bold"><i class="fa-solid fa-circle-exclamation mx-1"></i>識別證停用後，需歸還至研發處。</h6>';
-    //             return provision;
-    //         },
-    //     },
-    //     "data": dataset_myIDcardHistory,
-    //     "columns": [
-    //         {
-    //             data: 'id', title: "勾選", render: function (data, type, row, meta) {
-    //                 return '<input type="checkbox" class="form-check-input border-primary" value=' + data + '>'
-    //             },
-    //         },
-    //         { data: 'createDate', title: "申請日期" },
-    //         { data: 'name', title: "姓名" },
-    //         { data: 'jobTitle', title: "職稱", },
-    //         { data: 'place', title: "培育室位置", },
-    //         { data: 'startDate', title: "進駐開始", },
-    //         { data: 'endDate', title: "進駐結束", },
-    //         { data: 'library', title: "閱覽<br>圖書館", },
-    //         { data: 'status', title: "狀態", },
-    //         { data: 'print', title: "補發", },
-    //     ],
-    //     "order": [[1, "desc"]],
-    //     "columnDefs": [
-    //         {
-    //             targets: [0],
-    //             responsivePriority: 1,
-    //         },
-    //         {
-    //             targets: [1],
-    //             responsivePriority: 2,
-    //         },
-    //         {
-    //             targets: [2],
-    //             responsivePriority: 3,
-    //         },
-    //         { searchable: false, orderable: false, targets: [0] },
-    //         { className: "text-center", targets: [0, 1, 2, 3, 4, 5, 6, 7, 9] },
-    //     ],
-    //     createdRow: function (row, data, dataIndex) {
-    //         [1, 4, 5].forEach(function (colIdx) {
-    //             $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
-    //         });
-    //         [1, 2, 4, 5, 6].forEach(function (colIdx) {
-    //             $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
-    //         });
-    //         [1, 5, 6].forEach(function (colIdx) {
-    //             $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
-    //         });
-    //         $('td:eq(7)', row).css('max-width', '130px');
-    //     },
-    // });
-
     let table = $('#myIDcardList').DataTable({
         ...commonSettingsProvision,
         layout: {
@@ -119,19 +66,22 @@ $(function () {
         "data": dataset_myIDcardHistory,
         "columns": [
             {
-                data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data, type, row, meta) {
+                data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data, type, row, meta) { // 0
                     return '<input type="checkbox" class="form-check-input border-primary idCard-checkbox" value=' + data + '>'
                 },
             },
-            { data: 'createDate', title: "申請日期" },
-            { data: 'name', title: "姓名" },
-            { data: 'jobTitle', title: "職稱", },
-            { data: 'place', title: "培育室位置", },
-            { data: 'startDate', title: "進駐開始", },
-            { data: 'endDate', title: "進駐結束", },
-            { data: 'library', title: "閱覽<br>圖書館", },
-            { data: 'status', title: "狀態", },
-            { data: 'print', title: "補發", },
+            { data: 'createDate', title: "申請日期" }, // 1
+            { data: 'place', title: "培育室位置", }, // 2
+            { data: 'name', title: "姓名" }, // 3
+            { data: 'jobTitle', title: "職稱", }, // 4
+            { data: 'library', title: "閱覽<br>圖書館", }, // 5
+            { data: 'print', title: "補發<br>次數", }, // 6
+            {
+                data: 'id', title: "申請<br>補發", // 7
+                render: function (data) {
+                    return '<a class="btn btn-outline-primary rounded-circle noOutline" href="./idCardReissue.html?id=' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
+                },
+            },
         ],
         "order": [[1, "desc"]],
         "columnDefs": [
@@ -140,24 +90,21 @@ $(function () {
                 responsivePriority: 1,
             },
             {
-                targets: [1],
+                targets: [2],
                 responsivePriority: 2,
             },
             {
-                targets: [2],
+                targets: [3],
                 responsivePriority: 3,
             },
-            { searchable: false, orderable: false, targets: [0] },
-            { className: "text-center", targets: [0, 1, 2, 3, 4, 5, 6, 7, 9] },
+            { searchable: false, orderable: false, targets: [0, 7] },
+            { className: "text-center", targets: [0, 1, 3, 4, 5, 6, 7] },
         ],
         createdRow: function (row, data, dataIndex) {
-            [1, 5, 6].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('font-size', '.95em').css('min-width', '130px');
+            [1,].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
             });
-            [1, 2, 4, 5, 6].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
-            });
-            $('td:eq(7)', row).css('max-width', '130px');
+            $('td:eq(7)', row).css('max-width', '70px');
         },
     });
 
