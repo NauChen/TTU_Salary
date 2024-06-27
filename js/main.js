@@ -313,6 +313,8 @@ $(function () {
         $("html, body").animate({ scrollTop: 0 }, "smooth");
     });
 });
+
+
 // window.addEventListener("scroll", function () {
 //     let btnUp = document.querySelector(".top_button");
 //     if (window.scrollY > 0) {

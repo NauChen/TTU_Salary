@@ -1,77 +1,148 @@
-// document.write('<script type="text/javascript" src="./js/formComm.js"></script>');
-// ***********************************確定後再合併$(function(){ });
 
-/* ::::::::::::::::::::::::::::: 新增/修改職缺 */
-//選擇薪資條件變動輸入框
-// document.addEventListener('DOMContentLoaded', function () {
-//     // 監聽 select 的 change 事件
-//     document.getElementById('salaryType').addEventListener('change', function () {
-//         // 取得選擇的選項值
-//         var selectedOption = this.value;
-//         handleSalaryChoose(selectedOption);
-//     });
-
-//     // 取得選擇的選項值
-//     var selectedOption = document.getElementById('salaryType').value;
-//     // 初始化時執行判斷
-//     handleSalaryChoose(selectedOption);
-// });
 $(function () {
-    // 監聽 select 的 change 事件
+    // #salaryType切換，調用 職缺函式 - handleSalaryChoose
     $('#salaryType').on('change', function () {
-        // 取得選擇的選項值
         var selectedOption = $(this).val();
         handleSalaryChoose(selectedOption);
     });
 
-    // 取得選擇的選項值
-    // var selectedOption = $('#salaryType').val();
-    //  初始化時執行判斷
-    // handleSalaryChoose(selectedOption);
-
     //限制截止日期不可小於當日
     var today = new Date().toISOString().split('T')[0];
     $('#applicationDeadline').attr('min', today);
-    $('#applicationDeadline').val(jobData.applicationDeadline);
-});
+    // $('#applicationDeadline').val(jobData.applicationDeadline);
 
-$(function () {
-
-    // 切換選擇單選框(薪資金額輸入)時，更改必填class。 必填class用在formComm.js的function，添加class的function來自main.js
+    // 切換工作待遇單選時，更改class = 'thisRequired' 為相應的輸入框。 
     $('input[name="salaryTypeItem"]').on("change", function () {
-        // alert("Handler for `change` called.");
         var selectedValue = $(this).val();
-        // console.log(selectedValue);
         switch (selectedValue) {
             case "1":
-                theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
-                theseAddClass(["thisRequired"], ["dollarsInput"]);
+                $("#dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+                $("#dollarsInput").addClass("thisRequired");
+                $('#danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput').text(''); // 清除其他錯誤訊息
                 break;
             case "2":
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
-                theseAddClass(["thisRequired"], ["dollarsToDollars_1Input", "dollarsToDollars_2Input"]);
+                $("#dollarsInput, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+                $("#dollarsToDollars_1Input, #dollarsToDollars_2Input").addClass("thisRequired");
+                $("#danger_dollarsInput, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput").text(''); // 清除其他錯誤訊息
                 break;
             case "3":
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'negotiableInput', 'dollarsPerCaseInput']);
-                theseAddClass(["thisRequired"], ["moreThenDollarsInput"]);
+                $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+                $("#moreThenDollarsInput").addClass("thisRequired");
+                $("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_negotiableInput, #danger_dollarsPerCaseInput").text(''); // 清除其他錯誤訊息
                 break;
             case "4":
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'dollarsPerCaseInput']);
-                theseAddClass(["thisRequired"], ["negotiableInput"]);
+                $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #dollarsPerCaseInput").removeClass("thisRequired");
+                $("#negotiableInput").addClass("thisRequired");
+                $("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_dollarsPerCaseInput").text(''); // 清除其他錯誤訊息
                 break;
             case "5":
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']);
-                theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
+                $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput").removeClass("thisRequired");
+                $("#dollarsPerCaseInput").addClass("thisRequired");
+                $("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput").text(''); // 清除其他錯誤訊息
                 break;
             default:
                 break;
+        }
+    });
+
+});
+
+
+
+
+// $(function () {
+//     // 限制確認必填class是否都已有值，才可傳送。function來自formComm.js
+//     validAllRequiredForm('submitBtn', 'createJobForm');
+// });
+
+
+$(function () {
+
+    // 當 .thisRequired 更改時，再次執行檢查
+    $('.thisRequired').on('input change', function () {
+        checkRequiredElements();
+        // var id = $(this).attr('id');
+        // var elementType = $(this).prop('tagName').toLowerCase();
+        // var value = '';
+
+        // switch (elementType) {
+        //     case 'input':
+        //         var inputType = $(this).attr('type').toLowerCase();
+        //         if (inputType === 'checkbox' || inputType === 'radio') {
+        //             if ($(this).is(':checked')) {
+        //                 removeDangerMessage(id);
+        //             }
+        //         } else {
+        //             value = $(this).val().trim();
+        //             if (value !== '') {
+        //                 removeDangerMessage(id);
+        //             }
+        //         }
+        //         break;
+        //     case 'select':
+        //     case 'textarea':
+        //         value = $(this).val().trim();
+        //         if (value !== '') {
+        //             removeDangerMessage(id);
+        //         }
+        //         break;
+        //     default:
+        //         break;
+        // }
+    });
+
+    // 點擊 submitBtn 按鈕時
+    $('#submitBtn').click(function (event) {
+        event.preventDefault(); // 防止表單預設提交行為
+
+        // 先檢查必填項
+        if (!checkRequiredElements()) {
+            return; // 如果必填項有未填寫的，直接返回，不再繼續
+        }
+
+        // 最後檢查 danger_ 開頭元素的文字內容
+        if (checkDangerElements()) {
+            // 如果返回 true，送出表單資料
+            $('#formJobCreate').submit(); // 提交表單
+            console.log('表單資料已送出');
+        } else {
+            // 如果返回 false，顯示警告訊息
+            swalToastWarning(' 請填上正確資料唷！', 'top');
         }
     });
 });
 
 
 
-$(function () {
-    // 限制確認必填class是否都已有值，才可傳送。function來自formComm.js
-    validAllRequiredForm('submitBtn', 'createJobForm');
-});
+
+
+// // 切換工作待遇單選時，更改class = 'thisRequired' 為相應的輸入框。
+// $('input[name="salaryTypeItem"]').on("change", function () {
+//     // alert("Handler for `change` called.");
+//     var selectedValue = $(this).val();
+//     // console.log(selectedValue);
+//     switch (selectedValue) {
+//         case "1":
+//             theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+//             theseAddClass(["thisRequired"], ["dollarsInput"]);
+//             break;
+//         case "2":
+//             theseRemoveClass(["thisRequired"], ['dollarsInput', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+//             theseAddClass(["thisRequired"], ["dollarsToDollars_1Input", "dollarsToDollars_2Input"]);
+//             break;
+//         case "3":
+//             theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'negotiableInput', 'dollarsPerCaseInput']);
+//             theseAddClass(["thisRequired"], ["moreThenDollarsInput"]);
+//             break;
+//         case "4":
+//             theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'dollarsPerCaseInput']);
+//             theseAddClass(["thisRequired"], ["negotiableInput"]);
+//             break;
+//         case "5":
+//             theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']);
+//             theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
+//             break;
+//         default:
+//             break;
+//     }
+// });

@@ -463,20 +463,20 @@
             <label class="col-lg-auto col-form-label text-nowrap">工作時間：</label>
             <div class="col">
                 <div class="row">
-                    <span class="text-danger" id="danger_jobTime1"></span>
                     <div class="input-group mb-1">
                         <span class="input-group-text">自</span>
                         <input type="time" class="form-control thisRequired" id="jobTime1">
                         <span class="input-group-text">起</span>
                     </div>
+                    <span class="text-danger" id="danger_jobTime1"></span>
                 </div>
                 <div class="row">
-                    <span class="text-danger" id="danger_jobTime2"></span>
                     <div class="input-group mb-1">
                         <span class="input-group-text">至</span>
                         <input type="time" class="form-control thisRequired" id="jobTime2">
                         <span class="input-group-text">止</span>
                     </div>
+                    <span class="text-danger" id="danger_jobTime2"></span>
                 </div>
             </div>
         </div>
@@ -535,30 +535,38 @@
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio1" id="dollars">
                     <input type="text" placeholder="NTD" name="dollars" id="dollarsInput"
                         class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元
+                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元
                 </label>
             </div>
+            <span class="text-danger" id="danger_dollarsInput"></span>
 
             <div class="form-check align-items-center salaryLabel my-1" id="dollarsToDollarsItem">
                 <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio2" value="2">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio2" id="dollarsToDollars">
                     <input type="text" placeholder="NTD" name="dollarsValue1" id="dollarsToDollars_1Input"
                         class="form-control w-30 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元至
+                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元至
                     <input type="text" placeholder="NTD" name="dollarsValue2" id="dollarsToDollars_2Input"
                         class="form-control w-30 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元
+                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元
                 </label>
             </div>
+            <span class="text-danger col-6" id="danger_dollarsToDollars_1Input"></span><span class="text-danger col-6"
+                id="danger_dollarsToDollars_2Input"></span>
 
             <div class="form-check align-items-center salaryLabel my-1" id="moreThenDollarsItem">
                 <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio3" value="3">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio3" id="moreThenDollars">
                     <input type="text" placeholder="NTD" name="moreThenDollars" id="moreThenDollarsInput"
                         class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元以上
+                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元以上
                 </label>
             </div>
+            <span class="text-danger" id="danger_moreThenDollarsInput"></span>
 
             <div class="form-check align-items-center salaryLabel my-1" id="negotiableItem">
                 <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio4" value="4">
@@ -566,25 +574,28 @@
                     <span class="ms-2">面議</span>
                     <input type="text" placeholder="NTD" name="negotiable" id="negotiableInput"
                         class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元以上
+                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元以上
                 </label>
             </div>
+            <span class="text-danger" id="danger_negotiableInput"></span>
 
             <div class="form-check align-items-center salaryLabel my-1" id="dollarsPerCaseItem">
                 <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio5" value="5">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio5" id="dollarsPerCase">
                     <input type="text" placeholder="NTD" name="dollarsPerCase" id="dollarsPerCaseInput"
                         class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元&ensp;/&ensp;件
+                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元&ensp;/&ensp;件
                 </label>
             </div>
-            <span class="text-danger" id="danger_salaryDetails"></span>
+            <span class="text-danger" id="danger_dollarsPerCaseInput"></span>
         </div>
 
         <div class="row mb-3">
             <label for="applicationDeadline" class="col-lg-auto col-form-label text-nowrap">截止日期：</label>
             <div class="col">
-                <input type="date" id="applicationDeadline" class="form-control">
+                <input type="date" id="applicationDeadline" class="form-control thisRequired">
                 <span class="text-danger" id="danger_applicationDeadline"></span>
             </div>
         </div>

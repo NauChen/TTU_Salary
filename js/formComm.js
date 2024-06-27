@@ -33,15 +33,94 @@ function formatNumber(num) {
 function unformatNumber(str) {
     return str.replace(/,/g, '');
 }
-//   聚焦時，調用函式-移除千分號
+
+// ※※ onfocus函式 - 變更輸入當下用 ※※ 
+//   onfocus 時，調用函式-移除千分號
 function unformatOnFocus(obj) {
     var value = $(obj).val();
     $(obj).val(unformatNumber(value));
 }
-//   失焦時，調用函式-增加千分號
+
+// ※※ onblur函式 - 變更輸入完畢後用 ※※ 
+//   onblur 時，調用函式-增加千分號
 function formatOnBlur(obj) {
     var value = $(obj).val();
     if (value !== '') {
         $(obj).val(formatNumber(value));
     }
 }
+
+// ※※ 職缺函式 - 職缺表單專用 ※※
+//   根據薪資類型，顯示相應的金額輸入框 與 預選單選
+function handleSalaryChoose(selectedOption) {
+    switch (selectedOption) {
+        case '時薪':
+        case '日薪':
+            $("#dollarsItem").addClass("choose");
+            $("#dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem, #dollarsPerCaseItem").removeClass("choose");
+            $('#salaryTypeRadio1').prop('checked', true);
+            $("#dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+            $('#danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput').text(''); // 清除其他錯誤訊息
+            $("#dollarsInput").addClass("thisRequired");
+            break;
+        case '月薪':
+            $("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem").addClass("choose");
+            $("#dollarsPerCaseItem").removeClass("choose");
+            $('#salaryTypeRadio1').prop('checked', true);
+            $("#dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+            $("#danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput").text(''); // 清除其他錯誤訊息
+            $("#dollarsInput").addClass("thisRequired");
+            break;
+        case '按件計酬':
+            $("#dollarsPerCaseItem").addClass("choose");
+            $("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem").removeClass("choose");
+            $('#salaryTypeRadio5').prop('checked', true);
+            $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput").removeClass("thisRequired");
+            $("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput").text(''); // 清除其他錯誤訊息
+            $("#dollarsPerCaseInput").addClass("thisRequired");
+            break;
+        case '請選擇':
+            $("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem, #dollarsPerCaseItem").removeClass("choose");
+            $('#salaryTypeRadio1, #salaryTypeRadio2, #salaryTypeRadio3, #salaryTypeRadio4, #salaryTypeRadio5').prop('checked', false);
+            $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+            $("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput").text(''); // 清除其他錯誤訊息
+            break;
+    }
+}
+
+
+
+
+
+
+// function handleSalaryChoose(selectedOption) {
+//     switch (selectedOption) {
+//         case '時薪':
+//         case '日薪':
+//             theseAddClass(["choose"], ["dollarsItem"]);
+//             theseRemoveClass(["choose"], ['dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem', 'dollarsPerCaseItem']);
+//             document.getElementById('salaryTypeRadio1').checked = true;
+//             theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+//             theseAddClass(["thisRequired"], ["dollarsInput"]);
+//             break;
+//         case '月薪':
+//             theseAddClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem']);
+//             theseRemoveClass(["choose"], ['dollarsPerCaseItem']);
+
+//             document.getElementById('salaryTypeRadio1').checked = true; 
+//             theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+//             theseAddClass(["thisRequired"], ["dollarsInput"]);
+//             break;
+//         case '按件計酬':
+//             theseAddClass(["choose"], ['dollarsPerCaseItem']);
+//             theseRemoveClass(["choose"], ["dollarsItem", 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem',]);
+//             document.getElementById('salaryTypeRadio5').checked = true; 
+//             theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
+//             break;
+//         case '請選擇':
+//             theseRemoveClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem', 'dollarsPerCaseItem']);
+//             document.getElementById('salaryTypeRadio1', 'salaryTypeRadio2', 'salaryTypeRadio3', 'salaryTypeRadio4', 'salaryTypeRadio5').checked = false; 
+//             theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']); 
+//             break;
+//     }
+// }

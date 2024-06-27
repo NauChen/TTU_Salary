@@ -1,4 +1,4 @@
-// ================檢查.thisRequired是否必填，沒有則加上錯誤訊息並回傳false
+// ================檢查 .thisRequired 是否必填，沒有則加上錯誤訊息並回傳false
 function checkRequiredElements() {
     var allFilled = true;
 
@@ -42,8 +42,16 @@ function checkRequiredElements() {
                 }
                 break;
             case 'select':
+                value = $(this).val() ? $(this).val().trim() : '';
+                if (value === '') {
+                    allFilled = false;
+                    addDangerRequiredSelectMessage($(this).attr('id'));
+                } else {
+                    removeDangerMessage($(this).attr('id'));
+                }
+                break;
             case 'textarea':
-                value = $(this).val().trim();
+                value = $(this).val() ? $(this).val().trim() : '';
                 if (value === '') {
                     allFilled = false;
                     addDangerRequiredMessage($(this).attr('id'));
@@ -51,6 +59,14 @@ function checkRequiredElements() {
                     removeDangerMessage($(this).attr('id'));
                 }
                 break;
+                // value = $(this).val().trim();
+                // if (value === '') {
+                //     allFilled = false;
+                //     addDangerRequiredMessage($(this).attr('id'));
+                // } else {
+                //     removeDangerMessage($(this).attr('id'));
+                // }
+                // break;
             default:
                 break;
         }
@@ -86,6 +102,11 @@ function checkPhoneNumbers() {
 // 添加 必填的警告訊息
 function addDangerRequiredMessage(id) {
     $('#danger_' + id).text('此為必填欄位！');
+}
+
+// 添加 必選的警告訊息
+function addDangerRequiredSelectMessage(id) {
+    $('#danger_' + id).text('此為必選欄位！');
 }
 
 // 添加 必上傳的警告訊息

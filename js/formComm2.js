@@ -221,51 +221,17 @@ function restrictToNum(obj) {
     $(obj).val(inputValue);
 }
 
-//增加仟分號
-function formatNumber(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-//刪除仟分號
-function unformatNumber(str) {
-    return str.replace(/,/g, '');
-}
-
-
-// 共用函式 - ※※※※※※=== 職缺頁面 ===※※※※※※
-// 職缺-根據薪資類型，顯示相應的金額輸入框 與 預選單選
-function handleSalaryChoose(selectedOption) {
-    switch (selectedOption) {
-        case '時薪':
-        case '日薪':
-            theseAddClass(["choose"], ["dollarsItem"]);
-            theseRemoveClass(["choose"], ['dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem', 'dollarsPerCaseItem']);
-            document.getElementById('salaryTypeRadio1').checked = true; // #optionsRadios1 增加 checked 屬性
-            theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
-            theseAddClass(["thisRequired"], ["dollarsInput"]);
-            break;
-        case '月薪':
-            theseAddClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem']);
-            theseRemoveClass(["choose"], ['dollarsPerCaseItem']);
-            // if (!document.getElementById('salaryTypeRadio2').checked && !document.getElementById('salaryTypeRadio3').checked && !document.getElementById('salaryTypeRadio4').checked) {
-            //     document.getElementById('salaryTypeRadio1').checked = true; // #optionsRadios1 增加 checked 屬性
+            //增加仟分號
+            // function formatNumber(num) {
+            //     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             // }
-            document.getElementById('salaryTypeRadio1').checked = true; // #optionsRadios1 增加 checked 屬性
-            theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
-            theseAddClass(["thisRequired"], ["dollarsInput"]);
-            break;
-        case '按件計酬':
-            theseAddClass(["choose"], ['dollarsPerCaseItem']);
-            theseRemoveClass(["choose"], ["dollarsItem", 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem',]);
-            document.getElementById('salaryTypeRadio5').checked = true; // #optionsRadios5 增加 checked 屬性
-            break;
-        case '請選擇':
-            theseRemoveClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem', 'dollarsPerCaseItem']);
-            document.getElementById('salaryTypeRadio1', 'salaryTypeRadio2', 'salaryTypeRadio3', 'salaryTypeRadio4', 'salaryTypeRadio5').checked = false; // #optionsRadios1 增加 checked 屬性
-            theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']); // 移除必填class，用於formComm.js
-            theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]); // 增加必填class，用於formComm.js
-            break;
-    }
-}
+            //刪除仟分號
+            // function unformatNumber(str) {
+            //     return str.replace(/,/g, '');
+            // }
+
+
+
 // 職缺-串接薪資金額區間
 function combineInputs() {
     // 檢查 optionsRadios2 是否被選中
@@ -469,6 +435,7 @@ function validatePhoneNumbers() {
 
 
 // 驗證Email
+
 function validateEmails() {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var isValid = true;
