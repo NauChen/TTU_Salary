@@ -1,6 +1,6 @@
 // ****************************傳資料至後端未完成
 
-var dataset_myJob = [
+var dataset_jobActiveListings = [
     {
         'id': '1',
         'createDate': '2024-04-25',
@@ -23,7 +23,7 @@ var dataset_myJob = [
     {
         'id': '2',
         'createDate': '2024-04-26',
-        'company': '綜合工廠有限公司',
+        'company': '挺生科技有限公司',
         'jobTitle': '市場推廣專員',
         'jobEmployment': '全職',
         'jobTime': '10:00 ~ 17:00',
@@ -34,7 +34,7 @@ var dataset_myJob = [
         'vacationSystem': '排假',
         'jobCondition': '創意思維',
         'jobConnect': '聯繫人：info@tingsheng.com',
-        'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
+        'companyDescription': '挺生科技有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
         'salaryType': '日薪',
         'salaryAmount': '1,800元',
         'salaryTypeItem': '1',
@@ -42,7 +42,7 @@ var dataset_myJob = [
     {
         'id': '3',
         'createDate': '2024-04-27',
-        'company': '綜合工廠有限公司',
+        'company': '尚志物業管理有限公司',
         'jobTitle': '物業管理員',
         'jobEmployment': '工讀',
         'jobTime': '08:30 ~ 17:30',
@@ -53,7 +53,7 @@ var dataset_myJob = [
         'vacationSystem': '其它',
         'jobCondition': '耐心細心。\n只有週三上班',
         'jobConnect': '聯繫人：property@shangzhi.com',
-        'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
+        'companyDescription': '尚志物業管理有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
         'salaryType': '月薪',
         'salaryAmount': '28,000元',
         'salaryTypeItem': '1',
@@ -61,7 +61,7 @@ var dataset_myJob = [
     {
         'id': '4',
         'createDate': '2024-04-28',
-        'company': '綜合工廠有限公司',
+        'company': '新威精密工業有限公司',
         'jobTitle': '生產線工人',
         'jobEmployment': '全職',
         'jobTime': '07:00 ~ 15:30',
@@ -72,7 +72,7 @@ var dataset_myJob = [
         'vacationSystem': '周休二日',
         'jobCondition': '勤奮守時',
         'jobConnect': '聯繫人：hr@xinweijing.com',
-        'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
+        'companyDescription': '新威精密工業有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
         'salaryType': '月薪',
         'salaryAmount': '24,000元',
         'salaryTypeItem': '1',
@@ -80,7 +80,7 @@ var dataset_myJob = [
     {
         'id': '5',
         'createDate': '2024-04-29',
-        'company': '綜合工廠有限公司',
+        'company': '安全科技有限公司',
         'jobTitle': '系統工程師',
         'jobEmployment': '全職',
         'jobTime': '09:00 ~ 18:00',
@@ -91,7 +91,7 @@ var dataset_myJob = [
         'vacationSystem': '排假',
         'jobCondition': '創新解決方案',
         'jobConnect': '聯繫人：hr@securitytech.com',
-        'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
+        'companyDescription': '安全科技有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
         'salaryType': '按件計酬',
         'salaryAmount': '300元/件',
         'salaryTypeItem': '5',
@@ -99,7 +99,7 @@ var dataset_myJob = [
     {
         'id': '6',
         'createDate': '2024-04-30',
-        'company': '綜合工廠有限公司',
+        'company': '新威精密工業有限公司',
         'jobTitle': '品質檢測員',
         'jobEmployment': '全職',
         'jobTime': '08:00 ~ 17:00',
@@ -110,7 +110,7 @@ var dataset_myJob = [
         'vacationSystem': '其它',
         'jobCondition': '細緻耐心。\n上班日：周一、周三、周五',
         'jobConnect': '聯繫人：quality@factory.com',
-        'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
+        'companyDescription': '新威精密工業有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
         'salaryType': '面議',
         'salaryAmount': '面議(1000元以上)',
         'salaryTypeItem': '4',
@@ -137,7 +137,7 @@ var dataset_myJob = [
     {
         'id': '8',
         'createDate': '2024-05-02',
-        'company': '綜合工廠有限公司',
+        'company': '新維京科技有限公司',
         'jobTitle': '機械設計師',
         'jobEmployment': '工讀',
         'jobTime': '08:30 ~ 17:30',
@@ -148,7 +148,7 @@ var dataset_myJob = [
         'vacationSystem': '周休二日',
         'jobCondition': '創意思維',
         'jobConnect': '聯繫人：hr@xinweijing.com',
-        'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
+        'companyDescription': '新維京科技有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
         'salaryType': '月薪',
         'salaryAmount': '32,000元',
         'salaryTypeItem': '1',
@@ -156,7 +156,7 @@ var dataset_myJob = [
     {
         'id': '9',
         'createDate': '2024-05-03',
-        'company': '綜合工廠有限公司',
+        'company': '尚智設計顧問有限公司',
         'jobTitle': '建築設計師',
         'jobEmployment': '全職',
         'jobTime': '09:00 ~ 18:00',
@@ -167,7 +167,7 @@ var dataset_myJob = [
         'vacationSystem': '排假',
         'jobCondition': '創意設計',
         'jobConnect': '聯繫人：design@shangzhi.com',
-        'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
+        'companyDescription': '尚智設計顧問有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
         'salaryType': '面議',
         'salaryAmount': '面議(1,200元以上)',
         'salaryTypeItem': '4',
@@ -175,7 +175,7 @@ var dataset_myJob = [
     {
         'id': '10',
         'createDate': '2024-05-04',
-        'company': '綜合工廠有限公司',
+        'company': '安全科技有限公司',
         'jobTitle': '資訊安全工程師',
         'jobEmployment': '全職',
         'jobTime': '09:00 ~ 18:00',
@@ -186,7 +186,7 @@ var dataset_myJob = [
         'vacationSystem': '排假',
         'jobCondition': '技術熱情',
         'jobConnect': '聯繫人：hr@securitytech.com',
-        'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
+        'companyDescription': '安全科技有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
         'salaryType': '月薪',
         'salaryAmount': '36,000元',
         'salaryTypeItem': '1',
@@ -194,7 +194,7 @@ var dataset_myJob = [
     {
         'id': '11',
         'createDate': '2024-05-05',
-        'company': '綜合工廠有限公司',
+        'company': '工廠管理顧問有限公司',
         'jobTitle': '生產主管',
         'jobEmployment': '工讀',
         'jobTime': '08:00 ~ 17:00',
@@ -205,7 +205,7 @@ var dataset_myJob = [
         'vacationSystem': '排假',
         'jobCondition': '領導能力',
         'jobConnect': '聯繫人：hr@factory.com',
-        'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
+        'companyDescription': '工廠管理顧問有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
         'salaryType': '月薪',
         'salaryAmount': '25,000元以上',
         'salaryTypeItem': '3',
@@ -386,122 +386,64 @@ var dataset_myJob = [
 
 
 $(function () {
-    // $('#myJobList').DataTable({
-    //     ...commonSettingsTable,
-    //     "data": dataset_myJob,
-    //     "columns": [
-    //         {
-    //             data: 'id', title: "勾選", render: function (data) {
-    //                 return '<input type="checkbox" class="form-check-input border-primary" value=' + data + '>'
-    //             },
-    //         },
-    //         { data: 'createDate', title: "刊登日期", },
-    //         { data: 'jobTitle', title: "職務名稱", },
-    //         { data: 'jobEmployment', title: "工作性質", },
-    //         { data: 'jobTime', title: "工作時間", },
-    //         { data: 'applicationDeadline', title: "截止日期", },
-    //         {
-    //             data: 'id', title: "詳情",
-    //             // render: function (data) {
-    //             //     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop_' + data + '"><i class="fa-solid fa-info px-1"></i></button>'
-    //             // },
-    //             render: function (data) {
-    //                 return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#myJobDetailsModal" data-id="' + data + '"><i class="fa-solid fa-info px-1"></i></button>';
-    //             },
-    //         },
-    //         {
-    //             data: 'id', title: "修改",
-    //             render: function (data) {
-    //                 return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./jobEdit.html" data-id="' + data + '"><i class="fa-solid fa-wrench"></i></a>'
-    //             },
-    //         },
-    //     ],
-    //     "order": [[1, "desc"]],
-    //     "columnDefs": [
-    //         {
-    //             targets: [0],
-    //             responsivePriority: 1,
-    //         },
-    //         {
-    //             targets: [2],
-    //             responsivePriority: 2,
-    //         },
-    //         {
-    //             targets: [3],
-    //             responsivePriority: 2,
-    //         },
-    //         { searchable: false, orderable: false, targets: [0, 6, 7] },
-    //         { className: "text-nowrap", targets: [1, 4, 5] },
-    //         { className: "text-center", targets: [0, 1, 4, 5, 6, 7] },
-    //     ],
-    //     createdRow: function (row, data, dataIndex) {
-    //         [0, 6, 7].forEach(function (colIdx) {
-    //             $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
-    //         });
-    //         [1, 4, 5].forEach(function (colIdx) {
-    //             $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
-    //         });
-    //     }
-    // });
 
-    let table = $('#myJobList').DataTable({
+    let table = $('#jobActiveList').DataTable({
         ...commonSettingsTable,
-        "data": dataset_myJob,
+        "data": dataset_jobActiveListings,
         "columns": [
             {
-                data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data) {
+                data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data) { // 0
                     return '<input type="checkbox" class="form-check-input border-primary job-checkbox" value=' + data + '>'
                 },
             },
-            { data: 'createDate', title: "刊登日期" },
-            { data: 'deptOf', title: "科系限制" },
-            { data: 'jobTitle', title: "職務名稱" },
-            { data: 'jobEmployment', title: "工作性質" },
-            { data: 'jobTime', title: "工作時間" },
-            { data: 'applicationDeadline', title: "截止日期" },
+            { data: 'createDate', title: "刊登日期" }, // 1
+            { data: 'company', title: "招聘公司" }, // 2
+            { data: 'deptOf', title: "科系限制" }, // 3
+            { data: 'jobTitle', title: "職務名稱" }, // 4
+            { data: 'jobEmployment', title: "工作<br>性質" }, // 5
+            { data: 'jobTime', title: "工作時間" }, // 6
+            { data: 'applicationDeadline', title: "截止日期" }, // 7
             {
-                data: 'id', title: "詳情",
+                data: 'id', title: "詳情", // 8
                 render: function (data) {
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#myJobDetailsModal" data-id="' + data + '"><i class="fa-solid fa-info px-1"></i></button>';
+                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#jobDetailsModal" data-id="' + data + '"><i class="fa-solid fa-info px-1"></i></button>';
                 },
             },
             {
-                data: 'id', title: "修改",
+                data: 'id', title: "修改", // 9
                 render: function (data) {
                     return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./jobEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';
                 },
             },
         ],
-        "order": [[1, "desc"], [2, "asc"]],
+        "order": [[1, "desc"], [2, "desc"]],
         "columnDefs": [
             { targets: [0], responsivePriority: 1 },
             { targets: [3], responsivePriority: 2 },
             { targets: [4], responsivePriority: 3 },
-            { searchable: false, orderable: false, targets: [0, 7, 8] },
-            { className: "text-nowrap", targets: [1, 5, 6] },
-            { className: "text-center", targets: [0, 1, 4, 5, 6, 7, 8] },
+            { searchable: false, orderable: false, targets: [0, 8, 9] },
+            { className: "text-nowrap", targets: [0, 1, 6, 7] },
+            { className: "text-center", targets: [0, 1, 5, 6, 7, 8, 9] },
         ],
         createdRow: function (row, data, dataIndex) {
-            [0, 7, 8].forEach(function (colIdx) {
+            [0, 8, 9].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
             });
-            [1, 5, 6].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '150px').css('font-size', '.95em');
+            [1, 6, 7].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('min-width', '130px').css('font-size', '.95em');
             });
-            // [1, 5, 6].forEach(function (colIdx) {
-            //     $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
-            // });
+
         }
     });
 
-    $('#myJobDetailsModal').on('show.bs.modal', function (event) {
+    $('#jobDetailsModal').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget);
         let jobId = String(button.data('id'));
         // console.log('Button clicked, jobId:', jobId);
 
         // console.log('jobId type:', typeof jobId);
 
-        let jobData = dataset_myJob.find(job => job.id === jobId);
+        let jobData = dataset_jobActiveListings.find(job => job.id === jobId);
 
         if (jobData) {
             // console.log('Job data found:', jobData);

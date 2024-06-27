@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>大同大學校內育成媒合平台-管理停車位</title>
+<title>大同大學校內育成媒合平台-全刊登中職缺</title>
 <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -159,27 +159,135 @@
             <div class="container">
 
                 <!-- 麵包屑 -->
-                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fa-solid fa-file-contract"></i>&ensp;申請與查閱</li>
-                        <li class="breadcrumb-item active"><i class="fa-solid fa-square-parking"></i>&ensp;停車位管理</li>
+                        <li class="breadcrumb-item"><i class="fa-solid fa-users"></i>&ensp;職缺媒合</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-users-viewfinder"></i>&ensp;全刊登中</li>
                     </ol>
                 </div>
-                <!-- 停車位列表 -->
+
+                <!-- 刊登中列表 -->
                 <div class="tabs-box my-2r">
                     <div class="row mb-4 px-3">
-                        <h3 class="section-header col-auto mb-0 lh-base"><i class="fa-solid fa-quote-left"></i>停車位列表<i
+                        <h3 class="section-header col-auto mb-0 lh-base"><i class="fa-solid fa-quote-left"></i>現正招聘<i
                                 class="fa-solid fa-quote-right"></i></h3>
+                        <!-- 點擊後將勾選的id傳至後台 -->
+                        <button class="btn btn-outline-danger col-auto goto_somewhere ms-5" id="deleteTheseJobs"><i
+                                class="fa-regular fa-square-check"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-regular fa-trash-can"></i><span
+                                class="tooltiptext tooltip-top">刪除職缺</span></button>
                         <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
-                            href="./parkingSpaceApply.html"><i class="fa-solid fa-car-side"></i>/<i class="fa-solid fa-motorcycle"></i><i
-                                class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-plus"></i><span
-                                class="tooltiptext tooltip-right">申請停車位</span></a>
+                            href="./jobCreate.html"><i class="fa-solid fa-plus"></i><i
+                                class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-solid fa-users-viewfinder"></i><span
+                                class="tooltiptext tooltip-right">新增職缺</span></a>
                     </div>
 
                     <div class="tabs section-border-radius section-padding">
-                        <table id="myParkingSpaceList" class="table table-hover table-bordered responsive align-middle"
+                        <table id="jobActiveList" class="table table-hover table-bordered responsive align-middle"
                             style="width:100%">
                         </table>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="jobDetailsModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="jobDetailsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="jobDetailsModalLabel">職缺內容</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            
+    <div class="modal-body">
+        <div class="container-fluid">
+            <!-- 公司名稱和公司簡介 -->
+            <div class="row mb-1">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    公司名稱
+                </div>
+                <div class="col lightBoxItems p-3" id="companyName"></div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    公司簡介
+                </div>
+                <div class="col lightBoxItems p-3" id="companyDescription"></div>
+            </div>
+
+            <!-- 職務相關資訊 -->
+            <div class="row mb-1 multiple">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    職務名稱
+                </div>
+                <div class="col lightBoxItems p-3" id="jobTitle"></div>
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                    工作性質
+                </div>
+                <div class="col lightBoxItems p-3" id="jobEmployment"></div>
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                    科系限制
+                </div>
+                <div class="col lightBoxItems p-3" id="deptOf"></div>
+            </div>
+
+            <!-- 工作時間、休假制度、工作待遇 -->
+            <div class="row mb-1 multiple">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    工作時間
+                </div>
+                <div class="col lightBoxItems p-3" id="jobTime"></div>
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                    休假制度
+                </div>
+                <div class="col lightBoxItems p-3" id="vacationSystem"></div>
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                    工作待遇
+                </div>
+                <div class="col lightBoxItems p-3" id="salaryDetails"></div>
+            </div>
+
+            <!-- 工作內容、附加條件、應徵方式 -->
+            <div class="row mb-1">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    工作內容
+                </div>
+                <div class="col lightBoxItems p-3" id="jobContent"></div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    附加條件
+                </div>
+                <div class="col lightBoxItems p-3" id="jobCondition"></div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    應徵方式
+                </div>
+                <div class="col lightBoxItems p-3" id="jobConnect"></div>
+            </div>
+
+            <!-- 工作地點和截止日期 -->
+            <div class="row mb-1 multiple">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    工作地點
+                </div>
+                <div class="col lightBoxItems p-3" id="jobLocation"></div>
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                    截止日期
+                </div>
+                <div class="col-12 col-lg-auto lightBoxItems p-3" id="applicationDeadline">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+    </div>
+
+                        </div>
                     </div>
                 </div>
 
@@ -219,8 +327,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
-
-    <script src="./js/myParkingSpaceList.js"></script>
+    <script src="./js/formComm.js"></script>
+    <script src="./js/jobActiveListings.js"></script>
 </body>
 
 </html>

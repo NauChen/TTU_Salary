@@ -151,34 +151,90 @@ $(function () {
     });
     // 當 .thisRequired 更改時，再次執行檢查
     $('.thisRequired').on('input change', function () {
+        // checkRequiredElements(); 不可用，這是每次改動其中一項就檢查全部，但需要的是改動一項檢查該項
         var id = $(this).attr('id');
         var elementType = $(this).prop('tagName').toLowerCase();
         var value = '';
-
         switch (elementType) {
             case 'input':
                 var inputType = $(this).attr('type').toLowerCase();
                 if (inputType === 'checkbox' || inputType === 'radio') {
-                    if ($(this).is(':checked')) {
+                    if (!$(this).is(':checked')) {
+                        allFilled = false;
+                        addDangerRequiredMessage(id);
+                    }
+                } else if (inputType === 'file') {
+                    if ($(this).get(0).files.length === 0) {
+                        allFilled = false;
+                        addDangerRequiredFilesMessage(id);
+                    } else {
                         removeDangerMessage(id);
                     }
                 } else {
                     value = $(this).val().trim();
-                    if (value !== '') {
+                    if (value === '') {
+                        allFilled = false;
+                        addDangerRequiredMessage(id);
+                    } else {
                         removeDangerMessage(id);
+                        // 檢查是否為電話號碼類型，若是則再次驗證格式
+                        if ($(this).hasClass('thisPhone')) {
+                            var phoneId = $(this).attr('id');
+                            if (!validatePhone(value)) {
+                                addDangerPhoneMessage(phoneId);
+                                allFilled = false; // 如果格式不正確，設置 allFilled 為 false
+                            } else {
+                                $('#danger_' + phoneId).text(''); // 清除錯誤訊息
+                            }
+                        }
                     }
                 }
                 break;
             case 'select':
+                value = $(this).val() ? $(this).val().trim() : '';
+                if (value === '') {
+                    allFilled = false;
+                    addDangerRequiredSelectMessage(id);
+                } else {
+                    removeDangerMessage(id);
+                }
+                break;
             case 'textarea':
-                value = $(this).val().trim();
-                if (value !== '') {
+                value = $(this).val() ? $(this).val().trim() : '';
+                if (value === '') {
+                    allFilled = false;
+                    addDangerRequiredMessage(id);
+                } else {
                     removeDangerMessage(id);
                 }
                 break;
             default:
                 break;
         }
+        // switch (elementType) {
+        //     case 'input':
+        //         var inputType = $(this).attr('type').toLowerCase();
+        //         if (inputType === 'checkbox' || inputType === 'radio') {
+        //             if ($(this).is(':checked')) {
+        //                 removeDangerMessage(id);
+        //             }
+        //         } else {
+        //             value = $(this).val().trim();
+        //             if (value !== '') {
+        //                 removeDangerMessage(id);
+        //             }
+        //         }
+        //         break;
+        //     case 'select':
+        //     case 'textarea':
+        //         value = $(this).val().trim();
+        //         if (value !== '') {
+        //             removeDangerMessage(id);
+        //         }
+        //         break;
+        //     default:
+        //         break;
+        // }
     });
 
     // 點擊 submitBtn 按鈕時
@@ -193,7 +249,7 @@ $(function () {
         // 最後檢查 danger_ 開頭元素的文字內容
         if (checkDangerElements()) {
             // 如果返回 true，送出表單資料
-            $('#form_Register').submit(); // 提交表單
+            $('#formRegister').submit(); // 提交表單
             console.log('表單資料已送出');
         } else {
             // 如果返回 false，顯示警告訊息

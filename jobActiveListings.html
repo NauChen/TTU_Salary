@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/meta.html', {
+    "title": "大同大學校內育成媒合平台-全刊登中職缺",
+    })
+</head>
+
+<body>
+    <main class="main">
+        @@include('layout/header.html')
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-users"></i>&ensp;職缺媒合</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-users-viewfinder"></i>&ensp;全刊登中</li>
+                    </ol>
+                </div>
+
+                <!-- 刊登中列表 -->
+                <div class="tabs-box my-2r">
+                    <div class="row mb-4 px-3">
+                        <h3 class="section-header col-auto mb-0 lh-base"><i class="fa-solid fa-quote-left"></i>現正招聘<i
+                                class="fa-solid fa-quote-right"></i></h3>
+                        <!-- 點擊後將勾選的id傳至後台 -->
+                        <button class="btn btn-outline-danger col-auto goto_somewhere ms-5" id="deleteTheseJobs"><i
+                                class="fa-regular fa-square-check"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-regular fa-trash-can"></i><span
+                                class="tooltiptext tooltip-top">刪除職缺</span></button>
+                        <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
+                            href="./jobCreate.html"><i class="fa-solid fa-plus"></i><i
+                                class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-solid fa-users-viewfinder"></i><span
+                                class="tooltiptext tooltip-right">新增職缺</span></a>
+                    </div>
+
+                    <div class="tabs section-border-radius section-padding">
+                        <table id="jobActiveList" class="table table-hover table-bordered responsive align-middle"
+                            style="width:100%">
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="jobDetailsModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="jobDetailsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="jobDetailsModalLabel">職缺內容</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            @@include('layout/model_JobDetails.html')
+                        </div>
+                    </div>
+                </div>
+
+                @@include('layout/footer.html')
+
+            </div>
+        </div>
+    </main>
+    @@include('layout/metaJS.html')
+    <script src="./js/formComm.js"></script>
+    <script src="./js/jobActiveListings.js"></script>
+</body>
+
+</html>

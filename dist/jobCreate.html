@@ -42,7 +42,9 @@
                     <li><a class="dropdown-item" href="./index.html">職缺總攬&ensp;<i
                                 class="fa-solid fa-users-line"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="./myjob.html">刊登中&emsp;&ensp;<i
+                    <li><a class="dropdown-item" href="./jobMyActiveListings.html">刊登中&emsp;&ensp;<i
+                                class="fa-solid fa-users-viewfinder"></i></a></li>
+                    <li><a class="dropdown-item" href="./jobActiveListings.html">全刊登中&ensp;<i
                                 class="fa-solid fa-users-viewfinder"></i></a></li>
                 </ul>
             </li>
@@ -101,11 +103,12 @@
                                 class="fa-brands fa-product-hunt"></i></a>
                     </li>
                     <li><a class="dropdown-item" href="./template-underConstruction.html">全部識別證&emsp;&ensp;<i
-                        class="fa-regular fa-address-card"></i></a>
-            </li>
+                                class="fa-regular fa-address-card"></i></a>
+                    </li>
                     <li><a class="dropdown-item" href="./roles.html">用戶權限設定&ensp;<i
                                 class="fa-solid fa-people-robbery"></i></a></li>
-                    <li><a class="dropdown-item" href="./template-underConstruction.html">用戶資料修改&ensp;<i class="fa-solid fa-address-book"></i></a>
+                    <li><a class="dropdown-item" href="./template-underConstruction.html">用戶資料修改&ensp;<i
+                                class="fa-solid fa-address-book"></i></a>
                     </li>
                 </ul>
             </li>
@@ -159,7 +162,8 @@
                 <div class="breadcrumb-box section-padding section-border-radius my-2r">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><i class="fa-solid fa-users"></i>&ensp;職缺媒合</li>
-                        <li class="breadcrumb-item"><a href="./myjob.html" class="d-inline"><i
+                        <!-- 加判斷，若使用者是廠商，跳轉至jobMyActiveListings.html，若是管理員，跳至jobActiveListings.html -->
+                        <li class="breadcrumb-item"><a href="./jobMyActiveListings.html" class="d-inline"><i
                                     class="fa-solid fa-users-viewfinder"></i>&ensp;刊登中</a></li>
                         <li class="breadcrumb-item active"><i class="fa-solid fa-user-plus"></i>&ensp;職缺登錄</li>
                     </ol>
@@ -383,7 +387,7 @@
 
                             <div class="row text-center p-3 justify-content-center">
                                 <div class="col-auto">
-                                    <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
+                                    <button type="reset" class="btn btn-lg btn-outline-danger" id="resetBtn">重填</button>
                                 </div>
                                 <div class="col-auto">
                                     <button type="button" class="btn btn-lg btn-success" id="submitBtn">送出</button>

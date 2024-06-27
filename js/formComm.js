@@ -88,7 +88,25 @@ function handleSalaryChoose(selectedOption) {
     }
 }
 
+// ※※ 時間函式 - 職缺表單專用 ※※
+//   將組合過的時間拆開
+function splitJobTime(jobTime) {
+    var timeParts = jobTime.split(" ~ ");
+    if (timeParts.length === 2) {
+        return {
+            jobTime1: timeParts[0].trim(),
+            jobTime2: timeParts[1].trim()
+        };
+    } else {
+        throw new Error("Invalid jobTime format. It should be in the format 'HH:mm ~ HH:mm'.");
+    }
+}
 
+// ※※ 文字轉換函式 - 存取資料專用 ※※
+// 將資料庫的文字內的 \n 轉成 <br>
+function convertNewlinesToBreaks(text) {
+    return text.replace(/\n/g, '<br>');
+}
 
 
 

@@ -17,7 +17,8 @@
                 <div class="breadcrumb-box section-padding section-border-radius my-2r">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><i class="fa-solid fa-users"></i>&ensp;職缺媒合</li>
-                        <li class="breadcrumb-item"><a class="d-inline" href="./myjob.html"><i
+                        <!-- 加判斷，若使用者是廠商，跳轉至jobMyActiveListings.html，若是管理員，跳至jobActiveListings.html -->
+                        <li class="breadcrumb-item"><a href="./jobMyActiveListings.html" class="d-inline"><i
                                     class="fa-solid fa-users-viewfinder"></i>&ensp;刊登中</a></li>
                         <li class="breadcrumb-item active"><i class="fa-solid fa-wrench"></i>&ensp;修改</li>
                     </ol>
@@ -29,234 +30,14 @@
                             class="fa-solid fa-quote-right"></i></h3>
 
                     <div class="tabs section-border-radius section-padding">
-                        <form class="container-fluid" method="post" id="editJobForm">
-                            <!-- <div class="row">
-                                <div class="col-xl-4 col-lg-6 mb-3">
-                                    <div class="row mb-3">
-                                        <label for="jobTitle"
-                                            class="col-lg-auto col-form-label text-nowrap">職務名稱：</label>
-                                        <div class="col">
-                                            <input type="text" class="form-control thisRequired" id="jobTitle">
-                                            <span class="text-danger" id="danger_jobTitle"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="jobEmployment"
-                                            class="col-lg-auto col-form-label text-nowrap">工作性質：</label>
-                                        <div class="col">
-                                            <select class="form-control form-select thisRequired" id="jobEmployment">
-                                                <option value="請選擇" disabled selected>--- 請選擇 ---</option>
-                                                <option value="全職">全職</option>
-                                                <option value="工讀">工讀</option>
-                                            </select>
-                                            <span class="text-danger" id="danger_jobEmployment"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="jobContent"
-                                            class="col-lg-auto col-form-label text-nowrap">工作內容：</label>
-                                        <div class="col">
-                                            <textarea class="form-control resize-none h_150 thisRequired"
-                                                id="jobContent"></textarea>
-                                            <span class="text-danger" id="danger_jobContent"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="jobLocation"
-                                            class="col-lg-auto col-form-label text-nowrap">工作地點：</label>
-                                        <div class="col">
-                                            <textarea class="form-control resize-none h_100 thisRequired"
-                                                id="jobLocation"></textarea>
-                                            <span class="text-danger" id="danger_jobLocation"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="deptOf" class="col-lg-auto col-form-label text-nowrap">科系限制：</label>
-                                        <div class="col">
-                                            <select class="form-control form-select thisRequired" id="deptOf">
-                                                <option value="請選擇" disabled selected>--- 請選擇 ---</option>
-                                                <optgroup label="全部">
-                                                    <option value="不限學系">不限學系</option>
-                                                </optgroup>
-                                                <optgroup label="工程學院">
-                                                    <option value="機械與材料工程學系">機械與材料工程學系</option>
-                                                    <option value="化學工程與生物科技學系">化學工程與生物科技學系</option>
-                                                    <option value="電機工程學系">電機工程學系</option>
-                                                    <option value="資訊工程學系">資訊工程學系</option>
-                                                </optgroup>
-                                                <optgroup label="經營學院">
-                                                    <option value="事業經營學系">事業經營學系</option>
-                                                    <option value="資訊經營學系">資訊經營學系</option>
-                                                </optgroup>
-                                                <optgroup label="設計學院">
-                                                    <option value="工業設計學系">工業設計學系</option>
-                                                    <option value="媒體設計學系">媒體設計學系</option>
-                                                </optgroup>
-                                                <optgroup label="國際學院">
-                                                    <option value="應用外語學系">應用外語學系</option>
-                                                </optgroup>
-                                            </select>
-                                            <span class="text-danger" id="danger_deptOf"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 mb-3">
-                                    <div class="row mb-3">
-                                        <label class="col-lg-auto col-form-label text-nowrap">工作時間：</label>
-                                        <div class="col">
-                                            <div class="row">
-                                                <span class="text-danger" id="danger_jobTime1"></span>
-                                                <div class="input-group mb-1">
-                                                    <span class="input-group-text">自</span>
-                                                    <input type="time" class="form-control thisRequired" id="jobTime1">
-                                                    <span class="input-group-text">起</span>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <span class="text-danger" id="danger_jobTime2"></span>
-                                                <div class="input-group mb-1">
-                                                    <span class="input-group-text">至</span>
-                                                    <input type="time" class="form-control thisRequired" id="jobTime2">
-                                                    <span class="input-group-text">止</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="vacationSystem"
-                                            class="col-lg-auto col-form-label text-nowrap">休假制度：</label>
-                                        <div class="col">
-                                            <select class="form-control form-select thisRequired" id="vacationSystem">
-                                                <option value="請選擇" disabled selected>--- 請選擇 ---</option>
-                                                <option value="周休二日">周休二日</option>
-                                                <option value="排假">排假</option>
-                                                <option value="其它">其它(請於下一個欄位說明)</option>
-                                            </select>
-                                            <span class="text-danger" id="danger_vacationSystem"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="jobCondition"
-                                            class="col-lg-auto col-form-label text-nowrap">附加條件<span
-                                                class="d-none d-lg-inline"><br>&emsp;</span>與其他：</label>
-                                        <div class="col">
-                                            <textarea class="form-control resize-none h_150 thisRequired"
-                                                id="jobCondition"></textarea>
-                                            <span class="text-danger" id="danger_jobCondition"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="jobConnect"
-                                            class="col-lg-auto col-form-label text-nowrap">應徵方式：</label>
-                                        <div class="col">
-                                            <textarea class="form-control resize-none h_100 thisRequired"
-                                                id="jobConnect"></textarea>
-                                            <span class="text-danger" id="danger_jobConnect"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 mb-3">
-                                    <div class="row mb-3">
-                                        <label for="salaryType"
-                                            class="col-lg-auto col-form-label text-nowrap">工作待遇：</label>
-                                        <div class="col">
-                                            <select class="form-control form-select thisRequired" id="salaryType">
-                                                <option value="請選擇" disabled selected>--- 請選擇 ---</option>
-                                                <option value="時薪">時薪</option>
-                                                <option value="日薪">日薪</option>
-                                                <option value="月薪">月薪</option>
-                                                <option value="按件計酬">按件計酬</option>
-                                            </select>
-                                            <span class="text-danger" id="danger_salaryType"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 salaryRadio px-3 py-2 mx-2 border-success">
-                                        <div class="form-check align-items-center salaryLabel my-1" id="dollarsItem">
-                                            <input type="radio" class="form-check-input" name="salaryTypeItem"
-                                                id="salaryTypeRadio1" value="1">
-                                            <label class="form-check-label flex-grow-1" for="salaryTypeRadio1"
-                                                id="dollars">
-                                                <input type="text" placeholder="NTD" name="dollars" id="dollarsInput"
-                                                    class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                                                    oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check align-items-center salaryLabel my-1"
-                                            id="dollarsToDollarsItem">
-                                            <input class="form-check-input" type="radio" name="salaryTypeItem"
-                                                id="salaryTypeRadio2" value="2">
-                                            <label class="form-check-label flex-grow-1" for="salaryTypeRadio2"
-                                                id="dollarsToDollars">
-                                                <input type="text" placeholder="NTD" name="dollarsValue1"
-                                                    id="dollarsToDollars_1Input"
-                                                    class="form-control w-30 d-inline-block mx-2 text-end ntdInput"
-                                                    oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元至
-                                                <input type="text" placeholder="NTD" name="dollarsValue2"
-                                                    id="dollarsToDollars_2Input"
-                                                    class="form-control w-30 d-inline-block mx-2 text-end ntdInput"
-                                                    oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check align-items-center salaryLabel my-1"
-                                            id="moreThenDollarsItem">
-                                            <input class="form-check-input" type="radio" name="salaryTypeItem"
-                                                id="salaryTypeRadio3" value="3">
-                                            <label class="form-check-label flex-grow-1" for="salaryTypeRadio3"
-                                                id="moreThenDollars">
-                                                <input type="text" placeholder="NTD" name="moreThenDollars"
-                                                    id="moreThenDollarsInput"
-                                                    class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                                                    oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元以上
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check align-items-center salaryLabel my-1" id="negotiableItem">
-                                            <input class="form-check-input" type="radio" name="salaryTypeItem"
-                                                id="salaryTypeRadio4" value="4">
-                                            <label class="form-check-label flex-grow-1" for="salaryTypeRadio4"
-                                                id="negotiable">
-                                                <span class="ms-2">面議</span>
-                                                <input type="text" placeholder="NTD" name="negotiable"
-                                                    id="negotiableInput"
-                                                    class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                                                    oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元以上
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check align-items-center salaryLabel my-1"
-                                            id="dollarsPerCaseItem">
-                                            <input class="form-check-input" type="radio" name="salaryTypeItem"
-                                                id="salaryTypeRadio5" value="5">
-                                            <label class="form-check-label flex-grow-1" for="salaryTypeRadio5"
-                                                id="dollarsPerCase">
-                                                <input type="text" placeholder="NTD" name="dollarsPerCase"
-                                                    id="dollarsPerCaseInput"
-                                                    class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                                                    oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">元&ensp;/&ensp;件
-                                            </label>
-                                        </div>
-                                        <span class="text-danger" id="danger_salaryDetails"></span>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="applicationDeadline"
-                                            class="col-lg-auto col-form-label text-nowrap">截止日期：</label>
-                                        <div class="col">
-                                            <input type="date" id="applicationDeadline"
-                                                class="form-control thisRequired">
-                                            <span class="text-danger" id="danger_applicationDeadline"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+                        <form class="container-fluid" method="post" id="formJobEdit">
 
                             @@include('layout/form_job.html')
 
                             <div class="row text-center p-3 justify-content-center">
                                 <div class="col-auto">
-                                    <a href="./myjob.html"
+                                    <!-- 加判斷，若使用者是廠商，跳轉至jobMyActiveListings.html，若是管理員，跳至jobActiveListings.html -->
+                                    <a href="./jobMyActiveListings.html"
                                         class="btn btn-lg btn-outline-danger twoWord text-nowrap">返回</a>
                                 </div>
                                 <div class="col-auto">
@@ -276,6 +57,7 @@
     </main>
     @@include('layout/metaJS.html')
     <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
     <script src="./js/jobEdit.js"></script>
 
 

@@ -17,7 +17,8 @@
                 <div class="breadcrumb-box section-padding section-border-radius my-2r">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><i class="fa-solid fa-users"></i>&ensp;職缺媒合</li>
-                        <li class="breadcrumb-item"><a href="./myjob.html" class="d-inline"><i
+                        <!-- 加判斷，若使用者是廠商，跳轉至jobMyActiveListings.html，若是管理員，跳至jobActiveListings.html -->
+                        <li class="breadcrumb-item"><a href="./jobMyActiveListings.html" class="d-inline"><i
                                     class="fa-solid fa-users-viewfinder"></i>&ensp;刊登中</a></li>
                         <li class="breadcrumb-item active"><i class="fa-solid fa-user-plus"></i>&ensp;職缺登錄</li>
                     </ol>
@@ -35,7 +36,7 @@
 
                             <div class="row text-center p-3 justify-content-center">
                                 <div class="col-auto">
-                                    <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
+                                    <button type="reset" class="btn btn-lg btn-outline-danger" id="resetBtn">重填</button>
                                 </div>
                                 <div class="col-auto">
                                     <button type="button" class="btn btn-lg btn-success" id="submitBtn">送出</button>

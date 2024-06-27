@@ -194,10 +194,10 @@ function checkDangerElements(confirmButtonId, model_id) {
 
 
 // ※※※※※※=== 文字轉換 ===※※※※※※
-// 將資料庫的文字內的 \n 轉成 <br>
-function convertNewlinesToBreaks(text) {
-    return text.replace(/\n/g, '<br>');
-}
+            // 將資料庫的文字內的 \n 轉成 <br>
+            // function convertNewlinesToBreaks(text) {
+            //     return text.replace(/\n/g, '<br>');
+            // }
 // 將 <br> 轉成 \n
 function convertBreaksToNewlines(text) {
     return text.replace(/<br\s*[\/]?>/gi, '\n').trim();
@@ -288,21 +288,21 @@ function restrictEndDate(startDateId, endDateId) {
 
 
 // ※※※※※※=== 時間 ===※※※※※※
-// 將組合時間拆開
-function splitJobTime(jobTime) {
-    // 使用正則表達式將jobTime拆分為兩部分
-    var timeParts = jobTime.split(" ~ ");
+            // // 將組合時間拆開
+            // function splitJobTime(jobTime) {
+            //     // 使用正則表達式將jobTime拆分為兩部分
+            //     var timeParts = jobTime.split(" ~ ");
 
-    // 檢查timeParts是否有兩個部分
-    if (timeParts.length === 2) {
-        return {
-            jobTime1: timeParts[0].trim(),
-            jobTime2: timeParts[1].trim()
-        };
-    } else {
-        throw new Error("Invalid jobTime format. It should be in the format 'HH:mm ~ HH:mm'.");
-    }
-}
+            //     // 檢查timeParts是否有兩個部分
+            //     if (timeParts.length === 2) {
+            //         return {
+            //             jobTime1: timeParts[0].trim(),
+            //             jobTime2: timeParts[1].trim()
+            //         };
+            //     } else {
+            //         throw new Error("Invalid jobTime format. It should be in the format 'HH:mm ~ HH:mm'.");
+            //     }
+            // }
 
 
 

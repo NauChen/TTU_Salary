@@ -1,3 +1,5 @@
+// ****************************傳資料至後端未完成
+
 var dataset_myJob = [
     {
         'id': '1',
@@ -109,7 +111,7 @@ var dataset_myJob = [
         'jobCondition': '細緻耐心。\n上班日：周一、周三、周五',
         'jobConnect': '聯繫人：quality@factory.com',
         'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
-        'salaryType': '月薪',
+        'salaryType': '面議',
         'salaryAmount': '面議(1000元以上)',
         'salaryTypeItem': '4',
     },
@@ -166,7 +168,7 @@ var dataset_myJob = [
         'jobCondition': '創意設計',
         'jobConnect': '聯繫人：design@shangzhi.com',
         'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
-        'salaryType': '月薪',
+        'salaryType': '面議',
         'salaryAmount': '面議(1,200元以上)',
         'salaryTypeItem': '4',
     },
@@ -261,7 +263,7 @@ var dataset_myJob = [
         'jobCondition': '領導力和決策能力。\n每周至少2天',
         'jobConnect': '聯繫人：project@shangzhi.com',
         'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
-        'salaryType': '月薪',
+        'salaryType': '面議',
         'salaryAmount': '面議(1200元以上)',
         'salaryTypeItem': '4',
     },
@@ -299,7 +301,7 @@ var dataset_myJob = [
         'jobCondition': '細心周到',
         'jobConnect': '聯繫人：hr@factory.com',
         'companyDescription': '綜合工廠有限公司是一家專注於高端製造的公司，致力於提供最佳的生產解決方案。',
-        'salaryType': '月薪',
+        'salaryType': '面議',
         'salaryAmount': '面議(1200元以上)',
         'salaryTypeItem': '4',
     },
@@ -381,311 +383,187 @@ var dataset_myJob = [
     }
 ];
 
+
+
 $(function () {
-    // 將id代入並讀取資料，調用 職缺函式 - handleSalaryChoose
-    const urlParams = new URLSearchParams(window.location.search);
-    const jobId = String(urlParams.get('id'));
-    // 確保 jobId 存在
-    if (jobId) {
-        // console.log('Job ID:', jobId);
-
-        let jobData = dataset_myJob.find(job => job.id === jobId);
-        if (jobData) {
-            // console.log('Job data found:', jobData);
-            $('#jobTitle').val(jobData.jobTitle);
-            $('#jobEmployment').val(jobData.jobEmployment);
-            $('#jobContent').text(jobData.jobContent);
-            $('#jobLocation').text(jobData.jobLocation);
-            $('#deptOf').val(jobData.deptOf);
-            // 將組合時間拆開，function來自formComm.js
-            var splitTimes = splitJobTime(jobData.jobTime);
-            $('#jobTime1').val(splitTimes.jobTime1);
-            $('#jobTime2').val(splitTimes.jobTime2);
-
-            $('#vacationSystem').val(jobData.vacationSystem);
-            $('#jobCondition').text(jobData.jobCondition);
-            $('#jobConnect').text(jobData.jobConnect);
-
-            $('#salaryType').val(jobData.salaryType);
-            var selectedOption = $('#salaryType').val();
-
-            salaryTypeChoose(selectedOption);
-            handleSalaryDetails(jobData.salaryTypeItem, jobData.salaryAmount);
-
-            //限制截止日期不可小於當日
-            var today = new Date().toISOString().split('T')[0];
-            $('#applicationDeadline').attr('min', today);
-            $('#applicationDeadline').val(jobData.applicationDeadline);
-        } else {
-            console.error('Job data not found for id:', jobId);
-        }
-
-    } else {
-        console.error('Job ID not found in URL');
-    }
-
-
-
-
-    // 監聽 #salaryType 的 change 事件
-    $('#salaryType').change(function () {
-        // 取得選擇的選項值
-        var selectedOption = $(this).val();
-        handleSalaryChoose(selectedOption);
-    });
-
-    // 切換工作待遇單選時，更改class = 'thisRequired' 為相應的輸入框。 
-    $('input[name="salaryTypeItem"]').on("change", function () {
-        var selectedValue = $(this).val();
-        switch (selectedValue) {
-            case "1":
-                $("#dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
-                $("#dollarsInput").addClass("thisRequired");
-                $('#danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput').text(''); // 清除其他錯誤訊息
-                break;
-            case "2":
-                $("#dollarsInput, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
-                $("#dollarsToDollars_1Input, #dollarsToDollars_2Input").addClass("thisRequired");
-                $("#danger_dollarsInput, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput").text(''); // 清除其他錯誤訊息
-                break;
-            case "3":
-                $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
-                $("#moreThenDollarsInput").addClass("thisRequired");
-                $("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_negotiableInput, #danger_dollarsPerCaseInput").text(''); // 清除其他錯誤訊息
-                break;
-            case "4":
-                $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #dollarsPerCaseInput").removeClass("thisRequired");
-                $("#negotiableInput").addClass("thisRequired");
-                $("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_dollarsPerCaseInput").text(''); // 清除其他錯誤訊息
-                break;
-            case "5":
-                $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput").removeClass("thisRequired");
-                $("#dollarsPerCaseInput").addClass("thisRequired");
-                $("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput").text(''); // 清除其他錯誤訊息
-                break;
-            default:
-                break;
-        }
-    });
-
-    // // 切換選擇單選框(薪資金額輸入)時，更改必填class。 必填class用在formComm.js的function，添加class的function來自main.js
-    // $('input[name="salaryTypeItem"]').on("change", function () {
-    //     var selectedValue = $(this).val();
-    //     switch (selectedValue) {
-    //         case "1":
-    //             theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
-    //             theseAddClass(["thisRequired"], ["dollarsInput"]);
-    //             break;
-    //         case "2":
-    //             theseRemoveClass(["thisRequired"], ['dollarsInput', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
-    //             theseAddClass(["thisRequired"], ["dollarsToDollars_1Input", "dollarsToDollars_2Input"]);
-    //             break;
-    //         case "3":
-    //             theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'negotiableInput', 'dollarsPerCaseInput']);
-    //             theseAddClass(["thisRequired"], ["moreThenDollarsInput"]);
-    //             break;
-    //         case "4":
-    //             theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'dollarsPerCaseInput']);
-    //             theseAddClass(["thisRequired"], ["negotiableInput"]);
-    //             break;
-    //         case "5":
-    //             theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']);
-    //             theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
-    //             break;
-    //         default:
-    //             break;
+    // $('#myJobList').DataTable({
+    //     ...commonSettingsTable,
+    //     "data": dataset_myJob,
+    //     "columns": [
+    //         {
+    //             data: 'id', title: "勾選", render: function (data) {
+    //                 return '<input type="checkbox" class="form-check-input border-primary" value=' + data + '>'
+    //             },
+    //         },
+    //         { data: 'createDate', title: "刊登日期", },
+    //         { data: 'jobTitle', title: "職務名稱", },
+    //         { data: 'jobEmployment', title: "工作性質", },
+    //         { data: 'jobTime', title: "工作時間", },
+    //         { data: 'applicationDeadline', title: "截止日期", },
+    //         {
+    //             data: 'id', title: "詳情",
+    //             // render: function (data) {
+    //             //     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop_' + data + '"><i class="fa-solid fa-info px-1"></i></button>'
+    //             // },
+    //             render: function (data) {
+    //                 return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#myJobDetailsModal" data-id="' + data + '"><i class="fa-solid fa-info px-1"></i></button>';
+    //             },
+    //         },
+    //         {
+    //             data: 'id', title: "修改",
+    //             render: function (data) {
+    //                 return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./jobEdit.html" data-id="' + data + '"><i class="fa-solid fa-wrench"></i></a>'
+    //             },
+    //         },
+    //     ],
+    //     "order": [[1, "desc"]],
+    //     "columnDefs": [
+    //         {
+    //             targets: [0],
+    //             responsivePriority: 1,
+    //         },
+    //         {
+    //             targets: [2],
+    //             responsivePriority: 2,
+    //         },
+    //         {
+    //             targets: [3],
+    //             responsivePriority: 2,
+    //         },
+    //         { searchable: false, orderable: false, targets: [0, 6, 7] },
+    //         { className: "text-nowrap", targets: [1, 4, 5] },
+    //         { className: "text-center", targets: [0, 1, 4, 5, 6, 7] },
+    //     ],
+    //     createdRow: function (row, data, dataIndex) {
+    //         [0, 6, 7].forEach(function (colIdx) {
+    //             $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
+    //         });
+    //         [1, 4, 5].forEach(function (colIdx) {
+    //             $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
+    //         });
     //     }
     // });
 
-
-});
-
-// 修改職缺專用，僅切換顯示薪資input，並未指定單選選項，單選選項另外設置
-function salaryTypeChoose(selectedOption) {
-    switch (selectedOption) {
-        case '時薪':
-        case '日薪':
-            $("#dollarsItem").addClass("choose");
-            $("#dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem, #dollarsPerCaseItem").removeClass("choose");
-            // theseAddClass(["choose"], ["dollarsItem"]);
-            // theseRemoveClass(["choose"], ['dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem', 'dollarsPerCaseItem']);
-            break;
-        case '月薪':
-            $("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem").addClass("choose");
-            $("#dollarsPerCaseItem").removeClass("choose");
-            // theseAddClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem']);
-            // theseRemoveClass(["choose"], ['dollarsPerCaseItem']);
-            break;
-        case '按件計酬':
-            $("#dollarsPerCaseItem").addClass("choose");
-            $("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem").removeClass("choose");
-            // theseAddClass(["choose"], ['dollarsPerCaseItem']);
-            // theseRemoveClass(["choose"], ["dollarsItem", 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem',]);
-            break;
-        case '請選擇':
-            $("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem, #dollarsPerCaseItem").removeClass("choose");
-            // theseRemoveClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem', 'dollarsPerCaseItem']);
-            break;
-    }
-}
-
-// 修改職缺專用，設置單選選項並將金額轉換好代入
-function handleSalaryDetails(salaryTypeItem, salaryAmount) {
-    function cleanAmount(amount) {
-        return amount.replace(/[元|~|以上|面議|\(|\)|,]/g, '').trim();
-    }
-
-    switch (salaryTypeItem) {
-        case '1':
-            if ($('#salaryTypeRadio1').length) {
-                $('#salaryTypeRadio1').prop('checked', true);
-                var cleanSalary = formatNumber(cleanAmount(salaryAmount));
-                $('input[name="dollars"]').val(cleanSalary);
-                // 移除必填class，用於formComm.js
-                theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
-                // 增加必填class，用於formComm.js
-                theseAddClass(["thisRequired"], ["dollarsInput"]);
-            }
-            break;
-        case '2':
-            if ($('#salaryTypeRadio2').length) {
-                $('#salaryTypeRadio2').prop('checked', true);
-                var amounts = salaryAmount.replace('元', '').split('~');
-                $('input[name="dollarsValue1"]').val(formatNumber(cleanAmount(amounts[0])));
-                $('input[name="dollarsValue2"]').val(formatNumber(cleanAmount(amounts[1])));
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
-                theseAddClass(["thisRequired"], ["dollarsToDollars_1Input", "dollarsToDollars_2Input"]);
-            }
-            break;
-        case '3':
-            if ($('#salaryTypeRadio3').length) {
-                $('#salaryTypeRadio3').prop('checked', true);
-                var cleanSalary = formatNumber(cleanAmount(salaryAmount.replace('以上', '')));
-                $('input[name="moreThenDollars"]').val(cleanSalary);
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'negotiableInput', 'dollarsPerCaseInput']);
-                theseAddClass(["thisRequired"], ["moreThenDollarsInput"]);
-            }
-            break;
-        case '4':
-            if ($('#salaryTypeRadio4').length) {
-                $('#salaryTypeRadio4').prop('checked', true);
-                var cleanSalary = formatNumber(cleanAmount(salaryAmount.replace('面議', '').replace('以上', '')));
-                $('input[name="negotiable"]').val(cleanSalary);
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'dollarsPerCaseInput']);
-                theseAddClass(["thisRequired"], ["negotiableInput"]);
-            }
-            break;
-        case '5':
-            if ($('#salaryTypeRadio5').length) {
-                $('#salaryTypeRadio5').prop('checked', true);
-                var cleanSalary = cleanAmount(salaryAmount.replace('/件', ''));
-                $('input[name="dollarsPerCase"]').val(cleanSalary);
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']);
-                theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
-            }
-            break;
-        default:
-            console.error('Invalid salaryTypeItem: ', salaryTypeItem);
-    }
-}
-
-
-$(function () {
-
-    // 當 .thisRequired 更改時，再次執行檢查
-    $('.thisRequired').on('input change', function () {
-        var id = $(this).attr('id');
-        var elementType = $(this).prop('tagName').toLowerCase();
-        var value = '';
-        switch (elementType) {
-            case 'input':
-                var inputType = $(this).attr('type').toLowerCase();
-                if (inputType === 'checkbox' || inputType === 'radio') {
-                    if (!$(this).is(':checked')) {
-                        allFilled = false;
-                        addDangerRequiredMessage(id);
-                    }
-                } else if (inputType === 'file') {
-                    if ($(this).get(0).files.length === 0) {
-                        allFilled = false;
-                        addDangerRequiredFilesMessage(id);
-                    } else {
-                        removeDangerMessage(id);
-                    }
-                } else {
-                    value = $(this).val().trim();
-                    if (value === '') {
-                        allFilled = false;
-                        addDangerRequiredMessage(id);
-                    } else {
-                        removeDangerMessage(id);
-                        // 檢查是否為電話號碼類型，若是則再次驗證格式
-                        if ($(this).hasClass('thisPhone')) {
-                            var phoneId = $(this).attr('id');
-                            if (!validatePhone(value)) {
-                                addDangerPhoneMessage(phoneId);
-                                allFilled = false; // 如果格式不正確，設置 allFilled 為 false
-                            } else {
-                                $('#danger_' + phoneId).text(''); // 清除錯誤訊息
-                            }
-                        }
-                    }
-                }
-                break;
-            case 'select':
-                value = $(this).val() ? $(this).val().trim() : '';
-                if (value === '') {
-                    allFilled = false;
-                    addDangerRequiredSelectMessage(id);
-                } else {
-                    removeDangerMessage(id);
-                }
-                break;
-            case 'textarea':
-                value = $(this).val() ? $(this).val().trim() : '';
-                if (value === '') {
-                    allFilled = false;
-                    addDangerRequiredMessage(id);
-                } else {
-                    removeDangerMessage(id);
-                }
-                break;
-            default:
-                break;
+    let table = $('#myJobList').DataTable({
+        ...commonSettingsTable,
+        "data": dataset_myJob,
+        "columns": [
+            {
+                data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data) {
+                    return '<input type="checkbox" class="form-check-input border-primary job-checkbox" value=' + data + '>'
+                },
+            },
+            { data: 'createDate', title: "刊登日期" },
+            { data: 'deptOf', title: "科系限制" },
+            { data: 'jobTitle', title: "職務名稱" },
+            { data: 'jobEmployment', title: "工作性質" },
+            { data: 'jobTime', title: "工作時間" },
+            { data: 'applicationDeadline', title: "截止日期" },
+            {
+                data: 'id', title: "詳情",
+                render: function (data) {
+                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#jobDetailsModal" data-id="' + data + '"><i class="fa-solid fa-info px-1"></i></button>';
+                },
+            },
+            {
+                data: 'id', title: "修改",
+                render: function (data) {
+                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./jobEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';
+                },
+            },
+        ],
+        "order": [[1, "desc"], [2, "asc"]],
+        "columnDefs": [
+            { targets: [0], responsivePriority: 1 },
+            { targets: [3], responsivePriority: 2 },
+            { targets: [4], responsivePriority: 3 },
+            { searchable: false, orderable: false, targets: [0, 7, 8] },
+            { className: "text-nowrap", targets: [1, 5, 6] },
+            { className: "text-center", targets: [0, 1, 4, 5, 6, 7, 8] },
+        ],
+        createdRow: function (row, data, dataIndex) {
+            [0, 7, 8].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
+            });
+            [1, 5, 6].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('min-width', '150px').css('font-size', '.95em');
+            });
+            // [1, 5, 6].forEach(function (colIdx) {
+            //     $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
+            // });
         }
     });
 
-    // 點擊 resetBtn 按鈕時
-    $('#resetBtn').click(function () {
-        // 執行原有 reset 的功能
-        this.form.reset();
-        // 清空所有以 danger_ 開頭元素的內容
-        $('[id^="danger_"]').text('');
-    });
+    $('#jobDetailsModal').on('show.bs.modal', function (event) {
+        let button = $(event.relatedTarget);
+        let jobId = String(button.data('id'));
+        // console.log('Button clicked, jobId:', jobId);
 
-    // 點擊 submitBtn 按鈕時
-    $('#submitBtn').click(function (event) {
-        event.preventDefault(); // 防止表單預設提交行為
+        // console.log('jobId type:', typeof jobId);
 
-        // 先檢查必填項
-        if (!checkRequiredElements()) {
-            return; // 如果必填項有未填寫的，直接返回，不再繼續
-        }
+        let jobData = dataset_myJob.find(job => job.id === jobId);
 
-        // 最後檢查 danger_ 開頭元素的文字內容
-        if (checkDangerElements()) {
-            // 如果返回 true，送出表單資料
-            $('#formJobCreate').submit(); // 提交表單
-            console.log('表單資料已送出');
+        if (jobData) {
+            // console.log('Job data found:', jobData);
+            $('#companyName').text(jobData.company);
+            $('#companyDescription').text(jobData.companyDescription);
+            $('#jobTitle').text(jobData.jobTitle);
+            $('#jobEmployment').text(jobData.jobEmployment);
+            $('#deptOf').text(jobData.deptOf);
+            $('#jobTime').text(jobData.jobTime);
+            $('#vacationSystem').text(jobData.vacationSystem);
+            $('#salaryDetails').text(jobData.salaryType + "：" + jobData.salaryAmount);
+            $('#jobContent').html(convertNewlinesToBreaks(jobData.jobContent));
+            $('#jobCondition').text(jobData.jobCondition);
+            $('#jobConnect').text(jobData.jobConnect);
+            $('#jobLocation').text(jobData.jobLocation);
+            $('#applicationDeadline').text(jobData.applicationDeadline);
         } else {
-            // 如果返回 false，顯示警告訊息
-            swalToastWarning(' 請填上正確資料唷！', 'top');
+            console.error('Job data not found for id:', jobId);
         }
     });
 
+    $('#deleteTheseJobs').click(function () {
+        let selectedIds = [];
 
+        // 遍歷每一行，檢查第一列複選框是否選中
+        table.rows().every(function () {
+            let row = this.node();
+            let checkbox = $(row).find('.job-checkbox');
 
+            // 如果複選框被選中，獲取該行的ID
+            if (checkbox.prop('checked')) {
+                let rowData = this.data();
+                selectedIds.push(rowData.id);
+            }
+        });
 
-    // 限制確認必填class是否都已有值，才可傳送。function來自formComm.js
-    // validAllRequiredForm('submitBtn', 'editJobForm');
+        // 如果没有選中任何行，提示用戶
+        if (selectedIds.length === 0) {
+            swalToastWarning('請先勾選欲刪除的招聘職。', 'top');
+            return;
+        }
+
+        console.log(selectedIds);
+
+        // let requestData = {
+        //     ids: selectedIds
+        // };
+
+        // 向後端發送删除請求
+        // $.ajax({
+        //     url: 'asp.net的東西',
+        //     type: 'POST',
+        //     contentType: 'application/json',
+        //     data: JSON.stringify(requestData),
+        //     success: function (response) {
+        //         console.log('Delete request successful', response);
+        //     },
+        //     error: function (xhr, status, error) {
+        //         console.error('Error deleting jobs', error);
+        //     }
+        // });
+
+    });
+
 });

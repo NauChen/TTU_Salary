@@ -42,7 +42,9 @@
                     <li><a class="dropdown-item" href="./index.html">職缺總攬&ensp;<i
                                 class="fa-solid fa-users-line"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="./myjob.html">刊登中&emsp;&ensp;<i
+                    <li><a class="dropdown-item" href="./jobMyActiveListings.html">刊登中&emsp;&ensp;<i
+                                class="fa-solid fa-users-viewfinder"></i></a></li>
+                    <li><a class="dropdown-item" href="./jobActiveListings.html">全刊登中&ensp;<i
                                 class="fa-solid fa-users-viewfinder"></i></a></li>
                 </ul>
             </li>
@@ -101,11 +103,12 @@
                                 class="fa-brands fa-product-hunt"></i></a>
                     </li>
                     <li><a class="dropdown-item" href="./template-underConstruction.html">全部識別證&emsp;&ensp;<i
-                        class="fa-regular fa-address-card"></i></a>
-            </li>
+                                class="fa-regular fa-address-card"></i></a>
+                    </li>
                     <li><a class="dropdown-item" href="./roles.html">用戶權限設定&ensp;<i
                                 class="fa-solid fa-people-robbery"></i></a></li>
-                    <li><a class="dropdown-item" href="./template-underConstruction.html">用戶資料修改&ensp;<i class="fa-solid fa-address-book"></i></a>
+                    <li><a class="dropdown-item" href="./template-underConstruction.html">用戶資料修改&ensp;<i
+                                class="fa-solid fa-address-book"></i></a>
                     </li>
                 </ul>
             </li>
@@ -185,8 +188,9 @@
                         </nav>
                         <div class="tab-content print_template p-2" id="nav-tabContent">
                             <!-- <div class="tab-pane fade show active p-2" > -->
-                                <table id="jobList" class="table table-hover table-bordered responsive align-middle" style="width:100%">
-                                </table>
+                            <table id="jobList" class="table table-hover table-bordered responsive align-middle"
+                                style="width:100%">
+                            </table>
                             <!-- <div class="p-2">
                             </div> -->
 
@@ -204,91 +208,93 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <!-- 公司名稱和公司簡介 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            公司名稱
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="companyName"></div>
-                                    </div>
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            公司簡介
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="companyDescription"></div>
-                                    </div>
+                            
+    <div class="modal-body">
+        <div class="container-fluid">
+            <!-- 公司名稱和公司簡介 -->
+            <div class="row mb-1">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    公司名稱
+                </div>
+                <div class="col lightBoxItems p-3" id="companyName"></div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    公司簡介
+                </div>
+                <div class="col lightBoxItems p-3" id="companyDescription"></div>
+            </div>
 
-                                    <!-- 職務相關資訊 -->
-                                    <div class="row mb-1 multiple">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            職務名稱
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="jobTitle"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            工作性質
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="jobEmployment"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            科系限制
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="deptOf"></div>
-                                    </div>
+            <!-- 職務相關資訊 -->
+            <div class="row mb-1 multiple">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    職務名稱
+                </div>
+                <div class="col lightBoxItems p-3" id="jobTitle"></div>
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                    工作性質
+                </div>
+                <div class="col lightBoxItems p-3" id="jobEmployment"></div>
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                    科系限制
+                </div>
+                <div class="col lightBoxItems p-3" id="deptOf"></div>
+            </div>
 
-                                    <!-- 工作時間、休假制度、工作待遇 -->
-                                    <div class="row mb-1 multiple">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            工作時間
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="jobTime"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            休假制度
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="vacationSystem"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            工作待遇
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="salaryDetails"></div>
-                                    </div>
+            <!-- 工作時間、休假制度、工作待遇 -->
+            <div class="row mb-1 multiple">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    工作時間
+                </div>
+                <div class="col lightBoxItems p-3" id="jobTime"></div>
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                    休假制度
+                </div>
+                <div class="col lightBoxItems p-3" id="vacationSystem"></div>
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                    工作待遇
+                </div>
+                <div class="col lightBoxItems p-3" id="salaryDetails"></div>
+            </div>
 
-                                    <!-- 工作內容、附加條件、應徵方式 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            工作內容
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="jobContent"></div>
-                                    </div>
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            附加條件
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="jobCondition"></div>
-                                    </div>
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            應徵方式
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="jobConnect"></div>
-                                    </div>
+            <!-- 工作內容、附加條件、應徵方式 -->
+            <div class="row mb-1">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    工作內容
+                </div>
+                <div class="col lightBoxItems p-3" id="jobContent"></div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    附加條件
+                </div>
+                <div class="col lightBoxItems p-3" id="jobCondition"></div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    應徵方式
+                </div>
+                <div class="col lightBoxItems p-3" id="jobConnect"></div>
+            </div>
 
-                                    <!-- 工作地點和截止日期 -->
-                                    <div class="row mb-1 multiple">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            工作地點
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="jobLocation"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            截止日期
-                                        </div>
-                                        <div class="col-12 col-lg-auto lightBoxItems p-3" id="applicationDeadline">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
-                            </div>
+            <!-- 工作地點和截止日期 -->
+            <div class="row mb-1 multiple">
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                    工作地點
+                </div>
+                <div class="col lightBoxItems p-3" id="jobLocation"></div>
+                <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+                    截止日期
+                </div>
+                <div class="col-12 col-lg-auto lightBoxItems p-3" id="applicationDeadline">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+    </div>
+
                         </div>
                     </div>
                 </div>
