@@ -78,16 +78,16 @@ $(function () {
                         addDangerRequiredMessage(id);
                     } else {
                         removeDangerMessage(id);
-                        // 檢查是否為電話號碼類型，若是則再次驗證格式
-                        if ($(this).hasClass('thisPhone')) {
-                            var phoneId = $(this).attr('id');
-                            if (!validatePhone(value)) {
-                                addDangerPhoneMessage(phoneId);
-                                allFilled = false; // 如果格式不正確，設置 allFilled 為 false
-                            } else {
-                                $('#danger_' + phoneId).text(''); // 清除錯誤訊息
-                            }
-                        }
+                        // // 檢查是否為電話號碼類型，若是則再次驗證格式
+                        // if ($(this).hasClass('thisPhone')) {
+                        //     var phoneId = $(this).attr('id');
+                        //     if (!validatePhone(value)) {
+                        //         addDangerPhoneMessage(phoneId);
+                        //         allFilled = false; // 如果格式不正確，設置 allFilled 為 false
+                        //     } else {
+                        //         $('#danger_' + phoneId).text(''); // 清除錯誤訊息
+                        //     }
+                        // }
                     }
                 }
                 break;

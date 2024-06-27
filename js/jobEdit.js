@@ -541,10 +541,12 @@ function handleSalaryDetails(salaryTypeItem, salaryAmount) {
                 $('#salaryTypeRadio1').prop('checked', true);
                 var cleanSalary = formatNumber(cleanAmount(salaryAmount));
                 $('input[name="dollars"]').val(cleanSalary);
+                $("#dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+                $("#dollarsInput").addClass("thisRequired");
                 // 移除必填class，用於formComm.js
-                theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+                // theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
                 // 增加必填class，用於formComm.js
-                theseAddClass(["thisRequired"], ["dollarsInput"]);
+                // theseAddClass(["thisRequired"], ["dollarsInput"]);
             }
             break;
         case '2':
@@ -553,8 +555,10 @@ function handleSalaryDetails(salaryTypeItem, salaryAmount) {
                 var amounts = salaryAmount.replace('元', '').split('~');
                 $('input[name="dollarsValue1"]').val(formatNumber(cleanAmount(amounts[0])));
                 $('input[name="dollarsValue2"]').val(formatNumber(cleanAmount(amounts[1])));
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
-                theseAddClass(["thisRequired"], ["dollarsToDollars_1Input", "dollarsToDollars_2Input"]);
+                $("#dollarsInput, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+                $("#dollarsToDollars_1Input, #dollarsToDollars_2Input").addClass("thisRequired");
+                // theseRemoveClass(["thisRequired"], ['dollarsInput', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
+                // theseAddClass(["thisRequired"], ["dollarsToDollars_1Input", "dollarsToDollars_2Input"]);
             }
             break;
         case '3':
@@ -562,8 +566,10 @@ function handleSalaryDetails(salaryTypeItem, salaryAmount) {
                 $('#salaryTypeRadio3').prop('checked', true);
                 var cleanSalary = formatNumber(cleanAmount(salaryAmount.replace('以上', '')));
                 $('input[name="moreThenDollars"]').val(cleanSalary);
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'negotiableInput', 'dollarsPerCaseInput']);
-                theseAddClass(["thisRequired"], ["moreThenDollarsInput"]);
+                $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+                $("#moreThenDollarsInput").addClass("thisRequired");
+                // theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'negotiableInput', 'dollarsPerCaseInput']);
+                // theseAddClass(["thisRequired"], ["moreThenDollarsInput"]);
             }
             break;
         case '4':
@@ -571,8 +577,10 @@ function handleSalaryDetails(salaryTypeItem, salaryAmount) {
                 $('#salaryTypeRadio4').prop('checked', true);
                 var cleanSalary = formatNumber(cleanAmount(salaryAmount.replace('面議', '').replace('以上', '')));
                 $('input[name="negotiable"]').val(cleanSalary);
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'dollarsPerCaseInput']);
-                theseAddClass(["thisRequired"], ["negotiableInput"]);
+                $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #dollarsPerCaseInput").removeClass("thisRequired");
+                $("#negotiableInput").addClass("thisRequired");
+                // theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'dollarsPerCaseInput']);
+                // theseAddClass(["thisRequired"], ["negotiableInput"]);
             }
             break;
         case '5':
@@ -580,8 +588,10 @@ function handleSalaryDetails(salaryTypeItem, salaryAmount) {
                 $('#salaryTypeRadio5').prop('checked', true);
                 var cleanSalary = cleanAmount(salaryAmount.replace('/件', ''));
                 $('input[name="dollarsPerCase"]').val(cleanSalary);
-                theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']);
-                theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
+                $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput").removeClass("thisRequired");
+                $("#dollarsPerCaseInput").addClass("thisRequired");
+                // theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']);
+                // theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
             }
             break;
         default:
@@ -594,65 +604,66 @@ $(function () {
 
     // 當 .thisRequired 更改時，再次執行檢查
     $('.thisRequired').on('input change', function () {
-        var id = $(this).attr('id');
-        var elementType = $(this).prop('tagName').toLowerCase();
-        var value = '';
-        switch (elementType) {
-            case 'input':
-                var inputType = $(this).attr('type').toLowerCase();
-                if (inputType === 'checkbox' || inputType === 'radio') {
-                    if (!$(this).is(':checked')) {
-                        allFilled = false;
-                        addDangerRequiredMessage(id);
-                    }
-                } else if (inputType === 'file') {
-                    if ($(this).get(0).files.length === 0) {
-                        allFilled = false;
-                        addDangerRequiredFilesMessage(id);
-                    } else {
-                        removeDangerMessage(id);
-                    }
-                } else {
-                    value = $(this).val().trim();
-                    if (value === '') {
-                        allFilled = false;
-                        addDangerRequiredMessage(id);
-                    } else {
-                        removeDangerMessage(id);
-                        // 檢查是否為電話號碼類型，若是則再次驗證格式
-                        if ($(this).hasClass('thisPhone')) {
-                            var phoneId = $(this).attr('id');
-                            if (!validatePhone(value)) {
-                                addDangerPhoneMessage(phoneId);
-                                allFilled = false; // 如果格式不正確，設置 allFilled 為 false
-                            } else {
-                                $('#danger_' + phoneId).text(''); // 清除錯誤訊息
-                            }
-                        }
-                    }
-                }
-                break;
-            case 'select':
-                value = $(this).val() ? $(this).val().trim() : '';
-                if (value === '') {
-                    allFilled = false;
-                    addDangerRequiredSelectMessage(id);
-                } else {
-                    removeDangerMessage(id);
-                }
-                break;
-            case 'textarea':
-                value = $(this).val() ? $(this).val().trim() : '';
-                if (value === '') {
-                    allFilled = false;
-                    addDangerRequiredMessage(id);
-                } else {
-                    removeDangerMessage(id);
-                }
-                break;
-            default:
-                break;
-        }
+        // var id = $(this).attr('id');
+        // var elementType = $(this).prop('tagName').toLowerCase();
+        // var value = '';
+        // switch (elementType) {
+        //     case 'input':
+        //         var inputType = $(this).attr('type').toLowerCase();
+        //         if (inputType === 'checkbox' || inputType === 'radio') {
+        //             if (!$(this).is(':checked')) {
+        //                 allFilled = false;
+        //                 addDangerRequiredMessage(id);
+        //             }
+        //         } else if (inputType === 'file') {
+        //             if ($(this).get(0).files.length === 0) {
+        //                 allFilled = false;
+        //                 addDangerRequiredFilesMessage(id);
+        //             } else {
+        //                 removeDangerMessage(id);
+        //             }
+        //         } else {
+        //             value = $(this).val().trim();
+        //             if (value === '') {
+        //                 allFilled = false;
+        //                 addDangerRequiredMessage(id);
+        //             } else {
+        //                 removeDangerMessage(id);
+        //                 檢查是否為電話號碼類型，若是則再次驗證格式
+        //                 if ($(this).hasClass('thisPhone')) {
+        //                     var phoneId = $(this).attr('id');
+        //                     if (!validatePhone(value)) {
+        //                         addDangerPhoneMessage(phoneId);
+        //                         allFilled = false; // 如果格式不正確，設置 allFilled 為 false
+        //                     } else {
+        //                         $('#danger_' + phoneId).text(''); // 清除錯誤訊息
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         break;
+        //     case 'select':
+        //         value = $(this).val() ? $(this).val().trim() : '';
+        //         if (value === '') {
+        //             allFilled = false;
+        //             addDangerRequiredSelectMessage(id);
+        //         } else {
+        //             removeDangerMessage(id);
+        //         }
+        //         break;
+        //     case 'textarea':
+        //         value = $(this).val() ? $(this).val().trim() : '';
+        //         if (value === '') {
+        //             allFilled = false;
+        //             addDangerRequiredMessage(id);
+        //         } else {
+        //             removeDangerMessage(id);
+        //         }
+        //         break;
+        //     default:
+        //         break;
+        // }
+        checkThisRequiredElements.call(this);
     });
 
     // 點擊 resetBtn 按鈕時

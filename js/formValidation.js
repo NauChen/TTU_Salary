@@ -1,4 +1,4 @@
-// ================檢查 .thisRequired 是否必填，沒有則加上錯誤訊息並回傳false
+// ================檢查整頁 .thisRequired 是否必填，沒有則加上錯誤訊息並回傳false
 function checkRequiredElements() {
     var allFilled = true;
 
@@ -74,6 +74,74 @@ function checkRequiredElements() {
 
     return allFilled;
 }
+// ================檢查當下 .thisRequired 是否必填，沒有則加上錯誤訊息並回傳false
+function checkThisRequiredElements() {
+    var id = $(this).attr('id');
+    var elementType = $(this).prop('tagName').toLowerCase();
+    var value = '';
+    var allFilled = true;
+
+    switch (elementType) {
+        case 'input':
+            var inputType = $(this).attr('type').toLowerCase();
+            if (inputType === 'checkbox' || inputType === 'radio') {
+                if (!$(this).is(':checked')) {
+                    allFilled = false;
+                    addDangerRequiredMessage(id);
+                } else {
+                    removeDangerMessage(id);
+                }
+            } else if (inputType === 'file') {
+                if ($(this).get(0).files.length === 0) {
+                    allFilled = false;
+                    addDangerRequiredFilesMessage(id);
+                } else {
+                    removeDangerMessage(id);
+                }
+            } else {
+                value = $(this).val().trim();
+                if (value === '') {
+                    allFilled = false;
+                    addDangerRequiredMessage(id);
+                } else {
+                    removeDangerMessage(id);
+                    // 檢查是否為電話號碼類型，若是則再次驗證格式
+                    if ($(this).hasClass('thisPhone')) {
+                        if (!validatePhone(value)) {
+                            addDangerPhoneMessage(id);
+                            allFilled = false; // 如果格式不正確，設置 allFilled 為 false
+                        } else {
+                            $('#danger_' + id).text(''); // 清除錯誤訊息
+                        }
+                    }
+                }
+            }
+            break;
+        case 'select':
+            value = $(this).val() ? $(this).val().trim() : '';
+            if (value === '') {
+                allFilled = false;
+                addDangerRequiredSelectMessage(id);
+            } else {
+                removeDangerMessage(id);
+            }
+            break;
+        case 'textarea':
+            value = $(this).val() ? $(this).val().trim() : '';
+            if (value === '') {
+                allFilled = false;
+                addDangerRequiredMessage(id);
+            } else {
+                removeDangerMessage(id);
+            }
+            break;
+        default:
+            break;
+    }
+
+    return allFilled;
+}
+
 // ================檢查.thisPhone是否符合格式，沒有則加上錯誤訊息並回傳false
 function checkPhoneNumbers() {
     var allValid = true;
