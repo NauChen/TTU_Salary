@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <main class="main">
+    <main class="main no_print">
         <!-- 側邊攔 -->
 <nav class="nav-box no_print">
     <!-- RWD-MENU標籤 -->
@@ -159,7 +159,7 @@
             <div class="container">
 
                 <!-- 麵包屑 -->
-                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><i class="fa-solid fa-file-contract"></i>&ensp;申請與查閱</li>
                         <li class="breadcrumb-item"><a class="d-inline" href="./idCardInventory.html"><i
@@ -167,13 +167,13 @@
                         <li class="breadcrumb-item active"><i class="fa-solid fa-id-card-clip"></i>&ensp;識別證申請</li>
                     </ol>
                 </div>
-                <div class="no_print">
+                <div>
                     <!-- 識別證申請表單 -->
-                    <div class="tabs-box my-2r no_print">
+                    <div class="tabs-box my-2r">
                         <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>申請人資料<i
                                 class="fa-solid fa-quote-right"></i></h3>
                         <div class="tabs section-border-radius section-padding">
-                            <form class="container-fluid" method="post" id="applyIdCardForm">
+                            <form class="container-fluid" method="post" id="formIdCardReissue">
                                 <div class="row">
     <div class="col-xl-4 col-lg-6 mb-3">
         <div class="row mb-3">
@@ -185,11 +185,11 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label for="idCardJobName" class="col-lg-auto col-form-label text-nowrap"><span
+            <label for="idCardJobTitle" class="col-lg-auto col-form-label text-nowrap"><span
                     class="d-none d-lg-inline">&emsp;</span>職稱：</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="idCardJobName">
-                <span class="text-danger" id="danger_idCardJobName"></span>
+                <input type="text" class="form-control thisRequired" id="idCardJobTitle">
+                <span class="text-danger" id="danger_idCardJobTitle"></span>
             </div>
         </div>
         <div class="row mb-3">
@@ -236,13 +236,16 @@
         <div class="row mb-3">
             <label for="idCardCultRoom" class="col-lg-auto col-form-label text-nowrap">培育室位置：</label>
             <div class="col">
-                <select class="form-control form-select thisRequired" id="idCardCultRoom">
+                <!-- <select class="form-control form-select thisRequired" id="idCardCultRoom">
                     <option value="請選擇" disabled selected>--- 請選擇 ---</option>
                     <optgroup label="青創基地">
                         <option value="201">201</option>
                         <option value="202">202</option>
                         <option value="203">203</option>
                     </optgroup>
+                </select> -->
+                <select class="form-control form-select thisRequired" id="idCardCultRoom">
+                    <option value="請選擇" disabled selected>--- 請選擇 ---</option>
                 </select>
                 <span class="text-danger" id="danger_idCardCultRoom"></span>
             </div>
@@ -259,11 +262,12 @@
             <label for="applicationType" class="col-lg-auto col-form-label text-nowrap">本次申請為：</label>
             <div class="col">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="applicationType" id="typeFirst" value="1" disabled>
+                    <input class="form-check-input" type="radio" name="applicationType" id="typeFirst" value="1">
                     <label class="form-check-label" for="typeFirst">首次申請</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="applicationType" id="typeReissue" value="0" checked>
+                    <input class="form-check-input" type="radio" name="applicationType" id="typeReissue" value="0"
+                        checked>
                     <label class="form-check-label" for="typeReissue">補發</label>
                 </div>
             </div>
@@ -287,15 +291,14 @@
             </div>
         </div>
         <div class="row mb-1 align-items-center">
-            <label for="wantReadLibrary" class="col-lg-auto col-form-label text-nowrap">圖書館閱覽：</label>
+            <div class="col-lg-auto col-form-label text-nowrap">圖書館閱覽：</div>
             <div class="col">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="libraryRead" id="wantReadLibrary" value="1">
                     <label class="form-check-label" for="wantReadLibrary">申請</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="libraryRead" id="dontWantReadLibrary" value="0"
-                        checked>
+                    <input class="form-check-input" type="radio" name="libraryRead" id="dontWantReadLibrary" value="0">
                     <label class="form-check-label" for="dontWantReadLibrary">不申請</label>
                 </div>
             </div>
@@ -548,6 +551,10 @@
                     大同大學創新育成中心培育企業識別證申請表
                 </h3>
             </div>
+            <div class="row justify-content-between text-muted">
+                <div class="col" id="version">F-A1410-008</div>
+                <div class="col-auto" id="isReprint">補發</div>
+            </div>
             <table class="table table-bordered align-middle border border-3 border-dark modal-minW">
                 <tr class="py-2">
                     <td colspan="2" class="text-center fw-bold  text-nowrap">
@@ -559,9 +566,9 @@
                             id="output_text">2吋人頭照片</span><img id="output_img"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="h-2" id="idCardName_td"></td>
-                    <td colspan="2" class="">負責人先生</td>
-                    <td colspan="2" class="text-nowrap">02-26700000</td>
+                    <td colspan="2" class="h-2" id="idCardCompany_td"></td>
+                    <td colspan="2" id="idCardResponsiblePerson_td"></td>
+                    <td colspan="2" class="text-nowrap" id="idCardCompanyPhone_td"></td>
                 </tr>
                 <tr>
                     <td class="text-center fw-bold text-nowrap py-2">申請人姓名</td>
@@ -571,7 +578,7 @@
                 </tr>
                 <tr>
                     <td class="h-2" id="idCardName_td"></td>
-                    <td id="idCardJobName_td"></td>
+                    <td id="idCardJobTitle_td"></td>
                     <td colspan="4" id="idCardPhone_td"></td>
                 </tr>
                 <tr>
@@ -605,11 +612,16 @@
                 </tr>
                 <tr>
                     <td class="text-center fw-bold  text-nowrap py-2">圖書館閱覽</td>
-                    <td colspan="6" class=" h-2">
-                        <span id="wantYes" class="d-none"> &#x2611;</span><span id="wantNo">
-                            &#x2610;</span><span class="me-5 ms-1">申請</span><span id="dontWantYes">&#x2611;</span><span
-                            id="dontWantNo" class="d-none">&#x2610;</span><span
-                            class="me-5 ms-1">不申請</span><span>(僅提供圖書館閱覽功能，不提供外借功能)</span>
+                    <td colspan="6" class="h-2">
+                        <div class="row">
+                            <div class="col-auto">
+                                <span id="wantYes">&#x2610;</span><span class="me-2 ms-1">申請</span>
+                            </div>
+                            <div class="col-auto">
+                                <span id="dontWantYes">&#x2611;</span><span class="me-2 ms-1">不申請</span>
+                            </div>
+                            <div class="col"><span class="text-nowrap">(僅提供圖書館閱覽功能，不提供外借功能)</span></div>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -801,65 +813,11 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
+
     <script src="./js/formComm.js"></script>
     <script src="./js/formValidation.js"></script>
     <script src="./js/formPreview.js"></script>
-    <script src="./js/idCardApply.js"></script>
-
-    <!-- <script src="./js/formPreview.js"></script> -->
-    <!-- <script>
-        // $(function () {
-        //     //同步輸入框跟預覽td
-        //     syncInputValue('idCardName', 'idCardName_td');
-        //     syncInputValue('idCardJobName', 'idCardJobName_td');
-        //     syncInputValue('idCardPhone', 'idCardPhone_td');
-        //     syncInputValue('idCardEmail', 'idCardEmail_td');
-        //     syncInputDate('idCard_Period1', 'idCard_Period1_Y', 'idCard_Period1_m', 'idCard_Period1_D');
-        //     syncInputDate('idCard_Period2', 'idCard_Period2_Y', 'idCard_Period2_m', 'idCard_Period2_D');
-        //     syncSelectValue('idCardCultRoom', 'idCardCultRoom_Building', 'idCardCultRoom_Room');
-        //     syncInputValue('idCardEmergContact', 'ICE_Person');
-        //     syncInputValue('idCardECPhone', 'ICE_Phone');
-
-        //     //圖書館閱覽申請切換
-        //     $('input[name="libraryRead"]').on('change', function () {
-        //         if ($('#wantReadLibrary').is(':checked')) {
-        //             theseAddClass(["d-none"], ['wantNo', 'dontWantYes']);
-        //             theseRemoveClass(["d-none"], ['wantYes', 'dontWantNo']);
-        //         } else if ($('#dontWantReadLibrary').is(':checked')) {
-        //             theseAddClass(["d-none"], ['wantYes', 'dontWantNo']);
-        //             theseRemoveClass(["d-none"], ['wantNo', 'dontWantYes']);
-        //         }
-        //     });
-        //     var allRequiredValid = true;
-
-
-        //     $('#confirm_idCardApp').on('click', function (event) {
-        //         if (!$(this).attr('data-bs-toggle') || !$(this).attr('data-bs-target')) {
-        //             event.preventDefault();
-        //             alert("請填上所有欄位，並上傳證件照‧");
-        //         }
-        //     });
-
-        //     if (allRequiredValid) {
-        //         $('#confirm_idCardApp').attr('data-bs-toggle', 'modal').attr('data-bs-target', '#idCardApp_pdf');
-        //     };
-        //     // $('.checkPhone').on('input', function () {
-        //     //     var val = $this.val();
-        //     //     $this.val(val.replace(/[^0-9-]/g, '')); // 只允許輸入數字和 '-'
-        //     // });
-        //     $(".checkPhone").blur(checkThisPhone);
-
-        //     // 驗證電話格式的函數
-        //     // function validatePhone(phone) {
-        //     //     var phoneRegex = /^\d{2,4}-\d{6,8}$/;
-        //     //     return phoneRegex.test(phone);
-        //     // }
-
-        //     $(".requiredItem").blur(checkThisRequired);
-
-        // });
-
-    </script> -->
+    <script src="./js/idCardReissue.js"></script>
 
 </body>
 

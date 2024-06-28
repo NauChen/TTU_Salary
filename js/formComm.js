@@ -103,7 +103,6 @@ function splitJobTime(jobTime) {
 }
 
 // ※※ 日期函式 - 起訖日期專用 ※※
-
 //   限制可選日期不可早於當前日期
 function setMinDateToToday(inputId) {
     // 獲取當前日期
@@ -124,7 +123,7 @@ function enforceStartDateFirst(startDateId, endDateId) {
     var endDate = $('#' + endDateId);
 
     // 當結束日期的 input 被點擊時
-    endDate.on('mousedown', function(e) {
+    endDate.on('mousedown', function (e) {
         // 如果起始日期為空，顯示警告訊息並防止日期選擇器展開
         if (startDate.val() === '') {
             e.preventDefault(); // 阻止事件的默認行為
@@ -136,7 +135,7 @@ function enforceStartDateFirst(startDateId, endDateId) {
     });
 
     // 當起始日期改變時，更新結束日期的 min 屬性並取消只讀屬性
-    startDate.on('change', function() {
+    startDate.on('change', function () {
         if (startDate.val() !== '') {
             endDate.attr('min', startDate.val());
             endDate.attr('readonly', false); // 啟用結束日期的輸入
@@ -145,7 +144,7 @@ function enforceStartDateFirst(startDateId, endDateId) {
             endDate.attr('readonly', true); // 禁用結束日期的輸入
         }
     });
-    endDate.on('change', function() {
+    endDate.on('change', function () {
         if (endDate.val() !== '') {
             startDate.attr('max', endDate.val());
         } else {
@@ -155,12 +154,108 @@ function enforceStartDateFirst(startDateId, endDateId) {
 }
 
 // ※※ 文字轉換函式 - 存取資料專用 ※※
-// 將資料庫的文字內的 \n 轉成 <br>
+//   將資料庫的文字內的 \n 轉成 <br>
 function convertNewlinesToBreaks(text) {
     return text.replace(/\n/g, '<br>');
 }
+//   基地培育區 轉 大樓名
+function changeRoomName(room) {
+    switch (room) {
+        case '青創基地':
+            return '新德惠';
+        case '綜合工廠培育區':
+            return '綜合';
+        case '挺生大樓培育區':
+            return '挺生';
+        case '產學實驗培育區':
+            return '產學';
+        case '實驗大樓培育區':
+            return '實驗';
+        case '北設工培育區':
+            return '北設工';
+        case '尚志大樓培育區':
+            return '尚志';
+        default:
+            return '待新增';
+    }
+}
 
+//   培育區 轉 大樓名
+function changeBuildingToCultivationRoom(building) {
+    switch (building) {
+        case '青創基地':
+            return '新德惠';
+        case '綜合工廠培育區':
+            return '綜合';
+        case '挺生大樓培育區':
+            return '挺生';
+        case '產學實驗培育區':
+            return '產學';
+        case '實驗大樓培育區':
+            return '實驗';
+        case '北設工培育區':
+            return '北設工';
+        case '尚志大樓培育區':
+            return '尚志';
+        default:
+            return '待新增';
+    }
+}
 
+//   大樓名 轉 培育區
+function changeCultivationRoomToBuilding(room) {
+    switch (room) {
+        case '新德惠':
+            return '青創基地';
+        case '綜合':
+            return '綜合工廠培育區';
+        case '挺生':
+            return '挺生大樓培育區';
+        case '產學':
+            return '產學實驗培育區';
+        case '實驗':
+            return '實驗大樓培育區';
+        case '北設工':
+            return '北設工培育區';
+        case '尚志':
+            return '尚志大樓培育區';
+        default:
+            return '待新增';
+    }
+}
+
+//   依照資料生成下拉選單 選項值 = "optigroup-option"
+function populateSelect(selectId, options) {
+    var select = document.getElementById(selectId);
+    var groups = {};
+
+    options.forEach(function (item) {
+        if (!groups[item.optigroup]) {
+            var optgroup = document.createElement('optgroup');
+            optgroup.label = item.optigroup;
+            groups[item.optigroup] = optgroup;
+            select.appendChild(optgroup);
+        }
+        var option = document.createElement('option');
+        option.value = item.optigroup + '-' + item.option;
+        option.textContent = item.option;
+        groups[item.optigroup].appendChild(option);
+    });
+}
+
+// ※※ 文字組裝拆解函式 - 存取資料專用 ※※
+//   將用-組合過的資料拆開
+function splitHyphen(textData) {
+    var textParts = textData.split("-");
+    if (textParts.length === 2) {
+        return {
+            part1: textParts[0].trim(),
+            part2: textParts[1].trim()
+        };
+    } else {
+        throw new Error("Invalid textData format. It should be in the format 'aaaa-bbbb'.");
+    }
+}
 
 
 // function handleSalaryChoose(selectedOption) {
@@ -177,20 +272,20 @@ function convertNewlinesToBreaks(text) {
 //             theseAddClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem']);
 //             theseRemoveClass(["choose"], ['dollarsPerCaseItem']);
 
-//             document.getElementById('salaryTypeRadio1').checked = true; 
+//             document.getElementById('salaryTypeRadio1').checked = true;
 //             theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
 //             theseAddClass(["thisRequired"], ["dollarsInput"]);
 //             break;
 //         case '按件計酬':
 //             theseAddClass(["choose"], ['dollarsPerCaseItem']);
 //             theseRemoveClass(["choose"], ["dollarsItem", 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem',]);
-//             document.getElementById('salaryTypeRadio5').checked = true; 
+//             document.getElementById('salaryTypeRadio5').checked = true;
 //             theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
 //             break;
 //         case '請選擇':
 //             theseRemoveClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem', 'dollarsPerCaseItem']);
-//             document.getElementById('salaryTypeRadio1', 'salaryTypeRadio2', 'salaryTypeRadio3', 'salaryTypeRadio4', 'salaryTypeRadio5').checked = false; 
-//             theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']); 
+//             document.getElementById('salaryTypeRadio1', 'salaryTypeRadio2', 'salaryTypeRadio3', 'salaryTypeRadio4', 'salaryTypeRadio5').checked = false;
+//             theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']);
 //             break;
 //     }
 // }

@@ -1,6 +1,19 @@
-// const a = (x , y) =>  x * y;
-// console.log(a(20 , 10));
-// document.write('<script type="text/javascript" src="./js/sweetAlert.js"></script>');
+var session_userData = {
+    'id': '10', // 使用者id
+    'company': '加加油股份有限公司', // 公司名稱
+    'responsiblePerson': '郝有錢', // 公司負責人
+    'companyPhone':'02-74125698', // 公司主要聯絡電話
+
+    'uniformNum': '01478520', // 公司統編
+};
+var selectOptionLocation = [
+    { 'optigroup': '青創基地', 'option': '101' },
+    { 'optigroup': '青創基地', 'option': '102' },
+    { 'optigroup': '北設工培育區', 'option': '202' },
+    { 'optigroup': '產學實驗培育區', 'option': '202' },
+    { 'optigroup': '綜合工廠培育區', 'option': '202' },
+    { 'optigroup': '挺生大樓培育區', 'option': '102' },
+];
 
 // DataTable設定 - 搜尋左上，無自選顯示個數(預設10筆)
 let commonSettingsTable = {

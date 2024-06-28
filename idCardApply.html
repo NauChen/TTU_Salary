@@ -8,13 +8,13 @@
 </head>
 
 <body>
-    <main class="main">
+    <main class="main no_print">
         @@include('layout/header.html')
         <div class="content">
             <div class="container">
 
                 <!-- 麵包屑 -->
-                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><i class="fa-solid fa-file-contract"></i>&ensp;申請與查閱</li>
                         <li class="breadcrumb-item"><a class="d-inline" href="./idCardInventory.html"><i
@@ -22,193 +22,14 @@
                         <li class="breadcrumb-item active"><i class="fa-solid fa-id-card-clip"></i>&ensp;識別證申請</li>
                     </ol>
                 </div>
-                <div class="no_print">
+                <div class="">
                     <!-- 識別證申請表單 -->
-                    <div class="tabs-box my-2r no_print">
+                    <div class="tabs-box my-2r">
                         <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>申請人資料<i
                                 class="fa-solid fa-quote-right"></i></h3>
                         <div class="tabs section-border-radius section-padding">
-                            <form class="container-fluid" method="post" id="applyIdCardForm">
-                                <div class="row">
-                                    <div class="col-xl-4 col-lg-6 mb-3">
-                                        <div class="row mb-3">
-                                            <label for="idcardName" class="col-lg-auto col-form-label text-nowrap"><span
-                                                    class="d-none d-lg-inline">&emsp;</span>姓名：</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control thisRequired" id="idCardName">
-                                                <span class="text-danger" id="danger_idCardName"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="idCardJobName"
-                                                class="col-lg-auto col-form-label text-nowrap"><span
-                                                    class="d-none d-lg-inline">&emsp;</span>職稱：</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control thisRequired" id="idCardJobName">
-                                                <span class="text-danger" id="danger_idCardJobName"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="idCardPhone" class="col-lg-auto col-form-label text-nowrap"
-                                                asp-for="IdCard_Phone"><span
-                                                    class="d-none d-lg-inline">&emsp;</span>電話：</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control checkPhone thisRequired"
-                                                    id="idCardPhone" onkeyup="verifyPhone(this)">
-                                                <span class="text-danger" id="danger_idCardPhone"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="idCardEmail"
-                                                class="col-lg-auto col-form-label text-nowrap">E-mail：</label>
-                                            <div class="col">
-                                                <input type="email" class="form-control thisRequired" id="idCardEmail"
-                                                    onkeyup="verifyEmail(this)">
-                                                <span class="text-danger" id="danger_idCardEmail"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-6 mb-3">
-                                        <div class="row mb-3">
-                                            <label for="idCard_Period1"
-                                                class="col-lg-auto col-form-label text-nowrap"><span
-                                                    class="d-none d-lg-inline">&emsp;</span>進駐期間：</label>
-                                            <div class="col">
-                                                <div class="row">
-                                                    <span class="text-danger" id="danger_idCard_Period1"></span>
-                                                    <div class="input-group mb-1">
-                                                        <span class="input-group-text">自</span>
-                                                        <input type="date" class="form-control thisRequired"
-                                                            id="idCard_Period1">
-                                                        <span class="input-group-text">起</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <span class="text-danger" id="danger_idCard_Period2"></span>
-                                                    <div class="input-group mb-1">
-                                                        <span class="input-group-text">至</span>
-                                                        <input type="date" class="form-control thisRequired"
-                                                            id="idCard_Period2">
-                                                        <span class="input-group-text">止</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="idCardCultRoom"
-                                                class="col-lg-auto col-form-label text-nowrap">培育室位置：</label>
-                                            <div class="col">
-                                                <select class="form-control form-select thisRequired"
-                                                    id="idCardCultRoom">
-                                                    <option value="請選擇" disabled selected>--- 請選擇 ---</option>
-                                                    <optgroup label="青創基地">
-                                                        <option value="201">201</option>
-                                                        <option value="202">202</option>
-                                                        <option value="203">203</option>
-                                                    </optgroup>
-                                                </select>
-                                                <span class="text-danger" id="danger_idCardCultRoom"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="idCardPhoto"
-                                                class="col-lg-auto col-form-label text-nowrap">２吋證件照：</label>
-                                            <div class="col">
-                                                <input type="file" onchange="openFile(event)"
-                                                    class="form-control thisRequired"
-                                                    accept="image/git,image/jpeg,image/jpg,image/png" id="idCardPhoto">
-                                                <span class="text-danger" id="danger_idCardPhoto"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 align-items-center">
-                                            <label for="applicationType"
-                                                class="col-lg-auto col-form-label text-nowrap">本次申請為：</label>
-                                            <div class="col">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="applicationType"
-                                                        id="typeFirst" value="1" checked>
-                                                    <label class="form-check-label" for="typeFirst">首次申請</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="applicationType"
-                                                        id="typeReissue" value="0">
-                                                    <label class="form-check-label" for="typeReissue">補發</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-xl-4 col-lg-6 mb-3">
-                                        <div class="row mb-3">
-                                            <label for="idCardEmergContact"
-                                                class="col-lg-auto col-form-label text-nowrap">緊急聯絡人：</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control thisRequired"
-                                                    id="idCardEmergContact">
-                                                <span class="text-danger" id="danger_idCardEmergContact"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="idCardECPhone"
-                                                class="col-lg-auto col-form-label text-nowrap">&ensp;&#10551;聯絡電話：</label>
-                                            <div class="col">
-                                                <input type="text" class="form-control checkPhone thisRequired"
-                                                    id="idCardECPhone" onkeyup="verifyPhone(this)">
-                                                <span class="text-danger" id="danger_idCardECPhone"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 align-items-center">
-                                            <label for="wantReadLibrary"
-                                                class="col-lg-auto col-form-label text-nowrap">圖書館閱覽：</label>
-                                            <div class="col">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="libraryRead"
-                                                        id="wantReadLibrary" value="1">
-                                                    <label class="form-check-label" for="wantReadLibrary">申請</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="libraryRead"
-                                                        id="dontWantReadLibrary" value="0" checked>
-                                                    <label class="form-check-label"
-                                                        for="dontWantReadLibrary">不申請</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3 salaryRadio px-2 py-2 mx-1 border-success">
-                                            <div>&#10551;&ensp;僅供圖書館內閱覽，不提供外借。</div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="row p-3 justify-content-center">
-                                    <div class="col-12 fw-bold  ">申請人聲明：</div>
-                                    <div class="col-12">
-                                        <div class="row ms-3">
-                                            <div class="col-auto">1.</div>
-                                            <div class="col">
-                                                本份資料均填寫屬實，進駐大同大學期間，願意完全遵守大同大學有關人事及校園安全規定條則，並不得任意使用大同大學名稱，如有違背，將立即喪失進駐資格，並歸還任何大同大學所核發校園出入等相關證件。
-                                            </div>
-                                        </div>
-                                        <div class="row ms-3">
-                                            <div class="col-auto">2.</div>
-                                            <div class="col">申請人離職需將識別證繳回育成中心(代繳回本校人事室)。</div>
-                                        </div>
-                                        <div class="row ms-3">
-                                            <div class="col-auto">3.</div>
-                                            <div class="col">識別證為出入培育室使用，不作其他識別用途。</div>
-                                        </div>
-                                        <div class="row ms-3">
-                                            <div class="col-auto">4.</div>
-                                            <div class="col">請妥善保管，如遺失請依規定至本校出納組繳交<span
-                                                    class="fw-bold text-danger">300元</span>並申請補發。</div>
-                                        </div>
-                                        <div class="row ms-3">
-                                            <div class="col-auto">5.</div>
-                                            <div class="col text-decoration-underline fw-bold">印出申請書並簽名後，正本繳交至<span
-                                                    class="fw-bold text-danger">大同大學研發處</span>，才算申請完成喔！</div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <form class="container-fluid" method="post" id="formIdCardApply">
+                                @@include('layout/form_idCard.html')
                                 <div class="row text-center p-3 justify-content-center">
                                     <div class="col-auto">
                                         <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
@@ -217,7 +38,6 @@
                                         <button type="button" class="btn btn-lg btn-outline-info"
                                             id="confirm_idCardApp">預覽</button>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
@@ -234,121 +54,12 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body-wrapper">
-                                    <div class="modal-body">
-                                        <div class="table-responsive px-5">
-                                            <div class="row align-items-center justify-content-center mb-2 modal-minW">
-                                                <div class="col-auto title_imgBox"><img src="./images/ttulogo.png">
-                                                </div>
-                                                <h3 class="col-auto text-center fw-bold text-nowrap mb-0">
-                                                    大同大學創新育成中心培育企業識別證申請表
-                                                </h3>
-                                            </div>
-                                            <table
-                                                class="table table-bordered align-middle border border-3 border-dark modal-minW">
-                                                <tr class="py-2">
-                                                    <td colspan="2" class="text-center fw-bold  text-nowrap">
-                                                        公司行號名稱(立案全銜)
-                                                    </td>
-                                                    <td colspan="2" class="text-center fw-bold text-nowrap">負責人</td>
-                                                    <td colspan="2" class="text-center fw-bold text-nowrap">聯絡電話</td>
-                                                    <td rowspan="4" class="text-center fw-bold td_Pic"
-                                                        style="width: 190px; height:250px"><span
-                                                            id="output_text">2吋人頭照片</span><img id="output_img"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class="h-2">好棒棒股份有限公司</td>
-                                                    <td colspan="2" class="">負責人先生</td>
-                                                    <td colspan="2" class="text-nowrap">02-26700000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold text-nowrap py-2">申請人姓名</td>
-                                                    <td class="text-center fw-bold text-nowrap">申請人職稱</td>
-                                                    <td colspan="4" class="text-center fw-bold text-nowrap">申請人聯絡電話
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="h-2" id="idCardName_td"></td>
-                                                    <td id="idCardJobName_td"></td>
-                                                    <td colspan="4" id="idCardPhone_td"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold  text-nowrap py-2">申請人E-mail信箱</td>
-                                                    <td colspan="6" class="h-2" id="idCardEmail_td"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold  text-nowrap py-2">申請人進駐期間</td>
-                                                    <td colspan="6" class=" h-2">
-                                                        <span class="px-2" id="idCard_Period1_Y"></span>年<span
-                                                            class="px-2" id="idCard_Period1_m"></span>月<span
-                                                            class="px-2"
-                                                            id="idCard_Period1_D"></span>日&emsp;~&emsp;<span
-                                                            class="px-2" id="idCard_Period2_Y"></span>年<span
-                                                            class="px-2" id="idCard_Period2_m"></span>月<span
-                                                            class="px-2" id="idCard_Period2_D"></span>日
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold  text-nowrap py-2">申請人進駐<br>培育室位置
-                                                    </td>
-                                                    <td colspan="6" class="h-2">
-                                                        <span class="px-3" id="idCardCultRoom_Building"></span>大樓<span
-                                                            class="px-3" id="idCardCultRoom_Room"></span>室
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold text-nowrap py-2">緊急聯絡人</td>
-                                                    <td colspan="2" class="h-2" id="ICE_Person"></td>
-                                                    <td colspan="2" class="text-center fw-bold  text-nowrap py-2">聯絡電話
-                                                    </td>
-                                                    <td colspan="2" class="h-2" id="ICE_Phone"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center fw-bold  text-nowrap py-2">圖書館閱覽</td>
-                                                    <td colspan="6" class=" h-2">
-                                                        <span id="wantYes" class="d-none"> &#x2611;</span><span
-                                                            id="wantNo">
-                                                            &#x2610;</span><span class="me-5 ms-1">申請</span><span
-                                                            id="dontWantYes">&#x2611;</span><span id="dontWantNo"
-                                                            class="d-none">&#x2610;</span><span
-                                                            class="me-5 ms-1">不申請</span><span>(僅提供圖書館閱覽功能，不提供外借功能)</span>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <div class="row my-3 modal-minW">
-                                                <div class="col-12">申請人聲明：</div>
-                                                <div class="ms-2 col-12">
-                                                    &emsp;&emsp;本份資料均填寫屬實，進駐大同大學期間，願意完全遵守大同大學有關人事及校園安全規定條則，並不得任意使用大同大學名稱，如有違背，將立即喪失進駐資格，並歸還任何大同大學所核發校園出入等相關證件。
-                                                </div>
-                                                <div class="ms-2 col-12">
-                                                    &emsp;&emsp;申請人離職需將識別證繳回育成中心(代繳回本校人事室)。識別證為出入培育室使用，不作其他識別用途。請妥善保管，如遺失請依規定至本校出納組繳交<span
-                                                        class="fw-bold text-danger">300元</span>並申請補發。</div>
-                                            </div>
-                                            <div class="row my-2 mb-3 pb-5 modal-minW">
-                                                <div class="col fw-bold text-dark text-nowrap">申請人簽名：</div>
-                                                <div class="col"></div>
-                                                <div class="col fw-bold text-dark text-nowrap">公司負責人簽名：</div>
-                                                <div class="col"></div>
-                                            </div>
-                                            <div class="row p-2 modal-minW">
-                                                <div class="col py-2 ps-3 border border-dark text-dark">大同大學創新育成中心審核：
-                                                </div>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @@include('layout/model_confirmIdCard.html')
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-dark"
                                         data-bs-dismiss="modal">關閉</button>
                                     <button type="button" class="btn btn-primary print"
-                                        id="printIdCard">列印並送出申請</button>
+                                        id="printAndSubmit">列印並送出申請</button>
                                 </div>
                             </div>
                         </div>
@@ -360,67 +71,14 @@
             </div>
         </div>
     </main>
-    <section class="print_template"></section>
+    <section class="print_template break-inside-avoid"></section>
 
     @@include('layout/metaJS.html')
+
     <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
     <script src="./js/formPreview.js"></script>
     <script src="./js/idCardApply.js"></script>
-
-    <!-- <script src="./js/formPreview.js"></script> -->
-    <!-- <script>
-        // $(function () {
-        //     //同步輸入框跟預覽td
-        //     syncInputValue('idCardName', 'idCardName_td');
-        //     syncInputValue('idCardJobName', 'idCardJobName_td');
-        //     syncInputValue('idCardPhone', 'idCardPhone_td');
-        //     syncInputValue('idCardEmail', 'idCardEmail_td');
-        //     syncInputDate('idCard_Period1', 'idCard_Period1_Y', 'idCard_Period1_m', 'idCard_Period1_D');
-        //     syncInputDate('idCard_Period2', 'idCard_Period2_Y', 'idCard_Period2_m', 'idCard_Period2_D');
-        //     syncSelectValue('idCardCultRoom', 'idCardCultRoom_Building', 'idCardCultRoom_Room');
-        //     syncInputValue('idCardEmergContact', 'ICE_Person');
-        //     syncInputValue('idCardECPhone', 'ICE_Phone');
-
-        //     //圖書館閱覽申請切換
-        //     $('input[name="libraryRead"]').on('change', function () {
-        //         if ($('#wantReadLibrary').is(':checked')) {
-        //             theseAddClass(["d-none"], ['wantNo', 'dontWantYes']);
-        //             theseRemoveClass(["d-none"], ['wantYes', 'dontWantNo']);
-        //         } else if ($('#dontWantReadLibrary').is(':checked')) {
-        //             theseAddClass(["d-none"], ['wantYes', 'dontWantNo']);
-        //             theseRemoveClass(["d-none"], ['wantNo', 'dontWantYes']);
-        //         }
-        //     });
-        //     var allRequiredValid = true;
-
-
-        //     $('#confirm_idCardApp').on('click', function (event) {
-        //         if (!$(this).attr('data-bs-toggle') || !$(this).attr('data-bs-target')) {
-        //             event.preventDefault();
-        //             alert("請填上所有欄位，並上傳證件照‧");
-        //         }
-        //     });
-
-        //     if (allRequiredValid) {
-        //         $('#confirm_idCardApp').attr('data-bs-toggle', 'modal').attr('data-bs-target', '#idCardApp_pdf');
-        //     };
-        //     // $('.checkPhone').on('input', function () {
-        //     //     var val = $this.val();
-        //     //     $this.val(val.replace(/[^0-9-]/g, '')); // 只允許輸入數字和 '-'
-        //     // });
-        //     $(".checkPhone").blur(checkThisPhone);
-
-        //     // 驗證電話格式的函數
-        //     // function validatePhone(phone) {
-        //     //     var phoneRegex = /^\d{2,4}-\d{6,8}$/;
-        //     //     return phoneRegex.test(phone);
-        //     // }
-
-        //     $(".requiredItem").blur(checkThisRequired);
-
-        // });
-
-    </script> -->
 
 </body>
 

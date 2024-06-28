@@ -219,17 +219,38 @@
 
 // idCardApply.js
 $(function () {
+    // 依照資料生成下拉選單
+    populateSelect('idCardCultRoom', selectOptionLocation);
+
+    // 預設本次申請為首次申請
+    $('#typeReissue').prop({
+        'checked': false,
+        'disabled': true
+    });
+    $('#typeFirst').prop('checked', true);
+
+    // 預設圖書館閱覽不申請
+    $('#wantReadLibrary').prop('checked', false);
+    $('#dontWantReadLibrary').prop('checked', true);
+
+    // 預設 預覽燈箱上的'補發'隱藏
+    $('#isReprint').hide();
+
     setMinDateToToday('idCard_Period1');
-    setMinDateToToday('idCard_Period2');
-    // 限制截止日期不可小於開始日期
-    // restrictEndDate('idCard_Period1', 'idCard_Period2');
-    // 確保選擇開始日期之前不能選擇結束日期
+    // 確保選擇開始日期之前不能選擇結束日期，且截止日期不可小於開始日
     enforceStartDateFirst('idCard_Period1', 'idCard_Period2');
+
+    // 抓取要代進的資料
+    let sessionData = session_userData;
+    // 同步session跟燈箱
+    $('#idCardCompany_td').text(sessionData.company);
+    $('#idCardResponsiblePerson_td').text(sessionData.responsiblePerson);
+    $('#idCardCompanyPhone_td').text(sessionData.companyPhone);
 
 
     // 同步輸入框跟預覽td
     syncInputValue('idCardName', 'idCardName_td');
-    syncInputValue('idCardJobName', 'idCardJobName_td');
+    syncInputValue('idCardJobTitle', 'idCardJobTitle_td');
     syncInputValue('idCardPhone', 'idCardPhone_td');
     syncInputValue('idCardEmail', 'idCardEmail_td');
     syncInputDate('idCard_Period1', 'idCard_Period1_Y', 'idCard_Period1_m', 'idCard_Period1_D');
@@ -240,18 +261,8 @@ $(function () {
 
     // 圖書館閱覽申請切換
     $('input[name="libraryRead"]').on('change', function () {
-        if ($('#wantReadLibrary').is(':checked')) {
-            $("#wantNo, #dontWantYes").addClass("d-none");
-            $("#wantYes, #dontWantNo").removeClass("d-none");
-            // theseAddClass(["d-none"], ['wantNo', 'dontWantYes']);
-            // theseRemoveClass(["d-none"], ['wantYes', 'dontWantNo']);
-        } else if ($('#dontWantReadLibrary').is(':checked')) {
-            $("#wantYes, #dontWantNo").addClass("d-none");
-            $("#wantNo, #dontWantYes").removeClass("d-none");
-            // theseAddClass(["d-none"], ['wantYes', 'dontWantNo']);
-            // theseRemoveClass(["d-none"], ['wantNo', 'dontWantYes']);
-        }
-    });  
+        syncInputRadio('wantReadLibrary', 'dontWantReadLibrary', 'wantYes', 'dontWantYes');
+    });
 
     $('.thisRequired').on('input change', function () {
         checkThisRequiredElements.call(this);
@@ -259,19 +270,25 @@ $(function () {
 
     $('#confirm_idCardApp').click(function (event) {
         // // 先檢查必填項
-        // if (!checkRequiredElements()) {
-        //     swalToastWarning('請將必填欄位補上唷！', 'top');
-        //     return; // 如果必填項有未填寫的，直接返回，不再繼續
-        // }
-        // // 最後檢查 danger_ 開頭元素的文字內容
-        // if (checkDangerElements()) {
-        //     // 如果返回 true，開啟燈箱
-        //     $('#idCardApp_pdf').modal('show');
-        // } else {
-        //     // 如果返回 false，顯示警告訊息
-        //     swalToastWarning('請填上正確資料唷！', 'top');
-        // }
+        if (!checkRequiredElements()) {
+            swalToastWarning('請將必填欄位補上唷！', 'top');
+            return; // 如果必填項有未填寫的，直接返回，不再繼續
+        }
+        // 最後檢查 danger_ 開頭元素的文字內容
+        if (checkDangerElements()) {
+            // 如果返回 true，開啟燈箱
+            $('#idCardApp_pdf').modal('show');
+        } else {
+            // 如果返回 false，顯示警告訊息
+            swalToastWarning('請填上正確資料唷！', 'top');
+        }
         $('#idCardApp_pdf').modal('show');
+    });
+
+    // 點擊 submitBtn 按鈕時
+    $('#printAndSubmit').click(function (event) {
+        $('#formIdCardApply').submit(); // 提交表單
+        console.log('表單資料已送出');
     });
 
 
@@ -325,20 +342,20 @@ $(function () {
 
 
 
-function openFile(event) {
-    var input = event.target; //取得上傳檔案
-    var reader = new FileReader(); //建立FileReader物件
-    // var pic_Text = $('#output_text');
+// function openFile(event) {
+//     var input = event.target; //取得上傳檔案
+//     var reader = new FileReader(); //建立FileReader物件
+//     // var pic_Text = $('#output_text');
 
-    reader.readAsDataURL(input.files[0]); //以.readAsDataURL將上傳檔案轉換為base64字串
+//     reader.readAsDataURL(input.files[0]); //以.readAsDataURL將上傳檔案轉換為base64字串
 
-    reader.onload = function () { //FileReader取得上傳檔案後執行以下內容
-        var dataURL = reader.result; //設定變數dataURL為上傳圖檔的base64字串
-        $('#output_img').attr('src', dataURL).show(); //將img的src設定為dataURL並顯示
-        $('#output_text').attr('src', dataURL).hide();
-        // $('#output_text').attr('src', dataURL).addClass('opa_0');
-    };
-}
+//     reader.onload = function () { //FileReader取得上傳檔案後執行以下內容
+//         var dataURL = reader.result; //設定變數dataURL為上傳圖檔的base64字串
+//         $('#output_img').attr('src', dataURL).show(); //將img的src設定為dataURL並顯示
+//         $('#output_text').attr('src', dataURL).hide();
+//         // $('#output_text').attr('src', dataURL).addClass('opa_0');
+//     };
+// }
 
 // function openFile2(event) {
 //     var input = event.target; //取得上傳檔案

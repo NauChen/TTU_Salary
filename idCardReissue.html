@@ -8,13 +8,13 @@
 </head>
 
 <body>
-    <main class="main">
+    <main class="main no_print">
         @@include('layout/header.html')
         <div class="content">
             <div class="container">
 
                 <!-- 麵包屑 -->
-                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><i class="fa-solid fa-file-contract"></i>&ensp;申請與查閱</li>
                         <li class="breadcrumb-item"><a class="d-inline" href="./idCardInventory.html"><i
@@ -22,13 +22,13 @@
                         <li class="breadcrumb-item active"><i class="fa-solid fa-id-card-clip"></i>&ensp;識別證申請</li>
                     </ol>
                 </div>
-                <div class="no_print">
+                <div>
                     <!-- 識別證申請表單 -->
-                    <div class="tabs-box my-2r no_print">
+                    <div class="tabs-box my-2r">
                         <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>申請人資料<i
                                 class="fa-solid fa-quote-right"></i></h3>
                         <div class="tabs section-border-radius section-padding">
-                            <form class="container-fluid" method="post" id="applyIdCardForm">
+                            <form class="container-fluid" method="post" id="formIdCardReissue">
                                 @@include('layout/form_idCard.html')
                                 <!-- <div class="row">
                                     <div class="col-xl-4 col-lg-6 mb-3">
@@ -364,65 +364,11 @@
     <section class="print_template break-inside-avoid"></section>
 
     @@include('layout/metaJS.html')
+
     <script src="./js/formComm.js"></script>
     <script src="./js/formValidation.js"></script>
     <script src="./js/formPreview.js"></script>
-    <script src="./js/idCardApply.js"></script>
-
-    <!-- <script src="./js/formPreview.js"></script> -->
-    <!-- <script>
-        // $(function () {
-        //     //同步輸入框跟預覽td
-        //     syncInputValue('idCardName', 'idCardName_td');
-        //     syncInputValue('idCardJobName', 'idCardJobName_td');
-        //     syncInputValue('idCardPhone', 'idCardPhone_td');
-        //     syncInputValue('idCardEmail', 'idCardEmail_td');
-        //     syncInputDate('idCard_Period1', 'idCard_Period1_Y', 'idCard_Period1_m', 'idCard_Period1_D');
-        //     syncInputDate('idCard_Period2', 'idCard_Period2_Y', 'idCard_Period2_m', 'idCard_Period2_D');
-        //     syncSelectValue('idCardCultRoom', 'idCardCultRoom_Building', 'idCardCultRoom_Room');
-        //     syncInputValue('idCardEmergContact', 'ICE_Person');
-        //     syncInputValue('idCardECPhone', 'ICE_Phone');
-
-        //     //圖書館閱覽申請切換
-        //     $('input[name="libraryRead"]').on('change', function () {
-        //         if ($('#wantReadLibrary').is(':checked')) {
-        //             theseAddClass(["d-none"], ['wantNo', 'dontWantYes']);
-        //             theseRemoveClass(["d-none"], ['wantYes', 'dontWantNo']);
-        //         } else if ($('#dontWantReadLibrary').is(':checked')) {
-        //             theseAddClass(["d-none"], ['wantYes', 'dontWantNo']);
-        //             theseRemoveClass(["d-none"], ['wantNo', 'dontWantYes']);
-        //         }
-        //     });
-        //     var allRequiredValid = true;
-
-
-        //     $('#confirm_idCardApp').on('click', function (event) {
-        //         if (!$(this).attr('data-bs-toggle') || !$(this).attr('data-bs-target')) {
-        //             event.preventDefault();
-        //             alert("請填上所有欄位，並上傳證件照‧");
-        //         }
-        //     });
-
-        //     if (allRequiredValid) {
-        //         $('#confirm_idCardApp').attr('data-bs-toggle', 'modal').attr('data-bs-target', '#idCardApp_pdf');
-        //     };
-        //     // $('.checkPhone').on('input', function () {
-        //     //     var val = $this.val();
-        //     //     $this.val(val.replace(/[^0-9-]/g, '')); // 只允許輸入數字和 '-'
-        //     // });
-        //     $(".checkPhone").blur(checkThisPhone);
-
-        //     // 驗證電話格式的函數
-        //     // function validatePhone(phone) {
-        //     //     var phoneRegex = /^\d{2,4}-\d{6,8}$/;
-        //     //     return phoneRegex.test(phone);
-        //     // }
-
-        //     $(".requiredItem").blur(checkThisRequired);
-
-        // });
-
-    </script> -->
+    <script src="./js/idCardReissue.js"></script>
 
 </body>
 

@@ -6,8 +6,8 @@ $(document).on("click", "#printAndSubmit", function () {
     window.print();
     section.empty();
     $("#returnThisBox").append(printBody);
-});
 
+});
 
 // ================預覽燈箱
 //同步input text
@@ -44,27 +44,6 @@ function syncSelectValue(selectId, tdgroupId, tdvalueId) {
         $('#' + tdgroupId).text(changedRoomName);
         $('#' + tdvalueId).text(optionValue);
     });
-}
-//基地培育區 轉 大樓名
-function changeRoomName(room) {
-    switch (room) {
-        case '青創基地':
-            return '新德惠';
-        case '綜合工廠培育區':
-            return '綜合';
-        case '挺生大樓培育區':
-            return '挺生';
-        case '產學實驗培育區':
-            return '產學';
-        case '實驗大樓培育區':
-            return '實驗';
-        case '北設工培育區':
-            return '北設工';
-        case '尚志大樓培育區':
-            return '尚志';
-        default:
-            return '待新增';
-    }
 }
 //同步input radio
 function syncInputRadio(yesRadioId, noRadioId, yesTdId, noTdId) {
@@ -123,6 +102,21 @@ function syncNumberWithCommas(inputId, tdId) {
             $('#' + tdId).text(formattedValue);
         }
     });
+}
+//同步證件照
+function openFile(event) {
+    var input = event.target; //取得上傳檔案
+    var reader = new FileReader(); //建立FileReader物件
+    // var pic_Text = $('#output_text');
+
+    reader.readAsDataURL(input.files[0]); //以.readAsDataURL將上傳檔案轉換為base64字串
+
+    reader.onload = function () { //FileReader取得上傳檔案後執行以下內容
+        var dataURL = reader.result; //設定變數dataURL為上傳圖檔的base64字串
+        $('#output_img').attr('src', dataURL).show(); //將img的src設定為dataURL並顯示
+        $('#output_text').attr('src', dataURL).hide();
+        // $('#output_text').attr('src', dataURL).addClass('opa_0');
+    };
 }
 
 
