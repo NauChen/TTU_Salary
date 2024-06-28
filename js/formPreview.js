@@ -222,16 +222,17 @@ $(function () {
         $('#newImg').html('<img src="' + imgData + '" class="img-thumbnail" style="width: ' + width + ';">');
     }
 
-    $('#confirm_parkingSpaceApp').on('click', function (event) {
-        if (!$(this).attr('data-bs-toggle') || !$(this).attr('data-bs-target')) {
-            event.preventDefault();
-            // alert("請先上傳行照內頁並裁剪至指定大小");
-            swalToastWarning('請先上傳行照內頁，並裁剪成指定大小。', 'top');
-        }
-    });
+    // $('#confirm_parkingSpaceApp').on('click', function (event) {
+    //     if (!$(this).attr('data-bs-toggle') || !$(this).attr('data-bs-target')) {
+    //         event.preventDefault();
+    //         // alert("請先上傳行照內頁並裁剪至指定大小");
+    //         swalToastWarning('請先上傳行照內頁，並裁剪成指定大小。', 'top');
+    //     }
+    // });
 
-    // 處理重填按鈕點擊事件
-    $('button[type="reset"]').on('click', function () {
+    // 處理停車位申請的重填按鈕點擊事件
+    $('#resetPSFormBtn').on('click', function () {
         resetToInitialState();
     });
+
 });

@@ -11,7 +11,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '經理',
         'ext': '123',
         'phone': '02-86710869',
-        'email': 'chenkaifu@example.com'
+        'email': 'chenkaifu@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-05-17',
@@ -25,7 +26,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '工程師',
         'ext': '456',
         'phone': '0912-345678',
-        'email': 'chenzhaoxian@example.com'
+        'email': 'chenzhaoxian@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-04-18',
@@ -34,12 +36,13 @@ var dataset_myParkingSpaceHistory = [
         'name': '林雅惠',
         'licensePlateNum': '4823-JF',
         'endDate': '2024-05-18',
-        'remark': '-',
+        'remark': '已到期且未續約。',
         'id': '3',
         'jobTitle': '分析師',
         'ext': '789',
         'phone': '02-86714823',
-        'email': 'linyahuei@example.com'
+        'email': 'linyahuei@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-05-15',
@@ -53,7 +56,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '主任',
         'ext': '112',
         'phone': '0912-346789',
-        'email': 'zhangwencheng@example.com'
+        'email': 'zhangwencheng@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-04-30',
@@ -67,7 +71,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '助理',
         'ext': '-',
         'phone': '02-86717219',
-        'email': 'hsiumeiling@example.com'
+        'email': 'hsiumeiling@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-06-02',
@@ -76,12 +81,13 @@ var dataset_myParkingSpaceHistory = [
         'name': '黃佩樺',
         'licensePlateNum': '7-Y245',
         'endDate': '2024-07-02',
-        'remark': '-',
+        'remark': '快到期，請盡速續約。',
         'id': '6',
         'jobTitle': '專員',
         'ext': '321',
         'phone': '0912-347890',
-        'email': 'huangpeihua@example.com'
+        'email': 'huangpeihua@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-06-05',
@@ -90,12 +96,13 @@ var dataset_myParkingSpaceHistory = [
         'name': '劉建宏',
         'licensePlateNum': '5390-ZP',
         'endDate': '2024-07-05',
-        'remark': '-',
+        'remark': '快到期，請盡速續約。',
         'id': '7',
         'jobTitle': '經理',
         'ext': '654',
         'phone': '02-86715390',
-        'email': 'liujianhong@example.com'
+        'email': 'liujianhong@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-06-01',
@@ -104,12 +111,13 @@ var dataset_myParkingSpaceHistory = [
         'name': '吳明憲',
         'licensePlateNum': '9-5012',
         'endDate': '2024-07-01',
-        'remark': '-',
+        'remark': '快到期，請盡速續約。',
         'id': '8',
         'jobTitle': '主任',
         'ext': '987',
         'phone': '0912-348901',
-        'email': 'wumingxian@example.com'
+        'email': 'wumingxian@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-05-26',
@@ -123,7 +131,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '分析師',
         'ext': '234',
         'phone': '02-86714825',
-        'email': 'caishufen@example.com'
+        'email': 'caishufen@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-05-15',
@@ -137,7 +146,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '工程師',
         'ext': '567',
         'phone': '0912-349012',
-        'email': 'chenfangyi@example.com'
+        'email': 'chenfangyi@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-05-09',
@@ -151,7 +161,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '助理',
         'ext': '890',
         'phone': '02-86711265',
-        'email': 'yewenxiang@example.com'
+        'email': 'yewenxiang@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-05-18',
@@ -165,7 +176,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '專員',
         'ext': '123',
         'phone': '0912-341234',
-        'email': 'liuhuizhen@example.com'
+        'email': 'liuhuizhen@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2025-01-25',
@@ -179,7 +191,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '經理',
         'ext': '456',
         'phone': '02-86719274',
-        'email': 'linqiumei@example.com'
+        'email': 'linqiumei@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2025-02-14',
@@ -193,7 +206,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '主任',
         'ext': '789',
         'phone': '0912-342345',
-        'email': 'zhangyating@example.com'
+        'email': 'zhangyating@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2025-03-08',
@@ -207,7 +221,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '工程師',
         'ext': '112',
         'phone': '02-86716841',
-        'email': 'guodawei@example.com'
+        'email': 'guodawei@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2025-04-22',
@@ -221,7 +236,8 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '助理',
         'ext': '345',
         'phone': '0912-343456',
-        'email': 'chenzhiming@example.com'
+        'email': 'chenzhiming@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2024-05-10',
@@ -235,12 +251,13 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '專員',
         'ext': '678',
         'phone': '02-86719406',
-        'email': 'wangmeiling@example.com'
+        'email': 'wangmeiling@example.com',
+        'building': '新德惠大樓',
     },
     {
         'paymentDate': '2025-06-29',
         'carType': '機車',
-        'parkingSpaceNum': 'B21-7',
+        'parkingSpaceNum': '7',
         'name': '林志豪',
         'licensePlateNum': '8-N012',
         'endDate': '2025-07-29',
@@ -249,12 +266,13 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '經理',
         'ext': '901',
         'phone': '0912-344567',
-        'email': 'linzhihao@example.com'
+        'email': 'linzhihao@example.com',
+        'building': '校本部',
     },
     {
         'paymentDate': '2025-07-15',
         'carType': '汽車',
-        'parkingSpaceNum': 'B22-20',
+        'parkingSpaceNum': '20',
         'name': '楊惠君',
         'licensePlateNum': '1782-QR',
         'endDate': '2025-08-15',
@@ -263,12 +281,13 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '主任',
         'ext': '234',
         'phone': '02-86711782',
-        'email': 'yanghuijun@example.com'
+        'email': 'yanghuijun@example.com',
+        'building': '校本部',
     },
     {
         'paymentDate': '2024-05-09',
         'carType': '機車',
-        'parkingSpaceNum': 'B23-12',
+        'parkingSpaceNum': '12',
         'name': '陳建宏',
         'licensePlateNum': '5-H953',
         'endDate': '2024-06-09',
@@ -277,13 +296,10 @@ var dataset_myParkingSpaceHistory = [
         'jobTitle': '助理',
         'ext': '567',
         'phone': '0912-345678',
-        'email': 'chenjianhong@example.com'
+        'email': 'chenjianhong@example.com',
+        'building': '校本部',
     }
 ];
-
-
-
-
 
 
 $(function () {
@@ -293,7 +309,7 @@ $(function () {
         const timeDiff = endDate.getTime() - today.getTime();
         const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
         item.diffDays = diffDays < 0 ? null : ((-1) * diffDays);
-        console.log('id = ' + item.id + ' ，結束日期： ' + item.endDate + ' ，今日： 2024-06-18' + ' ，差： ' + item.diffDays);
+        // console.log('id = ' + item.id + ' ，結束日期： ' + item.endDate + ' ，今日： 2024-06-18' + ' ，差： ' + item.diffDays);
     });
 
     $('#myParkingSpaceList').DataTable({
@@ -307,62 +323,68 @@ $(function () {
         },
         "data": dataset_myParkingSpaceHistory,
         "columns": [
-            { data: 'paymentDate', title: "付款日", },
-            { data: 'carType', title: "車位類型", },
-            { data: 'parkingSpaceNum', title: "車位號碼", },
-            { data: 'name', title: "登記使用人" },
-            { data: 'licensePlateNum', title: "車牌號碼", },
-            { data: 'endDate', title: "到期日", },
-            { data: 'remark', title: "備註", },
+            { data: 'paymentDate', title: "付款日", }, // 0
+            { data: 'carType', title: "車位類型", }, // 1
+            { data: 'building', title: "所在位置", }, // 2
+            { data: 'parkingSpaceNum', title: "車位號碼", }, // 3
+            { data: 'name', title: "登記使用人" }, // 4
+            { data: 'licensePlateNum', title: "車牌號碼", }, // 5
+            { data: 'endDate', title: "到期日", }, // 6
+            { data: 'remark', title: "備註", }, // 7
             {
-                data: 'id', title: "續約",
+                data: 'id', title: "續約", // 8
                 render: function (data, type, row) {
                     const diffDays = row.diffDays;
                     if (diffDays === null) {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間已過"><i class="fa-solid fa-hourglass-end"></i></button>';
                     } else if (diffDays >= -10) {
-                        return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpaceRenew.html?id=' + data + '" title="立即續約"><i class="fa-solid fa-repeat"></i></a>';
+                        return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord renew-btn" href="./parkingSpaceRenew.html?id=' + data + '" title="立即續約" data-id=' + data + '><i class="fa-solid fa-repeat"></i></a>';
                     } else {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間未到"><i class="fa-solid fa-hourglass-half"></i></button>';
                     }
                 },
             },
-            { data: 'diffDays', visible: false },
+            { data: 'diffDays', visible: false }, // 9
         ],
-        order: [[8, 'desc']],
+        order: [[9, 'desc'], [6, 'asc']],
         "columnDefs": [
             {
-                targets: [0],
+                targets: [1],
                 responsivePriority: 1,
             },
             {
-                targets: [1],
+                targets: [2],
                 responsivePriority: 2,
             },
             {
-                targets: [2],
+                targets: [3],
                 responsivePriority: 3,
             },
-            {
-                targets: [6],
-                className: "text-start",
-            },
-            { searchable: false, orderable: false, targets: [7] },
-            { className: "text-center", targets: [0, 1, 2, 3, 4, 5, 7] },
+            { searchable: false, orderable: false, targets: [8, 9] },
+            { className: "text-center", targets: [0, 1, 2, 3, 4, 5, 6, 8] },
         ],
         createdRow: function (row, data, dataIndex) {
-            [0, 5].forEach(function (colIdx) {
+            [0, 6].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('font-size', '.95em').css('min-width', '130px');
             });
-            [0, 1, 2, 4, 5].forEach(function (colIdx) {
+            [0, 1, 2, 3, 5, 6].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
             });
-            $('td:eq(6)', row).css('min-width', '200px');
-            [7].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
-            });
+            $('td:eq(7)', row).css('min-width', '200px').addClass('text-start');
+            $('td:eq(8)', row).css('max-width', '70px');
         },
     });
-    // $('[data-bs-toggle="tooltip"]').tooltip();
 });
 
+$(function () {
+    $(document).on("click", ".renew-btn", function (event) {
+        event.preventDefault();
+        const renewId = $(this).data('id');
+        const renewLink = './parkingSpaceRenew.html?id=' + renewId;
+
+        swalConfirmNoToast('登記使用人是否變更呢?', '是', '否', function () {
+            window.location.href = renewLink;
+        }, '已將收款帳戶資訊發至貴司的主要聯絡信箱。<br><br>前往「進度查詢」：<br>可上傳匯款憑證，或是再次發送大同大學帳戶資訊。', 'top');
+
+    });
+});

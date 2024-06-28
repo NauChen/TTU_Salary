@@ -29,7 +29,7 @@ var dataset_myIDcardHistory = [
 
         'startDate': '2023-09-10',
         'endDate': '2023-10-09',
-        'status': '未到期。',
+        'status': '-',
         'idCardNum': 'ABC102',
         'phone': '0933-456789',
         'email': 'abcd#gmail.com',
@@ -164,7 +164,7 @@ $(function () {
         checkThisRequiredElements.call(this);
     });
 
-    $('#confirm_idCardApp').click(function (event) {
+    $('#confirm_idCardApply').click(function (event) {
         // 先檢查必填項
         if (!checkRequiredElements()) {
             swalToastWarning('請將所有欄位補上唷！', 'top');

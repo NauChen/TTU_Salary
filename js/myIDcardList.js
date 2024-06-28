@@ -29,7 +29,7 @@ var dataset_myIDcardHistory = [
 
         'startDate': '2023-09-10',
         'endDate': '2023-10-09',
-        'status': '未到期。',
+        'status': '-',
         'idCardNum': 'ABC102',
         'phone': '0933-456789',
         'email': 'abcd#gmail.com',
