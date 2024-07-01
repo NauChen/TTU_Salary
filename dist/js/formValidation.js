@@ -1,1 +1,294 @@
-function checkRequiredElements(){var t=!0;return $(".thisRequired").each(function(){var e="";switch($(this).prop("tagName").toLowerCase()){case"input":var a=$(this).attr("type").toLowerCase();"checkbox"===a||"radio"===a?$(this).is(":checked")||(t=!1,addDangerRequiredMessage($(this).attr("id"))):"file"===a?(0===$(this).get(0).files.length?(t=!1,addDangerRequiredFilesMessage):removeDangerMessage)($(this).attr("id")):""===(e=$(this).val().trim())?(t=!1,("date"===a?addDangerRequiredDateMessage:addDangerRequiredMessage)($(this).attr("id"))):(removeDangerMessage($(this).attr("id")),$(this).hasClass("thisPhone")&&(a=$(this).attr("id"),validatePhone(e)?$("#danger_"+a).text(""):(addDangerPhoneMessage(a),t=!1)),$(this).hasClass("thisEmail")&&(a=$(this).attr("id"),validateEmail(e)?$("#danger_"+a).text(""):(addDangerEmailMessage(a),t=!1)));break;case"select":(""===(e=$(this).val()?$(this).val().trim():"")?(t=!1,addDangerRequiredSelectMessage):removeDangerMessage)($(this).attr("id"));break;case"textarea":(""===(e=$(this).val()?$(this).val().trim():"")?(t=!1,addDangerRequiredMessage):removeDangerMessage)($(this).attr("id"))}}),t}function checkThisRequiredElements(){var e=$(this).attr("id"),a="",t=!0;switch($(this).prop("tagName").toLowerCase()){case"input":var s=$(this).attr("type").toLowerCase();"checkbox"===s||"radio"===s?($(this).is(":checked")?removeDangerMessage:(t=!1,addDangerRequiredMessage))(e):"file"===s?(0===$(this).get(0).files.length?(t=!1,addDangerRequiredFilesMessage):removeDangerMessage)(e):""===(a=$(this).val().trim())?(t=!1,("date"===s?addDangerRequiredDateMessage:addDangerRequiredMessage)(e)):(removeDangerMessage(e),$(this).hasClass("thisPhone")&&(validatePhone(a)?$("#danger_"+e).text(""):(addDangerPhoneMessage(e),t=!1)),$(this).hasClass("thisEmail")&&(validateEmail(a)?$("#danger_"+e).text(""):(addDangerEmailMessage(e),t=!1)));break;case"select":(""===(a=$(this).val()?$(this).val().trim():"")?(t=!1,addDangerRequiredSelectMessage):removeDangerMessage)(e);break;case"textarea":(""===(a=$(this).val()?$(this).val().trim():"")?(t=!1,addDangerRequiredMessage):removeDangerMessage)(e)}return t}function checkPhoneNumbers(){var t=!0;return $(".thisPhone").each(function(){var e=$(this).val().trim(),a=$(this).attr("id");if(""===e)return $("#danger_"+a).text(""),!0;validatePhone(e)?$("#danger_"+a).text(""):(addDangerPhoneMessage(a),t=!1)}),t}function checkEmails(){var t=!0;return $(".thisEmail").each(function(){var e=$(this).val().trim(),a=$(this).attr("id");if(""===e)return $("#danger_"+a).text(""),!0;validateEmail(e)?$("#danger_"+a).text(""):(addDangerEmailMessage(a),t=!1)}),t}function addDangerRequiredMessage(e){$("#danger_"+e).text("此為必填欄位！")}function addDangerRequiredDateMessage(e){$("#danger_"+e).text("此為必選日期欄位！")}function addDangerRequiredSelectMessage(e){$("#danger_"+e).text("此為必選欄位！")}function addDangerRequiredFilesMessage(e){$("#danger_"+e).html("&#10551;此為必須上傳的檔案！")}function addDangerPhoneMessage(e){$("#danger_"+e).text("格式不正確，請依正確的格式輸入：區碼-電話號碼 或 09XX-XXXXXX")}function addDangerEmailMessage(e){$("#danger_"+e).text("請輸入有效的電子郵件地址！")}function removeDangerMessage(e){$("#danger_"+e).text("")}function validatePhone(e){return/^\d{2,4}-\d{6,8}$/.test(e)}function validateEmail(e){return/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(e)}function checkThisPhone(){var e=$(this).val().trim(),a=$(this).attr("id"),a=$("#danger_"+a);""===e||validatePhone(e)?a.text(""):a.text("格式不正確，請依正確的格式輸入：區碼-電話號碼 或 09XX-XXXXXX")}function checkThisEmail(){var e=$(this).val().trim(),a=$(this).attr("id"),a=$("#danger_"+a);""===e||validateEmail(e)?a.text(""):a.text("請輸入有效的電子郵件地址")}function checkDangerElements(){for(var e=$('[id^="danger_"]'),a=0;a<e.length;a++)if(""!==$(e[a]).text().trim())return!1;return!0}
+"use strict";
+
+// ================檢查整頁 .thisRequired 是否必填，沒有則加上錯誤訊息並回傳false
+function checkRequiredElements() {
+  var allFilled = true;
+  $('.thisRequired').each(function () {
+    var elementType = $(this).prop('tagName').toLowerCase();
+    var value = '';
+    switch (elementType) {
+      case 'input':
+        var inputType = $(this).attr('type').toLowerCase();
+        if (inputType === 'checkbox' || inputType === 'radio') {
+          if (!$(this).is(':checked')) {
+            allFilled = false;
+            addDangerRequiredMessage($(this).attr('id'));
+          }
+        } else if (inputType === 'file') {
+          if ($(this).get(0).files.length === 0) {
+            allFilled = false;
+            addDangerRequiredFilesMessage($(this).attr('id'));
+          } else {
+            removeDangerMessage($(this).attr('id'));
+          }
+        } else {
+          value = $(this).val().trim();
+          if (value === '') {
+            allFilled = false;
+            if (inputType === 'date') {
+              addDangerRequiredDateMessage($(this).attr('id'));
+            } else {
+              addDangerRequiredMessage($(this).attr('id'));
+            }
+          } else {
+            removeDangerMessage($(this).attr('id'));
+            // 檢查是否為電話號碼類型，若是則再次驗證格式
+            if ($(this).hasClass('thisPhone')) {
+              var phoneId = $(this).attr('id');
+              if (!validatePhone(value)) {
+                addDangerPhoneMessage(phoneId);
+                allFilled = false; // 如果格式不正確，設置 allFilled 為 false
+              } else {
+                $('#danger_' + phoneId).text(''); // 清除錯誤訊息
+              }
+            }
+            // 檢查是否為電子郵件類型，若是則再次驗證格式
+            if ($(this).hasClass('thisEmail')) {
+              var emailId = $(this).attr('id');
+              if (!validateEmail(value)) {
+                addDangerEmailMessage(emailId);
+                allFilled = false; // 如果格式不正確，設置 allFilled 為 false
+              } else {
+                $('#danger_' + emailId).text(''); // 清除錯誤訊息
+              }
+            }
+          }
+        }
+        break;
+      case 'select':
+        value = $(this).val() ? $(this).val().trim() : '';
+        if (value === '') {
+          allFilled = false;
+          addDangerRequiredSelectMessage($(this).attr('id'));
+        } else {
+          removeDangerMessage($(this).attr('id'));
+        }
+        break;
+      case 'textarea':
+        value = $(this).val() ? $(this).val().trim() : '';
+        if (value === '') {
+          allFilled = false;
+          addDangerRequiredMessage($(this).attr('id'));
+        } else {
+          removeDangerMessage($(this).attr('id'));
+        }
+        break;
+      // value = $(this).val().trim();
+      // if (value === '') {
+      //     allFilled = false;
+      //     addDangerRequiredMessage($(this).attr('id'));
+      // } else {
+      //     removeDangerMessage($(this).attr('id'));
+      // }
+      // break;
+      default:
+        break;
+    }
+  });
+  return allFilled;
+}
+// ================檢查當下 .thisRequired 是否必填，沒有則加上錯誤訊息並回傳false
+function checkThisRequiredElements() {
+  var id = $(this).attr('id');
+  var elementType = $(this).prop('tagName').toLowerCase();
+  var value = '';
+  var allFilled = true;
+  switch (elementType) {
+    case 'input':
+      var inputType = $(this).attr('type').toLowerCase();
+      if (inputType === 'checkbox' || inputType === 'radio') {
+        if (!$(this).is(':checked')) {
+          allFilled = false;
+          addDangerRequiredMessage(id);
+        } else {
+          removeDangerMessage(id);
+        }
+      } else if (inputType === 'file') {
+        if ($(this).get(0).files.length === 0) {
+          allFilled = false;
+          addDangerRequiredFilesMessage(id);
+        } else {
+          removeDangerMessage(id);
+        }
+      } else {
+        value = $(this).val().trim();
+        if (value === '') {
+          allFilled = false;
+          if (inputType === 'date') {
+            addDangerRequiredDateMessage(id);
+          } else {
+            addDangerRequiredMessage(id);
+          }
+        } else {
+          removeDangerMessage(id);
+          // 檢查是否為電話號碼類型，若是則再次驗證格式
+          if ($(this).hasClass('thisPhone')) {
+            if (!validatePhone(value)) {
+              addDangerPhoneMessage(id);
+              allFilled = false; // 如果格式不正確，設置 allFilled 為 false
+            } else {
+              $('#danger_' + id).text(''); // 清除錯誤訊息
+            }
+          }
+          // 檢查是否為電子郵件類型，若是則再次驗證格式
+          if ($(this).hasClass('thisEmail')) {
+            if (!validateEmail(value)) {
+              addDangerEmailMessage(id);
+              allFilled = false; // 如果格式不正確，設置 allFilled 為 false
+            } else {
+              $('#danger_' + id).text(''); // 清除錯誤訊息
+            }
+          }
+        }
+      }
+      break;
+    case 'select':
+      value = $(this).val() ? $(this).val().trim() : '';
+      if (value === '') {
+        allFilled = false;
+        addDangerRequiredSelectMessage(id);
+      } else {
+        removeDangerMessage(id);
+      }
+      break;
+    case 'textarea':
+      value = $(this).val() ? $(this).val().trim() : '';
+      if (value === '') {
+        allFilled = false;
+        addDangerRequiredMessage(id);
+      } else {
+        removeDangerMessage(id);
+      }
+      break;
+    default:
+      break;
+  }
+  return allFilled;
+}
+
+// ================檢查.thisPhone是否符合格式，沒有則加上錯誤訊息並回傳false
+function checkPhoneNumbers() {
+  var allValid = true;
+  $('.thisPhone').each(function () {
+    var phoneValue = $(this).val().trim();
+    var inputId = $(this).attr('id');
+    if (phoneValue === '') {
+      // 當值為空，跳過檢查並繼續檢查下一個
+      $('#danger_' + inputId).text('');
+      return true;
+    }
+    if (!validatePhone(phoneValue)) {
+      addDangerPhoneMessage(inputId);
+      allValid = false;
+    } else {
+      $('#danger_' + inputId).text('');
+    }
+  });
+  return allValid;
+}
+
+// ================檢查 .thisEmail 是否符合格式，沒有則加上錯誤訊息並回傳 false
+function checkEmails() {
+  var allValid = true;
+  $('.thisEmail').each(function () {
+    var emailValue = $(this).val().trim();
+    var inputId = $(this).attr('id');
+    if (emailValue === '') {
+      // 當值為空，跳過檢查並繼續檢查下一個
+      $('#danger_' + inputId).text('');
+      return true;
+    }
+    if (!validateEmail(emailValue)) {
+      addDangerEmailMessage(inputId);
+      allValid = false;
+    } else {
+      $('#danger_' + inputId).text('');
+    }
+  });
+  return allValid;
+}
+
+// 添加 必填的警告訊息
+function addDangerRequiredMessage(id) {
+  $('#danger_' + id).text('此為必填欄位！');
+}
+// 添加 必選日期的警告訊息
+function addDangerRequiredDateMessage(id) {
+  $('#danger_' + id).text('此為必選日期欄位！');
+}
+
+// 添加 必選的警告訊息
+function addDangerRequiredSelectMessage(id) {
+  $('#danger_' + id).text('此為必選欄位！');
+}
+
+// 添加 必上傳的警告訊息
+function addDangerRequiredFilesMessage(id) {
+  // $('#danger_' + id).text('&#10551;此為必須上傳的檔案！');
+  $('#danger_' + id).html('&#10551;此為必須上傳的檔案！');
+}
+
+// 添加電話格式的警告訊息
+function addDangerPhoneMessage(id) {
+  $('#danger_' + id).text('格式不正確，請依正確的格式輸入：區碼-電話號碼 或 09XX-XXXXXX');
+}
+
+// 添加Email格式的警告訊息
+function addDangerEmailMessage(id) {
+  $('#danger_' + id).text('請輸入有效的電子郵件地址！');
+}
+
+// 刪除警告訊息
+function removeDangerMessage(id) {
+  $('#danger_' + id).text('');
+}
+
+// 驗證電話格式的函數
+function validatePhone(phone) {
+  var phoneRegex = /^\d{2,4}-\d{6,8}$/;
+  return phoneRegex.test(phone);
+}
+// 驗證E-mail格式的函數
+function validateEmail(email) {
+  var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  return emailPattern.test(email);
+}
+
+// ※※ onblur函式 - 輸入完畢後用 ※※
+//   添加警告訊息，調用函式-驗證電話格式
+function checkThisPhone() {
+  var phoneValue = $(this).val().trim();
+  var phoneId = $(this).attr('id');
+  var warningBox = $('#danger_' + phoneId);
+  if (phoneValue === '') {
+    warningBox.text('');
+  } else if (!validatePhone(phoneValue)) {
+    warningBox.text('格式不正確，請依正確的格式輸入：區碼-電話號碼 或 09XX-XXXXXX');
+  } else {
+    warningBox.text('');
+  }
+}
+//   添加警告訊息，調用函式-驗證E-mail格式
+function checkThisEmail() {
+  var emailValue = $(this).val().trim();
+  var emailId = $(this).attr('id');
+  var warningBox = $('#danger_' + emailId);
+  if (emailValue === '') {
+    warningBox.text('');
+  } else if (!validateEmail(emailValue)) {
+    warningBox.text('請輸入有效的電子郵件地址');
+  } else {
+    warningBox.text('');
+  }
+}
+
+// ※※※ 檢查 danger_ 開頭元素的文字內容是否為空的函數※※※
+function checkDangerElements() {
+  var dangerElements = $('[id^="danger_"]');
+  for (var i = 0; i < dangerElements.length; i++) {
+    if ($(dangerElements[i]).text().trim() !== '') {
+      return false; // 如果有任何一個元素有文字，回傳 false
+    }
+  }
+  return true; // 若都沒有文字，回傳 true
+}
