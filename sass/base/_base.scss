@@ -198,3 +198,16 @@ textarea {
 //     text-align: justify;
 //default
 // }
+
+// 覆寫SweetAlert
+.swal2-icon {
+    &.swal2-question {
+        &.swal2-icon-show {
+            .swal2-icon-content {
+                font-family: 'Font Awesome 5 Free';
+            }
+        }
+
+    }
+
+}

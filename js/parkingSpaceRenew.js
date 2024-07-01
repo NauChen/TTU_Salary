@@ -282,35 +282,85 @@ var dataset_myParkingSpaceHistory = [
 ];
 
 
-
-
 $(function () {
+
+    // 抓取要代進的資料
+    let sessionData = session_userData;
+    // 同步session跟燈箱
+    $('#parkingSpaceCompany_td').text(sessionData.company);
+
+    // 確保起租日期不可小於當日+5天
+    setMinDateToSomeDaysLater('parkingSpaceStartDate', 5);
 
     const urlParams = new URLSearchParams(window.location.search);
     const parkingSpaceId = String(urlParams.get('id'));
 
-    // 確保 jobId 存在
+    // 確保 parkingSpaceId 存在
     if (parkingSpaceId) {
-        // console.log('Job ID:', jobId);
-
+        // console.log('ParkingSpace ID:', parkingSpaceId);
         let parkingSpaceData = dataset_myParkingSpaceHistory.find(parkingSpace => parkingSpace.id === parkingSpaceId);
         if (parkingSpaceData) {
-            // console.log('Job data found:', jobData);
-            $('#parkingSpaceName').val(parkingSpaceData.name);
-            $('#parkingSpaceJobTitle').val(parkingSpaceData.jobTitle);
-            $('#parkingSpaceExt').val(parkingSpaceData.ext);
-            $('#parkingSpacePhone').val(parkingSpaceData.phone);
-            $('#parkingSpaceEmail').val(parkingSpaceData.email);
-            // $('#parkingSpaceIDNum').val(parkingSpaceData.IdNum);
+            // 取得地下樓層放入預覽燈箱
+            $('#basementLevel_td').text(extractSubstringBetween(parkingSpaceData.parkingSpaceNum, 'B', '-'));
+            $('#parkingSpaceNum_td').text(parkingSpaceData.parkingSpaceNum);
+
+            // 依據原車位顯示上傳行照的按鈕
+            if (parkingSpaceData.carType === '汽車') {
+                $('#btn_motoBox').hide();
+            } else if (parkingSpaceData.carType === '機車') {
+                $('#btn_carBox').hide();
+            } else {
+                $('#btn_carBox').hide();
+                $('#btn_motoBox').hide();
+            }
 
         } else {
-            console.error('Job data not found for id:', jobId);
+            console.error('ParkingSpace data not found for id:', parkingSpaceId);
         }
-
     } else {
-        console.error('Job ID not found in URL');
+        console.error('ParkingSpace ID not found in URL');
     }
 
 
+    // 同步輸入框跟預覽td
+    syncInputValue('parkingSpaceName', 'parkingSpaceName_td');
+    syncInputValue('parkingSpaceJobTitle', 'parkingSpaceJobTitle_td');
+    syncInputValue('parkingSpaceExt', 'parkingSpaceExt_td');
+
+    syncInputValue('licensePlateNum', 'licensePlateNum_td');
+    syncInputValue('parkingSpaceStartDate', 'parkingSpaceStartDate_td');
+
+    syncInputValue('parkingSpaceIDNum', 'parkingSpaceIDNum_td');
+    syncInputValue('parkingSpacePhone', 'parkingSpacePhone_td');
+    syncInputValue('parkingSpaceEmail', 'parkingSpaceEmail_td');
+
+    // 若必填欄位更改，及時更新錯誤訊息
+    $('.thisRequired').on('input change', function () {
+        checkThisRequiredElements.call(this);
+    });
+
+    // 點擊預覽燈箱
+    $('#confirm_parkingSpaceRenew').click(function (event) {
+        // 先檢查必填項
+        if (!checkRequiredElements()) {
+            swalToastWarning('請將必填欄位填上正確資料唷！', 'top');
+            return; // 如果必填項有未填寫的，直接返回，不再繼續
+        }
+        // 最後檢查 danger_ 開頭元素的文字內容
+        if (checkDangerElements()) {
+            // 如果返回 true，開啟燈箱
+            $('#parkingSpaceRenew_pdf').modal('show');
+        } else {
+            // 如果返回 false，顯示警告訊息
+            swalToastWarning('請上傳行照圖檔，並裁剪成指定大小唷！', 'top');
+        }
+        // $('#parkingSpaceRenew_pdf').modal('show');
+    });
+
+    // 點擊 submitBtn 按鈕時
+    $('#printAndSubmit').click(function (event) {
+        $('#formParkingSpaceRenew').submit(); // 提交表單
+        console.log('表單資料已送出');
+    });
 
 });

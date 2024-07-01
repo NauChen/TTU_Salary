@@ -25,7 +25,11 @@ function checkRequiredElements() {
                     value = $(this).val().trim();
                     if (value === '') {
                         allFilled = false;
-                        addDangerRequiredMessage($(this).attr('id'));
+                        if (inputType === 'date') {
+                            addDangerRequiredDateMessage($(this).attr('id'));
+                        } else {
+                            addDangerRequiredMessage($(this).attr('id'));
+                        }
                     } else {
                         removeDangerMessage($(this).attr('id'));
                         // 檢查是否為電話號碼類型，若是則再次驗證格式
@@ -112,7 +116,11 @@ function checkThisRequiredElements() {
                 value = $(this).val().trim();
                 if (value === '') {
                     allFilled = false;
-                    addDangerRequiredMessage(id);
+                    if (inputType === 'date') {
+                        addDangerRequiredDateMessage(id);
+                    } else {
+                        addDangerRequiredMessage(id);
+                    }
                 } else {
                     removeDangerMessage(id);
                     // 檢查是否為電話號碼類型，若是則再次驗證格式
@@ -214,6 +222,10 @@ function checkEmails() {
 // 添加 必填的警告訊息
 function addDangerRequiredMessage(id) {
     $('#danger_' + id).text('此為必填欄位！');
+}
+// 添加 必選日期的警告訊息
+function addDangerRequiredDateMessage(id) {
+    $('#danger_' + id).text('此為必選日期欄位！');
 }
 
 // 添加 必選的警告訊息

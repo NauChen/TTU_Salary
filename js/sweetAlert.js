@@ -95,6 +95,7 @@ function swalConfirmNoToast(questionText, yesButtonText, noButtonText, onConfirm
         allowOutsideClick: false, // 點旁邊關閉
         confirmButtonColor: '#888',
         cancelButtonColor: '#609b8a',
+
     }).then((result) => {
         if (result.isConfirmed) {
             // 使用者點擊YES按鈕，執行 onConfirm 回調函數

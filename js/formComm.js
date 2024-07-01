@@ -297,6 +297,30 @@ function splitHyphen(textData) {
         throw new Error("Invalid textData format. It should be in the format 'aaaa-bbbb'.");
     }
 }
+//   取得兩個指定字元之間的字
+function extractSubstringBetween(str, startChar, endChar) {
+    // 找到起始字符的位置
+    const startIndex = str.indexOf(startChar);
+    
+    // 找到结束字符的位置
+    const endIndex = str.indexOf(endChar, startIndex + 1);
+    
+    // 如果起始字符或结束字符未找到，返回空字符串
+    if (startIndex === -1 || endIndex === -1 || startIndex >= endIndex) {
+        return '';
+    }
+    
+    // 提取起始字符和结束字符之间的子字符串
+    return str.substring(startIndex + 1, endIndex);
+}
+
+// 用法範例
+const str = "B4-30";
+const startChar = "B";
+const endChar = "-";
+const result = extractSubstringBetween(str, startChar, endChar);
+console.log(result); // 输出 "4"
+
 
 
 // function handleSalaryChoose(selectedOption) {

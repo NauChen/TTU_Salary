@@ -25,7 +25,7 @@ $(function () {
     });
 
     $('#confirm_parkingSpaceApply').click(function (event) {
-        // // 先檢查必填項
+        // 先檢查必填項
         if (!checkRequiredElements()) {
             swalToastWarning('請將必填欄位填上正確資料唷！', 'top');
             return; // 如果必填項有未填寫的，直接返回，不再繼續
@@ -40,4 +40,10 @@ $(function () {
         }
         // $('#parkingSpaceApply_pdf').modal('show');
     });
+
+        // 點擊 submitBtn 按鈕時
+        $('#printAndSubmit').click(function (event) {
+            $('#formParkingSpaceApply').submit(); // 提交表單
+            console.log('表單資料已送出');
+        });
 });
