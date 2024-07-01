@@ -1,26 +1,43 @@
 $(function () {
+    // 抓取要代進的資料
+    let sessionData = session_userData;
+    // 同步session跟燈箱
+    $('#parkingSpaceCompany_td').text(sessionData.company);
 
-    // 調用函數，傳入 input 和 td 的 ID
+    // 確保起租日期不可小於當日+5天
+    setMinDateToSomeDaysLater('parkingSpaceStartDate', 5);
+
+
+    // 同步輸入框跟預覽td
     syncInputValue('parkingSpaceName', 'parkingSpaceName_td');
-    syncInputValue('parkingSpaceJobName', 'parkingSpaceJobName_td');
-    syncInputValue('parkingSpacePhone', 'parkingSpacePhone_td');
-    syncInputValue('parkingSpaceIDNum', 'parkingSpaceIDNum_td');
-    syncInputValue('parkingSpaceEmail', 'parkingSpaceEmail_td');
+    syncInputValue('parkingSpaceJobTitle', 'parkingSpaceJobTitle_td');
     syncInputValue('parkingSpaceExt', 'parkingSpaceExt_td');
 
-    // 點擊 resetBtn 按鈕時
-    // $('#resetBtn').click(function () {
-    //     // 執行原有 reset 的功能
-    //     this.form.reset();
-    //     // 清空所有以 danger_ 開頭元素的內容
-    //     $('[id^="danger_"]').text('');
-    // });
+    syncInputValue('licensePlateNum', 'licensePlateNum_td');
+    syncInputValue('parkingSpaceStartDate', 'parkingSpaceStartDate_td');
 
-    $('#confirm_parkingSpaceApp').on('click', function (event) {
-        if (!$(this).attr('data-bs-toggle') || !$(this).attr('data-bs-target')) {
-            event.preventDefault();
-            // alert("請先上傳行照內頁並裁剪至指定大小");
-            swalToastWarning('請先上傳行照內頁，並裁剪成指定大小。', 'top');
+    syncInputValue('parkingSpaceIDNum', 'parkingSpaceIDNum_td');
+    syncInputValue('parkingSpacePhone', 'parkingSpacePhone_td');
+    syncInputValue('parkingSpaceEmail', 'parkingSpaceEmail_td');
+
+    $('.thisRequired').on('input change', function () {
+        checkThisRequiredElements.call(this);
+    });
+
+    $('#confirm_parkingSpaceApply').click(function (event) {
+        // // 先檢查必填項
+        if (!checkRequiredElements()) {
+            swalToastWarning('請將必填欄位填上正確資料唷！', 'top');
+            return; // 如果必填項有未填寫的，直接返回，不再繼續
         }
+        // 最後檢查 danger_ 開頭元素的文字內容
+        if (checkDangerElements()) {
+            // 如果返回 true，開啟燈箱
+            $('#parkingSpaceApply_pdf').modal('show');
+        } else {
+            // 如果返回 false，顯示警告訊息
+            swalToastWarning('請上傳行照圖檔，並裁剪成指定大小唷！', 'top');
+        }
+        // $('#parkingSpaceApply_pdf').modal('show');
     });
 });

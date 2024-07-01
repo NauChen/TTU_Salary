@@ -124,8 +124,8 @@ function openFile(event) {
 // 上傳圖片、預覽、裁切
 $(function () {
     /* ::::::::::::::::::::::::::::: 裁切上傳圖片 */
-    var car_width_crop = 529; // 汽車裁切寬度
-    var car_height_crop = 360; // 汽車裁切高度
+    var car_width_crop = 480; // 汽車裁切寬度
+    var car_height_crop = 306; // 汽車裁切高度
     var bike_width_crop = car_width_crop / 2; // 機車裁切寬度為汽車裁切寬度的一半
     var bike_height_crop = car_height_crop; // 機車裁切高度與汽車相同
     var croppieContainer = $('#croppie-container');
@@ -178,7 +178,8 @@ $(function () {
         $('#newImg').html('');
         $('#car_upload_label').show();
         $('#bike_upload_label').show();
-        $('#confirm_parkingSpaceApp').removeAttr('data-bs-toggle').removeAttr('data-bs-target');
+        $('#danger_parkingSpaceImg').html('&ensp;&#10551;上傳行照內頁後，請點擊裁剪圖片。');
+        // $('#confirm_parkingSpaceApp').removeAttr('data-bs-toggle').removeAttr('data-bs-target');
     }
 
     $('#upload_car_img').on('change', function () {
@@ -212,13 +213,14 @@ $(function () {
             quality: 0.85
         }).then(function (imgData) {
             displayCroppedImage(imgData, currentMode);
-            $('#confirm_parkingSpaceApp').attr('data-bs-toggle', 'modal').attr('data-bs-target', '#parkingSpaceApp_pdf');
+            $('#danger_parkingSpaceImg').text('');
+            // $('#confirm_parkingSpaceApp').attr('data-bs-toggle', 'modal').attr('data-bs-target', '#parkingSpaceApp_pdf');
         });
     });
 
     // 調整預覽燈箱內的圖片大小
     function displayCroppedImage(imgData, mode) {
-        var width = mode === 'car' ? '100%' : '50%';
+        var width = mode === 'car' ? '80%' : '40%';
         $('#newImg').html('<img src="' + imgData + '" class="img-thumbnail" style="width: ' + width + ';">');
     }
 

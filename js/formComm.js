@@ -23,6 +23,29 @@ function restrictToUniformNum(obj) {
 function restrictToValidChars(obj) {
     $(obj).val($(obj).val().replace(/[^a-zA-Z0-9._@-]/g, ""));
 }
+//   大寫英文、數字、'-'
+function restrictToUpperCaseNumberHyphen(obj) {
+    $(obj).val($(obj).val().replace(/[^A-Z0-9-]/g, ""));
+}
+//   第一個字元僅能是大寫英文，第二個字元可能是大寫英文或數字，第三個字元以後僅能是數字
+function restrictFirstUpperSecondNum(obj) {
+    let value = $(obj).val();
+    
+    let newValue = value.split('').map((char, index) => {
+        if (index === 0) {
+            // 第一個字元僅能是大寫英文
+            return char.replace(/[^A-Z]/g, '');
+        } else if (index === 1) {
+            // 第二個字元可能是大寫英文或是數字
+            return char.replace(/[^A-Z0-9]/g, '');
+        } else {
+            // 第三個字元以後僅能是數字
+            return char.replace(/[^0-9]/g, '');
+        }
+    }).join('');
+    
+    $(obj).val(newValue);
+}
 
 // ※※ 金額函式 - 千分位符號 ※※ 
 //   增加千分號
@@ -117,6 +140,24 @@ function setMinDateToToday(inputId) {
     // 設置 input 元素的 min 屬性
     $('#' + inputId).attr('min', formattedDate);
 }
+//   限制可選日期不可早於當前日期再加幾天
+function setMinDateToSomeDaysLater(inputId, days) {
+    // 獲取當前日期
+    var today = new Date();
+    
+    // 新日期設定為當前日期再加上指定天數
+    today.setDate(today.getDate() + days);
+    
+    // 格式化日期為 YYYY-MM-DD
+    var yyyy = today.getFullYear();
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); // 獲取月份，並確保格式為兩位數
+    var dd = String(today.getDate()).padStart(2, '0'); // 獲取日期，並確保格式為兩位數
+    var formattedDate = yyyy + '-' + mm + '-' + dd;
+    
+    // 設置 input 元素的 min 屬性
+    $('#' + inputId).attr('min', formattedDate);
+}
+
 //   確保選擇 開始日期 之前 不能選擇 結束日期，會跳Toast提示。選擇結束日期後開始日期加上max限制，避免逆選漏洞。
 function enforceStartDateFirst(startDateId, endDateId) {
     var startDate = $('#' + startDateId);

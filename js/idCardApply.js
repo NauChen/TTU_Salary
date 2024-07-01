@@ -268,21 +268,21 @@ $(function () {
         checkThisRequiredElements.call(this);
     });
 
-    $('#confirm_idCardApp').click(function (event) {
-        // // 先檢查必填項
+    $('#confirm_idCardApply').click(function (event) {
+        // 先檢查必填項
         if (!checkRequiredElements()) {
-            swalToastWarning('請將必填欄位補上唷！', 'top');
+            swalToastWarning('請將必填欄位填上正確資料唷！', 'top');
             return; // 如果必填項有未填寫的，直接返回，不再繼續
         }
         // 最後檢查 danger_ 開頭元素的文字內容
         if (checkDangerElements()) {
             // 如果返回 true，開啟燈箱
-            $('#idCardApp_pdf').modal('show');
+            $('#idCardApply_pdf').modal('show');
         } else {
             // 如果返回 false，顯示警告訊息
             swalToastWarning('請填上正確資料唷！', 'top');
         }
-        $('#idCardApp_pdf').modal('show');
+        // $('#idCardApply_pdf').modal('show');
     });
 
     // 點擊 submitBtn 按鈕時

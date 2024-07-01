@@ -179,98 +179,101 @@
                                 <div class="row">
     <div class="col-xl-4 mb-3">
         <div class="row mb-3">
-            <label for="parkingSpaceName"
-                class="col-lg-auto col-form-label text-nowrap"><span
-                    class="d-none d-lg-inline">&emsp;</span>姓名：</label>
+            <label for="parkingSpaceName" class="col-lg-auto col-form-label text-nowrap"><span
+                    class="requiredMark">*</span>姓名：</label>
             <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceName">
+                <input type="text" class="form-control thisRequired" id="parkingSpaceName">
                 <span id="danger_parkingSpaceName" class="text-danger"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="parkingSpaceJobTitle"
-                class="col-lg-auto col-form-label text-nowrap"><span
-                    class="d-none d-lg-inline">&emsp;</span>職稱：</label>
+            <label for="parkingSpaceJobTitle" class="col-lg-auto col-form-label text-nowrap"><span
+                    class="requiredMark">*</span>職稱：</label>
             <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceJobTitle">
-                <span id="danger_parkingSpaceJobTitle"
-                    class="text-danger"></span>
+                <input type="text" class="form-control thisRequired" id="parkingSpaceJobTitle">
+                <span id="danger_parkingSpaceJobTitle" class="text-danger"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="parkingSpaceExt" class="col-lg-auto col-form-label text-nowrap"><span
-                    class="d-none d-lg-inline">&emsp;</span>分機：</label>
+            <label for="parkingSpaceExt" class="col-lg-auto col-form-label text-nowrap">&ensp;分機：</label>
             <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceExt">
+                <input type="text" class="form-control" id="parkingSpaceExt"
+                onkeyup="restrictToUniformNum(this)">
                 <span id="danger_parkingSpaceExt" class="text-danger"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="parkingSpacePhone"
-                class="col-lg-auto col-form-label text-nowrap"><span
-                    class="d-none d-lg-inline">&emsp;</span>電話：</label>
+            <label for="licensePlateNum" class="col-lg-auto col-form-label text-nowrap"><span
+                    class="requiredMark">*</span>車牌號碼：&emsp;</label>
             <div class="col">
-                <input type="text" class="form-control" id="parkingSpacePhone">
+                <input type="text" class="form-control thisRequired" id="licensePlateNum"
+                onkeyup="restrictToUpperCaseNumberHyphen(this)">
+                <span id="danger_licensePlateNum" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="parkingSpaceStartDate" class="col-lg-auto col-form-label text-nowrap"><span
+                    class="requiredMark">*</span>預計起租日：</label>
+            <div class="col">
+                <input type="date" class="form-control thisRequired" id="parkingSpaceStartDate">
+                <span id="danger_parkingSpaceStartDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="parkingSpaceIDNum" class="col-lg-auto col-form-label text-nowrap"><span
+                    class="requiredMark">*</span>身分證字號：</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="parkingSpaceIDNum"
+                onkeyup="restrictFirstUpperSecondNum(this)" >
+                <span id="danger_parkingSpaceIDNum" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="parkingSpacePhone" class="col-lg-auto col-form-label text-nowrap"><span
+                    class="requiredMark">*</span>電話/手機：</label>
+            <div class="col">
+                <input type="text" class="form-control thisPhone thisRequired" id="parkingSpacePhone"
+                    onkeyup="restrictToNumberHyphen(this)" onblur="checkThisPhone.call(this)">
                 <span id="danger_parkingSpacePhone" class="text-danger"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="parkingSpaceEmail"
-                class="col-lg-auto col-form-label text-nowrap">E-mail：</label>
+            <label for="parkingSpaceEmail" class="col-lg-auto col-form-label text-nowrap"><span
+                    class="requiredMark">*</span>E-mail：&emsp;</label>
             <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceEmail">
+                <input type="text" class="form-control thisEmail thisRequired" id="parkingSpaceEmail"
+                    onkeyup="restrictToValidChars(this)" onblur="checkThisEmail.call(this)">
                 <span id="danger_parkingSpaceEmail" class="text-danger"></span>
             </div>
         </div>
-        <div class="row mb-3">
-            <label for="parkingSpaceIDNum"
-                class="col-lg-auto col-form-label text-nowrap">身分證字號：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceIDNum">
-                <span id="danger_parkingSpaceIDNum" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="parkingSpaceIDNum"
-                class="col-lg-auto col-form-label text-nowrap">車牌號碼：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceIDNum">
-                <span id="danger_parkingSpaceIDNum" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="parkingSpaceIDNum"
-                class="col-lg-auto col-form-label text-nowrap">預計起租日：</label>
-            <div class="col">
-                <input type="date" class="form-control" id="parkingSpaceIDNum">
-                <span id="danger_parkingSpaceIDNum" class="text-danger"></span>
-            </div>
-        </div>
+
+
+
     </div>
     <div class="col-xl-8 mb-3">
-        <div class="row mb-3">
-            <label for="upload_img"
-                class="col-auto col-form-label text-nowrap">上傳行照內頁：</label>
-            <div class="col col-sm-auto">
+        <div class="row mb-3 justify-content-center align-items-center">
+            <label for="upload_img" class="col-12 col-sm-auto col-form-label text-nowrap"><span
+                class="requiredMark">*</span>上傳行照內頁：</label>
+            <div class="col-auto">
                 <label id="car_upload_label" class="btn btn-outline-secondary">
-                    <input id="upload_car_img" type="file" accept="image/*"
-                        class="d-none">
-                    <i class="fa-solid fa-car mx-1"></i>行照
+                    <input id="upload_car_img" type="file" accept="image/*" class="d-none">
+                    <i class="fa-solid fa-car mx-1"></i><br class="d-lg-none">行照
                 </label>
             </div>
-            <div class="col">
+            <div class="col-auto">
                 <label id="bike_upload_label" class="btn btn-outline-secondary">
-                    <input id="upload_moto_img" type="file" accept="image/*"
-                        class="d-none"><i class="fa-solid fa-motorcycle mx-1"></i>行照
+                    <input id="upload_moto_img" type="file" accept="image/*" class="d-none"><i
+                        class="fa-solid fa-motorcycle  mx-1"></i><br class="d-lg-none">行照
                 </label>
             </div>
         </div>
-        <div class="row mb-3">
-            <div id="croppie-container" class="mb-3"></div>
+        <div class="row">
+            <div id="croppie-container"></div>
         </div>
         <div class="row mb-3 justify-content-around">
-            <button id="crop_img" class="btn btn-secondary col-auto"><i
+            <button id="crop_img" class="btn btn-secondary col-auto mb-1"><i
                     class="fa-solid fa-scissors"></i>&ensp;裁剪圖片</button>
+            <span id="danger_parkingSpaceImg" class="text-danger text-center">&ensp;&#10551;上傳行照內頁後，請點擊裁剪圖片。</span>
         </div>
     </div>
 </div>
@@ -294,7 +297,6 @@
         </div>
     </div>
 </div>
-
                                 <div class="row text-center p-3 justify-content-center">
                                     <div class="col-auto">
                                         <button type="reset" class="btn btn-lg btn-outline-danger" id="resetPSFormBtn">重填</button>
@@ -308,13 +310,13 @@
                         </div>
                     </div>
                     <!-- Modal -->
-                    <div class="modal fade" id="parkingSpaceApp_pdf" tabindex="-1"
-                        aria-labelledby="parkingSpaceApp_pdfLabel" data-bs-backdrop="static" data-bs-keyboard="false"
+                    <div class="modal fade" id="parkingSpaceApply_pdf" tabindex="-1"
+                        aria-labelledby="parkingSpaceApply_pdfLabel" data-bs-backdrop="static" data-bs-keyboard="false"
                         aria-hidden="true">
                         <div class="modal-dialog modal-xl">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="parkingSpaceApp_pdfLabel"><i
+                                    <h5 class="modal-title" id="parkingSpaceApply_pdfLabel"><i
                                             class="fa-regular fa-file-pdf me-2"></i>申請書預覽
                                     </h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -338,21 +340,21 @@
                 class="table table-bordered align-middle border border-3 border-dark modal-minW print_table">
                 <tr>
                     <td rowspan="2" class="fw-bold text-center w-15">單位</td>
-                    <td class="">好棒棒股份有限公司</td>
+                    <td id="parkingSpaceCompany_td">好棒棒股份有限公司</td>
                     <td rowspan="2" class="fw-bold text-center w-15">停車位<br>編&emsp;號
                     </td>
-                    <td class="fw-bold  text-center w-35">
-                        地下&emsp;&emsp;樓</td>
+                    <td class="fw-bold text-center w-35">
+                        地下&emsp;&emsp;&emsp;&emsp;樓</td>
                 </tr>
                 <tr>
-                    <td class="">培育廠商</td>
-                    <td class="fw-bold  text-center">
-                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;號</td>
+                    <td>培育廠商</td>
+                    <td class="fw-bold text-center">
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;號</td>
                 </tr>
                 <tr>
-                    <td class="fw-bold  text-nowrap text-center px-4">職&emsp;稱
+                    <td class="fw-bold text-nowrap text-center px-4">職&emsp;稱
                     </td>
-                    <td id="parkingSpaceJobName_td"></td>
+                    <td id="parkingSpaceJobTitle_td"></td>
                     <td class="fw-bold  text-nowrap text-center">聯絡電話</td>
                     <td id="parkingSpacePhone_td"></td>
                 </tr>
@@ -367,6 +369,12 @@
                     <td id="parkingSpaceIDNum_td"></td>
                     <td class="fw-bold text-nowrap text-center">電子信箱</td>
                     <td id="parkingSpaceEmail_td"></td>
+                </tr>
+                <tr>
+                    <td class="fw-bold text-nowrap text-center">車牌號碼</td>
+                    <td id="licensePlateNum_td"></td>
+                    <td class="fw-bold text-nowrap text-center">預計承租日</td>
+                    <td id="parkingSpaceStartDate_td"></td>
                 </tr>
                 <tr>
                     <td colspan="4" class="fw-bold px-3 py-1">行照內頁
@@ -459,6 +467,7 @@
 <script src="./js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
     <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
     <script src="./js/formPreview.js"></script>
     <script src="./js/parkingSpaceApply.js"></script>
 

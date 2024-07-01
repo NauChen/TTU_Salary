@@ -124,6 +124,15 @@ function checkThisRequiredElements() {
                             $('#danger_' + id).text(''); // 清除錯誤訊息
                         }
                     }
+                    // 檢查是否為電子郵件類型，若是則再次驗證格式
+                    if ($(this).hasClass('thisEmail')) {
+                        if (!validateEmail(value)) {
+                            addDangerEmailMessage(id);
+                            allFilled = false; // 如果格式不正確，設置 allFilled 為 false
+                        } else {
+                            $('#danger_' + id).text(''); // 清除錯誤訊息
+                        }
+                    }
                 }
             }
             break;
