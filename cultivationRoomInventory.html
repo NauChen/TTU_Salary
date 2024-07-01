@@ -25,10 +25,6 @@
                     <div class="row mb-4 px-3">
                         <h3 class="section-header col-auto mb-0 lh-base"><i class="fa-solid fa-quote-left"></i>培育室列表<i
                                 class="fa-solid fa-quote-right"></i></h3>
-                                <!-- <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
-                                href="./parkingSpaceInventory.html"><i class="fa-solid fa-square-parking"></i><i
-                                    class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-repeat"></i><span
-                                    class="tooltiptext tooltip-top">停車位續約</span></a> -->
                     </div>
 
                     <div class="tabs section-border-radius section-padding">
@@ -37,7 +33,27 @@
                         </table>
                     </div>
                 </div>
-                @@include('layout/remittance_modal.html')
+
+                <!-- Modal -->
+                <div class="modal fade" id="remittanceModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="remittanceModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <form class="modal-content" method="post" id="formRemittance">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="remittanceModalLabel">上傳匯款憑證</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            @@include('layout/modal_remittance.html')
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                                <button type="button" class="btn btn-outline-secondary" id="remittanceSubmit">確認上傳</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
                 @@include('layout/footer.html')
 
@@ -45,7 +61,9 @@
         </div>
     </main>
     @@include('layout/metaJS.html')
-
+    <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
+    <!-- <script src="./js/formPreview.js"></script> -->
     <script src="./js/myCultivationRoom.js"></script>
 </body>
 
