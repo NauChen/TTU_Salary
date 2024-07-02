@@ -157,7 +157,6 @@ function setMinDateToSomeDaysLater(inputId, days) {
     // 設置 input 元素的 min 屬性
     $('#' + inputId).attr('min', formattedDate);
 }
-
 //   確保選擇 開始日期 之前 不能選擇 結束日期，會跳Toast提示。選擇結束日期後開始日期加上max限制，避免逆選漏洞。
 function enforceStartDateFirst(startDateId, endDateId) {
     var startDate = $('#' + startDateId);
@@ -194,6 +193,7 @@ function enforceStartDateFirst(startDateId, endDateId) {
     });
 }
 
+
 // ※※ 文字轉換函式 - 存取資料專用 ※※
 //   將資料庫的文字內的 \n 轉成 <br>
 function convertNewlinesToBreaks(text) {
@@ -220,7 +220,6 @@ function changeRoomName(room) {
             return '待新增';
     }
 }
-
 //   培育區 轉 大樓名
 function changeBuildingToCultivationRoom(building) {
     switch (building) {
@@ -242,7 +241,6 @@ function changeBuildingToCultivationRoom(building) {
             return '待新增';
     }
 }
-
 //   大樓名 轉 培育區
 function changeCultivationRoomToBuilding(room) {
     switch (room) {
@@ -264,7 +262,6 @@ function changeCultivationRoomToBuilding(room) {
             return '待新增';
     }
 }
-
 //   依照資料生成下拉選單 選項值 = "optigroup-option"
 function populateSelect(selectId, options) {
     var select = document.getElementById(selectId);
@@ -313,13 +310,33 @@ function extractSubstringBetween(str, startChar, endChar) {
     // 提取起始字符和结束字符之间的子字符串
     return str.substring(startIndex + 1, endIndex);
 }
+//   將時間資料拆成YYYY、mm'DD
+function splitDate(dateString) {
+    var datePattern = /^(\d{4})-(\d{2})-(\d{2})$/;
+    var match = dateString.match(datePattern);
+    if (!match) {
+        throw new Error('Invalid date format. Expected YYYY-MM-DD.');
+    }
+    // 拆解日期字符串
+    var year = match[1];
+    var month = match[2];
+    var day = match[3];
+    return {
+        year: year,
+        month: month,
+        day: day
+    };
+}
+
+
+
 
 // 用法範例
-const str = "B4-30";
-const startChar = "B";
-const endChar = "-";
-const result = extractSubstringBetween(str, startChar, endChar);
-console.log(result); // 输出 "4"
+// const str = "B4-30";
+// const startChar = "B";
+// const endChar = "-";
+// const result = extractSubstringBetween(str, startChar, endChar);
+// console.log(result); // 输出 "4"
 
 
 

@@ -1,0 +1,344 @@
+<div class="modal-body-wrapper">
+    <div class="modal-body" id="returnThisBox">
+        <div id="printWrapper">
+            <!-- 大同大學創新育成中心培育企業自我檢核表 -->
+            <div class="table-responsive px-5 break-inside-avoid">
+                <div class="row align-items-center justify-content-center mb-2 modal-minW">
+                    <div class="col-auto title_imgBox"><img src="./images/ttulogo.png">
+                    </div>
+                    <h3 class="col-auto text-center fw-bold text-nowrap mb-0">
+                        大同大學創新育成中心培育企業自我檢核表</h3>
+                </div>
+                <div class="text-end text-muted" id="version">113.06 V1</div>
+                <table class="table table-sm table-bordered align-middle border border-3 border-dark modal-minW">
+                    <tr class="py-2">
+                        <td colspan="4" class="fw-bold text-nowrap">
+                            公司名稱：
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-center fw-bold text-nowrap">
+                            過去一年，檢核項目</td>
+                        <td class="text-center fw-bold text-nowrap">育成確認</td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="2" class="text-center">1.</td>
+                        <td rowspan="2" class="w-40">營業項目是否與營運輔導合約相符</td>
+                        <td class=""><span id="businessComplianceYes_td">&#9744;</span>是。</td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class=""><span id="businessComplianceNo_td">&#9745;</span>否，原因：<span
+                                id="businessComplianceReason_td"></span>。
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="2" class="text-center">2.</td>
+                        <td rowspan="2">進駐期間有無違法情事，或違反大同大學相關規範與合約規定
+                        </td>
+                        <td class=""><span id="violationYes_td">&#9744;</span>是，原因：<span
+                                id="violationReason_td"></span>。
+                        </td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class=""><span id="violationNo_td">&#9745;</span>否。</td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="2" class="text-center">3.</td>
+                        <td rowspan="2">進駐期間與本校教師進行產學合作計畫或聘用本校學生工讀/實習/就業</td>
+                        <td><span id="academicCollaborationYes_td">&#9744;</span>是，產學合作名稱：<span
+                                id="collaborationName_td"></span>。<br>工讀/實習/就業之本校學生人數：<span id="studentCount_td"></span>
+                        </td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td><span id="academicCollaborationNo_td">&#9745;</span>否，原因：<span
+                                id="collaborationReason_td"></span>。
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="2" class="text-center">4.</td>
+                        <td rowspan="2">會議室使用及物品借用符合使用規範，並準時返還</td>
+                        <td><span id="usageComplianceYes_td">&#9744;</span>是。</td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td><span id="usageComplianceNo_td">&#9745;</span>否，原因：<span
+                                id="usageComplianceReason_td"></span>。
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="2" class="text-center">5.</td>
+                        <td rowspan="2">依照合約規定按時繳進駐輔導費及其他費用<br>(ex場地維護費、電費⋯等)</td>
+                        <td><span id="feeComplianceYes_td">&#9744;</span>是。</td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td><span id="feeComplianceNo_td">&#9745;</span>否，原因：<span id="feeComplianceReason_td"></span>。
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="2" class="text-center">6.</td>
+                        <td rowspan="2">是否參加本校課程、成果發表會或其他活動</td>
+                        <td><span id="participationYes_td">&#9744;</span>是。</td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td><span id="participationNo_td">&#9745;</span>否，原因：<span id="participationReason_td"></span>。
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="2" class="text-center">7.</td>
+                        <td rowspan="2">配合本校企業輔導(ex諮詢輔導)</td>
+                        <td><span id="counselingYes_td">&#9744;</span>是。</td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td><span id="counselingNo_td">&#9745;</span>否，原因：<span id="counselingReason_td"></span>。
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="2" class="text-center">8.</td>
+                        <td rowspan="2">確實歸還離職員工識別證</td>
+                        <td><span id="badgeReturnYes_td">&#9744;</span>是。</td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td><span id="badgeReturnNo_td">&#9745;</span>否，原因：<span id="badgeReturnReason_td"></span>。
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="2" class="text-center">9.</td>
+                        <td rowspan="2">確實填寫本校各項調查表單<br>(ex環安衛施工單、訪客入校申請單、實驗室化學調查清單等)
+                        </td>
+                        <td><span id="surveyFormYes_td">&#9744;</span>是。</td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td><span id="surveyFormNo_td">&#9745;</span>否：<span
+                                id="constructionFormCheckbox_td">&#9744;</span>環安衛施工單、<span
+                                id="visitorFormCheckbox_td">&#9744;</span>訪客入校申請單、<span
+                                id="chemicalSurveyCheckbox_td">&#9744;</span>實驗室化學調查清單。<br>原因：<span
+                                id="surveyFormReason_td"></span>。
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="2" class="text-center">10.</td>
+                        <td rowspan="2">願配合本校校務發展及教育方針，提供本校師生與企業鏈結機會</td>
+                        <td><span id="cooperationYes_td">&#9744;</span>是。</td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td><span id="cooperationNo_td">&#9745;</span>否，原因：<span id="cooperationReason_td"></span>。
+                        </td>
+                    </tr>
+
+                </table>
+                <div class="row p-2 modal-minW">
+                    <div class="col py-2 ps-3 text-dark">
+                        <div class="row">
+                            <div class="col fw-bold text-dark text-nowrap">公司負責人：</div>
+                            <div class="col"></div>
+                            <div class="col fw-bold text-dark text-nowrap">創新育成中心：
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 大同大學創新育成中心延長進駐申請書 -->
+            <div class="table-responsive px-5 pt-4 break-before">
+                <div class="row align-items-center justify-content-center mb-2 modal-minW">
+                    <div class="col-auto title_imgBox"><img src="./images/ttulogo.png">
+                    </div>
+                    <h3 class="col-auto text-center fw-bold text-nowrap mb-0">
+                        大同大學創新育成中心延長進駐申請書
+                    </h3>
+                </div>
+                <div class="text-end text-muted" id="version2">F-A1410-015</div>
+                <table class="table table-bordered align-middle border border-3 border-dark modal-minW">
+                    <tr class="py-2">
+                        <td class="fw-bold text-nowrap w-30">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">申</div>
+                                <div class="col-auto">請</div>
+                                <div class="col-auto">日</div>
+                                <div class="col-auto">期</div>
+                            </div>
+                        </td>
+                        <td colspan="2" class="text-nowrap">
+                            <span class="px-2" id="applyYear_td"></span>年<span class="px-2"
+                                id="applyMonth_td"></span>月<span class="px-2" id="applyDay_td"></span>日
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="fw-bold text-nowrap">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">公</div>
+                                <div class="col-auto">司</div>
+                                <div class="col-auto">名</div>
+                                <div class="col-auto">稱</div>
+                            </div>
+                        </td>
+                        <td colspan="2" id="renewContractCompany_td"></td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold text-nowrap">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">申</div>
+                                <div class="col-auto">請</div>
+                                <div class="col-auto">人</div>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="row">
+                                <span class="col-auto">姓名：</span>
+                                <span class="col" id="applicantName_td"></span>
+                                <span class="col-auto">職稱：</span>
+                                <span class="col" id="applicantJobTitle_td"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="fw-bold text-nowrap">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">聯</div>
+                                <div class="col-auto">絡</div>
+                                <div class="col-auto">方</div>
+                                <div class="col-auto">式</div>
+                            </div>
+                        </td>
+                        <td class="w-10 text-center">電&emsp;話</td>
+                        <td id="contactPhone_td"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-nowrap">E-mail</td>
+                        <td id="contactEmail_td"></td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold text-nowrap">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">目</div>
+                                <div class="col-auto">前</div>
+                                <div class="col-auto">進</div>
+                                <div class="col-auto">駐</div>
+                                <div class="col-auto">期</div>
+                                <div class="col-auto">間</div>
+                            </div>
+                        </td>
+                        <td colspan="2">自<span class="px-2" id="startDateYear_td"></span>年<span class="px-2"
+                                id="startDateMonth_td"></span>月<span class="px-2"
+                                id="startDateDay_td"></span>日進駐，預計至<span class="px-2" id="endDateYear_td"></span>年<span
+                                class="px-2" id="endDateMonth_td"></span>月<span class="px-2"
+                                id="endDateDay_td"></span>日合約到期，<br>目前已延長進駐<span class="px-2" id="extendYears_td"></span>年，共計進駐<span
+                                class="px-2" id="cumulativeYears_td"></span>年。
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold text-nowrap">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">年</div>
+                                <div class="col-auto">營</div>
+                                <div class="col-auto">業</div>
+                                <div class="col-auto">額</div>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            進駐首年<span id="firstYearRevenue_td" class="px-2"></span>仟元，<br>目前<span id="currentRevenue_td"
+                                class="px-2"></span>仟元，<span id="breakEvenRadio_td"
+                                class="ps-2">&#9744;</span>已達損益平衡&ensp;/&ensp;<span
+                                id="notBreakEvenRadio_td">&#9744;</span>尚未損益平衡
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold text-nowrap">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">員</div>
+                                <div class="col-auto">工</div>
+                                <div class="col-auto">人</div>
+                                <div class="col-auto">數</div>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            進駐首年<span id="firstYearEmployeeCount_td" class="px-2"></span>人，<br>目前<span
+                                id="currentEmployeeCount_td" class="px-2"></span>人。
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold text-nowrap">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">申</div>
+                                <div class="col-auto">請</div>
+                                <div class="col-auto">延</div>
+                                <div class="col-auto">駐</div>
+                                <div class="col-auto">期</div>
+                                <div class="col-auto">限</div>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            申請延長進駐至<span id="extensionPeriod_Y" class="px-2"></span>年<span id="extensionPeriod_m"
+                                class="px-2"></span>月<span id="extensionPeriod_D" class="px-2"></span>日止。</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold text-nowrap">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">申</div>
+                                <div class="col-auto">請</div>
+                                <div class="col-auto">延</div>
+                                <div class="col-auto">駐</div>
+                                <div class="col-auto">原</div>
+                                <div class="col-auto">由</div>
+                                <small class="col-12 fw-normal">※可述進駐期間成就等</small>
+                                <small class="col-12 fw-normal">(例:申請政府補助計畫、與教師產學合作案等)</small>
+                            </div>
+                        </td>
+                        <td colspan="2" id="extensionReason_td"></td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold ">
+                            <div class="row justify-content-between">
+                                <div class="col-auto pe-0">其</div>
+                                <div class="col-auto px-0">他</div>
+                                <div class="col-auto px-0">有</div>
+                                <div class="col-auto px-0">利</div>
+                                <div class="col-auto px-0">審</div>
+                                <div class="col-auto px-0">核</div>
+                                <div class="col-auto px-0">項</div>
+                                <div class="col-auto ps-0">目</div>
+                            </div>
+                        </td>
+                        <td colspan="2" id="otherAdvantages_td"></td>
+                    </tr>
+                    <tr class="border_top_5">
+                        <td class="fw-bold text-nowrap">
+                            <div class="row justify-content-between fs-5">
+                                <div class="col-auto">審</div>
+                                <div class="col-auto">核</div>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="row">
+                                <div class="col-auto"><span class="px-1">&#9744;</span>同意延長進駐</div>
+                                <div class="col-auto"><span class="px-1">&#9744;</span>擇期再議：</div>
+                                <div class="col-12">創新育成中心：<br><br><br><br><br><br></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</div>

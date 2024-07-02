@@ -15,23 +15,45 @@ function syncInputValue(inputId, tdId) {
     $('#' + inputId).on('blur', function () {
         var inputValue = $(this).val();
         $('#' + tdId).text(inputValue);
+        // console.log("BBB： " + inputValue);
+        // console.log("Setting text of #" + tdId + " to: " + inputValue);
     });
 }
-//同步input date
+//同步input date 至 YYYY mm DD，若輸入'toDay'取今日
 function syncInputDate(inputId, tdId_Y, tdId_m, tdId_D) {
-    $('#' + inputId).on('blur', function () {
-        var inputValue = $(this).val();
+    function updateDateParts(date) {
+        var yyyy = date.getFullYear();
+        var mm = String(date.getMonth() + 1).padStart(2, '0');
+        var dd = String(date.getDate()).padStart(2, '0');
 
-        var parts = inputValue.split('-');
-        var year = parts[0];
-        var month = parts[1];
-        var day = parts[2];
+        $('#' + tdId_Y).text(yyyy);
+        $('#' + tdId_m).text(mm);
+        $('#' + tdId_D).text(dd);
+    }
 
-        $('#' + tdId_Y).text(year);
-        $('#' + tdId_m).text(month);
-        $('#' + tdId_D).text(day);
-    });
+    if (inputId === 'toDay') {
+        var today = new Date();
+        updateDateParts(today);
+    } else {
+        $('#' + inputId).on('blur', function () {
+            var inputValue = $(this).val();
+            if (!inputValue) {
+                console.error('The date input is empty or invalid.');
+                return;
+            }
+
+            var parts = inputValue.split('-');
+            var year = parts[0];
+            var month = parts[1];
+            var day = parts[2];
+
+            $('#' + tdId_Y).text(year);
+            $('#' + tdId_m).text(month);
+            $('#' + tdId_D).text(day);
+        });
+    }
 }
+
 //同步input select
 function syncSelectValue(selectId, tdgroupId, tdvalueId) {
     $('#' + selectId).on('blur change', function () {
@@ -47,41 +69,61 @@ function syncSelectValue(selectId, tdgroupId, tdvalueId) {
 }
 //同步input radio
 function syncInputRadio(yesRadioId, noRadioId, yesTdId, noTdId) {
-    if ($('#' + yesRadioId).is(':checked')) {
-        $('#' + yesTdId).html('&#9745;');
-        $('#' + noTdId).html('&#9744;');
-    } else if ($('#' + noRadioId).is(':checked')) {
-        $('#' + yesTdId).html('&#9744;');
-        $('#' + noTdId).html('&#9745;');
+    function updateDisplay() {
+        if ($('#' + yesRadioId).is(':checked')) {
+            $('#' + yesTdId).html('&#9745;');
+            $('#' + noTdId).html('&#9744;');
+        } else if ($('#' + noRadioId).is(':checked')) {
+            $('#' + yesTdId).html('&#9744;');
+            $('#' + noTdId).html('&#9745;');
+        }
     }
+    $('#' + yesRadioId + ', #' + noRadioId).on('change', updateDisplay);
+    updateDisplay();
+
+    // if ($('#' + yesRadioId).is(':checked')) {
+    //     $('#' + yesTdId).html('&#9745;');
+    //     $('#' + noTdId).html('&#9744;');
+    // } else if ($('#' + noRadioId).is(':checked')) {
+    //     $('#' + yesTdId).html('&#9744;');
+    //     $('#' + noTdId).html('&#9745;');
+    // }
 }
 //同步input radio後 yes要同步文字
 function syncInputRadioYesValue(yesRadioId, noRadioId, yesTdId, noTdId, yesReason, yesReasonTd) {
-    if ($('#' + yesRadioId).is(':checked')) {
-        $('#' + yesTdId).html('&#9745;');
-        $('#' + noTdId).html('&#9744;');
-        var inputValue = $('#' + yesReason).val();
-        $('#' + yesReasonTd).text(inputValue);
-        syncInputValue(yesReason, yesReasonTd);
-    } else if ($('#' + noRadioId).is(':checked')) {
-        $('#' + yesTdId).html('&#9744;');
-        $('#' + noTdId).html('&#9745;');
-        $('#' + yesReasonTd).text('');
+    function updateDisplay() {
+        if ($('#' + yesRadioId).is(':checked')) {
+            $('#' + yesTdId).html('&#9745;');
+            $('#' + noTdId).html('&#9744;');
+            $('#' + yesReason).prop('disabled', false).addClass('thisRequired');
+            syncInputValue(yesReason, yesReasonTd);
+        } else if ($('#' + noRadioId).is(':checked')) {
+            $('#' + yesTdId).html('&#9744;');
+            $('#' + noTdId).html('&#9745;');
+            $('#' + yesReason).prop('disabled', true).val('').removeClass('thisRequired');
+            $('#' + yesReasonTd).html('');
+        }
     }
+    $('#' + yesRadioId + ', #' + noRadioId).on('change', updateDisplay);
+    updateDisplay();
 }
 //同步input radio後 no要同步文字
 function syncInputRadioNoValue(yesRadioId, noRadioId, yesTdId, noTdId, noReason, noReasonTd) {
-    if ($('#' + noRadioId).is(':checked')) {
-        $('#' + noTdId).html('&#9745;');
-        $('#' + yesTdId).html('&#9744;');
-        var inputValue = $('#' + noReason).val();
-        $('#' + noReasonTd).text(inputValue);
-        syncInputValue(noReason, noReasonTd);
-    } else if ($('#' + yesRadioId).is(':checked')) {
-        $('#' + noTdId).html('&#9744;');
-        $('#' + yesTdId).html('&#9745;');
-        $('#' + noReasonTd).text('');
+    function updateDisplay() {
+        if ($('#' + yesRadioId).is(':checked')) {
+            $('#' + yesTdId).html('&#9745;');
+            $('#' + noTdId).html('&#9744;');
+            $('#' + noReason).prop('disabled', true).val('').removeClass('thisRequired');
+            $('#' + noReasonTd).html('');
+        } else if ($('#' + noRadioId).is(':checked')) {
+            $('#' + yesTdId).html('&#9744;');
+            $('#' + noTdId).html('&#9745;');
+            $('#' + noReason).prop('disabled', false).addClass('thisRequired');
+            syncInputValue(noReason, noReasonTd);
+        }
     }
+    $('#' + yesRadioId + ', #' + noRadioId).on('change', updateDisplay);
+    updateDisplay();
 }
 //同步input checkbox
 function syncInputCheckbox(checkboxId, tdId) {
@@ -118,8 +160,6 @@ function openFile(event) {
         // $('#output_text').attr('src', dataURL).addClass('opa_0');
     };
 }
-
-
 
 // 上傳圖片、預覽、裁切
 $(function () {
@@ -238,3 +278,40 @@ $(function () {
     });
 
 });
+
+//同步日期，分成YYYY、mm、DD同步給不同id，若輸入'toDay'取今日。
+// function syncDateParts(inputId, yearElementId, monthElementId, dayElementId) {
+//     var date;
+//     if (inputId === 'toDay') {
+//         date = new Date();
+//     } else {
+//         var dateValue = $('#' + inputId).val();
+//         // if (!dateValue) {
+//         //     console.error('The date input is empty or invalid.');
+//         //     return;
+//         // }
+//         date = new Date(dateValue);
+//     }
+//     console.log("date = " + date);
+//     var yyyy = date.getFullYear();
+//     var mm = String(date.getMonth() + 1).padStart(2, '0');
+//     var dd = String(date.getDate()).padStart(2, '0');
+//     $('#' + yearElementId).text(yyyy);
+//     $('#' + monthElementId).text(mm);
+//     $('#' + dayElementId).text(dd);
+// }
+
+// function syncInputDate(inputId, tdId_Y, tdId_m, tdId_D) {
+//     $('#' + inputId).on('blur', function () {
+//         var inputValue = $(this).val();
+
+//         var parts = inputValue.split('-');
+//         var year = parts[0];
+//         var month = parts[1];
+//         var day = parts[2];
+
+//         $('#' + tdId_Y).text(year);
+//         $('#' + tdId_m).text(month);
+//         $('#' + tdId_D).text(day);
+//     });
+// }

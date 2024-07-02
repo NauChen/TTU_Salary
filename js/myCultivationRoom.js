@@ -118,25 +118,6 @@ var dataset_myCultivationRoom = [
 
 $(function () {
     const today = new Date();
-    // todayText = today.toLocaleDateString('en-CA');
-    // dataset_myCultivationRoom.forEach(item => {
-    //     const endDate = new Date(item.endDate);
-    //     const timeDiff = endDate.getTime() - today.getTime();
-    //     const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-    //     item.diffDays = diffDays < 0 ? 9999 : ((-1) * diffDays); // 過期:9999，進駐結束日-當日差異天數為負值，差越遠負數越大。
-    //     // console.log('id = ' + item.id + ' ，結束日期： ' + item.endDate + ' ，今日： ' + todayText + ' ，差： ' + item.diffDays);
-
-    //     const nextTimeDeadline = new Date(item.nextTimeDeadline);
-    //     const deadLineDiff = nextTimeDeadline.getTime() - today.getTime();
-    //     const deadLineDiffDays = Math.ceil(deadLineDiff / (1000 * 3600 * 24));
-    //     item.deadLineDiffDays = deadLineDiffDays != NaN ? 9999 : ((-1) * deadLineDiffDays); // 沒有下階段到期日:9999，到期日-當日差異天數為負值，差越遠負數越大。
-    //     // console.log('id = ' + item.id + ' ，截止日期： ' + item.nextTimeDeadline + ' ，今日： ' + todayText + ' ，差： ' + item.deadLineDiffDays);
-
-    //     const paymentDate = new Date(item.paymentDate);
-    //     const payDiff = paymentDate.getTime() - today.getTime();
-    //     const payDiffDays = Math.ceil(payDiff / (1000 * 3600 * 24));
-    //     item.payDiffDays = payDiffDays;
-    // });
 
     dataset_myCultivationRoom.forEach(item => {
         const endDate = new Date(item.endDate);
