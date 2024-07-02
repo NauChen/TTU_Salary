@@ -60,28 +60,28 @@ a {
     display: inline-block;
     width: 100%;
 
-    &.btn {
-        &.oneWord {
-            width: 2rem;
-        }
+    // &.btn {
+    //     &.oneWord {
+    //         width: 2rem;
+    //     }
 
-        &.twoWord {
-            width: 4.5rem;
-        }
+    //     &.twoWord {
+    //         width: 4.5rem;
+    //     }
 
-        &.noOutline {
-            width: 29px;
-            height: 29px;
-            padding: 0;
-            border: none;
-            text-align: center;
+    //     &.noOutline {
+    //         width: 29px;
+    //         height: 29px;
+    //         padding: 0;
+    //         border: none;
+    //         text-align: center;
 
-            i {
-                vertical-align: middle;
-                font-size: 1.8rem;
-            }
-        }
-    }
+    //         i {
+    //             vertical-align: middle;
+    //             font-size: 1.8rem;
+    //         }
+    //     }
+    // }
 }
 
 
