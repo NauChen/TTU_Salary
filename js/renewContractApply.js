@@ -215,6 +215,9 @@ $(function () {
     syncInputCheckbox('constructionFormCheckbox', 'constructionFormCheckbox_td');
     syncInputCheckbox('visitorFormCheckbox', 'visitorFormCheckbox_td');
     syncInputCheckbox('chemicalSurveyCheckbox', 'chemicalSurveyCheckbox_td');
+    //   因預設單選否，調用checkbox至少選1
+    checkAtLeastOneChecked(['constructionFormCheckbox', 'visitorFormCheckbox', 'chemicalSurveyCheckbox'], 'surveyFormNoCheckbox');
+    //   切換顯示
     $('#surveyFormYes, #surveyFormNo').change(function () {
         if ($('#surveyFormNo').is(':checked')) {
             $('#constructionFormCheckbox').prop('disabled', false);
@@ -223,6 +226,7 @@ $(function () {
             syncInputCheckbox('constructionFormCheckbox', 'constructionFormCheckbox_td');
             syncInputCheckbox('visitorFormCheckbox', 'visitorFormCheckbox_td');
             syncInputCheckbox('chemicalSurveyCheckbox', 'chemicalSurveyCheckbox_td');
+            checkAtLeastOneChecked(['constructionFormCheckbox', 'visitorFormCheckbox', 'chemicalSurveyCheckbox'], 'surveyFormNoCheckbox');
         } else {
             $('#constructionFormCheckbox').prop('disabled', true);
             $('#visitorFormCheckbox').prop('disabled', true);
@@ -233,6 +237,7 @@ $(function () {
             $('#constructionFormCheckbox_td').html('&#9744;');
             $('#visitorFormCheckbox_td').html('&#9744;');
             $('#chemicalSurveyCheckbox_td').html('&#9744;');
+            $('#danger_surveyFormNoCheckbox').text('');
         }
     });
 
@@ -245,14 +250,14 @@ $(function () {
     syncInputValue('contactPhone', 'contactPhone_td');
     syncInputValue('contactEmail', 'contactEmail_td');
     syncInputDate('extensionPeriod', 'extensionPeriod_Y', 'extensionPeriod_m', 'extensionPeriod_D');
+
     syncInputValue('firstYearRevenue', 'firstYearRevenue_td');
     syncInputValue('currentRevenue', 'currentRevenue_td');
-
     syncInputRadio('breakEvenRadio', 'notBreakEvenRadio', 'breakEvenRadio_td', 'notBreakEvenRadio_td');
 
-    syncNumberWithCommas('firstYearEmployeeCount', 'firstYearEmployeeCount_td');
-    syncNumberWithCommas('currentEmployeeCount', 'currentEmployeeCount_td');
-    
+    syncInputValue('firstYearEmployeeCount', 'firstYearEmployeeCount_td');
+    syncInputValue('currentEmployeeCount', 'currentEmployeeCount_td');
+
     syncInputValue('extensionReason', 'extensionReason_td');
     syncInputValue('otherAdvantages', 'otherAdvantages_td');
 
@@ -262,19 +267,25 @@ $(function () {
 
     $('#confirm_remewContractApply').click(function (event) {
         // 先檢查必填項
-        // if (!checkRequiredElements()) {
-        //     swalToastWarning('請將必填欄位填上正確資料唷！', 'top');
-        //     return; // 如果必填項有未填寫的，直接返回，不再繼續
-        // }
-        // // 最後檢查 danger_ 開頭元素的文字內容
-        // if (checkDangerElements()) {
-        //     // 如果返回 true，開啟燈箱
-        //     $('#renewContractApply_pdf').modal('show');
-        // } else {
-        //     // 如果返回 false，顯示警告訊息
-        //     swalToastWarning('請填上正確資料唷！', 'top');
-        // }
-        $('#renewContractApply_pdf').modal('show');
+        if (!checkRequiredElements()) {
+            swalToastWarning('請將必填欄位填上正確資料唷！', 'top');
+            return; // 如果必填項有未填寫的，直接返回，不再繼續
+        }
+        // 最後檢查 danger_ 開頭元素的文字內容
+        if (checkDangerElements()) {
+            // 如果返回 true，開啟燈箱
+            $('#renewContractApply_pdf').modal('show');
+        } else {
+            // 如果返回 false，顯示警告訊息
+            swalToastWarning('請填上正確資料唷！', 'top');
+        }
+        // $('#renewContractApply_pdf').modal('show');
+    });
+
+    // 點擊 submitBtn 按鈕時
+    $('#printAndSubmit').click(function (event) {
+        $('#formRenewContractApply').submit(); // 提交表單
+        console.log('表單資料已送出');
     });
 
 });

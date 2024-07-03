@@ -29,15 +29,16 @@
                         <div class="row mb-4 px-3 align-items-end">
                             <h3 class="section-header col-auto mb-0 lh-base"><i
                                     class="fa-solid fa-quote-left"></i>培育室續約<i class="fa-solid fa-quote-right"></i></h3>
-                            <div class="col">本頁面所有欄位皆為必填。</div>
+
                         </div>
 
-                        <form method="post" id="renewContractApplyForm">
+                        <form method="post" id="formRenewContractApply">
                             <!-- 自我檢核 -->
                             <div class="tabs section-border-radius section-padding mb-2">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-12 fw-bold fs-4 mb-3">自我檢核：</div>
+                                        <div class="col-12 fw-bold fs-4 mb-3">自我檢核：<span
+                                                class="mx-3 fs-6 fw-normal text-danger">*本區所有欄位皆為必填*</span></div>
                                         <div class="col-xl-6 mb-3">
                                             <div class="row mb-3">
                                                 <div class="col-auto">01.</div>
@@ -58,6 +59,8 @@
                                                                 for="businessComplianceNo">
                                                                 否，原因：<textarea class="form-control resize-none h_60"
                                                                     id="businessComplianceReason"></textarea>
+                                                                <span class="text-danger"
+                                                                    id="danger_businessComplianceReason"></span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -74,7 +77,10 @@
                                                             <label class="form-check-label w-100"
                                                                 for="violationYes">是，原因：<textarea
                                                                     class="form-control resize-none h_60"
-                                                                    id="violationReason"></textarea></label>
+                                                                    id="violationReason"></textarea>
+                                                                <span class="text-danger"
+                                                                    id="danger_violationReason"></span>
+                                                            </label>
                                                         </div>
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio"
@@ -102,6 +108,8 @@
                                                                 <div class="col">
                                                                     <input type="text" class="form-control"
                                                                         id="collaborationName">
+                                                                    <span class="text-danger"
+                                                                        id="danger_collaborationName"></span>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
@@ -109,7 +117,11 @@
                                                                     class="col-auto col-form-label">工讀/實習/就業之本校學生人數：</label>
                                                                 <div class="col">
                                                                     <input type="text" class="form-control"
-                                                                        id="studentCount">
+                                                                        id="studentCount" onkeyup="restrictToNum(this)"
+                                                                        onfocus="unformatOnFocus(this)"
+                                                                        onblur="formatOnBlur(this)">
+                                                                    <span class="text-danger"
+                                                                        id="danger_studentCount"></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -121,6 +133,8 @@
                                                                 for="academicCollaborationNo">否，原因：
                                                                 <textarea class="form-control resize-none h_60"
                                                                     id="collaborationReason"></textarea>
+                                                                <span class="text-danger"
+                                                                    id="danger_collaborationReason"></span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -146,6 +160,8 @@
                                                                 for="usageComplianceNo">否，原因：
                                                                 <textarea class="form-control resize-none h_60"
                                                                     id="usageComplianceReason"></textarea>
+                                                                <span class="text-danger"
+                                                                    id="danger_usageComplianceReason"></span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -170,6 +186,8 @@
                                                                 for="feeComplianceNo">否，原因：
                                                                 <textarea class="form-control resize-none h_60"
                                                                     id="feeComplianceReason"></textarea>
+                                                                <span class="text-danger"
+                                                                    id="danger_feeComplianceReason"></span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -199,6 +217,8 @@
                                                                 for="participationNo">否，原因：
                                                                 <textarea class="form-control resize-none h_60"
                                                                     id="participationReason"></textarea>
+                                                                <span class="text-danger"
+                                                                    id="danger_participationReason"></span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -222,6 +242,8 @@
                                                                 for="counselingNo">否，原因：
                                                                 <textarea class="form-control resize-none h_60"
                                                                     id="counselingReason"></textarea>
+                                                                <span class="text-danger"
+                                                                    id="danger_counselingReason"></span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -245,6 +267,8 @@
                                                                 for="badgeReturnNo">否，原因：
                                                                 <textarea class="form-control resize-none h_60"
                                                                     id="badgeReturnReason"></textarea>
+                                                                <span class="text-danger"
+                                                                    id="danger_badgeReturnReason"></span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -264,29 +288,39 @@
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio"
                                                                 name="surveyFormCompliance" id="surveyFormNo" checked>
-                                                            <label class="form-check-label w-100"
-                                                                for="surveyFormNo">否，</label>
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    id="constructionFormCheckbox" value="1">
-                                                                <label class="form-check-label"
-                                                                    for="constructionFormCheckbox">環安衛施工單</label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    id="visitorFormCheckbox" value="1">
-                                                                <label class="form-check-label"
-                                                                    for="visitorFormCheckbox">訪客入校申請單</label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    id="chemicalSurveyCheckbox" value="1">
-                                                                <label class="form-check-label"
-                                                                    for="chemicalSurveyCheckbox">實驗室化學調查清單</label>
-                                                            </div>
-                                                            原因：
-                                                            <textarea class="form-control resize-none h_60"
-                                                                id="surveyFormReason"></textarea>
+                                                            <label class="form-check-label w-100" for="surveyFormNo">否，
+                                                                <div class="row">
+                                                                    <div
+                                                                        class="col-auto form-check form-check-inline me-1">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            id="constructionFormCheckbox" value="1">
+                                                                        <label class="form-check-label"
+                                                                            for="constructionFormCheckbox">環安衛施工單</label>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-auto form-check form-check-inline me-1">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            id="visitorFormCheckbox" value="1">
+                                                                        <label class="form-check-label"
+                                                                            for="visitorFormCheckbox">訪客入校申請單</label>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-auto form-check form-check-inline me-1">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            id="chemicalSurveyCheckbox" value="1">
+                                                                        <label class="form-check-label"
+                                                                            for="chemicalSurveyCheckbox">實驗室化學調查清單</label>
+                                                                    </div>
+                                                                    <span class="text-danger"
+                                                                        id="danger_surveyFormNoCheckbox"></span>
+                                                                </div>
+                                                                <label for="surveyFormReason"
+                                                                    class="form-label">原因：</label>
+                                                                <textarea class="form-control resize-none h_60"
+                                                                    id="surveyFormReason"></textarea>
+                                                            </label>
+                                                            <span class="text-danger"
+                                                                id="danger_surveyFormReason"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -310,6 +344,8 @@
                                                                 for="cooperationNo">否，原因：
                                                                 <textarea class="form-control resize-none h_60"
                                                                     id="cooperationReason"></textarea>
+                                                                <span class="text-danger"
+                                                                    id="danger_cooperationReason"></span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -328,7 +364,8 @@
                                         <div class="col-xl-4 col-lg-6 mb-3">
                                             <div class="row mb-3">
                                                 <label for="applicantName"
-                                                    class="col-lg-auto col-form-label text-nowrap">申請人姓名：</label>
+                                                    class="col-lg-auto col-form-label text-nowrap"><span
+                                                        class="requiredMark">*</span>申請人姓名：</label>
                                                 <div class="col">
                                                     <input type="text" class="form-control thisRequired"
                                                         id="applicantName">
@@ -337,7 +374,8 @@
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="applicantJobTitle"
-                                                    class="col-lg-auto col-form-label text-nowrap">申請人職稱：</label>
+                                                    class="col-lg-auto col-form-label text-nowrap"><span
+                                                        class="requiredMark">*</span>申請人職稱：</label>
                                                 <div class="col">
                                                     <input type="text" class="form-control thisRequired"
                                                         id="applicantJobTitle">
@@ -346,25 +384,28 @@
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="contactPhone"
-                                                    class="col-lg-auto col-form-label text-nowrap">聯絡電話/手機：</label>
+                                                    class="col-lg-auto col-form-label text-nowrap"><span
+                                                        class="requiredMark">*</span>聯絡電話/手機：</label>
                                                 <div class="col">
-                                                    <input type="text" class="form-control thisRequired"
+                                                    <input type="text" class="form-control thisPhone thisRequired"
                                                         id="contactPhone" onkeyup="verifyPhone(this)">
                                                     <span class="text-danger" id="danger_contactPhone"></span>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="contactEmail"
-                                                    class="col-lg-auto col-form-label text-nowrap">E-mail：</label>
+                                                    class="col-lg-auto col-form-label text-nowrap"><span
+                                                        class="requiredMark">*</span>E-mail：</label>
                                                 <div class="col">
-                                                    <input type="text" class="form-control thisRequired"
+                                                    <input type="text" class="form-control thisEmail thisRequired"
                                                         id="contactEmail" onkeyup="verifyEmail(this)">
                                                     <span class="text-danger" id="danger_contactEmail"></span>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="extensionPeriod"
-                                                    class="col-lg-auto col-form-label text-nowrap">申請延駐期限：</label>
+                                                    class="col-lg-auto col-form-label text-nowrap"><span
+                                                        class="requiredMark">*</span>申請延駐期限：</label>
                                                 <div class="col">
                                                     <input type="date" class="form-control thisRequired"
                                                         id="extensionPeriod">
@@ -375,9 +416,10 @@
 
                                         <div class="col-xl-4 col-lg-6 mb-3">
                                             <div class="row mb-3">
-                                                <div class="col-lg-auto col-form-label text-nowrap">年營業額：</div>
+                                                <div class="col-lg-auto col-form-label text-nowrap"><span
+                                                        class="requiredMark">*</span>年營業額：</div>
                                                 <div class="col">
-                                                    <div class="row">
+                                                    <div class="row justify-content-center justify-content-lg-around">
                                                         <div class="input-group mb-1">
                                                             <span class="input-group-text">進駐首年</span>
                                                             <input type="text" class="form-control thisRequired"
@@ -386,22 +428,24 @@
                                                                 onblur="formatOnBlur(this)">
                                                             <span class="input-group-text">仟元</span>
                                                         </div>
+                                                        <span class="text-danger" id="danger_firstYearRevenue"></span>
                                                         <div class="input-group mb-1">
                                                             <span class="input-group-text">目前</span>
                                                             <input type="text" class="form-control thisRequired"
                                                                 id="currentRevenue" onkeyup="restrictToNum(this)"
                                                                 onfocus="unformatOnFocus(this)"
                                                                 onblur="formatOnBlur(this)">
-                                                            <span class="input-group-text">仟元，</span>
+                                                            <span class="input-group-text">仟元</span>
                                                         </div>
-                                                        <div class="form-check ms-3">
+                                                        <span class="text-danger" id="danger_currentRevenue"></span>
+                                                        <div class="form-check col-auto">
                                                             <input class="form-check-input" type="radio"
                                                                 name="profitStatus" id="breakEvenRadio"
                                                                 value="breakEven">
                                                             <label class="form-check-label"
                                                                 for="breakEvenRadio">已達損益平衡</label>
                                                         </div>
-                                                        <div class="form-check ms-3">
+                                                        <div class="form-check col-auto">
                                                             <input class="form-check-input" type="radio"
                                                                 name="profitStatus" id="notBreakEvenRadio"
                                                                 value="notBreakEven" checked>
@@ -412,7 +456,8 @@
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-lg-auto col-form-label text-nowrap">員工人數：</div>
+                                                <div class="col-lg-auto col-form-label text-nowrap"><span
+                                                        class="requiredMark">*</span>員工人數：</div>
                                                 <div class="col">
                                                     <div class="row">
                                                         <div class="input-group mb-1">
@@ -424,6 +469,8 @@
                                                                 onblur="formatOnBlur(this)">
                                                             <span class="input-group-text">人</span>
                                                         </div>
+                                                        <span class="text-danger"
+                                                            id="danger_firstYearEmployeeCount"></span>
                                                         <div class="input-group mb-1">
                                                             <span class="input-group-text">目前</span>
                                                             <input type="text" class="form-control thisRequired"
@@ -432,6 +479,8 @@
                                                                 onblur="formatOnBlur(this)">
                                                             <span class="input-group-text">人</span>
                                                         </div>
+                                                        <span class="text-danger"
+                                                            id="danger_currentEmployeeCount"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -440,9 +489,10 @@
                                         <div class="col-xl-4 col-lg-6 mb-3">
                                             <div class="row mb-1">
                                                 <label for="extensionReason"
-                                                    class="col-12 col-form-label text-nowrap">申請延駐原由：</label>
+                                                    class="col-12 col-form-label text-nowrap"><span
+                                                        class="requiredMark">*</span>申請延駐原由：</label>
                                                 <div class="col">
-                                                    <textarea class="form-control resize-none h_60"
+                                                    <textarea class="form-control resize-none h_60 thisRequired"
                                                         id="extensionReason"></textarea>
                                                     <span class="text-danger" id="danger_extensionReason"></span>
                                                 </div>
@@ -468,8 +518,6 @@
                                                 <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
                                             </div>
                                             <div class="col-auto">
-                                                <!-- <button type="button" class="btn btn-lg btn-outline-info"
-                                                    id="confirm_renewContractApply">預覽</button> -->
                                                 <button type="button" class="btn btn-lg btn-outline-info"
                                                     id="confirm_remewContractApply">預覽</button>
                                             </div>

@@ -219,32 +219,57 @@ function checkEmails() {
     return allValid;
 }
 
-// 添加 必填的警告訊息
+// ================檢查 指定checkbox 是否至少選一個，沒有則加上錯誤訊息並回傳 false
+function checkAtLeastOneChecked(checkboxIds, errorMessageElementId) {
+    var atLeastOneChecked = false;
+    checkboxIds.forEach(function (checkboxId) {
+        if ($('#' + checkboxId).is(':checked')) {
+            atLeastOneChecked = true;
+        }
+        $('#' + checkboxId).off('change').on('change', function () {
+            checkAtLeastOneChecked(checkboxIds, errorMessageElementId);
+        });
+    });
+    if (!atLeastOneChecked) {
+        addDangerChooseAtLeastOneMessage(errorMessageElementId);
+        return false;
+    } else {
+        $('#danger_' + errorMessageElementId).html('');
+        return true;
+    }
+}
+
+
+// 添加 此為必填欄位 的警告訊息
 function addDangerRequiredMessage(id) {
     $('#danger_' + id).text('此為必填欄位！');
 }
-// 添加 必選日期的警告訊息
+// 添加 此為必選日期欄位 的警告訊息
 function addDangerRequiredDateMessage(id) {
     $('#danger_' + id).text('此為必選日期欄位！');
 }
 
-// 添加 必選的警告訊息
+// 添加 此為必選欄位 的警告訊息
 function addDangerRequiredSelectMessage(id) {
     $('#danger_' + id).text('此為必選欄位！');
 }
 
-// 添加 必上傳的警告訊息
+// 添加 ⤷此為必須上傳的檔案 的警告訊息
 function addDangerRequiredFilesMessage(id) {
-    // $('#danger_' + id).text('&#10551;此為必須上傳的檔案！');
     $('#danger_' + id).html('&#10551;此為必須上傳的檔案！');
 }
 
-// 添加電話格式的警告訊息
+// 添加 至少選擇一項 的警告訊息
+function addDangerChooseAtLeastOneMessage(id) {
+    $('#danger_' + id).html('請至少選擇一項！');
+}
+
+// 添加 電話格式 的警告訊息
 function addDangerPhoneMessage(id) {
     $('#danger_' + id).text('格式不正確，請依正確的格式輸入：區碼-電話號碼 或 09XX-XXXXXX');
 }
 
-// 添加Email格式的警告訊息
+// 添加 Email格式 的警告訊息
 function addDangerEmailMessage(id) {
     $('#danger_' + id).text('請輸入有效的電子郵件地址！');
 }

@@ -101,6 +101,7 @@ function syncInputRadioYesValue(yesRadioId, noRadioId, yesTdId, noTdId, yesReaso
             $('#' + yesTdId).html('&#9744;');
             $('#' + noTdId).html('&#9745;');
             $('#' + yesReason).prop('disabled', true).val('').removeClass('thisRequired');
+            $('#danger_' + yesReason).text('');
             $('#' + yesReasonTd).html('');
         }
     }
@@ -114,6 +115,7 @@ function syncInputRadioNoValue(yesRadioId, noRadioId, yesTdId, noTdId, noReason,
             $('#' + yesTdId).html('&#9745;');
             $('#' + noTdId).html('&#9744;');
             $('#' + noReason).prop('disabled', true).val('').removeClass('thisRequired');
+            $('#danger_' + noReason).text('');
             $('#' + noReasonTd).html('');
         } else if ($('#' + noRadioId).is(':checked')) {
             $('#' + yesTdId).html('&#9744;');

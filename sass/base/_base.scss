@@ -158,6 +158,11 @@ textarea {
     color: #bee1d8;
 }
 
+// w-25 w-50 w-75 w-100
+.w-10 {
+    width: 10% !important;
+}
+
 .w-15 {
     width: 15% !important;
 }
@@ -177,10 +182,10 @@ textarea {
 .w-40 {
     width: 40% !important;
 }
-
-.w-10 {
-    width: 10% !important;
+.w-60 {
+    width: 60% !important;
 }
+
 
 .align_center {
     align-content: center;

@@ -148,6 +148,9 @@
     .no_print {
         display: none !important;
     }
+    .yes_print {
+        display: block !important;
+    }
 
     .print_template {
         // padding-top: 50px;
@@ -170,6 +173,10 @@
 
     .break-after {
         break-after: page;
+    }
+
+    .pe_0 {
+        padding-right: 0;
     }
 
 }

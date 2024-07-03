@@ -24,7 +24,7 @@
 
                     <tr>
                         <td rowspan="2" class="text-center">1.</td>
-                        <td rowspan="2" class="w-40">營業項目是否與營運輔導合約相符</td>
+                        <td rowspan="2" class="w-35">營業項目是否與營運輔導合約相符</td>
                         <td class=""><span id="businessComplianceYes_td">&#9744;</span>是。</td>
                         <td rowspan="2"></td>
                     </tr>
@@ -97,7 +97,7 @@
 
                     <tr>
                         <td rowspan="2" class="text-center">7.</td>
-                        <td rowspan="2">配合本校企業輔導(ex諮詢輔導)</td>
+                        <td rowspan="2">配合本校企業輔導<br class="d-none yes_print">(ex諮詢輔導)</td>
                         <td><span id="counselingYes_td">&#9744;</span>是。</td>
                         <td rowspan="2"></td>
                     </tr>
@@ -125,11 +125,19 @@
                         <td rowspan="2"></td>
                     </tr>
                     <tr>
-                        <td><span id="surveyFormNo_td">&#9745;</span>否：<span
-                                id="constructionFormCheckbox_td">&#9744;</span>環安衛施工單、<span
-                                id="visitorFormCheckbox_td">&#9744;</span>訪客入校申請單、<span
-                                id="chemicalSurveyCheckbox_td">&#9744;</span>實驗室化學調查清單。<br>原因：<span
-                                id="surveyFormReason_td"></span>。
+                        <td>
+                            <div class="row justify-content-end">
+                                <div class="col text-nowrap"><span id="surveyFormNo_td">&#9745;</span>否：</div>
+                                <div class="col-auto text-nowrap pe_0"><span
+                                        id="constructionFormCheckbox_td">&#9744;</span>環安衛施工單</div>
+                                <div class="col-auto text-nowrap"><span
+                                        id="visitorFormCheckbox_td">&#9744;</span>訪客入校申請單</div>
+                                <div class="col-auto text-nowrap"><span
+                                        id="chemicalSurveyCheckbox_td">&#9744;</span>實驗室化學調查清單</div>
+                            </div>
+                            <div>
+                                原因：<span id="surveyFormReason_td"></span>。
+                            </div>
                         </td>
                     </tr>
 
@@ -149,9 +157,7 @@
                     <div class="col py-2 ps-3 text-dark">
                         <div class="row">
                             <div class="col fw-bold text-dark text-nowrap">公司負責人：</div>
-                            <div class="col"></div>
-                            <div class="col fw-bold text-dark text-nowrap">創新育成中心：
-                            </div>
+                            <div class="col fw-bold text-dark text-nowrap">創新育成中心：</div>
                         </div>
                     </div>
                 </div>
@@ -168,7 +174,7 @@
                 <div class="text-end text-muted" id="version2">F-A1410-015</div>
                 <table class="table table-bordered align-middle border border-3 border-dark modal-minW">
                     <tr class="py-2">
-                        <td class="fw-bold text-nowrap w-30">
+                        <td class="fw-bold">
                             <div class="row justify-content-between">
                                 <div class="col-auto">申</div>
                                 <div class="col-auto">請</div>
@@ -176,14 +182,14 @@
                                 <div class="col-auto">期</div>
                             </div>
                         </td>
-                        <td colspan="2" class="text-nowrap">
+                        <td colspan="2" class="text-nowrap w-60">
                             <span class="px-2" id="applyYear_td"></span>年<span class="px-2"
                                 id="applyMonth_td"></span>月<span class="px-2" id="applyDay_td"></span>日
                         </td>
                     </tr>
 
                     <tr>
-                        <td class="fw-bold text-nowrap">
+                        <td class="fw-bold">
                             <div class="row justify-content-between">
                                 <div class="col-auto">公</div>
                                 <div class="col-auto">司</div>
@@ -194,7 +200,7 @@
                         <td colspan="2" id="renewContractCompany_td"></td>
                     </tr>
                     <tr>
-                        <td class="fw-bold text-nowrap">
+                        <td class="fw-bold">
                             <div class="row justify-content-between">
                                 <div class="col-auto">申</div>
                                 <div class="col-auto">請</div>
@@ -211,7 +217,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td rowspan="2" class="fw-bold text-nowrap">
+                        <td rowspan="2" class="fw-bold">
                             <div class="row justify-content-between">
                                 <div class="col-auto">聯</div>
                                 <div class="col-auto">絡</div>
@@ -227,7 +233,7 @@
                         <td id="contactEmail_td"></td>
                     </tr>
                     <tr>
-                        <td class="fw-bold text-nowrap">
+                        <td class="fw-bold">
                             <div class="row justify-content-between">
                                 <div class="col-auto">目</div>
                                 <div class="col-auto">前</div>
@@ -239,14 +245,14 @@
                         </td>
                         <td colspan="2">自<span class="px-2" id="startDateYear_td"></span>年<span class="px-2"
                                 id="startDateMonth_td"></span>月<span class="px-2"
-                                id="startDateDay_td"></span>日進駐，預計至<span class="px-2" id="endDateYear_td"></span>年<span
+                                id="startDateDay_td"></span>日進駐，<br class="d-none yes_print">預計至<span class="px-2" id="endDateYear_td"></span>年<span
                                 class="px-2" id="endDateMonth_td"></span>月<span class="px-2"
-                                id="endDateDay_td"></span>日合約到期，<br>目前已延長進駐<span class="px-2" id="extendYears_td"></span>年，共計進駐<span
-                                class="px-2" id="cumulativeYears_td"></span>年。
+                                id="endDateDay_td"></span>日合約到期，<br>目前已延長進駐<span class="px-2"
+                                id="extendYears_td"></span>年，共計進駐<span class="px-2" id="cumulativeYears_td"></span>年。
                         </td>
                     </tr>
                     <tr>
-                        <td class="fw-bold text-nowrap">
+                        <td class="fw-bold">
                             <div class="row justify-content-between">
                                 <div class="col-auto">年</div>
                                 <div class="col-auto">營</div>
@@ -255,14 +261,14 @@
                             </div>
                         </td>
                         <td colspan="2">
-                            進駐首年<span id="firstYearRevenue_td" class="px-2"></span>仟元，<br>目前<span id="currentRevenue_td"
-                                class="px-2"></span>仟元，<span id="breakEvenRadio_td"
+                            進駐首年<span id="firstYearRevenue_td" class="px-2"></span>仟元，目前<span id="currentRevenue_td"
+                                class="px-2"></span>仟元，<br><span id="breakEvenRadio_td"
                                 class="ps-2">&#9744;</span>已達損益平衡&ensp;/&ensp;<span
                                 id="notBreakEvenRadio_td">&#9744;</span>尚未損益平衡
                         </td>
                     </tr>
                     <tr>
-                        <td class="fw-bold text-nowrap">
+                        <td class="fw-bold">
                             <div class="row justify-content-between">
                                 <div class="col-auto">員</div>
                                 <div class="col-auto">工</div>
@@ -276,7 +282,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="fw-bold text-nowrap">
+                        <td class="fw-bold">
                             <div class="row justify-content-between">
                                 <div class="col-auto">申</div>
                                 <div class="col-auto">請</div>
@@ -291,7 +297,7 @@
                                 class="px-2"></span>月<span id="extensionPeriod_D" class="px-2"></span>日止。</td>
                     </tr>
                     <tr>
-                        <td class="fw-bold text-nowrap">
+                        <td class="fw-bold">
                             <div class="row justify-content-between">
                                 <div class="col-auto">申</div>
                                 <div class="col-auto">請</div>
@@ -299,9 +305,8 @@
                                 <div class="col-auto">駐</div>
                                 <div class="col-auto">原</div>
                                 <div class="col-auto">由</div>
-                                <small class="col-12 fw-normal">※可述進駐期間成就等</small>
-                                <small class="col-12 fw-normal">(例:申請政府補助計畫、與教師產學合作案等)</small>
                             </div>
+                            <span class="fs-6 fw-normal">※可述進駐期間成就等(例:申請政府補助計畫、與教師產學合作案等)</span>
                         </td>
                         <td colspan="2" id="extensionReason_td"></td>
                     </tr>
@@ -331,7 +336,11 @@
                             <div class="row">
                                 <div class="col-auto"><span class="px-1">&#9744;</span>同意延長進駐</div>
                                 <div class="col-auto"><span class="px-1">&#9744;</span>擇期再議：</div>
-                                <div class="col-12">創新育成中心：<br><br><br><br><br><br></div>
+                            </div>
+                            <div class="row">
+                                <div class="col">創新育成中心：
+                                </div>
+                                <br><br><br><br><br><br>
                             </div>
                         </td>
                     </tr>
