@@ -254,10 +254,10 @@ function combineInputs() {
 
 // ※※※※※※=== 電話 ===※※※※※※
 // 驗證電話格式的函數
-function validatePhone(phone) {
-    var phoneRegex = /^\d{2,4}-\d{6,8}$/;
-    return phoneRegex.test(phone);
-}
+            // function validatePhone(phone) {
+            //     var phoneRegex = /^\d{2,4}-\d{6,8}$/;
+            //     return phoneRegex.test(phone);
+            // }
 // 驗證當前電話的函數
 function checkThisPhone() {
     var inputItem = $(this); // 當前失去焦點的 input 元素
@@ -307,16 +307,16 @@ function checkThisPhone() {
 
 
 // ※※※※※※=== E-mail ===※※※※※※
-// 轉換@之前的大寫字母為小寫
-function convertEmail(email) {
-    var atIndex = email.indexOf('@');
-    if (atIndex !== -1) {
-        var localPart = email.substring(0, atIndex).toLowerCase();
-        var domainPart = email.substring(atIndex);
-        return localPart + domainPart;
-    }
-    return email;
-}
+            // 轉換@之前的大寫字母為小寫
+            // function convertEmail(email) {
+            //     var atIndex = email.indexOf('@');
+            //     if (atIndex !== -1) {
+            //         var localPart = email.substring(0, atIndex).toLowerCase();
+            //         var domainPart = email.substring(atIndex);
+            //         return localPart + domainPart;
+            //     }
+            //     return email;
+            // }
 
 
 

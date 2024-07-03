@@ -52,3 +52,11 @@ textarea {
 .requiredMark {
     color: #e83e8c;
 }
+
+label {
+    &.upload-label {
+        &:hover {
+            color: #e83e8c;
+        }
+    }
+}

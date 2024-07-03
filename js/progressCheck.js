@@ -86,16 +86,16 @@ $(function () {
             { data: 'name', title: "申請人姓名", }, // 2
             { data: 'type', title: "申請項目", }, // 3
             { data: 'remark', title: "項目註記", }, // 4 
-            { data: 'paymentDate', title: "到帳日", }, // 5
+            { data: 'paymentDate', title: "付帳日", }, // 5
             { data: 'status', title: "審核進度", }, // 6
             {
                 data: 'id', title: "匯款<br>憑證",
                 render: function (data, type, row) {
-                    const remittanceFile = row.remittanceFile;
-                    if (remittanceFile == '') {
-                        return '<button type="button" class="btn btn-light rounded-circle remittance_voucher align_center alreadyHave" title="再次上傳匯款憑證" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
+                    const paymentDate = row.paymentDate;
+                    if (paymentDate) {
+                        return '<button type="button" class="btn btn-light rounded-circle remittance_voucher align_center reuploadRemittance" title="再次上傳匯款憑證" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
                     } else {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle remittance_voucher align_center" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle remittance_voucher align_center uploadRemittance" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
                     }
                 }, className: 'text-center text-nowrap'
             },
@@ -144,7 +144,7 @@ $(function () {
 
         // 如果没有選中任何行，提示用戶
         if (selectedIds.length === 0) {
-            swalToastWarning('請先勾選欲刪除的申請紀錄。', 'top');
+            swalToastWarning('請先勾選欲取消的申請紀錄。', 'top');
             return;
         }
 
@@ -170,21 +170,68 @@ $(function () {
 
     });
 
-    $('.alreadyHave').click(function (event) {
-        event.preventDefault(); // 阻止默認行為
+
+    // 匯款憑證按鈕
+    $('.uploadRemittance, .reuploadRemittance').click(function (event) {
+        // 每次點擊都刪除舊有的錯誤訊息
+        $('#danger_last5AccountNo').text('');
+        $('#danger_paymentDate').text('');
 
         let button = $(this);
-        let dataId = button.data('id'); // 獲取按鈕的 data-id 屬性
+        let progressId = button.data('id'); // 獲取按鈕的 data-id 屬性
 
-        swalConfirm(
-            '曾填過匯款通知，要再填一次嗎?', // 顯示的問題
-            '對，我要重新填寫上傳。', // YES按鈕的文字
-            '不，回到上一步。', // NO按鈕的文字
-            function () {
-                // YES按鈕點擊後開啟燈箱
-                $('#remittanceModal').modal('show');
-                $('#remittanceModal').data('id', dataId); // 可以選擇傳遞 data-id 到燈箱中
-            }
-        );
+        if (!progressId) {
+            console.error('progress ID not found in URL');
+            return;
+        }
+
+        let progressData = dataset_progressCheck.find(progress => progress.id == progressId);
+
+        if (!progressData) {
+            console.error('progress data not found for id:', progressId);
+            return;
+        }
+
+        $('#building').val(progressData.building);
+        $('#room').val(progressData.room);
+
+        if (button.hasClass('reuploadRemittance')) {
+            event.preventDefault(); // 阻止默認行為
+            swalConfirm(
+                '曾填過匯款通知，要再填一次嗎?', // 顯示的問題
+                '對，我要重新填寫上傳。', // YES按鈕的文字
+                '不，回到上一步。', // NO按鈕的文字
+                function () {
+                    // YES按鈕點擊後開啟燈箱
+                    $('#remittanceModal').modal('show');
+                }
+            );
+        }
+    });
+
+    // 必填異動再次判斷
+    $('.thisRequired').on('input change', function () {
+        checkThisRequiredElements.call(this);
+    });
+
+
+    // 點擊送出匯款資料
+    $('#remittanceSubmit').click(function (event) {
+        // 先檢查必填項
+        if (!checkRequiredElements()) {
+            swalToastWarning('請將必填欄位填上正確資料唷！', 'top');
+            return; // 如果必填項有未填寫的，直接返回，不再繼續
+        }
+        // 最後檢查 danger_ 開頭元素的文字內容
+        if (checkDangerElements()) {
+            // 如果返回 true，開啟燈箱
+            // $('#parkingSpaceRenew_pdf').modal('show');
+            $('#formRemittance').submit(); // 提交表單
+            console.log('表單資料已送出');
+        } else {
+            // 如果返回 false，顯示警告訊息
+            swalToastWarning('請填上正確資料唷！', 'top');
+        }
+        $('#formRemittance').submit(); // 提交表單
     });
 });

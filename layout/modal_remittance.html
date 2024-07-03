@@ -1,23 +1,19 @@
 <div class="modal-body">
     <div class="container-fluid">
         <div class="row mb-1 multiple d-none">
-            <label for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                培育大樓
-            </label>
-            <div class="col lightBoxItems p-3" >
+            <label for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">培育大樓</label>
+            <div class="col lightBoxItems p-3">
                 <input type="text" class="form-control" id="building">
             </div>
-            <label for="room" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                培育室
-            </label>
-            <div class="col lightBoxItems p-3" >
+            <label for="room"
+                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">培育室</label>
+            <div class="col lightBoxItems p-3">
                 <input type="text" class="form-control" id="room">
             </div>
         </div>
         <div class="row mb-1">
             <label for="paymentDate" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
-                class="requiredMark">*</span>
-                匯款日期<span class="d-none d-lg-inline">&emsp;&emsp;&emsp;</span>
+                    class="requiredMark">*</span>匯款日期<span class="d-none d-lg-inline">&emsp;&emsp;&emsp;</span>
             </label>
             <div class="col lightBoxItems p-3">
                 <input type="date" class="form-control thisRequired" id="paymentDate">
@@ -26,28 +22,26 @@
         </div>
         <div class="row mb-1">
             <label for="last5AccountNo" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
-                class="requiredMark">*</span>
-                匯款帳戶後五碼
+                    class="requiredMark">*</span>匯款帳號後五碼
             </label>
             <div class="col lightBoxItems p-3">
-                <input type="text" class="form-control thisRequired" id="last5AccountNo">
+                <input type="text" class="form-control thisRequired" id="last5AccountNo" onkeyup="restrictTo5Num(this)">
                 <span class="text-danger" id="danger_last5AccountNo"></span>
             </div>
         </div>
         <div class="row mb-1">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span class="d-none d-lg-inline">&ensp;</span>
-                上傳匯款憑證<span class="d-none d-lg-inline">&emsp;</span>
-            </div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
+                    class="d-none d-lg-inline">&ensp;</span>上傳匯款憑證<span class="d-none d-lg-inline">&emsp;</span></div>
             <div class="col lightBoxItems p-3 align_center" id="ECPhone">
                 <div class="row align-items-center my-1">
-                    <label for="parkingSpaceForm"
+                    <label for="remittancePdf"
                         class="col-auto col-form-label text-nowrap upload-label py-0 align_center ps-3">請點此上傳pdf檔<i
                             class="fa-solid fa-upload mx-1"></i>
                     </label>
                     <div class="col-12">
-                        <input type="file" class="form-control d-none" id="parkingSpaceForm" accept=".pdf"
-                            onchange="javascript:{document.getElementById('parkingSpace_fileInfo1').innerHTML = document.getElementById('parkingSpaceForm').value;setFormHeight();}">
-                        <div id="parkingSpace_fileInfo1" class="fileInfo"></div>
+                        <input type="file" class="form-control d-none" id="remittancePdf" accept=".pdf"
+                            onchange="javascript:{document.getElementById('remittance_fileInfo').innerHTML = document.getElementById('remittancePdf').value;setFormHeight();}">
+                        <div id="remittance_fileInfo" class="fileInfo"></div>
                     </div>
                 </div>
             </div>

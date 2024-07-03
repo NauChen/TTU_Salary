@@ -1,7 +1,7 @@
 var dataset_coopManufApp = [
     {
         'id': '1',
-        'createDate': "2024-04-25",
+        'createDate': "2024-07-25",
         'company': "南方科技有限公司",
         'companyDescription': "專業提供高科技產品製造與銷售",
         'creationDate': "2010-12-03",
@@ -25,7 +25,10 @@ var dataset_coopManufApp = [
         'entryForm': "2024010101F1.pdf",
         'uniformNum': "23456780",
         'companyEmail': "abc@gmail.com",
-        'status': "通過"
+        'status': "待補件",
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
     },
     {
         'id': '2',
@@ -424,22 +427,26 @@ $(function () {
         ...commonSettingsTable,
         "data": dataset_coopManufApp,
         "columns": [
-            { data: 'createDate', title: "申請日期", },
-            { data: 'company', title: "公司名稱", },
-            { data: 'uniformNum', title: "統一編號", },
-            { data: 'companyEmail', title: "E-mail", },
-            { data: 'status', title: "審核進度", },
+            { data: 'createDate', title: "申請日期", }, // 0
+            { data: 'uniformNum', title: "統一編號", }, // 1
+            { data: 'company', title: "公司名稱", }, // 2
             {
-                data: 'id', title: "檢閱",
-                // render: function (data) {
-                //     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#vendorDetailModal" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
-                // }, className: 'text-center text-nowrap'
+                data: 'contactPerson', title: "主要聯絡人", // 3
+                render: function (data, type, row) {
+                    const ext = row.ext;
+                    return data + ' #' + ext;
+                }
+            },
+            { data: 'companyEmail', title: "E-mail", }, // 4
+            { data: 'status', title: "審核進度", }, // 5
+            {
+                data: 'id', title: "檢閱", // 6
                 render: function (data, type, row) {
                     const status = row.status;
                     if (status == '通過' || status == '不通過') {
-                         return '<button type="button" class="btn btn-info rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#vendorDetailModal" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
-                    } else {
                         return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#vendorDetailModal" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
+                    } else {
+                        return '<button type="button" class="btn btn-info rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#vendorDetailModal" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
                     }
                 }
             },
@@ -457,10 +464,16 @@ $(function () {
                 targets: [3],
                 responsivePriority: 2,
             },
-            { "searchable": false, "orderable": false, "targets": [5] },
-            { "className": "text-nowrap", "targets": [0, 2, 3] },
-            { "className": "text-center", "targets": [0, 2, 4, 5] },
+            { "searchable": false, "orderable": false, "targets": [6] },
+            { "className": "text-nowrap", "targets": [0, 1, 4, 5, 6] },
+            { "className": "text-center", "targets": [0, 1, 5, 6] },
         ],
+        createdRow: function (row, data, dataIndex) {
+            $('td:eq(6)', row).css('min-width', '70px');
+            [0, 1].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('min-width', '130px').css('font-size', '.95em');
+            });
+        }
     });
 
 
@@ -475,7 +488,7 @@ $(function () {
         let firmData = dataset_coopManufApp.find(firm => firm.id === firmId);
 
         if (firmData) {
-            //     // console.log('Job data found:', firmData);
+            // console.log('Job data found:', firmData);
             $('#companyName').text(firmData.company);
             $('#createDate').text(firmData.createDate);
             $('#companyDescription').text(firmData.companyDescription);
@@ -494,6 +507,9 @@ $(function () {
             $('#companyAdd').text(firmData.companyAdd);
             $('#locationOfCompany').text(firmData.locationOfCompany);
             $('#helpItems').text(firmData.helpItems);
+            $('#tutoringProfessor').text(firmData.tutoringProfessor);
+            $('#nurtureProgram').text(firmData.nurtureProgram);
+            $('#adminNote').text(firmData.adminNote);
 
             if (firmData.status != '待審核') {
                 $('#status').val(firmData.status);
@@ -504,7 +520,10 @@ $(function () {
         };
 
         if (firmData.status === "通過" || firmData.status === "不通過") {
-            theseRemoveClass(["changeInput_items"], ['companyName', 'responsiblePerson', 'referrer', 'contactPerson', 'jobTitle', 'companyAdd', 'locationOfCompany']);
+            $('#companyName, #responsiblePerson,#referrer, #contactPerson, #jobTitle,#companyAdd, #locationOfCompany, #tutoringProfessor, #nurtureProgram,#adminNote').removeClass("changeInput_items");
+
+
+            // theseRemoveClass(["changeInput_items"], ['companyName', 'responsiblePerson', 'referrer', 'contactPerson', 'jobTitle', 'companyAdd', 'locationOfCompany']);
             theseRemoveClass(["changeTextarea_lg_items"], ['companyDescription', 'helpItems']);
             theseRemoveClass(["changeNumber_items"], ['uniformNum', 'ext']);
             theseRemoveClass(["changeDate_items"], ['creationDate']);

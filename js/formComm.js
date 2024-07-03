@@ -19,6 +19,14 @@ function restrictToUniformNum(obj) {
     }
     $(obj).val(inputValue);
 }
+//   數字，且最多5個字元
+function restrictTo5Num(obj) {
+    var inputValue = $(obj).val().replace(/\D/g, ''); // 移除所有非數字字符
+    if (inputValue.length > 5) {
+        inputValue = inputValue.slice(0, 5); // 截取前8個字符
+    }
+    $(obj).val(inputValue);
+}
 //   字母、數字、點、破折號、底線、@ 符號
 function restrictToValidChars(obj) {
     $(obj).val($(obj).val().replace(/[^a-zA-Z0-9._@-]/g, ""));
@@ -280,6 +288,17 @@ function populateSelect(selectId, options) {
         groups[item.optigroup].appendChild(option);
     });
 }
+// 轉換@之前的大寫字母為小寫
+function convertEmail(email) {
+    var atIndex = email.indexOf('@');
+    if (atIndex !== -1) {
+        var localPart = email.substring(0, atIndex).toLowerCase();
+        var domainPart = email.substring(atIndex);
+        return localPart + domainPart;
+    }
+    return email;
+}
+
 
 // ※※ 文字組裝拆解函式 - 存取資料專用 ※※
 //   將用-組合過的資料拆開
@@ -329,45 +348,3 @@ function splitDate(dateString) {
 }
 
 
-
-
-// 用法範例
-// const str = "B4-30";
-// const startChar = "B";
-// const endChar = "-";
-// const result = extractSubstringBetween(str, startChar, endChar);
-// console.log(result); // 输出 "4"
-
-
-
-// function handleSalaryChoose(selectedOption) {
-//     switch (selectedOption) {
-//         case '時薪':
-//         case '日薪':
-//             theseAddClass(["choose"], ["dollarsItem"]);
-//             theseRemoveClass(["choose"], ['dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem', 'dollarsPerCaseItem']);
-//             document.getElementById('salaryTypeRadio1').checked = true;
-//             theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
-//             theseAddClass(["thisRequired"], ["dollarsInput"]);
-//             break;
-//         case '月薪':
-//             theseAddClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem']);
-//             theseRemoveClass(["choose"], ['dollarsPerCaseItem']);
-
-//             document.getElementById('salaryTypeRadio1').checked = true;
-//             theseRemoveClass(["thisRequired"], ['dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput', 'dollarsPerCaseInput']);
-//             theseAddClass(["thisRequired"], ["dollarsInput"]);
-//             break;
-//         case '按件計酬':
-//             theseAddClass(["choose"], ['dollarsPerCaseItem']);
-//             theseRemoveClass(["choose"], ["dollarsItem", 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem',]);
-//             document.getElementById('salaryTypeRadio5').checked = true;
-//             theseAddClass(["thisRequired"], ["dollarsPerCaseInput"]);
-//             break;
-//         case '請選擇':
-//             theseRemoveClass(["choose"], ['dollarsItem', 'dollarsToDollarsItem', 'moreThenDollarsItem', 'negotiableItem', 'dollarsPerCaseItem']);
-//             document.getElementById('salaryTypeRadio1', 'salaryTypeRadio2', 'salaryTypeRadio3', 'salaryTypeRadio4', 'salaryTypeRadio5').checked = false;
-//             theseRemoveClass(["thisRequired"], ['dollarsInput', 'dollarsToDollars_1Input', 'dollarsToDollars_2Input', 'moreThenDollarsInput', 'negotiableInput']);
-//             break;
-//     }
-// }

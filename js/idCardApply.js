@@ -263,7 +263,7 @@ $(function () {
     $('input[name="libraryRead"]').on('change', function () {
         syncInputRadio('wantReadLibrary', 'dontWantReadLibrary', 'wantYes', 'dontWantYes');
     });
-
+    // 必填異動再次判斷
     $('.thisRequired').on('input change', function () {
         checkThisRequiredElements.call(this);
     });

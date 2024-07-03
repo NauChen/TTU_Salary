@@ -36,7 +36,26 @@
 
                     </div>
                 </div>
-                @@include('layout/modal_remittance.html')
+                <!-- Modal -->
+                <div class="modal fade" id="remittanceModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="remittanceModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <form class="modal-content" method="post" id="formRemittance">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="remittanceModalLabel">上傳匯款憑證</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            @@include('layout/modal_remittance.html')
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                                <button type="button" class="btn btn-outline-secondary" id="remittanceSubmit">確認上傳</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <!-- Modal -->
                 <!-- <div class="modal fade" id="remittanceModal" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="remittanceModalLabel" aria-hidden="true">
@@ -97,6 +116,7 @@
     </main>
     @@include('layout/metaJS.html')
     <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
     <script src="./js/progressCheck.js"></script>
 </body>
 

@@ -238,6 +238,7 @@ $(function () {
         },
     });
 
+    // 匯款憑證按鈕
     $('.uploadRemittance, .reuploadRemittance').click(function (event) {
         // 每次點擊都刪除舊有的錯誤訊息
         $('#danger_last5AccountNo').text('');
@@ -275,6 +276,11 @@ $(function () {
         }
     });
 
+    // 必填異動再次判斷
+    $('.thisRequired').on('input change', function () {
+        checkThisRequiredElements.call(this);
+    });
+
     // 點擊送出匯款資料
     $('#remittanceSubmit').click(function (event) {
         // 先檢查必填項
@@ -290,7 +296,7 @@ $(function () {
             console.log('表單資料已送出');
         } else {
             // 如果返回 false，顯示警告訊息
-            swalToastWarning('請上傳行照圖檔，並裁剪成指定大小唷！', 'top');
+            swalToastWarning('請填上正確資料唷！', 'top');
         }
         $('#formRemittance').submit(); // 提交表單
     });
