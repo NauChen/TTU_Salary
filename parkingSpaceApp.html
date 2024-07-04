@@ -23,7 +23,7 @@
 
                 <!-- 車位申請列表 -->
                 <div class="tabs-box my-2r">
-                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>車位申請列表<i
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>新車位申請列表<i
                             class="fa-solid fa-quote-right"></i></h3>
                     <div class="tabs section-border-radius section-padding">
                         <table id="parkingSpaceApplicationList"
@@ -40,13 +40,13 @@
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <form class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="parkingSpaceDetailModelLabel">車位申請詳情</h4>
+                                <h4 class="modal-title" id="parkingSpaceDetailModelLabel">車位申請書詳情</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="container-fluid">
-                                    @@include('layout/parkingSpaceApp_model.html')
+                                    @@include('layout/model_parkingSpaceApp.html')
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -65,6 +65,8 @@
     @@include('layout/metaJS.html')
 
     <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
+    <script src="./js/editableTextToggle.js"></script>
     <script src="./js/parkingSpaceApp.js"></script>
 </body>
 

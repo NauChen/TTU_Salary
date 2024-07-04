@@ -2,7 +2,7 @@ var session_userData = {
     'id': '10', // 使用者id
     'company': '加加油股份有限公司', // 公司名稱
     'responsiblePerson': '郝有錢', // 公司負責人
-    'companyPhone':'02-74125698', // 公司主要聯絡電話
+    'companyPhone': '02-74125698', // 公司主要聯絡電話
 
     'uniformNum': '01478520', // 公司統編
 };
@@ -62,7 +62,6 @@ let commonSettingsTable = {
         $(thead).find('th').addClass('text-center text-nowrap align-middle');
     },
 };
-
 // DataTable設定 - 搜尋右上，無自選顯示個數(預設10筆)，左上標題"歷程記錄"，所有欄位已定好
 let commonSettingsHistory = {
     layout: {
@@ -218,9 +217,6 @@ $(function () {
             'status': '快到期，快來續約吧！',
         },
     ];
-
-
-
     $('#myContractList').DataTable({
         ...commonSettingsTable,
         "data": dataset_myContractList,
@@ -327,31 +323,40 @@ $(function () {
     });
 });
 
+$(function () {
+    // 獲取當前頁面的URL
+    var currentUrlPage = window.location.pathname;
 
-// window.addEventListener("scroll", function () {
-//     let btnUp = document.querySelector(".top_button");
-//     if (window.scrollY > 0) {
-//         // 當畫面不在網頁最頂端時，加上 scroll-animation 類別來套用透明度變化的動畫
-//         btnUp.classList.add("scroll-animation");
-//         btnUp.classList.remove("d-none");
-//     } else {
-//         // 畫面在網頁最頂端時，移除 scroll-animation 類別
-//         btnUp.classList.remove("scroll-animation");
-//         btnUp.classList.add("d-none");
-//     }
-// });
-// document.addEventListener("DOMContentLoaded", function () {
-//     let btn_up_el = document.getElementById("btn_up");
-//     if (btn_up_el) {
-//         btn_up_el.addEventListener("click", function () {
-//             let html_el = document.getElementsByTagName("html")[0];
-//             html_el.scrollTo({
-//                 top: 0,
-//                 behavior: "smooth"
-//             });
-//         });
-//     }
-// });
+    // 定義每個鏈接和其對應的頁面
+    var linkMappings = {
+        '#dashboardLink': ['dashboard.html'],
+        '#jobLink': ['jobMyActiveListings.html', 'jobActiveListings.html', 'index.html', 'jobCreate.html', 'jobEdit.html'],
+        '#applyAndCheckLink': ['idCardInventory.html', 'parkingSpaceInventory.html', 'cultivationRoomInventory.html', 'parkingSpaceApply.html', 'idCardApply.html', 'parkingSpaceRenew.html', 'idCardReissue.html', 'renewContractApply.html'],
+        '#progressLink': ['progressCheck.html'],
+        '#assessmentLink': ['coopManufApp.html', 'parkingSpaceApp.html', 'renewContractApp.html', 'idCardApp.html', 'confirmPayment.html'],
+        '#managementLink': ['cultivationRoom.html', 'parkingSpace.html', 'roles.html'],
+        '#logRecordLink': ['logRecordLink.html'],
+        '#provideOpinionsLink': ['provideOpinionsLink.html'],
+        '#styleLink': ['template-style.html'],
+        '#underConstructionLink': ['template-underConstruction.html']
+    };
+
+    // 移除所有鏈接的 .active 類名
+    $('.link').removeClass('active');
+    console.log('Current URL:', currentUrlPage);
+
+    // 檢查每個鏈接是否包含當前頁面URL
+    $.each(linkMappings, function (linkId, pages) {
+        $.each(pages, function (index, page) {
+            if (currentUrlPage.indexOf(page) !== -1) {
+                $(linkId).addClass('active');
+                return false; // 跳出內部循環
+            }
+        });
+    });
+});
+
+
 
 
 

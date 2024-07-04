@@ -317,7 +317,7 @@ $(function () {
         layout: {
             topStart: function () {
                 let provision = document.createElement('div');
-                provision.innerHTML = '<h6 class="fw-bold"><i class="fa-solid fa-circle-exclamation mx-1"></i>若要續用，請於車位到期前申請續約。</h6>';
+                provision.innerHTML = '<h6 class="fw-bold"><i class="fa-solid fa-circle-exclamation mx-1"></i>若要續用，請於車位到期的7~15天前提出申請。</h6>';
                 return provision;
             },
         },
@@ -337,7 +337,7 @@ $(function () {
                     const diffDays = row.diffDays;
                     if (diffDays === null) {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間已過"><i class="fa-solid fa-hourglass-end"></i></button>';
-                    } else if (diffDays >= -10) {
+                    } else if (diffDays >= -15) {
                         return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord renew-btn" href="./parkingSpaceRenew.html?id=' + data + '" title="立即續約" data-id=' + data + '><i class="fa-solid fa-repeat"></i></a>';
                     } else {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間未到"><i class="fa-solid fa-hourglass-half"></i></button>';

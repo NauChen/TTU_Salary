@@ -165,6 +165,47 @@ function setMinDateToSomeDaysLater(inputId, days) {
     // 設置 input 元素的 min 屬性
     $('#' + inputId).attr('min', formattedDate);
 }
+//   限制可選日期不可早於資料日期再加幾天
+function setMinDateToSomeDataDaysLater(inputId, startDateStr, days) {
+    // 將日期字符串轉換為 Date 對象
+    var startDate = new Date(startDateStr);
+
+    // 新日期設定為指定日期再加上指定天數
+    startDate.setDate(startDate.getDate() + days);
+
+    // 格式化日期為 YYYY-MM-DD
+    var yyyy = startDate.getFullYear();
+    var mm = String(startDate.getMonth() + 1).padStart(2, '0'); // 獲取月份，並確保格式為兩位數
+    var dd = String(startDate.getDate()).padStart(2, '0'); // 獲取日期，並確保格式為兩位數
+    var formattedDate = yyyy + '-' + mm + '-' + dd;
+
+    // 設置 input 元素的 min 屬性
+    $('#' + inputId).attr('min', formattedDate);
+}
+//   限制可選日期不可早於 當前日期再加幾天 或是 資料日期再加幾天 (使用比較晚的)
+function setLaterMinDate(inputId, todayLaterDays, startDateStr, startDateLaterDays) {
+    // 獲取當前日期並加上指定天數
+    var today = new Date();
+    today.setDate(today.getDate() + todayLaterDays);
+    var yyyyToday = today.getFullYear();
+    var mmToday = String(today.getMonth() + 1).padStart(2, '0');
+    var ddToday = String(today.getDate()).padStart(2, '0');
+    var formattedToday = yyyyToday + '-' + mmToday + '-' + ddToday;
+    
+    // 獲取開始日期並加上指定天數
+    var startDate = new Date(startDateStr);
+    startDate.setDate(startDate.getDate() + startDateLaterDays);
+    var yyyyStart = startDate.getFullYear();
+    var mmStart = String(startDate.getMonth() + 1).padStart(2, '0');
+    var ddStart = String(startDate.getDate()).padStart(2, '0');
+    var formattedStart = yyyyStart + '-' + mmStart + '-' + ddStart;
+
+    // 比較兩個日期並設置較晚的日期為min屬性
+    var laterDate = new Date(formattedToday) > new Date(formattedStart) ? formattedToday : formattedStart;
+    $('#' + inputId).attr('min', laterDate);
+}
+
+
 //   確保選擇 開始日期 之前 不能選擇 結束日期，會跳Toast提示。選擇結束日期後開始日期加上max限制，避免逆選漏洞。
 function enforceStartDateFirst(startDateId, endDateId) {
     var startDate = $('#' + startDateId);

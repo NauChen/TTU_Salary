@@ -17,7 +17,8 @@ var dataset_parkingSpaceApp = [
         'email': 'sunxiaomei@example.com',
         'amount': '4,000',
         'jobTitle': '財務經理',
-        'adminNote': '兩個車位'
+        'adminNote': '兩個車位',
+        'parkingSpaceStartDate': '2024-06-30',
     },
     {
         'createDate': '2024-06-30',
@@ -270,7 +271,8 @@ $(function () {
             { data: 'carType', title: "車位類型", }, // 2
             { data: 'licensePlateNum', title: "車牌號碼", }, // 3
             { data: 'name', title: "申請人", }, // 4
-            { data: 'phone', title: "申請人電話", }, // 5
+            // { data: 'phone', title: "申請人電話", }, // 5
+               { data: 'phone', title: "預計起租日", }, // 5
             // { data: 'paymentDate', title: "付款日", },
             { data: 'status', title: "審核進度", }, // 6
             {

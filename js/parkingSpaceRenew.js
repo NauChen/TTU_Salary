@@ -289,8 +289,6 @@ $(function () {
     // 同步session跟燈箱
     $('#parkingSpaceCompany_td').text(sessionData.company);
 
-    // 確保起租日期不可小於當日+5天
-    setMinDateToSomeDaysLater('parkingSpaceStartDate', 5);
 
     const urlParams = new URLSearchParams(window.location.search);
     const parkingSpaceId = String(urlParams.get('id'));
@@ -313,6 +311,10 @@ $(function () {
                 $('#btn_carBox').hide();
                 $('#btn_motoBox').hide();
             }
+
+            // 確保起租日期不可小於 當日+5天 或是 截止日期當日(使用最晚的日期來設定)
+            setLaterMinDate('parkingSpaceStartDate', 5, parkingSpaceData.endDate, 0);
+
 
         } else {
             console.error('ParkingSpace data not found for id:', parkingSpaceId);
