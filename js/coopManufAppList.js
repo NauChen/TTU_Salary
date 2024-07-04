@@ -520,31 +520,29 @@ $(function () {
         };
 
         if (firmData.status === "通過" || firmData.status === "不通過") {
-            $('#companyName, #responsiblePerson,#referrer, #contactPerson, #jobTitle,#companyAdd, #locationOfCompany, #tutoringProfessor, #nurtureProgram,#adminNote').removeClass("changeInput_items");
-
-
-            // theseRemoveClass(["changeInput_items"], ['companyName', 'responsiblePerson', 'referrer', 'contactPerson', 'jobTitle', 'companyAdd', 'locationOfCompany']);
-            theseRemoveClass(["changeTextarea_lg_items"], ['companyDescription', 'helpItems']);
-            theseRemoveClass(["changeNumber_items"], ['uniformNum', 'ext']);
-            theseRemoveClass(["changeDate_items"], ['creationDate']);
-            theseRemoveClass(["changeMoney_items"], ['capitalAmount', 'employeesNum']);
-            theseRemoveClass(["changePhone_items"], ['phoneNum']);
-            theseRemoveClass(["changeEmail_items"], ['companyEmail', 'lineId']);
-            theseAddClass(["readOnly"], ['companyName', 'responsiblePerson', 'referrer', 'contactPerson', 'jobTitle', 'companyAdd', 'locationOfCompany', 'companyDescription', 'helpItems', 'uniformNum', 'ext', 'creationDate', 'capitalAmount', 'employeesNum', 'phoneNum', 'companyEmail', 'lineId']);
+            $('#companyName, #responsiblePerson, #referrer, #contactPerson, #jobTitle,#companyAdd, #locationOfCompany, #tutoringProfessor, #nurtureProgram, #adminNote').removeClass("changeInput_items");
+            $('#companyDescription, #helpItems').removeClass("changeTextarea_lg_items");
+            $('#uniformNum, #ext').removeClass("changeUniformNum_items");
+            $('#creationDate').removeClass("changeDate_items");
+            $('#capitalAmount, #changeMoney_items').removeClass("changeMoney_items");
+            $('#phoneNum').removeClass("changePhone_items");
+            $('#companyEmail').removeClass("changeEmail_items");
+            $('#lineId').removeClass("changeLineID_items");
+            $('#companyName, #responsiblePerson, #referrer, #contactPerson, #jobTitle,#companyAdd, #locationOfCompany, #tutoringProfessor, #nurtureProgram, #adminNote, #companyDescription, #helpItems, #uniformNum, #ext, #creationDate, #capitalAmount, #changeMoney_items, #phoneNum, #companyEmail, #lineId').addClass("readOnly");
             $('#updateBtn').hide();
             $('#supplementaryFilesBox').hide();
             $('#status').hide();
             $('#statusText').show().text(firmData.status);
-
         } else {
-            theseAddClass(["changeInput_items"], ['companyName', 'responsiblePerson', 'referrer', 'contactPerson', 'jobTitle', 'companyAdd', 'locationOfCompany']);
-            theseAddClass(["changeTextarea_lg_items"], ['companyDescription', 'helpItems']);
-            theseAddClass(["changeNumber_items"], ['uniformNum', 'ext']);
-            theseAddClass(["changeDate_items"], ['creationDate']);
-            theseAddClass(["changeMoney_items"], ['capitalAmount', 'employeesNum']);
-            theseAddClass(["changePhone_items"], ['phoneNum']);
-            theseAddClass(["changeEmail_items"], ['companyEmail', 'lineId']);
-            theseRemoveClass(["readOnly"], ['companyName', 'responsiblePerson', 'referrer', 'contactPerson', 'jobTitle', 'companyAdd', 'locationOfCompany', 'companyDescription', 'helpItems', 'uniformNum', 'ext', 'creationDate', 'capitalAmount', 'employeesNum', 'phoneNum', 'companyEmail', 'lineId']);
+            $('#companyName, #responsiblePerson, #referrer, #contactPerson, #jobTitle,#companyAdd, #locationOfCompany, #tutoringProfessor, #nurtureProgram, #adminNote').addClass("changeInput_items");
+            $('#companyDescription, #helpItems').addClass("changeTextarea_lg_items");
+            $('#uniformNum, #ext').addClass("changeUniformNum_items");
+            $('#creationDate').addClass("changeDate_items");
+            $('#capitalAmount, #changeMoney_items').addClass("changeMoney_items");
+            $('#phoneNum').addClass("changePhone_items");
+            $('#companyEmail').addClass("changeEmail_items");
+            $('#lineId').addClass("changeLineID_items");
+            $('#companyName, #responsiblePerson, #referrer, #contactPerson, #jobTitle,#companyAdd, #locationOfCompany, #tutoringProfessor, #nurtureProgram, #adminNote, #companyDescription, #helpItems, #uniformNum, #ext, #creationDate, #capitalAmount, #changeMoney_items, #phoneNum, #companyEmail, #lineId').removeClass("readOnly");
             CustomInputHandlers.init();
             $('#updateBtn').show();
             $('#supplementaryFilesBox').show();
@@ -552,14 +550,10 @@ $(function () {
             $('#statusText').hide();
         }
 
-        $('#updateBtn').on('click', function () {
-            // console.log('firmId 2 :', firmId); // 確認 psId 是否正確獲取
-            // 清除上次的資料
-            updatedData = {};
-            // 獲取所有欄位的目前值
+        $('#updateBtn').click(function () {
+            let updatedData = {};
             updatedData.id = firmId;
             updatedData.companyName = $('#companyName').text();
-            updatedData.createDate = $('#createDate').text();
             updatedData.companyDescription = $('#companyDescription').text();
             updatedData.uniformNum = $('#uniformNum').text();
             updatedData.creationDate = $('#creationDate').text();
@@ -572,32 +566,53 @@ $(function () {
             updatedData.lineId = $('#lineId').text();
             updatedData.contactPerson = $('#contactPerson').text();
             updatedData.ext = $('#ext').text();
-            updatedData.jobTitle = $('#jobTitle').val();
+            updatedData.jobTitle = $('#jobTitle').text();
             updatedData.companyAdd = $('#companyAdd').text();
-            updatedData.locationOfCompany = $('#locationOfCompany').val();
-            updatedData.helpItems = $('#helpItems').val();
-            // updatedData.adminNote = $('#adminNote').text();
+            updatedData.locationOfCompany = $('#locationOfCompany').text();
+            updatedData.helpItems = $('#helpItems').text();
+            updatedData.tutoringProfessor = $('#tutoringProfessor').text();
+            updatedData.adminNote = $('#adminNote').text();
+            updatedData.status = $('#status').val();
 
-            console.log(updatedData);
+            // 創建一個FormData對象來處理文件和其他數據
+            let formData = new FormData();
 
-            // 將更新的資料送到後端
+            // 添加表單中的文件
+            formData.append('companyProof', $('#companyProof')[0].files[0]);
+            formData.append('memoUpload', $('#memoUpload')[0].files[0]);
+            formData.append('consentDoc', $('#consentDoc')[0].files[0]);
+            formData.append('businessProof', $('#businessProof')[0].files[0]);
+            formData.append('planUpload', $('#planUpload')[0].files[0]);
+            formData.append('entryForm', $('#entryForm')[0].files[0]);
+            formData.append('payProof', $('#payProof')[0].files[0]);
+
+            // 添加其他數據
+            formData.append('updatedData', JSON.stringify(updatedData));
+
+            // 打印FormData檢查要傳的資料
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
+
+            // 使用AJAX將數據發送到後端
             // $.ajax({
-            //     url: '您的後端URL', // 替換成您的後端接收更新請求的URL
-            //     type: 'POST', // 或者 'PUT'，根據您的後端接口設計來決定
-            //     contentType: 'application/json',
-            //     data: JSON.stringify(updatedData),
+            //     url: '/your-backend-endpoint', // 替換為你的後端URL
+            //     type: 'POST',
+            //     data: formData,
+            //     processData: false,
+            //     contentType: false,
             //     success: function (response) {
-            //         // 處理成功回應
-            //         console.log('更新成功:', response);
-            //         // 根據需要執行其他操作，例如顯示成功訊息
+            //         // 處理成功響應
+            //         console.log('成功:', response);
             //     },
             //     error: function (xhr, status, error) {
-            //         // 處理錯誤情況
-            //         console.error('更新失敗:', error);
-            //         // 根據需要顯示錯誤訊息或執行其他操作
+            //         // 處理錯誤響應
+            //         console.error('錯誤:', error);
             //     }
             // });
         });
+
+
 
     });
 

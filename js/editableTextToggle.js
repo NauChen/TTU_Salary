@@ -346,7 +346,7 @@ var CustomInputHandlers = {
             var currentText = $this.text().trim();
 
             if ($this.find('input').length === 0) {
-                var $input = $('<input type="text" class="form-control" />').val(currentText);
+                var $input = $('<input type="text" class="form-control" onkeyup="restrictToValidChars(this)">').val(currentText);
                 $this.html($input);
                 $input.focus().select();
 
@@ -361,7 +361,7 @@ var CustomInputHandlers = {
                                 $this.text('');
                             }
                         } else {
-                            if (isValidLineID(newText)) {
+                            if (validLineID(newText)) {
                                 $this.text(newText);
                             } else {
                                 $this.text(currentText);

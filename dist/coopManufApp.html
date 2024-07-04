@@ -183,7 +183,7 @@
                 <div class="modal fade vendorDetail" id="vendorDetailModal" data-bs-backdrop="static"
                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="vendorDetailLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
-                        <form class="modal-content">
+                        <form class="modal-content" method="post" id="formCoopManufApp">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="vendorDetailLabel">廠商申請資料</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -193,7 +193,7 @@
     <div class="container-fluid">
         <!-- 公司名稱、申請日期(不可改) -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center textRequiredMark">
                 公司名稱
             </div>
             <div class="col lightBoxItems p-3 changeInput_items align_center thisTextRequired" id="companyName"></div>
@@ -204,23 +204,25 @@
         </div>
         <!-- 主要營業項目 -->
         <div class="row mb-1">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 textRequiredMark">
                 主要<br class="d-none d-lg-block">營業項目
             </div>
-            <div class="col lightBoxItems p-3 changeTextarea_lg_items align_center thisTextRequired" id="companyDescription"></div>
+            <div class="col lightBoxItems p-3 changeTextarea_lg_items align_center thisTextRequired"
+                id="companyDescription"></div>
         </div>
 
         <!-- 統編、成立日、資本額 -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center textRequiredMark">
                 統一編號
             </div>
-            <div class="col lightBoxItems p-3 changeUniformNum_items align_center thisTextRequired" id="uniformNum"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col lightBoxItems p-3 changeUniformNum_items align_center thisTextRequired" id="uniformNum">
+            </div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center textRequiredMark">
                 成立日期
             </div>
             <div class="col lightBoxItems p-3 changeDate_items align_center thisTextRequired" id="creationDate"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center textRequiredMark">
                 資本額
             </div>
             <div class="col lightBoxItems p-3 changeMoney_items align_center thisTextRequired" id="capitalAmount"></div>
@@ -228,38 +230,38 @@
 
         <!-- 員工數、負責人、推薦人 -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center textRequiredMark">
                 員工人數
             </div>
             <div class="col lightBoxItems p-3 changeMoney_items align_center thisTextRequired" id="employeesNum"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center textRequiredMark">
                 負責人&emsp;</div>
-            <div class="col lightBoxItems p-3 changeInput_items align_center thisTextRequired" id="responsiblePerson"></div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center thisTextRequired" id="responsiblePerson">
+            </div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 推薦人
             </div>
-            <div class="col lightBoxItems p-3 changeInput_items align_center thisTextRequired" id="referrer"></div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center" id="referrer"></div>
         </div>
 
         <!-- 電話、E-mail、Line -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center textRequiredMark">
                 聯絡電話
             </div>
             <div class="col lightBoxItems p-3 changePhone_items align_center thisTextRequired" id="phoneNum"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center textRequiredMark">
                 電子信箱
             </div>
             <div class="col lightBoxItems p-3 changeEmail_items align_center thisTextRequired" id="companyEmail"></div>
-            <div class="col-12 col-lg-1 text-nowrap lightBoxLabel inlineLabel align_center text-center">
-                <i class="fa-brands fa-line fs-1"></i>
-            </div>
+            <div class="col-12 col-lg-1 text-nowrap lightBoxLabel inlineLabel align_center text-lg-center py-2"><i
+                    class="fa-brands fa-line fs-1"></i></div>
             <div class="col lightBoxItems p-3 changeLineID_items align_center" id="lineId"></div>
         </div>
 
         <!-- 聯絡人、分機、職稱 -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center textRequiredMark">
                 主聯絡人
             </div>
             <div class="col lightBoxItems p-3 changeInput_items align_center thisTextRequired" id="contactPerson"></div>
@@ -267,7 +269,7 @@
                 分機號碼
             </div>
             <div class="col lightBoxItems p-3 changeUniformNum_items align_center" id="ext"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center textRequiredMark">
                 職務名
             </div>
             <div class="col lightBoxItems p-3 changeInput_items align_center thisTextRequired" id="jobTitle"></div>
@@ -275,14 +277,15 @@
 
         <!-- 登記地址、通訊地址 -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center textRequiredMark">
                 登記地址
             </div>
             <div class="col lightBoxItems p-3 changeInput_items align_center thisTextRequired" id="companyAdd"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center textRequiredMark">
                 通訊地址
             </div>
-            <div class="col lightBoxItems p-3 changeInput_items align_center thisTextRequired" id="locationOfCompany"></div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center thisTextRequired" id="locationOfCompany">
+            </div>
         </div>
 
         <!-- 輔導項目需求、輔導教授 -->
@@ -344,8 +347,8 @@
                     </label>
                     <div class="col">
                         <input type="file" class="form-control d-none" id="companyProof" accept=".pdf"
-                            onchange="javascript:{document.getElementById('fileInfo1').innerHTML = document.getElementById('companyProof').value;setFormHeight();}">
-                        <div id="fileInfo1" class="fileInfo"></div>
+                            onchange="javascript:{document.getElementById('fileInfo_companyProof').innerHTML = document.getElementById('companyProof').value;}">
+                        <div id="fileInfo_companyProof" class="fileInfo"></div>
                     </div>
                 </div>
 
@@ -356,8 +359,8 @@
                     </label>
                     <div class="col">
                         <input type="file" class="form-control d-none" id="memoUpload" accept=".pdf"
-                            onchange="javascript:{document.getElementById('fileInfo6').innerHTML = document.getElementById('memoUpload').value;setFormHeight();}">
-                        <div id="fileInfo6" class="fileInfo"></div>
+                            onchange="javascript:{document.getElementById('fileInfo_memoOfCooperation').innerHTML = document.getElementById('memoUpload').value;}">
+                        <div id="fileInfo_memoOfCooperation" class="fileInfo"></div>
                     </div>
                 </div>
 
@@ -367,8 +370,8 @@
                     </label>
                     <div class="col">
                         <input type="file" class="form-control d-none" id="consentDoc" accept=".pdf"
-                            onchange="javascript:{document.getElementById('fileInfo3').innerHTML = document.getElementById('consentDoc').value;setFormHeight();}">
-                        <div id="fileInfo3" class="fileInfo"></div>
+                            onchange="javascript:{document.getElementById('fileInfo_consentDoc').innerHTML = document.getElementById('consentDoc').value;}">
+                        <div id="fileInfo_consentDoc" class="fileInfo"></div>
                     </div>
                 </div>
 
@@ -379,8 +382,8 @@
                     </label>
                     <div class="col">
                         <input type="file" class="form-control d-none" id="businessProof" accept=".pdf"
-                            onchange="javascript:{document.getElementById('fileInfo2').innerHTML = document.getElementById('businessProof').value;setFormHeight();}">
-                        <div id="fileInfo2" class="fileInfo"></div>
+                            onchange="javascript:{document.getElementById('fileInfo_businessProof').innerHTML = document.getElementById('businessProof').value;}">
+                        <div id="fileInfo_businessProof" class="fileInfo"></div>
                     </div>
                 </div>
 
@@ -390,8 +393,8 @@
                     </label>
                     <div class="col">
                         <input type="file" class="form-control d-none" id="planUpload" accept=".pdf"
-                            onchange="javascript:{document.getElementById('fileInfo5').innerHTML = document.getElementById('planUpload').value;setFormHeight();}">
-                        <div id="fileInfo5" class="fileInfo"></div>
+                            onchange="javascript:{document.getElementById('fileInfo_planConcept').innerHTML = document.getElementById('planUpload').value;}">
+                        <div id="fileInfo_planConcept" class="fileInfo"></div>
                     </div>
                 </div>
 
@@ -401,8 +404,8 @@
                     </label>
                     <div class="col">
                         <input type="file" class="form-control d-none" id="entryForm" accept=".pdf"
-                            onchange="javascript:{document.getElementById('fileInfo4').innerHTML = document.getElementById('entryForm').value;setFormHeight();}">
-                        <div id="fileInfo4" class="fileInfo"></div>
+                            onchange="javascript:{document.getElementById('fileInfo_entryForm').innerHTML = document.getElementById('entryForm').value;}">
+                        <div id="fileInfo_entryForm" class="fileInfo"></div>
                     </div>
                 </div>
 
@@ -412,8 +415,8 @@
                     </label>
                     <div class="col-12">
                         <input type="file" class="form-control d-none" id="payProof" accept=".pdf"
-                            onchange="javascript:{document.getElementById('fileInfo7').innerHTML = document.getElementById('payProof').value;setFormHeight();}">
-                        <div id="fileInfo7" class="fileInfo"></div>
+                            onchange="javascript:{document.getElementById('fileInfo_payProof').innerHTML = document.getElementById('payProof').value;}">
+                        <div id="fileInfo_payProof" class="fileInfo"></div>
                     </div>
                 </div>
             </div>

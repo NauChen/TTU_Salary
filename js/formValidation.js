@@ -289,6 +289,12 @@ function validateEmail(email) {
     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return emailPattern.test(email);
 }
+// 驗證Line ID格式的函數
+function validLineID(lineID) {
+    // 允许的字符為半形英数字、(.)、(-)、(_)和@
+    var validChars = /^[a-zA-Z0-9.@_-]+$/;
+    return validChars.test(lineID);
+}
 
 // ※※ onblur函式 - 輸入完畢後用 ※※
 //   添加警告訊息，調用函式-驗證電話格式
