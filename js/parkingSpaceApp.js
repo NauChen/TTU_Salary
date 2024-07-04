@@ -6,7 +6,7 @@ var dataset_parkingSpaceApp = [
         'carType': '汽車',
         'licensePlateNum': '8866-AB',
         'endDate': '2024-08-30',
-        'paymentDate': '2024-06-01',
+        'receivedDate': '2024-06-01',
         'status': '不通過',
         'id': '1',
         'parkingSpaceNum': 'B1-01',
@@ -27,7 +27,7 @@ var dataset_parkingSpaceApp = [
         'carType': '機車',
         'licensePlateNum': '3GR-123',
         'endDate': '2024-08-30',
-        'paymentDate': '2024-01-01',
+        'receivedDate': '2024-01-01',
         'status': '待補件',
         'id': '2',
         'parkingSpaceNum': 'B3-01',
@@ -38,7 +38,8 @@ var dataset_parkingSpaceApp = [
         'email': 'sunzhongmei@example.com',
         'amount': '3,500',
         'jobTitle': '業務專員',
-        'adminNote': '老是拖款'
+        'adminNote': '老是拖款',
+        'parkingSpaceStartDate': '2024-07-30',
     },
     {
         'createDate': '2024-07-15',
@@ -47,7 +48,7 @@ var dataset_parkingSpaceApp = [
         'carType': '汽車',
         'licensePlateNum': '1234-CD',
         'endDate': '2024-09-15',
-        'paymentDate': '2024-06-10',
+        'receivedDate': '2024-06-10',
         'status': '待審核',
         'id': '3',
         'parkingSpaceNum': 'B2-05',
@@ -58,7 +59,8 @@ var dataset_parkingSpaceApp = [
         'email': 'lidanren@example.com',
         'amount': '3,800',
         'jobTitle': '技術主管',
-        'adminNote': '要主動提醒'
+        'adminNote': '要主動提醒',
+        'parkingSpaceStartDate': '2024-08-30',
     },
     {
         'createDate': '2024-07-10',
@@ -67,7 +69,7 @@ var dataset_parkingSpaceApp = [
         'carType': '機車',
         'licensePlateNum': '5XY-678',
         'endDate': '2024-09-10',
-        'paymentDate': '2024-05-01',
+        'receivedDate': '2024-05-01',
         'status': '待補件',
         'id': '4',
         'parkingSpaceNum': 'B4-02',
@@ -78,7 +80,8 @@ var dataset_parkingSpaceApp = [
         'email': 'wangxiaoming@example.com',
         'amount': '3,200',
         'jobTitle': '客服經理',
-        'adminNote': ''
+        'adminNote': '',
+        'parkingSpaceStartDate': '2024-07-10',
     },
     {
         'createDate': '2024-07-20',
@@ -87,7 +90,7 @@ var dataset_parkingSpaceApp = [
         'carType': '汽車',
         'licensePlateNum': '5678-EF',
         'endDate': '2024-09-20',
-        'paymentDate': '2024-06-05',
+        'receivedDate': '2024-06-05',
         'status': '待審核',
         'id': '5',
         'parkingSpaceNum': 'B5-01',
@@ -98,7 +101,8 @@ var dataset_parkingSpaceApp = [
         'email': 'chenmeili@example.com',
         'amount': '3,700',
         'jobTitle': '行銷主管',
-        'adminNote': '弄錯了'
+        'adminNote': '弄錯了',
+        'parkingSpaceStartDate': '2024-07-20',
     },
     {
         'createDate': '2024-06-25',
@@ -107,7 +111,7 @@ var dataset_parkingSpaceApp = [
         'carType': '機車',
         'licensePlateNum': '6AB-456',
         'endDate': '2024-08-25',
-        'paymentDate': '2024-05-01',
+        'receivedDate': '2024-05-01',
         'status': '通過',
         'id': '6',
         'parkingSpaceNum': 'B6-03',
@@ -118,7 +122,8 @@ var dataset_parkingSpaceApp = [
         'email': 'zhangwei@example.com',
         'amount': '3,100',
         'jobTitle': '產品經理',
-        'adminNote': '要求很多所以收比較貴'
+        'adminNote': '要求很多所以收比較貴',
+        'parkingSpaceStartDate': '2024-07-14',
     },
     {
         'createDate': '2024-06-20',
@@ -127,7 +132,7 @@ var dataset_parkingSpaceApp = [
         'carType': '汽車',
         'licensePlateNum': '7890-GH',
         'endDate': '2024-08-20',
-        'paymentDate': '2024-05-01',
+        'receivedDate': '2024-05-01',
         'status': '不通過',
         'id': '7',
         'parkingSpaceNum': 'B7-04',
@@ -138,7 +143,8 @@ var dataset_parkingSpaceApp = [
         'email': 'huangxiaohu@example.com',
         'amount': '3,600',
         'jobTitle': '行政助理',
-        'adminNote': '優良公司'
+        'adminNote': '優良公司',
+        'parkingSpaceStartDate': '2024-07-12',
     },
     {
         'createDate': '2024-07-05',
@@ -147,7 +153,7 @@ var dataset_parkingSpaceApp = [
         'carType': '汽車',
         'licensePlateNum': '8901-IJ',
         'endDate': '2024-09-05',
-        'paymentDate': '2024-06-01',
+        'receivedDate': '2024-06-01',
         'status': '通過',
         'id': '8',
         'parkingSpaceNum': 'B8-02',
@@ -158,7 +164,8 @@ var dataset_parkingSpaceApp = [
         'email': 'wuxiaohua@example.com',
         'amount': '3,900',
         'jobTitle': '研發工程師',
-        'adminNote': '會亂停車'
+        'adminNote': '會亂停車',
+        'parkingSpaceStartDate': '2024-07-17',
     },
     {
         'createDate': '2024-06-28',
@@ -167,7 +174,7 @@ var dataset_parkingSpaceApp = [
         'carType': '機車',
         'licensePlateNum': '9JK-789',
         'endDate': '2024-08-28',
-        'paymentDate': '2024-05-01',
+        'receivedDate': '2024-05-01',
         'status': '不通過',
         'id': '9',
         'parkingSpaceNum': 'B9-03',
@@ -178,7 +185,8 @@ var dataset_parkingSpaceApp = [
         'email': 'yedayong@example.com',
         'amount': '3,400',
         'jobTitle': '人力資源經理',
-        'adminNote': ''
+        'adminNote': '',
+        'parkingSpaceStartDate': '2024-07-10',
     },
     {
         'createDate': '2024-07-12',
@@ -187,7 +195,7 @@ var dataset_parkingSpaceApp = [
         'carType': '汽車',
         'licensePlateNum': '0123-KL',
         'endDate': '2024-09-12',
-        'paymentDate': '2024-06-01',
+        'receivedDate': '2024-06-01',
         'status': '通過',
         'id': '10',
         'parkingSpaceNum': 'B10-01',
@@ -198,7 +206,8 @@ var dataset_parkingSpaceApp = [
         'email': 'zhaomingzhi@example.com',
         'amount': '3,500',
         'jobTitle': '客戶經理',
-        'adminNote': ''
+        'adminNote': '',
+        'parkingSpaceStartDate': '2024-07-26',
     },
     {
         'createDate': '2024-07-01',
@@ -207,7 +216,7 @@ var dataset_parkingSpaceApp = [
         'carType': '機車',
         'licensePlateNum': '1LM-234',
         'endDate': '2024-08-01',
-        'paymentDate': '2024-05-01',
+        'receivedDate': '2024-05-01',
         'status': '待審核',
         'id': '11',
         'parkingSpaceNum': 'B11-02',
@@ -218,7 +227,8 @@ var dataset_parkingSpaceApp = [
         'email': 'linxiaowei@example.com',
         'amount': '3,200',
         'jobTitle': '市場專員',
-        'adminNote': '共用車位'
+        'adminNote': '共用車位',
+        'parkingSpaceStartDate': '2024-07-24',
     },
     {
         'createDate': '2024-07-03',
@@ -227,7 +237,7 @@ var dataset_parkingSpaceApp = [
         'carType': '汽車',
         'licensePlateNum': '3456-MN',
         'endDate': '2024-09-03',
-        'paymentDate': '2024-06-01',
+        'receivedDate': '2024-06-01',
         'status': '通過',
         'id': '12',
         'parkingSpaceNum': 'B12-01',
@@ -238,7 +248,8 @@ var dataset_parkingSpaceApp = [
         'email': 'liuxiaoling@example.com',
         'amount': '3,700',
         'jobTitle': '財務分析師',
-        'adminNote': ''
+        'adminNote': '',
+        'parkingSpaceStartDate': '2024-07-17',
     }
 ];
 
@@ -271,9 +282,7 @@ $(function () {
             { data: 'carType', title: "車位類型", }, // 2
             { data: 'licensePlateNum', title: "車牌號碼", }, // 3
             { data: 'name', title: "申請人", }, // 4
-            // { data: 'phone', title: "申請人電話", }, // 5
-               { data: 'phone', title: "預計起租日", }, // 5
-            // { data: 'paymentDate', title: "付款日", },
+            { data: 'parkingSpaceStartDate', title: "預計起租日", }, // 5
             { data: 'status', title: "審核進度", }, // 6
             {
                 data: 'id', title: "檢閱", // 7
@@ -302,13 +311,9 @@ $(function () {
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(7)', row).css('min-width', '70px');
-            $('td:eq(0)', row).css('font-size', '.95em');
-            // $('td:eq(3)', row).addClass('pe-5');
-            // [5, 6].forEach(function (colIdx) {
-            //     $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
-            // });
-            [5, 6].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
+            // $('td:eq(0)', row).css('font-size', '.95em');
+            [0, 5].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('min-width', '130px').css('font-size', '.95em');
             });
         }
     });
@@ -318,30 +323,31 @@ $(function () {
         // console.log('Event relatedTarget:', button);
         let psId = String(button.data('id'));
         // console.log('psId:', psId); // 確認 psId 是否正確獲取
-        // console.log('Button clicked, firmId:', firmId);
 
         // 解除先前綁定的點擊事件
         $('#updateBtn').off('click');
 
         let parkingSpaceData = dataset_parkingSpaceApp.find(perkingSpace => perkingSpace.id === psId);
-
+        // 代入資料
         if (parkingSpaceData) {
-            //     // console.log('Job data found:', parkingSpaceData);
             $('#companyName').text(parkingSpaceData.company);
             $('#uniformNum').text(parkingSpaceData.uniformNum);
             $('#createDate').text(parkingSpaceData.createDate);
+
             $('#name').text(parkingSpaceData.name);
             $('#phoneNum').text(parkingSpaceData.phone);
             $('#ext').text(parkingSpaceData.ext);
+
             $('#idNumber').text(parkingSpaceData.idNumber);
             $('#email').text(parkingSpaceData.email);
             $('#jobTitle').text(parkingSpaceData.jobTitle);
-            $('#carType').text(parkingSpaceData.carType);
 
-            // $('#parkingSpaceNum').text(parkingSpaceData.parkingSpaceNum);
+            $('#carType').text(parkingSpaceData.carType);
+            $('#parkingSpaceNum').text(parkingSpaceData.parkingSpaceNum);
+            $('#receivedDate').text(parkingSpaceData.receivedDate);
+            $('#parkingSpaceStartDate').text(parkingSpaceData.parkingSpaceStartDate);
 
             // $('#endDate').text(parkingSpaceData.endDate);
-            // $('#paymentDate').text(parkingSpaceData.paymentDate);
             // $('#rate').text(parkingSpaceData.amount);
             $('#adminNote').text(parkingSpaceData.adminNote);
 
@@ -365,15 +371,15 @@ $(function () {
             $('.changeEmail_items').off('click');
             $('.changeRadio_items').off('click');
             $('.changeSelect_items').off('click');
-            theseRemoveClass(["changeInput_items"], ['name', 'idNumber', 'jobTitle', 'parkingSpaceNum', 'adminNote']);
+            theseRemoveClass(["changeInput_items"], ['name', 'idNumber', 'jobTitle', 'adminNote']);
             theseRemoveClass(["changeNumber_items"], ['ext']);
-            // theseRemoveClass(["changeDate_items"], ['endDate', 'paymentDate']);
+            // theseRemoveClass(["changeDate_items"], ['endDate', 'receivedDate']);
             theseRemoveClass(["changeMoney_items"], ['rate']);
             theseRemoveClass(["changePhone_items"], ['phoneNum']);
             theseRemoveClass(["changeEmail_items"], ['email']);
             theseRemoveClass(["changeRadio_items"], ['carType']);
             // theseRemoveClass(["changeSelect_items"], ['parkingSpaceNum']);
-            theseAddClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'parkingSpaceNum', 'adminNote', 'ext', 'endDate', 'paymentDate', 'rate', 'phoneNum', 'email', 'carType']);
+            theseAddClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'adminNote', 'ext', 'endDate', 'rate', 'phoneNum', 'email', 'carType']);
             $('#updateBtn').hide();
             $('#supplementaryFilesBox').hide();
             $('#status').hide();
@@ -384,13 +390,13 @@ $(function () {
         } else {
             theseAddClass(["changeInput_items"], ['name', 'idNumber', 'jobTitle', 'adminNote']);
             theseAddClass(["changeNumber_items"], ['ext']);
-            // theseAddClass(["changeDate_items"], ['endDate', 'paymentDate']);
+            // theseAddClass(["changeDate_items"], ['endDate', 'receivedDate']);
             theseAddClass(["changeMoney_items"], ['rate']);
             theseAddClass(["changePhone_items"], ['phoneNum']);
             theseAddClass(["changeEmail_items"], ['email']);
             theseAddClass(["changeRadio_items"], ['carType']);
             // theseAddClass(["changeSelect_items"], ['parkingSpaceNum']);
-            theseRemoveClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'parkingSpaceNum', 'adminNote', 'ext', 'endDate', 'paymentDate', 'rate', 'phoneNum', 'email', 'carType']);
+            theseRemoveClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'adminNote', 'ext', 'endDate', 'rate', 'phoneNum', 'email', 'carType']);
             CustomInputHandlers.init();
             $('#updateBtn').show();
             $('#supplementaryFilesBox').show();
@@ -416,7 +422,7 @@ $(function () {
             updatedData.carType = $('#carType').text();
             // updatedData.parkingSpaceNum = $('#parkingSpaceNum').text();
             // updatedData.endDate = $('#endDate').text();
-            // updatedData.paymentDate = $('#paymentDate').text();
+            // updatedData.receivedDate = $('#receivedDate').text();
             // updatedData.rate = $('#rate').text();
             updatedData.adminNote = $('#adminNote').text();
             updatedData.status = $('#status').val();

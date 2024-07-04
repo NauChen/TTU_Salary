@@ -1036,7 +1036,7 @@ $(function () {
 
     });
 
-    // 車位與識別證 
+    // 車位
     $('#confirmPaymentParkingSpaceList').DataTable({
         ...commonSettingsTable,
         "data": dataset_confirmPaymentParkingSpace,
@@ -1077,7 +1077,7 @@ $(function () {
             {
                 data: 'id', title: "檢閱", // 8
                 render: function (data) {
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentCultivationModel" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
+                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentParkingSpaceModel" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
                 }, className: 'text-center text-nowrap'
             },
         ],
