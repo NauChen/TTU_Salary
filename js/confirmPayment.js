@@ -814,18 +814,20 @@ var dataset_confirmPaymentCultivationRoom2 = [
 var dataset_confirmPaymentParkingSpace = [
     {
         'id': '1',
+        'building': '校本部',
         'carType': '機車',
         'parkingSpaceNum': 'B1-12',
         'amount': '100',
-        'company': '優質科技有限公司',
-        'deadLine': '2024-08-18',
-        'paymentDate': '2024-08-16',
-        'receivedDate': '2024-08-16',
+        'company': '',
+        'deadLine': '',
+        'paymentDate': '',
+        'receivedDate': '',
         'adminNote': ''
     },
     {
         'id': '2',
         'carType': '汽車',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B1-50',
         'amount': '2,500',
         'company': '全球創新有限公司',
@@ -837,6 +839,7 @@ var dataset_confirmPaymentParkingSpace = [
     {
         'id': '3',
         'carType': '汽車',
+        'building': '校本部',
         'parkingSpaceNum': 'B2-09',
         'amount': '3,000',
         'company': '華興貿易股份有限公司',
@@ -848,6 +851,7 @@ var dataset_confirmPaymentParkingSpace = [
     {
         'id': '4',
         'carType': '機車',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B2-45',
         'amount': '100',
         'company': '聯合科技有限公司',
@@ -859,17 +863,19 @@ var dataset_confirmPaymentParkingSpace = [
     {
         'id': '5',
         'carType': '汽車',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B3-07',
         'amount': '2,500',
-        'company': '宇宙科技股份有限公司',
-        'deadLine': '2024-12-18',
-        'paymentDate': '2024-12-16',
-        'receivedDate': '2024-12-16',
+        'company': '',
+        'deadLine': '',
+        'paymentDate': '',
+        'receivedDate': '',
         'adminNote': ''
     },
     {
         'id': '6',
         'carType': '汽車',
+        'building': '校本部',
         'parkingSpaceNum': 'B6-10',
         'amount': '2,500',
         'company': '至尊企業有限公司',
@@ -881,6 +887,7 @@ var dataset_confirmPaymentParkingSpace = [
     {
         'id': '7',
         'carType': '汽車',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B4-12',
         'amount': '2,500',
         'company': '新世紀科技股份有限公司',
@@ -892,6 +899,7 @@ var dataset_confirmPaymentParkingSpace = [
     {
         'id': '8',
         'carType': '機車',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B3-45',
         'amount': '100',
         'company': '卓越科技有限公司',
@@ -903,6 +911,7 @@ var dataset_confirmPaymentParkingSpace = [
     {
         'id': '9',
         'carType': '汽車',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B5-08',
         'amount': '2,500',
         'company': '立欣資訊股份有限公司',
@@ -914,6 +923,7 @@ var dataset_confirmPaymentParkingSpace = [
     {
         'id': '10',
         'carType': '機車',
+        'building': '校本部',
         'parkingSpaceNum': 'B2-10',
         'amount': '2,500',
         'company': '百勝企業有限公司',
@@ -921,6 +931,123 @@ var dataset_confirmPaymentParkingSpace = [
         'paymentDate': '2025-05-15',
         'receivedDate': '2025-05-15',
         'adminNote': ''
+    }
+];
+
+var dataset_confirmPaymentAll = [
+    {
+        'id': '1',
+        'createDate': '2024-07-15',
+        'company': '超級棒股份有限公司',
+        'paymentDate': '2024-07-13',
+        'amount': '2,500',
+        'receivedDate': '2024-07-13',
+        'adminNote': '',
+        'status': '已開立收據',
+        'type': '汽車',
+        'placeOrPrint': 'B1-15',
+        'last5AccountNo': '01234',
+        'remittanceFile': '',
+        'remark':'',
+    },
+    {
+        'id': '2',
+        'createDate': '2024-07-16',
+        'company': '優質科技股份有限公司',
+        'amount': '100',
+        'type': '機車',
+        'paymentDate': '2024-07-14',
+        'receivedDate': '2024-07-15',
+        'placeOrPrint': 'B2-09',
+        'adminNote': ''
+    },
+    {
+        'id': '3',
+        'createDate': '2024-07-17',
+        'company': '金鼎企業有限公司',
+        'amount': '2,500',
+        'type': '汽車',
+        'paymentDate': '2024-07-15',
+        'receivedDate': '2024-07-16',
+        'placeOrPrint': '5',
+        'adminNote': '補發第五次'
+    },
+    {
+        'id': '4',
+        'createDate': '2024-07-18',
+        'company': '龍騰科技股份有限公司',
+        'amount': '2,500',
+        'type': '汽車',
+        'paymentDate': '2024-07-16',
+        'receivedDate': '2024-07-16',
+        'placeOrPrint': 'B1-07',
+        'adminNote': ''
+    },
+    {
+        'id': '5',
+        'createDate': '2024-07-19',
+        'company': '日月光股份有限公司',
+        'amount': '100',
+        'type': '機車',
+        'paymentDate': '2024-07-17',
+        'receivedDate': '2024-07-17',
+        'placeOrPrint': '',
+        'adminNote': '已空車位'
+    },
+    {
+        'id': '6',
+        'createDate': '2024-07-20',
+        'company': '巨匠科技有限公司',
+        'amount': '2,500',
+        'type': '汽車',
+        'paymentDate': '2024-07-18',
+        'receivedDate': '2024-07-19',
+        'placeOrPrint': '3',
+        'adminNote': ''
+    },
+    {
+        'id': '7',
+        'createDate': '2024-07-21',
+        'company': '光速科技股份有限公司',
+        'amount': '3,000',
+        'type': '汽車',
+        'paymentDate': '2024-07-19',
+        'receivedDate': '2024-07-19',
+        'placeOrPrint': 'B2-12',
+        'adminNote': ''
+    },
+    {
+        'id': '8',
+        'createDate': '2024-07-22',
+        'company': '太陽能科技股份有限公司',
+        'amount': '100',
+        'type': '機車',
+        'paymentDate': '2024-07-20',
+        'receivedDate': '2024-07-21',
+        'placeOrPrint': 'B3-08',
+        'adminNote': ''
+    },
+    {
+        'id': '9',
+        'createDate': '2024-07-23',
+        'company': '巨力科技有限公司',
+        'amount': '2,500',
+        'type': '汽車',
+        'paymentDate': '2024-07-21',
+        'receivedDate': '2024-07-22',
+        'placeOrPrint': '8',
+        'adminNote': ''
+    },
+    {
+        'id': '10',
+        'createDate': '2024-07-24',
+        'company': '迅達科技股份有限公司',
+        'amount': '2,500',
+        'type': '汽車',
+        'paymentDate': '2024-07-22',
+        'receivedDate': '2024-07-23',
+        'placeOrPrint': 'B1-10',
+        'adminNote': '確認車位'
     }
 ];
 
@@ -1041,11 +1168,12 @@ $(function () {
         ...commonSettingsTable,
         "data": dataset_confirmPaymentParkingSpace,
         "columns": [
-            { data: 'carType', title: "類型", },
-            { data: 'parkingSpaceNum', title: "車位號碼", },
-            { data: 'amount', title: "費用", }, // 2
+            { data: 'building', title: '大樓' }, // 0
+            { data: 'carType', title: "類型", }, // 1
+            { data: 'parkingSpaceNum', title: "車位號碼", }, // 2
+            { data: 'amount', title: "費用", }, // 3
             {
-                data: 'company', title: "配置公司", // 3 
+                data: 'company', title: "承租公司", // 4
                 render: function (data) {
                     if (data === null || data == '') {
                         return '-';
@@ -1054,33 +1182,36 @@ $(function () {
                     }
                 }
             },
-            { data: 'deadLine', title: "到期日", }, // 0
             {
-                data: 'paymentDate', title: "廠商通知<br>付款日", // 6
-                render: function (data, type, row) {
-                    const paymentDateFirst = row.paymentDateFirst;
-                    if (data == '' || data == null) {
-                        if (paymentDateFirst != '' && paymentDateFirst != null) {
-                            return paymentDateFirst;
-                        } else {
-                            return '-';
-                        }
+                data: 'deadLine', title: "到期日",
+                render: function (data) {
+                    if (data === null || data == '') {
+                        return '-';
                     } else {
                         return data;
                     }
                 }
-            },
-
-            { data: 'receivedDate', title: "入帳日", }, // 5
+            }, // 5
+            {
+                data: 'receivedDate', title: "付款日",
+                render: function (data) {
+                    if (data === null || data == '') {
+                        return '-';
+                    } else {
+                        return data;
+                    }
+                }
+            }, // 6
 
             { data: 'adminNote', title: "管理備註", }, // 7
             {
                 data: 'id', title: "檢閱", // 8
                 render: function (data) {
                     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentParkingSpaceModel" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
-                }, className: 'text-center text-nowrap'
+                }, className: 'text-lg-center text-nowrap'
             },
         ],
+        "order": [[0, "asc"], [1, "desc"], [2, "asc"]],
         "columnDefs": [
             {
                 targets: [1],
@@ -1091,22 +1222,23 @@ $(function () {
                 responsivePriority: 2,
             },
             {
-                targets: [3],
+                targets: [5],
                 responsivePriority: 3,
             },
             { searchable: false, orderable: false, targets: [8] },
-            { className: "text-center", targets: [0, 4, 5, 6] },
-            { className: "text-nowrap", targets: [0, 2, 3, 4, 5, 6] },
+            { className: "text-lg-center", targets: [0, 1, 2, 5, 6] },
+            { className: "text-nowrap", targets: [0, 1, 2, 3, 5, 6] },
         ],
+
         createdRow: function (row, data, dataIndex) {
             $('td:eq(8)', row).css('min-width', '70px');
+            [0, 5, 6].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('min-width', '100px').css('font-size', '.95em');
+            });
             // $('td:eq(3)', row).addClass('pe-5');
             // [5, 6].forEach(function (colIdx) {
             //     $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
             // });
-            [0, 4, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '100px').css('font-size', '.95em');
-            });
             // [1, 4, 5].forEach(function (colIdx) {
             //     $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
             // });
@@ -1254,13 +1386,89 @@ $(function () {
         }
     });
 
+    $('#confirmPaymentAllList').DataTable({
+        ...commonSettingsTable,
+        "data": dataset_confirmPaymentAll,
+        "columns": [
+            { data: 'createDate', title: '通知日期' }, // 0
+            {
+                data: 'company', title: "通知公司", // 1
+                render: function (data) {
+                    if (data === null || data == '') {
+                        return '-';
+                    } else {
+                        return data;
+                    }
+                }
+            },
+            {
+                data: 'paymentDate', title: "付款日", // 6
+                render: function (data) {
+                    if (data === null || data == '') {
+                        return '-';
+                    } else {
+                        return data;
+                    }
+                }
+            },
+            { data: 'amount', title: "付款金額", }, // 2
+
+            { data: 'adminNote', title: "管理備註", }, // 7
+            {
+                data: 'id', title: "操作", // 8
+                render: function (data, type, row) {
+                    const company = row.company;
+                    if (company == '' || company == null) {
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentCultivationModel" data-id="' + data + '" title="新增進駐廠商"><i class="fa-regular fa-keyboard"></i>';
+                    } else {
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentCultivationModel" data-id="' + data + '"><i class="fa-solid fa-wrench"></i>';
+                    }
+                }, className: 'text-center text-nowrap'
+            },
+        ],
+        "order": [[10, "asc"], [5, "desc"], [4, "desc"]],
+        "columnDefs": [
+            {
+                targets: [1],
+                responsivePriority: 1,
+            },
+            {
+                targets: [2],
+                responsivePriority: 2,
+            },
+            {
+                targets: [3],
+                responsivePriority: 3,
+            },
+            { searchable: false, orderable: false, targets: [8, 9] },
+            { className: "text-center", targets: [1, 4, 5, 6] },
+            { className: "text-nowrap", targets: [0, 1, 2, 4, 5, 6] },
+        ],
+        createdRow: function (row, data, dataIndex) {
+            [8, 9].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
+            });
+            $('td:eq(5)', row).css('min-width', '100px');
+            [4, 5].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('max-width', '146px');
+            });
+            [2, 4, 5, 6].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('font-size', '.9em');
+            });
+            // $('td:eq(8)', row).css('max-width', '70px');
+            // [5, 6].forEach(function (colIdx) {
+            //     $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
+            // });
+        }
+    });
+
 });
 
 
 $(function () {
     var table1 = $('#confirmPaymentCultivationRoomList').DataTable();
-    var table2 = $('#confirmPaymentCarOrCardList').DataTable();
-    var table4 = $('#confirmPaymentCultivationRoomList2').DataTable();
+    var table2 = $('#confirmPaymentParkingSpaceList').DataTable();
+    var table4 = $('#confirmPaymentAllList').DataTable();
     // 監聽Bootstrap的切換事件
     $('input[type="radio"][name="btnradio"]').on('change', function () {
         setTimeout(function () {

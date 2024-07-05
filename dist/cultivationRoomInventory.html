@@ -192,15 +192,29 @@
 
                             <div class="modal-body">
     <div class="container-fluid">
-        <div class="row mb-1 multiple d-none">
-            <label for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">培育大樓</label>
+        <div class="row mb-1">
+            <div for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">資料細項</div>
             <div class="col lightBoxItems p-3">
-                <input type="text" class="form-control" id="building">
-            </div>
-            <label for="room"
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">培育室</label>
-            <div class="col lightBoxItems p-3">
-                <input type="text" class="form-control" id="room">
+                <div class="row">
+                    <label for="dataId" class="col-form-label col-auto">申請書ID</label>
+                    <input type="text" class="form-control col" id="dataId" name="dataId">
+                </div>
+                <div class="row">
+                    <label for="type" class="col-form-label col-auto">申請種類</label>
+                    <input type="text" class="form-control col" id="type" name="type">
+                </div>
+                <div class="row">
+                    <label for="company" class="col-form-label col-auto">公司名稱</label>
+                    <input type="text" class="form-control col" id="company" name="company">
+                </div>
+                <div class="row">
+                    <label for="renewOrReprint" class="col-form-label col-auto">合約類型</label>
+                    <input type="text" class="form-control col" id="renewOrReprint" name="renewOrReprint">
+                </div>
+                <div class="row">
+                    <label for="itemNum" class="col-form-label col-auto">續約物件</label>
+                    <input type="text" class="form-control col" id="itemNum" name="itemNum">
+                </div>
             </div>
         </div>
         <div class="row mb-1">
@@ -208,8 +222,18 @@
                     class="requiredMark">*</span>匯款日期<span class="d-none d-lg-inline">&emsp;&emsp;&emsp;</span>
             </label>
             <div class="col lightBoxItems p-3">
-                <input type="date" class="form-control thisRequired" id="paymentDate">
+                <input type="date" class="form-control thisRequired" id="paymentDate" name="paymentDate">
                 <span class="text-danger" id="danger_paymentDate"></span>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <label for="paymentAmount" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
+                    class="requiredMark">*</span>匯款金額<span class="d-none d-lg-inline">&emsp;&emsp;&emsp;</span>
+            </label>
+            <div class="col lightBoxItems p-3">
+                <input type="text" class="form-control thisRequired" id="paymentAmount" onkeyup="restrictToNum(this)"
+                    onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)" name="paymentAmount">
+                <span class="text-danger" id="danger_paymentAmount"></span>
             </div>
         </div>
         <div class="row mb-1">
@@ -217,7 +241,8 @@
                     class="requiredMark">*</span>匯款帳號後五碼
             </label>
             <div class="col lightBoxItems p-3">
-                <input type="text" class="form-control thisRequired" id="last5AccountNo" onkeyup="restrictTo5Num(this)">
+                <input type="text" class="form-control thisRequired" id="last5AccountNo" onkeyup="restrictTo5Num(this)"
+                    name="last5AccountNo">
                 <span class="text-danger" id="danger_last5AccountNo"></span>
             </div>
         </div>
@@ -232,6 +257,7 @@
                     </label>
                     <div class="col-12">
                         <input type="file" class="form-control d-none" id="remittancePdf" accept=".pdf"
+                            name="remittancePdf"
                             onchange="javascript:{document.getElementById('remittance_fileInfo').innerHTML = document.getElementById('remittancePdf').value;setFormHeight();}">
                         <div id="remittance_fileInfo" class="fileInfo"></div>
                     </div>

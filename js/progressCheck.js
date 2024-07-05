@@ -4,10 +4,12 @@ var dataset_progressCheck = [
         'id': '1',
         'createDate': '2024-07-01',
         'type': '汽車位',
-        'name': '孫小美',
-        'remark': '續約：B1-01',
+        'isReprint': '',
+        'isRenew': '續約',
+        'itemNum': 'B1-01',
         'paymentDate': '2024-07-07',
-        'status': '待補件。匯款證明',
+        'name': '孫小美',
+        'status': '',
         'remittanceFile': '20240710RF2',
     },
     {
@@ -15,7 +17,7 @@ var dataset_progressCheck = [
         'createDate': '2024-06-15',
         'type': '機車位',
         'name': '孫中美',
-        'remark': '首次申請',
+        'itemNum': '首次申請',
         'paymentDate': '',
         'status': '待補件。匯款證明',
         'remittanceFile': '20240710RF1',
@@ -25,7 +27,7 @@ var dataset_progressCheck = [
         'createDate': '2024-06-25',
         'type': '識別證',
         'name': '孫大美',
-        'remark': '申請補發',
+        'itemNum': '申請補發',
         'paymentDate': '2024-07-02',
         'status': '通過',
         'remittanceFile': '20240710RF3',
@@ -35,7 +37,7 @@ var dataset_progressCheck = [
         'createDate': '2024-07-10',
         'type': '汽車位',
         'name': '王小明',
-        'remark': '首次申請',
+        'itemNum': '首次申請',
         'paymentDate': '2024-07-17',
         'status': '不通過。使用者取消。',
         'remittanceFile': '',
@@ -45,7 +47,7 @@ var dataset_progressCheck = [
         'createDate': '2024-07-03',
         'type': '機車位',
         'name': '陳美麗',
-        'remark': '續約：B3-01',
+        'itemNum': '續約：B3-01',
         'paymentDate': '2024-07-09',
         'status': '已到帳，待審核',
         'remittanceFile': '20240710RF2',
@@ -55,7 +57,7 @@ var dataset_progressCheck = [
         'createDate': '2024-06-20',
         'type': '識別證',
         'name': '李美麗',
-        'remark': '首次申請',
+        'itemNum': '首次申請',
         'paymentDate': '2024-06-26',
         'status': '通過',
         'remittanceFile': '20240710RF1',
@@ -65,7 +67,7 @@ var dataset_progressCheck = [
         'createDate': '2024-06-28',
         'type': '培育室',
         'name': '好棒棒股份有限公司',
-        'remark': '續約：培育室',
+        'itemNum': '續約：培育室',
         'paymentDate': '',
         'status': '待補件。繳費證明',
         'remittanceFile': '20240710RF5',
@@ -73,6 +75,11 @@ var dataset_progressCheck = [
 ];
 
 $(function () {
+    // 抓取要代進的資料
+    let sessionData = session_userData;
+    // 同步session跟燈箱
+    $('#company').val(sessionData.company);
+
     let table = $('#progressCheckList').DataTable({
         ...commonSettingsTable,
         "data": dataset_progressCheck,
@@ -85,7 +92,7 @@ $(function () {
             { data: 'createDate', title: "申請日期" }, // 1
             { data: 'name', title: "申請人姓名", }, // 2
             { data: 'type', title: "申請項目", }, // 3
-            { data: 'remark', title: "項目註記", }, // 4 
+            { data: 'itemNum', title: "項目註記", }, // 4 
             { data: 'paymentDate', title: "付帳日", }, // 5
             { data: 'status', title: "審核進度", }, // 6
             {
@@ -127,6 +134,7 @@ $(function () {
         }
     });
 
+    // 取消申請
     $('#deleteTheseApplication').click(function () {
         let selectedIds = [];
 
@@ -176,6 +184,7 @@ $(function () {
         // 每次點擊都刪除舊有的錯誤訊息
         $('#danger_last5AccountNo').text('');
         $('#danger_paymentDate').text('');
+        $('#danger_paymentAmount').text('');
 
         let button = $(this);
         let progressId = button.data('id'); // 獲取按鈕的 data-id 屬性
@@ -192,8 +201,8 @@ $(function () {
             return;
         }
 
-        $('#building').val(progressData.building);
-        $('#room').val(progressData.room);
+        $('#type').val(progressData.type);
+        $('#dataId').val(progressData.id);
 
         if (button.hasClass('reuploadRemittance')) {
             event.preventDefault(); // 阻止默認行為
@@ -224,14 +233,16 @@ $(function () {
         }
         // 最後檢查 danger_ 開頭元素的文字內容
         if (checkDangerElements()) {
-            // 如果返回 true，開啟燈箱
-            // $('#parkingSpaceRenew_pdf').modal('show');
-            $('#formRemittance').submit(); // 提交表單
+
+            // 列出表單資料
+            // var formData = $('#formRemittance').serializeArray();
+            // console.log('表單資料：', JSON.stringify(formData, null, 2));
+
+            // $('#formRemittance').submit(); // 提交表單
             console.log('表單資料已送出');
         } else {
             // 如果返回 false，顯示警告訊息
             swalToastWarning('請填上正確資料唷！', 'top');
         }
-        $('#formRemittance').submit(); // 提交表單
     });
 });

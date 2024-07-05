@@ -169,8 +169,25 @@
 
                 <div class="tabs-box my-2r">
                     <!-- 付款列表 -->
-                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>各式付款查核<i
-                            class="fa-solid fa-quote-right"></i></h3>
+                    <div class="row mb-4 px-3">
+                        <h3 class="section-header col-auto mb-0 lh-base"><i
+                                class="fa-solid fa-quote-left"></i>付款查核與配發廠商<i class="fa-solid fa-quote-right"></i></h3>
+                        <!-- 點擊後將勾選的id傳至後台 -->
+                        <button class="btn btn-outline-warning col-auto goto_somewhere ms-5" id="createNewPayment"><i
+                                class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-solid fa-dollar-sign"></i><span
+                                class="tooltiptext tooltip-top">新增付款資訊</span></button>
+                        <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
+                            href="./cultivationRoomCreate.html"><i class="fa-solid fa-plus"></i><i
+                                class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-tree-city"></i><span
+                                class="tooltiptext tooltip-top">新增培育室</span></a>
+                        <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
+                            href="./parkingSpaceCreate.html"><i class="fa-solid fa-plus"></i><i
+                                class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-p"></i><span
+                                class="tooltiptext tooltip-right">新增停車位</span></a>
+                    </div>
+
+
 
 
 
@@ -178,18 +195,18 @@
                     <div class="tabs section-border-radius section-padding">
                         <div class="row">
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"
                                     data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
                                     aria-controls="collapseOne" checked>
-                                <label class="btn btn-outline-primary" for="btnradio1">培育室</label>
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
+                                <label class="btn btn-outline-primary" for="btnradio3">付款通知與收據</label>
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
                                     data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
                                     aria-controls="collapseTwo">
-                                <label class="btn btn-outline-primary" for="btnradio2">車位</label>
-                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"
+                                <label class="btn btn-outline-primary" for="btnradio1">培育室</label>
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
                                     data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
                                     aria-controls="collapseThree">
-                                <label class="btn btn-outline-primary" for="btnradio3">識別證補發</label>
+                                <label class="btn btn-outline-primary" for="btnradio2">車位</label>
                                 <!-- <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off"
                                     data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
                                     aria-controls="collapseFour">
@@ -201,7 +218,7 @@
                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                     aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <table id="confirmPaymentCultivationRoomList"
+                                        <table id="confirmPaymentAllList"
                                             class="table table-hover table-bordered responsive align-middle"
                                             style="width:100%">
                                         </table>
@@ -212,7 +229,7 @@
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <table id="confirmPaymentParkingSpaceList"
+                                        <table id="confirmPaymentCultivationRoomList"
                                             class="table table-hover table-bordered responsive align-middle"
                                             style="width:100%">
                                         </table>
@@ -223,21 +240,14 @@
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <strong>This is the third item's accordion body.</strong> It is hidden by
-                                        default,
-                                        until
-                                        the collapse plugin adds the appropriate classes that we use to style each
-                                        element.
-                                        These classes control the overall appearance, as well as the showing and hiding
-                                        via
-                                        CSS
-                                        transitions. You can modify any of this with custom CSS or overriding our
-                                        default
-                                        variables. It's also worth noting that just about any HTML can go within the
-                                        <code>.accordion-body</code>, though the transition does limit overflow.
+                                        <table id="confirmPaymentParkingSpaceList"
+                                            class="table table-hover table-bordered responsive align-middle"
+                                            style="width:100%">
+                                        </table>
                                     </div>
                                 </div>
                             </div>
+
                             <!-- <div class="accordion-item border-0">
                                 <div id="collapseFour" class="accordion-collapse collapse"
                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -473,83 +483,61 @@
                             </div>
                             <div class="modal-body">
     <div class="container-fluid">
-        <!-- 培育室基本資料 (服務費先給預設，可改)-->
+        <!-- 車位基本資料 (服務費先給預設，可改)-->
         <div class="row mb-1 multiple">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                 所在區域&emsp;
             </div>
             <div class="col lightBoxItems p-3 readOnly align_center" id="building"></div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                室
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                車位號碼
             </div>
             <div class="col lightBoxItems p-3 readOnly align_center" id="room"></div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                坪數
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                類型
             </div>
-            <div class="col col-lg-1 lightBoxItems p-3 readOnly align_center"
-                id="squareMeters">11.5</div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col col-lg-3 lightBoxItems p-3 readOnly align_center" id="squareMeters">汽車</div>
+        </div>
+        <!-- 租賃期間 費用 (可改)-->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                租賃期間&emsp;
+            </div>
+            <div class="col lightBoxItems p-3 align_center">
+                <div class="row justify-content-evenly">
+                    <div class="col-auto">起：</div>
+                    <div class="col-8 col-lg text-nowrap" id="startDate">2024-01-01</div>
+                    <div class="col-auto">訖：</div>
+                    <div class="col-8 col-lg text-nowrap" id="endDate">2025-12-31</div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 服務費用/月
             </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="rate"></div>
+            <div class="col col-lg-3 lightBoxItems p-3 align_center" id="rate"></div>
         </div>
-        <!-- 培育期間 到期日 (可改)-->
+        <!-- 公司名稱(自動代入)、統編(可改，可輸入或選擇已通知匯款的廠商資料)、負責人(自動代入) -->
         <div class="row mb-1 multiple">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                培育期間&emsp;
-            </div>
-            <div class="col-auto col-lg lightBoxItems p-3 align_center">
-                起：<span class="me-2" id="startDate">2024-01-01</span><br
-                    class="d-none d-lg-block d-xxl-none">
-                訖：<span class="" id="endDate">2025-12-31</span>
-            </div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                一階到期日
-            </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="firstDeadline">
-            </div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                二階到期日
-            </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="secondDeadline">
-            </div>
-        </div>
-        <!-- 公司名稱(自動代入)、統編(可改，可輸入已通過且開放的廠商資料)、負責人(自動代入) -->
-        <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                培育企業&emsp;
+                承租企業&emsp;
             </div>
             <div class="col lightBoxItems p-3 align_center readOnly" id="companyName"></div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 統一編號
             </div>
             <div class="col col-lg-2 lightBoxItems p-3 align_center" id="uniformNum"></div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                負責人&emsp;
-            </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly"
-                id="responsiblePerson"></div>
         </div>
         <!-- E-mail、聯絡人、聯絡電話 (都自動代入)-->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3  align_center">
+                承租人&emsp;
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="contactPerson"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 E-mail&emsp;
             </div>
             <div class="col lightBoxItems p-3 align_center readOnly" id="companyEmail"></div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                聯絡人&emsp;
-            </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="contactPerson"></div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
                 聯絡電話
             </div>
             <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="companyPhone"></div>
@@ -557,79 +545,38 @@
         <!-- 匯款日期、到期日、入帳日 (可改)-->
         <div class="row mb-1 multiple">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                一階匯款日
+                匯款日
             </div>
             <div class="col lightBoxItems p-3 align_center" id="paymentDateFirst">
             </div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                一階入帳日
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                入帳日
             </div>
             <div class="col lightBoxItems p-3 align_center" id="receivedDateFirst">
             </div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                二階匯款日
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="paymentDateSecond">
-            </div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                二階入帳日
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receivedDateSecond">
-            </div>
         </div>
         <!-- 收據號碼、收據日期、收據金額 -->
-        <div class="row mb-1">
+        <div class="row mb-1 multiple">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                收據號碼&#10112;
+                收據號碼
             </div>
             <div class="col lightBoxItems p-3 align_center" id="receiptNumFirst"></div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                收據日期&#10112;
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                收據日期
             </div>
             <div class="col lightBoxItems p-3 align_center" id="receiptDateFirst"></div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                費用項目&#10112;
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                費用項目
             </div>
             <div class="col lightBoxItems p-3 align_center" id="receiptItemsFirst">
             </div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                收據金額&#10112;
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                收據金額
             </div>
             <div class="col lightBoxItems p-3 align_center" id="receiptAmountFirst">
             </div>
         </div>
-        <!-- 收據號碼、收據日期、收據金額 -->
-        <div class="row mb-1">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                收據號碼&#10113;
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receiptNumSecond"></div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                收據日期&#10113;
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receiptDateSecond">
-            </div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                費用項目&#10113;
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receiptItemsSecond">
-            </div>
-            <div
-                class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                收據金額&#10113;
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receiptAmountSecond">
-            </div>
-        </div>
-
+       
 
 
 
@@ -639,8 +586,7 @@
                 匯款憑證&emsp;
             </div>
             <div class="col lightBoxItems p-3 align_center">
-                <a class="d-inline me-3 text-nowrap" href="#">匯款憑證&ensp;<i
-                        class="fa-solid fa-download"></i><span
+                <a class="d-inline me-3 text-nowrap" href="#">匯款憑證&ensp;<i class="fa-solid fa-download"></i><span
                         class="mx-1 update">補</span></a>
             </div>
         </div>
