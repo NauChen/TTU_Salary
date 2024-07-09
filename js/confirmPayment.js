@@ -944,22 +944,30 @@ var dataset_confirmPaymentAll = [
         'receivedDate': '2024-07-13',
         'adminNote': '',
         'status': '已開立收據',
-        'type': '汽車',
+        'type': '汽車位', // 機車位、識別證、培育室
         'placeOrPrint': 'B1-15',
         'last5AccountNo': '01234',
         'remittanceFile': '',
         'remark':'',
+        'applicationNum':'12',
+        'renewOrReprint':'續約' // 補發
     },
     {
         'id': '2',
         'createDate': '2024-07-16',
         'company': '優質科技股份有限公司',
-        'amount': '100',
-        'type': '機車',
         'paymentDate': '2024-07-14',
+        'amount': '100',
         'receivedDate': '2024-07-15',
+        'adminNote': '',
+        'status': '',
+        'type': '機車位',
         'placeOrPrint': 'B2-09',
-        'adminNote': ''
+        'last5AccountNo': '02234',
+        'remittanceFile': '',
+        'remark':'',
+        'applicationNum':'12',
+        'renewOrReprint':'續約'
     },
     {
         'id': '3',

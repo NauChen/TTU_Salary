@@ -38,7 +38,7 @@ function restrictToUpperCaseNumberHyphen(obj) {
 //   第一個字元僅能是大寫英文，第二個字元可能是大寫英文或數字，第三個字元以後僅能是數字
 function restrictFirstUpperSecondNum(obj) {
     let value = $(obj).val();
-    
+
     let newValue = value.split('').map((char, index) => {
         if (index === 0) {
             // 第一個字元僅能是大寫英文
@@ -51,7 +51,7 @@ function restrictFirstUpperSecondNum(obj) {
             return char.replace(/[^0-9]/g, '');
         }
     }).join('');
-    
+
     $(obj).val(newValue);
 }
 
@@ -152,16 +152,16 @@ function setMinDateToToday(inputId) {
 function setMinDateToSomeDaysLater(inputId, days) {
     // 獲取當前日期
     var today = new Date();
-    
+
     // 新日期設定為當前日期再加上指定天數
     today.setDate(today.getDate() + days);
-    
+
     // 格式化日期為 YYYY-MM-DD
     var yyyy = today.getFullYear();
     var mm = String(today.getMonth() + 1).padStart(2, '0'); // 獲取月份，並確保格式為兩位數
     var dd = String(today.getDate()).padStart(2, '0'); // 獲取日期，並確保格式為兩位數
     var formattedDate = yyyy + '-' + mm + '-' + dd;
-    
+
     // 設置 input 元素的 min 屬性
     $('#' + inputId).attr('min', formattedDate);
 }
@@ -191,7 +191,7 @@ function setLaterMinDate(inputId, todayLaterDays, startDateStr, startDateLaterDa
     var mmToday = String(today.getMonth() + 1).padStart(2, '0');
     var ddToday = String(today.getDate()).padStart(2, '0');
     var formattedToday = yyyyToday + '-' + mmToday + '-' + ddToday;
-    
+
     // 獲取開始日期並加上指定天數
     var startDate = new Date(startDateStr);
     startDate.setDate(startDate.getDate() + startDateLaterDays);
@@ -358,15 +358,15 @@ function splitHyphen(textData) {
 function extractSubstringBetween(str, startChar, endChar) {
     // 找到起始字符的位置
     const startIndex = str.indexOf(startChar);
-    
+
     // 找到结束字符的位置
     const endIndex = str.indexOf(endChar, startIndex + 1);
-    
+
     // 如果起始字符或结束字符未找到，返回空字符串
     if (startIndex === -1 || endIndex === -1 || startIndex >= endIndex) {
         return '';
     }
-    
+
     // 提取起始字符和结束字符之间的子字符串
     return str.substring(startIndex + 1, endIndex);
 }
@@ -388,4 +388,40 @@ function splitDate(dateString) {
     };
 }
 
-
+// ※※ 清除函式 - 存取資料專用 ※※
+function clearValues(ids) {
+    ids.forEach(function(id) {
+        var element = document.getElementById(id);
+        if (element) {
+            switch (element.tagName.toLowerCase()) {
+                case 'input':
+                    switch (element.type) {
+                        case 'date':
+                        case 'text':
+                        case 'number':
+                        case 'password':
+                        case 'email':
+                        case 'file':
+                            element.value = '';
+                            break;
+                        case 'radio':
+                        case 'checkbox':
+                            element.checked = false;
+                            break;
+                    }
+                    break;
+                case 'textarea':
+                    element.value = '';
+                    break;
+                case 'span':
+                case 'div':
+                    element.innerHTML = '';
+                    break;
+                default:
+                    console.warn(`Unsupported element type: ${element.tagName}`);
+            }
+        } else {
+            console.warn(`Element with id "${id}" not found.`);
+        }
+    });
+}

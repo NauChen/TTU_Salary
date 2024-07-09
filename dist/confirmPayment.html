@@ -173,9 +173,9 @@
                         <h3 class="section-header col-auto mb-0 lh-base"><i
                                 class="fa-solid fa-quote-left"></i>付款查核與配發廠商<i class="fa-solid fa-quote-right"></i></h3>
                         <!-- 點擊後將勾選的id傳至後台 -->
-                        <button class="btn btn-outline-warning col-auto goto_somewhere ms-5" id="createNewPayment"><i
-                                class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
-                                class="fa-solid fa-dollar-sign"></i><span
+                        <button class="btn btn-outline-warning col-auto goto_somewhere ms-5" id="createNewPayment"
+                            data-bs-toggle="modal" data-bs-target="#remittanceModal"><i class="fa-solid fa-plus"></i><i
+                                class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-dollar-sign"></i><span
                                 class="tooltiptext tooltip-top">新增付款資訊</span></button>
                         <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
                             href="./cultivationRoomCreate.html"><i class="fa-solid fa-plus"></i><i
@@ -610,6 +610,105 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
                                 <button type="button" class="btn btn-outline-secondary" id="updateBtn">確認修改</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- Modal 付款通知-->
+                <div class="modal fade" id="remittanceModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="remittanceModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <form class="modal-content" method="post" id="formRemittance">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="remittanceModalLabel">上傳匯款憑證</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">
+    <div class="container-fluid">
+        <div class="row mb-1">
+            <div for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">資料細項</div>
+            <div class="col lightBoxItems p-3">
+                <div class="row">
+                    <label for="dataId" class="col-form-label col-auto">申請書ID</label>
+                    <input type="text" class="form-control col" id="dataId" name="dataId">
+                </div>
+                <div class="row">
+                    <label for="type" class="col-form-label col-auto">申請種類</label>
+                    <input type="text" class="form-control col" id="type" name="type">
+                </div>
+                <div class="row">
+                    <label for="company" class="col-form-label col-auto">公司名稱</label>
+                    <input type="text" class="form-control col" id="company" name="company">
+                </div>
+                <div class="row">
+                    <label for="renewOrReprint" class="col-form-label col-auto">合約類型</label>
+                    <input type="text" class="form-control col" id="renewOrReprint" name="renewOrReprint">
+                </div>
+                <div class="row">
+                    <label for="itemNum" class="col-form-label col-auto">續約物件</label>
+                    <input type="text" class="form-control col" id="itemNum" name="itemNum">
+                </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <label for="paymentDate" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
+                    class="requiredMark">*</span>匯款日期<span class="d-none d-lg-inline">&emsp;&emsp;&emsp;</span>
+            </label>
+            <div class="col lightBoxItems p-3">
+                <input type="date" class="form-control thisRequired" id="paymentDate" name="paymentDate">
+                <span class="text-danger" id="danger_paymentDate"></span>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <label for="paymentAmount" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
+                    class="requiredMark">*</span>匯款金額<span class="d-none d-lg-inline">&emsp;&emsp;&emsp;</span>
+            </label>
+            <div class="col lightBoxItems p-3">
+                <input type="text" class="form-control thisRequired" id="paymentAmount" onkeyup="restrictToNum(this)"
+                    onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)" name="paymentAmount">
+                <span class="text-danger" id="danger_paymentAmount"></span>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <label for="last5AccountNo" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
+                    class="requiredMark">*</span>匯款帳號後五碼
+            </label>
+            <div class="col lightBoxItems p-3">
+                <input type="text" class="form-control thisRequired" id="last5AccountNo" onkeyup="restrictTo5Num(this)"
+                    name="last5AccountNo">
+                <span class="text-danger" id="danger_last5AccountNo"></span>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
+                    class="d-none d-lg-inline">&ensp;</span>上傳匯款憑證<span class="d-none d-lg-inline">&emsp;</span></div>
+            <div class="col lightBoxItems p-3 align_center" id="ECPhone">
+                <div class="row align-items-center my-1">
+                    <label for="remittancePdf"
+                        class="col-auto col-form-label text-nowrap upload-label py-0 align_center ps-3">請點此上傳pdf檔<i
+                            class="fa-solid fa-upload mx-1"></i>
+                    </label>
+                    <div class="col-12">
+                        <input type="file" class="form-control d-none" id="remittancePdf" accept=".pdf"
+                            name="remittancePdf"
+                            onchange="javascript:{document.getElementById('remittance_fileInfo').innerHTML = document.getElementById('remittancePdf').value;setFormHeight();}">
+                        <div id="remittance_fileInfo" class="fileInfo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                                <button type="button" class="btn btn-outline-secondary"
+                                    id="remittanceSubmit">確認上傳</button>
                             </div>
                         </form>
                     </div>

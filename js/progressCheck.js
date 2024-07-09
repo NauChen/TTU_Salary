@@ -4,11 +4,12 @@ var dataset_progressCheck = [
         'id': '1',
         'createDate': '2024-07-01',
         'type': '汽車位',
+        'name': '孫小美',
         'isReprint': '',
         'isRenew': '續約',
+        // 'isPartialCharges': '',
         'itemNum': 'B1-01',
         'paymentDate': '2024-07-07',
-        'name': '孫小美',
         'status': '',
         'remittanceFile': '20240710RF2',
     },
@@ -17,7 +18,9 @@ var dataset_progressCheck = [
         'createDate': '2024-06-15',
         'type': '機車位',
         'name': '孫中美',
-        'itemNum': '首次申請',
+        'isReprint': '',
+        'isRenew': '',
+        'itemNum': 'B2-05',
         'paymentDate': '',
         'status': '待補件。匯款證明',
         'remittanceFile': '20240710RF1',
@@ -27,7 +30,9 @@ var dataset_progressCheck = [
         'createDate': '2024-06-25',
         'type': '識別證',
         'name': '孫大美',
-        'itemNum': '申請補發',
+        'isReprint': '補發',
+        'isRenew': '',
+        'itemNum': 'AB0001',
         'paymentDate': '2024-07-02',
         'status': '通過',
         'remittanceFile': '20240710RF3',
@@ -37,8 +42,10 @@ var dataset_progressCheck = [
         'createDate': '2024-07-10',
         'type': '汽車位',
         'name': '王小明',
-        'itemNum': '首次申請',
-        'paymentDate': '2024-07-17',
+        'isReprint': '',
+        'isRenew': '',
+        'itemNum': '',
+        'paymentDate': '',
         'status': '不通過。使用者取消。',
         'remittanceFile': '',
     },
@@ -47,7 +54,9 @@ var dataset_progressCheck = [
         'createDate': '2024-07-03',
         'type': '機車位',
         'name': '陳美麗',
-        'itemNum': '續約：B3-01',
+        'isReprint': '',
+        'isRenew': '續約',
+        'itemNum': 'B3-01',
         'paymentDate': '2024-07-09',
         'status': '已到帳，待審核',
         'remittanceFile': '20240710RF2',
@@ -57,7 +66,9 @@ var dataset_progressCheck = [
         'createDate': '2024-06-20',
         'type': '識別證',
         'name': '李美麗',
-        'itemNum': '首次申請',
+        'isReprint': '',
+        'isRenew': '',
+        'itemNum': '',
         'paymentDate': '2024-06-26',
         'status': '通過',
         'remittanceFile': '20240710RF1',
@@ -67,7 +78,9 @@ var dataset_progressCheck = [
         'createDate': '2024-06-28',
         'type': '培育室',
         'name': '好棒棒股份有限公司',
-        'itemNum': '續約：培育室',
+        'isReprint': '',
+        'isRenew': '續約',
+        'itemNum': '青創基地-301',
         'paymentDate': '',
         'status': '待補件。繳費證明',
         'remittanceFile': '20240710RF5',
@@ -91,12 +104,25 @@ $(function () {
             },
             { data: 'createDate', title: "申請日期" }, // 1
             { data: 'name', title: "申請人姓名", }, // 2
-            { data: 'type', title: "申請項目", }, // 3
-            { data: 'itemNum', title: "項目註記", }, // 4 
+            { data: 'type', title: "項目", }, // 3
+            {
+                data: 'itemNum', title: "項目註記", // 4
+                render: function (data, type, row) {
+                    const isReprint = row.isReprint;
+                    const isRenew = row.isRenew;
+                    if (isReprint) {
+                        return isReprint;
+                    } else if (isRenew) {
+                        return isRenew + '：' + data;
+                    } else {
+                        return '-';
+                    }
+                },
+            },
             { data: 'paymentDate', title: "付帳日", }, // 5
             { data: 'status', title: "審核進度", }, // 6
             {
-                data: 'id', title: "匯款<br>憑證",
+                data: 'id', title: "通知<br>匯款",
                 render: function (data, type, row) {
                     const paymentDate = row.paymentDate;
                     if (paymentDate) {
@@ -181,28 +207,36 @@ $(function () {
 
     // 匯款憑證按鈕
     $('.uploadRemittance, .reuploadRemittance').click(function (event) {
-        // 每次點擊都刪除舊有的錯誤訊息
-        $('#danger_last5AccountNo').text('');
-        $('#danger_paymentDate').text('');
-        $('#danger_paymentAmount').text('');
+        // 每次點擊都刪除舊有的資料與錯誤訊息
+        clearValues(['danger_paymentDate', 'danger_paymentAmount', 'danger_last5AccountNo', 'paymentDate', 'paymentAmount', 'last5AccountNo', 'last5AccountNo', 'remittancePdf']);
 
         let button = $(this);
         let progressId = button.data('id'); // 獲取按鈕的 data-id 屬性
 
-        if (!progressId) {
+        if (progressId) {
+            let progressData = dataset_progressCheck.find(progress => progress.id == progressId);
+            if (progressData) {
+                $('#dataId').val(progressData.id);
+                $('#type').val(progressData.type);
+
+                if (progressData.isReprint != '' || progressData.isReprint != null) {
+                    $('#renewOrReprint').val('補發');
+                } else if (progressData.isRenew != '' || progressData.isRenew != null) {
+                    $('#renewOrReprint').val('續約');
+                } else{
+                    $('#renewOrReprint').val('');
+                }
+
+                $('#itemNum').val(progressData.itemNum);
+            } else {
+                console.error('progress data not found for id:', progressId);
+            }
+        } else {
             console.error('progress ID not found in URL');
-            return;
         }
 
-        let progressData = dataset_progressCheck.find(progress => progress.id == progressId);
-
-        if (!progressData) {
-            console.error('progress data not found for id:', progressId);
-            return;
-        }
-
-        $('#type').val(progressData.type);
-        $('#dataId').val(progressData.id);
+        // $('#type').val(progressData.type);
+        // $('#dataId').val(progressData.id);
 
         if (button.hasClass('reuploadRemittance')) {
             event.preventDefault(); // 阻止默認行為

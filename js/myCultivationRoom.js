@@ -235,10 +235,8 @@ $(function () {
 
     // 匯款憑證按鈕
     $('.uploadRemittance, .reuploadRemittance').click(function (event) {
-        // 每次點擊都刪除舊有的錯誤訊息
-        $('#danger_paymentDate').text('');
-        $('#danger_paymentAmount').text('');
-        $('#danger_last5AccountNo').text('');
+        // 每次點擊都刪除舊有的資料與錯誤訊息
+        clearValues(['danger_paymentDate', 'danger_paymentAmount', 'danger_last5AccountNo', 'paymentDate', 'paymentAmount', 'last5AccountNo', 'last5AccountNo', 'remittancePdf']);
 
         // 抓取要代進的資料
         let sessionData = session_userData;
@@ -248,25 +246,13 @@ $(function () {
         let button = $(this);
         let roomId = button.data('id'); // 獲取按鈕的 data-id 屬性
 
-        // if (!roomId) {
-        //     console.error('cultivationRoom ID not found in URL');
-        //     return;
-        // }
-
-        // let cultivationRoomData = dataset_myCultivationRoom.find(cultivationRoom => cultivationRoom.id == roomId);
-
-        // if (!cultivationRoomData) {
-        //     console.error('cultivationRoom data not found for id:', roomId);
-        //     return;
-        // }
-
         if (roomId) {
             let cultivationRoomData = dataset_myCultivationRoom.find(cultivationRoom => cultivationRoom.id == roomId);
             if (cultivationRoomData) {
                 $('#dataId').val(cultivationRoomData.id);
-                $('#type').val('階段費用');
-                $('#renewOrReprint').val('-');
-                $('#itemNum').val(cultivationRoomData.building + '-' +cultivationRoomData.room);
+                $('#type').val('培育室');
+                $('#renewOrReprint').val('階段費用');
+                $('#itemNum').val(cultivationRoomData.building + '-' + cultivationRoomData.room);
 
                 if (button.hasClass('reuploadRemittance')) {
                     event.preventDefault(); // 阻止默認行為
@@ -288,10 +274,6 @@ $(function () {
         } else {
             console.error('cultivationRoom ID not found in URL');
         }
-
-
-
-
     });
 
     // 必填異動再次判斷
@@ -309,9 +291,10 @@ $(function () {
         // 最後檢查 danger_ 開頭元素的文字內容
         if (checkDangerElements()) {
             // 如果返回 true，開啟燈箱
-            // $('#parkingSpaceRenew_pdf').modal('show');
-            $('#formRemittance').submit(); // 提交表單
+            // $('#formRemittance').submit(); // 提交表單
             console.log('表單資料已送出');
+            var formData = $('#formRemittance').serializeArray();
+            console.log('表單資料：', JSON.stringify(formData, null, 2));
         } else {
             // 如果返回 false，顯示警告訊息
             swalToastWarning('請填上正確資料唷！', 'top');
@@ -320,63 +303,4 @@ $(function () {
     });
 
 
-
-
-    // $('[data-bs-toggle="tooltip"]').tooltip();
-    // $('.uploadRemittance').click(function (event) {
-    //     let button = $(this);
-    //     let roomId = button.data('id'); // 獲取按鈕的 data-id 屬性
-
-    //     if (roomId) {
-    //         // console.log('room ID:', roomId);
-    //         let cultivationRoomData = dataset_myCultivationRoom.find(cultivationRoom => cultivationRoom.id == roomId);
-    //         // console.log('cultivationRoomData:', cultivationRoomData);
-    //         if (cultivationRoomData) {
-    //             $('#building').val(cultivationRoomData.building);
-    //             $('#room').val(cultivationRoomData.room);
-
-    //         } else {
-    //             console.error('cultivationRoom data not found for id:', roomId);
-    //         }
-    //     } else {
-    //         console.error('cultivationRoom ID not found in URL');
-    //     }
-
-
-    // });
-
-
-    // $('.reuploadRemittance').click(function (event) {
-    //     event.preventDefault(); // 阻止默認行為
-
-    //     let button = $(this);
-    //     let roomId = button.data('id'); // 獲取按鈕的 data-id 屬性
-
-    //     swalConfirm(
-    //         '曾填過匯款通知，要再填一次嗎?', // 顯示的問題
-    //         '對，我要重新填寫上傳。', // YES按鈕的文字
-    //         '不，回到上一步。', // NO按鈕的文字
-    //         function () {
-    //             // YES按鈕點擊後開啟燈箱
-    //             $('#remittanceModal').modal('show');
-    //             if (roomId) {
-    //                 // console.log('room ID:', roomId);
-    //                 let cultivationRoomData = dataset_myCultivationRoom.find(cultivationRoom => cultivationRoom.id == roomId);
-    //                 // console.log('cultivationRoomData:', cultivationRoomData);
-    //                 if (cultivationRoomData) {
-    //                     $('#building').val(cultivationRoomData.building);
-    //                     $('#room').val(cultivationRoomData.room);
-
-    //                 } else {
-    //                     console.error('cultivationRoom data not found for id:', roomId);
-    //                 }
-    //             } else {
-    //                 console.error('cultivationRoom ID not found in URL');
-    //             }
-    //         }
-    //     );
-    // });
 });
-
-
-// $('#remittanceModal').data('id', roomId); // 可以選擇傳遞 data-id 到燈箱中
