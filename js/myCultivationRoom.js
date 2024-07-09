@@ -112,10 +112,6 @@ var dataset_myCultivationRoom = [
 ];
 
 
-
-
-
-
 $(function () {
     const today = new Date();
 
@@ -139,7 +135,6 @@ $(function () {
         const payDiff = paymentDate.getTime() - today.getTime();
         item.payDiffDays = Math.ceil(payDiff / (1000 * 3600 * 24));
     });
-
 
     $('#myRenewContracList').DataTable({
         ...commonSettingsProvision,
@@ -241,39 +236,62 @@ $(function () {
     // 匯款憑證按鈕
     $('.uploadRemittance, .reuploadRemittance').click(function (event) {
         // 每次點擊都刪除舊有的錯誤訊息
-        $('#danger_last5AccountNo').text('');
         $('#danger_paymentDate').text('');
+        $('#danger_paymentAmount').text('');
+        $('#danger_last5AccountNo').text('');
+
+        // 抓取要代進的資料
+        let sessionData = session_userData;
+        // 同步session跟燈箱
+        $('#company').val(sessionData.company);
 
         let button = $(this);
         let roomId = button.data('id'); // 獲取按鈕的 data-id 屬性
 
-        if (!roomId) {
-            console.error('cultivationRoom ID not found in URL');
-            return;
-        }
+        // if (!roomId) {
+        //     console.error('cultivationRoom ID not found in URL');
+        //     return;
+        // }
 
-        let cultivationRoomData = dataset_myCultivationRoom.find(cultivationRoom => cultivationRoom.id == roomId);
+        // let cultivationRoomData = dataset_myCultivationRoom.find(cultivationRoom => cultivationRoom.id == roomId);
 
-        if (!cultivationRoomData) {
-            console.error('cultivationRoom data not found for id:', roomId);
-            return;
-        }
+        // if (!cultivationRoomData) {
+        //     console.error('cultivationRoom data not found for id:', roomId);
+        //     return;
+        // }
 
-        $('#building').val(cultivationRoomData.building);
-        $('#room').val(cultivationRoomData.room);
+        if (roomId) {
+            let cultivationRoomData = dataset_myCultivationRoom.find(cultivationRoom => cultivationRoom.id == roomId);
+            if (cultivationRoomData) {
+                $('#dataId').val(cultivationRoomData.id);
+                $('#type').val('階段費用');
+                $('#renewOrReprint').val('-');
+                $('#itemNum').val(cultivationRoomData.building + '-' +cultivationRoomData.room);
 
-        if (button.hasClass('reuploadRemittance')) {
-            event.preventDefault(); // 阻止默認行為
-            swalConfirm(
-                '曾填過匯款通知，要再填一次嗎?', // 顯示的問題
-                '對，我要重新填寫上傳。', // YES按鈕的文字
-                '不，回到上一步。', // NO按鈕的文字
-                function () {
-                    // YES按鈕點擊後開啟燈箱
-                    $('#remittanceModal').modal('show');
+                if (button.hasClass('reuploadRemittance')) {
+                    event.preventDefault(); // 阻止默認行為
+                    swalConfirm(
+                        '曾填過匯款通知，要再填一次嗎?', // 顯示的問題
+                        '對，我要重新填寫上傳。', // YES按鈕的文字
+                        '不，回到上一步。', // NO按鈕的文字
+                        function () {
+                            // YES按鈕點擊後開啟燈箱
+                            $('#remittanceModal').modal('show');
+                        }
+                    );
                 }
-            );
+
+            } else {
+                console.error('cultivationRoom data not found for id:', roomId);
+                return;
+            }
+        } else {
+            console.error('cultivationRoom ID not found in URL');
         }
+
+
+
+
     });
 
     // 必填異動再次判斷
@@ -298,7 +316,7 @@ $(function () {
             // 如果返回 false，顯示警告訊息
             swalToastWarning('請填上正確資料唷！', 'top');
         }
-        $('#formRemittance').submit(); // 提交表單
+        // $('#formRemittance').submit(); // 提交表單
     });
 
 

@@ -284,8 +284,11 @@ $(function () {
 
     // 點擊 submitBtn 按鈕時
     $('#printAndSubmit').click(function (event) {
-        $('#formRenewContractApply').submit(); // 提交表單
+        // $('#formRenewContractApply').submit(); // 提交表單
         console.log('表單資料已送出');
+        // 列出表單資料
+        var formData = $('#formRenewContractApply').serializeArray();
+        console.log('表單資料：', JSON.stringify(formData, null, 2));
     });
 
 });
