@@ -1,11 +1,11 @@
 var dataset_myParkingSpaceHistory = [
     {
-        'paymentDate': '2024-05-28',
+        'paymentDate': '2024-06-28',
         'carType': '汽車',
         'parkingSpaceNum': 'B4-30',
         'name': '陳凱富',
         'licensePlateNum': '0869-RE',
-        'endDate': '2024-06-18',
+        'endDate': '2024-07-18',
         'remark': '-',
         'id': '1',
         'jobTitle': '經理',
@@ -305,11 +305,14 @@ $(function () {
             // 依據原車位顯示上傳行照的按鈕
             if (parkingSpaceData.carType === '汽車') {
                 $('#btn_motoBox').hide();
+                $('#parkingSpaceType').val('汽車');
             } else if (parkingSpaceData.carType === '機車') {
                 $('#btn_carBox').hide();
+                $('#parkingSpaceType').val('機車');
             } else {
                 $('#btn_carBox').hide();
                 $('#btn_motoBox').hide();
+                $('#parkingSpaceType').val('');
             }
 
             // 確保起租日期不可小於 當日+5天 或是 截止日期當日(使用最晚的日期來設定)
@@ -361,8 +364,10 @@ $(function () {
 
     // 點擊 submitBtn 按鈕時
     $('#printAndSubmit').click(function (event) {
-        $('#formParkingSpaceRenew').submit(); // 提交表單
+        // $('#formParkingSpaceRenew').submit(); // 提交表單
         console.log('表單資料已送出');
+        var formData = $('#formParkingSpaceRenew').serializeArray();
+        console.log('表單資料：', JSON.stringify(formData, null, 2));
     });
 
 });

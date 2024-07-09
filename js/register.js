@@ -230,9 +230,10 @@ $(function () {
 
         // 最後檢查 danger_ 開頭元素的文字內容
         if (checkDangerElements()) {
-            // 如果返回 true，送出表單資料
-            $('#formRegister').submit(); // 提交表單
+            // $('#formRegister').submit(); // 提交表單
             console.log('表單資料已送出');
+            $(location).attr("href","index.html");
+            swalToastSuccess(' 請靜待7~10個工作天，並留意信箱歐！', 'top');
         } else {
             // 如果返回 false，顯示警告訊息
             swalToastWarning(' 請填上正確資料唷！', 'top');

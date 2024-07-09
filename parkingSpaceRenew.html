@@ -9,13 +9,13 @@
 </head>
 
 <body>
-    <main class="main">
+    <main class="main no_print">
         @@include('layout/header.html')
         <div class="content">
             <div class="container">
 
                 <!-- 麵包屑 -->
-                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><i class="fa-solid fa-file-contract"></i>&ensp;申請與查閱</li>
                         <li class="breadcrumb-item"><a class="d-inline" href="./parkingSpaceInventory.html"><i
@@ -24,9 +24,9 @@
                                 class="fa-solid fa-motorcycle"></i>&ensp;停車位續約</li>
                     </ol>
                 </div>
-                <div class="no_print">
+                <div>
                     <!-- 停車位列表 -->
-                    <div class="tabs-box my-2r no_print">
+                    <div class="tabs-box my-2r">
                         <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>申請人資料<i
                                 class="fa-solid fa-quote-right"></i></h3>
                         <div class="tabs section-border-radius section-padding">
@@ -63,7 +63,7 @@
                                     <button type="button" class="btn btn-outline-dark"
                                         data-bs-dismiss="modal">關閉</button>
                                     <button type="button" class="btn btn-primary print"
-                                        id="printIdCard">列印並送出申請</button>
+                                        id="printAndSubmit">列印並送出申請</button>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
             </div>
         </div>
     </main>
-    <section class="print_template"></section>
+    <section class="print_template break-inside-avoid"></section>
 
     @@include('layout/metaJS.html')
 

@@ -220,6 +220,7 @@ $(function () {
         $('#newImg').html('');
         $('#car_upload_label').show();
         $('#bike_upload_label').show();
+        $('#parkingSpaceType').val('');
         $('#danger_parkingSpaceImg').html('&ensp;&#10551;上傳行照內頁後，請點擊裁剪圖片。');
         // $('#confirm_parkingSpaceApp').removeAttr('data-bs-toggle').removeAttr('data-bs-target');
     }
@@ -230,6 +231,7 @@ $(function () {
         handleFileSelect(this, car_width_crop, car_height_crop);
         $('#bike_upload_label').hide();
         $('#car_upload_label').show();
+        $('#parkingSpaceType').val('汽車');
         $('#crop_img').show();
     });
 
@@ -239,6 +241,7 @@ $(function () {
         handleFileSelect(this, bike_width_crop, bike_height_crop);
         $('#car_upload_label').hide();
         $('#bike_upload_label').show();
+        $('#parkingSpaceType').val('機車');
         $('#crop_img').show();
     });
 

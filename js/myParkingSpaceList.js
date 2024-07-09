@@ -1,11 +1,11 @@
 var dataset_myParkingSpaceHistory = [
     {
-        'paymentDate': '2024-05-28',
+        'paymentDate': '2024-06-28',
         'carType': '汽車',
         'parkingSpaceNum': 'B4-30',
         'name': '陳凱富',
         'licensePlateNum': '0869-RE',
-        'endDate': '2024-06-18',
+        'endDate': '2024-07-18',
         'remark': '-',
         'id': '1',
         'jobTitle': '經理',
@@ -382,9 +382,15 @@ $(function () {
         const renewId = $(this).data('id');
         const renewLink = './parkingSpaceRenew.html?id=' + renewId;
 
-        swalConfirmNoToast('登記使用人是否變更呢?', '是', '否', function () {
-            window.location.href = renewLink;
-        }, '已將收款帳戶資訊發至貴司的主要聯絡信箱。<br><br>前往「進度查詢」：<br>可上傳匯款憑證，或是再次發送大同大學帳戶資訊。', 'top');
-
+        swalConfirmNoToastSandId(
+            '登記使用人是否變更呢?',
+            '是',
+            '否',
+            function () {
+                window.location.href = renewLink;
+            },
+            '已將收款帳戶資訊發至貴司的主要聯絡信箱。<br><br>前往「進度查詢」：<br>可上傳匯款憑證，或是再次發送大同大學帳戶資訊。',
+            'top',
+            renewId);
     });
 });

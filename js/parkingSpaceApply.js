@@ -7,7 +7,6 @@ $(function () {
     // 確保起租日期不可小於當日+5天
     setMinDateToSomeDaysLater('parkingSpaceStartDate', 5);
 
-
     // 同步輸入框跟預覽td
     syncInputValue('parkingSpaceName', 'parkingSpaceName_td');
     syncInputValue('parkingSpaceJobTitle', 'parkingSpaceJobTitle_td');
@@ -41,9 +40,11 @@ $(function () {
         // $('#parkingSpaceApply_pdf').modal('show');
     });
 
-        // 點擊 submitBtn 按鈕時
-        $('#printAndSubmit').click(function (event) {
-            $('#formParkingSpaceApply').submit(); // 提交表單
-            console.log('表單資料已送出');
-        });
+    // 點擊 submitBtn 按鈕時
+    $('#printAndSubmit').click(function (event) {
+        // $('#formParkingSpaceApply').submit(); // 提交表單
+        console.log('表單資料已送出');
+        var formData = $('#formParkingSpaceApply').serializeArray();
+        console.log('表單資料：', JSON.stringify(formData, null, 2));
+    });
 });

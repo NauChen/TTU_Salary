@@ -108,6 +108,46 @@ function swalConfirmNoToast(questionText, yesButtonText, noButtonText, onConfirm
     });
 };
 
+function swalConfirmNoToastSandId(questionText, yesButtonText, noButtonText, onConfirm, titleText, positionType, renewId) {
+    Swal.fire({
+        title: questionText,
+        icon: 'question',
+        // iconColor: '#e83e8c',
+        showCancelButton: true,
+        confirmButtonText: yesButtonText,
+        cancelButtonText: noButtonText,
+        // reverseButtons: true,
+        position: 'top', // 對齊位置
+        allowOutsideClick: false, // 點旁邊關閉
+        confirmButtonColor: '#888',
+        cancelButtonColor: '#609b8a',
+
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // 使用者點擊YES按鈕，執行 onConfirm 回調函數
+            if (typeof onConfirm === 'function') {
+                onConfirm();
+            }
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            // 顯示訊息
+            swalToastConfirmSuccess(titleText, positionType);
+
+            console.log('將傳送的 renewId:', renewId);
+            // $.ajax({
+            //     url: '/your-backend-endpoint', // 替換為你的後端端點
+            //     type: 'POST',
+            //     data: { renewId: renewId },
+            //     success: function (response) {
+            //         console.log('Renew ID 已成功傳送至後端:', renewId);
+            //     },
+            //     error: function (xhr, status, error) {
+            //         console.error('傳送 renewId 時發生錯誤:', error);
+            //     }
+            // });
+        }
+    });
+};
+
 function swalToastConfirmSuccess(titleText, positionType) {
     const Toast = Swal.mixin({
         toast: true,
