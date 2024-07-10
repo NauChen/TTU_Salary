@@ -934,129 +934,215 @@ var dataset_confirmPaymentParkingSpace = [
     }
 ];
 
+// 生成10筆資料
+// createDate是建立資料的日期，格式為YYYY-mm-DD。
+// adminNote是管理員備註，可能為''
+// status是狀態，可能為：''
+// applicationNum是支付的項目id
+// type是付款項目種類，可能是汽車位、機車位、識別證、培育室
+// company是假的繁體中文公司名稱
+// paymentPurpose是付款目的，可能是續約、補發、階段費用
+// placeOrPrint是項目名，若type='汽車位'或'機車位'，placeOrPrint的值為'B'+數字1字元+'-'+數字2字元，或是''；若type='識別證'，placeOrPrint的值為'N0000'+數字2碼 或是 ''；若type='培育室'，placeOrPrint的值為'青創基地-201'；
+// amount 是每月服務費用，要有千分位符號，若type是'汽車位'，amount的值為2500或3000；若type是'機車位'，amount的值為100；若type是'識別證'，amount的值為300；若type是'培育室'，amount的值為35000~50000；。
+// last5AccountNo是付款帳號後五碼，由隨機5個數字組成，數字可重複。
+// remittanceFile是檔案名稱，由"YYYYmmDD_" + "MD" + 2個數字組成。
 var dataset_confirmPaymentAll = [
     {
         'id': '1',
         'createDate': '2024-07-15',
+        'adminNote': '',
+        'status': '',
+        'applicationNum': '12',
+        'type': '汽車位',
         'company': '超級棒股份有限公司',
+        'paymentPurpose': '續約',
+        'placeOrPrint': 'B1-15',
         'paymentDate': '2024-07-13',
         'amount': '2,500',
-        'receivedDate': '2024-07-13',
-        'adminNote': '',
-        'status': '已開立收據',
-        'type': '汽車位', // 機車位、識別證、培育室
-        'placeOrPrint': 'B1-15',
         'last5AccountNo': '01234',
-        'remittanceFile': '',
-        'remark':'',
-        'applicationNum':'12',
-        'renewOrReprint':'續約' // 補發
+        'remittanceFile': '20240713_MD23',
     },
     {
         'id': '2',
         'createDate': '2024-07-16',
-        'company': '優質科技股份有限公司',
-        'paymentDate': '2024-07-14',
-        'amount': '100',
-        'receivedDate': '2024-07-15',
         'adminNote': '',
         'status': '',
+        'applicationNum': '15',
         'type': '機車位',
-        'placeOrPrint': 'B2-09',
-        'last5AccountNo': '02234',
-        'remittanceFile': '',
-        'remark':'',
-        'applicationNum':'12',
-        'renewOrReprint':'續約'
+        'company': '大富翁科技有限公司',
+        'paymentPurpose': '補發',
+        'placeOrPrint': 'B2-05',
+        'paymentDate': '2024-07-14',
+        'amount': '100',
+        'last5AccountNo': '56789',
+        'remittanceFile': '20240714_MD56',
     },
     {
         'id': '3',
         'createDate': '2024-07-17',
-        'company': '金鼎企業有限公司',
-        'amount': '2,500',
-        'type': '汽車',
+        'adminNote': '',
+        'status': '',
+        'applicationNum': '18',
+        'type': '識別證',
+        'company': '迅捷物流股份有限公司',
+        'paymentPurpose': '續約',
+        'placeOrPrint': 'N000034',
         'paymentDate': '2024-07-15',
-        'receivedDate': '2024-07-16',
-        'placeOrPrint': '5',
-        'adminNote': '補發第五次'
+        'amount': '300',
+        'last5AccountNo': '12345',
+        'remittanceFile': '20240715_MD78',
     },
     {
         'id': '4',
         'createDate': '2024-07-18',
-        'company': '龍騰科技股份有限公司',
-        'amount': '2,500',
-        'type': '汽車',
+        'adminNote': '',
+        'status': '',
+        'applicationNum': '20',
+        'type': '培育室',
+        'company': '綠能科技有限公司',
+        'paymentPurpose': '階段費用',
+        'placeOrPrint': '青創基地-201',
         'paymentDate': '2024-07-16',
-        'receivedDate': '2024-07-16',
-        'placeOrPrint': 'B1-07',
-        'adminNote': ''
+        'amount': '45,000',
+        'last5AccountNo': '67890',
+        'remittanceFile': '20240716_MD12',
     },
     {
         'id': '5',
         'createDate': '2024-07-19',
-        'company': '日月光股份有限公司',
-        'amount': '100',
-        'type': '機車',
-        'paymentDate': '2024-07-17',
-        'receivedDate': '2024-07-17',
+        'adminNote': '',
+        'status': '',
+        'applicationNum': '22',
+        'type': '汽車位',
+        'company': '全球股份有限公司',
+        'paymentPurpose': '補發',
         'placeOrPrint': '',
-        'adminNote': '已空車位'
+        'paymentDate': '2024-07-17',
+        'amount': '3,000',
+        'last5AccountNo': '54321',
+        'remittanceFile': '20240717_MD34',
     },
     {
         'id': '6',
         'createDate': '2024-07-20',
-        'company': '巨匠科技有限公司',
-        'amount': '2,500',
-        'type': '汽車',
+        'adminNote': '',
+        'status': '',
+        'applicationNum': '25',
+        'type': '機車位',
+        'company': '宇宙科技有限公司',
+        'paymentPurpose': '續約',
+        'placeOrPrint': 'B1-07',
         'paymentDate': '2024-07-18',
-        'receivedDate': '2024-07-19',
-        'placeOrPrint': '3',
-        'adminNote': ''
+        'amount': '100',
+        'last5AccountNo': '89012',
+        'remittanceFile': '20240718_MD45',
     },
     {
         'id': '7',
         'createDate': '2024-07-21',
-        'company': '光速科技股份有限公司',
-        'amount': '3,000',
-        'type': '汽車',
+        'adminNote': '',
+        'status': '',
+        'applicationNum': '28',
+        'type': '識別證',
+        'company': '光速科技有限公司',
+        'paymentPurpose': '階段費用',
+        'placeOrPrint': 'N000056',
         'paymentDate': '2024-07-19',
-        'receivedDate': '2024-07-19',
-        'placeOrPrint': 'B2-12',
-        'adminNote': ''
+        'amount': '300',
+        'last5AccountNo': '34567',
+        'remittanceFile': '20240719_MD67',
     },
     {
         'id': '8',
         'createDate': '2024-07-22',
-        'company': '太陽能科技股份有限公司',
-        'amount': '100',
-        'type': '機車',
+        'adminNote': '',
+        'status': '',
+        'applicationNum': '30',
+        'type': '培育室',
+        'company': '宏達電子有限公司',
+        'paymentPurpose': '補發',
+        'placeOrPrint': '青創基地-201',
         'paymentDate': '2024-07-20',
-        'receivedDate': '2024-07-21',
-        'placeOrPrint': 'B3-08',
-        'adminNote': ''
+        'amount': '40,000',
+        'last5AccountNo': '45678',
+        'remittanceFile': '20240720_MD89',
     },
     {
         'id': '9',
         'createDate': '2024-07-23',
-        'company': '巨力科技有限公司',
-        'amount': '2,500',
-        'type': '汽車',
+        'adminNote': '',
+        'status': '',
+        'applicationNum': '32',
+        'type': '汽車位',
+        'company': '智能機械有限公司',
+        'paymentPurpose': '續約',
+        'placeOrPrint': 'B3-10',
         'paymentDate': '2024-07-21',
-        'receivedDate': '2024-07-22',
-        'placeOrPrint': '8',
-        'adminNote': ''
+        'amount': '2,500',
+        'last5AccountNo': '78901',
+        'remittanceFile': '20240721_MD01',
     },
     {
         'id': '10',
         'createDate': '2024-07-24',
-        'company': '迅達科技股份有限公司',
-        'amount': '2,500',
-        'type': '汽車',
+        'adminNote': '',
+        'status': '',
+        'applicationNum': '35',
+        'type': '機車位',
+        'company': '聯合工業股份有限公司',
+        'paymentPurpose': '階段費用',
+        'placeOrPrint': 'B4-12',
         'paymentDate': '2024-07-22',
-        'receivedDate': '2024-07-23',
-        'placeOrPrint': 'B1-10',
-        'adminNote': '確認車位'
+        'amount': '100',
+        'last5AccountNo': '23456',
+        'remittanceFile': '20240722_MD23',
     }
+];
+
+var companyData = [
+    "超級棒股份有限公司",
+    "大富翁科技有限公司",
+    "迅捷物流股份有限公司",
+    "綠能科技有限公司",
+    "全球股份有限公司",
+    "宇宙科技有限公司",
+    "光速科技有限公司"
+];
+var parkingSpaceCarData = [
+    "B1-01",
+    "B1-02",
+    "B2-03",
+    "B3-04",
+    "B2-05",
+    "B2-07",
+    "B3-11"
+];
+var parkingSpaceMotoData = [
+    "B1-21",
+    "B1-22",
+    "B2-23",
+    "B3-24",
+    "B2-25",
+    "B2-26",
+    "B3-27"
+];
+var idCardData = [
+    "N000030",
+    "N000051",
+    "N000040",
+    "N000089",
+    "N000012",
+    "N000060",
+    "N000070"
+];
+var roomData = [
+    "新德惠大樓/101",
+    "綜合大樓/201",
+    "挺生大樓/714",
+    "實驗大樓/101",
+    "北設工大樓/713",
+    "綜合大樓/A4-102",
+    "挺生大樓/809"
 ];
 
 $(function () {
@@ -1399,31 +1485,24 @@ $(function () {
         "data": dataset_confirmPaymentAll,
         "columns": [
             { data: 'createDate', title: '通知日期' }, // 0
+            { data: 'company', title: "通知公司" }, //1
+            { data: 'paymentDate', title: "付款日" }, // 2
             {
-                data: 'company', title: "通知公司", // 1
-                render: function (data) {
-                    if (data === null || data == '') {
-                        return '-';
+                data: 'type', title: "項目", // 3
+                render: function (data, type, row) {
+                    const placeOrPrint = row.placeOrPrint;
+                    if (placeOrPrint) {
+                        return data + '：' + placeOrPrint;
                     } else {
                         return data;
                     }
                 }
             },
+            { data: 'paymentPurpose', title: "目的" },  // 4
+            { data: 'amount', title: "付款金額" }, // 5
+            { data: 'adminNote', title: "管理備註", }, // 6
             {
-                data: 'paymentDate', title: "付款日", // 6
-                render: function (data) {
-                    if (data === null || data == '') {
-                        return '-';
-                    } else {
-                        return data;
-                    }
-                }
-            },
-            { data: 'amount', title: "付款金額", }, // 2
-
-            { data: 'adminNote', title: "管理備註", }, // 7
-            {
-                data: 'id', title: "操作", // 8
+                data: 'id', title: "操作", // 7
                 render: function (data, type, row) {
                     const company = row.company;
                     if (company == '' || company == null) {
@@ -1434,7 +1513,7 @@ $(function () {
                 }, className: 'text-center text-nowrap'
             },
         ],
-        "order": [[10, "asc"], [5, "desc"], [4, "desc"]],
+        "order": [[0, "desc"], [2, "desc"], [3, "desc"]],
         "columnDefs": [
             {
                 targets: [1],
@@ -1445,28 +1524,21 @@ $(function () {
                 responsivePriority: 2,
             },
             {
-                targets: [3],
+                targets: [4],
                 responsivePriority: 3,
             },
-            { searchable: false, orderable: false, targets: [8, 9] },
-            { className: "text-center", targets: [1, 4, 5, 6] },
-            { className: "text-nowrap", targets: [0, 1, 2, 4, 5, 6] },
+            { searchable: false, orderable: false, targets: [7] },
+            { className: "text-center", targets: [0, 2] },
+            { className: "text-nowrap", targets: [0, 2, 3, 4, 5] },
         ],
         createdRow: function (row, data, dataIndex) {
-            [8, 9].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
+            $('td:eq(7)', row).css('min-width', '70px');
+            [0, 2].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
             });
-            $('td:eq(5)', row).css('min-width', '100px');
-            [4, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('max-width', '146px');
-            });
-            [2, 4, 5, 6].forEach(function (colIdx) {
+            [0, 2, 5, 6].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('font-size', '.9em');
             });
-            // $('td:eq(8)', row).css('max-width', '70px');
-            // [5, 6].forEach(function (colIdx) {
-            //     $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
-            // });
         }
     });
 
@@ -1485,4 +1557,39 @@ $(function () {
             table4.columns.adjust().responsive.recalc();
         }, 200);
     });
+});
+
+$(function () {
+    // 建議輸入
+    $('#typeahead_company').typeahead({
+        source: companyData
+    });
+
+    function updateTypeahead() {
+        var selectedType = $('#type').val();
+        var sourceData;
+
+        switch (selectedType) {
+            case '識別證':
+                sourceData = idCardData;
+                break;
+            case '機車位':
+                sourceData = parkingSpaceMotoData;
+                break;
+            case '汽車位':
+                sourceData = parkingSpaceCarData;
+                break;
+            case '培育室':
+                sourceData = roomData;
+                break;
+        }
+        $('#typeahead_itemNum').typeahead('destroy'); // 清除之前的 typeahead 事件
+        $('#typeahead_itemNum').typeahead({
+            source: sourceData
+        });
+    }
+
+    $('#type').change(updateTypeahead);
+    updateTypeahead(); // 初始化
+
 });

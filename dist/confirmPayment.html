@@ -619,7 +619,7 @@
                 <!-- Modal 付款通知-->
                 <div class="modal fade" id="remittanceModal" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="remittanceModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                         <form class="modal-content" method="post" id="formRemittance">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="remittanceModalLabel">上傳匯款憑證</h4>
@@ -630,33 +630,49 @@
                             <div class="modal-body">
     <div class="container-fluid">
         <div class="row mb-1">
-            <div for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">資料細項</div>
+            <div for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">資料細項&ensp;</div>
             <div class="col lightBoxItems p-3">
-                <div class="row">
-                    <label for="dataId" class="col-form-label col-auto">申請書ID</label>
-                    <input type="text" class="form-control col" id="dataId" name="dataId">
+                <div class="row mb-1">
+                    <label for="typeahead_company" class="col-form-label col-auto"><span class="requiredMark">*</span>付款公司名稱</label>
+                    <div class="col">
+                        <input type="text" class="form-control" id="typeahead_company" placeholder="鍵入部分名稱可提示"
+                            name="company">
+                    </div>
                 </div>
-                <div class="row">
-                    <label for="type" class="col-form-label col-auto">申請種類</label>
-                    <input type="text" class="form-control col" id="type" name="type">
+                <div class="row mb-1">
+                    <label for="type" class="col-form-label col-auto"><span
+                        class="requiredMark">*</span>支付物件類型</label>
+                    <div class="col">
+                        <select class="form-select" name="type" id="type">
+                            <option value="識別證">識別證</option>
+                            <option value="機車位">機車位</option>
+                            <option value="汽車位">汽車位</option>
+                            <option value="培育室">培育室</option>
+                        </select>
+                    </div>
+                    <label for="paymentPurpose" class="col-form-label col-auto"><span
+                        class="requiredMark">*</span>付款目的</label>
+                    <div class="col">
+                        <select class="form-select"  name="paymentPurpose" id="paymentPurpose">
+                            <option value="續約">續約</option>
+                            <option value="補發">補發</option>
+                            <option value="階段費用">階段費用</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="row">
-                    <label for="company" class="col-form-label col-auto">公司名稱</label>
-                    <input type="text" class="form-control col" id="company" name="company">
+                <div class="row mb-1">
+                    <label for="typeahead_itemNum" class="col-form-label col-auto"><span class="requiredMark">*</span>付款物件編號</label>
+                    <div class="col">
+                        <input type="text" class="form-control" id="typeahead_itemNum" placeholder="鍵入部分名稱可提示"
+                        name="itemNum">
+                    </div>
                 </div>
-                <div class="row">
-                    <label for="renewOrReprint" class="col-form-label col-auto">合約類型</label>
-                    <input type="text" class="form-control col" id="renewOrReprint" name="renewOrReprint">
-                </div>
-                <div class="row">
-                    <label for="itemNum" class="col-form-label col-auto">續約物件</label>
-                    <input type="text" class="form-control col" id="itemNum" name="itemNum">
-                </div>
+
             </div>
         </div>
         <div class="row mb-1">
             <label for="paymentDate" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
-                    class="requiredMark">*</span>匯款日期<span class="d-none d-lg-inline">&emsp;&emsp;&emsp;</span>
+                    class="requiredMark">*</span>付款日期
             </label>
             <div class="col lightBoxItems p-3">
                 <input type="date" class="form-control thisRequired" id="paymentDate" name="paymentDate">
@@ -665,7 +681,7 @@
         </div>
         <div class="row mb-1">
             <label for="paymentAmount" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
-                    class="requiredMark">*</span>匯款金額<span class="d-none d-lg-inline">&emsp;&emsp;&emsp;</span>
+                    class="requiredMark">*</span>付款金額<span class="d-none d-lg-inline">&emsp;&emsp;&emsp;</span>
             </label>
             <div class="col lightBoxItems p-3">
                 <input type="text" class="form-control thisRequired" id="paymentAmount" onkeyup="restrictToNum(this)"
@@ -674,8 +690,7 @@
             </div>
         </div>
         <div class="row mb-1">
-            <label for="last5AccountNo" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
-                    class="requiredMark">*</span>匯款帳號後五碼
+            <label for="last5AccountNo" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">匯款帳號後五碼
             </label>
             <div class="col lightBoxItems p-3">
                 <input type="text" class="form-control thisRequired" id="last5AccountNo" onkeyup="restrictTo5Num(this)"
@@ -750,7 +765,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
     <script src="./js/formComm.js"></script>
     <script src="./js/formValidation.js"></script>
     <script src="./js/editableTextToggle.js"></script>

@@ -251,7 +251,7 @@ $(function () {
             if (cultivationRoomData) {
                 $('#dataId').val(cultivationRoomData.id);
                 $('#type').val('培育室');
-                $('#renewOrReprint').val('階段費用');
+                $('#paymentPurpose').val('階段費用');
                 $('#itemNum').val(cultivationRoomData.building + '-' + cultivationRoomData.room);
 
                 if (button.hasClass('reuploadRemittance')) {

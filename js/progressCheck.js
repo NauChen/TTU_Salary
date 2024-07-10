@@ -220,11 +220,11 @@ $(function () {
                 $('#type').val(progressData.type);
 
                 if (progressData.isReprint != '' || progressData.isReprint != null) {
-                    $('#renewOrReprint').val('補發');
+                    $('#paymentPurpose').val('補發');
                 } else if (progressData.isRenew != '' || progressData.isRenew != null) {
-                    $('#renewOrReprint').val('續約');
+                    $('#paymentPurpose').val('續約');
                 } else{
-                    $('#renewOrReprint').val('');
+                    $('#paymentPurpose').val('');
                 }
 
                 $('#itemNum').val(progressData.itemNum);
