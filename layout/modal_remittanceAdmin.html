@@ -1,18 +1,19 @@
 <div class="modal-body">
     <div class="container-fluid">
         <div class="row mb-1">
-            <div for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">資料細項&ensp;</div>
+            <div for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">來源細項</div>
             <div class="col lightBoxItems p-3">
                 <div class="row mb-1">
-                    <label for="typeahead_company" class="col-form-label col-auto"><span class="requiredMark">*</span>付款公司名稱</label>
+                    <label for="typeahead_company" class="col-form-label col-auto"><span
+                            class="requiredMark">*</span>付款公司名稱</label>
                     <div class="col">
-                        <input type="text" class="form-control" id="typeahead_company" placeholder="鍵入部分名稱可提示"
+                        <input type="text" class="form-control" id="typeahead_company" placeholder="鍵入部分文字會有提示字"
                             name="company">
+                        <span class="text-danger" id="danger_typeahead_company"></span>
                     </div>
                 </div>
                 <div class="row mb-1">
-                    <label for="type" class="col-form-label col-auto"><span
-                        class="requiredMark">*</span>支付物件類型</label>
+                    <label for="type" class="col-form-label col-auto"><span class="requiredMark">*</span>支付物件類型</label>
                     <div class="col">
                         <select class="form-select" name="type" id="type">
                             <option value="識別證">識別證</option>
@@ -20,58 +21,73 @@
                             <option value="汽車位">汽車位</option>
                             <option value="培育室">培育室</option>
                         </select>
+                        <span class="text-danger" id="danger_type"></span>
                     </div>
                     <label for="paymentPurpose" class="col-form-label col-auto"><span
-                        class="requiredMark">*</span>付款目的</label>
+                            class="requiredMark">*</span>目的</label>
                     <div class="col">
-                        <select class="form-select"  name="paymentPurpose" id="paymentPurpose">
+                        <select class="form-select" name="paymentPurpose" id="paymentPurpose">
                             <option value="續約">續約</option>
                             <option value="補發">補發</option>
                             <option value="階段費用">階段費用</option>
                         </select>
+                        <span class="text-danger" id="danger_paymentPurpose"></span>
                     </div>
                 </div>
                 <div class="row mb-1">
-                    <label for="typeahead_itemNum" class="col-form-label col-auto"><span class="requiredMark">*</span>付款物件編號</label>
+                    <label for="typeahead_itemNum" class="col-form-label col-auto"><span
+                            class="requiredMark">*</span>付款物件編號</label>
                     <div class="col">
-                        <input type="text" class="form-control" id="typeahead_itemNum" placeholder="鍵入部分名稱可提示"
-                        name="itemNum">
+                        <input type="text" class="form-control" id="typeahead_itemNum" placeholder="鍵入部分文字會有提示字"
+                            name="itemNum">
+                        <span class="text-danger" id="danger_typeahead_itemNum"></span>
                     </div>
                 </div>
 
             </div>
         </div>
         <div class="row mb-1">
-            <label for="paymentDate" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
-                    class="requiredMark">*</span>付款日期
-            </label>
+            <div for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">付款詳情</div>
             <div class="col lightBoxItems p-3">
-                <input type="date" class="form-control thisRequired" id="paymentDate" name="paymentDate">
-                <span class="text-danger" id="danger_paymentDate"></span>
+                <div class="row mb-1">
+                    <label for="paymentDate" class="col-form-label col-auto text-nowrap"><span
+                            class="requiredMark">*</span>付款日期</label>
+                    <div class="col">
+                        <input type="date" class="form-control thisRequired" id="paymentDate" name="paymentDate">
+                        <span class="text-danger" id="danger_paymentDate"></span>
+                    </div>
+                    <label for="paymentAmount" class="col-form-label col-auto text-nowrap"><span
+                            class="requiredMark">*</span>付款金額</label>
+                    <div class="col">
+                        <input type="text" class="form-control thisRequired" id="paymentAmount"
+                            onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)"
+                            name="paymentAmount">
+                        <span class="text-danger" id="danger_paymentAmount"></span>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <label for="paymentMethod" class="col-form-label col-auto text-nowrap"><span
+                            class="requiredMark">*</span>支付方法</label>
+                    <div class="col">
+                        <!-- <input type="text" class="form-control thisRequired" id="paymentMethod" name="paymentMethod"> -->
+                        <select class="form-select" name="paymentMethod" id="paymentMethod">
+                            <option value="現金">現金</option>
+                            <option value="匯款">匯款</option>
+                        </select>
+                        <span class="text-danger" id="danger_paymentMethod"></span>
+                    </div>
+                    <label for="last5AccountNo" class="col-form-label col-auto text-nowrap">帳號後五碼
+                    </label>
+                    <div class="col">
+                        <input type="text" class="form-control thisRequired" id="last5AccountNo" onkeyup="restrictTo5Num(this)"
+                            name="last5AccountNo">
+                        <span class="text-danger" id="danger_last5AccountNo"></span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row mb-1">
-            <label for="paymentAmount" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
-                    class="requiredMark">*</span>付款金額<span class="d-none d-lg-inline">&emsp;&emsp;&emsp;</span>
-            </label>
-            <div class="col lightBoxItems p-3">
-                <input type="text" class="form-control thisRequired" id="paymentAmount" onkeyup="restrictToNum(this)"
-                    onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)" name="paymentAmount">
-                <span class="text-danger" id="danger_paymentAmount"></span>
-            </div>
-        </div>
-        <div class="row mb-1">
-            <label for="last5AccountNo" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">匯款帳號後五碼
-            </label>
-            <div class="col lightBoxItems p-3">
-                <input type="text" class="form-control thisRequired" id="last5AccountNo" onkeyup="restrictTo5Num(this)"
-                    name="last5AccountNo">
-                <span class="text-danger" id="danger_last5AccountNo"></span>
-            </div>
-        </div>
-        <div class="row mb-1">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"><span
-                    class="d-none d-lg-inline">&ensp;</span>上傳匯款憑證<span class="d-none d-lg-inline">&emsp;</span></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">匯款憑證</div>
             <div class="col lightBoxItems p-3 align_center" id="ECPhone">
                 <div class="row align-items-center my-1">
                     <label for="remittancePdf"
