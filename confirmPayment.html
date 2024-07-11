@@ -29,8 +29,9 @@
                                 class="fa-solid fa-quote-left"></i>付款查核與配發廠商<i class="fa-solid fa-quote-right"></i></h3>
                         <!-- 點擊後將勾選的id傳至後台 -->
                         <button class="btn btn-outline-warning col-auto goto_somewhere ms-5" id="createNewPayment"
-                            data-bs-toggle="modal" data-bs-target="#remittanceModal"><i class="fa-solid fa-plus"></i><i
-                                class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-dollar-sign"></i><span
+                            data-bs-toggle="modal" data-bs-target="#remittanceAdminModal"><i
+                                class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-solid fa-dollar-sign"></i><span
                                 class="tooltiptext tooltip-top">新增付款資訊</span></button>
                         <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
                             href="./cultivationRoomCreate.html"><i class="fa-solid fa-plus"></i><i
@@ -53,7 +54,7 @@
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"
                                     data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
                                     aria-controls="collapseOne" checked>
-                                <label class="btn btn-outline-primary" for="btnradio3">付款通知與收據</label>
+                                <label class="btn btn-outline-primary" for="btnradio3">收款</label>
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
                                     data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
                                     aria-controls="collapseTwo">
@@ -62,10 +63,6 @@
                                     data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
                                     aria-controls="collapseThree">
                                 <label class="btn btn-outline-primary" for="btnradio2">車位</label>
-                                <!-- <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                                    aria-controls="collapseFour">
-                                <label class="btn btn-outline-primary" for="btnradio4">培育室</label> -->
                             </div>
                         </div>
                         <div class="accordion accordion-flush" id="accordionExample">
@@ -102,15 +99,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- <div class="accordion-item border-0">
-                                <div id="collapseFour" class="accordion-collapse collapse"
-                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -157,13 +145,13 @@
                 </div>
 
 
-                <!-- Modal 付款通知-->
-                <div class="modal fade" id="remittanceModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="remittanceModalLabel" aria-hidden="true">
+                <!-- Modal 新增付款資訊-->
+                <div class="modal fade" id="remittanceAdminModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="remittanceAdminModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                         <form class="modal-content" method="post" id="formRemittance">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="remittanceModalLabel">新增付款資訊</h4>
+                                <h4 class="modal-title" id="remittanceAdminModalLabel">新增付款資訊</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -179,13 +167,35 @@
                     </div>
                 </div>
 
+                <!-- Modal 付款收據 -->
+                <div class="modal fade" id="confirmPaymentModel" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmPaymentModelLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="confirmPaymentModelLabel">付款詳情與收據</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            @@include('layout/model_confirmPayment.html')
+                            <div class="modal-footer">
+                                <span class="text-danger" id="danger_paymentBox"></span>
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                                <button type="button" class="btn btn-outline-secondary" id="payment_updateBtn">確認修改</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 @@include('layout/footer.html')
 
             </div>
         </div>
     </main>
     @@include('layout/metaJS.html')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
     <script src="./js/formComm.js"></script>
     <script src="./js/formValidation.js"></script>
     <script src="./js/editableTextToggle.js"></script>

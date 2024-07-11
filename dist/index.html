@@ -171,44 +171,70 @@
                     <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>職缺列表<i
                             class="fa-solid fa-quote-right"></i></h3>
                     <div class="tabs section-border-radius section-padding">
-                        <!-- 點擊按鈕後，後端切換輸出的data -->
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <!-- id="nav-all-tab"  -->
-                                <button class="nav-link active" data-bs-toggle="tab" type="button">不限學院</button>
-                                <!-- id="nav-engineering-tab" -->
-                                <button class="nav-link" data-bs-toggle="tab" type="button">工程學院</button>
-                                <!-- id="nav-management-tab" -->
-                                <button class="nav-link" data-bs-toggle="tab" type="button">經營學院</button>
-                                <!-- id="nav-design-tab" -->
-                                <button class="nav-link" data-bs-toggle="tab" type="button">設計學院</button>
-                                <!-- id="nav-language-tab" -->
-                                <button class="nav-link" data-bs-toggle="tab" type="button">國際學院</button>
+                                <button class="nav-link active" id="nav-all-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all"
+                                    aria-selected="true">不限學院</button>
+                                <button class="nav-link" id="nav-engineering-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-engineering" type="button" role="tab"
+                                    aria-controls="nav-engineering" aria-selected="false">工程學院</button>
+                                <button class="nav-link" id="nav-management-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-management" type="button" role="tab"
+                                    aria-controls="nav-management" aria-selected="false">經營學院</button>
+                                <button class="nav-link" id="nav-design-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-design" type="button" role="tab" aria-controls="nav-design"
+                                    aria-selected="false">設計學院</button>
+                                <button class="nav-link" id="nav-language-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-language" type="button" role="tab" aria-controls="nav-language"
+                                    aria-selected="false">國際學院</button>
                             </div>
                         </nav>
                         <div class="tab-content print_template p-2" id="nav-tabContent">
-                            <!-- <div class="tab-pane fade show active p-2" > -->
-                            <table id="jobList" class="table table-hover table-bordered responsive align-middle"
-                                style="width:100%">
-                            </table>
-                            <!-- <div class="p-2">
-                            </div> -->
-
+                            <div class="tab-pane fade show active p-2" id="nav-all" role="tabpanel"
+                                aria-labelledby="nav-all-tab">
+                                <table id="jobAllList" class="table table-hover table-bordered responsive align-middle"
+                                    style="width:100%">
+                                </table>
+                            </div>
+                            <div class="tab-pane fade p-2" id="nav-engineering" role="tabpanel"
+                                aria-labelledby="nav-engineering-tab">
+                                <table id="jobEngineeringList"
+                                    class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                                </table>
+                            </div>
+                            <div class="tab-pane fade p-2" id="nav-management" role="tabpanel"
+                                aria-labelledby="nav-management-tab">
+                                <table id="jobManagementList"
+                                    class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                                </table>
+                            </div>
+                            <div class="tab-pane fade p-2" id="nav-design" role="tabpanel"
+                                aria-labelledby="nav-design-tab">
+                                <table id="jobDesignList"
+                                    class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                                </table>
+                            </div>
+                            <div class="tab-pane fade p-2" id="nav-language" role="tabpanel"
+                                aria-labelledby="nav-language-tab">
+                                <table id="jobLanguageList"
+                                    class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="jobDetailsModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="jobDetailsModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="jobDetailsModalLabel">職缺內容</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            
+                    <!-- Modal -->
+                    <div class="modal fade" id="jobDetailsModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="jobDetailsModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="jobDetailsModalLabel">職缺內容</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                
     <div class="modal-body">
         <div class="container-fluid">
             <!-- 公司名稱和公司簡介 -->
@@ -295,12 +321,12 @@
         <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
     </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <!-- <footer>
+                    <!-- <footer>
     <ul>
         <li>隱私權</li>
     </ul>
@@ -323,8 +349,8 @@
     </p>
 </div>
 
+                </div>
             </div>
-        </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="./js/bootstrap.bundle.min.js"></script>
@@ -346,3 +372,14 @@
 </body>
 
 </html>
+
+<!-- id="nav-all-tab"  -->
+<!-- <button class="nav-link active" data-bs-toggle="tab" type="button">不限學院</button> -->
+<!-- id="nav-engineering-tab" -->
+<!-- <button class="nav-link" data-bs-toggle="tab" type="button">工程學院</button> -->
+<!-- id="nav-management-tab" -->
+<!-- <button class="nav-link" data-bs-toggle="tab" type="button">經營學院</button> -->
+<!-- id="nav-design-tab" -->
+<!-- <button class="nav-link" data-bs-toggle="tab" type="button">設計學院</button> -->
+<!-- id="nav-language-tab" -->
+<!-- <button class="nav-link" data-bs-toggle="tab" type="button">國際學院</button> -->

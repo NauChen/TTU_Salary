@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="row mb-1">
-                    <label for="type" class="col-form-label col-auto"><span class="requiredMark">*</span>支付物件類型</label>
+                    <label for="type" class="col-form-label col-auto"><span class="requiredMark">*</span>支付物件項目</label>
                     <div class="col">
                         <select class="form-select" name="type" id="type">
                             <option value="識別證">識別證</option>
@@ -27,6 +27,7 @@
                             class="requiredMark">*</span>目的</label>
                     <div class="col">
                         <select class="form-select" name="paymentPurpose" id="paymentPurpose">
+                            <option value="續約">新申請</option>
                             <option value="續約">續約</option>
                             <option value="補發">補發</option>
                             <option value="階段費用">階段費用</option>
@@ -88,7 +89,7 @@
         </div>
         <div class="row mb-1">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">匯款憑證</div>
-            <div class="col lightBoxItems p-3 align_center" id="ECPhone">
+            <div class="col lightBoxItems p-3 align_center">
                 <div class="row align-items-center my-1">
                     <label for="remittancePdf"
                         class="col-auto col-form-label text-nowrap upload-label py-0 align_center ps-3">請點此上傳pdf檔<i

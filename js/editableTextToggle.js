@@ -3,6 +3,7 @@ var CustomInputHandlers = {
     init: function () {
         this.bindChangeInputItems();
         this.bindChangeRadioCarItems();
+        this.bindChangeRadioPaymentMethodItems();
         this.bindChangeRadioApplyItems();
         this.bindChangeDateItems();
         this.bindChangeMoneyItems();
@@ -14,6 +15,9 @@ var CustomInputHandlers = {
         this.bindChangeLineIDItems();
         this.bindChangeSelectItems();
         this.bindChangeSelectRoomItems();
+        this.bindChangeSelectPaymentPurposeItems();
+        this.bindChangeSelectStatusItems();
+        this.bindChangeSelectPurchaseItems();
     },
     bindChangeInputItems: function () {
         $('.changeInput_items').on('click', function () {
@@ -59,6 +63,42 @@ var CustomInputHandlers = {
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="parkingType" id="moto" value="機車" ${currentText === '機車' ? 'checked' : ''}>
                         <label class="form-check-label" for="moto">機車</label>
+                    </div>`;
+
+                $this.html(radioOptions);
+
+                $this.find('input[type="radio"]').on('change', function () {
+                    var newText = $(this).val().trim();
+                    $this.html(newText);
+                });
+
+                $(document).on('click', function (e) {
+                    if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+                        var checkedRadio = $this.find('input[type="radio"]:checked');
+                        if (checkedRadio.length) {
+                            var newText = checkedRadio.val().trim();
+                            $this.html(newText);
+                        }
+                        $(document).off('click');
+                    }
+                });
+            }
+        });
+    },
+    bindChangeRadioPaymentMethodItems: function () {
+        $('.changeRadioPayMethod_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input[type="radio"]').length === 0) {
+                var radioOptions = `
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="cash" value="現金" ${currentText === '現金' ? 'checked' : ''}>
+                        <label class="form-check-label" for="cash">現金</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="remittance" value="匯款" ${currentText === '匯款' ? 'checked' : ''}>
+                        <label class="form-check-label" for="remittance">匯款</label>
                     </div>`;
 
                 $this.html(radioOptions);
@@ -376,6 +416,7 @@ var CustomInputHandlers = {
             }
         });
     },
+    // selectOption
     bindChangeSelectItems: function () {
         $('.changeSelect_items').on('click', function () {
             var $this = $(this);
@@ -437,6 +478,7 @@ var CustomInputHandlers = {
             }
         });
     },
+    // selectOptionRoom
     bindChangeSelectRoomItems: function () {
         $('.changeSelectRoom_items').on('click', function () {
             var $this = $(this);
@@ -487,7 +529,170 @@ var CustomInputHandlers = {
                 });
             }
         });
-    }
+    },
+    // selectOptionPaymentPurpose
+    bindChangeSelectPaymentPurposeItems: function () {
+        $('.changeSelectPaymentPurpose_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
 
+            if ($this.find('select').length === 0) {
+                var selectOptions = `
+                    <select class="form-control form-select">
+                    </select>`;
 
+                var $select = $(selectOptions);
+
+                // 判斷是否有 optigroup
+                if (selectOptionPaymentPurpose[0].hasOwnProperty('optigroup')) {
+                    var groupedOptions = {};
+                    selectOptionPaymentPurpose.forEach(function (item) {
+                        if (!groupedOptions[item.optigroup]) {
+                            groupedOptions[item.optigroup] = [];
+                        }
+                        groupedOptions[item.optigroup].push(item.option);
+                    });
+
+                    for (var group in groupedOptions) {
+                        var optgroup = $('<optgroup>').attr('label', group);
+                        groupedOptions[group].forEach(function (option) {
+                            var optionValue = group + ' ' + option;
+                            var optionElement = $('<option>').attr('value', optionValue).text(option);
+                            if (optionValue === currentText) {
+                                optionElement.attr('selected', 'selected');
+                            }
+                            optgroup.append(optionElement);
+                        });
+                        $select.append(optgroup);
+                    }
+                } else {
+                    selectOptionPaymentPurpose.forEach(function (item) {
+                        var optionElement = $('<option>').attr('value', item.option).text(item.option);
+                        if (currentText === item.option) {
+                            optionElement.attr('selected', 'selected');
+                        }
+                        $select.append(optionElement);
+                    });
+                }
+
+                $this.html($select);
+                $select.focus();
+
+                $select.on('change', function () {
+                    var newText = $select.find('option:selected').text();
+                    $this.html(newText);
+                });
+
+                $(document).on('click.select', function (e) {
+                    if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+                        var newText = $select.find('option:selected').text();
+                        $this.html(newText ? newText : currentText);
+                        $(document).off('click.select');
+                    }
+                });
+            }
+        });
+    },
+    // selectOptionStatus
+    bindChangeSelectStatusItems: function () {
+        $('.changeSelectStatus_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('select').length === 0) {
+                var selectOptions = `
+                    <select class="form-control form-select">
+                    </select>`;
+
+                var $select = $(selectOptions);
+
+                selectOptionStatus.forEach(function (item) {
+                    var optionElement = $('<option>').attr('value', item.option).text(item.option);
+                    if (currentText === item.option) {
+                        optionElement.attr('selected', 'selected');
+                    }
+                    $select.append(optionElement);
+                });
+
+                $this.html($select);
+                $select.focus();
+
+                $select.on('change', function () {
+                    var newText = $select.find('option:selected').text();
+                    $this.html(newText);
+                });
+
+                $(document).on('click.select', function (e) {
+                    if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+                        var newText = $select.find('option:selected').text();
+                        $this.html(newText ? newText : currentText);
+                        $(document).off('click.select');
+                    }
+                });
+            }
+        });
+    },
+    // selectOptionPurchase
+    bindChangeSelectPurchaseItems: function () {
+        $('.changeSelectPurchase_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('select').length === 0) {
+                var selectOptions = `
+                        <select class="form-control form-select">
+                        </select>`;
+
+                var $select = $(selectOptions);
+
+                // 判斷是否有 optigroup
+                if (selectOptionPurchase[0].hasOwnProperty('optigroup')) {
+                    var groupedOptions = {};
+                    selectOptionPurchase.forEach(function (item) {
+                        if (!groupedOptions[item.optigroup]) {
+                            groupedOptions[item.optigroup] = [];
+                        }
+                        groupedOptions[item.optigroup].push(item.option);
+                    });
+
+                    for (var group in groupedOptions) {
+                        var optgroup = $('<optgroup>').attr('label', group);
+                        groupedOptions[group].forEach(function (option) {
+                            var optionValue = group + ' ' + option;
+                            var optionElement = $('<option>').attr('value', optionValue).text(option);
+                            if (optionValue === currentText) {
+                                optionElement.attr('selected', 'selected');
+                            }
+                            optgroup.append(optionElement);
+                        });
+                        $select.append(optgroup);
+                    }
+                } else {
+                    selectOptionPurchase.forEach(function (item) {
+                        var optionElement = $('<option>').attr('value', item.option).text(item.option);
+                        if (currentText === item.option) {
+                            optionElement.attr('selected', 'selected');
+                        }
+                        $select.append(optionElement);
+                    });
+                }
+
+                $this.html($select);
+                $select.focus();
+
+                $select.on('change', function () {
+                    var newText = $select.find('option:selected').text();
+                    $this.html(newText);
+                });
+
+                $(document).on('click.select', function (e) {
+                    if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+                        var newText = $select.find('option:selected').text();
+                        $this.html(newText ? newText : currentText);
+                        $(document).off('click.select');
+                    }
+                });
+            }
+        });
+    },
 };

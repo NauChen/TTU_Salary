@@ -174,8 +174,9 @@
                                 class="fa-solid fa-quote-left"></i>付款查核與配發廠商<i class="fa-solid fa-quote-right"></i></h3>
                         <!-- 點擊後將勾選的id傳至後台 -->
                         <button class="btn btn-outline-warning col-auto goto_somewhere ms-5" id="createNewPayment"
-                            data-bs-toggle="modal" data-bs-target="#remittanceModal"><i class="fa-solid fa-plus"></i><i
-                                class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-dollar-sign"></i><span
+                            data-bs-toggle="modal" data-bs-target="#remittanceAdminModal"><i
+                                class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-solid fa-dollar-sign"></i><span
                                 class="tooltiptext tooltip-top">新增付款資訊</span></button>
                         <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
                             href="./cultivationRoomCreate.html"><i class="fa-solid fa-plus"></i><i
@@ -198,7 +199,7 @@
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"
                                     data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
                                     aria-controls="collapseOne" checked>
-                                <label class="btn btn-outline-primary" for="btnradio3">付款通知與收據</label>
+                                <label class="btn btn-outline-primary" for="btnradio3">收款</label>
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
                                     data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
                                     aria-controls="collapseTwo">
@@ -207,10 +208,6 @@
                                     data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
                                     aria-controls="collapseThree">
                                 <label class="btn btn-outline-primary" for="btnradio2">車位</label>
-                                <!-- <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                                    aria-controls="collapseFour">
-                                <label class="btn btn-outline-primary" for="btnradio4">培育室</label> -->
                             </div>
                         </div>
                         <div class="accordion accordion-flush" id="accordionExample">
@@ -247,15 +244,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- <div class="accordion-item border-0">
-                                <div id="collapseFour" class="accordion-collapse collapse"
-                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -616,13 +604,13 @@
                 </div>
 
 
-                <!-- Modal 付款通知-->
-                <div class="modal fade" id="remittanceModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="remittanceModalLabel" aria-hidden="true">
+                <!-- Modal 新增付款資訊-->
+                <div class="modal fade" id="remittanceAdminModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="remittanceAdminModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                         <form class="modal-content" method="post" id="formRemittance">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="remittanceModalLabel">新增付款資訊</h4>
+                                <h4 class="modal-title" id="remittanceAdminModalLabel">新增付款資訊</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -642,7 +630,7 @@
                     </div>
                 </div>
                 <div class="row mb-1">
-                    <label for="type" class="col-form-label col-auto"><span class="requiredMark">*</span>支付物件類型</label>
+                    <label for="type" class="col-form-label col-auto"><span class="requiredMark">*</span>支付物件項目</label>
                     <div class="col">
                         <select class="form-select" name="type" id="type">
                             <option value="識別證">識別證</option>
@@ -656,6 +644,7 @@
                             class="requiredMark">*</span>目的</label>
                     <div class="col">
                         <select class="form-select" name="paymentPurpose" id="paymentPurpose">
+                            <option value="續約">新申請</option>
                             <option value="續約">續約</option>
                             <option value="補發">補發</option>
                             <option value="階段費用">階段費用</option>
@@ -717,7 +706,7 @@
         </div>
         <div class="row mb-1">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">匯款憑證</div>
-            <div class="col lightBoxItems p-3 align_center" id="ECPhone">
+            <div class="col lightBoxItems p-3 align_center">
                 <div class="row align-items-center my-1">
                     <label for="remittancePdf"
                         class="col-auto col-form-label text-nowrap upload-label py-0 align_center ps-3">請點此上傳pdf檔<i
@@ -742,6 +731,131 @@
                                     id="remittanceSubmit">確認上傳</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+
+                <!-- Modal 付款收據 -->
+                <div class="modal fade" id="confirmPaymentModel" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmPaymentModelLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="confirmPaymentModelLabel">付款詳情與收據</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+    <div class="container-fluid">
+        <!-- 公司名稱(自動代入)、統編(自動代入)、支付目的(可改) -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                付款企業
+            </div>
+            <div class="col lightBoxItems p-3 align_center readOnly" id="payment_companyName"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                統一編號
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="payment_uniformNum"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                支付目的
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_paymentPurpose"></div>
+        </div>
+        <!-- E-mail、聯絡人、聯絡電話 (都自動代入)-->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                E-mail
+            </div>
+            <div class="col lightBoxItems p-3 align_center readOnly" id="payment_companyEmail"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                聯絡人&emsp;
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="payment_contactPerson"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
+                聯絡電話
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="payment_companyPhone"></div>
+        </div>
+        <!-- 匯款日期、到期日、入帳日 (可改)-->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                支付日期
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_paymentDate"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                支付金額
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="payment_paymentAmount"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                支付方式
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="payment_paymentMethod"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                帳尾五碼
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_last5AccountNo"></div>
+        </div>
+        <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                支付項目
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_type">汽車位</div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                支付物件
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="payment_placeOrPrint">B3-10</div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                支付憑證
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly">
+                <a class="d-inline me-3 text-nowrap" href="#" id="payment_downloadRemittanceFile">憑證下載&ensp;<i class="fa-solid fa-download"></i><span
+                        class="mx-1 update">補</span></a>
+            </div>
+        </div>
+        <!-- 收據號碼、收據日期、收據金額 -->
+        <div class="row mb-1">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
+                收據日期
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_receiptDate"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+                收據金額
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="payment_receiptAmount"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+                收據項目
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="payment_receiptItems">
+            </div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+                收據號碼
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_receiptNum">
+            </div>
+        </div>
+
+
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
+                處理進度
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_status"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+                管理註記
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="payment_adminNote"></div>
+        </div>
+
+    </div>
+</div>
+                            <div class="modal-footer">
+                                <span class="text-danger" id="danger_paymentBox"></span>
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                                <button type="button" class="btn btn-outline-secondary" id="payment_updateBtn">確認修改</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -781,7 +895,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
     <script src="./js/formComm.js"></script>
     <script src="./js/formValidation.js"></script>
     <script src="./js/editableTextToggle.js"></script>
