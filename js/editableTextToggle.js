@@ -18,6 +18,7 @@ var CustomInputHandlers = {
         this.bindChangeSelectPaymentPurposeItems();
         this.bindChangeSelectStatusItems();
         this.bindChangeSelectPurchaseItems();
+        this.bindChangeDecimalItems();
     },
     bindChangeInputItems: function () {
         $('.changeInput_items').on('click', function () {
@@ -690,6 +691,50 @@ var CustomInputHandlers = {
                         var newText = $select.find('option:selected').text();
                         $this.html(newText ? newText : currentText);
                         $(document).off('click.select');
+                    }
+                });
+            }
+        });
+    },
+    bindChangeDecimalItems: function () {
+        $('.changeDecimal_items').on('click', function () {
+            var $this = $(this);
+            var currentText = unformatNumber($this.text().trim());
+    
+            if ($this.find('input').length === 0) {
+                var $input = $('<input type="text" class="form-control" onkeyup="restrictToDecimal(this)">').val(currentText);
+                $this.html($input);
+                $input.focus().select();
+    
+                $input.on('input', function () {
+                    this.value = this.value.replace(/[^0-9.]/g, '');
+                    var parts = this.value.split('.');
+                    if (parts.length > 2) {
+                        this.value = parts[0] + '.' + parts[1];
+                    } else if (parts[1] && parts[1].length > 1) {
+                        this.value = parts[0] + '.' + parts[1].substring(0, 1);
+                    }
+                });
+    
+                function handleBlurOrEnter() {
+                    var newValue = parseFloat($input.val()).toFixed(1);
+                    if (isNaN(newValue)) {
+                        if ($this.hasClass('thisTextRequired')) {
+                            $this.text(formatNumber(currentText));
+                            swalToastWarning('此欄位不可留白喔！', 'top');
+                        } else {
+                            $this.text('');
+                        }
+                    } else {
+                        $this.text(formatNumber(newValue));
+                    }
+                }
+    
+                $input.on('blur', handleBlurOrEnter);
+                $input.on('keypress', function (e) {
+                    if (e.which === 13) {
+                        handleBlurOrEnter();
+                        // $input.blur(); // 强制触发 blur 事件以便执行相应逻辑
                     }
                 });
             }

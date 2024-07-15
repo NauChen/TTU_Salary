@@ -54,6 +54,32 @@ function restrictFirstUpperSecondNum(obj) {
 
     $(obj).val(newValue);
 }
+//   數字。 禁開頭是0，無條件進位至小數點第一位
+function restrictToDecimal(obj) {
+    // 移除所有非數字和非小數點的字符
+    obj.value = obj.value.replace(/[^0-9.]/g, '');
+
+    // 禁止開頭輸入0，除非後面跟著小數點
+    if (obj.value.length > 1 && obj.value.startsWith('0') && obj.value[1] !== '.') {
+        obj.value = obj.value.slice(1);
+    }
+
+    // 將輸入值分割成整數部分和小數部分
+    var parts = obj.value.split('.');
+
+    // 如果有多個小數點，只保留第一個小數點和它前後的數字
+    if (parts.length > 2) {
+        obj.value = parts[0] + '.' + parts[1];
+    }
+
+    // 處理小數點後超過一位的情況
+    if (parts.length > 1 && parts[1].length > 1) {
+        // 將小數點後的數值轉為數字並無條件進位至小數點第一位
+        var roundedDecimal = Math.ceil(parseFloat('0.' + parts[1]) * 10);
+        obj.value = parts[0] + '.' + roundedDecimal;
+    }
+}
+
 
 // ※※ 金額函式 - 千分位符號 ※※ 
 //   增加千分號

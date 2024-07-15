@@ -54,15 +54,15 @@
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"
                                     data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
                                     aria-controls="collapseOne" checked>
-                                <label class="btn btn-outline-primary" for="btnradio3">收款</label>
+                                <label class="btn btn-outline-primary" for="btnradio3">收款紀錄與收據</label>
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
                                     data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
                                     aria-controls="collapseTwo">
-                                <label class="btn btn-outline-primary" for="btnradio1">培育室</label>
+                                <label class="btn btn-outline-primary" for="btnradio1">培育室配置廠商</label>
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
                                     data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
                                     aria-controls="collapseThree">
-                                <label class="btn btn-outline-primary" for="btnradio2">車位</label>
+                                <label class="btn btn-outline-primary" for="btnradio2">車位配置廠商</label>
                             </div>
                         </div>
                         <div class="accordion accordion-flush" id="accordionExample">
@@ -104,25 +104,27 @@
                 </div>
 
 
-                <!-- Modal 培育室 -->
+                <!-- Modal 培育室修改配置廠商 -->
                 <div class="modal fade" id="confirmPaymentCultivationModel" data-bs-backdrop="static"
                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmPaymentCultivationModelLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <form class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="confirmPaymentCultivationModelLabel">培育室付款詳情</h4>
+                                <h4 class="modal-title" id="confirmPaymentCultivationModelLabel">培育室本次配置詳情</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             @@include('layout/model_confirmPaymentCultivation.html')
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" id="cultivation_deleteData">刪除此筆紀錄</button>
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
-                                <button type="button" class="btn btn-outline-secondary" id="updateBtn">確認修改</button>
+                                <button type="button" class="btn btn-outline-secondary" id="cultivation_updateBtn">確認修改</button>
                             </div>
                         </form>
                     </div>
                 </div>
+
 
                 <!-- Modal 停車位 -->
                 <div class="modal fade" id="confirmPaymentParkingSpaceModel" data-bs-backdrop="static"
@@ -149,7 +151,7 @@
                 <div class="modal fade" id="remittanceAdminModal" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="remittanceAdminModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-                        <form class="modal-content" method="post" id="formRemittance">
+                        <form class="modal-content" method="post" id="formRemittance" enctype="multipart/form-data">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="remittanceAdminModalLabel">新增付款資訊</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -168,9 +170,8 @@
                 </div>
 
                 <!-- Modal 付款收據 -->
-                <div class="modal fade" id="confirmPaymentModel" data-bs-backdrop="static"
-                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmPaymentModelLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="confirmPaymentModel" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="confirmPaymentModelLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -182,7 +183,8 @@
                             <div class="modal-footer">
                                 <span class="text-danger" id="danger_paymentBox"></span>
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
-                                <button type="button" class="btn btn-outline-secondary" id="payment_updateBtn">確認修改</button>
+                                <button type="button" class="btn btn-outline-secondary"
+                                    id="payment_updateBtn">確認修改</button>
                             </div>
                         </div>
                     </div>

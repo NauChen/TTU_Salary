@@ -183,7 +183,7 @@
                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="parkingSpaceDetailModelLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
-                        <form class="modal-content">
+                        <form class="modal-content" enctype="multipart/form-data">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="parkingSpaceDetailModelLabel">車位申請書詳情</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -288,8 +288,8 @@
     <div class="col lightBoxItems p-3">
         <a class="d-inline me-3 text-nowrap" href="#">申請書&ensp;<i class="fa-solid fa-download"></i><span
                 class="mx-1 update">補</span></a>
-        <a class="d-inline me-3 text-nowrap" href="#">行照&ensp;<i class="fa-solid fa-download"></i><span
-                class="mx-1 update">補</span></a>
+        <!-- <a class="d-inline me-3 text-nowrap" href="#">行照&ensp;<i class="fa-solid fa-download"></i><span
+                class="mx-1 update">補</span></a> -->
         <a class="d-inline me-3 text-nowrap" href="#">繳費證明&ensp;<i class="fa-solid fa-download"></i><span
                 class="mx-1 update">補</span></a>
     </div>
@@ -311,7 +311,7 @@
             </div>
         </div>
 
-        <div class="row align-items-center my-1">
+        <!-- <div class="row align-items-center my-1">
             <label for="memoUpload" class="col-auto col-form-label text-nowrap upload-label py-0">行照<i
                     class="fa-solid fa-upload mx-1"></i>
             </label>
@@ -320,7 +320,7 @@
                     onchange="javascript:{document.getElementById('fileInfo6').innerHTML = document.getElementById('memoUpload').value;setFormHeight();}">
                 <div id="fileInfo6" class="fileInfo"></div>
             </div>
-        </div>
+        </div> -->
 
         <div class="row align-items-center my-1">
             <label for="consentDoc" class="col-auto col-form-label text-nowrap upload-label py-0">繳費證明<i
