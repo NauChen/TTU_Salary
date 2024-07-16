@@ -1,1 +1,448 @@
-function restrictToNumberHyphen(e){$(e).val($(e).val().replace(/[^\d-]/g,""))}function restrictToNum(e){var a=$(e).val().replace(/\D/g,"");a.startsWith("0")&&(a=a.replace(/^0+/,"")),$(e).val(a)}function restrictToUniformNum(e){var a=$(e).val().replace(/\D/g,"");8<a.length&&(a=a.slice(0,8)),$(e).val(a)}function restrictTo5Num(e){var a=$(e).val().replace(/\D/g,"");5<a.length&&(a=a.slice(0,5)),$(e).val(a)}function restrictToValidChars(e){$(e).val($(e).val().replace(/[^a-zA-Z0-9._@-]/g,""))}function restrictToUpperCaseNumberHyphen(e){$(e).val($(e).val().replace(/[^A-Z0-9-]/g,""))}function restrictFirstUpperSecondNum(e){var a=$(e).val().split("").map((e,a)=>0===a?e.replace(/[^A-Z]/g,""):1===a?e.replace(/[^A-Z0-9]/g,""):e.replace(/[^0-9]/g,"")).join("");$(e).val(a)}function restrictToDecimal(e){e.value=e.value.replace(/[^0-9.]/g,""),1<e.value.length&&e.value.startsWith("0")&&"."!==e.value[1]&&(e.value=e.value.slice(1));var a,t=e.value.split(".");2<t.length&&(e.value=t[0]+"."+t[1]),1<t.length&&1<t[1].length&&(a=Math.ceil(10*parseFloat("0."+t[1])),e.value=t[0]+"."+a)}function formatNumber(e){return e.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")}function unformatNumber(e){return e.replace(/,/g,"")}function unformatOnFocus(e){var a=$(e).val();$(e).val(unformatNumber(a))}function formatOnBlur(e){var a=$(e).val();""!==a&&$(e).val(formatNumber(a))}function handleSalaryChoose(e){switch(e){case"時薪":case"日薪":$("#dollarsItem").addClass("choose"),$("#dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem, #dollarsPerCaseItem").removeClass("choose"),$("#salaryTypeRadio1").prop("checked",!0),$("#dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired"),$("#danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput").text(""),$("#dollarsInput").addClass("thisRequired");break;case"月薪":$("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem").addClass("choose"),$("#dollarsPerCaseItem").removeClass("choose"),$("#salaryTypeRadio1").prop("checked",!0),$("#dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired"),$("#danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput").text(""),$("#dollarsInput").addClass("thisRequired");break;case"按件計酬":$("#dollarsPerCaseItem").addClass("choose"),$("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem").removeClass("choose"),$("#salaryTypeRadio5").prop("checked",!0),$("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput").removeClass("thisRequired"),$("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput").text(""),$("#dollarsPerCaseInput").addClass("thisRequired");break;case"請選擇":$("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem, #dollarsPerCaseItem").removeClass("choose"),$("#salaryTypeRadio1, #salaryTypeRadio2, #salaryTypeRadio3, #salaryTypeRadio4, #salaryTypeRadio5").prop("checked",!1),$("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired"),$("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput").text("")}}function splitJobTime(e){e=e.split(" ~ ");if(2===e.length)return{jobTime1:e[0].trim(),jobTime2:e[1].trim()};throw new Error("Invalid jobTime format. It should be in the format 'HH:mm ~ HH:mm'.")}function setMinDateToToday(e){var a=new Date,a=a.getFullYear()+"-"+String(a.getMonth()+1).padStart(2,"0")+"-"+String(a.getDate()).padStart(2,"0");$("#"+e).attr("min",a)}function setMinDateToSomeDaysLater(e,a){var t=new Date;t.setDate(t.getDate()+a);a=t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");$("#"+e).attr("min",a)}function setMinDateToSomeDataDaysLater(e,a,t){a=new Date(a);a.setDate(a.getDate()+t);t=a.getFullYear()+"-"+String(a.getMonth()+1).padStart(2,"0")+"-"+String(a.getDate()).padStart(2,"0");$("#"+e).attr("min",t)}function setLaterMinDate(e,a,t,r){var n=new Date;n.setDate(n.getDate()+a);a=n.getFullYear()+"-"+String(n.getMonth()+1).padStart(2,"0")+"-"+String(n.getDate()).padStart(2,"0"),n=new Date(t);n.setDate(n.getDate()+r);t=n.getFullYear()+"-"+String(n.getMonth()+1).padStart(2,"0")+"-"+String(n.getDate()).padStart(2,"0"),r=new Date(a)>new Date(t)?a:t;$("#"+e).attr("min",r)}function enforceStartDateFirst(e,a){var t=$("#"+e),r=$("#"+a);r.on("mousedown",function(e){""===t.val()?(e.preventDefault(),r.attr("readonly",!0),swalToastWarning("請先選取開始日期。","top")):r.attr("readonly",!1)}),t.on("change",function(){""!==t.val()?(r.attr("min",t.val()),r.attr("readonly",!1)):(r.removeAttr("min"),r.attr("readonly",!0))}),r.on("change",function(){""!==r.val()?t.attr("max",r.val()):t.removeAttr("max")})}function convertNewlinesToBreaks(e){return e.replace(/\n/g,"<br>")}function changeRoomName(e){switch(e){case"青創基地":return"新德惠";case"綜合工廠培育區":return"綜合";case"挺生大樓培育區":return"挺生";case"產學實驗培育區":return"產學";case"實驗大樓培育區":return"實驗";case"北設工培育區":return"北設工";case"尚志大樓培育區":return"尚志";default:return"待新增"}}function changeBuildingToCultivationRoom(e){switch(e){case"青創基地":return"新德惠";case"綜合工廠培育區":return"綜合";case"挺生大樓培育區":return"挺生";case"產學實驗培育區":return"產學";case"實驗大樓培育區":return"實驗";case"北設工培育區":return"北設工";case"尚志大樓培育區":return"尚志";default:return"待新增"}}function changeCultivationRoomToBuilding(e){switch(e){case"新德惠":return"青創基地";case"綜合":return"綜合工廠培育區";case"挺生":return"挺生大樓培育區";case"產學":return"產學實驗培育區";case"實驗":return"實驗大樓培育區";case"北設工":return"北設工培育區";case"尚志":return"尚志大樓培育區";default:return"待新增"}}function populateSelect(e,a){var t=document.getElementById(e),r={};a.forEach(function(e){r[e.optigroup]||((a=document.createElement("optgroup")).label=e.optigroup,r[e.optigroup]=a,t.appendChild(a));var a=document.createElement("option");a.value=e.optigroup+"-"+e.option,a.textContent=e.option,r[e.optigroup].appendChild(a)})}function convertEmail(e){var a=e.indexOf("@");return-1!==a?e.substring(0,a).toLowerCase()+e.substring(a):e}function splitHyphen(e){e=e.split("-");if(2===e.length)return{part1:e[0].trim(),part2:e[1].trim()};throw new Error("Invalid textData format. It should be in the format 'aaaa-bbbb'.")}function extractSubstringBetween(e,a,t){a=e.indexOf(a),t=e.indexOf(t,a+1);return-1===a||-1===t||t<=a?"":e.substring(a+1,t)}function splitDate(e){e=e.match(/^(\d{4})-(\d{2})-(\d{2})$/);if(e)return{year:e[1],month:e[2],day:e[3]};throw new Error("Invalid date format. Expected YYYY-MM-DD.")}function clearValues(e){e.forEach(function(e){var a=document.getElementById(e);if(a)switch(a.tagName.toLowerCase()){case"input":switch(a.type){case"date":case"text":case"number":case"password":case"email":case"file":a.value="";break;case"radio":case"checkbox":a.checked=!1}break;case"textarea":a.value="";break;case"span":case"div":a.innerHTML="";break;default:console.warn("Unsupported element type: "+a.tagName)}else console.warn(`Element with id "${e}" not found.`)})}
+"use strict";
+
+// ※※ onkeyup函式 - 限制輸入用 ※※ 
+//   數字 & '-'
+function restrictToNumberHyphen(obj) {
+  $(obj).val($(obj).val().replace(/[^\d-]/g, ""));
+}
+//   數字。 禁開頭是0
+function restrictToNum(obj) {
+  var inputValue = $(obj).val().replace(/\D/g, '');
+  if (inputValue.startsWith('0')) {
+    inputValue = inputValue.replace(/^0+/, '');
+  }
+  $(obj).val(inputValue);
+}
+//   數字，且最多8個字元
+function restrictToUniformNum(obj) {
+  var inputValue = $(obj).val().replace(/\D/g, ''); // 移除所有非數字字符
+  if (inputValue.length > 8) {
+    inputValue = inputValue.slice(0, 8); // 截取前8個字符
+  }
+  $(obj).val(inputValue);
+}
+//   數字，且最多5個字元
+function restrictTo5Num(obj) {
+  var inputValue = $(obj).val().replace(/\D/g, ''); // 移除所有非數字字符
+  if (inputValue.length > 5) {
+    inputValue = inputValue.slice(0, 5); // 截取前8個字符
+  }
+  $(obj).val(inputValue);
+}
+//   字母、數字、點、破折號、底線、@ 符號
+function restrictToValidChars(obj) {
+  $(obj).val($(obj).val().replace(/[^a-zA-Z0-9._@-]/g, ""));
+}
+//   大寫英文、數字、'-'
+function restrictToUpperCaseNumberHyphen(obj) {
+  $(obj).val($(obj).val().replace(/[^A-Z0-9-]/g, ""));
+}
+//   第一個字元僅能是大寫英文，第二個字元可能是大寫英文或數字，第三個字元以後僅能是數字
+function restrictFirstUpperSecondNum(obj) {
+  var value = $(obj).val();
+  var newValue = value.split('').map(function (_char, index) {
+    if (index === 0) {
+      // 第一個字元僅能是大寫英文
+      return _char.replace(/[^A-Z]/g, '');
+    } else if (index === 1) {
+      // 第二個字元可能是大寫英文或是數字
+      return _char.replace(/[^A-Z0-9]/g, '');
+    } else {
+      // 第三個字元以後僅能是數字
+      return _char.replace(/[^0-9]/g, '');
+    }
+  }).join('');
+  $(obj).val(newValue);
+}
+//   數字。 禁開頭是0，無條件進位至小數點第一位
+function restrictToDecimal(obj) {
+  // 移除所有非數字和非小數點的字符
+  obj.value = obj.value.replace(/[^0-9.]/g, '');
+
+  // 禁止開頭輸入0，除非後面跟著小數點
+  if (obj.value.length > 1 && obj.value.startsWith('0') && obj.value[1] !== '.') {
+    obj.value = obj.value.slice(1);
+  }
+
+  // 將輸入值分割成整數部分和小數部分
+  var parts = obj.value.split('.');
+
+  // 如果有多個小數點，只保留第一個小數點和它前後的數字
+  if (parts.length > 2) {
+    obj.value = parts[0] + '.' + parts[1];
+  }
+
+  // 處理小數點後超過一位的情況
+  if (parts.length > 1 && parts[1].length > 1) {
+    // 將小數點後的數值轉為數字並無條件進位至小數點第一位
+    var roundedDecimal = Math.ceil(parseFloat('0.' + parts[1]) * 10);
+    obj.value = parts[0] + '.' + roundedDecimal;
+  }
+}
+
+// ※※ 金額函式 - 千分位符號 ※※ 
+//   增加千分號
+function formatNumber(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+//   刪除千分號
+function unformatNumber(str) {
+  return str.replace(/,/g, '');
+}
+
+// ※※ onfocus函式 - 變更輸入當下用 ※※ 
+//   onfocus 時，調用函式-移除千分號
+function unformatOnFocus(obj) {
+  var value = $(obj).val();
+  $(obj).val(unformatNumber(value));
+}
+
+// ※※ onblur函式 - 變更輸入完畢後用 ※※ 
+//   onblur 時，調用函式-增加千分號
+function formatOnBlur(obj) {
+  var value = $(obj).val();
+  if (value !== '') {
+    $(obj).val(formatNumber(value));
+  }
+}
+
+// ※※ 職缺函式 - 職缺表單專用 ※※
+//   根據薪資類型，顯示相應的金額輸入框 與 預選單選
+function handleSalaryChoose(selectedOption) {
+  switch (selectedOption) {
+    case '時薪':
+    case '日薪':
+      $("#dollarsItem").addClass("choose");
+      $("#dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem, #dollarsPerCaseItem").removeClass("choose");
+      $('#salaryTypeRadio1').prop('checked', true);
+      $("#dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+      $('#danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput').text(''); // 清除其他錯誤訊息
+      $("#dollarsInput").addClass("thisRequired");
+      break;
+    case '月薪':
+      $("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem").addClass("choose");
+      $("#dollarsPerCaseItem").removeClass("choose");
+      $('#salaryTypeRadio1').prop('checked', true);
+      $("#dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+      $("#danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput").text(''); // 清除其他錯誤訊息
+      $("#dollarsInput").addClass("thisRequired");
+      break;
+    case '按件計酬':
+      $("#dollarsPerCaseItem").addClass("choose");
+      $("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem").removeClass("choose");
+      $('#salaryTypeRadio5').prop('checked', true);
+      $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput").removeClass("thisRequired");
+      $("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput").text(''); // 清除其他錯誤訊息
+      $("#dollarsPerCaseInput").addClass("thisRequired");
+      break;
+    case '請選擇':
+      $("#dollarsItem, #dollarsToDollarsItem, #moreThenDollarsItem, #negotiableItem, #dollarsPerCaseItem").removeClass("choose");
+      $('#salaryTypeRadio1, #salaryTypeRadio2, #salaryTypeRadio3, #salaryTypeRadio4, #salaryTypeRadio5').prop('checked', false);
+      $("#dollarsInput, #dollarsToDollars_1Input, #dollarsToDollars_2Input, #moreThenDollarsInput, #negotiableInput, #dollarsPerCaseInput").removeClass("thisRequired");
+      $("#danger_dollarsInput, #danger_dollarsToDollars_1Input, #danger_dollarsToDollars_2Input, #danger_moreThenDollarsInput, #danger_negotiableInput, #danger_dollarsPerCaseInput").text(''); // 清除其他錯誤訊息
+      break;
+  }
+}
+
+// ※※ 時間函式 - 職缺表單專用 ※※
+//   將組合過的時間拆開
+function splitJobTime(jobTime) {
+  var timeParts = jobTime.split(" ~ ");
+  if (timeParts.length === 2) {
+    return {
+      jobTime1: timeParts[0].trim(),
+      jobTime2: timeParts[1].trim()
+    };
+  } else {
+    throw new Error("Invalid jobTime format. It should be in the format 'HH:mm ~ HH:mm'.");
+  }
+}
+
+// ※※ 日期函式 - 起訖日期專用 ※※
+//   限制可選日期不可早於當前日期
+function setMinDateToToday(inputId) {
+  // 獲取當前日期
+  var today = new Date();
+
+  // 格式化日期為 YYYY-MM-DD
+  var yyyy = today.getFullYear();
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); // 獲取月份，並確保格式為兩位數
+  var dd = String(today.getDate()).padStart(2, '0'); // 獲取日期，並確保格式為兩位數
+  var formattedDate = yyyy + '-' + mm + '-' + dd;
+
+  // 設置 input 元素的 min 屬性
+  $('#' + inputId).attr('min', formattedDate);
+}
+//   限制可選日期不可早於當前日期再加幾天
+function setMinDateToSomeDaysLater(inputId, days) {
+  // 獲取當前日期
+  var today = new Date();
+
+  // 新日期設定為當前日期再加上指定天數
+  today.setDate(today.getDate() + days);
+
+  // 格式化日期為 YYYY-MM-DD
+  var yyyy = today.getFullYear();
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); // 獲取月份，並確保格式為兩位數
+  var dd = String(today.getDate()).padStart(2, '0'); // 獲取日期，並確保格式為兩位數
+  var formattedDate = yyyy + '-' + mm + '-' + dd;
+
+  // 設置 input 元素的 min 屬性
+  $('#' + inputId).attr('min', formattedDate);
+}
+//   限制可選日期不可早於資料日期再加幾天
+function setMinDateToSomeDataDaysLater(inputId, startDateStr, days) {
+  // 將日期字符串轉換為 Date 對象
+  var startDate = new Date(startDateStr);
+
+  // 新日期設定為指定日期再加上指定天數
+  startDate.setDate(startDate.getDate() + days);
+
+  // 格式化日期為 YYYY-MM-DD
+  var yyyy = startDate.getFullYear();
+  var mm = String(startDate.getMonth() + 1).padStart(2, '0'); // 獲取月份，並確保格式為兩位數
+  var dd = String(startDate.getDate()).padStart(2, '0'); // 獲取日期，並確保格式為兩位數
+  var formattedDate = yyyy + '-' + mm + '-' + dd;
+
+  // 設置 input 元素的 min 屬性
+  $('#' + inputId).attr('min', formattedDate);
+}
+//   限制可選日期不可早於 當前日期再加幾天 或是 資料日期再加幾天 (使用比較晚的)
+function setLaterMinDate(inputId, todayLaterDays, startDateStr, startDateLaterDays) {
+  // 獲取當前日期並加上指定天數
+  var today = new Date();
+  today.setDate(today.getDate() + todayLaterDays);
+  var yyyyToday = today.getFullYear();
+  var mmToday = String(today.getMonth() + 1).padStart(2, '0');
+  var ddToday = String(today.getDate()).padStart(2, '0');
+  var formattedToday = yyyyToday + '-' + mmToday + '-' + ddToday;
+
+  // 獲取開始日期並加上指定天數
+  var startDate = new Date(startDateStr);
+  startDate.setDate(startDate.getDate() + startDateLaterDays);
+  var yyyyStart = startDate.getFullYear();
+  var mmStart = String(startDate.getMonth() + 1).padStart(2, '0');
+  var ddStart = String(startDate.getDate()).padStart(2, '0');
+  var formattedStart = yyyyStart + '-' + mmStart + '-' + ddStart;
+
+  // 比較兩個日期並設置較晚的日期為min屬性
+  var laterDate = new Date(formattedToday) > new Date(formattedStart) ? formattedToday : formattedStart;
+  $('#' + inputId).attr('min', laterDate);
+}
+
+//   確保選擇 開始日期 之前 不能選擇 結束日期，會跳Toast提示。選擇結束日期後開始日期加上max限制，避免逆選漏洞。
+function enforceStartDateFirst(startDateId, endDateId) {
+  var startDate = $('#' + startDateId);
+  var endDate = $('#' + endDateId);
+
+  // 當結束日期的 input 被點擊時
+  endDate.on('mousedown', function (e) {
+    // 如果起始日期為空，顯示警告訊息並防止日期選擇器展開
+    if (startDate.val() === '') {
+      e.preventDefault(); // 阻止事件的默認行為
+      endDate.attr('readonly', true); // 設置結束日期為只讀
+      swalToastWarning('請先選取開始日期。', 'top');
+    } else {
+      endDate.attr('readonly', false); // 否則結束日期可選
+    }
+  });
+
+  // 當起始日期改變時，更新結束日期的 min 屬性並取消只讀屬性
+  startDate.on('change', function () {
+    if (startDate.val() !== '') {
+      endDate.attr('min', startDate.val());
+      endDate.attr('readonly', false); // 啟用結束日期的輸入
+    } else {
+      endDate.removeAttr('min');
+      endDate.attr('readonly', true); // 禁用結束日期的輸入
+    }
+  });
+  endDate.on('change', function () {
+    if (endDate.val() !== '') {
+      startDate.attr('max', endDate.val());
+    } else {
+      startDate.removeAttr('max');
+    }
+  });
+}
+
+// ※※ 文字轉換函式 - 存取資料專用 ※※
+//   將資料庫的文字內的 \n 轉成 <br>
+function convertNewlinesToBreaks(text) {
+  return text.replace(/\n/g, '<br>');
+}
+//   基地培育區 轉 大樓名
+function changeRoomName(room) {
+  switch (room) {
+    case '青創基地':
+      return '新德惠';
+    case '綜合工廠培育區':
+      return '綜合';
+    case '挺生大樓培育區':
+      return '挺生';
+    case '產學實驗培育區':
+      return '產學';
+    case '實驗大樓培育區':
+      return '實驗';
+    case '北設工培育區':
+      return '北設工';
+    case '尚志大樓培育區':
+      return '尚志';
+    default:
+      return '待新增';
+  }
+}
+//   培育區 轉 大樓名
+function changeBuildingToCultivationRoom(building) {
+  switch (building) {
+    case '青創基地':
+      return '新德惠';
+    case '綜合工廠培育區':
+      return '綜合';
+    case '挺生大樓培育區':
+      return '挺生';
+    case '產學實驗培育區':
+      return '產學';
+    case '實驗大樓培育區':
+      return '實驗';
+    case '北設工培育區':
+      return '北設工';
+    case '尚志大樓培育區':
+      return '尚志';
+    default:
+      return '待新增';
+  }
+}
+//   大樓名 轉 培育區
+function changeCultivationRoomToBuilding(room) {
+  switch (room) {
+    case '新德惠':
+      return '青創基地';
+    case '綜合':
+      return '綜合工廠培育區';
+    case '挺生':
+      return '挺生大樓培育區';
+    case '產學':
+      return '產學實驗培育區';
+    case '實驗':
+      return '實驗大樓培育區';
+    case '北設工':
+      return '北設工培育區';
+    case '尚志':
+      return '尚志大樓培育區';
+    default:
+      return '待新增';
+  }
+}
+//   依照資料生成下拉選單 選項值 = "optigroup-option"
+function populateSelect(selectId, options) {
+  var select = document.getElementById(selectId);
+  var groups = {};
+  options.forEach(function (item) {
+    if (!groups[item.optigroup]) {
+      var optgroup = document.createElement('optgroup');
+      optgroup.label = item.optigroup;
+      groups[item.optigroup] = optgroup;
+      select.appendChild(optgroup);
+    }
+    var option = document.createElement('option');
+    option.value = item.optigroup + '-' + item.option;
+    option.textContent = item.option;
+    groups[item.optigroup].appendChild(option);
+  });
+}
+// 轉換@之前的大寫字母為小寫
+function convertEmail(email) {
+  var atIndex = email.indexOf('@');
+  if (atIndex !== -1) {
+    var localPart = email.substring(0, atIndex).toLowerCase();
+    var domainPart = email.substring(atIndex);
+    return localPart + domainPart;
+  }
+  return email;
+}
+
+// ※※ 文字組裝拆解函式 - 存取資料專用 ※※
+//   將用-組合過的資料拆開
+function splitHyphen(textData) {
+  var textParts = textData.split("-");
+  if (textParts.length === 2) {
+    return {
+      part1: textParts[0].trim(),
+      part2: textParts[1].trim()
+    };
+  } else {
+    throw new Error("Invalid textData format. It should be in the format 'aaaa-bbbb'.");
+  }
+}
+//   取得兩個指定字元之間的字
+function extractSubstringBetween(str, startChar, endChar) {
+  // 找到起始字符的位置
+  var startIndex = str.indexOf(startChar);
+
+  // 找到结束字符的位置
+  var endIndex = str.indexOf(endChar, startIndex + 1);
+
+  // 如果起始字符或结束字符未找到，返回空字符串
+  if (startIndex === -1 || endIndex === -1 || startIndex >= endIndex) {
+    return '';
+  }
+
+  // 提取起始字符和结束字符之间的子字符串
+  return str.substring(startIndex + 1, endIndex);
+}
+//   將時間資料拆成YYYY、mm'DD
+function splitDate(dateString) {
+  var datePattern = /^(\d{4})-(\d{2})-(\d{2})$/;
+  var match = dateString.match(datePattern);
+  if (!match) {
+    throw new Error('Invalid date format. Expected YYYY-MM-DD.');
+  }
+  // 拆解日期字符串
+  var year = match[1];
+  var month = match[2];
+  var day = match[3];
+  return {
+    year: year,
+    month: month,
+    day: day
+  };
+}
+
+// ※※ 清除函式 - 存取資料專用 ※※
+function clearValues(ids) {
+  ids.forEach(function (id) {
+    var element = document.getElementById(id);
+    if (element) {
+      switch (element.tagName.toLowerCase()) {
+        case 'input':
+          switch (element.type) {
+            case 'date':
+            case 'text':
+            case 'number':
+            case 'password':
+            case 'email':
+            case 'file':
+              element.value = '';
+              break;
+            case 'radio':
+            case 'checkbox':
+              element.checked = false;
+              break;
+          }
+          break;
+        case 'textarea':
+          element.value = '';
+          break;
+        case 'span':
+        case 'div':
+          element.innerHTML = '';
+          break;
+        default:
+          console.warn("Unsupported element type: ".concat(element.tagName));
+      }
+    } else {
+      console.warn("Element with id \"".concat(id, "\" not found."));
+    }
+  });
+}

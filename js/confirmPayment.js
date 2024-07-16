@@ -44,6 +44,7 @@
 var dataset_confirmPaymentCultivationRoom = [
     {
         'id': '1',
+        'roomId':'10',
         'building': '新德惠大樓',
         'room': '101',
         'squareMeters': '15.4',
@@ -71,6 +72,7 @@ var dataset_confirmPaymentCultivationRoom = [
     },
     {
         'id': '2',
+        'roomId':'11',
         'building': '綜合大樓',
         'room': '104',
         'squareMeters': '20.5',
@@ -99,6 +101,7 @@ var dataset_confirmPaymentCultivationRoom = [
     },
     {
         'id': '3',
+        'roomId':'12',
         'building': '挺生大樓',
         'room': '105',
         'squareMeters': '18.7',
@@ -127,6 +130,7 @@ var dataset_confirmPaymentCultivationRoom = [
     },
     {
         'id': '4',
+        'roomId':'13',
         'building': '實驗大樓',
         'room': '106',
         'squareMeters': '25.3',
@@ -155,6 +159,7 @@ var dataset_confirmPaymentCultivationRoom = [
     },
     {
         'id': '5',
+        'roomId':'14',
         'building': '北設工大樓',
         'room': '201',
         'squareMeters': '30.9',
@@ -183,6 +188,7 @@ var dataset_confirmPaymentCultivationRoom = [
     },
     {
         'id': '6',
+        'roomId':'15',
         'building': '尚志大樓',
         'room': '202',
         'squareMeters': '27.8',
@@ -211,6 +217,7 @@ var dataset_confirmPaymentCultivationRoom = [
     },
     {
         'id': '7',
+        'roomId':'16',
         'building': '新德惠大樓',
         'room': 'A4-102',
         'squareMeters': '16.5',
@@ -239,6 +246,7 @@ var dataset_confirmPaymentCultivationRoom = [
     },
     {
         'id': '8',
+        'roomId':'17',
         'building': '綜合大樓',
         'room': 'A4-103',
         'squareMeters': '22.3',
@@ -267,6 +275,7 @@ var dataset_confirmPaymentCultivationRoom = [
     },
     {
         'id': '9',
+        'roomId':'18',
         'building': '挺生大樓',
         'room': '714',
         'squareMeters': '12.9',
@@ -295,6 +304,7 @@ var dataset_confirmPaymentCultivationRoom = [
     },
     {
         'id': '10',
+        'roomId':'19',
         'building': '實驗大樓',
         'room': '809',
         'squareMeters': '14.0',
@@ -323,18 +333,241 @@ var dataset_confirmPaymentCultivationRoom = [
     }
 ];
 
+// 生成10筆資料物件 dataset_confirmPaymentAll，不要函式
+// createDate是建立資料的日期，格式為YYYY-mm-DD。
+// paymentDate是付款的日期，格式為YYYY-mm-DD。
+// adminNote是管理員備註，可能為''
+// status是狀態，可能為：''
+// applicationNum是支付的項目id
+// type是付款項目種類，可能是汽車位、機車位、識別證、培育室
+// company是假的繁體中文公司名稱
+// uniformNum是假的統一編號，格式：數字8字元，可重複。
+// paymentPurpose是付款目的，可能是續約、補發、階段費用
+// placeOrPrint是項目名，若type='汽車位'或'機車位'，placeOrPrint的值為'B'+數字1字元+'-'+數字2字元，或是''；若type='識別證'，placeOrPrint的值為'N0000'+數字2碼 或是 ''；若type='培育室'，placeOrPrint的值為'青創基地-201'；
+// amount 是每月服務費用，要有千分位符號，若type是'汽車位'，amount的值為2500或3000；若type是'機車位'，amount的值為100；若type是'識別證'，amount的值為300；若type是'培育室'，amount的值為35000~50000；。
+// paymentMethod是付款方式，可能是"現金"、"匯款"。
+// last5AccountNo是付款帳號後五碼，若paymentMethod為匯款，此資料才有值，此值由隨機5個數字組成，數字可重複。
+// remittanceFile是檔案名稱，由"YYYYmmDD_" + "MD" + 2個數字組成。
+// receiptNum是收據號碼，為"RM" + 6個數字組成。
+// companyEmail是公司主要聯繫的email。
+// contactPerson是公司股要聯繫人的人名。
+// companyPhone是公司股要聯繫用的電話，格式為02-86710000(0+一個數字+'-'+8個數字)或是0912-345678(09+2個數字+'-'+6個數字)。
+var dataset_confirmPaymentAll = [
+    {
+        'id': '1',
+        'createDate': '2024-07-15',
+        'paymentDate': '2024-07-13',
+        'adminNote': '',
+        'status': '待確認',
+        'applicationNum': '12',
+        'type': '汽車位',
+        'company': '超級棒股份有限公司',
+        'uniformNum': '12345678',
+        'paymentPurpose': '續約',
+        'placeOrPrint': 'B1-15',
+        'amount': '2,500',
+        'paymentMethod': '匯款',
+        'last5AccountNo': '01234',
+        'remittanceFile': '20240713_MD23',
+        'receiptNum': '',
+        'companyEmail': 'contact@supercompany.com',
+        'contactPerson': '王大明',
+        'companyPhone': '02-86710001'
+    },
+    {
+        'id': '2',
+        'createDate': '2024-07-16',
+        'paymentDate': '2024-07-14',
+        'adminNote': '',
+        'status': '取消',
+        'applicationNum': '15',
+        'type': '機車位',
+        'company': '大富翁科技有限公司',
+        'uniformNum': '87654321',
+        'paymentPurpose': '新申請',
+        'placeOrPrint': '',
+        'amount': '100',
+        'paymentMethod': '現金',
+        'last5AccountNo': '',
+        'remittanceFile': '',
+        'receiptNum': '',
+        'companyEmail': 'contact@bigmonopoly.com',
+        'contactPerson': '李四',
+        'companyPhone': '0912-345678'
+    },
+    {
+        'id': '3',
+        'createDate': '2024-07-17',
+        'paymentDate': '2024-07-15',
+        'adminNote': '',
+        'status': '待確認',
+        'applicationNum': '18',
+        'type': '識別證',
+        'company': '迅捷物流股份有限公司',
+        'uniformNum': '23456789',
+        'paymentPurpose': '補發',
+        'placeOrPrint': 'N000034',
+        'amount': '300',
+        'paymentMethod': '匯款',
+        'last5AccountNo': '56789',
+        'remittanceFile': '20240715_MD45',
+        'receiptNum': '',
+        'companyEmail': 'contact@swiftlogistics.com',
+        'contactPerson': '陳小華',
+        'companyPhone': '02-86710002'
+    },
+    {
+        'id': '4',
+        'createDate': '2024-07-18',
+        'paymentDate': '2024-07-16',
+        'adminNote': '',
+        'status': '待確認',
+        'applicationNum': '20',
+        'type': '培育室',
+        'company': '綠能科技有限公司',
+        'uniformNum': '34567890',
+        'paymentPurpose': '階段費用',
+        'placeOrPrint': '青創基地-201',
+        'amount': '45,000',
+        'paymentMethod': '匯款',
+        'last5AccountNo': '67890',
+        'remittanceFile': '20240716_MD67',
+        'receiptNum': 'RM000126',
+        'companyEmail': 'contact@greenenergy.com',
+        'contactPerson': '林小強',
+        'companyPhone': '02-86710003'
+    },
+    {
+        'id': '5',
+        'createDate': '2024-07-19',
+        'paymentDate': '2024-07-17',
+        'adminNote': '',
+        'status': '待確認',
+        'applicationNum': '22',
+        'type': '汽車位',
+        'company': '全球股份有限公司',
+        'uniformNum': '45678901',
+        'paymentPurpose': '續約',
+        'placeOrPrint': '',
+        'amount': '3,000',
+        'paymentMethod': '現金',
+        'last5AccountNo': '',
+        'remittanceFile': '',
+        'receiptNum': 'RM000127',
+        'companyEmail': 'contact@globalinc.com',
+        'contactPerson': '張偉',
+        'companyPhone': '0912-345679'
+    },
+    {
+        'id': '6',
+        'createDate': '2024-07-20',
+        'paymentDate': '2024-07-18',
+        'adminNote': '',
+        'status': '待確認',
+        'applicationNum': '25',
+        'type': '機車位',
+        'company': '宇宙科技有限公司',
+        'uniformNum': '56789012',
+        'paymentPurpose': '續約',
+        'placeOrPrint': 'B1-07',
+        'amount': '100',
+        'paymentMethod': '匯款',
+        'last5AccountNo': '89012',
+        'remittanceFile': '20240718_MD89',
+        'receiptNum': 'RM000128',
+        'companyEmail': 'contact@universe.com',
+        'contactPerson': '劉明',
+        'companyPhone': '02-86710004'
+    },
+    {
+        'id': '7',
+        'createDate': '2024-07-21',
+        'paymentDate': '2024-07-19',
+        'adminNote': '',
+        'status': '待確認',
+        'applicationNum': '28',
+        'type': '識別證',
+        'company': '光速科技有限公司',
+        'uniformNum': '67890123',
+        'paymentPurpose': '補發',
+        'placeOrPrint': 'N000056',
+        'amount': '300',
+        'paymentMethod': '現金',
+        'last5AccountNo': '',
+        'remittanceFile': '',
+        'receiptNum': 'RM000129',
+        'companyEmail': 'contact@lightspeed.com',
+        'contactPerson': '黃家豪',
+        'companyPhone': '0912-345670'
+    },
+    {
+        'id': '8',
+        'createDate': '2024-07-22',
+        'paymentDate': '2024-07-20',
+        'adminNote': '',
+        'status': '待確認',
+        'applicationNum': '30',
+        'type': '培育室',
+        'company': '宏達電子有限公司',
+        'uniformNum': '78901234',
+        'paymentPurpose': '階段費用',
+        'placeOrPrint': '青創基地-201',
+        'amount': '40,000',
+        'paymentMethod': '匯款',
+        'last5AccountNo': '90123',
+        'remittanceFile': '20240720_MD01',
+        'receiptNum': 'RM000130',
+        'companyEmail': 'contact@htcelectronics.com',
+        'contactPerson': '張雅婷',
+        'companyPhone': '02-86710005'
+    },
+    {
+        'id': '9',
+        'createDate': '2024-07-23',
+        'paymentDate': '2024-07-21',
+        'adminNote': '',
+        'status': '待確認',
+        'applicationNum': '32',
+        'type': '汽車位',
+        'company': '智能機械有限公司',
+        'uniformNum': '89012345',
+        'paymentPurpose': '續約',
+        'placeOrPrint': 'B3-10',
+        'amount': '2,500',
+        'paymentMethod': '現金',
+        'last5AccountNo': '',
+        'remittanceFile': '',
+        'receiptNum': 'RM000131',
+        'companyEmail': 'contact@smartmachinery.com',
+        'contactPerson': '王志豪',
+        'companyPhone': '0912-345671'
+    },
+    {
+        'id': '10',
+        'createDate': '2024-07-24',
+        'paymentDate': '2024-07-22',
+        'adminNote': '',
+        'status': '完成',
+        'applicationNum': '35',
+        'type': '機車位',
+        'company': '聯合工業股份有限公司',
+        'uniformNum': '90123456',
+        'paymentPurpose': '新申請',
+        'placeOrPrint': '',
+        'amount': '100',
+        'paymentMethod': '匯款',
+        'last5AccountNo': '23456',
+        'remittanceFile': '20240722_MD23',
+        'receiptDate': '2024-07-31',
+        'receiptAmount': '100',
+        'receiptItems': '場地維護費',
+        'receiptNum': 'RM000132',
+        'companyEmail': 'contact@unitedindustries.com',
+        'contactPerson': '許文',
+        'companyPhone': '02-86710006'
+    }
+];
 
-
-// var selectOptionRoom = [
-//     { 'optigroup': '新德惠大樓', 'option': '101' },
-//     { 'optigroup': '新德惠大樓', 'option': '102' },
-//     { 'optigroup': '新德惠大樓', 'option': '103' },
-//     { 'optigroup': '新德惠大樓', 'option': '104' },
-//     { 'optigroup': '新德惠大樓', 'option': '105' },
-//     { 'optigroup': '新德惠大樓', 'option': '106' },
-//     { 'optigroup': '新德惠大樓', 'option': '107' },
-//     { 'optigroup': '青創大樓', 'option': '201' },
-// ];
 
 // 生成10筆資料
 // carType是'汽車','機車','汽車'
@@ -345,7 +578,6 @@ var dataset_confirmPaymentCultivationRoom = [
 // paymentDate是付款日，此日期會比deadLine早2~3天
 // receivedDate是入帳日，此日期會等於 paymentDate 或是等於 paymentDate的下一個工作天
 // adminNote是管理員備註，可能為''
-
 
 // 車位與識別證 - 將可續約(不論有無點擊要續約) 與 新申請 資料匯入
 var dataset_confirmPaymentCarOrCard = [
@@ -848,242 +1080,9 @@ var dataset_confirmPaymentParkingSpace = [
     }
 ];
 
-// 生成10筆資料物件 dataset_confirmPaymentAll，不要函式
-// createDate是建立資料的日期，格式為YYYY-mm-DD。
-// paymentDate是付款的日期，格式為YYYY-mm-DD。
-// adminNote是管理員備註，可能為''
-// status是狀態，可能為：''
-// applicationNum是支付的項目id
-// type是付款項目種類，可能是汽車位、機車位、識別證、培育室
-// company是假的繁體中文公司名稱
-// uniformNum是假的統一編號，格式：數字8字元，可重複。
-// paymentPurpose是付款目的，可能是續約、補發、階段費用
-// placeOrPrint是項目名，若type='汽車位'或'機車位'，placeOrPrint的值為'B'+數字1字元+'-'+數字2字元，或是''；若type='識別證'，placeOrPrint的值為'N0000'+數字2碼 或是 ''；若type='培育室'，placeOrPrint的值為'青創基地-201'；
-// amount 是每月服務費用，要有千分位符號，若type是'汽車位'，amount的值為2500或3000；若type是'機車位'，amount的值為100；若type是'識別證'，amount的值為300；若type是'培育室'，amount的值為35000~50000；。
-// paymentMethod是付款方式，可能是"現金"、"匯款"。
-// last5AccountNo是付款帳號後五碼，若paymentMethod為匯款，此資料才有值，此值由隨機5個數字組成，數字可重複。
-// remittanceFile是檔案名稱，由"YYYYmmDD_" + "MD" + 2個數字組成。
-// receiptNum是收據號碼，為"RM" + 6個數字組成。
-// companyEmail是公司主要聯繫的email。
-// contactPerson是公司股要聯繫人的人名。
-// companyPhone是公司股要聯繫用的電話，格式為02-86710000(0+一個數字+'-'+8個數字)或是0912-345678(09+2個數字+'-'+6個數字)。
-var dataset_confirmPaymentAll = [
-    {
-        'id': '1',
-        'createDate': '2024-07-15',
-        'paymentDate': '2024-07-13',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '12',
-        'type': '汽車位',
-        'company': '超級棒股份有限公司',
-        'uniformNum': '12345678',
-        'paymentPurpose': '續約',
-        'placeOrPrint': 'B1-15',
-        'amount': '2,500',
-        'paymentMethod': '匯款',
-        'last5AccountNo': '01234',
-        'remittanceFile': '20240713_MD23',
-        'receiptNum': '',
-        'companyEmail': 'contact@supercompany.com',
-        'contactPerson': '王大明',
-        'companyPhone': '02-86710001'
-    },
-    {
-        'id': '2',
-        'createDate': '2024-07-16',
-        'paymentDate': '2024-07-14',
-        'adminNote': '',
-        'status': '取消',
-        'applicationNum': '15',
-        'type': '機車位',
-        'company': '大富翁科技有限公司',
-        'uniformNum': '87654321',
-        'paymentPurpose': '新申請',
-        'placeOrPrint': '',
-        'amount': '100',
-        'paymentMethod': '現金',
-        'last5AccountNo': '',
-        'remittanceFile': '',
-        'receiptNum': '',
-        'companyEmail': 'contact@bigmonopoly.com',
-        'contactPerson': '李四',
-        'companyPhone': '0912-345678'
-    },
-    {
-        'id': '3',
-        'createDate': '2024-07-17',
-        'paymentDate': '2024-07-15',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '18',
-        'type': '識別證',
-        'company': '迅捷物流股份有限公司',
-        'uniformNum': '23456789',
-        'paymentPurpose': '補發',
-        'placeOrPrint': 'N000034',
-        'amount': '300',
-        'paymentMethod': '匯款',
-        'last5AccountNo': '56789',
-        'remittanceFile': '20240715_MD45',
-        'receiptNum': '',
-        'companyEmail': 'contact@swiftlogistics.com',
-        'contactPerson': '陳小華',
-        'companyPhone': '02-86710002'
-    },
-    {
-        'id': '4',
-        'createDate': '2024-07-18',
-        'paymentDate': '2024-07-16',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '20',
-        'type': '培育室',
-        'company': '綠能科技有限公司',
-        'uniformNum': '34567890',
-        'paymentPurpose': '階段費用',
-        'placeOrPrint': '青創基地-201',
-        'amount': '45,000',
-        'paymentMethod': '匯款',
-        'last5AccountNo': '67890',
-        'remittanceFile': '20240716_MD67',
-        'receiptNum': 'RM000126',
-        'companyEmail': 'contact@greenenergy.com',
-        'contactPerson': '林小強',
-        'companyPhone': '02-86710003'
-    },
-    {
-        'id': '5',
-        'createDate': '2024-07-19',
-        'paymentDate': '2024-07-17',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '22',
-        'type': '汽車位',
-        'company': '全球股份有限公司',
-        'uniformNum': '45678901',
-        'paymentPurpose': '續約',
-        'placeOrPrint': '',
-        'amount': '3,000',
-        'paymentMethod': '現金',
-        'last5AccountNo': '',
-        'remittanceFile': '',
-        'receiptNum': 'RM000127',
-        'companyEmail': 'contact@globalinc.com',
-        'contactPerson': '張偉',
-        'companyPhone': '0912-345679'
-    },
-    {
-        'id': '6',
-        'createDate': '2024-07-20',
-        'paymentDate': '2024-07-18',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '25',
-        'type': '機車位',
-        'company': '宇宙科技有限公司',
-        'uniformNum': '56789012',
-        'paymentPurpose': '續約',
-        'placeOrPrint': 'B1-07',
-        'amount': '100',
-        'paymentMethod': '匯款',
-        'last5AccountNo': '89012',
-        'remittanceFile': '20240718_MD89',
-        'receiptNum': 'RM000128',
-        'companyEmail': 'contact@universe.com',
-        'contactPerson': '劉明',
-        'companyPhone': '02-86710004'
-    },
-    {
-        'id': '7',
-        'createDate': '2024-07-21',
-        'paymentDate': '2024-07-19',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '28',
-        'type': '識別證',
-        'company': '光速科技有限公司',
-        'uniformNum': '67890123',
-        'paymentPurpose': '補發',
-        'placeOrPrint': 'N000056',
-        'amount': '300',
-        'paymentMethod': '現金',
-        'last5AccountNo': '',
-        'remittanceFile': '',
-        'receiptNum': 'RM000129',
-        'companyEmail': 'contact@lightspeed.com',
-        'contactPerson': '黃家豪',
-        'companyPhone': '0912-345670'
-    },
-    {
-        'id': '8',
-        'createDate': '2024-07-22',
-        'paymentDate': '2024-07-20',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '30',
-        'type': '培育室',
-        'company': '宏達電子有限公司',
-        'uniformNum': '78901234',
-        'paymentPurpose': '階段費用',
-        'placeOrPrint': '青創基地-201',
-        'amount': '40,000',
-        'paymentMethod': '匯款',
-        'last5AccountNo': '90123',
-        'remittanceFile': '20240720_MD01',
-        'receiptNum': 'RM000130',
-        'companyEmail': 'contact@htcelectronics.com',
-        'contactPerson': '張雅婷',
-        'companyPhone': '02-86710005'
-    },
-    {
-        'id': '9',
-        'createDate': '2024-07-23',
-        'paymentDate': '2024-07-21',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '32',
-        'type': '汽車位',
-        'company': '智能機械有限公司',
-        'uniformNum': '89012345',
-        'paymentPurpose': '續約',
-        'placeOrPrint': 'B3-10',
-        'amount': '2,500',
-        'paymentMethod': '現金',
-        'last5AccountNo': '',
-        'remittanceFile': '',
-        'receiptNum': 'RM000131',
-        'companyEmail': 'contact@smartmachinery.com',
-        'contactPerson': '王志豪',
-        'companyPhone': '0912-345671'
-    },
-    {
-        'id': '10',
-        'createDate': '2024-07-24',
-        'paymentDate': '2024-07-22',
-        'adminNote': '',
-        'status': '完成',
-        'applicationNum': '35',
-        'type': '機車位',
-        'company': '聯合工業股份有限公司',
-        'uniformNum': '90123456',
-        'paymentPurpose': '新申請',
-        'placeOrPrint': '',
-        'amount': '100',
-        'paymentMethod': '匯款',
-        'last5AccountNo': '23456',
-        'remittanceFile': '20240722_MD23',
-        'receiptDate': '2024-07-31',
-        'receiptAmount': '100',
-        'receiptItems': '場地維護費',
-        'receiptNum': 'RM000132',
-        'companyEmail': 'contact@unitedindustries.com',
-        'contactPerson': '許文',
-        'companyPhone': '02-86710006'
-    }
-];
 
-// 合格廠商
+
+// 付款資訊-合格廠商
 var companyData = [
     "超級棒股份有限公司",
     "大富翁科技有限公司",
@@ -1093,16 +1092,7 @@ var companyData = [
     "宇宙科技有限公司",
     "光速科技有限公司"
 ];
-// 合格廠商的統編
-// var uniformNumData = [
-//     "01234567",
-//     "12345678",
-//     "23456789",
-//     "34567890",
-//     "45678912",
-//     "56789123",
-//     "67891234"
-// ];
+// 付款資訊-可用汽車位
 var parkingSpaceCarData = [
     "B1-01",
     "B1-02",
@@ -1112,6 +1102,7 @@ var parkingSpaceCarData = [
     "B2-07",
     "B3-11"
 ];
+// 付款資訊-可用機車位
 var parkingSpaceMotoData = [
     "B1-21",
     "B1-22",
@@ -1121,6 +1112,7 @@ var parkingSpaceMotoData = [
     "B2-26",
     "B3-27"
 ];
+// 付款資訊-已發識別證
 var idCardData = [
     "N000030",
     "N000051",
@@ -1130,8 +1122,7 @@ var idCardData = [
     "N000060",
     "N000070"
 ];
-
-// 廠商所擁有的培育室
+// 付款資訊-該合格廠商所擁有的培育室(若辦不到就用開放的培育室吧)
 var roomData = [
     "新德惠大樓/101",
     "綜合大樓/201",
@@ -1141,22 +1132,21 @@ var roomData = [
     "綜合大樓/A4-102",
     "挺生大樓/809"
 ];
-
-// 支付目的
+// 付款資訊-支付目的
 var selectOptionPaymentPurpose = [
     { 'option': '新申請' },
     { 'option': '補發' },
     { 'option': '續約' },
     { 'option': '階段費用' },
 ];
-// 想購買的項目
+// 付款資訊-想購買的項目類型
 var selectOptionPurchase = [
     { 'option': '汽車位' },
     { 'option': '機車位' },
     { 'option': '識別證' },
     { 'option': '培育室' },
 ];
-
+// 付款資訊-想購買的項目類型
 var selectOptionStatus = [
     { 'option': '待確認' },
     { 'option': '完成' },
@@ -1176,10 +1166,11 @@ $(function () {
         CustomInputHandlers.init();
 
         let button = $(event.relatedTarget);
-        let roomId = String(button.data('id'));
+        let roomThisId = String(button.data('id'));
+        console.log('roomId 1 :', roomThisId); // 確認 roomId 是否正確獲取
 
-        if (!roomId.endsWith('_N')) {
-            let openRoomData = dataset_confirmPaymentCultivationRoom.find(room => room.id === roomId);
+        if (!roomThisId.endsWith('_N')) { // 表示為已配置的紀錄id
+            let openRoomData = dataset_confirmPaymentCultivationRoom.find(thisData => thisData.id === roomThisId);
             if (openRoomData) {
                 $('#cultivation_deleteData').removeClass('d-none');
 
@@ -1218,59 +1209,77 @@ $(function () {
             } else {
                 console.error('openRoomData data not found for id:', roomId);
             }
-        } else {
+        } else { // 表示為尚未配置的培育室id
             // 去除最後兩個字元，然後使用新的 roomId 進行查找
-            roomId_N = roomId.slice(0, -2);
-            let openRoomData = dataset_confirmPaymentCultivationRoom.find(room => room.id === roomId_N);
+            roomId_N = roomThisId.slice(0, -2);
+            let openRoomData = dataset_confirmPaymentCultivationRoom.find(room => room.roomId === roomId_N);
             if (openRoomData) {
+                $('#cultivation_deleteData').addClass('d-none');
+
                 $('#cultivation_building').text(openRoomData.building);
                 $('#cultivation_room').text(openRoomData.room);
                 $('#cultivation_squareMeters').text(openRoomData.squareMeters);
-                $('#cultivation_rate').text(openRoomData.amount);
 
-                $('#cultivation_deleteData').addClass('d-none');
+                $('#cultivation_startDate').text('');
+                $('#cultivation_endDate').text('');
+                $('#cultivation_rate').text(openRoomData.amount); // 修改金額不會回存培育室預設的數字，避免兩個期數不同價格，資料庫混亂。
+
+                $('#cultivation_companyName').text('');
+                $('#cultivation_uniformNum').text('');
+                $('#cultivation_responsiblePerson').text('');
+
+                $('#cultivation_companyEmail').text('');
+                $('#cultivation_contactPerson').text('');
+                $('#cultivation_companyPhone').text('');
+
+                $('#cultivation_deadline1').text('');
+                $('#cultivation_deadline2').text('');
+                $('#cultivation_deadline3').text('');
+                $('#cultivation_deadline4').text('');
+
+                $('#cultivation_receiptNum1').text('');
+                $('#cultivation_receiptNum2').text('');
+                $('#cultivation_receiptNum3').text('');
+                $('#cultivation_receiptNum4').text('');
+
+                $('#cultivation_receivedDate1').text('');
+                $('#cultivation_receivedDate2').text('');
+                $('#cultivation_receivedDate3').text('');
+                $('#cultivation_receivedDate4').text('');
+
+                $('#cultivation_adminNote').text('');
 
             } else {
                 console.error('openRoomData data not found for id:', roomId_N);
             }
         }
 
-
+        $('#cultivation_updateBtn').off('click');
         $('#cultivation_updateBtn').on('click', function () {
-            console.log('firmId 2 :', roomId); // 確認 psId 是否正確獲取
+            console.log('roomId 2 :', roomThisId); // 確認 roomId 是否正確獲取
             // 清除上次的資料
             updatedData = {};
             // 獲取所有欄位的目前值
-            updatedData.id = firmId;
-            updatedData.companyName = $('#companyName').text();
-            updatedData.uniformNum = $('#uniformNum').text();
-            updatedData.contactPerson = $('#contactPerson').text();
+            updatedData.id = roomThisId; // 後端再依照id是否有_N判斷為要修改原紀錄還是新增一筆配置紀錄
+            updatedData.contactPerson = $('#cultivation_squareMeters').text();
 
-            updatedData.companyPhone = $('#companyPhone').text();
-            updatedData.companyEmail = $('#companyEmail').text();
-            updatedData.amount = $('#rate').text();
+            updatedData.startDate = $('#cultivation_startDate').text();
+            updatedData.endDate = $('#cultivation_endDate').text();
+            updatedData.amount = $('#cultivation_rate').text();
 
-            updatedData.firstDeadline = $('#firstDeadline').text();
-            updatedData.paymentDateFirst = $('#paymentDateFirst').text();
-            updatedData.receivedDateFirst = $('#receivedDateFirst').text();
+            updatedData.uniformNum = $('#cultivation_uniformNum').text();
 
-            updatedData.secondDeadline = $('#secondDeadline').text();
-            updatedData.paymentDateSecond = $('#paymentDateSecond').text();
-            updatedData.receivedDateSecond = $('#receivedDateSecond').text();
+            updatedData.deadline1 = $('#cultivation_deadline1').text();
+            updatedData.deadline2 = $('#cultivation_deadline2').text();
+            updatedData.deadline3 = $('#cultivation_deadline3').text();
+            updatedData.deadline4 = $('#cultivation_deadline4').text();
+            
+            updatedData.receiptNum1 = $('#cultivation_receiptNum1').text();
+            updatedData.receiptNum2 = $('#cultivation_receiptNum2').text();
+            updatedData.receiptNum3 = $('#cultivation_receiptNum3').text();
+            updatedData.receiptNum4 = $('#cultivation_receiptNum4').text();
 
-            updatedData.receiptNumFirst = $('#receiptNumFirst').text();
-            updatedData.receiptDateFirst = $('#receiptDateFirst').text();
-            updatedData.receiptItemsFirst = $('#receiptItemsFirst').text();
-            updatedData.receiptAmountFirst = $('#receiptAmountFirst').text();
-
-            updatedData.receiptNumSecond = $('#receiptNumSecond').text();
-            updatedData.receiptDateSecond = $('#receiptDateSecond').text();
-            updatedData.receiptItemsSecond = $('#receiptItemsSecond').text();
-            updatedData.receiptAmountSecond = $('#receiptAmountSecond').text();
-
-            updatedData.adminNote = $('#adminNote').text();
-            updatedData.room = $('#room').text();
-            // updatedData.adminNote = $('#adminNote').text();
+            updatedData.adminNote = $('#cultivation_adminNote').text();
 
             console.log(updatedData);
 
@@ -1300,14 +1309,14 @@ $(function () {
             // 清除上次的資料
             deleteData = {};
             // 獲取所有欄位的目前值
-            deleteData.id = roomId;
+            deleteData.id = roomThisId;
             swalConfirm(
                 '確定要刪除嗎？',
                 '是啊，這個沒用了...',
-                '不！！我是誤按...',
+                '不要阿 ~ 我是誤按！！',
                 function () {
-                    // YES按鈕點擊後開啟燈箱
-                    console.log('deleteData 2 :', roomId); // 確認 psId 是否正確獲取
+                    // YES按鈕點擊後傳遞deleteData id至後端
+                    console.log(deleteData); 
                 })
         });
 
@@ -1525,10 +1534,11 @@ $(function () {
                 data: 'id', title: "操作", // 8
                 render: function (data, type, row) {
                     const company = row.company;
+                    const roomId = row.roomId;
                     if (!company) {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentCultivationModel" data-id="' + data + '_N" title="新增進駐廠商"><i class="fa-regular fa-keyboard"></i>';
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentCultivationModel" data-id="' + roomId + '_N" title="配置進駐廠商"><i class="fa-regular fa-keyboard"></i>';
                     } else {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentCultivationModel" data-id="' + data + '"><i class="fa-solid fa-wrench"></i>';
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentCultivationModel" data-id="' + data + '" title="修改"><i class="fa-solid fa-wrench"></i>';
                     }
                 }, className: 'text-center text-nowrap'
             },
@@ -1536,8 +1546,9 @@ $(function () {
                 data: 'id', title: "下期", // 9
                 render: function (data, type, row) {
                     const company = row.company;
+                    const roomId = row.roomId;
                     if (company) {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentCultivationModel" data-id="' + data + '_N" title="新增下期進駐廠商"><i class="fa-regular fa-keyboard"></i>';
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentCultivationModel" data-id="' + roomId + '_N" title="配置下期進駐廠商"><i class="fa-regular fa-keyboard"></i>';
                     }
                     return '';
                 }, className: 'text-center text-nowrap'
@@ -1598,16 +1609,17 @@ $(function () {
             {
                 data: 'id', title: "收據", // 7
                 render: function (data, type, row) {
-                    const receiptNum = row.receiptNum;
-                    if (receiptNum == '' || receiptNum == null) {
-                        return '<button type="button" class="btn btn-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="新增進駐廠商"><i class="fa-solid fa-receipt"></i>';
-                    } else {
+                    const status = row.status;
+                    if (status == '完成' || status == '取消') {
                         return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '"><i class="fa-solid fa-receipt"></i>';
+                    } else {
+                        return '<button type="button" class="btn btn-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-receipt"></i>';
                     }
                 }, className: 'text-center text-nowrap'
             },
+            { data: 'status', visible: false }, // 8 仍可搜尋
         ],
-        "order": [[0, "desc"], [2, "desc"], [3, "desc"]],
+        "order": [[8, "desc"],[0, "desc"], [2, "desc"], [3, "desc"]],
         "columnDefs": [
             {
                 targets: [1],
