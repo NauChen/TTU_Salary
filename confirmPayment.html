@@ -111,7 +111,7 @@
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <form class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="confirmPaymentCultivationModelLabel">培育室本次配置詳情</h4>
+                                <h4 class="modal-title" id="confirmPaymentCultivationModelLabel">培育室配置詳情</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -133,14 +133,15 @@
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <form class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="confirmPaymentParkingSpaceModelLabel">停車位付款詳情</h4>
+                                <h4 class="modal-title" id="confirmPaymentParkingSpaceModelLabel">停車位配置詳情</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             @@include('layout/model_confirmPaymentParkingSpace.html')
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" id="parkingSapce_deleteData">刪除此筆紀錄</button>
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
-                                <button type="button" class="btn btn-outline-secondary" id="updateBtn">確認修改</button>
+                                <button type="button" class="btn btn-outline-secondary" id="parkingSapce_updateBtn">確認修改</button>
                             </div>
                         </form>
                     </div>

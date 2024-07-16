@@ -19,6 +19,7 @@ var CustomInputHandlers = {
         this.bindChangeSelectStatusItems();
         this.bindChangeSelectPurchaseItems();
         this.bindChangeDecimalItems();
+        this.bindChangeInputUpperNumberHyphenItems();
     },
     bindChangeInputItems: function () {
         $('.changeInput_items').on('click', function () {
@@ -27,6 +28,36 @@ var CustomInputHandlers = {
 
             if ($this.find('input').length === 0) {
                 var $input = $('<input type="text" class="form-control" />').val(currentText);
+                $this.html($input);
+                $input.focus().select();
+
+                function handleBlurOrEnter() {
+                    var newText = $input.val().trim();
+                    if (newText === '' && $this.hasClass('thisTextRequired')) {
+                        $this.text(currentText);
+                        swalToastWarning('此欄位不可留白喔！', 'top');
+                    } else {
+                        $this.text(newText);
+                    }
+                }
+
+                $input.on('blur', handleBlurOrEnter);
+                // 設定鍵碼13(enter)
+                $input.on('keypress', function (e) {
+                    if (e.which === 13) {
+                        handleBlurOrEnter();
+                    }
+                });
+            }
+        });
+    },
+    bindChangeInputUpperNumberHyphenItems: function () {
+        $('.changeInputUpperNumberHyphen_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input').length === 0) {
+                var $input = $('<input type="text" class="form-control" onkeyup="restrictToUpperCaseNumberHyphen(this)"/>').val(currentText);
                 $this.html($input);
                 $input.focus().select();
 
@@ -700,12 +731,12 @@ var CustomInputHandlers = {
         $('.changeDecimal_items').on('click', function () {
             var $this = $(this);
             var currentText = unformatNumber($this.text().trim());
-    
+
             if ($this.find('input').length === 0) {
                 var $input = $('<input type="text" class="form-control" onkeyup="restrictToDecimal(this)">').val(currentText);
                 $this.html($input);
                 $input.focus().select();
-    
+
                 $input.on('input', function () {
                     this.value = this.value.replace(/[^0-9.]/g, '');
                     var parts = this.value.split('.');
@@ -715,10 +746,10 @@ var CustomInputHandlers = {
                         this.value = parts[0] + '.' + parts[1].substring(0, 1);
                     }
                 });
-    
+
                 function handleBlurOrEnter() {
                     var newValue = parseFloat($input.val()).toFixed(1);
-                    if (isNaN(newValue)) {
+                    if (isNaN(newValue) || newValue == 0.0) {
                         if ($this.hasClass('thisTextRequired')) {
                             $this.text(formatNumber(currentText));
                             swalToastWarning('此欄位不可留白喔！', 'top');
@@ -729,7 +760,7 @@ var CustomInputHandlers = {
                         $this.text(formatNumber(newValue));
                     }
                 }
-    
+
                 $input.on('blur', handleBlurOrEnter);
                 $input.on('keypress', function (e) {
                     if (e.which === 13) {
