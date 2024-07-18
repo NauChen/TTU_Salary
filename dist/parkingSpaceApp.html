@@ -59,14 +59,14 @@
                     <li><a class="dropdown-item" href="./parkingSpaceInventory.html">停車位管理&ensp;<i
                                 class="fa-solid fa-square-parking"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="./cultivationRoomInventory.html">培育室管理&ensp;<i
-                                class="fa-solid fa-file-signature"></i></a>
+                    <li><a class="dropdown-item" href="./cultivationRoomInventory.html">培育室管理&ensp;<i class="fa-solid fa-seedling"></i></a>
                     </li>
                 </ul>
             </li>
 
             <li class="item">
-                <a class="link" href="./progressCheck.html" id="progressLink"><i class="fa-solid fa-spinner icon-rotate"></i><span
+                <a class="link" href="./progressCheck.html" id="progressLink"><i
+                        class="fa-solid fa-spinner icon-rotate"></i><span
                         class="tooltiptext tooltip-right">進度查詢</span></a>
             </li>
 
@@ -78,6 +78,9 @@
                     <li><a class="dropdown-item" href="./coopManufApp.html">廠商審核&emsp;&ensp;<i
                                 class="fa-solid fa-user-tie"></i></a>
                     </li>
+                    <li><a class="dropdown-item" href="./confirmPayment.html">收款與收據&ensp;<i
+                                class="fa-solid fa-magnifying-glass-dollar"></i></a>
+                    </li>
                     <li><a class="dropdown-item" href="./parkingSpaceApp.html">車位審核&emsp;&ensp;<i
                                 class="fa-solid fa-square-parking"></i></a></li>
                     <li><a class="dropdown-item" href="./renewContractApp.html">續約審核&emsp;&ensp;<i
@@ -85,9 +88,6 @@
                     </li>
                     <li><a class="dropdown-item" href="./idCardApp.html">識別證審核&ensp;<i
                                 class="fa-regular fa-address-card"></i></a>
-                    </li>
-                    <li><a class="dropdown-item" href="./confirmPayment.html">收款與收據&ensp;<i
-                                class="fa-solid fa-magnifying-glass-dollar"></i></a>
                     </li>
                 </ul>
             </li>
@@ -114,21 +114,21 @@
             </li>
 
             <li class="item">
-                <a class="link" href="./template-underConstruction.html" id="logRecordLink"><i class="fa-solid fa-file-shield"></i><span
-                        class="tooltiptext tooltip-right">LOG紀錄</span></a>
+                <a class="link" href="./template-underConstruction.html" id="logRecordLink"><i
+                        class="fa-solid fa-file-shield"></i><span class="tooltiptext tooltip-right">LOG紀錄</span></a>
             </li>
             <li class="item">
-                <a class="link" href="./template-underConstruction.html" id="provideOpinionsLink"><i class="fa-regular fa-paper-plane"></i><span
-                        class="tooltiptext tooltip-right">意見反應</span></a>
+                <a class="link" href="./template-underConstruction.html" id="provideOpinionsLink"><i
+                        class="fa-regular fa-paper-plane"></i><span class="tooltiptext tooltip-right">意見反應</span></a>
             </li>
             <li class="item">
-                <a class="link" href="./template-style.html" id="styleLink"><i class="fa-solid fa-paint-roller"></i><span
-                        class="tooltiptext tooltip-right">樣式設計</span></a>
+                <a class="link" href="./template-style.html" id="styleLink"><i
+                        class="fa-solid fa-paint-roller"></i><span class="tooltiptext tooltip-right">樣式設計</span></a>
             </li>
 
             <li class="item">
-                <a class="link" href="./template-underConstruction.html" id="underConstructionLink"><i class="fa-solid fa-person-digging"></i><span
-                        class="tooltiptext tooltip-right">施工頁</span></a>
+                <a class="link" href="./template-underConstruction.html" id="underConstructionLink"><i
+                        class="fa-solid fa-person-digging"></i><span class="tooltiptext tooltip-right">施工頁</span></a>
             </li>
         </ul>
 
@@ -196,15 +196,15 @@
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
         承租人企業
     </div>
-    <div class="col lightBoxItems p-3 readOnly" id="companyName"></div>
+    <div class="col lightBoxItems p-3 readOnly" id="psApp_companyName"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
         統一編號
     </div>
-    <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="uniformNum"></div>
+    <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="psApp_uniformNum"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
         申請日期
     </div>
-    <div class="col col-lg-auto lightBoxItems p-3 readOnly" id="createDate"></div>
+    <div class="col col-lg-auto lightBoxItems p-3 readOnly" id="psApp_createDate"></div>
 </div>
 
 <!-- 姓名、電話、分機 (可改) -->
@@ -212,15 +212,15 @@
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center align_center">
         承租人姓名
     </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="name"></div>
+    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="psApp_name"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center align_center">
         電話/手機
     </div>
-    <div class="col lightBoxItems p-3 align_center" id="phoneNum">
+    <div class="col lightBoxItems p-3 align_center" id="psApp_phoneNum">
     </div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center align_center">
         分&emsp;機</div>
-    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="ext">
+    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="psApp_ext">
     </div>
 
 </div>
@@ -230,54 +230,50 @@
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
         身分證字號
     </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="idNumber"></div>
+    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="psApp_idNumber"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
         電子信箱&ensp;
     </div>
-    <div class="col lightBoxItems p-3 align_center" id="email">
+    <div class="col lightBoxItems p-3 align_center" id="psApp_email">
     </div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
         職務名
     </div>
-    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="jobTitle">
+    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="psApp_jobTitle">
     </div>
 </div>
 
-<!-- 車位種類 車位號碼 車位費用 (可改)-->
+<!-- 車位種類(可改) 車牌號碼(可改) 預計起租日(不可改) -->
 <div class="row mb-1">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
         車位種類&emsp;
     </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="carType"></div>
+    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="psApp_carType"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        車位號碼&ensp;
+        車牌號碼&ensp;
     </div>
-    <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSpaceNum"></div>
+    <div class="col lightBoxItems p-3 align_center readOnly" id="psApp_parkingSpaceNum"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        付款日
+        預計起租日
     </div>
-    <div class="col lightBoxItems p-3 align_center readOnly" id="receivedDate"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        起租日
-    </div>
-    <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSpaceStartDate"></div>
+    <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="psApp_receivedDate"></div>
 </div>
 
-<!-- 到期日 付款日 金額 -->
-<!-- <div class="row mb-1">
+<!-- 付款日期 車位號碼 起租日(都不可改) -->
+<div class="row mb-1">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        車位到期日
+        車位種類&emsp;
     </div>
-    <div class="col col-lg-3 lightBoxItems p-3" id="endDate"></div>
+    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="psApp_carType"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        &ensp;付款日期
+        車牌號碼&ensp;
     </div>
-    <div class="col lightBoxItems p-3" id="paymentDate"></div>
+    <div class="col lightBoxItems p-3 align_center readOnly" id="psApp_parkingSpaceNum"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        車位費用/月
+        預計起租日
     </div>
-    <div class="col lightBoxItems p-3" id="rate"></div>
-</div> -->
+    <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="psApp_receivedDate"></div>
+</div>
 
 
 <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
@@ -287,10 +283,6 @@
     </div>
     <div class="col lightBoxItems p-3">
         <a class="d-inline me-3 text-nowrap" href="#">申請書&ensp;<i class="fa-solid fa-download"></i><span
-                class="mx-1 update">補</span></a>
-        <!-- <a class="d-inline me-3 text-nowrap" href="#">行照&ensp;<i class="fa-solid fa-download"></i><span
-                class="mx-1 update">補</span></a> -->
-        <a class="d-inline me-3 text-nowrap" href="#">繳費證明&ensp;<i class="fa-solid fa-download"></i><span
                 class="mx-1 update">補</span></a>
     </div>
 </div>
@@ -310,29 +302,6 @@
                 <div id="parkingSpace_fileInfo1" class="fileInfo"></div>
             </div>
         </div>
-
-        <!-- <div class="row align-items-center my-1">
-            <label for="memoUpload" class="col-auto col-form-label text-nowrap upload-label py-0">行照<i
-                    class="fa-solid fa-upload mx-1"></i>
-            </label>
-            <div class="col">
-                <input type="file" class="form-control d-none" id="memoUpload" accept=".pdf"
-                    onchange="javascript:{document.getElementById('fileInfo6').innerHTML = document.getElementById('memoUpload').value;setFormHeight();}">
-                <div id="fileInfo6" class="fileInfo"></div>
-            </div>
-        </div> -->
-
-        <div class="row align-items-center my-1">
-            <label for="consentDoc" class="col-auto col-form-label text-nowrap upload-label py-0">繳費證明<i
-                    class="fa-solid fa-upload mx-1"></i>
-            </label>
-            <div class="col">
-                <input type="file" class="form-control d-none" id="consentDoc" accept=".pdf"
-                    onchange="javascript:{document.getElementById('fileInfo3').innerHTML = document.getElementById('consentDoc').value;setFormHeight();}">
-                <div id="fileInfo3" class="fileInfo"></div>
-            </div>
-        </div>
-
     </div>
 </div>
 <!-- 審核 -->
@@ -340,13 +309,13 @@
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
         &emsp;管理註記
     </div>
-    <div class="col lightBoxItems p-3 align_center" id="adminNote">
+    <div class="col lightBoxItems p-3 align_center" id="psApp_adminNote">
     </div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
         審核結果
     </div>
     <div class="col col-lg-2 lightBoxItems p-2 align_center">
-        <select class="form-select" id="status">
+        <select class="form-select" id="psApp_status">
             <option value="待審核">待審核</option>
             <option value="待補件">待補件</option>
             <option value="不通過">不通過</option>

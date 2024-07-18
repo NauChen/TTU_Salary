@@ -18,7 +18,8 @@ var dataset_parkingSpaceApp = [
         'amount': '4,000',
         'jobTitle': '財務經理',
         'adminNote': '兩個車位',
-        'parkingSpaceStartDate': '2024-06-30',
+        'wantStartDate': '2024-06-30',
+        'startDate': '2024-07-01',
     },
     {
         'createDate': '2024-06-30',
@@ -39,7 +40,8 @@ var dataset_parkingSpaceApp = [
         'amount': '3,500',
         'jobTitle': '業務專員',
         'adminNote': '老是拖款',
-        'parkingSpaceStartDate': '2024-07-30',
+        'wantStartDate': '2024-07-30',
+        'startDate': '2024-08-01',
     },
     {
         'createDate': '2024-07-15',
@@ -60,7 +62,8 @@ var dataset_parkingSpaceApp = [
         'amount': '3,800',
         'jobTitle': '技術主管',
         'adminNote': '要主動提醒',
-        'parkingSpaceStartDate': '2024-08-30',
+        'wantStartDate': '2024-08-30',
+        'startDate': '2024-09-01',
     },
     {
         'createDate': '2024-07-10',
@@ -81,7 +84,8 @@ var dataset_parkingSpaceApp = [
         'amount': '3,200',
         'jobTitle': '客服經理',
         'adminNote': '',
-        'parkingSpaceStartDate': '2024-07-10',
+        'wantStartDate': '2024-07-10',
+        'startDate': '2024-07-11',
     },
     {
         'createDate': '2024-07-20',
@@ -102,7 +106,8 @@ var dataset_parkingSpaceApp = [
         'amount': '3,700',
         'jobTitle': '行銷主管',
         'adminNote': '弄錯了',
-        'parkingSpaceStartDate': '2024-07-20',
+        'wantStartDate': '2024-07-20',
+        'startDate': '2024-07-25',
     },
     {
         'createDate': '2024-06-25',
@@ -123,7 +128,8 @@ var dataset_parkingSpaceApp = [
         'amount': '3,100',
         'jobTitle': '產品經理',
         'adminNote': '要求很多所以收比較貴',
-        'parkingSpaceStartDate': '2024-07-14',
+        'wantStartDate': '2024-07-14',
+        'startDate': '2024-07-14',
     },
     {
         'createDate': '2024-06-20',
@@ -144,7 +150,8 @@ var dataset_parkingSpaceApp = [
         'amount': '3,600',
         'jobTitle': '行政助理',
         'adminNote': '優良公司',
-        'parkingSpaceStartDate': '2024-07-12',
+        'wantStartDate': '2024-07-12',
+        'startDate': '2024-07-12',
     },
     {
         'createDate': '2024-07-05',
@@ -165,7 +172,8 @@ var dataset_parkingSpaceApp = [
         'amount': '3,900',
         'jobTitle': '研發工程師',
         'adminNote': '會亂停車',
-        'parkingSpaceStartDate': '2024-07-17',
+        'wantStartDate': '2024-07-17',
+        'startDate': '2024-07-17',
     },
     {
         'createDate': '2024-06-28',
@@ -186,7 +194,8 @@ var dataset_parkingSpaceApp = [
         'amount': '3,400',
         'jobTitle': '人力資源經理',
         'adminNote': '',
-        'parkingSpaceStartDate': '2024-07-10',
+        'wantStartDate': '2024-07-10',
+        'startDate': '2024-07-15',
     },
     {
         'createDate': '2024-07-12',
@@ -207,7 +216,8 @@ var dataset_parkingSpaceApp = [
         'amount': '3,500',
         'jobTitle': '客戶經理',
         'adminNote': '',
-        'parkingSpaceStartDate': '2024-07-26',
+        'wantStartDate': '2024-07-26',
+        'startDate': '2024-07-26',
     },
     {
         'createDate': '2024-07-01',
@@ -228,7 +238,8 @@ var dataset_parkingSpaceApp = [
         'amount': '3,200',
         'jobTitle': '市場專員',
         'adminNote': '共用車位',
-        'parkingSpaceStartDate': '2024-07-24',
+        'wantStartDate': '2024-07-24',
+        'startDate': '2024-07-24',
     },
     {
         'createDate': '2024-07-03',
@@ -249,26 +260,27 @@ var dataset_parkingSpaceApp = [
         'amount': '3,700',
         'jobTitle': '財務分析師',
         'adminNote': '',
-        'parkingSpaceStartDate': '2024-07-17',
+        'wantStartDate': '2024-07-17',
+        'startDate': '2024-07-17',
     }
 ];
 
-var selectOption = [
-    { 'optigroup': '新德惠大樓', 'option': 'B1-01' },
-    { 'optigroup': '新德惠大樓', 'option': 'B1-05' },
-    { 'optigroup': '新德惠大樓', 'option': 'B2-05' },
-    { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
-    { 'optigroup': '新德惠大樓', 'option': 'B3-01' },
-    { 'optigroup': '新德惠大樓', 'option': 'B3-10' },
-    { 'optigroup': '新德惠大樓', 'option': 'B4-02' },
-    { 'optigroup': '新德惠大樓', 'option': 'B6-03' },
-    { 'optigroup': '新德惠大樓', 'option': 'B7-04' },
-    { 'optigroup': '新德惠大樓', 'option': 'B8-02' },
-    { 'optigroup': '新德惠大樓', 'option': 'B9-03' },
-    { 'optigroup': '青創大樓', 'option': 'B10-01' },
-    { 'optigroup': '青創大樓', 'option': 'B11-02' },
-    { 'optigroup': '青創大樓', 'option': 'B12-01' },
-];
+// var selectOption = [
+//     { 'optigroup': '新德惠大樓', 'option': 'B1-01' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B1-05' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B2-05' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B3-01' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B3-10' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B4-02' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B6-03' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B7-04' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B8-02' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B9-03' },
+//     { 'optigroup': '青創大樓', 'option': 'B10-01' },
+//     { 'optigroup': '青創大樓', 'option': 'B11-02' },
+//     { 'optigroup': '青創大樓', 'option': 'B12-01' },
+// ];
 
 
 $(function () {
@@ -282,7 +294,7 @@ $(function () {
             { data: 'carType', title: "車位類型", }, // 2
             { data: 'licensePlateNum', title: "車牌號碼", }, // 3
             { data: 'name', title: "申請人", }, // 4
-            { data: 'parkingSpaceStartDate', title: "預計起租日", }, // 5
+            { data: 'wantStartDate', title: "預計起租日", }, // 5
             { data: 'status', title: "審核進度", }, // 6
             {
                 data: 'id', title: "檢閱", // 7
@@ -330,28 +342,28 @@ $(function () {
         let parkingSpaceData = dataset_parkingSpaceApp.find(perkingSpace => perkingSpace.id === psId);
         // 代入資料
         if (parkingSpaceData) {
-            $('#companyName').text(parkingSpaceData.company);
-            $('#uniformNum').text(parkingSpaceData.uniformNum);
-            $('#createDate').text(parkingSpaceData.createDate);
+            $('#psApp_companyName').text(parkingSpaceData.company);
+            $('#psApp_uniformNum').text(parkingSpaceData.uniformNum);
+            $('#psApp_createDate').text(parkingSpaceData.createDate);
 
-            $('#name').text(parkingSpaceData.name);
-            $('#phoneNum').text(parkingSpaceData.phone);
-            $('#ext').text(parkingSpaceData.ext);
+            $('#psApp_name').text(parkingSpaceData.name);
+            $('#psApp_phoneNum').text(parkingSpaceData.phone);
+            $('#psApp_ext').text(parkingSpaceData.ext);
 
-            $('#idNumber').text(parkingSpaceData.idNumber);
-            $('#email').text(parkingSpaceData.email);
-            $('#jobTitle').text(parkingSpaceData.jobTitle);
+            $('#psApp_idNumber').text(parkingSpaceData.idNumber);
+            $('#psApp_email').text(parkingSpaceData.email);
+            $('#psApp_jobTitle').text(parkingSpaceData.jobTitle);
 
-            $('#carType').text(parkingSpaceData.carType);
-            $('#parkingSpaceNum').text(parkingSpaceData.parkingSpaceNum);
-            $('#receivedDate').text(parkingSpaceData.receivedDate);
-            $('#parkingSpaceStartDate').text(parkingSpaceData.parkingSpaceStartDate);
+            $('#psApp_carType').text(parkingSpaceData.carType);
+            $('#psApp_parkingSpaceNum').text(parkingSpaceData.parkingSpaceNum);
+            $('#psApp_receivedDate').text(parkingSpaceData.receivedDate);
+            $('#psApp_wantStartDate').text(parkingSpaceData.wantStartDate);
 
             // $('#endDate').text(parkingSpaceData.endDate);
             // $('#rate').text(parkingSpaceData.amount);
-            $('#adminNote').text(parkingSpaceData.adminNote);
+            $('#psApp_adminNote').text(parkingSpaceData.adminNote);
 
-            $('#status').val(parkingSpaceData.status);
+            $('#psApp_status').val(parkingSpaceData.status);
 
             // if (parkingSpaceData.status != '待審核') {
             //     $('#status').val(parkingSpaceData.status);
