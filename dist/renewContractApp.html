@@ -211,14 +211,15 @@
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center align_center">
         承租人姓名
     </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="psApp_name"></div>
+    <div class="col col-lg-3 lightBoxItems p-3 align_center thisTextRequired" id="psApp_name"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center align_center">
         電話/手機
     </div>
-    <div class="col lightBoxItems p-3 align_center" id="psApp_phoneNum">
+    <div class="col lightBoxItems p-3 align_center thisTextRequired" id="psApp_phoneNum">
     </div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center align_center">
-        分&emsp;機</div>
+        分&emsp;機
+    </div>
     <div class="col col-lg-2 lightBoxItems p-3 align_center" id="psApp_ext">
     </div>
 
@@ -229,56 +230,54 @@
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
         身分證字號
     </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="psApp_idNumber"></div>
+    <div class="col col-lg-3 lightBoxItems p-3 align_center thisTextRequired" id="psApp_idNumber"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
         電子信箱&ensp;
     </div>
-    <div class="col lightBoxItems p-3 align_center" id="psApp_email">
-    </div>
+    <div class="col lightBoxItems p-3 align_center thisTextRequired" id="psApp_email"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
         職務名
     </div>
-    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="psApp_jobTitle">
-    </div>
+    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="psApp_jobTitle"></div>
 </div>
 
-<!-- 車位種類(可改) 車牌號碼(可改) 預計起租日(不可改) -->
+<!-- 車位種類 車牌號碼 預計起租日(可改) -->
 <div class="row mb-1">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        車位種類&emsp;
+        車位類型&emsp;
     </div>
     <div class="col col-lg-3 lightBoxItems p-3 align_center" id="psApp_carType"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
         車牌號碼&ensp;
     </div>
-    <div class="col lightBoxItems p-3 align_center readOnly" id="psApp_parkingSpaceNum"></div>
+    <div class="col lightBoxItems p-3 align_center thisTextRequired" id="psApp_licensePlateNum"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
         預計起租日
     </div>
-    <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="psApp_receivedDate"></div>
+    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="psApp_wantStartDate"></div>
 </div>
 
 <!-- 付款日期 車位號碼 起租日(都不可改) -->
 <div class="row mb-1">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        車位種類&emsp;
+        車位大樓&emsp;
     </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="psApp_carType"></div>
+    <div class="col col-lg-3 lightBoxItems p-3 align_center readOnly" id="psApp_building"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        車牌號碼&ensp;
+        車位號碼&ensp;
     </div>
     <div class="col lightBoxItems p-3 align_center readOnly" id="psApp_parkingSpaceNum"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        預計起租日
+        實際起租日
     </div>
-    <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="psApp_receivedDate"></div>
+    <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="psApp_startDate"></div>
 </div>
 
 
 <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
 <div class="row mb-1">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-        &emsp;檢附文件
+        檢附文件&emsp;
     </div>
     <div class="col lightBoxItems p-3">
         <a class="d-inline me-3 text-nowrap" href="#">申請書&ensp;<i class="fa-solid fa-download"></i><span
@@ -286,9 +285,9 @@
     </div>
 </div>
 <!-- 補件上傳 若狀態為通過，不顯示此區塊-->
-<div class="row mb-1" id="supplementaryFilesBox">
+<div class="row mb-1" id="psApp_supplementaryFilesBox">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-        &emsp;補件上傳
+        補件上傳&emsp;
     </div>
     <div class="col lightBoxItems p-3">
         <div class="row align-items-center my-1">
@@ -306,7 +305,7 @@
 <!-- 審核 -->
 <div class="row mb-1 multiple">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        &emsp;管理註記
+        管理註記&emsp;
     </div>
     <div class="col lightBoxItems p-3 align_center" id="psApp_adminNote">
     </div>
@@ -320,7 +319,7 @@
             <option value="不通過">不通過</option>
             <option value="通過">通過</option>
         </select>
-        <div id="statusText" class="p-1 readOnly"></div>
+        <div id="psApp_statusText" class="p-1 readOnly"></div>
     </div>
 </div>
                                 </div>

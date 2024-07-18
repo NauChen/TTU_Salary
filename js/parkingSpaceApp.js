@@ -9,6 +9,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-06-01',
         'status': '不通過',
         'id': '1',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B1-01',
         'uniformNum': '12345678',
         'phone': '02-81234567',
@@ -31,6 +32,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-01-01',
         'status': '待補件',
         'id': '2',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B3-01',
         'uniformNum': '23456789',
         'phone': '0912-345678',
@@ -53,6 +55,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-06-10',
         'status': '待審核',
         'id': '3',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B2-05',
         'uniformNum': '34567890',
         'phone': '02-83456789',
@@ -75,6 +78,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-05-01',
         'status': '待補件',
         'id': '4',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B4-02',
         'uniformNum': '45678901',
         'phone': '0913-456789',
@@ -97,6 +101,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-06-05',
         'status': '待審核',
         'id': '5',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B5-01',
         'uniformNum': '56789012',
         'phone': '02-87654321',
@@ -119,6 +124,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-05-01',
         'status': '通過',
         'id': '6',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B6-03',
         'uniformNum': '67890123',
         'phone': '0914-567890',
@@ -141,6 +147,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-05-01',
         'status': '不通過',
         'id': '7',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B7-04',
         'uniformNum': '78901234',
         'phone': '02-76543210',
@@ -163,6 +170,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-06-01',
         'status': '通過',
         'id': '8',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B8-02',
         'uniformNum': '89012345',
         'phone': '02-78901234',
@@ -185,6 +193,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-05-01',
         'status': '不通過',
         'id': '9',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B9-03',
         'uniformNum': '90123456',
         'phone': '0915-678901',
@@ -207,6 +216,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-06-01',
         'status': '通過',
         'id': '10',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B10-01',
         'uniformNum': '01234567',
         'phone': '02-89012345',
@@ -229,6 +239,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-05-01',
         'status': '待審核',
         'id': '11',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B11-02',
         'uniformNum': '12345679',
         'phone': '0916-789012',
@@ -251,6 +262,7 @@ var dataset_parkingSpaceApp = [
         'receivedDate': '2024-06-01',
         'status': '通過',
         'id': '12',
+        'building': '新德惠大樓',
         'parkingSpaceNum': 'B12-01',
         'uniformNum': '23456780',
         'phone': '02-90123456',
@@ -323,9 +335,8 @@ $(function () {
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(7)', row).css('min-width', '70px');
-            // $('td:eq(0)', row).css('font-size', '.95em');
             [0, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '130px').css('font-size', '.95em');
+                $('td:eq(' + colIdx + ')', row).css('min-width', '130px').css('font-size', '.9em');
             });
         }
     });
@@ -355,12 +366,13 @@ $(function () {
             $('#psApp_jobTitle').text(parkingSpaceData.jobTitle);
 
             $('#psApp_carType').text(parkingSpaceData.carType);
-            $('#psApp_parkingSpaceNum').text(parkingSpaceData.parkingSpaceNum);
-            $('#psApp_receivedDate').text(parkingSpaceData.receivedDate);
+            $('#psApp_licensePlateNum').text(parkingSpaceData.licensePlateNum);
             $('#psApp_wantStartDate').text(parkingSpaceData.wantStartDate);
 
-            // $('#endDate').text(parkingSpaceData.endDate);
-            // $('#rate').text(parkingSpaceData.amount);
+            $('#psApp_building').text(parkingSpaceData.building);
+            $('#psApp_parkingSpaceNum').text(parkingSpaceData.parkingSpaceNum);
+            $('#psApp_startDate').text(parkingSpaceData.startDate);
+
             $('#psApp_adminNote').text(parkingSpaceData.adminNote);
 
             $('#psApp_status').val(parkingSpaceData.status);
@@ -383,32 +395,46 @@ $(function () {
             $('.changeEmail_items').off('click');
             $('.changeRadio_items').off('click');
             $('.changeSelect_items').off('click');
-            theseRemoveClass(["changeInput_items"], ['name', 'idNumber', 'jobTitle', 'adminNote']);
-            theseRemoveClass(["changeNumber_items"], ['ext']);
-            // theseRemoveClass(["changeDate_items"], ['endDate', 'receivedDate']);
-            theseRemoveClass(["changeMoney_items"], ['rate']);
-            theseRemoveClass(["changePhone_items"], ['phoneNum']);
-            theseRemoveClass(["changeEmail_items"], ['email']);
-            theseRemoveClass(["changeRadio_items"], ['carType']);
+
+            $('#psApp_name, #psApp_jobTitle, #psApp_adminNote').removeClass('changeInput_items');
+            $('#psApp_ext').removeClass('changeUniformNum_items');
+            $('#psApp_phoneNum').removeClass('changePhone_items');
+            $('#psApp_email').removeClass('changeEmail_items');
+            $('#psApp_idNumber').removeClass('changeInputUpperNumber_items');
+            $('#psApp_carType').removeClass('changeRadioCar_items');
+            $('#psApp_licensePlateNum').removeClass('changeInputUpperNumberHyphen_items');
+            $('#psApp_wantStartDate').removeClass('changeDate_items');
+            // theseRemoveClass(["changeInput_items"], ['name', 'idNumber', 'jobTitle', 'adminNote']);
+            // theseRemoveClass(["changeNumber_items"], ['ext']);
+            // theseRemoveClass(["changePhone_items"], ['phoneNum']);
+            // theseRemoveClass(["changeEmail_items"], ['email']);
+            // theseRemoveClass(["changeRadio_items"], ['carType']);
             // theseRemoveClass(["changeSelect_items"], ['parkingSpaceNum']);
-            theseAddClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'adminNote', 'ext', 'endDate', 'rate', 'phoneNum', 'email', 'carType']);
-            $('#updateBtn').hide();
-            $('#supplementaryFilesBox').hide();
-            $('#status').hide();
-            $('#statusText').show().text(parkingSpaceData.status);
+            $('#psApp_name, #psApp_jobTitle, #psApp_adminNote, #psApp_ext, #psApp_phoneNum, #psApp_email, #psApp_idNumber, #psApp_carType, #psApp_licensePlateNum, #psApp_wantStartDate').addClass('readOnly');
+            // theseAddClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'adminNote', 'ext', 'endDate', 'rate', 'phoneNum', 'email', 'carType']);
+            $('#psApp_updateBtn').hide();
+            $('#psApp_supplementaryFilesBox').hide();
+            $('#psApp_status').hide();
+            $('#psApp_statusText').show().text(parkingSpaceData.status);
 
 
 
         } else {
-            theseAddClass(["changeInput_items"], ['name', 'idNumber', 'jobTitle', 'adminNote']);
-            theseAddClass(["changeNumber_items"], ['ext']);
-            // theseAddClass(["changeDate_items"], ['endDate', 'receivedDate']);
-            theseAddClass(["changeMoney_items"], ['rate']);
-            theseAddClass(["changePhone_items"], ['phoneNum']);
-            theseAddClass(["changeEmail_items"], ['email']);
-            theseAddClass(["changeRadio_items"], ['carType']);
+            $('#psApp_name, #psApp_jobTitle, #psApp_adminNote').addClass('changeInput_items');
+            $('#psApp_ext').addClass('changeUniformNum_items');
+            $('#psApp_phoneNum').addClass('changePhone_items');
+            $('#psApp_email').addClass('changeEmail_items');
+            $('#psApp_idNumber').addClass('changeInputUpperNumber_items');
+            $('#psApp_carType').addClass('changeRadioCar_items');
+            $('#psApp_licensePlateNum').addClass('changeInputUpperNumberHyphen_items');
+            $('#psApp_wantStartDate').addClass('changeDate_items');
+            // theseAddClass(["changeInput_items"], ['name', 'idNumber', 'jobTitle', 'adminNote']);
+            // theseAddClass(["changeNumber_items"], ['ext']);
+            // theseAddClass(["changePhone_items"], ['phoneNum']);
+            // theseAddClass(["changeEmail_items"], ['email']);
+            // theseAddClass(["changeRadio_items"], ['carType']);
             // theseAddClass(["changeSelect_items"], ['parkingSpaceNum']);
-            theseRemoveClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'adminNote', 'ext', 'endDate', 'rate', 'phoneNum', 'email', 'carType']);
+            // theseRemoveClass(["readOnly"], ['name', 'idNumber', 'jobTitle', 'adminNote', 'ext', 'endDate', 'rate', 'phoneNum', 'email', 'carType']);
             CustomInputHandlers.init();
             $('#updateBtn').show();
             $('#supplementaryFilesBox').show();

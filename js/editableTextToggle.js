@@ -20,6 +20,7 @@ var CustomInputHandlers = {
         this.bindChangeSelectPurchaseItems();
         this.bindChangeDecimalItems();
         this.bindChangeInputUpperNumberHyphenItems();
+        this.bindChangeInputUpperNumberItems();
     },
     bindChangeInputItems: function () {
         $('.changeInput_items').on('click', function () {
@@ -81,8 +82,38 @@ var CustomInputHandlers = {
             }
         });
     },
+    bindChangeInputUpperNumberItems: function () {
+        $('.changeInputUpperNumber_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input').length === 0) {
+                var $input = $('<input type="text" class="form-control" onkeyup="restrictFirstUpperSecondNum(this)"/>').val(currentText);
+                $this.html($input);
+                $input.focus().select();
+
+                function handleBlurOrEnter() {
+                    var newText = $input.val().trim();
+                    if (newText === '' && $this.hasClass('thisTextRequired')) {
+                        $this.text(currentText);
+                        swalToastWarning('此欄位不可留白喔！', 'top');
+                    } else {
+                        $this.text(newText);
+                    }
+                }
+
+                $input.on('blur', handleBlurOrEnter);
+                // 設定鍵碼13(enter)
+                $input.on('keypress', function (e) {
+                    if (e.which === 13) {
+                        handleBlurOrEnter();
+                    }
+                });
+            }
+        });
+    },
     bindChangeRadioCarItems: function () {
-        $('.changeRadio_items').on('click', function () {
+        $('.changeRadioCar_items').on('click', function () {
             var $this = $(this);
             var currentText = $this.text().trim();
 
