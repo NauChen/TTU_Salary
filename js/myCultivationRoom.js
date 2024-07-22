@@ -12,12 +12,12 @@ var dataset_myCultivationRoom = [
     },
     {
         'id': '2',
-        'startDate': '2023-07-14',
-        'endDate': '2024-07-15',
+        'startDate': '2023-07-31',
+        'endDate': '2024-08-01',
         'building': '綜合大樓',
         'room': '104',
-        'thisTimeDeadline': '2024-04-15',
-        'nextTimeDeadline': '2024-07-15',
+        'thisTimeDeadline': '2024-05-15',
+        'nextTimeDeadline': '2024-07-20',
         'paymentDate': '',
         'remark': '',
     },
@@ -166,7 +166,7 @@ $(function () {
                         if (paymentDate) {
                             return '<button type="button" class="btn btn-light rounded-circle remittance_voucher align_center reuploadRemittance" title="再次上傳匯款憑證" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
                         } else {
-                            return '<button type="button" class="btn btn-outline-primary rounded-circle remittance_voucher align_center uploadRemittance" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
+                            return '<button type="button" class="btn btn-info rounded-circle remittance_voucher align_center uploadRemittance" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
                         }
                     }
                 }, className: 'text-center text-nowrap'

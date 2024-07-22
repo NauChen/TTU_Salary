@@ -99,7 +99,7 @@ $(function () {
         "columns": [
             {
                 data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data, type, row, meta) { // 0
-                    return '<input type="checkbox" class="form-check-input border-primary application-checkbox" value=' + data + '>'
+                    return '<input type="checkbox" class="form-check-input border-info application-checkbox" value=' + data + '>'
                 },
             },
             { data: 'createDate', title: "申請日期" }, // 1
@@ -128,7 +128,7 @@ $(function () {
                     if (paymentDate) {
                         return '<button type="button" class="btn btn-light rounded-circle remittance_voucher align_center reuploadRemittance" title="再次上傳匯款憑證" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
                     } else {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle remittance_voucher align_center uploadRemittance" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
+                        return '<button type="button" class="btn btn-info rounded-circle remittance_voucher align_center uploadRemittance" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
                     }
                 }, className: 'text-center text-nowrap'
             },
@@ -223,7 +223,7 @@ $(function () {
                     $('#paymentPurpose').val('補發');
                 } else if (progressData.isRenew != '' || progressData.isRenew != null) {
                     $('#paymentPurpose').val('續約');
-                } else{
+                } else {
                     $('#paymentPurpose').val('');
                 }
 

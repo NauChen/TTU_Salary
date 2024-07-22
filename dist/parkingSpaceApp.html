@@ -280,7 +280,7 @@
 
 
 <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
-<div class="row mb-1">
+<div class="row mb-1" id="psApp_downloadFilesBox">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
         檢附文件&emsp;
     </div>
@@ -301,7 +301,7 @@
             </label>
             <div class="col">
                 <input type="file" class="form-control d-none" id="parkingSpaceForm" accept=".pdf"
-                    onchange="javascript:{document.getElementById('parkingSpace_fileInfo1').innerHTML = document.getElementById('parkingSpaceForm').value;setFormHeight();}">
+                    onchange="javascript:{document.getElementById('parkingSpace_fileInfo1').innerHTML = document.getElementById('parkingSpaceForm').value;}">
                 <div id="parkingSpace_fileInfo1" class="fileInfo"></div>
             </div>
         </div>

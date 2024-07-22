@@ -300,12 +300,13 @@ $(function () {
             {
                 data: 'id', title: "檢閱", // 7
                 render: function (data, type, row) {
-                    const status = row.status;
-                    if (status == "通過" || status == "不通過") {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#parkingSpaceDetailModel" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
+                    let btnColor = "";
+                    if (row.status == "通過" || row.status == "不通過") {
+                        btnColor = 'outline-primary'
                     } else {
-                        return '<button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#parkingSpaceDetailModel" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
+                        btnColor = 'info'
                     }
+                    return '<button type="button" class="btn btn-' + btnColor + ' rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#parkingSpaceDetailModel" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
                 }, className: 'text-center text-nowrap'
             },
         ],
@@ -405,6 +406,7 @@ $(function () {
                 $('#psApp_supplementaryFilesBox').hide();
                 $('#psApp_status').hide();
                 $('#psApp_statusText').show().text(parkingSpaceData.status);
+                $('#psApp_updateBtn').hide();
 
             } else {
                 $('#psApp_name, #psApp_jobTitle, #psApp_adminNote').addClass('changeInput_items');

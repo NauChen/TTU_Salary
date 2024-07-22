@@ -580,118 +580,119 @@ var dataset_confirmPaymentAll = [
 // adminNote是管理員備註，可能為''
 
 // 車位與識別證 - 將可續約(不論有無點擊要續約) 與 新申請 資料匯入
-var dataset_confirmPaymentCarOrCard = [
-    {
-        'id': '1',
-        'deadLine': '2024-07-15',
-        'company': '超級棒股份有限公司',
-        'amount': '2,500',
-        'type': '汽車',
-        'paymentDate': '2024-07-13',
-        'receivedDate': '2024-07-13',
-        'placeOrPrint': 'B1-15',
-        'adminNote': ''
-    },
-    {
-        'id': '2',
-        'deadLine': '2024-07-16',
-        'company': '優質科技股份有限公司',
-        'amount': '100',
-        'type': '機車',
-        'paymentDate': '2024-07-14',
-        'receivedDate': '2024-07-15',
-        'placeOrPrint': 'B2-09',
-        'adminNote': ''
-    },
-    {
-        'id': '3',
-        'deadLine': '2024-07-17',
-        'company': '金鼎企業有限公司',
-        'amount': '2,500',
-        'type': '汽車',
-        'paymentDate': '2024-07-15',
-        'receivedDate': '2024-07-16',
-        'placeOrPrint': '5',
-        'adminNote': '補發第五次'
-    },
-    {
-        'id': '4',
-        'deadLine': '2024-07-18',
-        'company': '龍騰科技股份有限公司',
-        'amount': '2,500',
-        'type': '汽車',
-        'paymentDate': '2024-07-16',
-        'receivedDate': '2024-07-16',
-        'placeOrPrint': 'B1-07',
-        'adminNote': ''
-    },
-    {
-        'id': '5',
-        'deadLine': '2024-07-19',
-        'company': '日月光股份有限公司',
-        'amount': '100',
-        'type': '機車',
-        'paymentDate': '2024-07-17',
-        'receivedDate': '2024-07-17',
-        'placeOrPrint': '',
-        'adminNote': '已空車位'
-    },
-    {
-        'id': '6',
-        'deadLine': '2024-07-20',
-        'company': '巨匠科技有限公司',
-        'amount': '2,500',
-        'type': '汽車',
-        'paymentDate': '2024-07-18',
-        'receivedDate': '2024-07-19',
-        'placeOrPrint': '3',
-        'adminNote': ''
-    },
-    {
-        'id': '7',
-        'deadLine': '2024-07-21',
-        'company': '光速科技股份有限公司',
-        'amount': '3,000',
-        'type': '汽車',
-        'paymentDate': '2024-07-19',
-        'receivedDate': '2024-07-19',
-        'placeOrPrint': 'B2-12',
-        'adminNote': ''
-    },
-    {
-        'id': '8',
-        'deadLine': '2024-07-22',
-        'company': '太陽能科技股份有限公司',
-        'amount': '100',
-        'type': '機車',
-        'paymentDate': '2024-07-20',
-        'receivedDate': '2024-07-21',
-        'placeOrPrint': 'B3-08',
-        'adminNote': ''
-    },
-    {
-        'id': '9',
-        'deadLine': '2024-07-23',
-        'company': '巨力科技有限公司',
-        'amount': '2,500',
-        'type': '汽車',
-        'paymentDate': '2024-07-21',
-        'receivedDate': '2024-07-22',
-        'placeOrPrint': '8',
-        'adminNote': ''
-    },
-    {
-        'id': '10',
-        'deadLine': '2024-07-24',
-        'company': '迅達科技股份有限公司',
-        'amount': '2,500',
-        'type': '汽車',
-        'paymentDate': '2024-07-22',
-        'receivedDate': '2024-07-23',
-        'placeOrPrint': 'B1-10',
-        'adminNote': '確認車位'
-    }
-];
+// var dataset_confirmPaymentCarOrCard = [
+//     {
+//         'id': '1',
+//         'deadLine': '2024-07-15',
+//         'company': '超級棒股份有限公司',
+//         'amount': '2,500',
+//         'type': '汽車',
+//         'paymentDate': '2024-07-13',
+//         'receivedDate': '2024-07-13',
+//         'placeOrPrint': 'B1-15',
+//         'adminNote': ''
+//     },
+//     {
+//         'id': '2',
+//         'deadLine': '2024-07-16',
+//         'company': '優質科技股份有限公司',
+//         'amount': '100',
+//         'type': '機車',
+//         'paymentDate': '2024-07-14',
+//         'receivedDate': '2024-07-15',
+//         'placeOrPrint': 'B2-09',
+//         'adminNote': ''
+//     },
+//     {
+//         'id': '3',
+//         'deadLine': '2024-07-17',
+//         'company': '金鼎企業有限公司',
+//         'amount': '2,500',
+//         'type': '汽車',
+//         'paymentDate': '2024-07-15',
+//         'receivedDate': '2024-07-16',
+//         'placeOrPrint': '5',
+//         'adminNote': '補發第五次'
+//     },
+//     {
+//         'id': '4',
+//         'deadLine': '2024-07-18',
+//         'company': '龍騰科技股份有限公司',
+//         'amount': '2,500',
+//         'type': '汽車',
+//         'paymentDate': '2024-07-16',
+//         'receivedDate': '2024-07-16',
+//         'placeOrPrint': 'B1-07',
+//         'adminNote': ''
+//     },
+//     {
+//         'id': '5',
+//         'deadLine': '2024-07-19',
+//         'company': '日月光股份有限公司',
+//         'amount': '100',
+//         'type': '機車',
+//         'paymentDate': '2024-07-17',
+//         'receivedDate': '2024-07-17',
+//         'placeOrPrint': '',
+//         'adminNote': '已空車位'
+//     },
+//     {
+//         'id': '6',
+//         'deadLine': '2024-07-20',
+//         'company': '巨匠科技有限公司',
+//         'amount': '2,500',
+//         'type': '汽車',
+//         'paymentDate': '2024-07-18',
+//         'receivedDate': '2024-07-19',
+//         'placeOrPrint': '3',
+//         'adminNote': ''
+//     },
+//     {
+//         'id': '7',
+//         'deadLine': '2024-07-21',
+//         'company': '光速科技股份有限公司',
+//         'amount': '3,000',
+//         'type': '汽車',
+//         'paymentDate': '2024-07-19',
+//         'receivedDate': '2024-07-19',
+//         'placeOrPrint': 'B2-12',
+//         'adminNote': ''
+//     },
+//     {
+//         'id': '8',
+//         'deadLine': '2024-07-22',
+//         'company': '太陽能科技股份有限公司',
+//         'amount': '100',
+//         'type': '機車',
+//         'paymentDate': '2024-07-20',
+//         'receivedDate': '2024-07-21',
+//         'placeOrPrint': 'B3-08',
+//         'adminNote': ''
+//     },
+//     {
+//         'id': '9',
+//         'deadLine': '2024-07-23',
+//         'company': '巨力科技有限公司',
+//         'amount': '2,500',
+//         'type': '汽車',
+//         'paymentDate': '2024-07-21',
+//         'receivedDate': '2024-07-22',
+//         'placeOrPrint': '8',
+//         'adminNote': ''
+//     },
+//     {
+//         'id': '10',
+//         'deadLine': '2024-07-24',
+//         'company': '迅達科技股份有限公司',
+//         'amount': '2,500',
+//         'type': '汽車',
+//         'paymentDate': '2024-07-22',
+//         'receivedDate': '2024-07-23',
+//         'placeOrPrint': 'B1-10',
+//         'adminNote': '確認車位'
+//     }
+// ];
+;
 
 // 生成10筆資料物件 dataset_confirmPaymentParkingSpace，不要函式
 // id是將車位配置給廠商的資料id，由1開始
