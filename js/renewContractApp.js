@@ -237,7 +237,7 @@ $(function () {
             // if (parkingSpaceData.status != '待審核') {
             //     $('#status').val(parkingSpaceData.status);
             // };
-
+            CustomInputHandlers.destroy();
         } else {
             console.error('parkingSpaceData data not found for id:', psId);
         };

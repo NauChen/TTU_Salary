@@ -1613,7 +1613,9 @@ $(function () {
             console.error('paymentData data not found for id:', paymentId);
         };
         if (paymentData.status === "完成" || paymentData.status === "取消") {
+            CustomInputHandlers.destroy();
             $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote').removeClass("changeInput_items");
+            // console.log('Initial class:', $('#payment_placeOrPrint').attr('class'));
             $('#payment_paymentDate, #payment_receiptDate').removeClass("changeDate_items");
             $('#payment_paymentAmount, #payment_receiptAmount').removeClass("changeMoney_items");
             $('#payment_paymentPurpose').removeClass("changeSelectPaymentPurpose_items");
@@ -1623,7 +1625,6 @@ $(function () {
             $('#payment_status').removeClass("changeSelectStatus_items");
             $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote, #payment_paymentDate, #payment_receiptDate, #payment_paymentAmount, #payment_receiptAmount, #payment_paymentPurpose, #payment_paymentMethod, #payment_last5AccountNo, #payment_type, #payment_status').addClass("readOnly");
             $('#payment_updateBtn').hide();
-            // $('#statusText').show().text(paymentData.status);
         } else {
             $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote').addClass("changeInput_items");
             $('#payment_paymentDate, #payment_receiptDate').addClass("changeDate_items");
@@ -1636,7 +1637,6 @@ $(function () {
             $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote, #payment_paymentDate, #payment_receiptDate, #payment_paymentAmount, #payment_receiptAmount, #payment_paymentPurpose, #payment_paymentMethod, #payment_last5AccountNo, #payment_type, #payment_status').removeClass("readOnly");
             CustomInputHandlers.init();
             $('#payment_updateBtn').show();
-            // $('#statusText').hide();
         }
 
         $('#payment_updateBtn').on('click', function () {

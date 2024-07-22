@@ -59,7 +59,8 @@
                     <li><a class="dropdown-item" href="./parkingSpaceInventory.html">停車位管理&ensp;<i
                                 class="fa-solid fa-square-parking"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="./cultivationRoomInventory.html">培育室管理&ensp;<i class="fa-solid fa-seedling"></i></a>
+                    <li><a class="dropdown-item" href="./cultivationRoomInventory.html">培育室管理&ensp;<i
+                                class="fa-solid fa-seedling"></i></a>
                     </li>
                 </ul>
             </li>
@@ -112,7 +113,10 @@
                     </li>
                 </ul>
             </li>
-
+            <li class="item">
+                <a class="link" href="./template-underConstruction.html" id="logRecordLink"><i
+                        class="fa-solid fa-user-secret"></i><span class="tooltiptext tooltip-right">訪視紀錄</span></a>
+            </li>
             <li class="item">
                 <a class="link" href="./template-underConstruction.html" id="logRecordLink"><i
                         class="fa-solid fa-file-shield"></i><span class="tooltiptext tooltip-right">LOG紀錄</span></a>
@@ -177,7 +181,7 @@
                     </div>
                 </div>
 
-                <!-- Modal 1 -->
+                <!-- Modal 停車位續約詳情 -->
                 <div class="modal fade parkingSpaceDetail" id="renewContractParkingSpaceModel" data-bs-backdrop="static"
                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="renewContractParkingSpaceModelLabel"
                     aria-hidden="true">
@@ -260,11 +264,11 @@
 <!-- 付款日期 車位號碼 起租日(都不可改) -->
 <div class="row mb-1">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        車位大樓&emsp;
+        配置大樓&emsp;
     </div>
     <div class="col col-lg-3 lightBoxItems p-3 align_center readOnly" id="psApp_building"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        車位號碼&ensp;
+        配置車位&ensp;
     </div>
     <div class="col lightBoxItems p-3 align_center readOnly" id="psApp_parkingSpaceNum"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
@@ -286,7 +290,7 @@
 </div>
 <!-- 補件上傳 若狀態為通過，不顯示此區塊-->
 <div class="row mb-1" id="psApp_supplementaryFilesBox">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
         補件上傳&emsp;
     </div>
     <div class="col lightBoxItems p-3">
@@ -309,7 +313,7 @@
     </div>
     <div class="col lightBoxItems p-3 align_center" id="psApp_adminNote">
     </div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
         審核結果
     </div>
     <div class="col col-lg-2 lightBoxItems p-2 align_center">
@@ -332,7 +336,7 @@
                     </div>
                 </div>
 
-                <!-- Modal 2 -->
+                <!-- Modal 培育室續約詳情 -->
                 <div class="modal fade parkingSpaceDetail" id="renewContractRoomModel" data-bs-backdrop="static"
                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="renewContractRoomModelLabel"
                     aria-hidden="true">
@@ -568,6 +572,8 @@
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
     <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
+    <script src="./js/editableTextToggle.js"></script>
     <script src="./js/renewContractApp.js"></script>
 </body>
 

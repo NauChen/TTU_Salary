@@ -22,6 +22,28 @@ var CustomInputHandlers = {
         this.bindChangeInputUpperNumberHyphenItems();
         this.bindChangeInputUpperNumberItems();
     },
+    destroy: function () {
+        this.unbindChangeInputItems();
+        this.unbindChangeRadioCarItems();
+        this.unbindChangeRadioPaymentMethodItems();
+        this.unbindChangeRadioApplyItems();
+        this.unbindChangeDateItems();
+        this.unbindChangeMoneyItems();
+        this.unbindChangeTextareaLgItems();
+        this.unbindChangeNumber5Items();
+        this.unbindChangeUniformNumItems();
+        this.unbindChangePhoneItems();
+        this.unbindChangeEmailItems();
+        this.unbindChangeLineIDItems();
+        this.unbindChangeSelectItems();
+        this.unbindChangeSelectRoomItems();
+        this.unbindChangeSelectPaymentPurposeItems();
+        this.unbindChangeSelectStatusItems();
+        this.unbindChangeSelectPurchaseItems();
+        this.unbindChangeDecimalItems();
+        this.unbindChangeInputUpperNumberHyphenItems();
+        this.unbindChangeInputUpperNumberItems();
+    },
     bindChangeInputItems: function () {
         $('.changeInput_items').on('click', function () {
             var $this = $(this);
@@ -51,6 +73,13 @@ var CustomInputHandlers = {
                 });
             }
         });
+    },
+    unbindChangeInputItems: function () {
+        // 解除綁定 click 事件
+        $('.changeInput_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeInput_items').find('input').off('blur').off('keypress');
     },
     bindChangeInputUpperNumberHyphenItems: function () {
         $('.changeInputUpperNumberHyphen_items').on('click', function () {
@@ -82,6 +111,13 @@ var CustomInputHandlers = {
             }
         });
     },
+    unbindChangeInputUpperNumberHyphenItems: function () {
+        // 解除綁定 click 事件
+        $('.changeInputUpperNumberHyphen_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeInputUpperNumberHyphen_items').find('input').off('blur').off('keypress');
+    },
     bindChangeInputUpperNumberItems: function () {
         $('.changeInputUpperNumber_items').on('click', function () {
             var $this = $(this);
@@ -111,6 +147,13 @@ var CustomInputHandlers = {
                 });
             }
         });
+    },
+    unbindChangeInputUpperNumberItems: function () {
+        // 解除綁定 click 事件
+        $('.changeInputUpperNumber_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeInputUpperNumber_items').find('input').off('blur').off('keypress');
     },
     bindChangeRadioCarItems: function () {
         $('.changeRadioCar_items').on('click', function () {
@@ -148,6 +191,13 @@ var CustomInputHandlers = {
             }
         });
     },
+    unbindChangeRadioCarItems: function () {
+        // 解除綁定 click 事件
+        $('.changeRadioCar_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeRadioCar_items').find('input').off('blur').off('keypress');
+    },
     bindChangeRadioPaymentMethodItems: function () {
         $('.changeRadioPayMethod_items').on('click', function () {
             var $this = $(this);
@@ -183,6 +233,13 @@ var CustomInputHandlers = {
                 });
             }
         });
+    },
+    unbindChangeRadioPaymentMethodItems: function () {
+        // 解除綁定 click 事件
+        $('.changeRadioPayMethod_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeRadioPayMethod_items').find('input').off('blur').off('keypress');
     },
     bindChangeRadioApplyItems: function () {
         $('.changeRadioApply_items').on('click', function () {
@@ -220,6 +277,13 @@ var CustomInputHandlers = {
             }
         });
     },
+    unbindChangeRadioApplyItems: function () {
+        // 解除綁定 click 事件
+        $('.changeRadioApply_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeRadioApply_items').find('input').off('blur').off('keypress');
+    },
     bindChangeDateItems: function () {
         $('.changeDate_items').on('click', function () {
             var $this = $(this);
@@ -248,6 +312,13 @@ var CustomInputHandlers = {
                 });
             }
         });
+    },
+    unbindChangeDateItems: function () {
+        // 解除綁定 click 事件
+        $('.changeDate_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeDate_items').find('input').off('blur').off('keypress');
     },
     bindChangeMoneyItems: function () {
         $('.changeMoney_items').on('click', function () {
@@ -286,6 +357,13 @@ var CustomInputHandlers = {
             }
         });
     },
+    unbindChangeMoneyItems: function () {
+        // 解除綁定 click 事件
+        $('.changeMoney_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeMoney_items').find('input').off('blur').off('keypress');
+    },
     bindChangeTextareaLgItems: function () {
         $('.changeTextarea_lg_items').on('click', function () {
             var $this = $(this);
@@ -312,6 +390,13 @@ var CustomInputHandlers = {
                 $textarea.on('keydown', handleBlurOrCtrlEnter);
             }
         });
+    },
+    unbindChangeTextareaLgItems: function () {
+        // 解除綁定 click 事件
+        $('.changeTextarea_lg_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeTextarea_lg_items').find('input').off('blur').off('keypress');
     },
     bindChangeNumber5Items: function () {
         $('.changeNumber5_items').on('click', function () {
@@ -344,6 +429,13 @@ var CustomInputHandlers = {
             }
         });
     },
+    unbindChangeNumber5Items: function () {
+        // 解除綁定 click 事件
+        $('.changeNumber5_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeNumber5_items').find('input').off('blur').off('keypress');
+    },
     bindChangeUniformNumItems: function () {
         $('.changeUniformNum_items').on('click', function () {
             var $this = $(this);
@@ -370,6 +462,13 @@ var CustomInputHandlers = {
                 $input.on('keypress', handleBlurOrEnter);
             }
         });
+    },
+    unbindChangeUniformNumItems: function () {
+        // 解除綁定 click 事件
+        $('.changeUniformNum_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeUniformNum_items').find('input').off('blur').off('keypress');
     },
     bindChangePhoneItems: function () {
         $('.changePhone_items').on('click', function () {
@@ -404,6 +503,13 @@ var CustomInputHandlers = {
                 $input.on('keypress', handleBlurOrEnter);
             }
         });
+    },
+    unbindChangePhoneItems: function () {
+        // 解除綁定 click 事件
+        $('.changePhone_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changePhone_items').find('input').off('blur').off('keypress');
     },
     bindChangeEmailItems: function () {
         $('.changeEmail_items').on('click', function () {
@@ -443,6 +549,13 @@ var CustomInputHandlers = {
             }
         });
     },
+    unbindChangeEmailItems: function () {
+        // 解除綁定 click 事件
+        $('.changeEmail_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeEmail_items').find('input').off('blur').off('keypress');
+    },
     bindChangeLineIDItems: function () {
         $('.changeLineID_items').on('click', function () {
             var $this = $(this);
@@ -478,6 +591,13 @@ var CustomInputHandlers = {
                 $input.on('keypress', handleBlurOrEnter);
             }
         });
+    },
+    unbindChangeLineIDItems: function () {
+        // 解除綁定 click 事件
+        $('.changeLineID_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeLineID_items').find('input').off('blur').off('keypress');
     },
     // selectOption
     bindChangeSelectItems: function () {
@@ -541,6 +661,13 @@ var CustomInputHandlers = {
             }
         });
     },
+    unbindChangeSelectItems: function () {
+        // 解除綁定 click 事件
+        $('.changeSelect_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeSelect_items').find('input').off('blur').off('keypress');
+    },
     // selectOptionRoom
     bindChangeSelectRoomItems: function () {
         $('.changeSelectRoom_items').on('click', function () {
@@ -592,6 +719,13 @@ var CustomInputHandlers = {
                 });
             }
         });
+    },
+    unbindChangeSelectRoomItems: function () {
+        // 解除綁定 click 事件
+        $('.changeSelectRoom_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeSelectRoom_items').find('input').off('blur').off('keypress');
     },
     // selectOptionPaymentPurpose
     bindChangeSelectPaymentPurposeItems: function () {
@@ -656,6 +790,13 @@ var CustomInputHandlers = {
             }
         });
     },
+    unbindChangeSelectPaymentPurposeItems: function () {
+        // 解除綁定 click 事件
+        $('.changeSelectPaymentPurpose_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeSelectPaymentPurpose_items').find('input').off('blur').off('keypress');
+    },
     // selectOptionStatus
     bindChangeSelectStatusItems: function () {
         $('.changeSelectStatus_items').on('click', function () {
@@ -694,6 +835,13 @@ var CustomInputHandlers = {
                 });
             }
         });
+    },
+    unbindChangeSelectStatusItems: function () {
+        // 解除綁定 click 事件
+        $('.changeSelectStatus_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeSelectStatus_items').find('input').off('blur').off('keypress');
     },
     // selectOptionPurchase
     bindChangeSelectPurchaseItems: function () {
@@ -758,6 +906,13 @@ var CustomInputHandlers = {
             }
         });
     },
+    unbindChangeSelectPurchaseItems: function () {
+        // 解除綁定 click 事件
+        $('.changeSelectPurchase_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeSelectPurchase_items').find('input').off('blur').off('keypress');
+    },
     bindChangeDecimalItems: function () {
         $('.changeDecimal_items').on('click', function () {
             var $this = $(this);
@@ -801,5 +956,12 @@ var CustomInputHandlers = {
                 });
             }
         });
+    },
+    unbindChangeDecimalItems: function () {
+        // 解除綁定 click 事件
+        $('.changeDecimal_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeDecimal_items').find('input').off('blur').off('keypress');
     },
 };

@@ -59,7 +59,8 @@
                     <li><a class="dropdown-item" href="./parkingSpaceInventory.html">停車位管理&ensp;<i
                                 class="fa-solid fa-square-parking"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="./cultivationRoomInventory.html">培育室管理&ensp;<i class="fa-solid fa-seedling"></i></a>
+                    <li><a class="dropdown-item" href="./cultivationRoomInventory.html">培育室管理&ensp;<i
+                                class="fa-solid fa-seedling"></i></a>
                     </li>
                 </ul>
             </li>
@@ -112,7 +113,10 @@
                     </li>
                 </ul>
             </li>
-
+            <li class="item">
+                <a class="link" href="./template-underConstruction.html" id="logRecordLink"><i
+                        class="fa-solid fa-user-secret"></i><span class="tooltiptext tooltip-right">訪視紀錄</span></a>
+            </li>
             <li class="item">
                 <a class="link" href="./template-underConstruction.html" id="logRecordLink"><i
                         class="fa-solid fa-file-shield"></i><span class="tooltiptext tooltip-right">LOG紀錄</span></a>
@@ -261,11 +265,11 @@
 <!-- 付款日期 車位號碼 起租日(都不可改) -->
 <div class="row mb-1">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        車位大樓&emsp;
+        配置大樓&emsp;
     </div>
     <div class="col col-lg-3 lightBoxItems p-3 align_center readOnly" id="psApp_building"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        車位號碼&ensp;
+        配置車位&ensp;
     </div>
     <div class="col lightBoxItems p-3 align_center readOnly" id="psApp_parkingSpaceNum"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
@@ -287,7 +291,7 @@
 </div>
 <!-- 補件上傳 若狀態為通過，不顯示此區塊-->
 <div class="row mb-1" id="psApp_supplementaryFilesBox">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
         補件上傳&emsp;
     </div>
     <div class="col lightBoxItems p-3">
@@ -310,7 +314,7 @@
     </div>
     <div class="col lightBoxItems p-3 align_center" id="psApp_adminNote">
     </div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
         審核結果
     </div>
     <div class="col col-lg-2 lightBoxItems p-2 align_center">
@@ -326,8 +330,10 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
+                                <span class="text-danger" id="danger_parkingSpaceApp"></span>
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
-                                <button type="button" class="btn btn-outline-secondary" id="psApp_updateBtn">確認修改</button>
+                                <button type="button" class="btn btn-outline-secondary"
+                                    id="psApp_updateBtn">確認修改</button>
                             </div>
                         </form>
                     </div>

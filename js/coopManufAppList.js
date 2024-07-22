@@ -520,15 +520,16 @@ $(function () {
         };
 
         if (firmData.status === "通過" || firmData.status === "不通過") {
+            CustomInputHandlers.destroy();
             $('#companyName, #responsiblePerson, #referrer, #contactPerson, #jobTitle,#companyAdd, #locationOfCompany, #tutoringProfessor, #nurtureProgram, #adminNote').removeClass("changeInput_items");
             $('#companyDescription, #helpItems').removeClass("changeTextarea_lg_items");
             $('#uniformNum, #ext').removeClass("changeUniformNum_items");
             $('#creationDate').removeClass("changeDate_items");
-            $('#capitalAmount, #changeMoney_items').removeClass("changeMoney_items");
+            $('#capitalAmount, #changeMoney_items, #employeesNum').removeClass("changeMoney_items");
             $('#phoneNum').removeClass("changePhone_items");
             $('#companyEmail').removeClass("changeEmail_items");
             $('#lineId').removeClass("changeLineID_items");
-            $('#companyName, #responsiblePerson, #referrer, #contactPerson, #jobTitle,#companyAdd, #locationOfCompany, #tutoringProfessor, #nurtureProgram, #adminNote, #companyDescription, #helpItems, #uniformNum, #ext, #creationDate, #capitalAmount, #changeMoney_items, #phoneNum, #companyEmail, #lineId').addClass("readOnly");
+            $('#companyName, #responsiblePerson, #referrer, #contactPerson, #jobTitle,#companyAdd, #locationOfCompany, #tutoringProfessor, #nurtureProgram, #adminNote, #companyDescription, #helpItems, #uniformNum, #ext, #creationDate, #capitalAmount, #changeMoney_items, #phoneNum, #companyEmail, #lineId, #employeesNum').addClass("readOnly");
             $('#updateBtn').hide();
             $('#supplementaryFilesBox').hide();
             $('#status').hide();
@@ -538,11 +539,11 @@ $(function () {
             $('#companyDescription, #helpItems').addClass("changeTextarea_lg_items");
             $('#uniformNum, #ext').addClass("changeUniformNum_items");
             $('#creationDate').addClass("changeDate_items");
-            $('#capitalAmount, #changeMoney_items').addClass("changeMoney_items");
+            $('#capitalAmount, #changeMoney_items, #employeesNum').addClass("changeMoney_items");
             $('#phoneNum').addClass("changePhone_items");
             $('#companyEmail').addClass("changeEmail_items");
             $('#lineId').addClass("changeLineID_items");
-            $('#companyName, #responsiblePerson, #referrer, #contactPerson, #jobTitle,#companyAdd, #locationOfCompany, #tutoringProfessor, #nurtureProgram, #adminNote, #companyDescription, #helpItems, #uniformNum, #ext, #creationDate, #capitalAmount, #changeMoney_items, #phoneNum, #companyEmail, #lineId').removeClass("readOnly");
+            $('#companyName, #responsiblePerson, #referrer, #contactPerson, #jobTitle,#companyAdd, #locationOfCompany, #tutoringProfessor, #nurtureProgram, #adminNote, #companyDescription, #helpItems, #uniformNum, #ext, #creationDate, #capitalAmount, #changeMoney_items, #phoneNum, #companyEmail, #lineId, #employeesNum').removeClass("readOnly");
             CustomInputHandlers.init();
             $('#updateBtn').show();
             $('#supplementaryFilesBox').show();

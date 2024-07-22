@@ -185,6 +185,8 @@ $(function () {
 
             $('#status').val(idCardApplyData.status);
 
+            CustomInputHandlers.destroy();
+
         } else {
             console.error('idCardApplyData data not found for id:', idCardId);
         };
