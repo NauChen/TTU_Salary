@@ -102,7 +102,7 @@ $(function () {
                     return '<input type="checkbox" class="form-check-input border-info application-checkbox" value=' + data + '>'
                 },
             },
-            { data: 'createDate', title: "申請日期" }, // 1
+            { data: 'createDate', title: "申請日期", className: 'text-center' }, // 1
             { data: 'name', title: "申請人姓名", }, // 2
             { data: 'type', title: "項目", }, // 3
             {
@@ -122,7 +122,7 @@ $(function () {
             { data: 'paymentDate', title: "付帳日", }, // 5
             { data: 'status', title: "審核進度", }, // 6
             {
-                data: 'id', title: "通知<br>匯款",
+                data: 'id', title: '通知<br class="d-none d-lg-black">匯款',
                 render: function (data, type, row) {
                     const paymentDate = row.paymentDate;
                     if (paymentDate) {
@@ -130,7 +130,7 @@ $(function () {
                     } else {
                         return '<button type="button" class="btn btn-info rounded-circle remittance_voucher align_center uploadRemittance" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
                     }
-                }, className: 'text-center text-nowrap'
+                }
             },
         ],
         "order": [[1, "desc"]],
@@ -148,7 +148,7 @@ $(function () {
                 responsivePriority: 3,
             },
             { searchable: false, orderable: false, targets: [0, 7] },
-            { className: "text-center", targets: [0, 1, 3, 5] },
+            { className: "text-lg-center", targets: [0, 3, 5, 6] },
             { className: "text-nowrap", targets: [0, 1, 2, 3, 4, 5, 6] },
         ],
         createdRow: function (row, data, dataIndex) {

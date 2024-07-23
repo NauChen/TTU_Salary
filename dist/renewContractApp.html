@@ -369,19 +369,19 @@
 </div>
 <!-- 培育期間 起訖日期 (服務費先給預設，可改)-->
 <div class="row mb-1 multiple">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
-        續約期間&emsp;
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+        舊約期間&emsp;
     </div>
     <div class="col-auto col-lg lightBoxItems p-3 align_center">
         <div class="row">
             <div class="col-auto align_center">起：</div>
-            <div class="col align_center" id="renewCR_startDate"></div>
+            <div class="col align_center readOnly" id="renewCR_startDate"></div>
             <div class="col-auto align_center">訖：</div>
-            <div class="col align_center" id="renewCR_endDate"></div>
+            <div class="col align_center readOnly" id="renewCR_endDate"></div>
         </div>
     </div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        服務費用/月
+        原服務費/月
     </div>
     <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="renewCR_rate">25,000</div>
 </div>
@@ -391,7 +391,7 @@
         培育企業&emsp;
     </div>
     <div class="col lightBoxItems p-3 align_center readOnly" id="renewCR_companyName"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
         統一編號
     </div>
     <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="renewCR_uniformNum"></div>
@@ -415,9 +415,144 @@
     </div>
     <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="renewCR_contactPerson"></div>
 </div>
+<!-- 自我檢核表 -->
+<div class="row mb-1 multiple">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
+        自我檢核表
+    </div>
+    <div class="col lightBoxItems p-3 align_center" id="selfAssessmentBox">
+        <div class="row mb-2 mb-lg-0">
+            <div class="col-auto pe-0 text-black-50">01.</div>
+            <div class="col text-black-50">營業項目是否與營運輔導合約相符：</div>
+            <div class="col-12 col-lg-4 align_center text-end text-lg-start">是</div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">02.</div>
+            <div class="col text-black-50">進駐期間有無違法情事，或達反大同大學相關規範與合約規定：</div>
+            <div class="col-12 col-lg-4 align_center text-end text-lg-start">否</div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">03.</div>
+            <div class="col text-black-50">進駐期間與本校教師進行產學合作計畫或聘用本校學生工讀/實習/就業：</div>
+            <div class="col-12 col-lg-4 align_center text-end text-lg-start">是</div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">04.</div>
+            <div class="col text-black-50">會議室使用及物品借用符合使用規範，並準時返還：</div>
+            <div class="col-12 col-lg-4 align_center text-end text-lg-start">是</div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">05.</div>
+            <div class="col text-black-50">依照合約規定按時繳進駐輔導費及其他費用（ex場地維護費、電費⋯等）：</div>
+            <div class="col-12 col-lg-4 align_center text-end text-lg-start">是</div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">06.</div>
+            <div class="col text-black-50">是否參加本校課程、成果發表會或其他活動：</div>
+            <div class="col-12 col-lg-4 align_center text-end text-lg-start">是</div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">07.</div>
+            <div class="col text-black-50">配合本校企業輔導(ex諮詢輔導)：</div>
+            <div class="col-12 col-lg-4 align_center text-end text-lg-start">是</div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">08.</div>
+            <div class="col text-black-50">確實歸還離職員工識別證：</div>
+            <div class="col-12 col-lg-4 align_center text-end text-lg-start">是</div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">09.</div>
+            <div class="col text-black-50">確實填寫本酵各項調查表單(ex環安衛施工單、訪客入校申請單、實驗室化學調查清單等)：</div>
+            <div class="col-12 col-lg-4 align_center text-end text-lg-start">是</div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">10.</div>
+            <div class="col text-black-50">願配合本校校務發展及教育方針，提供本校師生與企業鏈結機會：</div>
+            <div class="col-12 col-lg-4 align_center text-end text-lg-start">是</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- 延長進駐申請 -->
+<div class="row mb-1 multiple">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
+        延長進駐&emsp;
+    </div>
+    <div class="col lightBoxItems p-3 align_center" id="selfAssessmentBox">
+        <div class="row mb-2 mb-lg-0">
+            <div class="col-auto pe-0 text-black-50">01.</div>
+            <div class="col-auto text-black-50">申請人姓名：</div>
+            <div class="col">
+                <div class="row text-end text-lg-start">
+                    <div class="col col-lg-auto">孫小美</div>
+                    <div class="col">專任秘書</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">02.</div>
+            <div class="col-auto text-black-50">聯絡方式：</div>
+            <div class="col">
+                <div class="row text-end text-lg-start">
+                    <div class="col col-lg-auto">02-26710000</div>
+                    <div class="col">abc888@gmail.com</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">03.</div>
+            <div class="col-auto text-black-50">目前進駐期間：</div>
+            <div class="col-12 col-lg">
+                <div class="row text-end text-lg-start">
+                    <div class="col-12 col-lg-auto text-nowrap">本約期間<span>2023-08-01~2024-07-31</span></div>
+                    <div class="col col-lg-auto">目前已延長進駐<span>2</span>年</div>
+                    <div class="col-auto">共計進駐<span>3</span>年</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">04.</div>
+            <div class="col-auto text-black-50">年營業額：</div>
+            <div class="col-12 col-lg">
+                <div class="row text-end text-lg-start">
+                    <div class="col-12 col-lg-auto text-nowrap">進駐首年：<span>1,300</span>仟元</div>
+                    <div class="col col-lg-auto">目前：<span>2,200</span>仟元</div>
+                    <div class="col-auto">已達損益平衡</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">05.</div>
+            <div class="col-auto text-black-50">員工人數：</div>
+            <div class="col-12 col-lg">
+                <div class="row text-end text-lg-start">
+                    <div class="col-12 col-lg-auto text-nowrap">進駐首年：<span>300</span>人</div>
+                    <div class="col col-lg-auto">目前：<span>400</span>人</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">06.</div>
+            <div class="col-auto text-black-50">申請延駐期限：</div>
+            <div class="col-12 col-lg-4 align_center text-end text-lg-start">延長進駐至<span>2026-12-31</span>止</div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">07.</div>
+            <div class="col-auto text-black-50">申請延駐原由：</div>
+            <div class="col-12 col-lg align_center text-end text-lg-start">溫暖手中放下能否有限責任公司，考慮疾病。</div>
+        </div>
+        <div class="row">
+            <div class="col-auto pe-0 text-black-50">08.</div>
+            <div class="col-auto text-black-50">其他有利審核項目：</div>
+            <div class="col-12 col-lg align_center text-end text-lg-start">維修對了蘋果自信道理部落格，特別是信箱媽媽提醒一張戀愛一步。</div>
+        </div>
+    </div>
+</div>
 
 <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
-<div class="row mb-1" id="psApp_downloadFilesBox">
+<div class="row mb-1" id="renewCR_downloadFilesBox">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
         檢附文件&emsp;
     </div>
@@ -429,13 +564,14 @@
     </div>
 </div>
 <!-- 補件上傳 若狀態為通過，不顯示此區塊-->
-<div class="row mb-1" id="psApp_supplementaryFilesBox">
+<div class="row mb-1" id="renewCR_supplementaryFilesBox">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
         補件上傳&emsp;
     </div>
     <div class="col lightBoxItems p-3">
         <div class="row align-items-center my-1">
-            <label for="renewCR_selfAssessmentFile" class="col-auto col-form-label text-nowrap upload-label py-0">自我檢核表<i
+            <label for="renewCR_selfAssessmentFile"
+                class="col-auto col-form-label text-nowrap upload-label py-0">自我檢核表<i
                     class="fa-solid fa-upload mx-1"></i>
             </label>
             <div class="col">

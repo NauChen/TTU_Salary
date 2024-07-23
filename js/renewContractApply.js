@@ -130,6 +130,7 @@ $(function () {
     let sessionData = session_userData;
     // 同步session跟燈箱
     $('#renewContractCompany_td').text(sessionData.company);
+    $('#firstYearEmployeeCount').val(sessionData.employeesNum);
 
     // 同步今日日期
     // syncDateParts('toDay', 'applyYear_td', 'applyMonth_td', 'applyDay_td');

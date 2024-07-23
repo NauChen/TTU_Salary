@@ -393,14 +393,14 @@ $(function () {
             {
                 data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data) {
                     return '<input type="checkbox" class="form-check-input border-primary job-checkbox" value=' + data + '>'
-                },
+                }, className: 'text-center'
             },
-            { data: 'createDate', title: "刊登日期" },
-            { data: 'deptOf', title: "科系限制" },
-            { data: 'jobTitle', title: "職務名稱" },
-            { data: 'jobEmployment', title: "工作性質" },
-            { data: 'jobTime', title: "工作時間" },
-            { data: 'applicationDeadline', title: "截止日期" },
+            { data: 'createDate', title: "刊登日期" }, // 1
+            { data: 'deptOf', title: "科系限制" }, // 2
+            { data: 'jobTitle', title: "職務名稱" }, // 3
+            { data: 'jobEmployment', title: '工作<br class="d-none d-lg-black">性質' }, // 4
+            { data: 'jobTime', title: "工作時間" }, // 5
+            { data: 'applicationDeadline', title: "截止日期" }, // 6
             {
                 data: 'id', title: "詳情",
                 render: function (data) {
@@ -417,18 +417,18 @@ $(function () {
         "order": [[1, "desc"], [2, "asc"]],
         "columnDefs": [
             { targets: [0], responsivePriority: 1 },
-            { targets: [3], responsivePriority: 2 },
-            { targets: [4], responsivePriority: 3 },
+            { targets: [2], responsivePriority: 2 },
+            { targets: [3], responsivePriority: 3 },
             { searchable: false, orderable: false, targets: [0, 7, 8] },
-            { className: "text-nowrap", targets: [1, 5, 6] },
-            { className: "text-center", targets: [0, 1, 4, 5, 6, 7, 8] },
+            { className: "text-nowrap", targets: [0, 1, 5, 6] },
+            { className: "text-lg-center", targets: [1, 4, 5, 6, 7, 8] },
         ],
         createdRow: function (row, data, dataIndex) {
             [0, 7, 8].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
             });
             [1, 5, 6].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '150px').css('font-size', '.95em');
+                $('td:eq(' + colIdx + ')', row).css('min-width', '130px').css('font-size', '.95em');
             });
         }
     });

@@ -11,8 +11,18 @@
 // jobTitle是假的繁體中文職位名稱。
 // companyPhone是假的電話，值隨機放入各種電話號碼，格式為02-86710000(0+一個數字+'-'+8個數字)或是0912-345678(09+2個數字+'-'+6個數字)。
 // ext是假的分機號碼，格式：數字1~6字元，可重複，可能為""。
+// startDate是實際起租日，格式為YYYY-mm-DD，值等同wantStartDate
+// paymentDate是付款日期，格式為YYYY-mm-DD，值為deadline提早12天。
+
+// amount 是每月服務費用：
+// 若type為"培育室"，amount金額落在30000~80000之間，要有千分位符號。
+// 若type為汽車位，amount金額落在2500~3000之間，要有千分位符號。
+// 若type為機車位，amount金額為100。
 
 // type可能為[汽車位,機車位,培育室]。
+// endDate是實際租賃結束日，格式為YYYY-mm-DD，若type是培育室：{endDate的值等同startDate往後1年，
+// }若type是[汽車位,機車位]，{endDate的值等同startDate往後6個月。}
+
 // adminNote是管理員備註，可能為''
 
 // building是大樓名稱：
@@ -29,15 +39,24 @@
 // phone是假的申請人電話，值隨機放入各種電話號碼，格式為02-86710000(0+一個數字+'-'+8個數字)或是0912-345678(09+2個數字+'-'+6個數字)。
 // idNumber是假的身分證字號，格式為大寫英文1碼+數字1或是數字2+數字8碼。
 // email是假的申請人電子郵件信箱。
+// 
 // licensePlateNum 是假的車牌號碼：
 // 若type是"機車位"，licensePlateNum的格式為數字1字元+大寫英文2字元+'-'+數字3字元；
 // 若type是"汽車位"，licensePlateNum的格式為數字4字元+'-'大寫英文2字元。
-// }若type = [培育室]{
+
+// squareMeters、responsiblePerson沒有值
+// }
+
+//若type = [培育室]{
 // applicant、phone、idNumber、email、licensePlateNum，都沒有值
+// squareMeters是坪數，格式為數字2字元+'.'+數字1字元，數字區間介於10.0~30.9之間。
+// responsiblePerson是假的繁體中文公司負責人人名。
 // }
 
 // confirmPaymentItemId是停車位或培育室配置資料的id，從11開始。若此資料沒有值，則startDate是、都沒有值。
 // startDate是實際起租日，格式為YYYY-mm-DD，若有值，則值等於wantStartDate。
+
+// status是審核狀態，值有[待審核,通過,不通過,取消]
 
 
 
@@ -58,16 +77,19 @@ var dataset_renewContractApp = [
         'adminNote': '',
         'building': '新德惠大樓',
         'placeOrPrint': 'B1-01',
+        'startDate': '2024-07-02',
+        'paymentDate': '2024-06-19',
+        'amount': '2,800',
+        'endDate': '2025-01-02',
         'applicant': '李小華',
         'phone': '0912-345678',
         'idNumber': 'A123456789',
         'email': 'xiaohua.li@example.com',
         'licensePlateNum': '1234-AB',
-        'confirmPaymentItemId': 11,
-        'startDate': '2024-07-02',
-        'paymentDate': '2024-06-20',
-        'status': '待審核',
         'squareMeters': '',
+        'responsiblePerson': '',
+        'confirmPaymentItemId': 11,
+        'status': '待審核'
     },
     {
         'id': 2,
@@ -85,16 +107,19 @@ var dataset_renewContractApp = [
         'adminNote': '',
         'building': '校本部',
         'placeOrPrint': 'B2-01',
+        'startDate': '2024-07-06',
+        'paymentDate': '2024-06-23',
+        'amount': '100',
+        'endDate': '2025-01-06',
         'applicant': '張小龍',
         'phone': '02-87654321',
         'idNumber': 'B987654321',
         'email': 'xiaolong.zhang@example.com',
         'licensePlateNum': '3AB-123',
-        'confirmPaymentItemId': 12,
-        'startDate': '2024-07-06',
-        'paymentDate': '2024-06-22',
-        'status': '不通過',
         'squareMeters': '',
+        'responsiblePerson': '',
+        'confirmPaymentItemId': 12,
+        'status': '通過'
     },
     {
         'id': 3,
@@ -112,16 +137,19 @@ var dataset_renewContractApp = [
         'adminNote': '',
         'building': '新德惠大樓',
         'placeOrPrint': '101',
+        'startDate': '2024-07-11',
+        'paymentDate': '2024-06-28',
+        'amount': '45,000',
+        'endDate': '2025-07-11',
         'applicant': '',
         'phone': '',
         'idNumber': '',
         'email': '',
         'licensePlateNum': '',
+        'squareMeters': '20.5',
+        'responsiblePerson': '張大偉',
         'confirmPaymentItemId': 13,
-        'startDate': '2024-07-11',
-        'paymentDate': '2024-06-25',
-        'status': '待審核',
-        'squareMeters': '12.5',
+        'status': '待審核'
     },
     {
         'id': 4,
@@ -139,16 +167,19 @@ var dataset_renewContractApp = [
         'adminNote': '',
         'building': '新德惠大樓',
         'placeOrPrint': 'B3-02',
+        'startDate': '2024-07-16',
+        'paymentDate': '2024-07-03',
+        'amount': '2,900',
+        'endDate': '2025-01-16',
         'applicant': '王小強',
         'phone': '0913-987654',
         'idNumber': 'C567890123',
         'email': 'xiaoqiang.wang@example.com',
         'licensePlateNum': '5678-CD',
-        'confirmPaymentItemId': 14,
-        'startDate': '2024-07-16',
-        'paymentDate': '2024-06-30',
-        'status': '通過',
         'squareMeters': '',
+        'responsiblePerson': '',
+        'confirmPaymentItemId': 14,
+        'status': '不通過'
     },
     {
         'id': 5,
@@ -166,16 +197,19 @@ var dataset_renewContractApp = [
         'adminNote': '',
         'building': '校本部',
         'placeOrPrint': 'B4-01',
+        'startDate': '2024-07-21',
+        'paymentDate': '2024-07-08',
+        'amount': '100',
+        'endDate': '2025-01-21',
         'applicant': '趙小偉',
         'phone': '02-12345678',
         'idNumber': 'D678901234',
         'email': 'xiaowei.zhao@example.com',
         'licensePlateNum': '4CD-456',
-        'confirmPaymentItemId': 15,
-        'startDate': '2024-07-21',
-        'paymentDate': '2024-07-06',
-        'status': '待審核',
         'squareMeters': '',
+        'responsiblePerson': '',
+        'confirmPaymentItemId': 15,
+        'status': '通過'
     },
     {
         'id': 6,
@@ -193,16 +227,19 @@ var dataset_renewContractApp = [
         'adminNote': '',
         'building': '實驗大樓',
         'placeOrPrint': 'A4-103',
+        'startDate': '2024-07-26',
+        'paymentDate': '2024-07-13',
+        'amount': '70,000',
+        'endDate': '2025-07-26',
         'applicant': '',
         'phone': '',
         'idNumber': '',
         'email': '',
         'licensePlateNum': '',
+        'squareMeters': '30.0',
+        'responsiblePerson': '王大豪',
         'confirmPaymentItemId': 16,
-        'startDate': '2024-07-26',
-        'paymentDate': '2024-07-12',
-        'status': '通過',
-        'squareMeters': '15.4',
+        'status': '取消'
     },
     {
         'id': 7,
@@ -220,70 +257,79 @@ var dataset_renewContractApp = [
         'adminNote': '',
         'building': '校本部',
         'placeOrPrint': 'B5-03',
+        'startDate': '2024-07-31',
+        'paymentDate': '2024-07-18',
+        'amount': '3,000',
+        'endDate': '2025-01-31',
         'applicant': '周小英',
         'phone': '02-98765432',
         'idNumber': 'E789012345',
         'email': 'xiaoying.zhou@example.com',
         'licensePlateNum': '8901-EF',
-        'confirmPaymentItemId': 17,
-        'startDate': '2024-07-31',
-        'paymentDate': '2024-07-20',
-        'status': '不通過',
         'squareMeters': '',
+        'responsiblePerson': '',
+        'confirmPaymentItemId': 17,
+        'status': '待審核'
     },
     {
         'id': 8,
         'deadline': '2024-08-01',
         'wantStartDate': '2024-08-02',
         'createDate': '2024-07-17',
-        'company': '永續發展股份有限公司',
+        'company': '創新股份有限公司',
         'uniformNum': '89012345',
-        'companyEmail': 'contact@sustainable.com',
-        'contactPerson': '黃小華',
-        'jobTitle': '人力資源經理',
-        'companyPhone': '02-45678901',
-        'ext': '7890',
-        'type': '機車位',
+        'companyEmail': 'contact@innovation.com',
+        'contactPerson': '鄭小美',
+        'jobTitle': '設計師',
+        'companyPhone': '02-12345679',
+        'ext': '',
+        'type': '培育室',
         'adminNote': '',
-        'building': '新德惠大樓',
-        'placeOrPrint': 'B6-02',
-        'applicant': '劉小虎',
-        'phone': '0916-789012',
-        'idNumber': 'F890123456',
-        'email': 'xiaohu.liu@example.com',
-        'licensePlateNum': '5EF-678',
-        'confirmPaymentItemId': 18,
+        'building': '尚志大樓',
+        'placeOrPrint': '202',
         'startDate': '2024-08-02',
         'paymentDate': '2024-07-20',
-        'status': '待審核',
-        'squareMeters': '',
+        'amount': '60,000',
+        'endDate': '2025-08-02',
+        'applicant': '',
+        'phone': '',
+        'idNumber': '',
+        'email': '',
+        'licensePlateNum': '',
+        'squareMeters': '15.8',
+        'responsiblePerson': '林大仁',
+        'confirmPaymentItemId': 18,
+        'status': '通過'
     },
     {
         'id': 9,
         'deadline': '2024-08-05',
         'wantStartDate': '2024-08-06',
         'createDate': '2024-07-21',
-        'company': '環保綠能有限公司',
+        'company': '科技創新有限公司',
         'uniformNum': '90123456',
-        'companyEmail': 'contact@greenenergy.com',
-        'contactPerson': '許小明',
-        'jobTitle': '客戶經理',
-        'companyPhone': '0917-345678',
-        'ext': '8901',
-        'type': '培育室',
+        'companyEmail': 'contact@techinnovation.com',
+        'contactPerson': '趙大強',
+        'jobTitle': '產品經理',
+        'companyPhone': '0916-345678',
+        'ext': '123',
+        'type': '機車位',
         'adminNote': '',
-        'building': '尚志大樓',
-        'placeOrPrint': '202',
-        'applicant': '',
-        'phone': '',
-        'idNumber': '',
-        'email': '',
-        'licensePlateNum': '',
-        'confirmPaymentItemId': 19,
+        'building': '新德惠大樓',
+        'placeOrPrint': 'B6-02',
         'startDate': '2024-08-06',
-        'paymentDate': '2024-07-25',
-        'status': '通過',
-        'squareMeters': '9.4',
+        'paymentDate': '2024-07-24',
+        'amount': '100',
+        'endDate': '2025-02-06',
+        'applicant': '陳大明',
+        'phone': '02-23456789',
+        'idNumber': 'F890123456',
+        'email': 'daming.chen@example.com',
+        'licensePlateNum': '5FG-678',
+        'squareMeters': '',
+        'responsiblePerson': '',
+        'confirmPaymentItemId': 19,
+        'status': '待審核'
     },
     {
         'id': 10,
@@ -297,34 +343,36 @@ var dataset_renewContractApp = [
         'jobTitle': '專案經理',
         'companyPhone': '02-56789012',
         'ext': '',
-        'type': '汽車位',
+        'type': '培育室',
         'adminNote': '',
-        'building': '校本部',
-        'placeOrPrint': 'B7-01',
-        'applicant': '胡小龍',
-        'phone': '02-67890123',
-        'idNumber': 'G901234567',
-        'email': 'xiaolong.hu@example.com',
-        'licensePlateNum': '2345-GH',
-        'confirmPaymentItemId': 20,
+        'building': '綜合大樓',
+        'placeOrPrint': '818',
         'startDate': '2024-08-11',
-        'paymentDate': '2024-07-30',
-        'status': '待審核',
-        'squareMeters': '',
+        'paymentDate': '2024-07-29',
+        'amount': '80,000',
+        'endDate': '2025-08-11',
+        'applicant': '',
+        'phone': '',
+        'idNumber': '',
+        'email': '',
+        'licensePlateNum': '',
+        'squareMeters': '28.9',
+        'responsiblePerson': '李大海',
+        'confirmPaymentItemId': 20,
+        'status': '待審核'
     }
 ];
-// 'status':'待審核',
 
-var selectOption = [
-    { 'optigroup': '新德惠大樓', 'option': 'B1-01' },
-    { 'optigroup': '新德惠大樓', 'option': 'B1-05' },
-    { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
-    { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
-    { 'optigroup': '新德惠大樓', 'option': 'B3-01' },
-    { 'optigroup': '新德惠大樓', 'option': 'B3-10' },
-    { 'optigroup': '新德惠大樓', 'option': 'B2-05' },
-    { 'optigroup': '青創大樓', 'option': 'B4-01' },
-];
+// var selectOption = [
+//     { 'optigroup': '新德惠大樓', 'option': 'B1-01' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B1-05' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B3-01' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B3-10' },
+//     { 'optigroup': '新德惠大樓', 'option': 'B2-05' },
+//     { 'optigroup': '青創大樓', 'option': 'B4-01' },
+// ];
 
 
 $(function () {
@@ -356,7 +404,7 @@ $(function () {
                         icon = 'renewContractRoomModel';
                     }
                     return '<button type="button" class="btn btn-' + btnColor + ' rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#' + icon + '" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>';
-                }, className: 'text-center text-nowrap'
+                }, className: 'text-lg-center text-nowrap'
             },
         ],
         "order": [[0, "desc"], [1, "asc"]],
@@ -508,18 +556,32 @@ $(function () {
 
             $('#renewCR_building').text(cultivationRoomData.building);
             $('#renewCR_room').text(cultivationRoomData.placeOrPrint);
-            $('#renewCR_squareMeters').text(cultivationRoomData.createDate);
+            $('#renewCR_squareMeters').text(cultivationRoomData.squareMeters);
             $('#renewCR_startDate').text(cultivationRoomData.startDate);
-            $('#renewCR_endDate').text(cultivationRoomData.applicant);
-            $('#renewCR_rate').text(cultivationRoomData.phone);
+            $('#renewCR_endDate').text(cultivationRoomData.endDate);
+            $('#renewCR_rate').text(cultivationRoomData.amount);
             $('#renewCR_companyName').text(cultivationRoomData.company);
             $('#renewCR_uniformNum').text(cultivationRoomData.uniformNum);
-            $('#renewCR_responsiblePerson').text(cultivationRoomData.applicant);
-            $('#renewCR_companyEmail').text(cultivationRoomData.email);
-            $('#renewCR_contactPerson').text(cultivationRoomData.ext);
-            $('#renewCR_adminNote').text(cultivationRoomData.idNumber);
+            $('#renewCR_responsiblePerson').text(cultivationRoomData.responsiblePerson);
+            $('#renewCR_companyEmail').text(cultivationRoomData.companyEmail);
+            $('#renewCR_companyPhone').text(cultivationRoomData.companyPhone);
+            $('#renewCR_contactPerson').text(cultivationRoomData.contactPerson);
+            $('#renewCR_adminNote').text(cultivationRoomData.adminNote);
             $('#renewCR_status').val(cultivationRoomData.status);
 
+        }
+
+        if (cultivationRoomData.status == "通過" || cultivationRoomData.status == "不通過") {
+            $('#renewCR_supplementaryFilesBox').hide();
+            $('#renewCR_status').hide();
+            $('#renewCR_statusText').show().text(cultivationRoomData.status);
+            $('#renewCR_updateBtn').hide();
+
+        } else {
+            $('#renewCR_supplementaryFilesBox').show();
+            $('#renewCR_status').show().val(cultivationRoomData.status);
+            $('#renewCR_statusText').hide();
+            $('#renewCR_updateBtn').show();
         }
 
     });

@@ -119,7 +119,7 @@ $(function () {
                 data: 'id', title: "檢閱",
                 render: function (data) { // 8
                     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#idCardDetailModel" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
-                }, className: 'text-center text-nowrap'
+                }
             },
         ],
         "columnDefs": [
@@ -136,8 +136,8 @@ $(function () {
                 responsivePriority: 3,
             },
             { searchable: false, orderable: false, targets: [8] },
-            { className: "text-center", targets: [0, 3, 4, 6] },
-            { className: "text-nowrap", targets: [0, 2, 3, 4, 5, 6] },
+            { className: "text-lg-center", targets: [0, 3, 4, 6, 8] },
+            { className: "text-nowrap", targets: [0, 2, 3, 4, 5, 6, 8] },
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(8)', row).css('min-width', '70px');

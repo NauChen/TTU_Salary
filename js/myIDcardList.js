@@ -128,11 +128,11 @@ $(function () {
             }, // 2
             { data: 'name', title: "姓名" }, // 3
             { data: 'jobTitle', title: "職稱", }, // 4
-            { data: 'library', title: "閱覽<br>圖書館", }, // 5
-            { data: 'print', title: "補發<br>次數", }, // 6
+            { data: 'library', title: '閱覽<br class="d-none d-lg-black">圖書館', }, // 5
+            { data: 'print', title: '補發<br class="d-none d-lg-black">次數', }, // 6
             { data: 'status', title: "備註", }, // 7
             {
-                data: 'id', title: "申請<br>補發", // 8
+                data: 'id', title: '申請<br class="d-none d-lg-black">補發', // 8
                 render: function (data) {
                     return '<a class="btn btn-outline-primary rounded-circle noOutline" href="./idCardReissue.html?id=' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
                 },
@@ -153,7 +153,8 @@ $(function () {
                 responsivePriority: 3,
             },
             { searchable: false, orderable: false, targets: [0, 8] },
-            { className: "text-center", targets: [0, 1, 3, 4, 5, 6, 8] },
+            { className: "text-lg-center", targets: [0, 1, 3, 4, 5, 6, 8] },
+            { className: "text-nowrap", targets: [0, 1, 3, 4, 5, 6] },
         ],
         createdRow: function (row, data, dataIndex) {
             [1,].forEach(function (colIdx) {

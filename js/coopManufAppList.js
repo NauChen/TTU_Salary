@@ -428,7 +428,7 @@ $(function () {
         "data": dataset_coopManufApp,
         "columns": [
             { data: 'createDate', title: "申請日期", }, // 0
-            { data: 'uniformNum', title: "統一編號", }, // 1
+            { data: 'uniformNum', title: "統一編號", className: 'text-md-center' }, // 1
             { data: 'company', title: "公司名稱", }, // 2
             {
                 data: 'contactPerson', title: "主要聯絡人", // 3
@@ -466,7 +466,7 @@ $(function () {
             },
             { "searchable": false, "orderable": false, "targets": [6] },
             { "className": "text-nowrap", "targets": [0, 1, 4, 5, 6] },
-            { "className": "text-center", "targets": [0, 1, 5, 6] },
+            { "className": "text-lg-center", "targets": [0, 5, 6] },
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(6)', row).css('min-width', '70px');

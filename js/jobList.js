@@ -740,7 +740,7 @@ $(function () {
             { data: 'createDate', title: "刊登日期" },
             { data: 'company', title: "公司名稱" },
             { data: 'jobTitle', title: "職務名稱" },
-            { data: 'jobEmployment', title: "工作性質" },
+            { data: 'jobEmployment', title: "工作性質", className: 'text-center' },
             { data: 'jobTime', title: "工作時間" },
             { data: 'applicationDeadline', title: "截止日期" },
             {
@@ -756,7 +756,7 @@ $(function () {
             { targets: [4], responsivePriority: 2 },
             { searchable: false, orderable: false, targets: [6] },
             { className: "text-nowrap", targets: [0, 3, 4, 5] },
-            { className: "text-center", targets: [0, 3, 4, 5, 6] }
+            { className: "text-lg-center", targets: [0, 4, 5, 6] },
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(6)', row).css('max-width', '70px');
@@ -776,7 +776,7 @@ $(function () {
             { data: 'createDate', title: "刊登日期" },
             { data: 'company', title: "公司名稱" },
             { data: 'jobTitle', title: "職務名稱" },
-            { data: 'jobEmployment', title: "工作性質" },
+            { data: 'jobEmployment', title: "工作性質", className: 'text-center' },
             { data: 'jobTime', title: "工作時間" },
             { data: 'applicationDeadline', title: "截止日期" },
             {
@@ -792,7 +792,7 @@ $(function () {
             { targets: [4], responsivePriority: 2 },
             { searchable: false, orderable: false, targets: [6] },
             { className: "text-nowrap", targets: [0, 3, 4, 5] },
-            { className: "text-center", targets: [0, 3, 4, 5, 6] }
+            { className: "text-lg-center", targets: [0, 4, 5, 6] }
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(6)', row).css('max-width', '70px');
@@ -812,7 +812,7 @@ $(function () {
             { data: 'createDate', title: "刊登日期" },
             { data: 'company', title: "公司名稱" },
             { data: 'jobTitle', title: "職務名稱" },
-            { data: 'jobEmployment', title: "工作性質" },
+            { data: 'jobEmployment', title: "工作性質", className: 'text-center'  },
             { data: 'jobTime', title: "工作時間" },
             { data: 'applicationDeadline', title: "截止日期" },
             {
@@ -828,7 +828,7 @@ $(function () {
             { targets: [4], responsivePriority: 2 },
             { searchable: false, orderable: false, targets: [6] },
             { className: "text-nowrap", targets: [0, 3, 4, 5] },
-            { className: "text-center", targets: [0, 3, 4, 5, 6] }
+            { className: "text-lg-center", targets: [0, 4, 5, 6] }
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(6)', row).css('max-width', '70px');
@@ -848,7 +848,7 @@ $(function () {
             { data: 'createDate', title: "刊登日期" },
             { data: 'company', title: "公司名稱" },
             { data: 'jobTitle', title: "職務名稱" },
-            { data: 'jobEmployment', title: "工作性質" },
+            { data: 'jobEmployment', title: "工作性質", className: 'text-center'  },
             { data: 'jobTime', title: "工作時間" },
             { data: 'applicationDeadline', title: "截止日期" },
             {
@@ -864,7 +864,7 @@ $(function () {
             { targets: [4], responsivePriority: 2 },
             { searchable: false, orderable: false, targets: [6] },
             { className: "text-nowrap", targets: [0, 3, 4, 5] },
-            { className: "text-center", targets: [0, 3, 4, 5, 6] }
+            { className: "text-lg-center", targets: [0, 4, 5, 6] }
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(6)', row).css('max-width', '70px');
@@ -884,7 +884,7 @@ $(function () {
             { data: 'createDate', title: "刊登日期" },
             { data: 'company', title: "公司名稱" },
             { data: 'jobTitle', title: "職務名稱" },
-            { data: 'jobEmployment', title: "工作性質" },
+            { data: 'jobEmployment', title: "工作性質", className: 'text-center'  },
             { data: 'jobTime', title: "工作時間" },
             { data: 'applicationDeadline', title: "截止日期" },
             {
@@ -900,7 +900,7 @@ $(function () {
             { targets: [4], responsivePriority: 2 },
             { searchable: false, orderable: false, targets: [6] },
             { className: "text-nowrap", targets: [0, 3, 4, 5] },
-            { className: "text-center", targets: [0, 3, 4, 5, 6] }
+            { className: "text-lg-center", targets: [0, 4, 5, 6] }
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(6)', row).css('max-width', '70px');

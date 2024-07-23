@@ -394,13 +394,13 @@ $(function () {
             {
                 data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data) { // 0
                     return '<input type="checkbox" class="form-check-input border-primary job-checkbox" value=' + data + '>'
-                },
+                }, className: 'text-center'
             },
             { data: 'createDate', title: "刊登日期" }, // 1
             { data: 'company', title: "招聘公司" }, // 2
             { data: 'deptOf', title: "科系限制" }, // 3
             { data: 'jobTitle', title: "職務名稱" }, // 4
-            { data: 'jobEmployment', title: "工作<br>性質" }, // 5
+            { data: 'jobEmployment', title: '工作<br class="d-none d-lg-black">性質' }, // 5
             { data: 'jobTime', title: "工作時間" }, // 6
             { data: 'applicationDeadline', title: "截止日期" }, // 7
             {
@@ -423,7 +423,7 @@ $(function () {
             { targets: [4], responsivePriority: 3 },
             { searchable: false, orderable: false, targets: [0, 8, 9] },
             { className: "text-nowrap", targets: [0, 1, 6, 7] },
-            { className: "text-center", targets: [0, 1, 5, 6, 7, 8, 9] },
+            { className: "text-lg-center", targets: [1, 5, 6, 7, 8] },
         ],
         createdRow: function (row, data, dataIndex) {
             [0, 8, 9].forEach(function (colIdx) {

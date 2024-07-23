@@ -5,7 +5,23 @@ var session_userData = {
     'companyPhone': '02-74125698', // 公司主要聯絡電話
 
     'uniformNum': '01478520', // 公司統編
+
+    'contactPerson': '金貝貝', // 公司主要聯絡人
+    'employeesNum': '300', // 員工人數
+
 };
+
+var session_adminData = {
+    'id': '99', // 使用者id
+    'company': '大同大學研發部', // 公司名稱
+    'name': '曾絍鉦', // 使用者
+
+    'email': 'abc_ttu@gmail.com', // email
+
+
+
+};
+
 var selectOptionLocation = [
     { 'optigroup': '青創基地', 'option': '101' },
     { 'optigroup': '青創基地', 'option': '102' },

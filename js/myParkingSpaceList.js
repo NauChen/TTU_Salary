@@ -324,7 +324,7 @@ $(function () {
         "data": dataset_myParkingSpaceHistory,
         "columns": [
             { data: 'paymentDate', title: "付款日", }, // 0
-            { data: 'carType', title: "車位類型", }, // 1
+            { data: 'carType', title: "車位類型"}, // 1
             { data: 'building', title: "所在位置", }, // 2
             { data: 'parkingSpaceNum', title: "車位號碼", }, // 3
             { data: 'name', title: "登記使用人" }, // 4
@@ -361,7 +361,8 @@ $(function () {
                 responsivePriority: 3,
             },
             { searchable: false, orderable: false, targets: [8, 9] },
-            { className: "text-center", targets: [0, 1, 2, 3, 4, 5, 6, 8] },
+            { className: "text-lg-center", targets: [0, 2, 3, 4, 5, 6, 8] },
+            { className: "text-center", targets: [1, 3] },
         ],
         createdRow: function (row, data, dataIndex) {
             [0, 6].forEach(function (colIdx) {

@@ -1197,7 +1197,6 @@ $(function () {
         "data": dataset_confirmPaymentParkingSpace,
         "columns": [
             { data: 'building', title: '大樓' }, // 0
-            // { data: 'carType', title: "類型", }, // 1
             { data: 'parkingSpaceNum', title: "車位號碼", }, // 1
             { data: 'amount', title: "費用", }, // 2
             {
@@ -1282,7 +1281,7 @@ $(function () {
                     } else {
                         return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentParkingSpaceModel" data-id="' + data + '" title="修改"><i class="fa-solid fa-wrench"></i>';
                     }
-                }, className: 'text-center text-nowrap'
+                }
             },
             {
                 data: 'id', title: "下期", // 9
@@ -1293,7 +1292,7 @@ $(function () {
                         return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentParkingSpaceModel" data-id="' + psId + '_N" title="配置下期進駐廠商"><i class="fa-regular fa-keyboard"></i>';
                     }
                     return '';
-                }, className: 'text-center text-nowrap'
+                }
             },
             { data: 'recentMaturityDate', visible: false }, // 10
         ],
@@ -1312,9 +1311,9 @@ $(function () {
                 responsivePriority: 3,
             },
             { searchable: false, orderable: false, targets: [8, 9, 10] },
-            { className: "text-lg-center", targets: [0, 4, 5, 6, 7] },
+            { className: "text-lg-center", targets: [0, 4, 5, 6, 7, 8, 9] },
             { className: "text-center", targets: [0, 1] },
-            { className: "text-nowrap", targets: [0, 1, 2, 4, 5, 6,] },
+            { className: "text-nowrap", targets: [0, 1, 2, 4, 5, 6, 8, 9] },
         ],
 
         createdRow: function (row, data, dataIndex) {
@@ -1324,6 +1323,7 @@ $(function () {
             [0, 1, 2, 4, 5, 6, 7].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('font-size', '.9em');
             });
+            $('td:eq(3)', row).css('min-width', '150px');
         }
     });
 
@@ -1463,7 +1463,7 @@ $(function () {
                     } else {
                         return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentCultivationModel" data-id="' + data + '" title="修改"><i class="fa-solid fa-wrench"></i>';
                     }
-                }, className: 'text-center text-nowrap'
+                }
             },
             {
                 data: 'id', title: "下期", // 9
@@ -1474,7 +1474,7 @@ $(function () {
                         return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentCultivationModel" data-id="' + roomId + '_N" title="配置下期進駐廠商"><i class="fa-regular fa-keyboard"></i>';
                     }
                     return '';
-                }, className: 'text-center text-nowrap'
+                }
             },
             { data: 'recentMaturityDate', visible: false }, // 10
         ],
@@ -1493,8 +1493,8 @@ $(function () {
                 responsivePriority: 3,
             },
             { searchable: false, orderable: false, targets: [8, 9, 10] },
-            { className: "text-center", targets: [1, 4, 5, 6, 7] },
-            { className: "text-nowrap", targets: [0, 1, 2, 4, 5, 6, 7] },
+            { className: "text-lg-center", targets: [1, 4, 5, 6, 7, 8, 9] },
+            { className: "text-nowrap", targets: [0, 1, 2, 4, 5, 6, 7, 8, 9] },
         ],
         createdRow: function (row, data, dataIndex) {
             [8, 9].forEach(function (colIdx) {
@@ -1513,7 +1513,7 @@ $(function () {
         "columns": [
             { data: 'createDate', title: '通知日期' }, // 0
             { data: 'company', title: "通知公司" }, //1
-            { data: 'paymentDate', title: "付款日" }, // 2
+            { data: 'paymentDate', title: "付款日", className: 'text-center' }, // 2
             {
                 data: 'type', title: "項目", // 3
                 render: function (data, type, row) {
@@ -1537,7 +1537,7 @@ $(function () {
                     } else {
                         return '<button type="button" class="btn btn-info rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-receipt"></i>';
                     }
-                }, className: 'text-center text-nowrap'
+                }, className: 'text-nowrap'
             },
             { data: 'status', visible: false }, // 8 仍可搜尋
         ],
@@ -1556,7 +1556,7 @@ $(function () {
                 responsivePriority: 3,
             },
             { searchable: false, orderable: false, targets: [7] },
-            { className: "text-center", targets: [0, 2] },
+            { className: "text-lg-center", targets: [0, 2, 7] },
             { className: "text-nowrap", targets: [0, 2, 3, 4, 5] },
         ],
         createdRow: function (row, data, dataIndex) {
