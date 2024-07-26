@@ -352,28 +352,38 @@ var dataset_renewContractApp = [
         'amount': '80,000',
         'endDate': '2025-08-11',
         'applicant': '',
-        'phone': '',
+        'phone': '02-26710000',
         'idNumber': '',
         'email': '',
         'licensePlateNum': '',
         'squareMeters': '28.9',
         'responsiblePerson': '李大海',
         'confirmPaymentItemId': 20,
-        'status': '待審核'
+        'status': '待審核',
+        'businessCompliance': '否。有再增加新項目。',
+        'violation': '否。',
+        'academicCollaboration': '是。產學合作名稱AA。10人。',
+        'usageCompliance': '是。',
+        'feeCompliance': '是。',
+        'participation': '是。',
+        'counseling': '是。',
+        'badgeReturn': '是。',
+        'surveyForm': '是。',
+        'cooperation': '是。',
+        'extendYears': '2',
+        'cumulativeYears': '3',
+        'firstYearRevenue': '2,300',
+        'currentRevenue': '3,300',
+        'breakEven': '已達損益平衡',
+        'firstYearEmployeeCount': '100',
+        'currentEmployeeCount': '120',
+        'extensionPeriod': '2025-12-31',
+        'extensionReason': '',
+        'otherAdvantages': '',
+        'applicant': '申傾美',
+        'jobTitle': '實習秘書',
     }
 ];
-
-// var selectOption = [
-//     { 'optigroup': '新德惠大樓', 'option': 'B1-01' },
-//     { 'optigroup': '新德惠大樓', 'option': 'B1-05' },
-//     { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
-//     { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
-//     { 'optigroup': '新德惠大樓', 'option': 'B3-01' },
-//     { 'optigroup': '新德惠大樓', 'option': 'B3-10' },
-//     { 'optigroup': '新德惠大樓', 'option': 'B2-05' },
-//     { 'optigroup': '青創大樓', 'option': 'B4-01' },
-// ];
-
 
 $(function () {
     $('#renewContractAppList').DataTable({
@@ -567,6 +577,8 @@ $(function () {
             $('#renewCR_companyPhone').text(cultivationRoomData.companyPhone);
             $('#renewCR_contactPerson').text(cultivationRoomData.contactPerson);
             $('#renewCR_adminNote').text(cultivationRoomData.adminNote);
+            $('#renewCR_status').val(cultivationRoomData.status);
+
             $('#renewCR_status').val(cultivationRoomData.status);
 
         }
