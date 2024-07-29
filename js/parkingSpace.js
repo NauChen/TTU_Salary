@@ -2,7 +2,7 @@ var dataset_parkingSpaceOpen = [
     {
         'id': '1',
         'createDate': '2024-06-01',
-        'building': '新德惠大樓',
+        'building': '校本部',
         'basementNum': 'B1-10',
         'rate': '3,000',
         'carType': '汽車',
@@ -28,7 +28,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B2-20',
         'company': '宏達電股份有限公司',
         'rate': '3,000',
-        'status': '承租中',
+        'status': '啟用',
         'carType': '汽車',
         'name': '王小美',
         'phone': '02-23456789',
@@ -47,7 +47,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B3-30',
         'company': '威盛電子股份有限公司',
         'rate': '100',
-        'status': '承租中',
+        'status': '啟用',
         'carType': '機車',
         'name': '張志明',
         'phone': '02-34567890',
@@ -66,7 +66,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B1-05',
         'company': '華碩電腦股份有限公司',
         'rate': '2,500',
-        'status': '承租中',
+        'status': '啟用',
         'carType': '汽車',
         'name': '黃國強',
         'phone': '02-45678901',
@@ -85,7 +85,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B2-15',
         'company': '',
         'rate': '3,000',
-        'status': '未承租',
+        'status': '啟用',
         'carType': '汽車',
         'name': '',
         'phone': '',
@@ -103,7 +103,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B2-12',
         'company': '聯發科技股份有限公司',
         'rate': '100',
-        'status': '承租中',
+        'status': '啟用',
         'carType': '機車',
         'name': '陳美麗',
         'phone': '02-56789012',
@@ -122,7 +122,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B3-21',
         'company': '台積電股份有限公司',
         'rate': '3,000',
-        'status': '承租中',
+        'status': '啟用',
         'carType': '汽車',
         'name': '林小龍',
         'phone': '02-67890123',
@@ -141,7 +141,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B1-08',
         'company': '廣達電腦股份有限公司',
         'rate': '2,500',
-        'status': '承租中',
+        'status': '啟用',
         'carType': '汽車',
         'name': '許志安',
         'phone': '02-78901234',
@@ -160,7 +160,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B2-13',
         'company': '和碩聯合科技股份有限公司',
         'rate': '100',
-        'status': '承租中',
+        'status': '啟用',
         'carType': '機車',
         'name': '周杰倫',
         'phone': '02-89012345',
@@ -179,7 +179,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B3-14',
         'company': '',
         'rate': '2,500',
-        'status': '未承租',
+        'status': '啟用',
         'carType': '汽車',
         'name': '',
         'phone': '',
@@ -198,7 +198,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B1-02',
         'company': '友達光電股份有限公司',
         'rate': '3,000',
-        'status': '承租中',
+        'status': '啟用',
         'carType': '汽車',
         'name': '蔡依林',
         'phone': '02-90123456',
@@ -217,7 +217,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B2-09',
         'company': '聯合報股份有限公司',
         'rate': '100',
-        'status': '承租中',
+        'status': '啟用',
         'carType': '機車',
         'name': '鄭中基',
         'phone': '02-01234567',
@@ -236,7 +236,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B3-11',
         'company': '中華電信股份有限公司',
         'rate': '2,500',
-        'status': '承租中',
+        'status': '啟用',
         'carType': '汽車',
         'name': '蕭敬騰',
         'phone': '02-12345678',
@@ -255,7 +255,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B1-06',
         'company': '台灣大哥大股份有限公司',
         'rate': '3,000',
-        'status': '承租中',
+        'status': '啟用',
         'carType': '汽車',
         'name': '林宥嘉',
         'phone': '02-23456789',
@@ -274,7 +274,7 @@ var dataset_parkingSpaceOpen = [
         'basementNum': 'B2-07',
         'company': '',
         'rate': '100',
-        'status': '未承租',
+        'status': '啟用',
         'carType': '機車',
         'name': '',
         'phone': '',
@@ -385,13 +385,21 @@ $(function () {
         ...commonSettingsTable,
         "data": dataset_parkingSpaceOpen,
         "columns": [
-            { data: 'carType', title: "類型" }, // 0
+            { data: 'building', title: "車位位置" }, // 0
             { data: 'basementNum', title: "車位號碼" }, // 1
             { data: 'rate', title: "服務費/月" }, // 2
-            { data: 'status', title: "當前狀態" }, // 3
-            { data: 'endDate', title: "到期日" }, // 4
             { data: 'company', title: "承租公司" }, // 5
             { data: 'licensePlateNum', title: "車牌號碼" }, // 6
+            {
+                data: 'company', title: "當前狀態",
+                render: function (data) {
+                    if (data) {
+                        return '承租中';
+                    } else {
+                        return '尚未承租';
+                    }
+                }
+            }, // 3
             { data: 'adminNote', title: "管理備註" }, // 7
             {
                 data: 'id', title: "詳情", // 8
@@ -413,8 +421,7 @@ $(function () {
                 //     return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./cultivationRoomEdit.html" data-id="' + data + '"><i class="fa-solid fa-wrench"></i></a>'
                 // },
                 render: function (data, type, row) {
-                    const status = row.status;
-                    if (status === '承租中') {
+                    if (row.status == '承租中') {
                         return '<button class="btn btn-light rounded-circle btn-sm cannotChange" title="承租中不可修改歐！"><i class="fa-solid fa-wrench"></i></button>';
                     } else {
                         return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpaceEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';

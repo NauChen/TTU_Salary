@@ -60,28 +60,9 @@ a {
     display: inline-block;
     width: 100%;
 
-    // &.btn {
-    //     &.oneWord {
-    //         width: 2rem;
-    //     }
-
-    //     &.twoWord {
-    //         width: 4.5rem;
-    //     }
-
-    //     &.noOutline {
-    //         width: 29px;
-    //         height: 29px;
-    //         padding: 0;
-    //         border: none;
-    //         text-align: center;
-
-    //         i {
-    //             vertical-align: middle;
-    //             font-size: 1.8rem;
-    //         }
-    //     }
-    // }
+    span.update {
+        color: #f3969a;
+    }
 }
 
 
@@ -182,6 +163,7 @@ textarea {
 .w-40 {
     width: 40% !important;
 }
+
 .w-60 {
     width: 60% !important;
 }
@@ -199,10 +181,6 @@ textarea {
     cursor: default !important;
 }
 
-// .text_justify {
-//     text-align: justify;
-//default
-// }
 
 // 覆寫SweetAlert
 .swal2-icon {

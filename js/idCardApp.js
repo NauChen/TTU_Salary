@@ -17,7 +17,9 @@ var dataset_idCardApp = [
         'emergContact': '李小華',
         'ECPhone': '0912345678',
         'readLibrary': '申請',
-        'adminNote': '資料不齊全'
+        'adminNote': '資料不齊全',
+        'print': '1',
+        'receiptNum': 'RN000001',
     },
     {
         'id': '2',
@@ -37,7 +39,9 @@ var dataset_idCardApp = [
         'emergContact': '陳美麗',
         'ECPhone': '0918-765432',
         'readLibrary': '不申請',
-        'adminNote': '需補充文件'
+        'adminNote': '需補充文件',
+        'print': '2',
+        'receiptNum': 'RN000005',
     },
     {
         'id': '3',
@@ -57,7 +61,9 @@ var dataset_idCardApp = [
         'emergContact': '張建國',
         'ECPhone': '0912-341234',
         'readLibrary': '申請',
-        'adminNote': '申請順利通過'
+        'adminNote': '申請順利通過',
+        'print': '1',
+        'receiptNum': 'RN000004',
     },
     {
         'id': '4',
@@ -77,7 +83,9 @@ var dataset_idCardApp = [
         'emergContact': '林月嬌',
         'ECPhone': '0915-678901',
         'readLibrary': '不申請',
-        'adminNote': '需補交簽名文件'
+        'adminNote': '需補交簽名文件',
+        'print': '3',
+        'receiptNum': 'RN000003',
     },
     {
         'id': '5',
@@ -97,7 +105,9 @@ var dataset_idCardApp = [
         'emergContact': '趙雪芬',
         'ECPhone': '0916-789012',
         'readLibrary': '申請',
-        'adminNote': '審核通過，發送通知'
+        'adminNote': '審核通過，發送通知',
+        'print': '2',
+        'receiptNum': 'RN000002',
     }
 ];
 
@@ -110,15 +120,31 @@ $(function () {
             { data: 'createDate', title: "申請日期" }, // 0
             { data: 'company', title: "申請人企業", }, // 1
             { data: 'name', title: "申請人姓名", }, // 2
-            { data: 'startDate', title: "進駐開始", }, // 3
-            { data: 'endDate', title: "進駐結束", }, // 4
-            { data: 'place', title: "培育室位置", }, // 5
-            { data: 'paymentDate', title: "付款日", }, // 6
+            { data: 'place', title: '培育室位置', }, // 3
+            { data: 'paymentDate', title: "付款日", }, // 4
+            { data: 'readLibrary', title: '圖書館<br class="d-none d-lg-block">閱覽', }, // 5
+            {
+                data: 'print', title: '補發<br class="d-none d-lg-block">次數', // 6
+                render: function (data) {
+                    let reprint = Number(data) - 1;
+                    if (data == 1) {
+                        return '-';
+                    } else {
+                        return reprint;
+                    }
+                }
+            },
             { data: 'status', title: "審核進度", }, // 7
             {
                 data: 'id', title: "檢閱",
-                render: function (data) { // 8
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#idCardDetailModel" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
+                render: function (data, type, row) { // 8
+                    let btnColor = '';
+                    if (row.status == '通過' || row.status == '不通過') {
+                        btnColor = 'outline-primary';
+                    } else {
+                        btnColor = 'info';
+                    }
+                    return '<button type="button" class="btn btn-' + btnColor + ' rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#idCardDetailModel" data-id="' + data + '"><i class="fa-solid fa-paperclip"></i></button>'
                 }
             },
         ],
@@ -136,13 +162,16 @@ $(function () {
                 responsivePriority: 3,
             },
             { searchable: false, orderable: false, targets: [8] },
-            { className: "text-lg-center", targets: [0, 3, 4, 6, 8] },
-            { className: "text-nowrap", targets: [0, 2, 3, 4, 5, 6, 8] },
+            { className: "text-lg-center", targets: [0, 4, 6, 8] },
+            { className: "text-nowrap", targets: [0, 2, 3, 4, 5, 6, 7, 8] },
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(8)', row).css('min-width', '70px');
-            [0, 2, 3, 6].forEach(function (colIdx) {
+            [0, 3, 4].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
+            });
+            [0, 4].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('font-size', '.9em');
             });
         }
     });
@@ -155,108 +184,96 @@ $(function () {
         // console.log('Button clicked, firmId:', firmId);
 
         // 解除先前綁定的點擊事件
-        $('#updateBtn').off('click');
+        $('#idCardApp_updateBtn').off('click');
 
         let idCardApplyData = dataset_idCardApp.find(idCard => idCard.id === idCardId);
 
         if (idCardApplyData) {
             //     // console.log('Job data found:', idCardApplyData);
-            $('#companyName').text(idCardApplyData.company);
-            $('#uniformNum').text(idCardApplyData.uniformNum);
-            $('#place').text(idCardApplyData.place);
-            $('#createDate').text(idCardApplyData.createDate);
+            $('#idcardApp_companyName').text(idCardApplyData.company);
+            $('#idcardApp_uniformNum').text(idCardApplyData.uniformNum);
+            $('#idcardApp_createDate').text(idCardApplyData.createDate);
 
-            $('#name').text(idCardApplyData.name);
-            $('#jobTitle').text(idCardApplyData.jobTitle);
-            $('#email').text(idCardApplyData.email);
+            $('#idcardApp_name').text(idCardApplyData.name);
+            $('#idcardApp_jobTitle').text(idCardApplyData.jobTitle);
+            $('#idcardApp_receiptNum').text(idCardApplyData.receiptNum);
+            $('#idcardApp_paymentDate').text(idCardApplyData.paymentDate);
 
-            $('#phoneNum').text(idCardApplyData.phone);
-            $('#emergContact').text(idCardApplyData.emergContact);
-            $('#ECPhone').text(idCardApplyData.ECPhone);
+            $('#idcardApp_phoneNum').text(idCardApplyData.phone);
+            $('#idcardApp_email').text(idCardApplyData.email);
+            $('#idcardApp_place').text(idCardApplyData.place);
 
-            $('#startDate').text(idCardApplyData.startDate);
-            $('#endDate').text(idCardApplyData.endDate);
-            $('#readLibrary').text(idCardApplyData.readLibrary);
-            $('#paymentDate').text(idCardApplyData.paymentDate);
+            $('#idcardApp_startDate').text(idCardApplyData.startDate);
+            $('#idcardApp_endDate').text(idCardApplyData.endDate);
+            $('#idcardApp_emergContact').text(idCardApplyData.emergContact);
+            $('#idcardApp_ECPhone').text(idCardApplyData.ECPhone);
 
-            $('#remarkNote').text(idCardApplyData.remark);
-
-            $('#adminNote').text(idCardApplyData.adminNote);
-
-            $('#status').val(idCardApplyData.status);
+            $('#idcardApp_readLibrary').text(idCardApplyData.readLibrary);
+            $('#idcardApp_adminNote').text(idCardApplyData.adminNote);
+            $('#idcardApp_status').val(idCardApplyData.status);
 
             CustomInputHandlers.destroy();
+            $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote').removeClass('changeInput_items');
+            $('#idcardApp_receiptNum').removeClass('changeInputUpperNumber_items');
+            $('#idcardApp_phoneNum, #idcardApp_ECPhone').removeClass('changePhone_items');
+            $('#idcardApp_email').removeClass('changeEmail_items');
+            $('#idcardApp_startDate, #idcardApp_endDate').removeClass('changeDate_items');
+            $('#idcardApp_readLibrary').removeClass('changeRadioApply_items');
 
         } else {
             console.error('idCardApplyData data not found for id:', idCardId);
         };
 
         if (idCardApplyData.status === "通過" || idCardApplyData.status === "不通過") {
-            // 移除所有切換輸入框的事件處理程序
-            $('.changeInput_items').off('click');
-            $('.changeDate_items').off('click');
-            $('.changePhone_items').off('click');
-            $('.changeEmail_items').off('click');
-            $('.changeRadioApply_items').off('click');
-            theseRemoveClass(["changeInput_items"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote', 'remarkNote']);
-            theseRemoveClass(["changeDate_items"], ['startDate', 'endDate', 'paymentDate']);
-            theseRemoveClass(["changePhone_items"], ['phoneNum', 'ECPhone']);
-            theseRemoveClass(["changeEmail_items"], ['email']);
-            theseRemoveClass(["changeRadioApply_items"], ['readLibrary']);
-            theseAddClass(["readOnly"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote', 'remarkNote', 'adminNote', 'startDate', 'endDate', 'paymentDate', 'phoneNum', 'ECPhone', 'email', 'readLibrary',]);
-            $('#updateBtn').hide();
-            $('#supplementaryFilesBox').hide();
-            $('#status').hide();
-            $('#statusText').show().text(idCardApplyData.status);
-
-
-
+            $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote, #idcardApp_receiptNum, #idcardApp_phoneNum, #idcardApp_ECPhone, #idcardApp_email, #idcardApp_startDate, #idcardApp_endDate, #idcardApp_readLibrary').addClass('readOnly');
+            $('#idCardApp_updateBtn').hide();
+            $('#idCard_supplementaryFilesBox').hide();
+            $('#idcardApp_status').hide();
+            $('#idcardApp_statusText').show().text(idCardApplyData.status);
         } else {
-            theseAddClass(["changeInput_items"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote', 'remarkNote']);
-            theseAddClass(["changeDate_items"], ['startDate', 'endDate', 'paymentDate']);
-            theseAddClass(["changePhone_items"], ['phoneNum', 'ECPhone']);
-            theseAddClass(["changeEmail_items"], ['email']);
-            theseAddClass(["changeRadioApply_items"], ['readLibrary']);
-            theseRemoveClass(["readOnly"], ['name', 'jobTitle', 'email', 'emergContact', 'adminNote', 'remarkNote', 'adminNote', 'startDate', 'endDate', 'paymentDate', 'phoneNum', 'ECPhone', 'email', 'readLibrary',]);
+            $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote, #idcardApp_receiptNum, #idcardApp_phoneNum, #idcardApp_ECPhone, #idcardApp_email, #idcardApp_startDate, #idcardApp_endDate, #idcardApp_readLibrary').removeClass('readOnly');
+            $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote').addClass('changeInput_items');
+            $('#idcardApp_receiptNum').addClass('changeInputUpperNumber_items');
+            $('#idcardApp_phoneNum, #idcardApp_ECPhone').addClass('changePhone_items');
+            $('#idcardApp_email').addClass('changeEmail_items');
+            $('#idcardApp_startDate, #idcardApp_endDate').addClass('changeDate_items');
+            $('#idcardApp_readLibrary').addClass('changeRadioApply_items');
             CustomInputHandlers.init();
-            $('#updateBtn').show();
-            $('#supplementaryFilesBox').show();
-            $('#status').show();
-            $('#statusText').hide();
+            $('#idCardApp_updateBtn').show();
+            $('#idCard_supplementaryFilesBox').show();
+            $('#idcardApp_status').show();
+            $('#idcardApp_statusText').hide();
         }
 
-        $('#updateBtn').on('click', function () {
+        $('#idCardApp_updateBtn').on('click', function () {
             // console.log('idCardId 2 :', idCardId); // 確認 psId 是否正確獲取
             // 清除上次的資料
             updatedData = {};
             // 獲取所有欄位的目前值
             updatedData.id = idCardId;
-            updatedData.companyName = $('#companyName').text();
-            updatedData.uniformNum = $('#uniformNum').text();
-            updatedData.place = $('#place').text();
-            updatedData.createDate = $('#createDate').text();
+            updatedData.companyName = $('#idcardApp_companyName').text();
+            updatedData.uniformNum = $('#idcardApp_uniformNum').text();
+            updatedData.createDate = $('#idcardApp_createDate').text();
+            
+            updatedData.name = $('#idcardApp_name').text();
+            updatedData.jobTitle = $('#idcardApp_jobTitle').text();
+            updatedData.receiptNum = $('#idcardApp_receiptNum').text();
+            updatedData.paymentDate = $('#idcardApp_paymentDate').text();
 
-            updatedData.name = $('#name').text();
-            updatedData.jobTitle = $('#jobTitle').text();
-            updatedData.email = $('#email').text();
+            updatedData.phoneNum = $('#idcardApp_phoneNum').text();
+            updatedData.email = $('#idcardApp_email').text();
+            updatedData.place = $('#idcardApp_place').text();
 
-            updatedData.phoneNum = $('#phoneNum').text();
-            updatedData.emergContact = $('#emergContact').text();
-            updatedData.ECPhone = $('#ECPhone').text();
+            updatedData.startDate = $('#idcardApp_startDate').text();
+            updatedData.endDate = $('#idcardApp_endDate').text();
+            updatedData.emergContact = $('#idcardApp_emergContact').text();
+            updatedData.ECPhone = $('#idcardApp_ECPhone').text();
 
-            updatedData.startDate = $('#startDate').text();
-            updatedData.endDate = $('#endDate').text();
-            updatedData.readLibrary = $('#readLibrary').text();
-            updatedData.paymentDate = $('#paymentDate').text();
-
-            updatedData.paymentDate = $('#remarkNote').text();
-
-            updatedData.adminNote = $('#adminNote').text();
-            updatedData.status = $('#status').val();
+            updatedData.readLibrary = $('#idcardApp_readLibrary').text();
+            updatedData.adminNote = $('#idcardApp_adminNote').text();
+            updatedData.status = $('#idcardApp_status').val();
 
             console.log(updatedData);
-
-
 
             // 將更新的資料送到後端
             // $.ajax({

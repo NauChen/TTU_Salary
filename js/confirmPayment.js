@@ -57,7 +57,7 @@ var dataset_confirmPaymentCultivationRoom = [
         'companyEmail': 'contact@supercompany.com',
         'contactPerson': '張偉',
         'companyPhone': '02-86710001',
-        'deadline1': '2024-11-01',
+        'deadline1': '2024-07-29',
         'deadline2': '2025-02-01',
         'deadline3': '2025-05-01',
         'deadline4': '2025-07-21',
@@ -567,133 +567,6 @@ var dataset_confirmPaymentAll = [
         'companyPhone': '02-86710006'
     }
 ];
-
-
-// 生成10筆資料
-// carType是'汽車','機車','汽車'
-// parkingSpaceNum是車位號碼或是補發次數，若carType='汽車'或是'機車'，parkingSpaceNum的值可能為'B'+數字1字元+'-'+數字2字元，或是''
-// amount 是每月服務費用，要有千分位符號，若type是'汽車'，amount的值為2500或3000。若type是'機車'，amount的值為100。
-// company是假的繁體中文公司名稱
-// deadLine是付款期限，此日期會比paymentDate晚2~3天
-// paymentDate是付款日，此日期會比deadLine早2~3天
-// receivedDate是入帳日，此日期會等於 paymentDate 或是等於 paymentDate的下一個工作天
-// adminNote是管理員備註，可能為''
-
-// 車位與識別證 - 將可續約(不論有無點擊要續約) 與 新申請 資料匯入
-// var dataset_confirmPaymentCarOrCard = [
-//     {
-//         'id': '1',
-//         'deadLine': '2024-07-15',
-//         'company': '超級棒股份有限公司',
-//         'amount': '2,500',
-//         'type': '汽車',
-//         'paymentDate': '2024-07-13',
-//         'receivedDate': '2024-07-13',
-//         'placeOrPrint': 'B1-15',
-//         'adminNote': ''
-//     },
-//     {
-//         'id': '2',
-//         'deadLine': '2024-07-16',
-//         'company': '優質科技股份有限公司',
-//         'amount': '100',
-//         'type': '機車',
-//         'paymentDate': '2024-07-14',
-//         'receivedDate': '2024-07-15',
-//         'placeOrPrint': 'B2-09',
-//         'adminNote': ''
-//     },
-//     {
-//         'id': '3',
-//         'deadLine': '2024-07-17',
-//         'company': '金鼎企業有限公司',
-//         'amount': '2,500',
-//         'type': '汽車',
-//         'paymentDate': '2024-07-15',
-//         'receivedDate': '2024-07-16',
-//         'placeOrPrint': '5',
-//         'adminNote': '補發第五次'
-//     },
-//     {
-//         'id': '4',
-//         'deadLine': '2024-07-18',
-//         'company': '龍騰科技股份有限公司',
-//         'amount': '2,500',
-//         'type': '汽車',
-//         'paymentDate': '2024-07-16',
-//         'receivedDate': '2024-07-16',
-//         'placeOrPrint': 'B1-07',
-//         'adminNote': ''
-//     },
-//     {
-//         'id': '5',
-//         'deadLine': '2024-07-19',
-//         'company': '日月光股份有限公司',
-//         'amount': '100',
-//         'type': '機車',
-//         'paymentDate': '2024-07-17',
-//         'receivedDate': '2024-07-17',
-//         'placeOrPrint': '',
-//         'adminNote': '已空車位'
-//     },
-//     {
-//         'id': '6',
-//         'deadLine': '2024-07-20',
-//         'company': '巨匠科技有限公司',
-//         'amount': '2,500',
-//         'type': '汽車',
-//         'paymentDate': '2024-07-18',
-//         'receivedDate': '2024-07-19',
-//         'placeOrPrint': '3',
-//         'adminNote': ''
-//     },
-//     {
-//         'id': '7',
-//         'deadLine': '2024-07-21',
-//         'company': '光速科技股份有限公司',
-//         'amount': '3,000',
-//         'type': '汽車',
-//         'paymentDate': '2024-07-19',
-//         'receivedDate': '2024-07-19',
-//         'placeOrPrint': 'B2-12',
-//         'adminNote': ''
-//     },
-//     {
-//         'id': '8',
-//         'deadLine': '2024-07-22',
-//         'company': '太陽能科技股份有限公司',
-//         'amount': '100',
-//         'type': '機車',
-//         'paymentDate': '2024-07-20',
-//         'receivedDate': '2024-07-21',
-//         'placeOrPrint': 'B3-08',
-//         'adminNote': ''
-//     },
-//     {
-//         'id': '9',
-//         'deadLine': '2024-07-23',
-//         'company': '巨力科技有限公司',
-//         'amount': '2,500',
-//         'type': '汽車',
-//         'paymentDate': '2024-07-21',
-//         'receivedDate': '2024-07-22',
-//         'placeOrPrint': '8',
-//         'adminNote': ''
-//     },
-//     {
-//         'id': '10',
-//         'deadLine': '2024-07-24',
-//         'company': '迅達科技股份有限公司',
-//         'amount': '2,500',
-//         'type': '汽車',
-//         'paymentDate': '2024-07-22',
-//         'receivedDate': '2024-07-23',
-//         'placeOrPrint': 'B1-10',
-//         'adminNote': '確認車位'
-//     }
-// ];
-;
-
 // 生成10筆資料物件 dataset_confirmPaymentParkingSpace，不要函式
 // id是將車位配置給廠商的資料id，由1開始
 // psId是將可使用的車位資料id，由11開始
@@ -1143,187 +1016,67 @@ var selectOptionStatus = [
 
 $(function () {
 
-
-
-    // 車位配置廠商-增加緊急日期
-    dataset_confirmPaymentParkingSpace.forEach(item => {
-        if (!item.company) {
-            item.recentMaturityDate = '';
-        } else {
-            if (item.deadline4) {
-                if (item.receivedDate4) {
-                    item.recentMaturityDate = '0';
-                } else {
-                    if (item.receiptNum3) {
-                        item.recentMaturityDate = item.deadline4;
-                    } else {
-                        item.recentMaturityDate = item.deadline3;
-                    }
-                }
-            } else if (item.deadline3) {
-                if (item.receivedDate3) {
-                    item.recentMaturityDate = '0';
-                } else {
-                    if (item.receiptNum2) {
-                        item.recentMaturityDate = item.deadline3;
-                    } else {
-                        item.recentMaturityDate = item.deadline2;
-                    }
-                }
-            } else if (item.deadline2) {
-                if (item.receivedDate2) {
-                    item.recentMaturityDate = '0';
-                } else {
-                    if (item.receiptNum1) {
-                        item.recentMaturityDate = item.deadline2;
-                    } else {
-                        item.recentMaturityDate = item.deadline1;
-                    }
-                }
-            } else {
-                if (item.receivedDate1) {
-                    item.recentMaturityDate = '0';
-                } else {
-                    item.recentMaturityDate = item.deadline1;
-                }
-            }
-        }
-        // console.log('id = ' + item.id + ' ，期限狀態： ' + item.recentMaturityDate);
-    });
-
-    // 車位配置廠商-表格
-    $('#confirmPaymentParkingSpaceList').DataTable({
+    // 收款紀錄與收據-表格
+    $('#confirmPaymentAllList').DataTable({
         ...commonSettingsTable,
-        "data": dataset_confirmPaymentParkingSpace,
+        "data": dataset_confirmPaymentAll,
         "columns": [
-            { data: 'building', title: '大樓' }, // 0
-            { data: 'parkingSpaceNum', title: "車位號碼", }, // 1
-            { data: 'amount', title: "費用", }, // 2
+            { data: 'createDate', title: '通知日期' }, // 0
+            { data: 'company', title: "通知公司" }, //1
+            { data: 'paymentDate', title: "付款日", className: 'text-center' }, // 2
             {
-                data: 'company', title: "承租公司", // 3
-                render: function (data) {
-                    if (data === null || data == '') {
-                        return '-';
+                data: 'type', title: "項目", // 3
+                render: function (data, type, row) {
+                    const placeOrPrint = row.placeOrPrint;
+                    if (placeOrPrint) {
+                        return data + '：' + placeOrPrint;
                     } else {
                         return data;
                     }
                 }
             },
+            { data: 'paymentPurpose', title: "目的" },  // 4
+            { data: 'amount', title: "付款金額" }, // 5
+            { data: 'adminNote', title: "管理備註", }, // 6
             {
-                data: 'deadline1', title: "階段&#10102;", // 4
+                data: 'id', title: "收據", // 7
                 render: function (data, type, row) {
-                    const receivedDate1 = row.receivedDate1;
-                    if (!receivedDate1) {
-                        if (data) {
-                            return '<i class="fa-regular fa-calendar-days"></i> ' + data;
-                        } else {
-                            return '-';
-                        }
+                    const status = row.status;
+                    if (status == '完成' || status == '取消') {
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '"><i class="fa-solid fa-receipt"></i>';
                     } else {
-                        return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate1;
+                        return '<button type="button" class="btn btn-info rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-receipt"></i>';
                     }
-                }
+                }, className: 'text-nowrap'
             },
-            {
-                data: 'deadline2', title: "階段&#10103;", // 5
-                render: function (data, type, row) {
-                    const receivedDate2 = row.receivedDate2;
-                    if (!receivedDate2) {
-                        if (data) {
-                            return '<i class="fa-regular fa-calendar-days"></i> ' + data;
-                        } else {
-                            return '-';
-                        }
-                    } else {
-                        return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate2;
-                    }
-                }
-
-            },
-            {
-                data: 'deadline3', title: "階段&#10104;", // 6
-                render: function (data, type, row) {
-                    const receivedDate3 = row.receivedDate3;
-                    if (!receivedDate3) {
-                        if (data) {
-                            return '<i class="fa-regular fa-calendar-days"></i> ' + data;
-                        } else {
-                            return '-';
-                        }
-                    } else {
-                        return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate3;
-                    }
-                }
-
-            },
-            {
-                data: 'deadline4', title: "階段&#10105;", // 7
-                render: function (data, type, row) {
-                    const receivedDate4 = row.receivedDate4;
-                    if (!receivedDate4) {
-                        if (data) {
-                            return '<i class="fa-regular fa-calendar-days"></i> ' + data;
-                        } else {
-                            return '-';
-                        }
-                    } else {
-                        return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate4;
-                    }
-                }
-            },
-            {
-                data: 'id', title: "操作", // 8
-                render: function (data, type, row) {
-                    const company = row.company;
-                    const psId = row.psId;
-                    if (!company) {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentParkingSpaceModel" data-id="' + psId + '_N" title="配置進駐廠商"><i class="fa-regular fa-keyboard"></i>';
-                    } else {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentParkingSpaceModel" data-id="' + data + '" title="修改"><i class="fa-solid fa-wrench"></i>';
-                    }
-                }
-            },
-            {
-                data: 'id', title: "下期", // 9
-                render: function (data, type, row) {
-                    const company = row.company;
-                    const psId = row.psId;
-                    if (company) {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentParkingSpaceModel" data-id="' + psId + '_N" title="配置下期進駐廠商"><i class="fa-regular fa-keyboard"></i>';
-                    }
-                    return '';
-                }
-            },
-            { data: 'recentMaturityDate', visible: false }, // 10
+            { data: 'status', visible: false }, // 8 仍可搜尋
         ],
-        "order": [[10, "asc"], [0, "desc"]],
+        "order": [[8, "desc"], [0, "desc"], [2, "desc"], [3, "desc"]],
         "columnDefs": [
             {
-                targets: [0],
+                targets: [1],
                 responsivePriority: 1,
             },
             {
-                targets: [1],
+                targets: [2],
                 responsivePriority: 2,
             },
             {
-                targets: [2],
+                targets: [4],
                 responsivePriority: 3,
             },
-            { searchable: false, orderable: false, targets: [8, 9, 10] },
-            { className: "text-lg-center", targets: [0, 4, 5, 6, 7, 8, 9] },
-            { className: "text-center", targets: [0, 1] },
-            { className: "text-nowrap", targets: [0, 1, 2, 4, 5, 6, 8, 9] },
+            { searchable: false, orderable: false, targets: [7] },
+            { className: "text-lg-center", targets: [0, 2, 7] },
+            { className: "text-nowrap", targets: [0, 2, 3, 4, 5] },
         ],
-
         createdRow: function (row, data, dataIndex) {
-            [8, 9].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
+            $('td:eq(7)', row).css('min-width', '70px');
+            [0, 2].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
             });
-            [0, 1, 2, 4, 5, 6, 7].forEach(function (colIdx) {
+            [0, 2, 5, 6].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('font-size', '.9em');
             });
-            $('td:eq(3)', row).css('min-width', '150px');
         }
     });
 
@@ -1394,14 +1147,20 @@ $(function () {
                 data: 'deadline1', title: "階段&#10102;", // 4
                 render: function (data, type, row) {
                     const receivedDate1 = row.receivedDate1;
+                    const today = new Date();
+                    const dataDate = new Date(data);
                     if (!receivedDate1) {
                         if (data) {
-                            return '<i class="fa-regular fa-calendar-days"></i> ' + data;
+                            if (dataDate < today) {
+                                return '<span class="text-danger"><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            } else {
+                                return '<span><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            }
                         } else {
                             return '-';
                         }
                     } else {
-                        return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate1;
+                        return '<span><i class="fa-solid fa-sack-dollar"></i> ' + receivedDate1 + '</span>';
                     }
                 }
             },
@@ -1409,14 +1168,20 @@ $(function () {
                 data: 'deadline2', title: "階段&#10103;", // 5
                 render: function (data, type, row) {
                     const receivedDate2 = row.receivedDate2;
+                    const today = new Date();
+                    const dataDate = new Date(data);
                     if (!receivedDate2) {
                         if (data) {
-                            return '<i class="fa-regular fa-calendar-days"></i> ' + data;
+                            if (dataDate < today) {
+                                return '<span class="text-danger"><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            } else {
+                                return '<span><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            }
                         } else {
                             return '-';
                         }
                     } else {
-                        return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate2;
+                        return '<span><i class="fa-solid fa-sack-dollar"></i> ' + receivedDate2 + '</span>';
                     }
                 }
 
@@ -1425,14 +1190,20 @@ $(function () {
                 data: 'deadline3', title: "階段&#10104;", // 6
                 render: function (data, type, row) {
                     const receivedDate3 = row.receivedDate3;
+                    const today = new Date();
+                    const dataDate = new Date(data);
                     if (!receivedDate3) {
                         if (data) {
-                            return '<i class="fa-regular fa-calendar-days"></i> ' + data;
+                            if (dataDate < today) {
+                                return '<span class="text-danger"><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            } else {
+                                return '<span><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            }
                         } else {
                             return '-';
                         }
                     } else {
-                        return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate3;
+                        return '<span><i class="fa-solid fa-sack-dollar"></i> ' + receivedDate3 + '</span>';
                     }
                 }
 
@@ -1441,14 +1212,20 @@ $(function () {
                 data: 'deadline4', title: "階段&#10105;", // 7
                 render: function (data, type, row) {
                     const receivedDate4 = row.receivedDate4;
+                    const today = new Date();
+                    const dataDate = new Date(data);
                     if (!receivedDate4) {
                         if (data) {
-                            return '<i class="fa-regular fa-calendar-days"></i> ' + data;
+                            if (dataDate < today) {
+                                return '<span class="text-danger"><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            } else {
+                                return '<span><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            }
                         } else {
                             return '-';
                         }
                     } else {
-                        return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate4;
+                        return '<span><i class="fa-solid fa-sack-dollar"></i> ' + receivedDate4 + '</span>';
                     }
                 }
 
@@ -1506,69 +1283,249 @@ $(function () {
         }
     });
 
-    // 收款紀錄與收據-表格
-    $('#confirmPaymentAllList').DataTable({
+    // 車位配置廠商-增加緊急日期
+    dataset_confirmPaymentParkingSpace.forEach(item => {
+        if (!item.company) {
+            item.recentMaturityDate = '';
+        } else {
+            if (item.deadline4) {
+                if (item.receivedDate4) {
+                    item.recentMaturityDate = '0';
+                } else {
+                    if (item.receiptNum3) {
+                        item.recentMaturityDate = item.deadline4;
+                    } else {
+                        item.recentMaturityDate = item.deadline3;
+                    }
+                }
+            } else if (item.deadline3) {
+                if (item.receivedDate3) {
+                    item.recentMaturityDate = '0';
+                } else {
+                    if (item.receiptNum2) {
+                        item.recentMaturityDate = item.deadline3;
+                    } else {
+                        item.recentMaturityDate = item.deadline2;
+                    }
+                }
+            } else if (item.deadline2) {
+                if (item.receivedDate2) {
+                    item.recentMaturityDate = '0';
+                } else {
+                    if (item.receiptNum1) {
+                        item.recentMaturityDate = item.deadline2;
+                    } else {
+                        item.recentMaturityDate = item.deadline1;
+                    }
+                }
+            } else {
+                if (item.receivedDate1) {
+                    item.recentMaturityDate = '0';
+                } else {
+                    item.recentMaturityDate = item.deadline1;
+                }
+            }
+        }
+        // console.log('id = ' + item.id + ' ，期限狀態： ' + item.recentMaturityDate);
+    });
+
+    // 車位配置廠商-表格
+    $('#confirmPaymentParkingSpaceList').DataTable({
         ...commonSettingsTable,
-        "data": dataset_confirmPaymentAll,
+        "data": dataset_confirmPaymentParkingSpace,
         "columns": [
-            { data: 'createDate', title: '通知日期' }, // 0
-            { data: 'company', title: "通知公司" }, //1
-            { data: 'paymentDate', title: "付款日", className: 'text-center' }, // 2
+            { data: 'building', title: '大樓' }, // 0
+            { data: 'parkingSpaceNum', title: "車位號碼", }, // 1
+            { data: 'amount', title: "費用", }, // 2
             {
-                data: 'type', title: "項目", // 3
-                render: function (data, type, row) {
-                    const placeOrPrint = row.placeOrPrint;
-                    if (placeOrPrint) {
-                        return data + '：' + placeOrPrint;
+                data: 'company', title: "承租公司", // 3
+                render: function (data) {
+                    if (data === null || data == '') {
+                        return '-';
                     } else {
                         return data;
                     }
                 }
             },
-            { data: 'paymentPurpose', title: "目的" },  // 4
-            { data: 'amount', title: "付款金額" }, // 5
-            { data: 'adminNote', title: "管理備註", }, // 6
             {
-                data: 'id', title: "收據", // 7
+                data: 'deadline1', title: "階段&#10102;", // 4
                 render: function (data, type, row) {
-                    const status = row.status;
-                    if (status == '完成' || status == '取消') {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '"><i class="fa-solid fa-receipt"></i>';
+                    const receivedDate1 = row.receivedDate1;
+                    const today = new Date();
+                    const dataDate = new Date(data);
+                    if (!receivedDate1) {
+                        if (data) {
+                            if (dataDate < today) {
+                                return '<span class="text-danger"><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            } else {
+                                return '<span><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            }
+                        } else {
+                            return '-';
+                        }
                     } else {
-                        return '<button type="button" class="btn btn-info rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-receipt"></i>';
+                        return '<span><i class="fa-solid fa-sack-dollar"></i> ' + receivedDate1 + '</span>';
                     }
-                }, className: 'text-nowrap'
+                    // if (!receivedDate1) {
+                    //     if (data) {
+                    //         return '<i class="fa-regular fa-calendar-days"></i> ' + data;
+                    //     } else {
+                    //         return '-';
+                    //     }
+                    // } else {
+                    //     return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate1;
+                    // }
+                }
             },
-            { data: 'status', visible: false }, // 8 仍可搜尋
+            {
+                data: 'deadline2', title: "階段&#10103;", // 5
+                render: function (data, type, row) {
+                    const receivedDate2 = row.receivedDate2;
+                    const today = new Date();
+                    const dataDate = new Date(data);
+                    if (!receivedDate2) {
+                        if (data) {
+                            if (dataDate < today) {
+                                return '<span class="text-danger"><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            } else {
+                                return '<span><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            }
+                        } else {
+                            return '-';
+                        }
+                    } else {
+                        return '<span><i class="fa-solid fa-sack-dollar"></i> ' + receivedDate2 + '</span>';
+                    }
+                    // if (!receivedDate2) {
+                    //     if (data) {
+                    //         return '<i class="fa-regular fa-calendar-days"></i> ' + data;
+                    //     } else {
+                    //         return '-';
+                    //     }
+                    // } else {
+                    //     return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate2;
+                    // }
+                }
+
+            },
+            {
+                data: 'deadline3', title: "階段&#10104;", // 6
+                render: function (data, type, row) {
+                    const receivedDate3 = row.receivedDate3;
+                    const today = new Date();
+                    const dataDate = new Date(data);
+                    if (!receivedDate3) {
+                        if (data) {
+                            if (dataDate < today) {
+                                return '<span class="text-danger"><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            } else {
+                                return '<span><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            }
+                        } else {
+                            return '-';
+                        }
+                    } else {
+                        return '<span><i class="fa-solid fa-sack-dollar"></i> ' + receivedDate3 + '</span>';
+                    }
+                    // if (!receivedDate3) {
+                    //     if (data) {
+                    //         return '<i class="fa-regular fa-calendar-days"></i> ' + data;
+                    //     } else {
+                    //         return '-';
+                    //     }
+                    // } else {
+                    //     return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate3;
+                    // }
+                }
+
+            },
+            {
+                data: 'deadline4', title: "階段&#10105;", // 7
+                render: function (data, type, row) {
+                    const receivedDate4 = row.receivedDate4;
+                    // if (!receivedDate4) {
+                    //     if (data) {
+                    //         return '<i class="fa-regular fa-calendar-days"></i> ' + data;
+                    //     } else {
+                    //         return '-';
+                    //     }
+                    // } else {
+                    //     return '<i class="fa-solid fa-sack-dollar"></i> ' + receivedDate4;
+                    // }
+                    const today = new Date();
+                    const dataDate = new Date(data);
+                    if (!receivedDate4) {
+                        if (data) {
+                            if (dataDate < today) {
+                                return '<span class="text-danger"><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            } else {
+                                return '<span><i class="fa-regular fa-calendar-days"></i> ' + data + '</span>';
+                            }
+                        } else {
+                            return '-';
+                        }
+                    } else {
+                        return '<span><i class="fa-solid fa-sack-dollar"></i> ' + receivedDate4 + '</span>';
+                    }
+                }
+            },
+            {
+                data: 'id', title: "操作", // 8
+                render: function (data, type, row) {
+                    const company = row.company;
+                    const psId = row.psId;
+                    if (!company) {
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentParkingSpaceModel" data-id="' + psId + '_N" title="配置進駐廠商"><i class="fa-regular fa-keyboard"></i>';
+                    } else {
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentParkingSpaceModel" data-id="' + data + '" title="修改"><i class="fa-solid fa-wrench"></i>';
+                    }
+                }
+            },
+            {
+                data: 'id', title: "下期", // 9
+                render: function (data, type, row) {
+                    const psId = row.psId;
+                    if (row.company) {
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentParkingSpaceModel" data-id="' + psId + '_N" title="配置下期進駐廠商"><i class="fa-regular fa-keyboard"></i>';
+                    }
+                    return '';
+                }
+            },
+            { data: 'recentMaturityDate', visible: false }, // 10
         ],
-        "order": [[8, "desc"], [0, "desc"], [2, "desc"], [3, "desc"]],
+        "order": [[10, "asc"], [0, "desc"]],
         "columnDefs": [
             {
-                targets: [1],
+                targets: [0],
                 responsivePriority: 1,
             },
             {
-                targets: [2],
+                targets: [1],
                 responsivePriority: 2,
             },
             {
-                targets: [4],
+                targets: [2],
                 responsivePriority: 3,
             },
-            { searchable: false, orderable: false, targets: [7] },
-            { className: "text-lg-center", targets: [0, 2, 7] },
-            { className: "text-nowrap", targets: [0, 2, 3, 4, 5] },
+            { searchable: false, orderable: false, targets: [8, 9, 10] },
+            { className: "text-lg-center", targets: [0, 4, 5, 6, 7, 8, 9] },
+            { className: "text-center", targets: [0, 1] },
+            { className: "text-nowrap", targets: [0, 1, 2, 4, 5, 6, 8, 9] },
         ],
+
         createdRow: function (row, data, dataIndex) {
-            $('td:eq(7)', row).css('min-width', '70px');
-            [0, 2].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
+            [8, 9].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
             });
-            [0, 2, 5, 6].forEach(function (colIdx) {
+            [0, 1, 2, 4, 5, 6, 7].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('font-size', '.9em');
             });
+            $('td:eq(3)', row).css('min-width', '150px');
         }
     });
+
+
+
 
 });
 
@@ -1744,7 +1701,7 @@ $(function () {
         if (!roomThisId.endsWith('_N')) { // 表示為已配置的紀錄id
             let openRoomData = dataset_confirmPaymentCultivationRoom.find(thisData => thisData.id === roomThisId);
             if (openRoomData) {
-                $('#cultivation_deleteData').removeClass('d-none');
+                $('#cultivation_deleteData, #cultivation_reminder').removeClass('d-none');
 
                 $('#cultivation_building').text(openRoomData.building);
                 $('#cultivation_room').text(openRoomData.room);
@@ -1786,7 +1743,7 @@ $(function () {
             roomId_N = roomThisId.slice(0, -2);
             let openRoomData = dataset_confirmPaymentCultivationRoom.find(room => room.roomId === roomId_N);
             if (openRoomData) {
-                $('#cultivation_deleteData').addClass('d-none');
+                $('#cultivation_deleteData, #cultivation_reminder').addClass('d-none');
 
                 $('#cultivation_building').text(openRoomData.building);
                 $('#cultivation_room').text(openRoomData.room);
@@ -1909,7 +1866,7 @@ $(function () {
         if (!psThisId.endsWith('_N')) { // 表示為已配置的紀錄id
             let openRoomData = dataset_confirmPaymentParkingSpace.find(thisData => thisData.id === psThisId);
             if (openRoomData) {
-                $('#parkingSapce_deleteData').removeClass('d-none');
+                $('#parkingSapce_deleteData, #parkingSapce_reminder').removeClass('d-none');
 
                 $('#parkingSapce_building').text(openRoomData.building);
                 $('#parkingSapce_parkingSpaceNum').text(openRoomData.parkingSpaceNum);
@@ -1951,7 +1908,7 @@ $(function () {
             psId_N = psThisId.slice(0, -2);
             let openRoomData = dataset_confirmPaymentParkingSpace.find(parkingSpace => parkingSpace.psId === psId_N);
             if (openRoomData) {
-                $('#parkingSapce_deleteData').addClass('d-none');
+                $('#parkingSapce_deleteData, #parkingSapce_reminder').addClass('d-none');
 
                 $('#parkingSapce_building').text(openRoomData.building);
                 $('#parkingSapce_parkingSpaceNum').text(openRoomData.parkingSpaceNum);

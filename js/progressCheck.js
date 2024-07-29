@@ -98,7 +98,8 @@ $(function () {
         "data": dataset_progressCheck,
         "columns": [
             {
-                data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data, type, row, meta) { // 0
+                data: 'id', title: '<i class="fa-regular fa-square-check"></i>', // 0
+                render: function (data, type, row, meta) {
                     return '<input type="checkbox" class="form-check-input border-info application-checkbox" value=' + data + '>'
                 },
             },
@@ -122,10 +123,9 @@ $(function () {
             { data: 'paymentDate', title: "付帳日", }, // 5
             { data: 'status', title: "審核進度", }, // 6
             {
-                data: 'id', title: '通知<br class="d-none d-lg-black">匯款',
+                data: 'id', title: '通知<br>匯款', // 7
                 render: function (data, type, row) {
-                    const paymentDate = row.paymentDate;
-                    if (paymentDate) {
+                    if (row.paymentDate) {
                         return '<button type="button" class="btn btn-light rounded-circle remittance_voucher align_center reuploadRemittance" title="再次上傳匯款憑證" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
                     } else {
                         return '<button type="button" class="btn btn-info rounded-circle remittance_voucher align_center uploadRemittance" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
@@ -148,8 +148,8 @@ $(function () {
                 responsivePriority: 3,
             },
             { searchable: false, orderable: false, targets: [0, 7] },
-            { className: "text-lg-center", targets: [0, 3, 5, 6] },
-            { className: "text-nowrap", targets: [0, 1, 2, 3, 4, 5, 6] },
+            { className: "text-lg-center", targets: [0, 3, 5, 7] },
+            { className: "text-nowrap", targets: [0, 1, 2, 3, 4, 5, 7] },
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(8)', row).css('min-width', '70px');

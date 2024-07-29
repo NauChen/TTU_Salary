@@ -158,12 +158,10 @@ $(function () {
             {
                 data: 'id', title: '通知<br class="d-none d-lg-black">匯款', // 8
                 render: function (data, type, row) {
-                    const endDiffDays = row.endDiffDays;
-                    const paymentDate = row.paymentDate;
-                    if (endDiffDays < 0) {
+                    if (row.endDiffDays < 0) {
                         return '';
                     } else {
-                        if (paymentDate) {
+                        if (row.paymentDate) {
                             return '<button type="button" class="btn btn-light rounded-circle remittance_voucher align_center reuploadRemittance" title="再次上傳匯款憑證" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
                         } else {
                             return '<button type="button" class="btn btn-info rounded-circle remittance_voucher align_center uploadRemittance" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
@@ -174,11 +172,10 @@ $(function () {
             {
                 data: 'id', title: "續約", // 9
                 render: function (data, type, row) {
-                    const endDiffDays = row.endDiffDays;
-                    if (endDiffDays < 0) {
+                    if (row.endDiffDays < 0) {
                         return '';
                     } else {
-                        if (endDiffDays < 50) {
+                        if (row.endDiffDays < 50) {
                             return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./renewContractApply.html?id=' + data + '" title="立即續約"><i class="fa-solid fa-repeat"></i></a>';
                         } else {
                             return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間未到"><i class="fa-solid fa-hourglass-half"></i></button>';

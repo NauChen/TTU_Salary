@@ -334,10 +334,9 @@ $(function () {
             {
                 data: 'id', title: "續約", // 8
                 render: function (data, type, row) {
-                    const diffDays = row.diffDays;
-                    if (diffDays === null) {
+                    if (row.diffDays == null) {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間已過"><i class="fa-solid fa-hourglass-end"></i></button>';
-                    } else if (diffDays >= -15) {
+                    } else if (row.diffDays >= -15) {
                         return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord renew-btn" href="./parkingSpaceRenew.html?id=' + data + '" title="立即續約" data-id=' + data + '><i class="fa-solid fa-repeat"></i></a>';
                     } else {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間未到"><i class="fa-solid fa-hourglass-half"></i></button>';

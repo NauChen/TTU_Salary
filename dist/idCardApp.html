@@ -194,170 +194,151 @@
                             </div>
                             <div class="modal-body">
                                 <div class="container-fluid">
-                                    <!-- 公司名稱、統編、培育室位置、申請日期 (都不可改) -->
+                                    <!-- 公司名稱、統編、申請日期 (都不可改) -->
 <div class="row mb-1 multiple">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
         申請人企業
     </div>
-    <div class="col lightBoxItems p-3 readOnly" id="companyName"></div>
+    <div class="col lightBoxItems p-3 readOnly" id="idcardApp_companyName"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
         統一編號
     </div>
-    <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="uniformNum"></div>
+    <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="idcardApp_uniformNum"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
         申請日期
     </div>
-    <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="createDate"></div>
+    <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="idcardApp_createDate"></div>
 </div>
 
-<!-- 姓名、職稱、電子信箱 (可改) -->
+<!-- 申請人姓名 (可改)、職稱 (可改)、收據號碼 (可改)、付款日期 (不可改) -->
 <div class="row mb-1 multiple">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center align_center">
         申請人姓名
     </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="name"></div>
+    <div class="col col-lg lightBoxItems p-3 align_center" id="idcardApp_name"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
         職務名稱
     </div>
-    <div class="col col-lg lightBoxItems p-3 align_center" id="jobTitle"></div>
-
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3">
-        進駐培育室
+    <div class="col col-lg lightBoxItems p-3 align_center" id="idcardApp_jobTitle"></div>
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center pinkBG">
+        收據號碼
     </div>
-    <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="place"></div>
+    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="idcardApp_receiptNum"></div>
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
+        付款日期
+    </div>
+    <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="idcardApp_paymentDate"></div>
 </div>
-<!-- 電話、緊急聯絡人、緊急聯絡電話 -->
+<!-- 電話、電子信箱、進駐位置 (可改)-->
 <div class="row mb-1 multiple">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3  align_center align_center">
         電話或手機
     </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="phoneNum"></div>
+    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="idcardApp_phoneNum"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
         電子信箱
     </div>
-    <div class="col lightBoxItems p-3 align_center" id="email"></div>
-
+    <div class="col lightBoxItems p-3 align_center" id="idcardApp_email"></div>
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
-        付款日期
+        進駐位置
     </div>
-    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="paymentDate"></div>
+    <div class="col col-lg-2 lightBoxItems p-3" id="idcardApp_place"></div>
 </div>
 
-<!-- 進駐開始日、進駐結束日、付款日期 (可改)-->
+<!-- 進駐開始日&結束日、緊急聯絡人、緊急聯絡電話 (可改)-->
 <div class="row mb-1 multiple">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        緊急聯絡人
-    </div>
-    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="emergContact">
-    </div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-        緊急電話
-    </div>
-    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="ECPhone"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
-        進駐日期
+        進駐日期&emsp;
     </div>
     <div class="col col-lg lightBoxItems p-3 align_center">
         <div class="row">
             <div class="col-auto">起：</div>
-            <div class="col text-nowrap ps-0" id="startDate"></div>
+            <div class="col text-nowrap ps-0" id="idcardApp_startDate"></div>
             <div class="col-auto">訖：</div>
-            <div class="col text-nowrap ps-0" id="endDate"></div>
+            <div class="col text-nowrap ps-0" id="idcardApp_endDate"></div>
         </div>
     </div>
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+        緊急聯絡人
+    </div>
+    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="idcardApp_emergContact">
+    </div>
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+        緊急電話
+    </div>
+    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="idcardApp_ECPhone"></div>
 </div>
 
 <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
 <div class="row mb-1">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        圖書館閱覽
-    </div>
-    <div class="col col-lg-3 lightBoxItems p-3 align_center" id="readLibrary"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3">
-        檢附文件
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+        檢附文件&emsp;
     </div>
     <div class="col lightBoxItems p-3">
-        <a class="d-inline me-3 text-nowrap" href="#">申請書&ensp;<i class="fa-solid fa-download"></i><span
-                class="mx-1 update">補</span></a>
         <a class="d-inline me-3 text-nowrap" href="#">證件照&ensp;<i class="fa-solid fa-download"></i><span
                 class="mx-1 update">補</span></a>
-        <a class="d-inline me-3 text-nowrap" href="#">繳費證明&ensp;<i class="fa-solid fa-download"></i><span
+        <a class="d-inline me-3 text-nowrap" href="#">申請書&ensp;<i class="fa-solid fa-download"></i><span
                 class="mx-1 update">補</span></a>
     </div>
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+        圖書館閱覽
+    </div>
+    <div class="col col-lg-2 lightBoxItems p-3 align_center" id="idcardApp_readLibrary"></div>
 
 </div>
 <!-- 補件上傳 若狀態為通過，不顯示此區塊-->
-<div class="row mb-1" id="supplementaryFilesBox">
+<div class="row mb-1" id="idCard_supplementaryFilesBox">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-        &emsp;補件上傳
+        補件上傳&emsp;
     </div>
     <div class="col lightBoxItems p-3">
         <div class="row align-items-center my-1">
-            <label for="parkingSpaceForm" class="col-auto col-form-label text-nowrap upload-label py-0">申請書<i
+            <label for="idCardForm" class="col-auto col-form-label text-nowrap upload-label py-0">申請書<i
                     class="fa-solid fa-upload mx-1"></i>
             </label>
             <div class="col">
-                <input type="file" class="form-control d-none" id="parkingSpaceForm" accept=".pdf"
-                    onchange="javascript:{document.getElementById('parkingSpace_fileInfo1').innerHTML = document.getElementById('parkingSpaceForm').value;setFormHeight();}">
-                <div id="parkingSpace_fileInfo1" class="fileInfo"></div>
+                <input type="file" class="form-control d-none" id="idCardForm" accept=".pdf"
+                    onchange="javascript:{document.getElementById('idCard_fileInfo1').innerHTML = document.getElementById('idCardForm').value;setFormHeight();}">
+                <div id="idCard_fileInfo1" class="fileInfo"></div>
             </div>
         </div>
 
         <div class="row align-items-center my-1">
-            <label for="memoUpload" class="col-auto col-form-label text-nowrap upload-label py-0">證件照<i
+            <label for="idCardPhoto" class="col-auto col-form-label text-nowrap upload-label py-0">證件照<i
                     class="fa-solid fa-upload mx-1"></i>
             </label>
             <div class="col">
-                <input type="file" class="form-control d-none" id="memoUpload" accept=".pdf"
-                    onchange="javascript:{document.getElementById('fileInfo6').innerHTML = document.getElementById('memoUpload').value;setFormHeight();}">
-                <div id="fileInfo6" class="fileInfo"></div>
+                <input type="file" class="form-control d-none" id="idCardPhoto" accept=".pdf"
+                    onchange="javascript:{document.getElementById('idCard_fileInfo2').innerHTML = document.getElementById('idCardPhoto').value;setFormHeight();}">
+                <div id="idCard_fileInfo2" class="fileInfo"></div>
             </div>
         </div>
-
-        <div class="row align-items-center my-1">
-            <label for="consentDoc" class="col-auto col-form-label text-nowrap upload-label py-0">繳費證明<i
-                    class="fa-solid fa-upload mx-1"></i>
-            </label>
-            <div class="col">
-                <input type="file" class="form-control d-none" id="consentDoc" accept=".pdf"
-                    onchange="javascript:{document.getElementById('fileInfo3').innerHTML = document.getElementById('consentDoc').value;setFormHeight();}">
-                <div id="fileInfo3" class="fileInfo"></div>
-            </div>
-        </div>
-
     </div>
-</div>
-<div class="row mb-1 multiple">
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        給廠商的話
-    </div>
-    <div class="col lightBoxItems p-3 align_center" id="remarkNote"></div>
-
 </div>
 <!-- 審核 -->
 <div class="row mb-1 multiple">
     <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-        &emsp;管理註記
+        管理註記&emsp;
     </div>
-    <div class="col lightBoxItems p-3 align_center" id="adminNote"></div>
-    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+    <div class="col lightBoxItems p-3 align_center" id="idcardApp_adminNote"></div>
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
         審核進度
     </div>
     <div class="col col-lg-2 lightBoxItems p-2 align_center">
-        <select class="form-select" id="status">
+        <select class="form-select" id="idcardApp_status">
             <option value="待審核">待審核</option>
             <option value="待補件">待補件</option>
             <option value="不通過">不通過</option>
             <option value="通過">通過</option>
         </select>
-        <div id="statusText" class="p-1 readOnly"></div>
+        <div id="idcardApp_statusText" class="p-1 readOnly"></div>
     </div>
 </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
-                                <button type="button" class="btn btn-outline-secondary" id="updateBtn">確認修改</button>
+                                <button type="button" class="btn btn-outline-secondary" id="idCardApp_updateBtn">確認修改</button>
                             </div>
                         </form>
                     </div>
@@ -379,10 +360,10 @@
     <ul class="links">
         <li><a href="#">大同大學</a></li>
         <li><a href="./index.html">育成媒合</a></li>
-        <li><a href="./nav-memo2.html">帳戶總攬</a></li>
+        <li><a href="./dashboard.html">帳號總攬</a></li>
     </ul>
     <p class="copyright">
-        大同大學 版權所有&copy;2022 All Rights Reserved.<br>建議使用：IE9.0以上版本或Google
+        大同大學 版權所有&ensp;&copy;&ensp;2022 All Rights Reserved.<br>建議使用：IE9.0以上版本或Google
         Chrome瀏覽器<span>(最佳螢幕解析1280*1024)</span>
     </p>
 </div>

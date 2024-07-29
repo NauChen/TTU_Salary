@@ -5,7 +5,7 @@ var dataset_cultivationRoomOpen = [
         'room': '101-A',
         'company': '馳晶科技股份有限公司',
         'rate': '80,000',
-        'status': '已培育',
+        'status': '啟用',
         'squareMeters': '12.5',
         'adminNote': '共用空間-A',
         'startDate': '2024-01-05',
@@ -20,7 +20,7 @@ var dataset_cultivationRoomOpen = [
         'room': 'A4-102',
         'company': '羿安整合行銷股份有限公司',
         'rate': '12,000',
-        'status': '已培育',
+        'status': '啟用',
         'squareMeters': '10.5',
         'adminNote': '',
         'startDate': '2024-01-05',
@@ -35,7 +35,7 @@ var dataset_cultivationRoomOpen = [
         'room': '714',
         'company': '博濟施生技股份有限公司',
         'rate': '6,000',
-        'status': '已培育',
+        'status': '啟用',
         'squareMeters': '10.0',
         'adminNote': 'R101、R104、R105 三間培育室每月輔導服務費合算80,000元',
         'startDate': '2024-01-05',
@@ -50,7 +50,7 @@ var dataset_cultivationRoomOpen = [
         'room': '101',
         'company': '品庠醫藥生技股份有限公司',
         'rate': '30,000',
-        'status': '已培育',
+        'status': '啟用',
         'squareMeters': '17.4',
         'adminNote': '',
         'startDate': '2024-01-05',
@@ -63,24 +63,24 @@ var dataset_cultivationRoomOpen = [
         'id': '5',
         'building': '青創基地',
         'room': '101-B',
-        'company': '馳晶科技股份有限公司',
+        'company': '',
         'rate': '80,000',
-        'status': '已培育',
+        'status': '啟用',
         'squareMeters': '12.5',
         'adminNote': '共用空間-B',
         'startDate': '2024-01-05',
         'endDate': '2025-01-05',
-        'responsiblePerson': '吳有錢',
+        'responsiblePerson': '',
         'createBy': '孫小明',
         'createDate': '2023-01-15',
     },
     {
-        'id': '5',
+        'id': '6',
         'building': '青創基地',
         'room': '501',
         'company': '',
         'rate': '80,000',
-        'status': '尚未培育',
+        'status': '啟用',
         'squareMeters': '12.5',
         'adminNote': '',
         'startDate': '',
@@ -118,11 +118,22 @@ $(function () {
 
         let cultivationRoomData = dataset_cultivationRoomOpen.find(cultivationRoom => cultivationRoom.id === cultivationRoomId);
         if (cultivationRoomData) {
+            console.log('company', cultivationRoomData.company);
             $('#cultivationSpaceBuilding').val(cultivationRoomData.building);
             $('#cultivationSpaceRoom').val(cultivationRoomData.room);
             $('#cultivationSpaceRate').val(cultivationRoomData.rate);
             $('#cultivationSpaceSquareMeters').val(cultivationRoomData.squareMeters);
             $('#cultivationSpaceRemark').val(cultivationRoomData.adminNote);
+            $('#cultivationSpaceStatus').val(cultivationRoomData.status);
+            if (cultivationRoomData.company) {
+                $('#cultivationSpaceBuilding').attr('disabled', true);
+                $('#cultivationSpaceRoom').attr('disabled', true);
+                $('#cultivationSpaceStatus').attr('disabled', true);
+            } else {
+                $('#cultivationSpaceBuilding').attr('disabled', false);
+                $('#cultivationSpaceRoom').attr('disabled', false);
+                $('#cultivationSpaceStatus').attr('disabled', false);
+            }
 
         } else {
             console.error('Job data not found for id:', cultivationRoomId);

@@ -20,7 +20,7 @@ var dataset_cultivationRoomOpen = [
         'room': 'A4-102',
         'company': '羿安整合行銷股份有限公司',
         'rate': '12,000',
-        'status': '已培育',
+        'status': '啟用',
         'squareMeters': '10.5',
         'adminNote': '',
         'startDate': '2024-01-05',
@@ -35,7 +35,7 @@ var dataset_cultivationRoomOpen = [
         'room': '714',
         'company': '博濟施生技股份有限公司',
         'rate': '6,000',
-        'status': '已培育',
+        'status': '啟用',
         'squareMeters': '10.0',
         'adminNote': 'R101、R104、R105 三間培育室每月輔導服務費合算80,000元',
         'startDate': '2024-01-05',
@@ -50,7 +50,7 @@ var dataset_cultivationRoomOpen = [
         'room': '101',
         'company': '品庠醫藥生技股份有限公司',
         'rate': '30,000',
-        'status': '已培育',
+        'status': '啟用',
         'squareMeters': '17.4',
         'adminNote': '',
         'startDate': '2024-01-05',
@@ -65,7 +65,7 @@ var dataset_cultivationRoomOpen = [
         'room': '101-B',
         'company': '馳晶科技股份有限公司',
         'rate': '80,000',
-        'status': '已培育',
+        'status': '啟用',
         'squareMeters': '12.5',
         'adminNote': '共用空間-B',
         'startDate': '2024-01-05',
@@ -75,12 +75,12 @@ var dataset_cultivationRoomOpen = [
         'createDate': '2023-01-15',
     },
     {
-        'id': '5',
+        'id': '6',
         'building': '青創基地',
         'room': '501',
         'company': '',
         'rate': '80,000',
-        'status': '尚未培育',
+        'status': '啟用',
         'squareMeters': '12.5',
         'adminNote': '',
         'startDate': '',
@@ -228,31 +228,33 @@ $(function () {
         ...commonSettingsTable,
         "data": dataset_cultivationRoomOpen,
         "columns": [
-            { data: 'building', title: "培育區域" },
-            { data: 'room', title: "培育室" },
-            { data: 'company', title: "培育企業" },
-            { data: 'rate', title: "服務費&ensp;/&ensp;月" },
-            { data: 'adminNote', title: "管理備註" },
-            { data: 'status', title: "當前狀態" },
+            { data: 'building', title: "培育區域" }, // 0
+            { data: 'room', title: "培育室" }, // 1
+            { data: 'squareMeters', title: "坪數" }, // 2
+            { data: 'rate', title: "預設服務費/月" }, // 3
+            { data: 'company', title: "培育企業" }, // 4
+            { data: 'adminNote', title: "管理備註" }, // 5
             {
-                data: 'id', title: "詳情",
+                data: 'company', title: "當前狀態", // 6
+                render: function (data) {
+                    if (data) {
+                        return '培育中';
+                    } else {
+                        return '尚未培育';
+                    }
+                }
+            },
+            {
+                data: 'id', title: "詳情", // 7
                 render: function (data) {
                     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#openRoom_DetailsModel" data-id="' + data + '"><i class="fa-solid fa-info px-1"></i></button>'
                 },
             },
             {
-                data: 'id', title: "修改",
+                data: 'id', title: "修改", // 8
                 render: function (data) {
                     return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./cultivationRoomEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>'
                 }
-                // render: function (data, type, row) {
-                //     const status = row.status;
-                //     if (status === '已培育') {
-                //         return '<button class="btn btn-light rounded-circle btn-sm cannotChange" title="培育中不可修改歐！"><i class="fa-solid fa-wrench"></i></button>';
-                //     } else {
-                //         return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./cultivationRoomEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';
-                //     }
-                // }
             },
         ],
         "order": [[0, "desc"], [1, "asc"]],
@@ -266,30 +268,30 @@ $(function () {
                 responsivePriority: 2,
             },
             {
-                targets: [5],
+                targets: [4],
                 responsivePriority: 3,
             },
-            { "searchable": false, "orderable": false, "targets": [6, 7] },
-            { "className": "text-nowrap", "targets": [0, 1, 3, 5] },
-            { "className": "text-center", "targets": [1, 5, 6, 7] },
+            { "searchable": false, "orderable": false, "targets": [7, 8] },
+            { "className": "text-nowrap", "targets": [0, 1, 2, 3, 6] },
+            { "className": "text-lg-center", "targets": [1, 6, 7, 8] },
         ],
         createdRow: function (row, data, dataIndex) {
-            $('td:eq(0)', row).addClass('ps-3');
-            $('td:eq(3)', row).addClass('pe-4');
-            [6, 7].forEach(function (colIdx) {
+            [7, 8].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
             });
-            [3, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
+            [2, 6].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('font-size', '.95rem');
             });
-            $('td:eq(0)', row).css('min-width', '180px');
-            $('td:eq(2)', row).css('min-width', '280px');
+            // $('td:eq(0)', row).addClass('ps-3');
+            // $('td:eq(3)', row).addClass('pe-4');
+            // [3, 5].forEach(function (colIdx) {
+            //     $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
+            // });
+            // $('td:eq(0)', row).css('min-width', '180px');
+            // $('td:eq(2)', row).css('min-width', '280px');
         }
     });
 
-    // $('.cannotChange').click(function () {
-    //     swalToastWarning('培育中不可修改歐！', 'top');
-    // });
 
     $('#cultivationRoom_CloseList').DataTable({
         ...commonSettingsTable,
@@ -298,14 +300,14 @@ $(function () {
             { data: 'createDate', title: "培育室<br>建立日期" },
             { data: 'building', title: "培育區域" },
             { data: 'room', title: "培育室" },
-            { data: 'squareMeters', title: "可用坪數" },
-            { data: 'rate', title: "服務費&ensp;/&ensp;月" },
+            { data: 'squareMeters', title: "坪數" },
+            { data: 'rate', title: "服務費/月" },
             { data: 'adminNote', title: "管理備註" },
             { data: 'removeDate', title: "最後<br>停用日" },
             {
                 data: 'id', title: "歷史<br>紀錄",
                 render: function (data) {
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#closeRoom_DetailsModel" data-id="' + data + '"><i class="fa-solid fa-clock-rotate-left"></i></button>'
+                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#closeRoom_DetailsModel" data-id="' + data + '"><i class="fa-solid fa-book"></i></button>'
                 }, className: 'text-center'
             },
             {
@@ -400,7 +402,7 @@ $(function () {
             $('#close_removeBy').text(closeRoomData.removeBy);
 
             //要加上用closeRoomId去資料庫撈此id的歷史紀錄，放入dataset_roomHistoryListClose
-            
+
         } else {
             console.error('closeRoomData data not found for id:', closeRoomId);
         };

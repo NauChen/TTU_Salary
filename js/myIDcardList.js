@@ -89,7 +89,8 @@ $(function () {
         "data": dataset_myIDcardHistory,
         "columns": [
             {
-                data: 'id', title: '<i class="fa-regular fa-square-check"></i>', render: function (data, type, row, meta) { // 0
+                data: 'id', title: '<i class="fa-regular fa-square-check"></i>',
+                 render: function (data, type, row, meta) { // 0
                     return '<input type="checkbox" class="form-check-input border-primary idCard-checkbox" value=' + data + '>'
                 },
             },

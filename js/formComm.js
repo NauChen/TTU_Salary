@@ -75,8 +75,15 @@ function restrictToDecimal(obj) {
     // 處理小數點後超過一位的情況
     if (parts.length > 1 && parts[1].length > 1) {
         // 將小數點後的數值轉為數字並無條件進位至小數點第一位
-        var roundedDecimal = Math.ceil(parseFloat('0.' + parts[1]) * 10);
-        obj.value = parts[0] + '.' + roundedDecimal;
+        var decimalPart = parseFloat('0.' + parts[1]);
+        var roundedDecimal = Math.ceil(decimalPart * 10) / 10;
+
+        // 如果小數點後的部分被進位到1.0，整數部分也需要進位
+        if (roundedDecimal >= 1.0) {
+            obj.value = (parseInt(parts[0], 10) + 1).toString() + '.0';
+        } else {
+            obj.value = parts[0] + '.' + roundedDecimal.toString().split('.')[1];
+        }
     }
 }
 
@@ -416,7 +423,7 @@ function splitDate(dateString) {
 
 // ※※ 清除函式 - 存取資料專用 ※※
 function clearValues(ids) {
-    ids.forEach(function(id) {
+    ids.forEach(function (id) {
         var element = document.getElementById(id);
         if (element) {
             switch (element.tagName.toLowerCase()) {
