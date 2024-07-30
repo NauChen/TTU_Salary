@@ -129,11 +129,11 @@ $(function () {
             }, // 2
             { data: 'name', title: "姓名" }, // 3
             { data: 'jobTitle', title: "職稱", }, // 4
-            { data: 'library', title: '閱覽<br class="d-none d-lg-black">圖書館', }, // 5
-            { data: 'print', title: '補發<br class="d-none d-lg-black">次數', }, // 6
+            { data: 'library', title: "閱覽<br class='d-none d-lg-block'>圖書館", }, // 5
+            { data: 'print', title: "補發<br class='d-none d-lg-block'>次數", }, // 6
             { data: 'status', title: "備註", }, // 7
             {
-                data: 'id', title: '申請<br class="d-none d-lg-black">補發', // 8
+                data: 'id', title: "申請<br class='d-none d-lg-block'>補發", // 8
                 render: function (data) {
                     return '<a class="btn btn-outline-primary rounded-circle noOutline" href="./idCardReissue.html?id=' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
                 },

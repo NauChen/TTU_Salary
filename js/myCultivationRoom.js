@@ -151,12 +151,12 @@ $(function () {
             { data: 'endDate', title: "進駐結束", }, // 1
             { data: 'building', title: "所在區域" }, // 2
             { data: 'room', title: "室", }, // 3
-            { data: 'thisTimeDeadline', title: '本階段<br class="d-none d-lg-black">到期日', }, // 4
-            { data: 'nextTimeDeadline', title: '下階段<br class="d-none d-lg-black">到期日', }, // 5
-            { data: 'paymentDate', title: '已通知<br class="d-none d-lg-black">付款日', }, // 6
+            { data: 'thisTimeDeadline', title: "本階段<br class='d-none d-lg-block'>到期日", }, // 4
+            { data: 'nextTimeDeadline', title: "下階段<br class='d-none d-lg-block'>到期日", }, // 5
+            { data: 'paymentDate', title: "已通知<br class='d-none d-lg-block'>付款日", }, // 6
             { data: 'remark', title: "備註", }, // 7
             {
-                data: 'id', title: '通知<br class="d-none d-lg-black">匯款', // 8
+                data: 'id', title: "通知<br class='d-none d-lg-block'>匯款", // 8
                 render: function (data, type, row) {
                     if (row.endDiffDays < 0) {
                         return '';

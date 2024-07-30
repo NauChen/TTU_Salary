@@ -1036,7 +1036,7 @@ $(function () {
                 }
             },
             { data: 'paymentPurpose', title: "目的" },  // 4
-            { data: 'amount', title: "付款金額" }, // 5
+            { data: 'amount', title: "付款<br class='d-none d-lg-block'>金額" }, // 5
             { data: 'adminNote', title: "管理備註", }, // 6
             {
                 data: 'id', title: "收據", // 7
@@ -1335,7 +1335,7 @@ $(function () {
         "data": dataset_confirmPaymentParkingSpace,
         "columns": [
             { data: 'building', title: '大樓' }, // 0
-            { data: 'parkingSpaceNum', title: "車位號碼", }, // 1
+            { data: 'parkingSpaceNum', title: "車位<br class='d-none d-lg-block'>號碼", }, // 1
             { data: 'amount', title: "費用", }, // 2
             {
                 data: 'company', title: "承租公司", // 3

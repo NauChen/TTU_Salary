@@ -395,8 +395,8 @@ $(function () {
             { data: 'company', title: "申請人公司", }, // 2
             { data: 'building', title: "大樓", }, // 3
             { data: 'placeOrPrint', title: "號碼", }, // 4
-            { data: 'deadline', title: "原到期日", },  // 5
-            { data: 'paymentDate', title: "新約付款日", },  // 6
+            { data: 'deadline', title: "原合約<br class='d-none d-lg-block'>到期日", },  // 5
+            { data: 'paymentDate', title: "新合約<br class='d-none d-lg-block'>付款日", },  // 6
             { data: 'status', title: "審核進度", }, // 7
             {
                 data: 'id', title: "檢閱", // 8

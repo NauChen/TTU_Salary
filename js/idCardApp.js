@@ -122,9 +122,9 @@ $(function () {
             { data: 'name', title: "申請人姓名", }, // 2
             { data: 'place', title: '培育室位置', }, // 3
             { data: 'paymentDate', title: "付款日", }, // 4
-            { data: 'readLibrary', title: '圖書館<br class="d-none d-lg-block">閱覽', }, // 5
+            { data: 'readLibrary', title: "圖書館<br class='d-none d-lg-block'>閱覽", }, // 5
             {
-                data: 'print', title: '補發<br class="d-none d-lg-block">次數', // 6
+                data: 'print', title: "補發<br class='d-none d-lg-block'>次數", // 6
                 render: function (data) {
                     let reprint = Number(data) - 1;
                     if (data == 1) {

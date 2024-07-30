@@ -233,17 +233,8 @@ $(function () {
             { data: 'squareMeters', title: "坪數" }, // 2
             { data: 'rate', title: "預設服務費/月" }, // 3
             { data: 'company', title: "培育企業" }, // 4
-            { data: 'adminNote', title: "管理備註" }, // 5
-            {
-                data: 'company', title: "當前狀態", // 6
-                render: function (data) {
-                    if (data) {
-                        return '培育中';
-                    } else {
-                        return '尚未培育';
-                    }
-                }
-            },
+            { data: 'endDate', title: "培育到期日" }, // 5
+            { data: 'adminNote', title: "管理備註" }, // 6
             {
                 data: 'id', title: "詳情", // 7
                 render: function (data) {
@@ -272,23 +263,17 @@ $(function () {
                 responsivePriority: 3,
             },
             { "searchable": false, "orderable": false, "targets": [7, 8] },
-            { "className": "text-nowrap", "targets": [0, 1, 2, 3, 6] },
-            { "className": "text-lg-center", "targets": [1, 6, 7, 8] },
+            { "className": "text-nowrap", "targets": [0, 1, 2, 3, 5] },
+            { "className": "text-lg-center", "targets": [5, 7, 8] },
         ],
         createdRow: function (row, data, dataIndex) {
             [7, 8].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
             });
-            [2, 6].forEach(function (colIdx) {
+            [0, 2, 5].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('font-size', '.95rem');
             });
-            // $('td:eq(0)', row).addClass('ps-3');
-            // $('td:eq(3)', row).addClass('pe-4');
-            // [3, 5].forEach(function (colIdx) {
-            //     $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
-            // });
-            // $('td:eq(0)', row).css('min-width', '180px');
-            // $('td:eq(2)', row).css('min-width', '280px');
+            $('td:eq(4)', row).css('min-width', '250px');
         }
     });
 
@@ -303,15 +288,15 @@ $(function () {
             { data: 'squareMeters', title: "坪數" },
             { data: 'rate', title: "服務費/月" },
             { data: 'adminNote', title: "管理備註" },
-            { data: 'removeDate', title: "最後<br>停用日" },
+            { data: 'removeDate', title: "最後<br class='d-none d-lg-block'>停用日" },
             {
-                data: 'id', title: "歷史<br>紀錄",
+                data: 'id', title: "歷史<br class='d-none d-lg-block'>紀錄",
                 render: function (data) {
                     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#closeRoom_DetailsModel" data-id="' + data + '"><i class="fa-solid fa-book"></i></button>'
                 }, className: 'text-center'
             },
             {
-                data: 'id', title: "再次<br>上架",
+                data: 'id', title: "再次<br class='d-none d-lg-block'>上架",
                 render: function (data) {
                     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-id="' + data + '"><i class="fa-solid fa-arrow-rotate-left"></i></button>'
                 }, className: 'text-center'
