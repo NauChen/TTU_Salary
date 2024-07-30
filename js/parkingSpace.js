@@ -3,7 +3,7 @@ var dataset_parkingSpaceOpen = [
         'id': '1',
         'createDate': '2024-06-01',
         'building': '校本部',
-        'basementNum': 'B1-10',
+        'basementNum': '10',
         'rate': '3,000',
         'carType': '汽車',
 
@@ -287,25 +287,26 @@ var dataset_parkingSpaceOpen = [
         'licensePlateNum': ''
     }
 ];
-
-var dataset_cultivationRoomClose = [
+var dataset_parkingSpaceClose = [
     {
-        'id': '1',
+        'id': '20',
         'carateDate': '2019-01-01',
-        'building': '青創基地',
+        'building': '校本部',
         'room': '101',
         'squareMeters': '10.0',
-        'rate': '80,000',
+        'rate': '100',
         'closeDate': '2021-01-01',
+        'adminNote': '',
     },
     {
-        'id': '2',
+        'id': '21',
         'carateDate': '2020-05-01',
-        'building': '綜合工廠培育區',
+        'building': '新德惠大樓',
         'room': 'A4-102',
         'squareMeters': '9.0',
-        'rate': '12,000',
+        'rate': '2,000',
         'closeDate': '2021-05-01',
+        'adminNote': '',
     },
 ];
 var dataset_roomHistoryList1 = [
@@ -386,23 +387,14 @@ $(function () {
         "data": dataset_parkingSpaceOpen,
         "columns": [
             { data: 'building', title: "車位位置" }, // 0
-            { data: 'basementNum', title: "車位號碼" }, // 1
-            { data: 'rate', title: "服務費/月" }, // 2
-            { data: 'company', title: "承租公司" }, // 5
-            { data: 'licensePlateNum', title: "車牌號碼" }, // 6
+            { data: 'basementNum', title: "車位號碼", className: 'text-center' }, // 1
+            { data: 'rate', title: "預設<br class='d-none d-lg-block'>服務費/月" }, // 2
+            { data: 'company', title: "承租公司" }, // 3
+            { data: 'licensePlateNum', title: "車牌號碼" }, // 4
+            { data: 'endDate', title: "承租到期日" }, // 5
+            { data: 'adminNote', title: "管理備註" }, // 6
             {
-                data: 'company', title: "當前狀態",
-                render: function (data) {
-                    if (data) {
-                        return '承租中';
-                    } else {
-                        return '尚未承租';
-                    }
-                }
-            }, // 3
-            { data: 'adminNote', title: "管理備註" }, // 7
-            {
-                data: 'id', title: "詳情", // 8
+                data: 'id', title: "詳情", // 7
                 render: function (data, type, row) {
                     let icon = '';
                     if (row.carType === '汽車') {
@@ -416,17 +408,17 @@ $(function () {
                 },
             },
             {
-                data: 'id', title: "修改", //9
-                // render: function (data) {
-                //     return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./cultivationRoomEdit.html" data-id="' + data + '"><i class="fa-solid fa-wrench"></i></a>'
-                // },
-                render: function (data, type, row) {
-                    if (row.status == '承租中') {
-                        return '<button class="btn btn-light rounded-circle btn-sm cannotChange" title="承租中不可修改歐！"><i class="fa-solid fa-wrench"></i></button>';
-                    } else {
-                        return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpaceEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';
-                    }
-                }, className: 'text-center text-nowrap'
+                data: 'id', title: "修改", //8
+                render: function (data) {
+                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./cultivationRoomEdit.html" data-id="' + data + '"><i class="fa-solid fa-wrench"></i></a>'
+                },
+                // render: function (data, type, row) {
+                //     if (row.status == '承租中') {
+                //         return '<button class="btn btn-light rounded-circle btn-sm cannotChange" title="承租中不可修改歐！"><i class="fa-solid fa-wrench"></i></button>';
+                //     } else {
+                //         return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpaceEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';
+                //     }
+                // }, className: 'text-center text-nowrap'
             },
         ],
         "columnDefs": [
@@ -436,53 +428,49 @@ $(function () {
             },
             {
                 targets: [1],
-            },
-            {
-                targets: [2],
                 responsivePriority: 2,
             },
             {
-                targets: [5],
+                targets: [3],
                 responsivePriority: 3,
             },
-            { "searchable": false, "orderable": false, "targets": [8, 9] },
-            { "className": "text-center", "targets": [0, 1, 3, 4, 6, 8, 9] },
-            { "className": "text-nowrap", "targets": [0, 1, 2, 3, 4, 6] },
+            { "searchable": false, "orderable": false, "targets": [7, 8] },
+            { "className": "text-nowrap", "targets": [0, 1, 2, 4, 5] },
+            { "className": "text-lg-center", "targets": [5, 7, 8] },
         ],
         "order": [[3, "desc"]],
         createdRow: function (row, data, dataIndex) {
-            // $('td:eq(0)', row).addClass('ps-4');
-            $('td:eq(2)', row).addClass('pe-3');
-            [8, 9].forEach(function (colIdx) {
+            [7, 8].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
             });
-            [4].forEach(function (colIdx) {
+            $('td:eq(2)', row).addClass('pe-3');
+            [0, 5].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('min-width', '100px').css('font-size', '.95rem');
             });
         }
     });
 
-    $('#cultivationRoom_CloseList').DataTable({
+    $('#parkingSpace_CloseList').DataTable({
         ...commonSettingsTable,
-        "data": dataset_cultivationRoomClose,
+        "data": dataset_parkingSpaceClose,
         "columns": [
-            { data: 'carateDate', title: "培育室<br>建立日期" },
-            { data: 'building', title: "培育區域" },
-            { data: 'room', title: "培育室" },
-            { data: 'squareMeters', title: "可用坪數" },
-            { data: 'rate', title: "服務費&ensp;/&ensp;月" },
-            { data: 'closeDate', title: "最後停用日" },
+            { data: 'carateDate', title: "停車位<br class='d-none d-lg-block'>建立日期" }, // 0
+            { data: 'building', title: "車位位置" }, // 1
+            { data: 'room', title: "車位號碼", className: 'text-center' }, // 2
+            { data: 'rate', title: "預設<br class='d-none d-lg-block'>服務費/月" }, // 3
+            { data: 'adminNote', title: "管理備註" }, // 4
+            { data: 'closeDate', title: "最後停用日" }, // 5
             {
-                data: 'id', title: "歷史<br>紀錄",
+                data: 'id', title: "歷史<br class='d-none d-lg-block'>紀錄", // 6
                 render: function (data) {
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#closeRoom_Details" data-id="' + data + '"><i class="fa-solid fa-clock-rotate-left"></i></button>'
-                }, className: 'text-center'
+                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#closeRoom_Details" data-id="' + data + '"><i class="fa-solid fa-book"></i></button>'
+                }
             },
             {
-                data: 'id', title: "再次<br>上架",
+                data: 'id', title: "再次<br class='d-none d-lg-block'>上架", // 7
                 render: function (data) {
                     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-id="' + data + '"><i class="fa-solid fa-arrow-rotate-left"></i></button>'
-                }, className: 'text-center'
+                }
             },
         ],
         "columnDefs": [
@@ -499,33 +487,36 @@ $(function () {
                 responsivePriority: 3,
             },
             { "searchable": false, "orderable": false, "targets": [6, 7] },
+            { "className": "text-nowrap", "targets": [0, 1, 2, 3, 5] },
+            { "className": "text-lg-center", "targets": [0, 5, 6, 7] },
         ],
         createdRow: function (row, data, dataIndex) {
-            [0, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
-            });
-            [0, 2, 3, 4, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
-            });
-            [5, 6].forEach(function (colIdx) {
+            [6, 7].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
             });
-            [0, 2, 5].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).addClass('text-center');
+            [0, 1, 3, 5].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
             });
-            [3, 4].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).addClass('pe-5');
-            });
-            $('td:eq(1)', row).addClass('ps-3').css('min-width', '160px');
+            $('td:eq(3)', row).addClass('pe-3');
         },
     });
 
-    $('#roomHistoryList').DataTable({
+    $('#parkingSpaceHistoryList').DataTable({
         ...commonSettingsHistory,
         "data": dataset_roomHistoryList1,
+        "columns": [
+            { data: 'createDate', title: "紀錄日期" }, //0
+            { data: 'squareMeters', title: "坪數" }, //1
+            { data: 'rate', title: "服務費/月", }, //2
+            { data: 'startDate', title: "培育開始", }, //3
+            { data: 'endDate', title: "培育結束", }, //4
+            { data: 'company', title: "培育企業", }, //5
+            { data: 'remark', title: "操作", }, //6
+            { data: 'createBy', title: "操作者", }, //7
+        ],
     });
 
-    $('#roomHistoryList2').DataTable({
+    $('#parkingSpaceHistoryList2').DataTable({
         ...commonSettingsHistory,
         "data": dataset_roomHistoryList2
     });

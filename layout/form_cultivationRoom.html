@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3">
+            <label for="cultivationSpaceBuilding" class="col-lg-auto col-form-label text-nowrap">所在區域：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="cultivationSpaceBuilding">
+                <span class="text-danger" id="danger_cultivationSpaceBuilding"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="cultivationSpaceRoom"
+                class="col-lg-auto col-form-label text-nowrap">&emsp;&emsp;&emsp;室：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="cultivationSpaceRoom">
+                <span class="text-danger" id="danger_cultivationSpaceRoom"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3">
+            <label for="cultivationSpaceRate" class="col-lg-auto col-form-label text-nowrap">月服務費：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="cultivationSpaceRate" onkeyup="restrictToNum(this)"
+                    onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
+                <span class="text-danger" id="danger_cultivationSpaceRate"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="cultivationSpaceSquareMeters" class="col-lg-auto col-form-label text-nowrap">可用坪數：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="cultivationSpaceSquareMeters" onkeyup="restrictToDecimal(this)"
+                onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
+                <span class="text-danger" id="danger_cultivationSpaceSquareMeters"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3">
+            <label for="cultivationSpaceRemark" class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
+            <div class="col">
+                <textarea class="form-control resize-none h_110" id="cultivationSpaceRemark"></textarea>
+                <span class="text-danger" id="danger_cultivationSpaceRemark"></span>
+            </div>
+        </div>
+    </div>
+</div>

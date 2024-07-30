@@ -78,7 +78,7 @@ let commonSettingsTable = {
         $(thead).find('th').addClass('text-center text-nowrap align-middle');
     },
 };
-// DataTable設定 - 搜尋右上，無自選顯示個數(預設10筆)，左上標題"歷程記錄"，所有欄位已定好
+// DataTable設定 - 搜尋右上，無自選顯示個數(預設10筆)，左上標題"歷程記錄"
 let commonSettingsHistory = {
     layout: {
         topStart: function () {
@@ -98,17 +98,16 @@ let commonSettingsHistory = {
             }
         }
     },
-    "columns": [
-        { data: 'createDate', title: "紀錄日期" }, //0
-        { data: 'squareMeters', title: "坪數" }, //1
-        { data: 'rate', title: "服務費", }, //2
-        { data: 'startDate', title: "培育開始", }, //3
-        { data: 'endDate', title: "培育結束", }, //4
-        { data: 'company', title: "培育企業", }, //5
-        { data: 'remark', title: "操作", }, //6
-        { data: 'createBy', title: "操作者", }, //7
-        // { data: 'responsiblePerson', title: "企業代表", },
-    ],
+    // "columns": [
+    //     { data: 'createDate', title: "紀錄日期" }, //0
+    //     { data: 'squareMeters', title: "坪數" }, //1
+    //     { data: 'rate', title: "服務費/月", }, //2
+    //     { data: 'startDate', title: "培育開始", }, //3
+    //     { data: 'endDate', title: "培育結束", }, //4
+    //     { data: 'company', title: "培育企業", }, //5
+    //     { data: 'remark', title: "操作", }, //6
+    //     { data: 'createBy', title: "操作者", }, //7
+    // ],
     "order": [[0, "desc"]],
     "columnDefs": [
         {
@@ -218,6 +217,8 @@ let commonSettingsProvision = {
     },
 
 };
+
+
 
 $(function () {
 

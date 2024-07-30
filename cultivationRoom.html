@@ -49,160 +49,18 @@
                         </div>
                     </div>
                 </div>
-                <!-- Modal 1 -->
-                <div class="modal fade" id="openRoom_DetailsModel" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="openRoom_DetailsModelLabel" aria-hidden="true">
+                <!-- 詳情與歷程 -->
+                <div class="modal fade" id="cultivationRoom_DetailsModel" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="cultivationRoom_DetailsModelLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="openRoom_DetailsModelLabel">培育室詳情</h4>
+                                <h4 class="modal-title" id="cultivationRoom_DetailsModelLabel">培育室紀錄</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="container-fluid">
-                                    <!-- 培育室基本資料 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            所在區域
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="building"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            室
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="room"></div>
-
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            服務費用/月
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="rate"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            坪數
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3 readOnly" id="squareMeters"></div>
-                                    </div>
-                                    <!-- 培育企業相關 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            培育企業
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="companyName"></div>
-
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            培育期間
-                                        </div>
-                                        <div class="col-auto lightBoxItems p-3">
-                                            起：<span class="me-2 readOnly" id="startDate"></span><br
-                                                class="d-none d-lg-block d-xxl-none">
-                                            訖：<span class="readOnly" id="endDate"></span>
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            企業代表
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3 readOnly" id="responsiblePerson"></div>
-                                    </div>
-                                    <!-- 備註 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            管理備註
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="adminNote"></div>
-                                    </div>
-                                    <!-- 建立人員和建立日期 -->
-                                    <div class="row mb-1 multiple">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            建立人員
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="createBy"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            建立日期
-                                        </div>
-                                        <div class="col-12 col-lg-2 lightBoxItems p-3 readOnly" id="createDate"></div>
-                                    </div>
-                                </div>
-                                <div class="container mt-4 border p-3 rounded">
-                                    <table id="roomHistoryList"
-                                        class="table table-hover table-bordered responsive align-middle"
-                                        style="width:100%">
-                                    </table>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary"
-                                    data-bs-dismiss="modal">關閉視窗</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal 2 -->
-                <div class="modal fade" id="closeRoom_DetailsModel" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="closeRoom_DetailsModelLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="closeRoom_DetailsModelLabel">培育室紀錄</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <!-- 培育室基本資料 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            所在區域
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="close_building"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            室
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="close_room"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            服務費用/月
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="close_rate"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            坪數
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3 readOnly" id="close_squareMeters"></div>
-                                    </div>
-                                    <!-- 備註 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            備註事項
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="close_adminNote"></div>
-                                    </div>
-
-                                    <!-- 建立與關閉 -->
-                                    <div class="row mb-1 multiple">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            創建日期
-                                        </div>
-                                        <div class="col col-lg-2 text-nowrap lightBoxItems p-3 readOnly" id="close_createDate"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            創建人員
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="close_createBy"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            最後停用日
-                                        </div>
-                                        <div class="col col-lg-auto text-nowrap lightBoxItems p-3 readOnly" id="close_removeDate"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            最後停用者
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3 readOnly" id="close_removeBy"></div>
-                                    </div>
-                                </div>
-                                <div class="container-fluid mt-4 border p-3 rounded">
-                                    <table id="roomHistoryList2"
-                                        class="table table-hover table-bordered responsive align-middle"
-                                        style="width:100%">
-
-                                    </table>
-                                </div>
-
+                                @@include('layout/model_cultivationRoom.html')
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary"

@@ -1,46 +1,67 @@
-<div class="row">
-    <div class="col-xl-4 col-lg-6 mb-3">
-        <div class="row mb-3">
-            <label for="cultivationSpaceBuilding" class="col-lg-auto col-form-label text-nowrap">所在區域：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="cultivationSpaceBuilding">
-                <span class="text-danger" id="danger_cultivationSpaceBuilding"></span>
-            </div>
+<div class="container-fluid">
+    <!-- 培育室基本資料 -->
+    <div class="row mb-1">
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+            所在區域
         </div>
-        <div class="row mb-3">
-            <label for="cultivationSpaceRoom"
-                class="col-lg-auto col-form-label text-nowrap">&emsp;&emsp;&emsp;室：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="cultivationSpaceRoom">
-                <span class="text-danger" id="danger_cultivationSpaceRoom"></span>
-            </div>
+        <div class="col lightBoxItems p-3 readOnly" id="CR_building"></div>
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+            室
+        </div>
+        <div class="col lightBoxItems p-3 readOnly" id="CR_room"></div>
+
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+            服務費用/月
+        </div>
+        <div class="col lightBoxItems p-3 readOnly" id="CR_rate"></div>
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+            坪數
+        </div>
+        <div class="col col-lg-1 lightBoxItems p-3 readOnly" id="CR_squareMeters"></div>
+    </div>
+    <!-- 培育企業相關 -->
+    <div class="row mb-1" id="venderBox">
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+            培育企業
+        </div>
+        <div class="col lightBoxItems p-3 readOnly" id="CR_companyName"></div>
+
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+            培育期間
+        </div>
+        <div class="col-auto lightBoxItems p-3">
+            起：<span class="me-2 readOnly" id="CR_startDate"></span><br
+                class="d-none d-lg-block d-xxl-none">
+            訖：<span class="readOnly" id="CR_endDate"></span>
+        </div>
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+            企業代表
+        </div>
+        <div class="col col-lg-1 lightBoxItems p-3 readOnly" id="CR_responsiblePerson">
         </div>
     </div>
-    <div class="col-xl-4 col-lg-6 mb-3">
-        <div class="row mb-3">
-            <label for="cultivationSpaceRate" class="col-lg-auto col-form-label text-nowrap">月服務費：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="cultivationSpaceRate" onkeyup="restrictToNum(this)"
-                    onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
-                <span class="text-danger" id="danger_cultivationSpaceRate"></span>
-            </div>
+    <!-- 備註 -->
+    <div class="row mb-1">
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+            管理備註
         </div>
-        <div class="row mb-3">
-            <label for="cultivationSpaceSquareMeters" class="col-lg-auto col-form-label text-nowrap">可用坪數：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="cultivationSpaceSquareMeters" onkeyup="restrictToDecimal(this)"
-                onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
-                <span class="text-danger" id="danger_cultivationSpaceSquareMeters"></span>
-            </div>
-        </div>
+        <div class="col lightBoxItems p-3 readOnly" id="CR_adminNote"></div>
     </div>
-    <div class="col-xl-4 col-lg-6 mb-3">
-        <div class="row mb-3">
-            <label for="cultivationSpaceRemark" class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
-            <div class="col">
-                <textarea class="form-control resize-none h_110" id="cultivationSpaceRemark"></textarea>
-                <span class="text-danger" id="danger_cultivationSpaceRemark"></span>
-            </div>
+    <!-- 建立人員和建立日期 -->
+    <div class="row mb-1 multiple">
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+            建立人員
         </div>
+        <div class="col lightBoxItems p-3 readOnly" id="CR_createBy"></div>
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+            建立日期
+        </div>
+        <div class="col-12 col-lg-2 lightBoxItems p-3 readOnly" id="CR_createDate"></div>
     </div>
+</div>
+<div class="container mt-4 border p-3 rounded">
+    <table id="roomHistoryList"
+        class="table table-hover table-bordered responsive align-middle"
+        style="width:100%">
+    </table>
 </div>
