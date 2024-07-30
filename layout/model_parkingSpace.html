@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <!-- 停車位基本資料 (不可更改) -->
+    <div class="row mb-1">
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+            所在區域
+        </div>
+        <div class="col lightBoxItems p-3 readOnly" id="PS_building"></div>
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+            車位號碼
+        </div>
+        <div class="col lightBoxItems p-3 readOnly" id="PS_basementNum"></div>
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+            服務費用/月
+        </div>
+        <div class="col col-lg-2 lightBoxItems p-3 readOnly" id="PS_rate"></div>
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+            車位類型
+        </div>
+        <div class="col col-lg-1 lightBoxItems p-3 readOnly" id="PS_carType"></div>
+    </div>
+    <!-- 承租者相關 (不可更改) -->
+    <div class="row mb-1" id="venderBox">
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+            承租企業
+        </div>
+        <div class="col lightBoxItems p-3 readOnly align_center" id="PS_companyName"></div>
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            使用車牌
+        </div>
+        <div class="col col-lg-2 text-nowrap lightBoxItems p-3 readOnly align_center" id="PS_licensePlateNum"></div>
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            承租期間
+        </div>
+        <div class="col col-lg-2 lightBoxItems p-3 readOnly align_center">
+            起：<span class="me-2 " id="PS_startDate"></span><br>訖：<span id="PS_endDate"></span>
+        </div>
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            承租人名
+        </div>
+        <div class="col col-lg-1 lightBoxItems p-3 readOnly align_center" id="PS_applicant"></div>
+    </div>
+    <!-- 備註 -->
+    <div class="row mb-1">
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+            管理備註
+        </div>
+        <div class="col lightBoxItems p-3 readOnly" id="PS_adminNote"></div>
+    </div>
+    <!-- 建立人員和建立日期 -->
+    <div class="row mb-1 multiple">
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+            建立人員
+        </div>
+        <div class="col lightBoxItems p-3 readOnly" id="PS_createBy">
+            王小明
+        </div>
+        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
+            建立日期
+        </div>
+        <div class="col-12 col-lg-2 lightBoxItems p-3 readOnly" id="PS_createDate">
+            2011-06-30
+        </div>
+    </div>
+</div>
+<div class="container mt-4 border p-3 rounded">
+    <table id="parkingSpaceHistoryList" class="table table-hover table-bordered responsive align-middle"
+        style="width:100%">
+    </table>
+</div>

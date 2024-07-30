@@ -49,185 +49,19 @@
                         </div>
                     </div>
                 </div>
-                <!-- Modal 1 -->
-                <div class="modal fade" id="openParkingSpace_Details" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="openParkingSpace_DetailsLabel" aria-hidden="true">
+
+                <!-- 詳情與歷程 -->
+                <div class="modal fade" id="parkingSpace_DetailsModel" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="parkingSpace_DetailsModelLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="openParkingSpace_DetailsLabel">停車位詳情</h4>
+                                <h4 class="modal-title" id="parkingSpace_DetailsModelLabel">停車位詳情</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="container-fluid">
-                                    <!-- 停車位基本資料 (不可更改) -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            所在區域
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="building"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            車位號碼
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="basementNum"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            服務費用/月
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="rate"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            目前狀態
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3" id="status"></div>
-                                    </div>
-                                    <!-- 承租者相關 (不可更改) -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            承租企業
-                                        </div>
-                                        <div class="col lightBoxItems p-3 readOnly" id="companyName"></div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            培育期間
-                                        </div>
-                                        <div class="col-auto lightBoxItems p-3">
-                                            起：<span class="me-2" id="startDate">2021-01-01</span><br
-                                                class="d-none d-lg-block d-xxl-none">
-                                            訖：<span id="endDate">2021-12-31</span>
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            承租人
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            康弘昇
-                                        </div>
-                                    </div>
-                                    <!-- 備註 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            備註事項
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            R101、R104、R105 三間培育室每月輔導服務費合算80,000元
-                                        </div>
-                                    </div>
-                                    <!-- 建立人員和建立日期 -->
-                                    <div class="row mb-1 multiple">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            建立人員
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            王小明
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            建立日期
-                                        </div>
-                                        <div class="col-12 col-lg-2 lightBoxItems p-3">
-                                            2011-06-30
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container mt-4 border p-3 rounded">
-                                    <table id="roomHistoryList"
-                                        class="table table-hover table-bordered responsive align-middle"
-                                        style="width:100%">
-                                    </table>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary"
-                                    data-bs-dismiss="modal">關閉視窗</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal 2 -->
-                <div class="modal fade" id="closeRoom_Details" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="closeRoom_DetailsLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="closeRoom_DetailsLabel">培育室紀錄</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <!-- 培育室基本資料 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            所在區域
-                                        </div>
-                                        <div class="col lightBoxItems p-3" id="companyName">
-                                            青創基地
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            室
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            101
-                                        </div>
-
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            服務費用/月
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            80,000
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            坪數
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            15.2
-                                        </div>
-                                    </div>
-                                    <!-- 備註 -->
-                                    <div class="row mb-1">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            備註事項
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            R101、R104、R105 三間培育室每月輔導服務費合算80,000元
-                                        </div>
-                                    </div>
-
-                                    <!-- 建立與關閉 -->
-                                    <div class="row mb-1 multiple">
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
-                                            創建日期
-                                        </div>
-                                        <div class="col col-lg-2 text-nowrap lightBoxItems p-3">
-                                            2011-06-30
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            創建人員
-                                        </div>
-                                        <div class="col lightBoxItems p-3">
-                                            王小明
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            最後停用日
-                                        </div>
-                                        <div class="col col-lg-auto text-nowrap lightBoxItems p-3">
-                                            2011-06-30
-                                        </div>
-                                        <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel">
-                                            最後停用者
-                                        </div>
-                                        <div class="col col-lg-1 lightBoxItems p-3">
-                                            王小明
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container-fluid mt-4 border p-3 rounded">
-                                    <table id="roomHistoryList2"
-                                        class="table table-hover table-bordered responsive align-middle"
-                                        style="width:100%">
-
-                                    </table>
-                                </div>
-
+                                @@include('layout/model_parkingSpace.html')
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary"

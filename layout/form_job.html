@@ -137,10 +137,6 @@
             <div class="form-check align-items-center salaryLabel my-1" id="dollarsItem">
                 <input type="radio" class="form-check-input" name="salaryTypeItem" id="salaryTypeRadio1" value="1">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio1" id="dollars">
-                    <!-- <input type="text" placeholder="NTD" name="dollars" id="dollarsInput"
-                        class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元 -->
                     <input type="text" placeholder="NTD" name="dollars" id="dollarsInput"
                         class="form-control w-50 d-inline-block mx-2 text-end ntdInput" onkeyup="restrictToNum(this)"
                         onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元
@@ -151,17 +147,9 @@
             <div class="form-check align-items-center salaryLabel my-1" id="dollarsToDollarsItem">
                 <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio2" value="2">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio2" id="dollarsToDollars">
-                    <!-- <input type="text" placeholder="NTD" name="dollarsValue1" id="dollarsToDollars_1Input"
-                        class="form-control w-30 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元至 -->
                     <input type="text" placeholder="NTD" name="dollarsValue1" id="dollarsToDollars_1Input"
                         class="form-control w-30 d-inline-block mx-2 text-end ntdInput" onkeyup="restrictToNum(this)"
                         onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元至
-                    <!-- <input type="text" placeholder="NTD" name="dollarsValue2" id="dollarsToDollars_2Input"
-                        class="form-control w-30 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元 -->
                     <input type="text" placeholder="NTD" name="dollarsValue2" id="dollarsToDollars_2Input"
                         class="form-control w-30 d-inline-block mx-2 text-end ntdInput" onkeyup="restrictToNum(this)"
                         onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元
@@ -173,10 +161,6 @@
             <div class="form-check align-items-center salaryLabel my-1" id="moreThenDollarsItem">
                 <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio3" value="3">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio3" id="moreThenDollars">
-                    <!-- <input type="text" placeholder="NTD" name="moreThenDollars" id="moreThenDollarsInput"
-                        class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元以上 -->
                     <input type="text" placeholder="NTD" name="moreThenDollars" id="moreThenDollarsInput"
                         class="form-control w-50 d-inline-block mx-2 text-end ntdInput" onkeyup="restrictToNum(this)"
                         onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元以上
@@ -188,10 +172,6 @@
                 <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio4" value="4">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio4" id="negotiable">
                     <span class="ms-2">面議</span>
-                    <!-- <input type="text" placeholder="NTD" name="negotiable" id="negotiableInput"
-                        class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元以上 -->
                     <input type="text" placeholder="NTD" name="negotiable" id="negotiableInput"
                         class="form-control w-50 d-inline-block mx-2 text-end ntdInput" onkeyup="restrictToNum(this)"
                         onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元以上
@@ -202,10 +182,6 @@
             <div class="form-check align-items-center salaryLabel my-1" id="dollarsPerCaseItem">
                 <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio5" value="5">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio5" id="dollarsPerCase">
-                    <!-- <input type="text" placeholder="NTD" name="dollarsPerCase" id="dollarsPerCaseInput"
-                        class="form-control w-50 d-inline-block mx-2 text-end ntdInput"
-                        oninput="this.value = this.value.replace(/^0+/,'').replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-                        onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元&ensp;/&ensp;件 -->
                     <input type="text" placeholder="NTD" name="dollarsPerCase" id="dollarsPerCaseInput"
                         class="form-control w-50 d-inline-block mx-2 text-end ntdInput" onkeyup="restrictToNum(this)"
                         onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">元&ensp;/&ensp;件

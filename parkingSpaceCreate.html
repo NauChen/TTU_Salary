@@ -29,7 +29,7 @@
 
                     <div class="tabs section-border-radius section-padding">
                         <form class="container-fluid" method="post">
-                            @@include('layout/parkingSpace_form.html')
+                            @@include('layout/form_parkingSpace.html')
                             <div class="row text-center p-3 justify-content-center">
                                 <div class="col-auto">
                                     <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
@@ -55,7 +55,7 @@
     <!-- <script src="./js/myParkingSpaceList.js"></script> -->
     <script>
         $(function () {
-            toggleBuildingOptions('originalBuilding', 'newBuilding', 'originalBuildingBox', 'newBuildingBox');
+            toggleRadioItems('originalBuilding', 'newBuilding', 'originalBuildingBox', 'newBuildingBox');
         });
     </script>
 </body>

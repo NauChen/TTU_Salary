@@ -197,6 +197,7 @@
             <div class="col-12" id="originalBuildingBox">
                 <select name="" id="parkingSpaceBuilding" class="form-select">
                     <option selected disabled>--- 請選擇 ---</option>
+                    <option value="校本部">校本部</option>
                     <option value="新德惠大樓">新德惠大樓</option>
                 </select>
                 <span class="text-danger" id="danger_parkingSpaceBuilding"></span>
@@ -235,9 +236,10 @@
         </div>
 
         <div class="row mb-3">
-            <label for="parkingSpaceRate" class="col-lg-auto col-form-label text-nowrap">月服務費：</label>
+            <label for="parkingSpaceRate" class="col-lg-auto col-form-label text-nowrap">預設服務費/月：</label>
             <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceRate">
+                <input type="text" class="form-control" id="parkingSpaceRate" onkeyup="restrictToNum(this)"
+                    onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
                 <span class="text-danger" id="danger_parkingSpaceRate"></span>
             </div>
         </div>
@@ -308,7 +310,7 @@
     <!-- <script src="./js/myParkingSpaceList.js"></script> -->
     <script>
         $(function () {
-            toggleBuildingOptions('originalBuilding', 'newBuilding', 'originalBuildingBox', 'newBuildingBox');
+            toggleRadioItems('originalBuilding', 'newBuilding', 'originalBuildingBox', 'newBuildingBox');
         });
     </script>
 </body>

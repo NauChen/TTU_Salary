@@ -123,7 +123,7 @@ let commonSettingsHistory = {
             responsivePriority: 3,
         },
         { orderable: false, targets: [1, 2, 3, 4, 6, 7] },
-        { className: "text-center", targets: [0, 3, 4, 7] },
+        { className: "text-lg-center", targets: [0, 3, 4, 7] },
     ],
     "responsive": true,
     language: {

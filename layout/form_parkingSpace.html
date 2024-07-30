@@ -1,126 +1,77 @@
 <div class="row">
-    <div class="col-xl-4 mb-3">
-        <div class="row mb-3">
-            <label for="parkingSpaceName" class="col-lg-auto col-form-label text-nowrap"><span
-                    class="requiredMark">*</span>姓名：</label>
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3 align-items-center">
+            <div class="col-lg-auto col-form-label text-nowrap">所在區域：</div>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="parkingSpaceName" name="parkingSpaceName">
-                <span id="danger_parkingSpaceName" class="text-danger"></span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="BuildingName" id="originalBuilding" checked>
+                    <label class="form-check-label" for="originalBuilding">選擇既有</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="BuildingName" id="newBuilding">
+                    <label class="form-check-label" for="newBuilding">另行輸入</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" id="originalBuildingBox">
+                <select name="" id="parkingSpaceBuilding" class="form-select">
+                    <option selected disabled>--- 請選擇 ---</option>
+                    <option value="校本部">校本部</option>
+                    <option value="新德惠大樓">新德惠大樓</option>
+                </select>
+                <span class="text-danger" id="danger_parkingSpaceBuilding"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="parkingSpaceJobTitle" class="col-lg-auto col-form-label text-nowrap"><span
-                    class="requiredMark">*</span>職稱：</label>
-            <div class="col">
-                <input type="text" class="form-control thisRequired" id="parkingSpaceJobTitle"
-                    name="parkingSpaceJobTitle">
-                <span id="danger_parkingSpaceJobTitle" class="text-danger"></span>
+            <div class="col-12" id="newBuildingBox">
+                <input type="text" class="form-control" id="parkingSpaceBuildingNew">
+                <span class="text-danger" id="danger_parkingSpaceBuildingNew"></span>
             </div>
         </div>
+        <div class="row mb-3 align-items-center">
+            <div class="col-lg-auto col-form-label text-nowrap">車位種類：</div>
+            <div class="col">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="carType" id="car" value="汽車" checked>
+                    <label class="form-check-label" for="car">汽車</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="carType" id="moto" value="機車">
+                    <label class="form-check-label" for="moto">機車</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 mb-3">
         <div class="row mb-3">
-            <label for="parkingSpaceExt" class="col-lg-auto col-form-label text-nowrap">&ensp;分機：</label>
+            <label for="basementNum" class="col-lg-auto col-form-label text-nowrap">車位號碼：</label>
             <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceExt" name="parkingSpaceExt"
-                    onkeyup="restrictToUniformNum(this)">
-                <span id="danger_parkingSpaceExt" class="text-danger"></span>
+                <input type="text" class="form-control" id="basementNum">
+                <span class="text-danger" id="danger_basementNum"></span>
             </div>
         </div>
+        <div class="row mb-3 salaryRadio px-2 py-2 mx-1 border-success">
+            <div>&#10551;&ensp;請依格式輸入，例：B1-01。</div>
+        </div>
+
         <div class="row mb-3">
-            <label for="licensePlateNum" class="col-lg-auto col-form-label text-nowrap"><span
-                    class="requiredMark">*</span>車牌號碼：&emsp;</label>
+            <label for="parkingSpaceRate" class="col-lg-auto col-form-label text-nowrap">預設服務費/月：</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="licensePlateNum"
-                    onkeyup="restrictToUpperCaseNumberHyphen(this)" name="licensePlateNum">
-                <span id="danger_licensePlateNum" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="parkingSpaceStartDate" class="col-lg-auto col-form-label text-nowrap"><span
-                    class="requiredMark">*</span>預計起租日：</label>
-            <div class="col">
-                <input type="date" class="form-control thisRequired" id="parkingSpaceStartDate"
-                    name="parkingSpaceStartDate">
-                <span id="danger_parkingSpaceStartDate" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="parkingSpaceIDNum" class="col-lg-auto col-form-label text-nowrap"><span
-                    class="requiredMark">*</span>身分證字號：</label>
-            <div class="col">
-                <input type="text" class="form-control thisRequired" id="parkingSpaceIDNum"
-                    onkeyup="restrictFirstUpperSecondNum(this)" name="parkingSpaceIDNum">
-                <span id="danger_parkingSpaceIDNum" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="parkingSpacePhone" class="col-lg-auto col-form-label text-nowrap"><span
-                    class="requiredMark">*</span>電話/手機：</label>
-            <div class="col">
-                <input type="text" class="form-control thisPhone thisRequired" id="parkingSpacePhone"
-                    onkeyup="restrictToNumberHyphen(this)" onblur="checkThisPhone.call(this)" name="parkingSpacePhone">
-                <span id="danger_parkingSpacePhone" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="parkingSpaceEmail" class="col-lg-auto col-form-label text-nowrap"><span
-                    class="requiredMark">*</span>E-mail：&emsp;</label>
-            <div class="col">
-                <input type="text" class="form-control thisEmail thisRequired" id="parkingSpaceEmail"
-                    onkeyup="restrictToValidChars(this)" onblur="checkThisEmail.call(this)" name="parkingSpaceEmail">
-                <span id="danger_parkingSpaceEmail" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-3 d-none">
-            <label for="parkingSpaceType" class="col-lg-auto col-form-label text-nowrap">車位類型：&emsp;</label>
-            <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceType" name="parkingSpaceType" readonly>
+                <input type="text" class="form-control" id="parkingSpaceRate" onkeyup="restrictToNum(this)"
+                    onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
+                <span class="text-danger" id="danger_parkingSpaceRate"></span>
             </div>
         </div>
 
     </div>
-    <div class="col-xl-8 mb-3">
-        <div class="row mb-3 justify-content-center align-items-center">
-            <div class="col-12 col-sm-auto col-form-label text-nowrap"><span class="requiredMark">*</span>上傳行照內頁：</div>
-            <div class="col-auto" id="btn_carBox">
-                <label id="car_upload_label" class="btn btn-outline-secondary">
-                    <input id="upload_car_img" type="file" accept="image/*" class="d-none">
-                    <i class="fa-solid fa-car mx-1"></i><br class="d-lg-none">行照
-                </label>
-            </div>
-            <div class="col-auto" id="btn_motoBox">
-                <label id="bike_upload_label" class="btn btn-outline-secondary">
-                    <input id="upload_moto_img" type="file" accept="image/*" class="d-none"><i
-                        class="fa-solid fa-motorcycle  mx-1"></i><br class="d-lg-none">行照
-                </label>
-            </div>
-        </div>
-        <div class="row">
-            <div id="croppie-container"></div>
-        </div>
-        <div class="row mb-3 justify-content-around">
-            <button id="crop_img" class="btn btn-secondary col-auto mb-1"><i
-                    class="fa-solid fa-scissors"></i>&ensp;裁剪圖片</button>
-            <span id="danger_parkingSpaceImg" class="text-danger text-center">&ensp;&#10551;上傳行照內頁後，請點擊裁剪圖片。</span>
-        </div>
-    </div>
-</div>
-<div class="row p-3 justify-content-center">
-    <div class="col-12 fw-bold  ">申請人聲明：</div>
-    <div class="col-12">
-        <div class="row ms-3">
-            <div class="col-auto">1.</div>
+    <div class="col-xl-4 col-lg-6 mb-3">
+        <div class="row mb-3">
+            <label for="parkingSpaceRemark" class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
             <div class="col">
-                本份資料均填寫屬實，進駐大同大學期間，願意完全遵守大同大學有關人事及校園安全規定條則，並不得任意使用大同大學名稱，如有違背，將立即喪失進駐資格，並歸還任何大同大學所核發校園出入等相關證件與權限。
+                <textarea class="form-control resize-none h_110" id="parkingSpaceRemark"></textarea>
+                <span class="text-danger" id="danger_parkingSpaceRemark"></span>
             </div>
-        </div>
-        <div class="row ms-3">
-            <div class="col-auto">2.</div>
-            <div class="col">此為出入停車場並停放車輛與指定位置之用，不作其他識別用途。</div>
-        </div>
-        <div class="row ms-3">
-            <div class="col-auto">3.</div>
-            <div class="col text-decoration-underline fw-bold">印出申請書並簽名後，繳費完後交至<span
-                    class="fw-bold text-danger">大同大學研發處</span>，才算申請完成喔！</div>
         </div>
     </div>
 </div>

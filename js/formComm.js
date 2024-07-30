@@ -152,6 +152,32 @@ function handleSalaryChoose(selectedOption) {
     }
 }
 
+// ※※ 兩個單選切換顯示輸入 ※※
+function toggleRadioItems(originalBuildingId, newBuildingId, originalBuildingBoxId, newBuildingBoxId) {
+    // 單選切換顯示
+    const $originalBuilding = $('#' + originalBuildingId);
+    const $newBuilding = $('#' + newBuildingId);
+    const $originalBuildingBox = $('#' + originalBuildingBoxId);
+    const $newBuildingBox = $('#' + newBuildingBoxId);
+
+    function updateVisibility() {
+        if ($originalBuilding.is(':checked')) {
+            $originalBuildingBox.show();
+            $newBuildingBox.hide();
+        } else if ($newBuilding.is(':checked')) {
+            $originalBuildingBox.hide();
+            $newBuildingBox.show();
+        }
+    }
+
+    // 初始化顯示狀態
+    updateVisibility();
+
+    // 綁定事件監聽器
+    $originalBuilding.on('change', updateVisibility);
+    $newBuilding.on('change', updateVisibility);
+}
+
 // ※※ 時間函式 - 職缺表單專用 ※※
 //   將組合過的時間拆開
 function splitJobTime(jobTime) {

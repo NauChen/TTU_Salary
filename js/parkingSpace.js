@@ -1,4 +1,4 @@
-var dataset_parkingSpaceOpen = [
+var dataset_parkingSpaceAll = [
     {
         'id': '1',
         'createDate': '2024-06-01',
@@ -7,7 +7,7 @@ var dataset_parkingSpaceOpen = [
         'rate': '3,000',
         'carType': '汽車',
 
-        'status': '承租中',
+        'status': '啟用',
         'company': '馳晶科技股份有限公司',
         'startDate': '2024-06-01',
         'endDate': '2024-07-01',
@@ -96,7 +96,8 @@ var dataset_parkingSpaceOpen = [
         'startDate': '',
         'endDate': '',
         'licensePlateNum': ''
-    }, {
+    },
+    {
         'id': '6',
         'createDate': '2024-06-06',
         'building': '新德惠大樓',
@@ -285,9 +286,7 @@ var dataset_parkingSpaceOpen = [
         'startDate': '',
         'endDate': '',
         'licensePlateNum': ''
-    }
-];
-var dataset_parkingSpaceClose = [
+    },
     {
         'id': '20',
         'carateDate': '2019-01-01',
@@ -297,6 +296,7 @@ var dataset_parkingSpaceClose = [
         'rate': '100',
         'closeDate': '2021-01-01',
         'adminNote': '',
+        'status': '停用',
     },
     {
         'id': '21',
@@ -306,85 +306,67 @@ var dataset_parkingSpaceClose = [
         'squareMeters': '9.0',
         'rate': '2,000',
         'closeDate': '2021-05-01',
-        'adminNote': '',
+        'adminNote': '心血來潮想說停用好惹',
+        'status': '停用',
     },
 ];
-var dataset_roomHistoryList1 = [
+
+var dataset_parkingSpaceHistory = [
     {
         "createDate": "2019-01-19",
-        "squareMeters": "56.4",
-        "rate": "30,000",
+        "rate": "2,000",
         "startDate": "-",
         "endDate": "-",
         "company": "-",
-        "responsiblePerson": "-",
+        "licensePlateNum": "-",
         "remark": "啟用",
         "createBy": "王大明",
     },
     {
         "createDate": "2020-01-20",
-        "squareMeters": "56.4",
-        "rate": "1,300,000",
+        "rate": "3,000",
         "startDate": "2020-03-01",
         "endDate": "2020-09-30",
         "company": "冠陞企業管理顧問股份有限公司",
-        "responsiblePerson": "陳智揚",
+        "licensePlateNum": "1234-MN",
         "remark": "-",
         "createBy": "王大明",
     },
     {
         "createDate": "2020-02-20",
-        "squareMeters": "56.4",
-        "rate": "1,300,000",
+        "rate": "2,500",
         "startDate": "2020-03-01",
         "endDate": "2020-09-30",
         "company": "冠陞企業管理顧問股份有限公司",
-        "responsiblePerson": "陳智揚",
+        "licensePlateNum": "1234-MN",
         "remark": "一位躺在大門財富也能體驗高速，起點他的。",
-        "createBy": "王大明",
-    },
-];
-var dataset_roomHistoryList2 = [
-    {
-        "createDate": "2019-01-19",
-        "squareMeters": "56.4",
-        "rate": "30,000",
-        "startDate": "-",
-        "endDate": "-",
-        "company": "-",
-        "responsiblePerson": "-",
-        "remark": "啟用",
-        "createBy": "王大明",
-    },
-    {
-        "createDate": "2019-01-20",
-        "squareMeters": "56.4",
-        "rate": "30,000",
-        "startDate": "2020-03-01",
-        "endDate": "2020-09-30",
-        "company": "冠陞企業管理顧問股份有限公司",
-        "responsiblePerson": "陳智揚",
-        "remark": "-",
-        "createBy": "王大明",
-    },
-    {
-        "createDate": "2020-05-18",
-        "squareMeters": "15.28",
-        "rate": "30,000",
-        "startDate": "2019-10-01",
-        "endDate": "2020-09-30",
-        "company": "冠陞企業管理顧問股份有限公司",
-        "responsiblePerson": "陳智揚",
-        "remark": "-",
         "createBy": "王大明",
     },
 ];
 
 
 $(function () {
+    const dataset_parkingSpace_OpenList = dataset_parkingSpaceAll.filter(item => item.status === "啟用");
+    const dataset_parkingSpace_CloseList = dataset_parkingSpaceAll.filter(item => item.status === "停用");
+
+    $('#parkingSpaceHistoryList').DataTable({
+        ...commonSettingsHistory,
+        "data": dataset_parkingSpaceHistory,
+        "columns": [
+            { data: 'createDate', title: "紀錄日期" }, //0
+            { data: 'licensePlateNum', title: "承租車牌", }, //1
+            { data: 'rate', title: "服務費/月", }, //2
+            { data: 'startDate', title: "承租開始", }, //3
+            { data: 'endDate', title: "承租結束", }, //4
+            { data: 'company', title: "承租企業", }, //5
+            { data: 'remark', title: "操作紀錄", }, //6
+            { data: 'createBy', title: "操作者", }, //7
+        ],
+    });
+
     $('#parkingSpace_OpenList').DataTable({
         ...commonSettingsTable,
-        "data": dataset_parkingSpaceOpen,
+        "data": dataset_parkingSpace_OpenList,
         "columns": [
             { data: 'building', title: "車位位置" }, // 0
             { data: 'basementNum', title: "車位號碼", className: 'text-center' }, // 1
@@ -404,21 +386,14 @@ $(function () {
                     } else {
                         icon = '<i class="fa-solid fa-info"></i>';
                     }
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm car_icon" data-bs-toggle="modal" data-bs-target="#openParkingSpace_Details" data-id="' + data + '">' + icon + '</button>';
+                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm car_icon" data-bs-toggle="modal" data-bs-target="#parkingSpace_DetailsModel" data-id="' + data + '">' + icon + '</button>';
                 },
             },
             {
                 data: 'id', title: "修改", //8
                 render: function (data) {
-                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./cultivationRoomEdit.html" data-id="' + data + '"><i class="fa-solid fa-wrench"></i></a>'
+                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpaceEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>'
                 },
-                // render: function (data, type, row) {
-                //     if (row.status == '承租中') {
-                //         return '<button class="btn btn-light rounded-circle btn-sm cannotChange" title="承租中不可修改歐！"><i class="fa-solid fa-wrench"></i></button>';
-                //     } else {
-                //         return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpaceEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';
-                //     }
-                // }, className: 'text-center text-nowrap'
             },
         ],
         "columnDefs": [
@@ -438,7 +413,7 @@ $(function () {
             { "className": "text-nowrap", "targets": [0, 1, 2, 4, 5] },
             { "className": "text-lg-center", "targets": [5, 7, 8] },
         ],
-        "order": [[3, "desc"]],
+        "order": [[3, "asc"]],
         createdRow: function (row, data, dataIndex) {
             [7, 8].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
@@ -452,7 +427,7 @@ $(function () {
 
     $('#parkingSpace_CloseList').DataTable({
         ...commonSettingsTable,
-        "data": dataset_parkingSpaceClose,
+        "data": dataset_parkingSpace_CloseList,
         "columns": [
             { data: 'carateDate', title: "停車位<br class='d-none d-lg-block'>建立日期" }, // 0
             { data: 'building', title: "車位位置" }, // 1
@@ -463,7 +438,7 @@ $(function () {
             {
                 data: 'id', title: "歷史<br class='d-none d-lg-block'>紀錄", // 6
                 render: function (data) {
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#closeRoom_Details" data-id="' + data + '"><i class="fa-solid fa-book"></i></button>'
+                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#parkingSpace_DetailsModel" data-id="' + data + '"><i class="fa-solid fa-book"></i></button>'
                 }
             },
             {
@@ -494,63 +469,61 @@ $(function () {
             [6, 7].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
             });
-            [0, 1, 3, 5].forEach(function (colIdx) {
+            [0, 3, 5].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
             });
             $('td:eq(3)', row).addClass('pe-3');
         },
     });
 
-    $('#parkingSpaceHistoryList').DataTable({
-        ...commonSettingsHistory,
-        "data": dataset_roomHistoryList1,
-        "columns": [
-            { data: 'createDate', title: "紀錄日期" }, //0
-            { data: 'squareMeters', title: "坪數" }, //1
-            { data: 'rate', title: "服務費/月", }, //2
-            { data: 'startDate', title: "培育開始", }, //3
-            { data: 'endDate', title: "培育結束", }, //4
-            { data: 'company', title: "培育企業", }, //5
-            { data: 'remark', title: "操作", }, //6
-            { data: 'createBy', title: "操作者", }, //7
-        ],
-    });
-
-    $('#parkingSpaceHistoryList2').DataTable({
-        ...commonSettingsHistory,
-        "data": dataset_roomHistoryList2
-    });
-
     // 同步燈箱顯示資料
-    // $('#openParkingSpace_Details').on('show.bs.modal', function (event) {
-    //     let button = $(event.relatedTarget);
-    //     let openPSId = String(button.data('id'));
-    //     // console.log('openRoom Id:', openPSId);
-    //     let openParkingSpaceData = dataset_cultivationRoomOpen.find(openRoom => openRoom.id === openPSId);
-    //     if (openParkingSpaceData) {
-    //         $('#building').text(openParkingSpaceData.building);
-    //         $('#basementNum').text(openParkingSpaceData.basementNum);
-    //         $('#companyName').text(openParkingSpaceData.company);
-    //         $('#rate').text(openParkingSpaceData.rate);
-    //         $('#status').text(openParkingSpaceData.status);
-    //         $('#carType').text(openParkingSpaceData.carType);
-    //         $('#startDate').text(openParkingSpaceData.startDate);
-    //         $('#endDate').text(openParkingSpaceData.endDate);
-    //         $('#adminNote').text(openParkingSpaceData.adminNote);
-    //         $('#createBy').text(openParkingSpaceData.createBy);
-    //         $('#createDate').text(openParkingSpaceData.createDate);
+    $('#parkingSpace_DetailsModel').on('show.bs.modal', function (event) {
+        let button = $(event.relatedTarget);
+        let thisPSId = String(button.data('id'));
+        // console.log('thisPS Id:', thisPSId);
+        let parkingSpaceData = dataset_parkingSpaceAll.find(parkingSpace => parkingSpace.id === thisPSId);
+        if (parkingSpaceData) {
+            $('#venderBox').hide();
+            $('#PS_building').text(parkingSpaceData.building);
+            $('#PS_basementNum').text(parkingSpaceData.basementNum);
+            $('#PS_rate').text(parkingSpaceData.rate);
+            $('#PS_carType').text(parkingSpaceData.carType);
+            $('#PS_adminNote').text(parkingSpaceData.adminNote);
+            $('#PS_createBy').text(parkingSpaceData.createBy);
+            $('#PS_createDate').text(parkingSpaceData.createDate);
 
-    //         //要加上用openPSId去資料庫撈此id的歷史紀錄，放入dataset_parkingSpaceOpen
+            if (parkingSpaceData.status === "啟用") {
+                $('#venderBox').show();
+                $('#PS_companyName').text(parkingSpaceData.company);
+                $('#PS_startDate').text(parkingSpaceData.startDate);
+                $('#PS_endDate').text(parkingSpaceData.endDate);
+                $('#PS_applicant').text(parkingSpaceData.name);
+                $('#PS_licensePlateNum').text(parkingSpaceData.licensePlateNum);
+            }
 
-    //     } else {
-    //         console.error('openParkingSpaceData data not found for id:', openPSId);
-    //     };
+        } else {
+            console.error('parkingSpaceData data not found for id:', thisPSId);
+        };
+    });
+
+    //要加上用thisPSId去資料庫撈此id的歷史紀錄，放入dataset_parkingSpaceHistory
+    // 使用 AJAX 發送請求到後端
+    // $.ajax({
+    //     url: '/your-endpoint', // 後端端點
+    //     method: 'POST',
+    //     data: { roomId: thisRoomId },
+    //     success: function (response) {
+    //         console.log('成功傳遞 roomId:', response);
+    //     },
+    //     error: function (jqXHR, textStatus, errorThrown) {
+    //         console.error('傳遞 roomId 時出錯:', textStatus, errorThrown);
+    //     }
     // });
 
 
-    $('.cannotChange').click(function () {
-        swalToastWarning('承租中不可修改歐！', 'top');
-    });
+    // $('.cannotChange').click(function () {
+    //     swalToastWarning('承租中不可修改歐！', 'top');
+    // });
 
 
 });

@@ -174,133 +174,6 @@ var dataset_cultivationRoomHistory = [
 ]
 
 $(function () {
-    // $('#cultivationRoom_OpenList').DataTable({
-    //     ...commonSettingsTable,
-    //     "data": dataset_cultivationRoomOpen,
-    //     "columns": [
-    //         { data: 'building', title: "培育區域" }, // 0
-    //         { data: 'room', title: "培育室" }, // 1
-    //         { data: 'squareMeters', title: "坪數" }, // 2
-    //         { data: 'rate', title: "預設<br class='d-none d-lg-block'>服務費/月" }, // 3
-    //         { data: 'company', title: "培育企業" }, // 4
-    //         { data: 'endDate', title: "培育到期日" }, // 5
-    //         { data: 'adminNote', title: "管理備註" }, // 6
-    //         {
-    //             data: 'id', title: "詳情", // 7
-    //             render: function (data) {
-    //                 // return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#openRoom_DetailsModel" data-id="' + data + '"><i class="fa-solid fa-info px-1"></i></button>'
-    //                 return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#cultivationRoom_DetailsModel" data-id="' + data + '"><i class="fa-solid fa-info px-1"></i></button>'
-    //             },
-    //         },
-    //         {
-    //             data: 'id', title: "修改", // 8
-    //             render: function (data) {
-    //                 return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./cultivationRoomEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>'
-    //             }
-    //         },
-    //     ],
-    //     "order": [[0, "desc"], [1, "asc"]],
-    //     "columnDefs": [
-    //         {
-    //             targets: [0],
-    //             responsivePriority: 1,
-    //         },
-    //         {
-    //             targets: [1],
-    //             responsivePriority: 2,
-    //         },
-    //         {
-    //             targets: [4],
-    //             responsivePriority: 3,
-    //         },
-    //         { "searchable": false, "orderable": false, "targets": [7, 8] },
-    //         { "className": "text-nowrap", "targets": [0, 1, 2, 3, 5] },
-    //         { "className": "text-lg-center", "targets": [5, 7, 8] },
-    //     ],
-    //     createdRow: function (row, data, dataIndex) {
-    //         [7, 8].forEach(function (colIdx) {
-    //             $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
-    //         });
-    //         [0, 2, 5].forEach(function (colIdx) {
-    //             $('td:eq(' + colIdx + ')', row).css('font-size', '.95rem');
-    //         });
-    //         $('td:eq(4)', row).css('min-width', '250px');
-    //         [2, 3].forEach(function (colIdx) {
-    //             $('td:eq(' + colIdx + ')', row).addClass('pe-3');
-    //         });
-    //     }
-    // });
-
-    // $('#cultivationRoom_CloseList').DataTable({
-    //     ...commonSettingsTable,
-    //     "data": dataset_cultivationRoomClose,
-    //     "columns": [
-    //         { data: 'createDate', title: "培育室<br class='d-none d-lg-block'>建立日期" },
-    //         { data: 'building', title: "培育區域" },
-    //         { data: 'room', title: "培育室" },
-    //         { data: 'squareMeters', title: "坪數" },
-    //         { data: 'rate', title: "預設<br class='d-none d-lg-block'>服務費/月" },
-    //         { data: 'adminNote', title: "管理備註" },
-    //         { data: 'removeDate', title: "最後<br class='d-none d-lg-block'>停用日" },
-    //         {
-    //             data: 'id', title: "歷史<br class='d-none d-lg-block'>紀錄",
-    //             render: function (data) {
-    //                 return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#closeRoom_DetailsModel" data-id="' + data + '"><i class="fa-solid fa-book"></i></button>'
-    //             }
-    //         },
-    //         {
-    //             data: 'id', title: "再次<br class='d-none d-lg-block'>上架",
-    //             render: function (data) {
-    //                 return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-id="' + data + '"><i class="fa-solid fa-arrow-rotate-left"></i></button>'
-    //             }
-    //         },
-    //     ],
-    //     "columnDefs": [
-    //         {
-    //             targets: [1],
-    //             responsivePriority: 1,
-    //         },
-    //         {
-    //             targets: [2],
-    //             responsivePriority: 2,
-    //         },
-    //         {
-    //             targets: [6],
-    //             responsivePriority: 3,
-    //         },
-    //         { "searchable": false, "orderable": false, "targets": [7, 8] },
-    //         { "className": "text-nowrap", "targets": [0, 2, 3, 4, 6] },
-    //         { "className": "text-lg-center", "targets": [0, 2, 6, 7, 8] },
-    //     ],
-    //     createdRow: function (row, data, dataIndex) {
-    //         $('td:eq(1)', row).addClass('ps-3').css('min-width', '180px');
-    //         [0, 6].forEach(function (colIdx) {
-    //             $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
-    //         });
-    //         [7, 8].forEach(function (colIdx) {
-    //             $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
-    //         });
-    //         [3, 4].forEach(function (colIdx) {
-    //             $('td:eq(' + colIdx + ')', row).addClass('pe-3');
-    //         });
-
-    //     },
-    // });
-
-    // $('#roomHistoryList').DataTable({
-    //     ...commonSettingsHistory,
-    //     "data": dataset_roomHistoryListOpen,
-    //     "columns": [
-    //         { data: 'createDate', title: "紀錄日期" }, //0
-    //         { data: 'squareMeters', title: "坪數" }, //1
-    //         { data: 'rate', title: "服務費/月", }, //2
-    //         { data: 'startDate', title: "培育開始", }, //3
-    //         { data: 'endDate', title: "培育結束", }, //4
-    //         { data: 'company', title: "培育企業", }, //5
-    //         { data: 'remark', title: "操作紀錄", }, //6
-    //         { data: 'createBy', title: "操作者", }, //7
-    //     ],
-    // });
     const dataset_cultivationRoom_OpenList = dataset_cultivationRoomAll.filter(item => item.status === "啟用");
     const dataset_cultivationRoom_CloseList = dataset_cultivationRoomAll.filter(item => item.status === "停用");
     $('#cultivationRoom_OpenList').DataTable({
@@ -317,7 +190,6 @@ $(function () {
             {
                 data: 'id', title: "詳情", // 7
                 render: function (data) {
-                    // return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#openRoom_DetailsModel" data-id="' + data + '"><i class="fa-solid fa-info px-1"></i></button>'
                     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#cultivationRoom_DetailsModel" data-id="' + data + '"><i class="fa-solid fa-info px-1"></i></button>'
                 },
             },
@@ -344,7 +216,7 @@ $(function () {
             },
             { "searchable": false, "orderable": false, "targets": [7, 8] },
             { "className": "text-nowrap", "targets": [0, 1, 2, 3, 5] },
-            { "className": "text-lg-center", "targets": [5, 7, 8] },
+            { "className": "text-lg-center", "targets": [1, 5, 7, 8] },
         ],
         createdRow: function (row, data, dataIndex) {
             [7, 8].forEach(function (colIdx) {
@@ -452,11 +324,24 @@ $(function () {
                 $('#CR_endDate').text(thisRoomData.endDate);
                 $('#CR_responsiblePerson').text(thisRoomData.responsiblePerson);
             }
-            //要加上用thisRoomId去資料庫撈此id的歷史紀錄，放入dataset_roomHistoryListOpen
 
         } else {
             console.error('thisRoomData data not found for id:', thisRoomId);
         };
+
+        // 要加上用thisRoomId去資料庫撈此id的歷史紀錄，放入dataset_cultivationRoomHistory
+        // 使用 AJAX 發送請求到後端
+        // $.ajax({
+        //     url: '/your-endpoint', // 後端端點
+        //     method: 'POST',
+        //     data: { roomId: thisRoomId },
+        //     success: function (response) {
+        //         console.log('成功傳遞 roomId:', response);
+        //     },
+        //     error: function (jqXHR, textStatus, errorThrown) {
+        //         console.error('傳遞 roomId 時出錯:', textStatus, errorThrown);
+        //     }
+        // });
     });
 
 });
