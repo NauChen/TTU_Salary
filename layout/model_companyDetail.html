@@ -1,0 +1,147 @@
+<div class="modal-body">
+    <div class="container-fluid">
+        <!-- 公司名稱、申請日期(不可改) -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center ">
+                公司名稱
+            </div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center readOnly" id="companyName"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                啟用日期
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="createDate"></div>
+        </div>
+        <!-- 主要營業項目 -->
+        <div class="row mb-1">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 ">
+                主要<br class="d-none d-lg-block">營業項目
+            </div>
+            <div class="col lightBoxItems p-3 changeTextarea_lg_items align_center readOnly" id="companyDescription"></div>
+        </div>
+
+        <!-- 統編、成立日、資本額 -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center ">
+                統一編號
+            </div>
+            <div class="col lightBoxItems p-3 changeUniformNum_items align_center readOnly" id="uniformNum">
+            </div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center ">
+                成立日期
+            </div>
+            <div class="col lightBoxItems p-3 changeDate_items align_center readOnly" id="creationDate"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center ">
+                資本額
+            </div>
+            <div class="col lightBoxItems p-3 changeMoney_items align_center readOnly" id="capitalAmount"></div>
+        </div>
+
+        <!-- 員工數、負責人、推薦人 -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center ">
+                員工人數
+            </div>
+            <div class="col lightBoxItems p-3 changeMoney_items align_center readOnly" id="employeesNum"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center ">
+                負責人&emsp;</div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center readOnly" id="responsiblePerson">
+            </div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                推薦人
+            </div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center readOnly" id="referrer"></div>
+        </div>
+
+        <!-- 電話、E-mail、Line -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center ">
+                聯絡電話
+            </div>
+            <div class="col lightBoxItems p-3 changePhone_items align_center readOnly" id="phoneNum"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center ">
+                電子信箱
+            </div>
+            <div class="col lightBoxItems p-3 changeEmail_items align_center readOnly" id="companyEmail"></div>
+            <div class="col-12 col-lg-1 text-nowrap lightBoxLabel inlineLabel align_center text-lg-center py-2"><i
+                    class="fa-brands fa-line fs-1"></i></div>
+            <div class="col lightBoxItems p-3 changeLineID_items align_center readOnly" id="lineId"></div>
+        </div>
+
+        <!-- 聯絡人、分機、職稱 -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center ">
+                主聯絡人
+            </div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center readOnly" id="contactPerson"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                分機號碼
+            </div>
+            <div class="col lightBoxItems p-3 changeUniformNum_items align_center readOnly" id="ext"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center ">
+                職務名
+            </div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center readOnly" id="jobTitle"></div>
+        </div>
+
+        <!-- 登記地址、通訊地址 -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center ">
+                登記地址
+            </div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center readOnly" id="companyAdd"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center ">
+                通訊地址
+            </div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center readOnly" id="locationOfCompany">
+            </div>
+        </div>
+
+        <!-- 輔導項目需求、輔導教授 -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                輔導項目<br class="d-none d-lg-block">需求
+            </div>
+            <div class="col lightBoxItems p-3 changeTextarea_lg_items align_center readOnly" id="helpItems"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                輔導教授
+            </div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center readOnly" id="tutoringProfessor"></div>
+        </div>
+
+
+        <!-- 培育計畫、管理備註 -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                培育計畫
+            </div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center readOnly" id="nurtureProgram"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                管理備註
+            </div>
+            <div class="col lightBoxItems p-3 changeInput_items align_center readOnly" id="adminNote"></div>
+        </div>
+
+        <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
+        <div class="row mb-1">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3">
+                檢附文件<br>下載
+            </div>
+            <div class="col lightBoxItems p-3">
+                <a class="d-inline me-3 text-nowrap" href="#">公司登記證&ensp;<i class="fa-solid fa-download"></i><span
+                        class="mx-1 update">補</span></a>
+                <a class="d-inline me-3 text-nowrap" href="#">營利事業登記證或預查名稱表影本&ensp;<i
+                        class="fa-solid fa-download"></i><span class="mx-1 update">補</span></a>
+                <a class="d-inline me-3 text-nowrap" href="#">企業與大同大學教職員簽訂之合作備忘錄&ensp;<i
+                        class="fa-solid fa-download"></i><span class="mx-1 update d-none">補</span></a>
+                <a class="d-inline me-3 text-nowrap" href="#">企業營運計畫構想書&ensp;<i class="fa-solid fa-download"></i><span
+                        class="mx-1 update">補</span></a>
+                <a class="d-inline me-3 text-nowrap" href="#">創新育成中心進駐申請書&ensp;<i class="fa-solid fa-download"></i><span
+                        class="mx-1 update">補</span></a>
+                <a class="d-inline me-3 text-nowrap" href="#">同意審查聲明書&ensp;<i class="fa-solid fa-download"></i><span
+                        class="mx-1 update">補</span></a>
+                <a class="d-inline text-nowrap" href="#">進駐審查費繳費證明&ensp;<i class="fa-solid fa-download"></i><span
+                        class="mx-1 update">補</span></a>
+            </div>
+        </div>
+    </div>
+</div>

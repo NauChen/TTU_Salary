@@ -21,17 +21,48 @@
                 </div>
                 <!-- 使用者列表 -->
                 <div class="tabs-box my-2r">
-                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>使用者列表<i
-                        class="fa-solid fa-quote-right"></i></h3>
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>啟用中-使用者列表<i
+                            class="fa-solid fa-quote-right"></i></h3>
                     <div class="tabs section-border-radius section-padding">
-                        <table id="userList" class="table table-hover table-bordered responsive align-middle"
+                        <table id="accountProfilesList" class="table table-hover table-bordered responsive align-middle"
                             style="width:100%">
-
                         </table>
-
                     </div>
                 </div>
-
+                <!-- 廠商詳情Modal -->
+                <div class="modal fade" id="companyDetailModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="companyDetailModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="companyDetailModalLabel">廠商詳細資料</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            @@include('layout/model_companyDetail.html')
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 個人詳情Modal -->
+                <div class="modal fade" id="personalDetailModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="personalDetailModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="personalDetailModalLabel">個人詳細資料</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            @@include('layout/model_personalDetail.html')
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 @@include('layout/footer.html')
 

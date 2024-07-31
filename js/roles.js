@@ -155,20 +155,21 @@ $(function () {
                 data: 'status', title: "啟用", // 5
                 render: function (data) {
                     if (data == "啟用") {
-                        return '<div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked value="啟用"></div>'
+                        return '<div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked value="啟用"></div>';
                     } else {
-                        return '<div class="form-check form-switch"><input class="form-check-input" type="checkbox" value="停用"></div>'
+                        return '<div class="form-check form-switch"><input class="form-check-input" type="checkbox" value="停用"></div>';
                     }
                 },
             },
             {
                 data: 'id', title: "儲存", // 6
                 render: function (data) {
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-id="' + data + '"><i class="fa-solid fa-floppy-disk"></i></button>'
+                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-id="' + data + '"><i class="fa-solid fa-floppy-disk"></i></button>';
                 },
             },
+            { data: 'status', visible: false }, // 7 仍可搜尋
         ],
-        order: [[3, 'desc']],
+        order: [[7, 'desc'], [3, 'desc']],
         "columnDefs": [
             {
                 targets: [0],

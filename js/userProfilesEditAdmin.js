@@ -1,131 +1,21 @@
 var dataset_userList = [
     {
-        'id': '1',
+        'id': '21',
         'createDate': "2024-04-25",
         'name': "王小明",
         'userId': "abc@gmail.com",
-        'nowLevel': "系統管理員",
-        'status': "啟用",
+        'type': "個人",
+        'editBy': "-",
+        'adminNote': '2024-07-31到職',
     },
-    {
-        'id': '2',
-        'createDate': "2011-06-30",
-        'name': "加瑞特·溫特斯貿易公司",
-        'userId': "23456789",
-        'nowLevel': "廠商商號",
-        'status': "停用",
-    },
-    {
-        'id': '3',
-        'createDate': "2009-01-12",
-        'name': "艾希頓·科克斯股份有限公司",
-        'userId': "34567890",
-        'nowLevel': "廠商商號",
-        'status': "停用",
-    },
-    {
-        'id': '4',
-        'createDate': "2012-03-29",
-        'name': "孫小美",
-        'userId': "efg@gmail.com",
-        'nowLevel': "系統專員",
-        'status': "停用",
-    },
-    {
-        'id': '5',
-        'createDate': "2008-11-28",
-        'name': "愛莉·砂藤貿易有限公司",
-        'nowLevel': "廠商商號",
-        'userId': "56789012",
-        'status': "啟用",
-    },
-    {
-        'id': '6',
-        'createDate': "2012-12-02",
-        'name': "布里耶爾·威廉姆森股份有限公司",
-        'nowLevel': "廠商商號",
-        'userId': "67890123",
-        'status': "停用",
-    },
-    {
-        'id': '7',
-        'createDate': "2012-08-06",
-        'name': "赫洛德·錢德勒公司",
-        'nowLevel': "廠商商號",
-        'userId': "78901234",
-        'status': "啟用",
-    },
-    {
-        'id': '8',
-        'createDate': "2010-10-14",
-        'name': "羅娜·戴維森貿易公司",
-        'nowLevel': "廠商商號",
-        'userId': "89012345",
-        'status': "啟用",
-    },
-    {
-        'id': '9',
-        'createDate': "2009-09-15",
-        'name': "科琳·赫斯特有限公司",
-        'nowLevel': "廠商商號",
-        'userId': "90123456",
-        'status': "啟用",
-    },
-    {
-        'id': '10',
-        'createDate': "2008-12-13",
-        'name': "索尼婭·弗羅斯特公司",
-        'nowLevel': "廠商商號",
-        'userId': "01234567",
-        'status': "啟用",
-    },
-    {
-        'id': '11',
-        'createDate': "2008-12-19",
-        'name': "珍娜·蓋恩斯股份有限公司",
-        'nowLevel': "廠商商號",
-        'userId': "12345012",
-        'status': "啟用",
-    },
-    {
-        'id': '12',
-        'createDate': "2013-03-03",
-        'name': "昆恩·弗林有限公司",
-        'nowLevel': "廠商商號",
-        'userId': "23456123",
-        'status': "啟用",
-    },
-    {
-        'id': '13',
-        'createDate': "2008-10-16",
-        'name': "查爾德·馬歇爾公司",
-        'nowLevel': "廠商商號",
-        'userId': "34567234",
-        'status': "啟用",
-    },
-    {
-        'id': '14',
-        'createDate': "2012-12-18",
-        'name': "海莉·肯尼迪貿易公司",
-        'nowLevel': "廠商商號",
-        'userId': "45678345",
-        'status': "啟用",
-    },
-    {
-        'id': '15',
-        'createDate': "2010-03-17",
-        'name': "塔蒂安娜·菲茨帕特里克有限公司",
-        'nowLevel': "廠商商號",
-        'userId': "56789456",
-        'status': "啟用",
-    }
-];
-
-var dataset_coopManufApp = [
     {
         'id': '1',
         'createDate': "2024-07-25",
-        'company': "南方科技有限公司",
+        'name': "南方科技有限公司",
+        'userId': "23456780",
+        'type': "商號",
+        'editBy': "張小麵",
+
         'companyDescription': "專業提供高科技產品製造與銷售",
         'creationDate': "2010-12-03",
         'capitalAmount': "5,678,000",
@@ -146,17 +36,19 @@ var dataset_coopManufApp = [
         'businessProof': "2024010101D1.pdf",
         'planUpload': "2024010101E1.pdf",
         'entryForm': "2024010101F1.pdf",
-        'uniformNum': "23456780",
         'companyEmail': "abc@gmail.com",
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
-        'roles':'',
     },
     {
         'id': '2',
         'createDate': "2011-06-30",
-        'company': "東方電子股份有限公司",
+        'name': "東方電子股份有限公司",
+        'userId': "83456780",
+        'type': "商號",
+        'editBy': "李小包",
+
         'companyDescription': "專業從事電子產品設計與製造",
         'creationDate': "2005-04-15",
         'capitalAmount': "12,345,000",
@@ -177,13 +69,29 @@ var dataset_coopManufApp = [
         'businessProof': "2024010102D1.pdf",
         'planUpload': "2024010102E1.pdf",
         'entryForm': "2024010102F1.pdf",
-        'uniformNum': "83456780",
         'companyEmail': "bcd@gmail.com",
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
+    },
+    {
+        'id': '23',
+        'createDate': "2012-03-29",
+        'name': "孫小美",
+        'userId': "efg@gmail.com",
+        'type': "神秘客",
+        'status': "停用",
+        'editBy': "-",
+        'adminNote': '2011-07-31到職',
     },
     {
         'id': '3',
         'createDate': "2009-01-12",
-        'company': "中華服飾有限公司",
+        'name': "中華服飾有限公司",
+        'type': "商號",
+        'userId': "53456780",
+        'editBy': "周小吐",
+
         'companyDescription': "專業生產高質素服飾產品",
         'creationDate': "2001-11-20",
         'capitalAmount': "8,900,000",
@@ -204,13 +112,19 @@ var dataset_coopManufApp = [
         'businessProof': "2024010103D1.pdf",
         'planUpload': "2024010103E1.pdf",
         'entryForm': "2024010103F1.pdf",
-        'uniformNum': "53456780",
         'companyEmail': "cde@gmail.com",
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
     },
     {
         'id': '4',
         'createDate': "2012-03-29",
-        'company': "星際科技股份有限公司",
+        'name': "星際科技股份有限公司",
+        'type': "商號",
+        'userId': "63456780",
+        'editBy': "藍小司",
+
         'companyDescription': "專業提供航太科技產品解決方案",
         'creationDate': "2007-08-10",
         'capitalAmount': "15,600,000",
@@ -231,13 +145,19 @@ var dataset_coopManufApp = [
         'businessProof': "2024010104D1.pdf",
         'planUpload': "2024010104E1.pdf",
         'entryForm': "2024010104F1.pdf",
-        'uniformNum': "63456780",
         'companyEmail': "def@gmail.com",
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
     },
     {
         'id': '5',
         'createDate': "2008-11-28",
-        'company': "綠意生活有限公司",
+        'name': "綠意生活有限公司",
+        'type': "商號",
+        'userId': "83456780",
+        'editBy': "-",
+
         'companyDescription': "專業提供生態友善產品與服務",
         'creationDate': "2004-05-06",
         'capitalAmount': "6,700,000",
@@ -258,12 +178,19 @@ var dataset_coopManufApp = [
         'businessProof': "2024010105D1.pdf",
         'planUpload': "2024010105E1.pdf",
         'entryForm': "2024010105F1.pdf",
-        'uniformNum': "83456780",
         'companyEmail': "efg@gmail.com",
-    }, {
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
+    },
+    {
         'id': '6',
         'createDate': "2022-10-15",
-        'company': "晟霖實業股份有限公司",
+        'name': "晟霖實業股份有限公司",
+        'type': "商號",
+        'userId': "63456780",
+        'editBy': "-",
+
         'companyDescription': "專精於工業機械設備製造與銷售",
         'creationDate': "1998-04-20",
         'capitalAmount': "1,230,000",
@@ -284,13 +211,19 @@ var dataset_coopManufApp = [
         'businessProof': "2024010101D1.pdf",
         'planUpload': "2024010101E1.pdf",
         'entryForm': "2024010101F1.pdf",
-        'uniformNum': "63456780",
         'companyEmail': "fgh@gmail.com",
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
     },
     {
         'id': '7',
         'createDate': "2022-03-20",
-        'company': "德昌企業有限公司",
+        'name': "德昌企業有限公司",
+        'type': "商號",
+        'userId': "63453780",
+        'editBy': "-",
+
         'companyDescription': "專業提供電子零件設計與製造服務",
         'creationDate': "2005-09-12",
         'capitalAmount': "980,000",
@@ -311,13 +244,19 @@ var dataset_coopManufApp = [
         'businessProof': "2024010102D1.pdf",
         'planUpload': "2024010102E1.pdf",
         'entryForm': "2024010102F1.pdf",
-        'uniformNum': "63453780",
         'companyEmail': "ghi@gmail.com",
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
     },
     {
         'id': '8',
         'createDate': "2023-05-12",
-        'company': "嘉強貿易股份有限公司",
+        'name': "嘉強貿易股份有限公司",
+        'type': "商號",
+        'userId': "63456780",
+        'editBy': "-",
+
         'companyDescription': "專注於進口與銷售高品質農產品",
         'creationDate': "2010-11-28",
         'capitalAmount': "750,000",
@@ -338,13 +277,19 @@ var dataset_coopManufApp = [
         'businessProof': "2024010103D1.pdf",
         'planUpload': "2024010103E1.pdf",
         'entryForm': "2024010103F1.pdf",
-        'uniformNum': "63456780",
         'companyEmail': "hij@gmail.com",
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
     },
     {
         'id': '9',
         'createDate': "2024-02-28",
-        'company': "百傑科技有限公司",
+        'name': "百傑科技有限公司",
+        'type': "商號",
+        'userId': "63443780",
+        'editBy': "-",
+
         'companyDescription': "專業提供IT解決方案及服務",
         'creationDate': "2013-08-05",
         'capitalAmount': "1,500,000",
@@ -365,13 +310,19 @@ var dataset_coopManufApp = [
         'businessProof': "2024010104D1.pdf",
         'planUpload': "2024010104E1.pdf",
         'entryForm': "2024010104F1.pdf",
-        'uniformNum': "63443780",
         'companyEmail': "ijk@gmail.com",
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
     },
     {
         'id': '10',
         'createDate': "2023-11-10",
-        'company': "全新文創有限公司",
+        'name': "全新文創有限公司",
+        'type': "商號",
+        'userId': "22443780",
+        'editBy': "-",
+
         'companyDescription': "專注於文化創意產品開發與設計",
         'creationDate': "2018-06-22",
         'capitalAmount': "480,000",
@@ -392,12 +343,19 @@ var dataset_coopManufApp = [
         'businessProof': "2024010105D1.pdf",
         'planUpload': "2024010105E1.pdf",
         'entryForm': "2024010105F1.pdf",
-        'uniformNum': "22443780",
         'companyEmail': "jkl@gmail.com",
-    }, {
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
+    },
+    {
         'id': '11',
         'createDate': "2024-01-18",
-        'company': "宏達國際有限公司",
+        'name': "宏達國際有限公司",
+        'type': "商號",
+        'userId': "52443780",
+        'editBy': "-",
+
         'companyDescription': "專注於智慧型手機與通訊設備開發與製造",
         'creationDate': "2000-07-10",
         'capitalAmount': "1,800,000",
@@ -418,13 +376,19 @@ var dataset_coopManufApp = [
         'businessProof': "2024010106D1.pdf",
         'planUpload': "2024010106E1.pdf",
         'entryForm': "2024010106F1.pdf",
-        'uniformNum': "52443780",
         'companyEmail': "klm@gmail.com",
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
     },
     {
         'id': '12',
         'createDate': "2023-09-25",
-        'company': "美佳科技股份有限公司",
+        'name': "美佳科技股份有限公司",
+        'type': "商號",
+        'userId': "11443780",
+        'editBy': "-",
+
         'companyDescription': "專業提供多媒體播放器與數位音訊解決方案",
         'creationDate': "2010-03-15",
         'capitalAmount': "1,200,000",
@@ -445,13 +409,19 @@ var dataset_coopManufApp = [
         'businessProof': "2024010107D1.pdf",
         'planUpload': "2024010107E1.pdf",
         'entryForm': "2024010107F1.pdf",
-        'uniformNum': "11443780",
         'companyEmail': "lmn@gmail.com",
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
     },
     {
         'id': '13',
         'createDate': "2023-07-08",
-        'company': "新光電子有限公司",
+        'name': "新光電子有限公司",
+        'type': "商號",
+        'userId': "11445380",
+        'editBy': "新光電子有限公司",
+
         'companyDescription': "專業從事半導體元件設計與製造",
         'creationDate': "2005-11-30",
         'capitalAmount': "1,500,000",
@@ -472,61 +442,124 @@ var dataset_coopManufApp = [
         'businessProof': "2024010108D1.pdf",
         'planUpload': "2024010108E1.pdf",
         'entryForm': "2024010108F1.pdf",
-        'uniformNum': "11445380",
         'companyEmail': "mno@gmail.com",
-    },
-    {
-        'id': '14',
-        'createDate': "2022-11-30",
-        'company': "億昌貿易有限公司",
-        'companyDescription': "專注於進口與銷售高品質食品及飲料產品",
-        'creationDate': "2009-04-25",
-        'capitalAmount': "980,000",
-        'employeesNum': "180",
-        'responsiblePerson': "林大勇",
-        'referrer': "張美華",
-        'phone': "02-86701234",
-        'lineId': "richtrade234",
-        'contactPerson': "陳小華",
-        'ext': "0123",
-        'jobTitle': "行銷經理",
-        'companyAdd': "台北市中正區中山南路100號",
-        'locationOfCompany': "新北市新莊區中正路二段500號",
-        'helpItems': "市場推廣與銷售策略執行",
-        'companyProof': "2024010109A1.pdf",
-        'memoUpload': "2024010109B1.pdf",
-        'consentDoc': "2024010109C1.pdf",
-        'businessProof': "2024010109D1.pdf",
-        'planUpload': "2024010109E1.pdf",
-        'entryForm': "2024010109F1.pdf",
-        'uniformNum': "11427380",
-        'companyEmail': "nop@gmail.com",
-    },
-    {
-        'id': '15',
-        'createDate': "2022-10-01",
-        'company': "聯華電子股份有限公司",
-        'companyDescription': "全球領先的消費性電子產品製造商",
-        'creationDate': "1996-05-18",
-        'capitalAmount': "2,300,000",
-        'employeesNum': "500",
-        'responsiblePerson': "陳大明",
-        'referrer': "劉小華",
-        'phone': "02-86712345",
-        'lineId': "lhtech345",
-        'contactPerson': "劉美玲",
-        'ext': "1234",
-        'jobTitle': "市場部經理",
-        'companyAdd': "台北市中正區忠孝西路一段150號",
-        'locationOfCompany': "新北市三峽區中山路一段600號",
-        'helpItems': "產品創新與市場策略執行",
-        'companyProof': "2024010110A1.pdf",
-        'memoUpload': "2024010110B1.pdf",
-        'consentDoc': "2024010110C1.pdf",
-        'businessProof': "2024010110D1.pdf",
-        'planUpload': "2024010110E1.pdf",
-        'entryForm': "2024010110F1.pdf",
-        'uniformNum': "11445380",
-        'companyEmail': "opq@gmail.com",
+        'tutoringProfessor': '黃飛鴻',
+        'nurtureProgram': '中國傳統武術發揚光大',
+        'adminNote': '副業：十三姨古典洋裝',
     }
-]
+];
+
+$(function () {
+
+    $('#accountProfilesList').DataTable({
+        ...commonSettingsTable,
+        "data": dataset_userList,
+        "columns": [
+            { data: 'createDate', title: "建立日期", }, // 0
+            { data: 'name', title: "使用者", }, // 1
+            { data: 'userId', title: "登入帳號", }, // 2
+            { data: 'type', title: "用戶類型", }, // 3
+            { data: 'editBy', title: "最後改動者", }, // 4
+            {
+                data: 'id', title: "詳情", // 5
+                render: function (data, type, row) {
+                    let icon = "";
+                    let modelId = "";
+                    if (row.type === "商號") {
+                        icon = '<i class="fa-solid fa-briefcase"></i>'
+                        modelId = 'companyDetailModal'
+                    } else {
+                        modelId = 'personalDetailModal'
+                        if (row.type === "個人") {
+                            icon = '<i class="fa-solid fa-user"></i>'
+                        } else {
+                            icon = '<i class="fa-solid fa-skull"></i>'
+                        }
+                    }
+                    return '<button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#' + modelId + '" data-id="' + data + '">' + icon + '</button>';
+                }
+            },
+            {
+                data: 'id', title: "修改", // 6
+                render: function (data, type, row) {
+                    linkPage = "";
+                    if (row.typee === "商號") {
+                        linkPage = 'profilesEditCompany.html'
+                    } else {
+                        linkPage = 'profilesEditPersonal.html'
+                    }
+                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./' + linkPage + '?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';
+                }
+            },
+        ],
+        order: [[0, 'desc']],
+        "columnDefs": [
+            {
+                targets: [1],
+                responsivePriority: 1,
+            },
+            {
+                targets: [2],
+                responsivePriority: 2,
+            },
+            { searchable: false, orderable: false, targets: [5, 6] },
+            { className: "text-nowrap", targets: [0, 2, 3] },
+            { className: "text-lg-center", targets: [0, 3, 5, 6] },
+        ],
+        createdRow: function (row, data, dataIndex) {
+            [5, 6].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
+            });
+            $('td:eq(3)', row).css('max-width', '100px');
+        }
+    });
+
+    // 同步廠商燈箱顯示資料
+    $('#companyDetailModal').on('show.bs.modal', function (event) {
+        let button = $(event.relatedTarget);
+        let thisCPId = String(button.data('id'));
+        // console.log('thisCP Id:', thisCPId);
+        let companyData = dataset_userList.find(company => company.id === thisCPId);
+        if (companyData) {
+            $('#companyName').text(companyData.name);
+            $('#createDate').text(companyData.createDate);
+            $('#companyDescription').text(companyData.companyDescription);
+            $('#uniformNum').text(companyData.userId);
+            $('#creationDate').text(companyData.creationDate);
+            $('#capitalAmount').text(companyData.capitalAmount);
+            $('#employeesNum').text(companyData.employeesNum);
+            $('#responsiblePerson').text(companyData.responsiblePerson);
+            $('#referrer').text(companyData.referrer);
+            $('#phoneNum').text(companyData.phone);
+            $('#companyEmail').text(companyData.companyEmail);
+            $('#lineId').text(companyData.lineId);
+            $('#contactPerson').text(companyData.contactPerson);
+            $('#ext').text(companyData.ext);
+            $('#jobTitle').text(companyData.jobTitle);
+            $('#companyAdd').text(companyData.companyAdd);
+            $('#locationOfCompany').text(companyData.locationOfCompany);
+            $('#helpItems').text(companyData.helpItems);
+            $('#tutoringProfessor').text(companyData.tutoringProfessor);
+            $('#nurtureProgram').text(companyData.nurtureProgram);
+            $('#adminNote').text(companyData.adminNote);
+        } else {
+            console.error('companyData data not found for id:', thisCPId);
+        };
+    });
+        // 同步個人燈箱顯示資料
+        $('#personalDetailModal').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget);
+            let thisPSId = String(button.data('id'));
+            // console.log('thisPS Id:', thisPSId);
+            let personalData = dataset_userList.find(company => company.id === thisPSId);
+            if (personalData) {
+                $('#personal_Name').text(personalData.name);
+                $('#personal_createDate').text(personalData.createDate);
+                $('#personal_userName').text(personalData.userId);
+                $('#personal_adminNote').text(personalData.adminNote);
+            } else {
+                console.error('personalData data not found for id:', thisPSId);
+            };
+        });
+
+});
