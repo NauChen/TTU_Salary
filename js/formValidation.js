@@ -318,7 +318,9 @@ function checkThisEmail() {
     var warningBox = $('#danger_' + emailId);
 
     if (emailValue === '') {
-        warningBox.text('');
+        if(warningBox.text() != '此為必填欄位！'){
+            warningBox.text('');
+        }
     } else if (!validateEmail(emailValue)) {
         warningBox.text('請輸入有效的電子郵件地址');
     } else {

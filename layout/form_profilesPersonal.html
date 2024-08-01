@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-xl-6 mb-3">
+        <div class="row mb-3">
+            <label for="profilesPersonal_Name"
+                class="col-lg-auto col-form-label text-nowrap">個人名稱：</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesPersonal_Name">
+                <span class="text-danger" id="danger_profilesPersonal_Name"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="profilesPersonal_Email"
+                class="col-lg-auto col-form-label text-nowrap">電子信箱：</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesPersonal_Email"
+                    onkeyup="restrictToValidChars(this)" onblur="checkThisEmail.call(this)">
+                <span class="text-danger" id="danger_profilesPersonal_Email"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="profilesPersonal_AdminNote"
+                class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="profilesPersonal_AdminNote">
+                <span class="text-danger" id="danger_profilesPersonal_AdminNote"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6 mb-3">
+        <div class="row mb-3 salaryRadio px-2 py-2 mx-1 border-success align-items-center">
+            <div class="mb-3">&#711;&#10623;&#711;&ensp;請先確認修改後的電子信箱是否有重複，若重複就不能使用歐！</div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-danger btn-sm" id="checkEmail"><i
+                        class="fa-solid fa-magnifying-glass"></i>&ensp;檢查</button>
+            </div>
+            <div class="col">
+                結果：
+                <span id="checkEmailResult">
+                    <!-- 可以使用。 -->
+                    不能使用。
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

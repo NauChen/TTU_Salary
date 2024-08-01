@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>關於我們</title>
+<title>大同大學校內育成媒合平台-用戶資料修改</title>
 <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -16,8 +15,9 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.1/css/responsive.bootstrap5.min.css">
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css"> -->
 </head>
+
 <body>
-    <div class="wrapper about">
+    <main class="main">
         <!-- 側邊攔 -->
 <nav class="nav-box no_print">
     <!-- RWD-MENU標籤 -->
@@ -159,14 +159,82 @@
         </ul>
     </div>
 </nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-4  col-sm-12">1</div>
-                <div class="col-4  col-sm-12">2</div>
-                <div class="col-4  col-sm-12">3</div>      
+        <div class="content">
+            <div class="container">
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
+                        <li class="breadcrumb-item"><a class="d-inline" href="./userProfilesEditAdmin.html"><i
+                                    class="fa-solid fa-address-book"></i>&ensp;用戶資料修改</a></li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-address-book"></i>&ensp;個人資料</li>
+                    </ol>
+                </div>
+
+                <div class="tabs-box my-2r">
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>個人使用者-資料修改<i
+                            class="fa-solid fa-quote-right"></i></h3>
+                    <div class="tabs section-border-radius section-padding">
+                        <form method="post" id="formPersonalEdit">
+                            <div class="row">
+    <div class="col-xl-6 mb-3">
+        <div class="row mb-3">
+            <label for="profilesPersonal_Name"
+                class="col-lg-auto col-form-label text-nowrap">個人名稱：</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesPersonal_Name">
+                <span class="text-danger" id="danger_profilesPersonal_Name"></span>
             </div>
         </div>
-        <!-- <footer>
+        <div class="row mb-3">
+            <label for="profilesPersonal_Email"
+                class="col-lg-auto col-form-label text-nowrap">電子信箱：</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesPersonal_Email"
+                    onkeyup="restrictToValidChars(this)" onblur="checkThisEmail.call(this)">
+                <span class="text-danger" id="danger_profilesPersonal_Email"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="profilesPersonal_AdminNote"
+                class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="profilesPersonal_AdminNote">
+                <span class="text-danger" id="danger_profilesPersonal_AdminNote"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6 mb-3">
+        <div class="row mb-3 salaryRadio px-2 py-2 mx-1 border-success align-items-center">
+            <div class="mb-3">&#711;&#10623;&#711;&ensp;請先確認修改後的電子信箱是否有重複，若重複就不能使用歐！</div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-danger btn-sm" id="checkEmail"><i
+                        class="fa-solid fa-magnifying-glass"></i>&ensp;檢查</button>
+            </div>
+            <div class="col">
+                結果：
+                <span id="checkEmailResult">
+                    <!-- 可以使用。 -->
+                    不能使用。
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+                            <div class="row text-center p-3 justify-content-center">
+                                <div class="col-auto">
+                                    <a href="./userProfilesEditAdmin.html"
+                                        class="btn btn-lg btn-outline-danger twoWord text-nowrap">返回</a>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-lg btn-success" id="submitBtn">修改</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- <footer>
     <ul>
         <li>隱私權</li>
     </ul>
@@ -188,7 +256,23 @@
         Chrome瀏覽器<span>(最佳螢幕解析1280*1024)</span>
     </p>
 </div>
-    </div>
-    
+
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.1/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.1/js/responsive.bootstrap5.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.all.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./js/sweetAlert.js"></script>
+<script src="./js/main.js"></script>
+    <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
+    <script src="./js/profilesEditPersonal.js"></script>
 </body>
+
 </html>
