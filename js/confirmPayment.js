@@ -1510,7 +1510,8 @@ $(function () {
             { searchable: false, orderable: false, targets: [8, 9, 10] },
             { className: "text-lg-center", targets: [0, 4, 5, 6, 7, 8, 9] },
             { className: "text-center", targets: [0, 1] },
-            { className: "text-nowrap", targets: [0, 1, 2, 4, 5, 6, 8, 9] },
+            { className: "text-nowrap", targets: [0, 1, 2, 4, 5, 6, 7, 8, 9] },
+            { className: "p-1", targets: [4, 5, 6, 7] },
         ],
 
         createdRow: function (row, data, dataIndex) {

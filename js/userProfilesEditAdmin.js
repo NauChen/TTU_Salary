@@ -483,12 +483,23 @@ $(function () {
                 data: 'id', title: "修改", // 6
                 render: function (data, type, row) {
                     linkPage = "";
-                    if (row.typee === "商號") {
+                    if (row.type === "商號") {
                         linkPage = 'profilesEditCompany.html'
                     } else {
                         linkPage = 'profilesEditPersonal.html'
                     }
                     return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./' + linkPage + '?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';
+                }
+            },
+            {
+                data: 'id', title: "訪視<br class='d-none d-lg-block'>紀錄", // 7
+                render: function (data, type, row) {
+                    if (row.type === "商號") {
+                        linkPage = 'profilesEditCompany.html'
+                        return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./profilesEditCompany.htm?id=' + data + '"><i class="fa-solid fa-user-secret"></i></a>';
+                    } else {
+                        return '';
+                    }
                 }
             },
         ],
@@ -502,12 +513,12 @@ $(function () {
                 targets: [2],
                 responsivePriority: 2,
             },
-            { searchable: false, orderable: false, targets: [5, 6] },
+            { searchable: false, orderable: false, targets: [5, 6, 7] },
             { className: "text-nowrap", targets: [0, 2, 3] },
-            { className: "text-lg-center", targets: [0, 3, 5, 6] },
+            { className: "text-lg-center", targets: [0, 3, 5, 6, 7] },
         ],
         createdRow: function (row, data, dataIndex) {
-            [5, 6].forEach(function (colIdx) {
+            [5, 6, 7].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
             });
             $('td:eq(3)', row).css('max-width', '100px');
@@ -546,20 +557,20 @@ $(function () {
             console.error('companyData data not found for id:', thisCPId);
         };
     });
-        // 同步個人燈箱顯示資料
-        $('#personalDetailModal').on('show.bs.modal', function (event) {
-            let button = $(event.relatedTarget);
-            let thisPSId = String(button.data('id'));
-            // console.log('thisPS Id:', thisPSId);
-            let personalData = dataset_userList.find(company => company.id === thisPSId);
-            if (personalData) {
-                $('#personal_Name').text(personalData.name);
-                $('#personal_createDate').text(personalData.createDate);
-                $('#personal_userName').text(personalData.userId);
-                $('#personal_adminNote').text(personalData.adminNote);
-            } else {
-                console.error('personalData data not found for id:', thisPSId);
-            };
-        });
+    // 同步個人燈箱顯示資料
+    $('#personalDetailModal').on('show.bs.modal', function (event) {
+        let button = $(event.relatedTarget);
+        let thisPSId = String(button.data('id'));
+        // console.log('thisPS Id:', thisPSId);
+        let personalData = dataset_userList.find(company => company.id === thisPSId);
+        if (personalData) {
+            $('#personal_Name').text(personalData.name);
+            $('#personal_createDate').text(personalData.createDate);
+            $('#personal_userName').text(personalData.userId);
+            $('#personal_adminNote').text(personalData.adminNote);
+        } else {
+            console.error('personalData data not found for id:', thisPSId);
+        };
+    });
 
 });

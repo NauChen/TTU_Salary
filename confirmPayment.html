@@ -48,7 +48,7 @@
 
 
 
-                    <div class="tabs section-border-radius section-padding">
+                    <!-- <div class="tabs section-border-radius section-padding mb-3">
                         <div class="row">
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"
@@ -100,7 +100,59 @@
                                 </div>
                             </div>
                         </div>
+                    </div> -->
+
+
+
+
+                    <div class="tabs section-border-radius section-padding">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-one-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-one" type="button" role="tab" aria-controls="pills-one"
+                                    aria-selected="true">付款通知</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-two-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-two" type="button" role="tab" aria-controls="pills-two"
+                                    aria-selected="false">收據紀錄</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-three-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-three" type="button" role="tab" aria-controls="pills-three"
+                                    aria-selected="false">培育室配發</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-four-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-four" type="button" role="tab" aria-controls="pills-four"
+                                    aria-selected="false">停車位配發</button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-one" role="tabpanel"
+                                aria-labelledby="pills-one-tab">
+                                <table id="confirmPaymentAllList"
+                                    class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="pills-two" role="tabpanel" aria-labelledby="pills-two-tab">
+                            </div>
+                            <div class="tab-pane fade" id="pills-three" role="tabpanel"
+                                aria-labelledby="pills-three-tab">
+                                <table id="confirmPaymentCultivationRoomList"
+                                    class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="pills-four" role="tabpanel" aria-labelledby="pills-four-tab">
+                                <table id="confirmPaymentParkingSpaceList"
+                                    class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                                </table>
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
 
 
@@ -118,9 +170,11 @@
                             @@include('layout/model_confirmPaymentCultivation.html')
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-info" id="cultivation_reminder">提醒付款</button>
-                                <button type="button" class="btn btn-outline-danger" id="cultivation_deleteData">刪除此筆紀錄</button>
+                                <button type="button" class="btn btn-outline-danger"
+                                    id="cultivation_deleteData">刪除此筆紀錄</button>
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
-                                <button type="button" class="btn btn-outline-secondary" id="cultivation_updateBtn">確認修改</button>
+                                <button type="button" class="btn btn-outline-secondary"
+                                    id="cultivation_updateBtn">確認修改</button>
                             </div>
                         </form>
                     </div>
@@ -141,9 +195,11 @@
                             @@include('layout/model_confirmPaymentParkingSpace.html')
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-info" id="parkingSapce_reminder">提醒付款</button>
-                                <button type="button" class="btn btn-outline-danger" id="parkingSapce_deleteData">刪除此筆紀錄</button>
+                                <button type="button" class="btn btn-outline-danger"
+                                    id="parkingSapce_deleteData">刪除此筆紀錄</button>
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
-                                <button type="button" class="btn btn-outline-secondary" id="parkingSapce_updateBtn">確認修改</button>
+                                <button type="button" class="btn btn-outline-secondary"
+                                    id="parkingSapce_updateBtn">確認修改</button>
                             </div>
                         </form>
                     </div>
