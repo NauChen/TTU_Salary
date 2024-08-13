@@ -156,7 +156,7 @@ $(function () {
             { data: 'paymentDate', title: "已通知<br class='d-none d-lg-block'>付款日", }, // 6
             { data: 'remark', title: "備註", }, // 7
             {
-                data: 'id', title: "通知<br class='d-none d-lg-block'>匯款", // 8
+                data: 'id', title: "轉帳<br class='d-none d-lg-block'>證明", // 8
                 render: function (data, type, row) {
                     if (row.endDiffDays < 0) {
                         return '';

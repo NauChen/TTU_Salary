@@ -15,12 +15,12 @@ var dataset_myParkingSpaceHistory = [
         'building': '新德惠大樓',
     },
     {
-        'paymentDate': '2023-07-17',
+        'paymentDate': '2023-08-20',
         'carType': '機車',
         'parkingSpaceNum': 'B5-1',
         'name': '陳昭嫺',
         'licensePlateNum': 'X-8470',
-        'endDate': '2024-08-01',
+        'endDate': '2024-09-01',
         'remark': '-',
         'id': '2',
         'jobTitle': '工程師',
@@ -317,7 +317,7 @@ $(function () {
         layout: {
             topStart: function () {
                 let provision = document.createElement('div');
-                provision.innerHTML = '<h6 class="fw-bold"><i class="fa-solid fa-circle-exclamation mx-1"></i>若要續用，請於車位到期的7~15天前提出申請。</h6>';
+                provision.innerHTML = '<h6 class="fw-bold"><i class="fa-solid fa-circle-exclamation mx-1"></i>若要續用，請於車位到期的5~45天前提出申請。</h6>';
                 return provision;
             },
         },
@@ -336,7 +336,7 @@ $(function () {
                 render: function (data, type, row) {
                     if (row.diffDays == null) {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間已過"><i class="fa-solid fa-hourglass-end"></i></button>';
-                    } else if (row.diffDays >= -15) {
+                    } else if (row.diffDays >= -45) {
                         return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord renew-btn" href="./parkingSpaceRenew.html?id=' + data + '" title="立即續約" data-id=' + data + '><i class="fa-solid fa-repeat"></i></a>';
                     } else {
                         return '<button type="button" class="btn btn-light rounded-circle btn-sm" title="續約時間未到"><i class="fa-solid fa-hourglass-half"></i></button>';

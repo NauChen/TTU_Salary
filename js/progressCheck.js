@@ -123,7 +123,7 @@ $(function () {
             { data: 'paymentDate', title: "付帳日", }, // 5
             { data: 'status', title: "審核進度", }, // 6
             {
-                data: 'id', title: "通知<br class='d-none d-lg-block'>匯款", // 7
+                data: 'id', title: "轉帳<br class='d-none d-lg-block'>證明", // 7
                 render: function (data, type, row) {
                     if (row.paymentDate) {
                         return '<button type="button" class="btn btn-light rounded-circle remittance_voucher align_center reuploadRemittance" title="再次上傳匯款憑證" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';

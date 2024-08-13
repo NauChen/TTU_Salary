@@ -567,6 +567,7 @@ var dataset_confirmPaymentAll = [
         'companyPhone': '02-86710006'
     }
 ];
+
 // 生成10筆資料物件 dataset_confirmPaymentParkingSpace，不要函式
 // id是將車位配置給廠商的資料id，由1開始
 // psId是將可使用的車位資料id，由11開始
@@ -940,6 +941,153 @@ var dataset_confirmPaymentParkingSpace = [
     }
 ];
 
+// 生成10筆資料物件 dataset_confirmPaymentReceipt，不要函式
+// id是資料索引，格式為英文大寫一碼'R'+數字
+// createDate是建立資料的日期，格式為YYYY-mm-DD。
+// receiptNum是收據號碼，格式為英文大寫2碼'AE' + 數字 6碼。
+// receiptDate是收據日期，格式為YYYY-mm-DD。
+// item是收據的項目id，可能為[服務費, 場地維護費]
+// amount是收據金額，要有千分位符號，金額介於100~50000。
+// company是假的繁體中文公司名稱
+// uniformNum是假的統一編號，格式：數字8字元，可重複。
+// adminNote是管理員備註，可能為''
+// status是狀態，可能為：''
+
+var dataset_confirmPaymentReceipt = [
+    {
+        'id': 'R1',
+        'createDate': '2024-08-01',
+        'receiptNum': 'AE123456',
+        'receiptDate': '2024-08-02',
+        'item': '服務費',
+        'amount': '35,000',
+        'company': '頂尖科技有限公司',
+        'uniformNum': '12345678',
+        'adminNote': '',
+        'status': '使用中',
+        'createBy': '王小明',
+    },
+    {
+        'id': 'R2',
+        'createDate': '2024-08-03',
+        'receiptNum': 'AE234567',
+        'receiptDate': '2024-08-04',
+        'item': '場地維護費',
+        'amount': '2,500',
+        'company': '創新股份有限公司',
+        'uniformNum': '23456789',
+        'adminNote': '',
+        'status': '使用中',
+        'createBy': '王二明',
+    },
+    {
+        'id': 'R3',
+        'createDate': '2024-08-05',
+        'receiptNum': 'AE345678',
+        'receiptDate': '2024-08-06',
+        'item': '服務費',
+        'amount': '50,000',
+        'company': '宏達有限公司',
+        'uniformNum': '34567890',
+        'adminNote': '',
+        'status': '作廢收回',
+        'createBy': '王三明',
+    },
+    {
+        'id': 'R4',
+        'createDate': '2024-08-07',
+        'receiptNum': 'AE456789',
+        'receiptDate': '2024-08-08',
+        'item': '場地維護費',
+        'amount': '15,000',
+        'company': '光明股份有限公司',
+        'uniformNum': '45678901',
+        'adminNote': '',
+        'status': '作廢收回',
+        'createBy': '王小明',
+    },
+    {
+        'id': 'R5',
+        'createDate': '2024-08-09',
+        'receiptNum': 'AE567890',
+        'receiptDate': '2024-08-10',
+        'item': '服務費',
+        'amount': '40,000',
+        'company': '威士達有限公司',
+        'uniformNum': '56789012',
+        'adminNote': '',
+        'status': '作廢收回',
+        'createBy': '王四明',
+    },
+    {
+        'id': 'R6',
+        'createDate': '2024-08-11',
+        'receiptNum': 'AE678901',
+        'receiptDate': '2024-08-12',
+        'item': '場地維護費',
+        'amount': '12,000',
+        'company': '佳利科技有限公司',
+        'uniformNum': '67890123',
+        'adminNote': '',
+        'status': '使用中',
+        'createBy': '王小明',
+    },
+    {
+        'id': 'R7',
+        'createDate': '2024-08-13',
+        'receiptNum': 'AE789012',
+        'receiptDate': '2024-08-14',
+        'item': '服務費',
+        'amount': '5,000',
+        'company': '世紀股份有限公司',
+        'uniformNum': '78901234',
+        'adminNote': '',
+        'status': '使用中',
+        'createBy': '王五明',
+    },
+    {
+        'id': 'R8',
+        'createDate': '2024-08-15',
+        'receiptNum': 'AE890123',
+        'receiptDate': '2024-08-16',
+        'item': '場地維護費',
+        'amount': '25,000',
+        'company': '聯合股份有限公司',
+        'uniformNum': '89012345',
+        'adminNote': '',
+        'status': '使用中',
+        'createBy': '王小明',
+    },
+    {
+        'id': 'R9',
+        'createDate': '2024-08-17',
+        'receiptNum': 'AE901234',
+        'receiptDate': '2024-08-18',
+        'item': '服務費',
+        'amount': '10,000',
+        'company': '智遠有限公司',
+        'uniformNum': '90123456',
+        'adminNote': '',
+        'status': '使用中',
+        'createBy': '王小明',
+    },
+    {
+        'id': 'R10',
+        'createDate': '2024-08-19',
+        'receiptNum': 'AE012345',
+        'receiptDate': '2024-08-20',
+        'item': '場地維護費',
+        'amount': '18,000',
+        'company': '遠見科技有限公司',
+        'uniformNum': '01234567',
+        'adminNote': '',
+        'status': '使用中',
+        'createBy': '王六明',
+    }
+];
+
+
+
 
 
 // 付款資訊-合格廠商
@@ -1016,7 +1164,7 @@ var selectOptionStatus = [
 
 $(function () {
 
-    // 收款紀錄與收據-表格
+    // 收款紀錄-表格
     $('#confirmPaymentAllList').DataTable({
         ...commonSettingsTable,
         "data": dataset_confirmPaymentAll,
@@ -1039,13 +1187,15 @@ $(function () {
             { data: 'amount', title: "付款<br class='d-none d-lg-block'>金額" }, // 5
             { data: 'adminNote', title: "管理備註", }, // 6
             {
-                data: 'id', title: "收據", // 7
+                data: 'id', title: "操作", // 7
                 render: function (data, type, row) {
                     const status = row.status;
                     if (status == '完成' || status == '取消') {
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '"><i class="fa-solid fa-receipt"></i>';
+                        // return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '"><i class="fa-solid fa-receipt"></i>';
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '"><i class="fa-solid fa-wrench"></i>';
                     } else {
-                        return '<button type="button" class="btn btn-info rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-receipt"></i>';
+                        // return '<button type="button" class="btn btn-info rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-receipt"></i>';
+                        return '<button type="button" class="btn btn-info rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-wrench"></i>';
                     }
                 }, className: 'text-nowrap'
             },
@@ -1071,6 +1221,64 @@ $(function () {
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(7)', row).css('min-width', '70px');
+            [0, 2].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
+            });
+            [0, 2, 5, 6].forEach(function (colIdx) {
+                $('td:eq(' + colIdx + ')', row).css('font-size', '.9em');
+            });
+        }
+    });
+
+    // 收據紀錄-表格
+    $('#confirmPaymentReceiptList').DataTable({
+        ...commonSettingsTable,
+        "data": dataset_confirmPaymentReceipt,
+        "columns": [
+            { data: 'createDate', title: '建立日期' }, // 0
+            { data: 'receiptNum', title: "收據號碼", }, // 1
+            { data: 'receiptDate', title: "收據日期", className: 'text-center' }, // 2
+            { data: 'item', title: "收據項目", }, // 3
+            { data: 'amount', title: "收據<br class='d-none d-lg-block'>總額" }, // 4
+            { data: 'company', title: "收據抬頭" }, //5
+            { data: 'uniformNum', title: "收據統編" }, //6
+
+            { data: 'adminNote', title: "管理備註", }, // 7
+            {
+                data: 'id', title: "操作", // 8
+                render: function (data, type, row) {
+                    const status = row.status;
+                    if (!status == '使用中' || status == '作廢收回') {
+                        // return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '"><i class="fa-solid fa-receipt"></i>';
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentReceiptModel" data-id="' + data + '"><i class="fa-solid fa-wrench"></i>';
+                    } else {
+                        // return '<button type="button" class="btn btn-info rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-receipt"></i>';
+                        return '<button type="button" class="btn btn-info rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentReceiptModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-wrench"></i>';
+                    }
+                }, className: 'text-nowrap'
+            },
+            { data: 'status', visible: false }, // 9 仍可搜尋
+        ],
+        "order": [[9, "desc"], [1, "desc"], [3, "desc"]],
+        "columnDefs": [
+            {
+                targets: [1],
+                responsivePriority: 1,
+            },
+            {
+                targets: [2],
+                responsivePriority: 2,
+            },
+            {
+                targets: [3],
+                responsivePriority: 3,
+            },
+            { searchable: false, orderable: false, targets: [8] },
+            { className: "text-lg-center", targets: [0, 2, 6, 8] },
+            { className: "text-nowrap", targets: [0, 1, 2, 4, 6, 8] },
+        ],
+        createdRow: function (row, data, dataIndex) {
+            $('td:eq(8)', row).css('min-width', '70px');
             [0, 2].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
             });
@@ -1328,7 +1536,6 @@ $(function () {
         }
         // console.log('id = ' + item.id + ' ，期限狀態： ' + item.recentMaturityDate);
     });
-
     // 車位配置廠商-表格
     $('#confirmPaymentParkingSpaceList').DataTable({
         ...commonSettingsTable,
@@ -1531,7 +1738,7 @@ $(function () {
 });
 
 $(function () {
-    // 同步 付款收據 燈箱顯示資料
+    // 同步 付款 燈箱顯示資料
     $('#confirmPaymentModel').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget);
         let paymentId = String(button.data('id'));
@@ -1560,9 +1767,9 @@ $(function () {
             $('#payment_placeOrPrint').text(paymentData.placeOrPrint);
             $('#payment_downloadRemittanceFile').text(paymentData.remittanceFile);
 
-            $('#payment_receiptDate').text(paymentData.receiptDate);
-            $('#payment_receiptAmount').text(paymentData.receiptAmount);
-            $('#payment_receiptItems').text(paymentData.receiptItems);
+            // $('#payment_receiptDate').text(paymentData.receiptDate);
+            // $('#payment_receiptAmount').text(paymentData.receiptAmount);
+            // $('#payment_receiptItems').text(paymentData.receiptItems);
             $('#payment_receiptNum').text(paymentData.receiptNum);
 
             $('#payment_status').text(paymentData.status);
@@ -1573,27 +1780,35 @@ $(function () {
         };
         if (paymentData.status === "完成" || paymentData.status === "取消") {
             CustomInputHandlers.destroy();
-            $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote').removeClass("changeInput_items");
+            // $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote').removeClass("changeInput_items");
+            $('#payment_placeOrPrint, #payment_receiptNum, #payment_adminNote').removeClass("changeInput_items");
             // console.log('Initial class:', $('#payment_placeOrPrint').attr('class'));
-            $('#payment_paymentDate, #payment_receiptDate').removeClass("changeDate_items");
-            $('#payment_paymentAmount, #payment_receiptAmount').removeClass("changeMoney_items");
+            // $('#payment_paymentDate, #payment_receiptDate').removeClass("changeDate_items");
+            $('#payment_paymentDate').removeClass("changeDate_items");
+            // $('#payment_paymentAmount, #payment_receiptAmount').removeClass("changeMoney_items");
+            $('#payment_paymentAmount').removeClass("changeMoney_items");
             $('#payment_paymentPurpose').removeClass("changeSelectPaymentPurpose_items");
             $('#payment_paymentMethod').removeClass("changeRadioPayMethod_items");
             $('#payment_last5AccountNo').removeClass("changeNumber5_items");
             $('#payment_type').removeClass("changeSelectPurchase_items");
             $('#payment_status').removeClass("changeSelectStatus_items");
-            $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote, #payment_paymentDate, #payment_receiptDate, #payment_paymentAmount, #payment_receiptAmount, #payment_paymentPurpose, #payment_paymentMethod, #payment_last5AccountNo, #payment_type, #payment_status').addClass("readOnly");
+            // $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote, #payment_paymentDate, #payment_receiptDate, #payment_paymentAmount, #payment_receiptAmount, #payment_paymentPurpose, #payment_paymentMethod, #payment_last5AccountNo, #payment_type, #payment_status').addClass("readOnly");
+            $('#payment_placeOrPrint, #payment_receiptNum, #payment_adminNote, #payment_paymentDate, #payment_paymentAmount, #payment_paymentPurpose, #payment_paymentMethod, #payment_last5AccountNo, #payment_type, #payment_status').addClass("readOnly");
             $('#payment_updateBtn').hide();
         } else {
-            $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote').addClass("changeInput_items");
-            $('#payment_paymentDate, #payment_receiptDate').addClass("changeDate_items");
-            $('#payment_paymentAmount, #payment_receiptAmount').addClass("changeMoney_items");
+            // $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote').addClass("changeInput_items");
+            $('#payment_placeOrPrint, #payment_receiptNum, #payment_adminNote').addClass("changeInput_items");
+            // $('#payment_paymentDate, #payment_receiptDate').addClass("changeDate_items");
+            $('#payment_paymentDate').addClass("changeDate_items");
+            // $('#payment_paymentAmount, #payment_receiptAmount').addClass("changeMoney_items");
+            $('#payment_paymentAmount').addClass("changeMoney_items");
             $('#payment_paymentPurpose').addClass("changeSelectPaymentPurpose_items");
             $('#payment_paymentMethod').addClass("changeRadioPayMethod_items");
             $('#payment_last5AccountNo').addClass("changeNumber5_items");
             $('#payment_type').addClass("changeSelectPurchase_items");
             $('#payment_status').addClass("changeSelectStatus_items");
-            $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote, #payment_paymentDate, #payment_receiptDate, #payment_paymentAmount, #payment_receiptAmount, #payment_paymentPurpose, #payment_paymentMethod, #payment_last5AccountNo, #payment_type, #payment_status').removeClass("readOnly");
+            // $('#payment_placeOrPrint, #payment_receiptItems, #payment_receiptNum, #payment_adminNote, #payment_paymentDate, #payment_receiptDate, #payment_paymentAmount, #payment_receiptAmount, #payment_paymentPurpose, #payment_paymentMethod, #payment_last5AccountNo, #payment_type, #payment_status').removeClass("readOnly");
+            $('#payment_placeOrPrint, #payment_receiptNum, #payment_adminNote, #payment_paymentDate, #payment_paymentAmount, #payment_paymentPurpose, #payment_paymentMethod, #payment_last5AccountNo, #payment_type, #payment_status').removeClass("readOnly");
             CustomInputHandlers.init();
             $('#payment_updateBtn').show();
         }
@@ -1624,9 +1839,9 @@ $(function () {
             payment_updatedData.placeOrPrint = $('#payment_placeOrPrint').text();
             payment_updatedData.remittanceFile = $('#payment_downloadRemittanceFile').text();
 
-            payment_updatedData.receiptDate = $('#payment_receiptDate').text();
-            payment_updatedData.receiptAmount = $('#payment_receiptAmount').text();
-            payment_updatedData.receiptItems = $('#payment_receiptItems').text();
+            // payment_updatedData.receiptDate = $('#payment_receiptDate').text();
+            // payment_updatedData.receiptAmount = $('#payment_receiptAmount').text();
+            // payment_updatedData.receiptItems = $('#payment_receiptItems').text();
             payment_updatedData.receiptNum = $('#payment_receiptNum').text();
 
             payment_updatedData.status = $('#payment_status').text();
@@ -1654,7 +1869,8 @@ $(function () {
                 });
 
             } else {
-                if (!payment_updatedData.receiptDate || !payment_updatedData.receiptAmount || !payment_updatedData.receiptItems || !payment_updatedData.receiptNum) {
+                // if (!payment_updatedData.receiptDate || !payment_updatedData.receiptAmount || !payment_updatedData.receiptItems || !payment_updatedData.receiptNum) {
+                if (!payment_updatedData.receiptNum) {
                     $('#danger_paymentBox').text('請填上完整的收據資料，才可以記為『完成』歐！');
                     return; // 如果有任一收據資料未填寫，返回，不再繼續
                 } else {
@@ -2014,6 +2230,159 @@ $(function () {
                     console.log(deleteData);
                 })
         });
+
+    });
+
+    // 同步 收據 燈箱顯示資料
+    $('#confirmPaymentReceiptModel').on('show.bs.modal', function (event) {
+        let button = $(event.relatedTarget);
+        let receiptId = String(button.data('id'));
+
+        // 解除先前綁定的點擊事件，不設定會造成重複傳遞先前點擊過的資料。
+        $('#receipt_updateBtn').off('click');
+        $('#danger_receiptBox').text('');
+
+        // console.log('openRoom Id:', receiptId);
+        let receiptData = dataset_confirmPaymentReceipt.find(receipt => receipt.id === receiptId);
+        if (receiptData) {
+            $('#receipt_receiptNum').text(receiptData.receiptNum);
+            $('#receipt_receiptDate').text(receiptData.receiptDate);
+            $('#receipt_receiptItem').text(receiptData.item);
+            $('#receipt_receiptAmount').text(receiptData.amount);
+
+            $('#receipt_companyName').text(receiptData.company);
+            $('#receipt_uniformNum').text(receiptData.uniformNum);
+            $('#receipt_status').text(receiptData.status);
+            $('#receipt_adminNote').text(receiptData.adminNote);
+
+            $('#receipt_createDate').text(receiptData.createDate);
+            $('#receipt_createBy').text(receiptData.createBy);
+
+
+        } else {
+            console.error('receiptData data not found for id:', receiptId);
+        };
+        if (receiptData.status === "使用中" || receiptData.status === "作廢收回") {
+            CustomInputHandlers.destroy();
+            // $('#receipt_placeOrPrint, #receipt_receiptItems, #receipt_receiptNum, #receipt_adminNote').removeClass("changeInput_items");
+            $('#receipt_placeOrPrint, #receipt_receiptNum, #receipt_adminNote').removeClass("changeInput_items");
+            // console.log('Initial class:', $('#receipt_placeOrPrint').attr('class'));
+            // $('#receipt_receiptDate, #receipt_receiptDate').removeClass("changeDate_items");
+            $('#receipt_receiptDate').removeClass("changeDate_items");
+            // $('#receipt_receiptAmount, #receipt_receiptAmount').removeClass("changeMoney_items");
+            $('#receipt_receiptAmount').removeClass("changeMoney_items");
+            $('#receipt_receiptPurpose').removeClass("changeSelectPaymentPurpose_items");
+            $('#receipt_receiptMethod').removeClass("changeRadioPayMethod_items");
+            $('#receipt_last5AccountNo').removeClass("changeNumber5_items");
+            $('#receipt_type').removeClass("changeSelectPurchase_items");
+            $('#receipt_status').removeClass("changeSelectStatus_items");
+            // $('#receipt_placeOrPrint, #receipt_receiptItems, #receipt_receiptNum, #receipt_adminNote, #receipt_receiptDate, #receipt_receiptDate, #receipt_receiptAmount, #receipt_receiptAmount, #receipt_receiptPurpose, #receipt_receiptMethod, #receipt_last5AccountNo, #receipt_type, #receipt_status').addClass("readOnly");
+            $('#receipt_placeOrPrint, #receipt_receiptNum, #receipt_adminNote, #receipt_receiptDate, #receipt_receiptAmount, #receipt_receiptPurpose, #receipt_receiptMethod, #receipt_last5AccountNo, #receipt_type, #receipt_status').addClass("readOnly");
+            $('#receipt_updateBtn').hide();
+        } else {
+            // $('#receipt_placeOrPrint, #receipt_receiptItems, #receipt_receiptNum, #receipt_adminNote').addClass("changeInput_items");
+            $('#receipt_placeOrPrint, #receipt_receiptNum, #receipt_adminNote').addClass("changeInput_items");
+            // $('#receipt_receiptDate, #receipt_receiptDate').addClass("changeDate_items");
+            $('#receipt_receiptDate').addClass("changeDate_items");
+            // $('#receipt_receiptAmount, #receipt_receiptAmount').addClass("changeMoney_items");
+            $('#receipt_receiptAmount').addClass("changeMoney_items");
+            $('#receipt_receiptPurpose').addClass("changeSelectPaymentPurpose_items");
+            $('#receipt_receiptMethod').addClass("changeRadioPayMethod_items");
+            $('#receipt_last5AccountNo').addClass("changeNumber5_items");
+            $('#receipt_type').addClass("changeSelectPurchase_items");
+            $('#receipt_status').addClass("changeSelectStatus_items");
+            // $('#receipt_placeOrPrint, #receipt_receiptItems, #receipt_receiptNum, #receipt_adminNote, #receipt_receiptDate, #receipt_receiptDate, #receipt_receiptAmount, #receipt_receiptAmount, #receipt_receiptPurpose, #receipt_receiptMethod, #receipt_last5AccountNo, #receipt_type, #receipt_status').removeClass("readOnly");
+            $('#receipt_placeOrPrint, #receipt_receiptNum, #receipt_adminNote, #receipt_receiptDate, #receipt_receiptAmount, #receipt_receiptPurpose, #receipt_receiptMethod, #receipt_last5AccountNo, #receipt_type, #receipt_status').removeClass("readOnly");
+            CustomInputHandlers.init();
+            $('#receipt_updateBtn').show();
+        }
+
+        $('#receipt_updateBtn').on('click', function () {
+            // 確認當前的 receiptId
+            console.log('當前的 receiptId:', receiptId);
+
+            // 清除上次的資料，重新定義變量
+            var receipt_updatedData = {};
+
+            // 獲取所有欄位的目前值
+            receipt_updatedData.id = receiptId;
+            receipt_updatedData.companyName = $('#receipt_companyName').text();
+            receipt_updatedData.uniformNum = $('#receipt_uniformNum').text();
+            receipt_updatedData.receiptPurpose = $('#receipt_receiptPurpose').text();
+
+            receipt_updatedData.companyEmail = $('#receipt_companyEmail').text();
+            receipt_updatedData.contactPerson = $('#receipt_contactPerson').text();
+            receipt_updatedData.companyPhone = $('#receipt_companyPhone').text();
+
+            receipt_updatedData.receiptDate = $('#receipt_receiptDate').text();
+            receipt_updatedData.amount = $('#receipt_receiptAmount').text();
+            receipt_updatedData.receiptMethod = $('#receipt_receiptMethod').text();
+            receipt_updatedData.last5AccountNo = $('#receipt_last5AccountNo').text();
+
+            receipt_updatedData.type = $('#receipt_type').text();
+            receipt_updatedData.placeOrPrint = $('#receipt_placeOrPrint').text();
+            receipt_updatedData.remittanceFile = $('#receipt_downloadRemittanceFile').text();
+
+            // receipt_updatedData.receiptDate = $('#receipt_receiptDate').text();
+            // receipt_updatedData.receiptAmount = $('#receipt_receiptAmount').text();
+            // receipt_updatedData.receiptItems = $('#receipt_receiptItems').text();
+            receipt_updatedData.receiptNum = $('#receipt_receiptNum').text();
+
+            receipt_updatedData.status = $('#receipt_status').text();
+            receipt_updatedData.adminNote = $('#receipt_adminNote').text();
+
+            // 檢查是否為完成狀態，且收據資料是否完整
+            if (receipt_updatedData.status != '完成') {
+                console.log(receipt_updatedData);
+                // 將更新的資料送到後端
+                $.ajax({
+                    url: '您的後端URL', // 替換成您的後端接收更新請求的URL
+                    type: 'POST', // 或者 'PUT'，根據您的後端接口設計來決定
+                    contentType: 'application/json',
+                    data: JSON.stringify(receipt_updatedData),
+                    success: function (response) {
+                        // 處理成功回應
+                        console.log('更新成功:', response);
+                        // 根據需要執行其他操作，例如顯示成功訊息
+                    },
+                    error: function (xhr, status, error) {
+                        // 處理錯誤情況
+                        console.error('更新失敗:', error);
+                        // 根據需要顯示錯誤訊息或執行其他操作
+                    }
+                });
+
+            } else {
+                // if (!receipt_updatedData.receiptDate || !receipt_updatedData.receiptAmount || !receipt_updatedData.receiptItems || !receipt_updatedData.receiptNum) {
+                if (!receipt_updatedData.receiptNum) {
+                    $('#danger_receiptBox').text('請填上完整的收據資料，才可以記為『完成』歐！');
+                    return; // 如果有任一收據資料未填寫，返回，不再繼續
+                } else {
+                    console.log(receipt_updatedData);
+                    $.ajax({
+                        url: '後端URL', // 替換成您的後端接收更新請求的URL
+                        type: 'POST', // 或者 'PUT'，根據您的後端接口設計來決定
+                        contentType: 'application/json',
+                        data: JSON.stringify(receipt_updatedData),
+                        success: function (response) {
+                            // 處理成功回應
+                            console.log('更新成功:', response);
+                            // 根據需要執行其他操作，例如顯示成功訊息
+                        },
+                        error: function (xhr, status, error) {
+                            // 處理錯誤情況
+                            console.error('更新失敗:', error);
+                            // 根據需要顯示錯誤訊息或執行其他操作
+                        }
+                    });
+                }
+            }
+
+
+
+        });
+
+
 
     });
 

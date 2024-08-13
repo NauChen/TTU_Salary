@@ -173,11 +173,16 @@
                         <h3 class="section-header col-auto mb-0 lh-base"><i
                                 class="fa-solid fa-quote-left"></i>付款查核與配發廠商<i class="fa-solid fa-quote-right"></i></h3>
                         <!-- 點擊後將勾選的id傳至後台 -->
-                        <button class="btn btn-outline-warning col-auto goto_somewhere ms-5" id="createNewPayment"
+                        <button class="btn btn-warning col-auto goto_somewhere ms-5" id="createNewPayment"
                             data-bs-toggle="modal" data-bs-target="#remittanceAdminModal"><i
                                 class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
                                 class="fa-solid fa-dollar-sign"></i><span
                                 class="tooltiptext tooltip-top">新增付款資訊</span></button>
+                        <button class="btn btn-warning col-auto goto_somewhere ms-3" id="createNewPayment"
+                            data-bs-toggle="modal" data-bs-target="#remittanceAdminModal"><i
+                                class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-solid fa-receipt"></i><span
+                                class="tooltiptext tooltip-top">登記收據資訊</span></button>
                         <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
                             href="./cultivationRoomCreate.html"><i class="fa-solid fa-plus"></i><i
                                 class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-tree-city"></i><span
@@ -255,12 +260,12 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="pills-one-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-one" type="button" role="tab" aria-controls="pills-one"
-                                    aria-selected="true">付款通知</button>
+                                    aria-selected="true">已登錄收據</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="pills-two-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-two" type="button" role="tab" aria-controls="pills-two"
-                                    aria-selected="false">收據紀錄</button>
+                                    aria-selected="false">付款通知</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="pills-three-tab" data-bs-toggle="pill"
@@ -277,11 +282,14 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-one" role="tabpanel"
                                 aria-labelledby="pills-one-tab">
-                                <table id="confirmPaymentAllList"
+                                <table id="confirmPaymentReceiptList"
                                     class="table table-hover table-bordered responsive align-middle" style="width:100%">
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="pills-two" role="tabpanel" aria-labelledby="pills-two-tab">
+                                <table id="confirmPaymentAllList"
+                                    class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                                </table>
                             </div>
                             <div class="tab-pane fade" id="pills-three" role="tabpanel"
                                 aria-labelledby="pills-three-tab">
@@ -762,13 +770,13 @@
                     </div>
                 </div>
 
-                <!-- Modal 付款收據 -->
+                <!-- Modal 付款資訊 -->
                 <div class="modal fade" id="confirmPaymentModel" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="confirmPaymentModelLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="confirmPaymentModelLabel">付款詳情與收據</h4>
+                                <h4 class="modal-title" id="confirmPaymentModelLabel">付款詳情</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -843,7 +851,7 @@
         </div>
         <!-- 收據號碼、收據日期、收據金額 -->
         <div class="row mb-1">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
+            <!-- <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
                 收據日期
             </div>
             <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_receiptDate"></div>
@@ -855,11 +863,14 @@
                 收據項目
             </div>
             <div class="col lightBoxItems p-3 align_center" id="payment_receiptItems">
-            </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            </div> -->
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
                 收據號碼
             </div>
             <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_receiptNum">
+            </div>
+            <div class="col col-lg lightBoxItems p-3 align_center text-secondary">
+                &#129034;請輸入已登錄在系統的收據號碼。
             </div>
         </div>
 
@@ -869,7 +880,7 @@
                 處理進度
             </div>
             <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_status"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 管理註記
             </div>
             <div class="col lightBoxItems p-3 align_center" id="payment_adminNote"></div>
@@ -886,6 +897,84 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Modal 收據資訊 -->
+                <div class="modal fade" id="confirmPaymentReceiptModel" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="confirmPaymentReceiptModelLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="confirmPaymentReceiptModelLabel">收據詳情</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+    <div class="container-fluid">
+        <!-- 公司名稱(自動代入)、統編(自動代入)、支付目的(可改) -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                收據號碼
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="receipt_receiptNum"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                收據日期
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="receipt_receiptDate"></div>
+
+        </div>
+        <!-- E-mail、聯絡人、聯絡電話 (都自動代入)-->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                收據項目
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="receipt_receiptItem"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                收據總額
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="receipt_receiptAmount"></div>
+        </div>
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                開立抬頭
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="receipt_companyName"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                統一編號
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="receipt_uniformNum"></div>
+        </div>
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                收據狀態
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="receipt_status"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                管理註記
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="receipt_adminNote"></div>
+        </div>
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+                建立日期
+            </div>
+            <div class="col col-lg lightBoxItems p-3 align_center readOnly" id="receipt_createDate"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
+                建檔人員
+            </div>
+            <div class="col col-lg lightBoxItems p-3 align_center readOnly" id="receipt_createBy"></div>
+        </div>
+    </div>
+</div>
+                            <div class="modal-footer">
+                                <span class="text-danger" id="danger_receiptBox"></span>
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                                <button type="button" class="btn btn-outline-secondary"
+                                    id="receipt_updateBtn">確認修改</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <!-- <footer>
     <ul>
