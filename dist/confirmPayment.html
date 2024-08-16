@@ -172,17 +172,16 @@
                     <div class="row mb-4 px-3">
                         <h3 class="section-header col-auto mb-0 lh-base"><i
                                 class="fa-solid fa-quote-left"></i>付款查核與配發廠商<i class="fa-solid fa-quote-right"></i></h3>
-                        <!-- 點擊後將勾選的id傳至後台 -->
                         <button class="btn btn-warning col-auto goto_somewhere ms-5" id="createNewPayment"
+                            data-bs-toggle="modal" data-bs-target="#receiptAdminModal"><i
+                                class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
+                                class="fa-solid fa-receipt"></i><span
+                                class="tooltiptext tooltip-top">登錄收據資訊</span></button>
+                        <button class="btn btn-warning col-auto goto_somewhere ms-3" id="createNewPayment"
                             data-bs-toggle="modal" data-bs-target="#remittanceAdminModal"><i
                                 class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
                                 class="fa-solid fa-dollar-sign"></i><span
                                 class="tooltiptext tooltip-top">新增付款資訊</span></button>
-                        <button class="btn btn-warning col-auto goto_somewhere ms-3" id="createNewPayment"
-                            data-bs-toggle="modal" data-bs-target="#remittanceAdminModal"><i
-                                class="fa-solid fa-plus"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
-                                class="fa-solid fa-receipt"></i><span
-                                class="tooltiptext tooltip-top">登記收據資訊</span></button>
                         <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
                             href="./cultivationRoomCreate.html"><i class="fa-solid fa-plus"></i><i
                                 class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-tree-city"></i><span
@@ -770,6 +769,85 @@
                     </div>
                 </div>
 
+                <!-- Modal 新增收據資訊-->
+                <div class="modal fade" id="receiptAdminModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="receiptAdminModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                        <form class="modal-content" method="post" id="formReceipt" enctype="multipart/form-data">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="receiptAdminModalLabel">新增收據資訊</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">
+    <div class="container-fluid">
+        <div class="row mb-1">
+            <div for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">收據細項</div>
+            <div class="col lightBoxItems p-3">
+                <div class="row mb-1">
+                    <label for="receiptNumAdd" class="col-form-label col-auto text-nowrap"><span
+                            class="requiredMark">*</span>收據號碼</label>
+                    <div class="col">
+                        <input type="text" class="form-control thisRequired" id="receiptNumAdd" name="receiptNumAdd"
+                        onkeyup="restrictToUpperCaseNumberHyphen(this)">
+                        <span class="text-danger" id="danger_receiptNumAdd"></span>
+                    </div>
+                    <label for="receiptDateAdd" class="col-form-label col-auto text-nowrap"><span
+                            class="requiredMark">*</span>收據日期</label>
+                    <div class="col">
+                        <input type="date" class="form-control thisRequired" id="receiptDateAdd" name="receiptDateAdd">
+                        <span class="text-danger" id="danger_receiptDateAdd"></span>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <label for="receiptItemAdd" class="col-form-label col-auto text-nowrap"><span
+                            class="requiredMark">*</span>收據項目</label>
+                    <div class="col">
+                        <select class="form-select" name="receiptItemAdd" id="receiptItemAdd">
+                            <option value="場地維護費">場地維護費</option>
+                            <option value="服務費">服務費</option>
+                        </select>
+                        <span class="text-danger" id="danger_receiptItemAdd"></span>
+                    </div>
+                    <label for="receiptAmountAdd" class="col-form-label col-auto text-nowrap"><span
+                        class="requiredMark">*</span>收據金額</label>
+                <div class="col">
+                    <input type="text" class="form-control thisRequired" id="receiptAmountAdd"
+                        onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)"
+                        name="receiptAmountAdd">
+                    <span class="text-danger" id="danger_receiptAmountAdd"></span>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">開立對象</div>
+            <div class="col lightBoxItems p-3">
+                <div class="row mb-1">
+                    <label for="typeahead_receiptCompanyAdd" class="col-form-label col-auto"><span
+                            class="requiredMark">*</span>公司名稱</label>
+                    <div class="col">
+                        <input type="text" class="form-control" id="typeahead_receiptCompanyAdd" placeholder="鍵入部分文字會有提示字"
+                            name="company">
+                        <span class="text-danger" id="danger_typeahead_receiptCompanyAdd"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
+                                <button type="button" class="btn btn-outline-secondary"
+                                    id="receiptceSubmit">確認上傳</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
                 <!-- Modal 付款資訊 -->
                 <div class="modal fade" id="confirmPaymentModel" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="confirmPaymentModelLabel" aria-hidden="true">
@@ -899,8 +977,9 @@
                 </div>
 
                 <!-- Modal 收據資訊 -->
-                <div class="modal fade" id="confirmPaymentReceiptModel" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="confirmPaymentReceiptModelLabel" aria-hidden="true">
+                <div class="modal fade" id="confirmPaymentReceiptModel" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmPaymentReceiptModelLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">

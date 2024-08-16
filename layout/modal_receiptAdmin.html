@@ -1,0 +1,57 @@
+<div class="modal-body">
+    <div class="container-fluid">
+        <div class="row mb-1">
+            <div for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">收據細項</div>
+            <div class="col lightBoxItems p-3">
+                <div class="row mb-1">
+                    <label for="receiptNumAdd" class="col-form-label col-auto text-nowrap"><span
+                            class="requiredMark">*</span>收據號碼</label>
+                    <div class="col">
+                        <input type="text" class="form-control thisRequired" id="receiptNumAdd" name="receiptNumAdd"
+                        onkeyup="restrictToUpperCaseNumberHyphen(this)">
+                        <span class="text-danger" id="danger_receiptNumAdd"></span>
+                    </div>
+                    <label for="receiptDateAdd" class="col-form-label col-auto text-nowrap"><span
+                            class="requiredMark">*</span>收據日期</label>
+                    <div class="col">
+                        <input type="date" class="form-control thisRequired" id="receiptDateAdd" name="receiptDateAdd">
+                        <span class="text-danger" id="danger_receiptDateAdd"></span>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <label for="receiptItemAdd" class="col-form-label col-auto text-nowrap"><span
+                            class="requiredMark">*</span>收據項目</label>
+                    <div class="col">
+                        <select class="form-select" name="receiptItemAdd" id="receiptItemAdd">
+                            <option value="場地維護費">場地維護費</option>
+                            <option value="服務費">服務費</option>
+                        </select>
+                        <span class="text-danger" id="danger_receiptItemAdd"></span>
+                    </div>
+                    <label for="receiptAmountAdd" class="col-form-label col-auto text-nowrap"><span
+                        class="requiredMark">*</span>收據金額</label>
+                <div class="col">
+                    <input type="text" class="form-control thisRequired" id="receiptAmountAdd"
+                        onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)"
+                        name="receiptAmountAdd">
+                    <span class="text-danger" id="danger_receiptAmountAdd"></span>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div for="building" class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">開立對象</div>
+            <div class="col lightBoxItems p-3">
+                <div class="row mb-1">
+                    <label for="typeahead_receiptCompanyAdd" class="col-form-label col-auto"><span
+                            class="requiredMark">*</span>公司名稱</label>
+                    <div class="col">
+                        <input type="text" class="form-control" id="typeahead_receiptCompanyAdd" placeholder="鍵入部分文字會有提示字"
+                            name="company">
+                        <span class="text-danger" id="danger_typeahead_receiptCompanyAdd"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

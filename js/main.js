@@ -23,12 +23,12 @@ var session_adminData = {
 };
 
 var selectOptionLocation = [
-    { 'optigroup': '青創基地', 'option': '101' },
-    { 'optigroup': '青創基地', 'option': '102' },
-    { 'optigroup': '北設工培育區', 'option': '202' },
-    { 'optigroup': '產學實驗培育區', 'option': '202' },
-    { 'optigroup': '綜合工廠培育區', 'option': '202' },
-    { 'optigroup': '挺生大樓培育區', 'option': '102' },
+    { 'optigroup': '青創大樓', 'option': '101' },
+    { 'optigroup': '青創大樓', 'option': '102' },
+    { 'optigroup': '北設工大樓', 'option': '202' },
+    { 'optigroup': '產學實驗大樓', 'option': '202' },
+    { 'optigroup': '綜合工廠大樓', 'option': '202' },
+    { 'optigroup': '挺生大樓', 'option': '102' },
 ];
 
 // DataTable設定 - 搜尋左上，無自選顯示個數(預設10筆)

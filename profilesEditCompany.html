@@ -18,16 +18,16 @@
                         <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
                         <li class="breadcrumb-item"><a class="d-inline" href="./userProfilesEditAdmin.html"><i
                                     class="fa-solid fa-address-book"></i>&ensp;用戶資料修改</a></li>
-                        <li class="breadcrumb-item active"><i class="fa-solid fa-user"></i>&ensp;個人資料</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-briefcase"></i>&ensp;廠商資料</li>
                     </ol>
                 </div>
 
                 <div class="tabs-box my-2r">
-                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>個人使用者-資料修改<i
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>商號使用者-資料修改<i
                             class="fa-solid fa-quote-right"></i></h3>
                     <div class="tabs section-border-radius section-padding">
-                        <form method="post" id="formPersonalEdit">
-                            @@include('layout/form_profilesPersonal.html')
+                        <form method="post" id="formCompanyEdit">
+                            @@include('layout/form_profilesCompany.html')
                             <div class="row text-center p-3 justify-content-center">
                                 <div class="col-auto">
                                     <a href="./userProfilesEditAdmin.html"
@@ -49,7 +49,7 @@
     @@include('layout/metaJS.html')
     <script src="./js/formComm.js"></script>
     <script src="./js/formValidation.js"></script>
-    <script src="./js/profilesEditPersonal.js"></script>
+    <script src="./js/profilesEditCompany.js"></script>
 </body>
 
 </html>

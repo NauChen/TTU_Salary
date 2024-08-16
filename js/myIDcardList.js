@@ -102,29 +102,30 @@ $(function () {
                     var part1 = placeData[0].trim();
                     var part2 = placeData[1].trim();
 
-                    var roomName = changeCultivationRoomToBuilding(part1);
-                    function changeCultivationRoomToBuilding(room) {
-                        switch (room) {
-                            case '新德惠':
-                                return '青創基地';
-                            case '綜合':
-                                return '綜合工廠培育區';
-                            case '挺生':
-                                return '挺生大樓培育區';
-                            case '產學':
-                                return '產學實驗培育區';
-                            case '實驗':
-                                return '實驗大樓培育區';
-                            case '北設工':
-                                return '北設工培育區';
-                            case '尚志':
-                                return '尚志大樓培育區';
-                            default:
-                                return '待新增';
-                        }
-                    }
+                    // var roomName = changeCultivationRoomToBuilding(part1);
+                    // function changeCultivationRoomToBuilding(room) {
+                    //     switch (room) {
+                    //         case '新德惠':
+                    //             return '青創基地';
+                    //         case '綜合':
+                    //             return '綜合工廠培育區';
+                    //         case '挺生':
+                    //             return '挺生大樓培育區';
+                    //         case '產學':
+                    //             return '產學實驗培育區';
+                    //         case '實驗':
+                    //             return '實驗大樓培育區';
+                    //         case '北設工':
+                    //             return '北設工培育區';
+                    //         case '尚志':
+                    //             return '尚志大樓培育區';
+                    //         default:
+                    //             return '待新增';
+                    //     }
+                    // }
 
-                    return roomName + '-' + part2;
+                    // return roomName + '-' + part2;
+                    return part1 + '大樓-' + part2;
                 },
             }, // 2
             { data: 'name', title: "姓名" }, // 3

@@ -1,0 +1,241 @@
+<div class="row">
+    <div class="col-xl-8 mb-3">
+        <div class="row mb-3">
+            <label for="profilesCompany_companyName" class="col-lg-auto col-form-label text-nowrap">公司名稱</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_companyName">
+                <span class="text-danger" id="danger_profilesCompany_companyName"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="profilesCompany_creationDate" class="col-lg-auto col-form-label text-nowrap">成立日期</label>
+            <div class="col">
+                <input type="date" class="form-control thisRequired" id="profilesCompany_creationDate">
+                <span class="text-danger" id="danger_profilesCompany_creationDate"></span>
+            </div>
+            <label for="profilesCompany_uniformNum" class="col-lg-auto col-form-label text-nowrap">統一編號</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_uniformNum" readonly>
+                <span class="text-danger" id="danger_profilesCompany_uniformNum"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="profilesCompany_capitalAmount" class="col-lg-auto col-form-label text-nowrap">資本額&emsp;</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_capitalAmount"
+                onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
+                <span class="text-danger" id="danger_profilesCompany_capitalAmount"></span>
+            </div>
+            <label for="profilesCompany_responsiblePerson" class="col-lg-auto col-form-label text-nowrap">負責人&emsp;</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_responsiblePerson">
+                <span class="text-danger" id="danger_profilesCompany_responsiblePerson"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="profilesCompany_companyAdd" class="col-lg-auto col-form-label text-nowrap">登記地址</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_companyAdd">
+                <span class="text-danger" id="danger_profilesCompany_companyAdd"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="profilesCompany_locationOfCompany" class="col-lg-auto col-form-label text-nowrap">通訊地址</label>
+            <div class="col">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="sameAdd">
+                    <label for="sameAdd" class="form-check-label">通訊地址同上</label>
+                </div>
+                <input type="text" class="form-control thisRequired" id="profilesCompany_locationOfCompany">
+                <span class="text-danger" id="danger_profilesCompany_profilesCompany_locationOfCompany"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="profilesCompany_employeesNum" class="col-lg-auto col-form-label text-nowrap">員工人數</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_employeesNum"
+                onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
+                <span class="text-danger" id="danger_profilesCompany_employeesNum"></span>
+            </div>
+            <label for="profilesCompany_referrer" class="col-lg-auto col-form-label text-nowrap">推薦人&emsp;</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_referrer">
+                <span class="text-danger" id="danger_profilesCompany_referrer"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="profilesCompany_contactPerson" class="col-lg-auto col-form-label text-nowrap">聯絡人&emsp;</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_contactPerson">
+                <span class="text-danger" id="danger_profilesCompany_contactPerson"></span>
+            </div>
+            <label for="profilesCompany_responsiblePerson" class="col-lg-auto col-form-label text-nowrap">分機</label>
+            <div class="col col-lg-3">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_responsiblePerson">
+                <span class="text-danger" id="danger_profilesCompany_responsiblePerson"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="profilesCompany_jobTitle" class="col-lg-auto col-form-label text-nowrap">職務名稱</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_jobTitle">
+                <span class="text-danger" id="danger_profilesCompany_jobTitle"></span>
+            </div>
+            <label for="profilesCompany_responsiblePerson" class="col-lg-auto col-form-label text-nowrap">電話/手機</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_responsiblePerson">
+                <span class="text-danger" id="danger_profilesCompany_responsiblePerson"></span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="profilesCompany_companyEmail" class="col-lg-auto col-form-label text-nowrap">主要信箱</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_companyEmail"
+                    onkeyup="restrictToValidChars(this)">
+                <span class="text-danger" id="danger_profilesCompany_companyEmail"></span>
+            </div>
+            <label for="profilesCompany_lineId" class="col-lg-auto col-form-label text-nowrap">Line ID</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="profilesCompany_lineId"
+                onkeyup="restrictToValidChars(this)">
+                <span class="text-danger" id="danger_profilesCompany_profilesCompany_lineId"></span>
+            </div>
+        </div>
+
+
+
+        <div class="row mb-3">
+            <label for="profilesCompany_AdminNote" class="col-lg-auto col-form-label text-nowrap">管理備註</label>
+            <div class="col">
+                <input type="text" class="form-control" id="profilesCompany_AdminNote">
+                <span class="text-danger" id="danger_profilesCompany_AdminNote"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 mb-3">
+        <div class="salaryRadio px-2 py-2 mx-1 border-success">
+            <!-- <div class="mb-3">&#711;&#10623;&#711;&ensp;請先確認修改後的電子信箱是否有重複，若重複就不能使用歐！</div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-danger btn-sm" id="checkEmail"><i
+                        class="fa-solid fa-magnifying-glass"></i>&ensp;檢查</button>
+            </div>
+            <div class="col">
+                結果：
+                <span id="checkEmailResult">
+                    不能使用。
+                </span>
+            </div> -->
+            <div class="row mb-3 ">
+                <label for="profilesCompany_businessItems" class="col-12 col-form-label text-nowrap">主要營業項目</label>
+                <div class="col">
+                    <textarea class="form-control textarea-md thisRequired"
+                    id="profilesCompany_businessItems" placeholder="※請簡述"></textarea>
+                    <span class="text-danger" id="profilesCompany_businessItems"></span>
+                </div>
+            </div>
+            <div class="row mb-4 ">
+                <label for="profilesCompany_helpItems" class="col-12 col-form-label text-nowrap">駐育成中心主要輔導項目需求</label>
+                <div class="col">
+                    <textarea class="form-control textarea-md thisRequired"
+                    id="profilesCompany_helpItems" placeholder="※請簡述"></textarea>
+                    <span class="text-danger" id="profilesCompany_helpItems"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="profilesCompany_helpItems" class="col-12 col-form-label text-nowrap fw-bold">檔案重新上傳：</label>
+                <div class="col">
+                    <div class="row">
+                        <label for="companyProof"
+                            class="col-auto col-form-label text-nowrap upload-label py-0">公司登記證<i
+                                class="fa-solid fa-upload mx-1"></i>
+                        </label>
+                        <div class="col">
+                            <input type="file" class="form-control d-none thisRequired"
+                                id="companyProof" accept=".pdf"
+                                onchange="javascript:{document.getElementById('fileInfo_companyProof').innerHTML = document.getElementById('companyProof').value;}">
+                            <div id="fileInfo_companyProof" class="fileInfo py-0"></div>
+                            <span class="text-danger" id="danger_companyProof"></span>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <label for="memoOfCooperation"
+                            class="col col-form-label upload-label py-0">企業與大同大學教職員簽訂之合作備忘錄<i
+                                class="fa-solid fa-upload mx-1"></i>
+                        </label>
+                        <div class="col-12">
+                            <input type="file" class="form-control d-none thisRequired"
+                                id="memoOfCooperation" accept=".pdf"
+                                onchange="javascript:{document.getElementById('fileInfo_memoOfCooperation').innerHTML = document.getElementById('memoOfCooperation').value;}">
+                            <div id="fileInfo_memoOfCooperation" class="fileInfo py-0"></div>
+                            <span class="text-danger" id="danger_memoOfCooperation"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="consentDoc"
+                            class="col col-form-label text-nowrap upload-label py-0">同意審查聲明書<i
+                                class="fa-solid fa-upload mx-1"></i>
+                        </label>
+                        <div class="col-12">
+                            <input type="file" class="form-control d-none thisRequired"
+                                id="consentDoc" accept=".pdf"
+                                onchange="javascript:{document.getElementById('fileInfo_consentDoc').innerHTML = document.getElementById('consentDoc').value;}">
+                            <div id="fileInfo_consentDoc" class="fileInfo py-0"></div>
+                            <span class="text-danger" id="danger_consentDoc"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="businessProof"
+                            class="col col-form-label text-nowrap upload-label py-0">營利事業登記證或預查名稱表影本<i
+                                class="fa-solid fa-upload mx-1"></i>
+                        </label>
+                        <div class="col-12">
+                            <input type="file" class="form-control d-none thisRequired"
+                                id="businessProof" accept=".pdf"
+                                onchange="javascript:{document.getElementById('fileInfo_businessProof').innerHTML = document.getElementById('businessProof').value;}">
+                            <div id="fileInfo_businessProof" class="fileInfo py-0"></div>
+                            <span class="text-danger" id="danger_businessProof"></span>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <label for="planConcept"
+                            class="col col-form-label text-nowrap upload-label py-0">企業營運計畫構想書<i
+                                class="fa-solid fa-upload mx-1"></i>
+                        </label>
+                        <div class="col-12">
+                            <input type="file" class="form-control d-none thisRequired"
+                                id="planConcept" accept=".pdf"
+                                onchange="javascript:{document.getElementById('fileInfo_planConcept').innerHTML = document.getElementById('planConcept').value;}">
+                            <div id="fileInfo_planConcept" class="fileInfo py-0"></div>
+                            <span class="text-danger" id="danger_planConcept"></span>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <label for="entryForm"
+                            class="col col-form-label text-nowrap upload-label py-0">創新育成中心進駐申請書<i
+                                class="fa-solid fa-upload mx-1"></i>
+                        </label>
+                        <div class="col-12">
+                            <input type="file" class="form-control d-none thisRequired"
+                                id="entryForm" accept=".pdf"
+                                onchange="javascript:{document.getElementById('fileInfo_entryForm').innerHTML = document.getElementById('entryForm').value;}">
+                            <div id="fileInfo_entryForm" class="fileInfo py-0"></div>
+                            <span class="text-danger" id="danger_entryForm"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="payProof"
+                            class="col col-form-label text-nowrap upload-label py-0">合約書<i
+                                class="fa-solid fa-upload mx-1"></i>
+                        </label>
+                        <div class="col-12">
+                            <input type="file" class="form-control d-none" id="payProof"
+                                accept=".pdf"
+                                onchange="javascript:{document.getElementById('fileInfo_payProof').innerHTML = document.getElementById('payProof').value;setFormHeight();}">
+                            <div id="fileInfo_payProof" class="fileInfo py-0"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

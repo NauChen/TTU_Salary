@@ -432,9 +432,9 @@ $(function () {
             { data: 'company', title: "公司名稱", }, // 2
             {
                 data: 'contactPerson', title: "主要聯絡人", // 3
-                render: function (data, type, row) {
-                    return data + ' #' + row.ext;
-                }
+                // render: function (data, type, row) {
+                //     return data + ' #' + row.ext;
+                // }
             },
             { data: 'companyEmail', title: "E-mail", }, // 4
             { data: 'status', title: "審核進度", }, // 5

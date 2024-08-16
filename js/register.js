@@ -120,6 +120,64 @@ function checkRegisterEmail() {
     }
 }
 
+// 限定函式 - 檢查統編
+function checkRegisterUniformNum() {
+    // 接資料庫後改用此。
+    // var email = $("#checkUniformNumResults").val();
+    // $.ajax({
+    //     url: '@Url.Action("checkUniformNum", "Account")',
+    //     type: "POST",
+    //     data: { uniformNum: uniformNum },
+    //     success: function (result) {
+    //         var checkEmail = $("#checkUniformNumResults");
+    //         var nextButton = $("#submitBtn");
+    //         switch (result) {
+    //             case "NoText":
+    //                 checkEmail.text("檢查").removeClass("invalid").removeClass("valid");
+    //                 nextButton.prop("disabled", true);
+    //                 break;
+    //             case false: //沒有相同
+    //                 checkEmail.text("檢查").removeClass("invalid").addClass("valid");
+    //                 nextButton.prop("disabled", false);
+    //                 break;
+    //             case true:
+    //                 checkEmail.text("此統編已註冊過。").removeClass("valid").addClass("invalid");
+    //                 nextButton.prop("disabled", true);
+    //                 break;
+    //             default:
+    //                 checkEmail.text("統編格式不正確。").removeClass("valid").addClass("invalid");
+    //                 nextButton.prop("disabled", true);
+    //                 break;
+    //         }
+    //     },
+    //     error: function (error) {
+    //         console.log("發生錯誤！", error.responseText);
+    //     }
+    // });
+    // 未接資料庫暫用此測試。
+    var checkUniformNum = $("#checkUniformNumResults");
+    var nextButton = $("#submitBtn");
+    var checkUniformNumValue = $('#uniformNum').val();
+    switch (checkUniformNumValue) {
+        case "":
+            checkUniformNum.text("檢查").removeClass("invalid").removeClass("valid");
+            nextButton.prop("disabled", true);
+            break;
+        case '1': //沒有相同
+        checkUniformNum.text("檢查").removeClass("invalid").addClass("valid");
+            nextButton.prop("disabled", false);
+            break;
+        case '2':
+            checkUniformNum.text("此統編已註冊過。").removeClass("valid").addClass("invalid");
+            nextButton.prop("disabled", true);
+            break;
+        default:
+            checkUniformNum.text("統編格式不正確。").removeClass("valid").addClass("invalid");
+            nextButton.prop("disabled", true);
+            break;
+    }
+}
+
 
 
 $(function () {

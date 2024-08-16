@@ -1221,9 +1221,10 @@ $(function () {
         ],
         createdRow: function (row, data, dataIndex) {
             $('td:eq(7)', row).css('min-width', '70px');
-            [0, 2].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
-            });
+            $('td:eq(1)', row).css('min-width', '140px');
+            // [0, 2].forEach(function (colIdx) {
+            //     $('td:eq(' + colIdx + ')', row).css('max-width', '110px');
+            // });
             [0, 2, 5, 6].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('font-size', '.9em');
             });
@@ -2242,7 +2243,7 @@ $(function () {
         $('#receipt_updateBtn').off('click');
         $('#danger_receiptBox').text('');
 
-        // console.log('openRoom Id:', receiptId);
+        // console.log('receipt Id:', receiptId);
         let receiptData = dataset_confirmPaymentReceipt.find(receipt => receipt.id === receiptId);
         if (receiptData) {
             $('#receipt_receiptNum').text(receiptData.receiptNum);
@@ -2257,44 +2258,28 @@ $(function () {
 
             $('#receipt_createDate').text(receiptData.createDate);
             $('#receipt_createBy').text(receiptData.createBy);
-
-
+            console.log('receipt Id:', receiptId);
         } else {
             console.error('receiptData data not found for id:', receiptId);
         };
-        if (receiptData.status === "使用中" || receiptData.status === "作廢收回") {
-            CustomInputHandlers.destroy();
-            // $('#receipt_placeOrPrint, #receipt_receiptItems, #receipt_receiptNum, #receipt_adminNote').removeClass("changeInput_items");
-            $('#receipt_placeOrPrint, #receipt_receiptNum, #receipt_adminNote').removeClass("changeInput_items");
-            // console.log('Initial class:', $('#receipt_placeOrPrint').attr('class'));
-            // $('#receipt_receiptDate, #receipt_receiptDate').removeClass("changeDate_items");
-            $('#receipt_receiptDate').removeClass("changeDate_items");
-            // $('#receipt_receiptAmount, #receipt_receiptAmount').removeClass("changeMoney_items");
-            $('#receipt_receiptAmount').removeClass("changeMoney_items");
-            $('#receipt_receiptPurpose').removeClass("changeSelectPaymentPurpose_items");
-            $('#receipt_receiptMethod').removeClass("changeRadioPayMethod_items");
-            $('#receipt_last5AccountNo').removeClass("changeNumber5_items");
-            $('#receipt_type').removeClass("changeSelectPurchase_items");
-            $('#receipt_status').removeClass("changeSelectStatus_items");
-            // $('#receipt_placeOrPrint, #receipt_receiptItems, #receipt_receiptNum, #receipt_adminNote, #receipt_receiptDate, #receipt_receiptDate, #receipt_receiptAmount, #receipt_receiptAmount, #receipt_receiptPurpose, #receipt_receiptMethod, #receipt_last5AccountNo, #receipt_type, #receipt_status').addClass("readOnly");
-            $('#receipt_placeOrPrint, #receipt_receiptNum, #receipt_adminNote, #receipt_receiptDate, #receipt_receiptAmount, #receipt_receiptPurpose, #receipt_receiptMethod, #receipt_last5AccountNo, #receipt_type, #receipt_status').addClass("readOnly");
-            $('#receipt_updateBtn').hide();
-        } else {
-            // $('#receipt_placeOrPrint, #receipt_receiptItems, #receipt_receiptNum, #receipt_adminNote').addClass("changeInput_items");
-            $('#receipt_placeOrPrint, #receipt_receiptNum, #receipt_adminNote').addClass("changeInput_items");
-            // $('#receipt_receiptDate, #receipt_receiptDate').addClass("changeDate_items");
+        if (receiptData.status === "使用中") {
+            $('#receipt_receiptNum').addClass("changeInputUpperNumber_items");
             $('#receipt_receiptDate').addClass("changeDate_items");
-            // $('#receipt_receiptAmount, #receipt_receiptAmount').addClass("changeMoney_items");
+            $('#receipt_receiptItem, #receipt_companyName, #receipt_adminNote').addClass("changeInput_items");
             $('#receipt_receiptAmount').addClass("changeMoney_items");
-            $('#receipt_receiptPurpose').addClass("changeSelectPaymentPurpose_items");
-            $('#receipt_receiptMethod').addClass("changeRadioPayMethod_items");
-            $('#receipt_last5AccountNo').addClass("changeNumber5_items");
-            $('#receipt_type').addClass("changeSelectPurchase_items");
-            $('#receipt_status').addClass("changeSelectStatus_items");
-            // $('#receipt_placeOrPrint, #receipt_receiptItems, #receipt_receiptNum, #receipt_adminNote, #receipt_receiptDate, #receipt_receiptDate, #receipt_receiptAmount, #receipt_receiptAmount, #receipt_receiptPurpose, #receipt_receiptMethod, #receipt_last5AccountNo, #receipt_type, #receipt_status').removeClass("readOnly");
-            $('#receipt_placeOrPrint, #receipt_receiptNum, #receipt_adminNote, #receipt_receiptDate, #receipt_receiptAmount, #receipt_receiptPurpose, #receipt_receiptMethod, #receipt_last5AccountNo, #receipt_type, #receipt_status').removeClass("readOnly");
+            $('#receipt_uniformNum').addClass("changeUniformNum_items");
+            $('#receipt_receiptNum, #receipt_receiptDate, #receipt_receiptItem, #receipt_companyName, #receipt_adminNote, #receipt_receiptAmount, #receipt_uniformNum').removeClass("readOnly");
             CustomInputHandlers.init();
             $('#receipt_updateBtn').show();
+        } else {
+            CustomInputHandlers.destroy();
+            $('#receipt_receiptNum').removeClass("changeInputUpperNumber_items");
+            $('#receipt_receiptDate').removeClass("changeDate_items");
+            $('#receipt_receiptItem, #receipt_companyName, #receipt_adminNote').removeClass("changeInput_items");
+            $('#receipt_receiptAmount').removeClass("changeMoney_items");
+            $('#receipt_uniformNum').removeClass("changeUniformNum_items");
+            $('#receipt_receiptNum, #receipt_receiptDate, #receipt_receiptItem, #receipt_companyName, #receipt_adminNote, #receipt_receiptAmount, #receipt_uniformNum').addClass("readOnly");
+            $('#receipt_updateBtn').hide();
         }
 
         $('#receipt_updateBtn').on('click', function () {
@@ -2405,7 +2390,7 @@ $(function () {
 
 $(function () {
     // 建議輸入
-    $('#typeahead_company').typeahead({
+    $('#typeahead_company, #typeahead_receiptCompanyAdd').typeahead({
         source: companyData
     });
 
