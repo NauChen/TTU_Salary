@@ -261,7 +261,7 @@ $(function () {
             quality: 0.85
         }).then(function (imgData) {
             displayCroppedImage(imgData, currentMode);
-            // $('#danger_parkingSpaceImg').text('');
+            $('#danger_parkingSpaceImg').text('');
             $('#danger_parkingSpaceImg').hide();
             $('#warning_parkingSpaceImg').show();
             // $('#confirm_parkingSpaceApp').attr('data-bs-toggle', 'modal').attr('data-bs-target', '#parkingSpaceApp_pdf');
