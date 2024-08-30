@@ -304,9 +304,9 @@ function enforceStartDateFirst(startDateId, endDateId) {
 
 // ※※ 文字轉換函式 - 存取資料專用 ※※
 //   將資料庫的文字內的 \n 轉成 <br>
-function convertNewlinesToBreaks(text) {
-    return text.replace(/\n/g, '<br>');
-}
+// function convertNewlinesToBreaks(text) {
+//     return text.replace(/\n/g, '<br>');
+// }
 //   基地培育區 轉 大樓名
 function changeRoomName(room) {
     switch (room) {

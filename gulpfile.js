@@ -60,11 +60,21 @@ exports.cssmini = minify;
 const uglify = require('gulp-uglify');
 
 
+// function minijs() {
+//     return src('js/*.js')
+//         .pipe(uglify())
+//         .pipe(dest('dist/js'))
+// }
 function minijs() {
     return src('js/*.js')
-        .pipe(uglify())
+        .pipe(uglify({
+            output: {
+                comments: 'some' // 保留以 /*! 開頭的註解
+            }
+        }))
         .pipe(dest('dist/js'))
 }
+
 exports.js = minijs;
 
 

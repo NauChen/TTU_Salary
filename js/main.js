@@ -220,79 +220,79 @@ let commonSettingsProvision = {
 
 
 
-$(function () {
+// $(function () {
 
 
-    var dataset_myContractList = [
-        {
-            'id': '1',
-            'contractType': '培育室',
-            'type': '青創',
-            'num': '101',
-            'endDate': '2024-08-31',
-            'paymentDate': '2023-07-15',
-            'status': '快到期，快來續約吧！',
-        },
-    ];
-    $('#myContractList').DataTable({
-        ...commonSettingsTable,
-        "data": dataset_myContractList,
-        "columns": [
-            // { data: 'createDate', title: "申請日期" },
-            // { data: 'company', title: "承租人企業", },
-            { data: 'contractType', title: "合約類型" },
-            { data: 'type', title: "細項", },
-            { data: 'num', title: "號碼", },
-            { data: 'endDate', title: "到期日", },
-            { data: 'paymentDate', title: "付款日", },
-            { data: 'status', title: "狀態", },
-            {
-                data: 'id', title: "續約",
-                render: function (data) {
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#parkingSpaceDetail_' + data + '"><i class="fa-solid fa-handshake-simple"></i></button>'
-                }, className: 'text-center text-nowrap'
-            },
-        ],
-        "columnDefs": [
-            {
-                targets: [1],
-                responsivePriority: 1,
-            },
-            {
-                targets: [2],
-                responsivePriority: 2,
-            },
-            {
-                targets: [4],
-                responsivePriority: 3,
-            },
-            { searchable: false, orderable: false, targets: [6] },
-            { className: "text-center", targets: [2, 3, 4, 5, 6] },
-            { className: "text-nowrap", targets: [2, 3, 4, 5] },
-        ],
-        createdRow: function (row, data, dataIndex) {
-            // $('td:eq(6)', row).css('min-width', '70px');
-            $('td:eq(6)', row).css('max-width', '70px');
-            // $('td:eq(3)', row).addClass('pe-5');
-            // [5, 6].forEach(function (colIdx) {
-            //     $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
-            // });
-            [3, 4].forEach(function (colIdx) {
-                $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
-            });
-        }
-    });
+//     var dataset_myContractList = [
+//         {
+//             'id': '1',
+//             'contractType': '培育室',
+//             'type': '青創',
+//             'num': '101',
+//             'endDate': '2024-08-31',
+//             'paymentDate': '2023-07-15',
+//             'status': '快到期，快來續約吧！',
+//         },
+//     ];
+//     $('#myContractList').DataTable({
+//         ...commonSettingsTable,
+//         "data": dataset_myContractList,
+//         "columns": [
+//             // { data: 'createDate', title: "申請日期" },
+//             // { data: 'company', title: "承租人企業", },
+//             { data: 'contractType', title: "合約類型" },
+//             { data: 'type', title: "細項", },
+//             { data: 'num', title: "號碼", },
+//             { data: 'endDate', title: "到期日", },
+//             { data: 'paymentDate', title: "付款日", },
+//             { data: 'status', title: "狀態", },
+//             {
+//                 data: 'id', title: "續約",
+//                 render: function (data) {
+//                     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#parkingSpaceDetail_' + data + '"><i class="fa-solid fa-handshake-simple"></i></button>'
+//                 }, className: 'text-center text-nowrap'
+//             },
+//         ],
+//         "columnDefs": [
+//             {
+//                 targets: [1],
+//                 responsivePriority: 1,
+//             },
+//             {
+//                 targets: [2],
+//                 responsivePriority: 2,
+//             },
+//             {
+//                 targets: [4],
+//                 responsivePriority: 3,
+//             },
+//             { searchable: false, orderable: false, targets: [6] },
+//             { className: "text-center", targets: [2, 3, 4, 5, 6] },
+//             { className: "text-nowrap", targets: [2, 3, 4, 5] },
+//         ],
+//         createdRow: function (row, data, dataIndex) {
+//             // $('td:eq(6)', row).css('min-width', '70px');
+//             $('td:eq(6)', row).css('max-width', '70px');
+//             // $('td:eq(3)', row).addClass('pe-5');
+//             // [5, 6].forEach(function (colIdx) {
+//             //     $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
+//             // });
+//             [3, 4].forEach(function (colIdx) {
+//                 $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
+//             });
+//         }
+//     });
 
-    $('#openRoom_Details').on('shown.bs.modal', function () {
-        $('#roomHistoryList').DataTable().columns.adjust();
-    });
-    $('#closeRoom_Details').on('shown.bs.modal', function () {
-        $('#roomHistoryList2').DataTable().columns.adjust();
-    });
+//     $('#openRoom_Details').on('shown.bs.modal', function () {
+//         $('#roomHistoryList').DataTable().columns.adjust();
+//     });
+//     $('#closeRoom_Details').on('shown.bs.modal', function () {
+//         $('#roomHistoryList2').DataTable().columns.adjust();
+//     });
 
 
 
-});
+// });
 
 
 // 指定id群，加指定class
@@ -345,9 +345,22 @@ $(function () {
     var currentUrlPage = window.location.pathname;
 
     // 定義每個鏈接和其對應的頁面
+    // var linkMappings = {
+    //     '#dashboardLink': ['dashboard.html'],
+    //     '#jobLink': ['jobMyActiveListings.html', 'jobActiveListings.html', 'index.html', 'jobCreate.html', 'jobEdit.html'],
+    //     '#applyAndCheckLink': ['idCardInventory.html', 'parkingSpaceInventory.html', 'cultivationRoomInventory.html', 'parkingSpaceApply.html', 'idCardApply.html', 'parkingSpaceRenew.html', 'idCardReissue.html', 'renewContractApply.html'],
+    //     '#progressLink': ['progressCheck.html'],
+    //     '#assessmentLink': ['coopManufApp.html', 'parkingSpaceApp.html', 'renewContractApp.html', 'idCardApp.html', 'confirmPayment.html'],
+    //     '#managementLink': ['cultivationRoom.html', 'parkingSpace.html', 'roles.html'],
+    //     '#logRecordLink': ['logRecordLink.html'],
+    //     '#provideOpinionsLink': ['provideOpinionsLink.html'],
+    //     '#styleLink': ['template-style.html'],
+    //     '#underConstructionLink': ['template-underConstruction.html'],
+    //     '#userLink':['']
+    // };
     var linkMappings = {
         '#dashboardLink': ['dashboard.html'],
-        '#jobLink': ['jobMyActiveListings.html', 'jobActiveListings.html', 'index.html', 'jobCreate.html', 'jobEdit.html'],
+        '#jobLink': ['Jobs/PostedByMe', 'Jobs/AllPosted', 'Jobs/Create', 'Jobs/Edit'],
         '#applyAndCheckLink': ['idCardInventory.html', 'parkingSpaceInventory.html', 'cultivationRoomInventory.html', 'parkingSpaceApply.html', 'idCardApply.html', 'parkingSpaceRenew.html', 'idCardReissue.html', 'renewContractApply.html'],
         '#progressLink': ['progressCheck.html'],
         '#assessmentLink': ['coopManufApp.html', 'parkingSpaceApp.html', 'renewContractApp.html', 'idCardApp.html', 'confirmPayment.html'],
@@ -355,12 +368,13 @@ $(function () {
         '#logRecordLink': ['logRecordLink.html'],
         '#provideOpinionsLink': ['provideOpinionsLink.html'],
         '#styleLink': ['template-style.html'],
-        '#underConstructionLink': ['template-underConstruction.html']
+        '#underConstructionLink': ['template-underConstruction.html'],
+        '#userLink':['User/ChangeIdentity']
     };
 
     // 移除所有鏈接的 .active 類名
     $('.link').removeClass('active');
-    console.log('Current URL:', currentUrlPage);
+    // console.log('Current URL:', currentUrlPage);
 
     // 檢查每個鏈接是否包含當前頁面URL
     $.each(linkMappings, function (linkId, pages) {
