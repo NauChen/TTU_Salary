@@ -222,8 +222,8 @@ $(function () {
         $('#car_upload_label').show();
         $('#bike_upload_label').show();
         $('#parkingSpaceType').val('');
-        // $('#danger_parkingSpaceImg').html('&ensp;&#10551;上傳行照內頁後，請點擊裁剪圖片。');
-        $('#danger_parkingSpaceImg').show();
+        $('#danger_parkingSpaceImg').html('&ensp;&#10551;上傳行照內頁後，請點擊裁剪圖片。');
+        // $('#danger_parkingSpaceImg').show();
         $('#warning_parkingSpaceImg').hide();
         // $('#confirm_parkingSpaceApp').removeAttr('data-bs-toggle').removeAttr('data-bs-target');
     }
@@ -262,7 +262,7 @@ $(function () {
         }).then(function (imgData) {
             displayCroppedImage(imgData, currentMode);
             $('#danger_parkingSpaceImg').text('');
-            $('#danger_parkingSpaceImg').hide();
+            // $('#danger_parkingSpaceImg').hide();
             $('#warning_parkingSpaceImg').show();
             // $('#confirm_parkingSpaceApp').attr('data-bs-toggle', 'modal').attr('data-bs-target', '#parkingSpaceApp_pdf');
         });

@@ -2,7 +2,7 @@ var dataset_myIDcardHistory = [
     {
         'id': '1',
         'createDate': '2023-08-30',
-        'place': '新德惠-101',
+        'place': '新德惠大樓-101',
         'name': '孫一美',
         'jobTitle': '工讀生',
         'library': '未申請',
@@ -21,7 +21,7 @@ var dataset_myIDcardHistory = [
     {
         'id': '2',
         'createDate': '2023-08-31',
-        'place': '綜合-202',
+        'place': '綜合工廠大樓-202',
         'name': '孫大美',
         'jobTitle': '專員',
         'library': '已開放',
@@ -39,7 +39,7 @@ var dataset_myIDcardHistory = [
     {
         'id': '3',
         'createDate': '2023-09-10',
-        'place': '產學-202',
+        'place': '挺生大樓-202',
         'name': '孫大帥',
         'jobTitle': '專員',
         'library': '已開放',
@@ -58,7 +58,7 @@ var dataset_myIDcardHistory = [
     {
         'id': '4',
         'createDate': '2023-09-10',
-        'place': '北設工-202',
+        'place': '實驗大樓-202',
         'name': '孫二帥',
         'jobTitle': '專員',
         'library': '已開放',
@@ -67,6 +67,63 @@ var dataset_myIDcardHistory = [
         'startDate': '2023-10-11',
         'endDate': '2023-11-30',
         'status': '-',
+        'idCardNum': 'ABC104',
+
+        'phone': '0912-345678',
+        'email': 'abc#gmail.com',
+        'emergContact': '孫大美',
+        'ECPhone': '0933-456789',
+    },
+    {
+        'id': '5',
+        'createDate': '2023-09-10',
+        'place': '尚志大樓-202',
+        'name': '孫二帥',
+        'jobTitle': '專員',
+        'library': '已開放',
+        'print': '3',
+
+        'startDate': '2023-10-11',
+        'endDate': '2023-11-30',
+        'status': '-',
+        'idCardNum': 'ABC104',
+
+        'phone': '0912-345678',
+        'email': 'abc#gmail.com',
+        'emergContact': '孫大美',
+        'ECPhone': '0933-456789',
+    },
+    {
+        'id': '6',
+        'createDate': '2024-09-10',
+        'place': '尚志大樓-202',
+        'name': '關二爺',
+        'jobTitle': '經理',
+        'library': '申請中',
+        'print': '-',
+
+        'startDate': '-',
+        'endDate': '-',
+        'status': '申請中',
+        'idCardNum': 'ABC104',
+
+        'phone': '0912-345678',
+        'email': 'abc#gmail.com',
+        'emergContact': '孫大美',
+        'ECPhone': '0933-456789',
+    },
+    {
+        'id': '7',
+        'createDate': '2024-09-12',
+        'place': '尚志大樓-202',
+        'name': '張三爺',
+        'jobTitle': '協理',
+        'library': '申請中',
+        'print': '1',
+
+        'startDate': '-',
+        'endDate': '-',
+        'status': '申請中',
         'idCardNum': 'ABC104',
 
         'phone': '0912-345678',
@@ -97,36 +154,6 @@ $(function () {
             { data: 'createDate', title: "申請日期" }, // 1
             {
                 data: 'place', title: "培育室位置",
-                render: function (data) {
-                    var placeData = data.split("-");
-                    var part1 = placeData[0].trim();
-                    var part2 = placeData[1].trim();
-
-                    // var roomName = changeCultivationRoomToBuilding(part1);
-                    // function changeCultivationRoomToBuilding(room) {
-                    //     switch (room) {
-                    //         case '新德惠':
-                    //             return '青創基地';
-                    //         case '綜合':
-                    //             return '綜合工廠培育區';
-                    //         case '挺生':
-                    //             return '挺生大樓培育區';
-                    //         case '產學':
-                    //             return '產學實驗培育區';
-                    //         case '實驗':
-                    //             return '實驗大樓培育區';
-                    //         case '北設工':
-                    //             return '北設工培育區';
-                    //         case '尚志':
-                    //             return '尚志大樓培育區';
-                    //         default:
-                    //             return '待新增';
-                    //     }
-                    // }
-
-                    // return roomName + '-' + part2;
-                    return part1 + '大樓-' + part2;
-                },
             }, // 2
             { data: 'name', title: "姓名" }, // 3
             { data: 'jobTitle', title: "職稱", }, // 4
@@ -135,8 +162,12 @@ $(function () {
             { data: 'status', title: "備註", }, // 7
             {
                 data: 'id', title: "申請<br class='d-none d-lg-block'>補發", // 8
-                render: function (data) {
-                    return '<a class="btn btn-outline-primary rounded-circle noOutline" href="./idCardReissue.html?id=' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
+                render: function (data, type, row) {
+                    if(row.status != "申請中"){
+                        return '<a class="btn btn-outline-primary rounded-circle noOutline" href="./idCardReissue.html?id=' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
+                    }else{
+                        return "";
+                    }
                 },
             },
         ],

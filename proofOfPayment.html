@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/meta.html', {
+    "title": "大同大學校內育成媒合平台-空白頁",
+    })
+</head>
+
+<body>
+    <main class="main">
+        @@include('layout/header.html')
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-file-contract"></i>&ensp;申請與查閱</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-comment-dollar"></i>&ensp;付款通知</li>
+                    </ol>
+                </div>
+
+
+                <div>
+                    <!-- 停車位列表 -->
+                    <div class="tabs-box my-2r">
+                        <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>轉帳證明<i
+                                class="fa-solid fa-quote-right"></i></h3>
+                        <div class="tabs section-border-radius section-padding">
+                            <form class="container-fluid" method="post" id="formSendProofOfPayment">
+
+
+                                <div class="row">
+                                    <div class="col-xl-8 mb-3">
+                                        <div class="row mb-3">
+                                            <label for="profilesCompany_companyName"
+                                                class="col-lg-auto col-form-label text-nowrap">公司名稱&emsp;</label>
+                                            <div class="col">
+                                                <input type="text" class="form-control" id="profilesCompany_companyName"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="profilesCompany_companyAdd"
+                                                class="col-lg-auto col-form-label text-nowrap">帳號後五碼</label>
+                                            <div class="col">
+                                                <input type="text" class="form-control thisRequired"
+                                                    id="profilesCompany_companyAdd">
+                                                <span class="text-danger" id="danger_profilesCompany_companyAdd"></span>
+                                            </div>
+                                            <label for="AA" class="col-lg col-form-label text-nowrap">
+                                                <input type="checkbox" class="form-check-input me-2"
+                                                    id="AA">儲存為常用帳號後五碼</label>
+                                        </div>
+                                        <div class="row mb-3 align-items-center">
+                                            <label for="profilesCompany_companyName"
+                                                class="col-lg-auto col-form-label text-nowrap">支付金額&emsp;</label>
+                                            <div class="col">
+                                                <input type="text" class="form-control"
+                                                    id="profilesCompany_companyName">
+                                            </div>
+                                            <div class="col">
+                                                <label for="remittancePdf"
+                                                    class="col-auto col-form-label text-nowrap upload-label py-0 align_center ps-3">請點此上傳匯款憑證(.pdf)<i
+                                                        class="fa-solid fa-upload mx-1"></i>
+                                                </label>
+                                                <div class="col-12">
+                                                    <input type="file" class="form-control d-none" id="remittancePdf"
+                                                        accept=".pdf" name="remittancePdf"
+                                                        onchange="javascript:{document.getElementById('remittance_fileInfo').innerHTML = document.getElementById('remittancePdf').value;setFormHeight();}">
+                                                    <div id="remittance_fileInfo" class="fileInfo"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="profilesCompany_companyName"
+                                                class="col-lg-auto col-form-label text-nowrap">支付項目&emsp;</label>
+                                            <div class="col">
+                                                <table>
+                                                    <tr>
+                                                        <td><input type="checkbox" class="form-check-input me-2"
+                                                                id="BB"></td>
+                                                        <td><label for="BB" class="col-lg col-form-label ">
+                                                                <span
+                                                                    class="text-nowrap text-secondary">階段付款</span><span
+                                                                    class="text-nowrap">培育室(挺生大樓-202)</span><span
+                                                                    class="text-nowrap text-danger">20,000元</span></label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" class="form-check-input me-2"
+                                                                id="CC"></td>
+                                                        <td><label for="CC" class="col-lg col-form-label ">
+                                                                <span
+                                                                    class="text-nowrap text-secondary">階段付款</span><span
+                                                                    class="text-nowrap">停車位(校本部-01)</span><span
+                                                                    class="text-nowrap text-danger">2,000元</span></label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" class="form-check-input me-2"
+                                                                id="DD"></td>
+                                                        <td><label for="DD" class="col-lg col-form-label ">
+                                                                <span class="text-nowrap text-secondary">新申請</span><span
+                                                                    class="text-nowrap">停車位(ABC-119)</span><span
+                                                                    class="text-nowrap text-danger">費用待確認</span></label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" class="form-check-input me-2"
+                                                                id="EE"></td>
+                                                        <td><label for="EE" class="col-lg col-form-label ">
+                                                                <span class="text-nowrap text-secondary">新申請</span><span
+                                                                    class="text-nowrap">識別證(王小明)</span><span
+                                                                    class="text-nowrap text-danger">100元</span></label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" class="form-check-input me-2"
+                                                                id="FF"></td>
+                                                        <td><label for="FF" class="col-lg col-form-label ">
+                                                                <span
+                                                                    class="text-nowrap text-secondary">遺失補發</span><span
+                                                                    class="text-nowrap">識別證(王小明)</span><span
+                                                                    class="text-nowrap text-danger">300元</span></label>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4 mb-3">
+                                        <div class="salaryRadio px-2 py-2 mx-1 border-success">
+                                            <div class="row mb-3">
+                                                <label for="profilesCompany_helpItems"
+                                                    class="col-12 col-form-label text-nowrap fw-bold">注意事項：</label>
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">a.</div>
+                                                        <div class="col">因付款通知無法修改，<strong>送出前請再次確認資料是否正確</strong>。
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">b.</div>
+                                                        <div class="col">若多次匯款，<strong>請分開填寫付款通知</strong>。</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">c.</div>
+                                                        <div class="col">上傳匯款憑證時，<strong>僅接受PDF格式檔案(.pdf)</strong>。
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row text-center p-3 justify-content-center">
+                                    <div class="col-auto">
+                                        <button type="reset" class="btn btn-lg btn-outline-danger"
+                                            id="resetPSFormBtn">重填</button>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-lg btn-success"
+                                            id="confirm_parkingSpaceApply">送出</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                @@include('layout/footer.html')
+            </div>
+        </div>
+    </main>
+    @@include('layout/metaJS.html')
+
+    <!-- <script src="./js/myParkingSpaceList.js"></script> -->
+</body>
+
+</html>
