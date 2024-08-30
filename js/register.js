@@ -11,19 +11,25 @@ $(function () {
         if ($creationDateYet.is(":checked")) {
             $creationDate.val("").prop('disabled', true);
             $uniformNum.val("").prop('placeholder', "後補").prop('disabled', true);
-            $creationDateYet.attr('asp-for', 'CreationDate');
-            $creationDate.removeAttr('asp-for');
-            theseRemoveClass(['thisRequired'], ['creationDate', 'uniformNum', 'companyProof']);
+            $creationDateYet.attr('name', 'CreationDate');
+            $creationDate.removeAttr('name');
+            $('#creationDate, #uniformNum, #companyProof').removeClass('thisRequired');
             removeDangerMessage('creationDate');
             removeDangerMessage('uniformNum');
             $('#companyProofBox').addClass('d-none');
+            $('#checkUniformNumResults').text("檢查").addClass('valid');
+            $('#checkUniformNumResults').removeClass('invalid');
+            $("#submitBtn").prop('disabled', false);
         } else {
             $creationDate.prop('disabled', false);
             $uniformNum.prop('placeholder', "").prop('disabled', false);
-            $creationDate.attr('asp-for', 'CreationDate');
-            $creationDateYet.removeAttr('asp-for');
-            theseAddClass(['thisRequired'], ['creationDate', 'uniformNum', 'companyProof']);
+            $creationDate.attr('name', 'CreationDate');
+            $creationDateYet.removeAttr('name');
+            $('#creationDate, #uniformNum, #companyProof').addClass('thisRequired');
             $('#companyProofBox').removeClass('d-none');
+            $('#checkUniformNumResults').removeClass('valid');
+            $('#checkUniformNumResults').removeClass('invalid');
+            $("#submitBtn").prop('disabled', true);
         }
     });
 
@@ -62,219 +68,90 @@ $(function () {
     }
 });
 
-// 限定函式 - 檢查Email
-function checkRegisterEmail() {
-    // 接資料庫後改用此。
-    // var email = $("#companyEmail").val();
-    // $.ajax({
-    //     url: '@Url.Action("CheckEmail", "Account")',
-    //     type: "POST",
-    //     data: { email: email },
-    //     success: function (result) {
-    //         var checkEmail = $("#checkEmailResults");
-    //         var nextButton = $("#submitBtn");
-    //         switch (result) {
-    //             case "NoText":
-    //                 checkEmail.text("檢查").removeClass("invalid").removeClass("valid");
-    //                 nextButton.prop("disabled", true);
-    //                 break;
-    //             case false: //沒有相同
-    //                 checkEmail.text("檢查").removeClass("invalid").addClass("valid");
-    //                 nextButton.prop("disabled", false);
-    //                 break;
-    //             case true:
-    //                 checkEmail.text("此Email已註冊過。").removeClass("valid").addClass("invalid");
-    //                 nextButton.prop("disabled", true);
-    //                 break;
-    //             default:
-    //                 checkEmail.text("Email格式不正確。").removeClass("valid").addClass("invalid");
-    //                 nextButton.prop("disabled", true);
-    //                 break;
-    //         }
-    //     },
-    //     error: function (error) {
-    //         console.log("發生錯誤！", error.responseText);
-    //     }
-    // });
-    // 未接資料庫暫用此測試。
-    var checkEmail = $("#checkEmailResults");
-    var nextButton = $("#submitBtn");
-    var checkEmailValue = $('#companyEmail').val();
-    switch (checkEmailValue) {
-        case "":
-            checkEmail.text("檢查").removeClass("invalid").removeClass("valid");
-            nextButton.prop("disabled", true);
-            break;
-        case '1': //沒有相同
-            checkEmail.text("檢查").removeClass("invalid").addClass("valid");
-            nextButton.prop("disabled", false);
-            break;
-        case '2':
-            checkEmail.text("此Email已註冊過。").removeClass("valid").addClass("invalid");
-            nextButton.prop("disabled", true);
-            break;
-        default:
-            checkEmail.text("Email格式不正確。").removeClass("valid").addClass("invalid");
-            nextButton.prop("disabled", true);
-            break;
-    }
-}
+
 
 // 限定函式 - 檢查統編
 function checkRegisterUniformNum() {
     // 接資料庫後改用此。
-    // var email = $("#checkUniformNumResults").val();
-    // $.ajax({
-    //     url: '@Url.Action("checkUniformNum", "Account")',
-    //     type: "POST",
-    //     data: { uniformNum: uniformNum },
-    //     success: function (result) {
-    //         var checkEmail = $("#checkUniformNumResults");
-    //         var nextButton = $("#submitBtn");
-    //         switch (result) {
-    //             case "NoText":
-    //                 checkEmail.text("檢查").removeClass("invalid").removeClass("valid");
-    //                 nextButton.prop("disabled", true);
-    //                 break;
-    //             case false: //沒有相同
-    //                 checkEmail.text("檢查").removeClass("invalid").addClass("valid");
-    //                 nextButton.prop("disabled", false);
-    //                 break;
-    //             case true:
-    //                 checkEmail.text("此統編已註冊過。").removeClass("valid").addClass("invalid");
-    //                 nextButton.prop("disabled", true);
-    //                 break;
-    //             default:
-    //                 checkEmail.text("統編格式不正確。").removeClass("valid").addClass("invalid");
-    //                 nextButton.prop("disabled", true);
-    //                 break;
-    //         }
-    //     },
-    //     error: function (error) {
-    //         console.log("發生錯誤！", error.responseText);
-    //     }
-    // });
+    var uniformNum = $("#uniformNum").val(); // 假設你有一個輸入框用來輸入統編
+    $.ajax({
+        // url: '@Url.Action("checkUniformNum", "Account")',
+        url: UNUrl, // 使用預先生成的URL
+        type: "POST",
+        data: { uniformNum: uniformNum },
+        success: function (result) {
+            var checkEmail = $("#checkUniformNumResults");
+            var nextButton = $("#submitBtn");
+            switch (result) {
+                case "NoText":
+                    checkEmail.text("檢查").removeClass("invalid").removeClass("valid");
+                    nextButton.prop("disabled", true);
+                    break;
+                case "OK": //沒有相同
+                    checkEmail.text("此統編已註冊過。").removeClass("valid").addClass("invalid");
+                    nextButton.prop("disabled", true);
+                    break;
+                case "NO":
+                    checkEmail.text("檢查").removeClass("invalid").addClass("valid");
+                    nextButton.prop("disabled", false);
+                    break;
+                default:
+                    checkEmail.text("統編格式不正確。").removeClass("valid").addClass("invalid");
+                    nextButton.prop("disabled", true);
+                    break;
+            }
+        },
+        error: function (error) {
+            console.log("發生錯誤！", error.responseText);
+        }
+    });
     // 未接資料庫暫用此測試。
-    var checkUniformNum = $("#checkUniformNumResults");
-    var nextButton = $("#submitBtn");
-    var checkUniformNumValue = $('#uniformNum').val();
-    switch (checkUniformNumValue) {
-        case "":
-            checkUniformNum.text("檢查").removeClass("invalid").removeClass("valid");
-            nextButton.prop("disabled", true);
-            break;
-        case '1': //沒有相同
-        checkUniformNum.text("檢查").removeClass("invalid").addClass("valid");
-            nextButton.prop("disabled", false);
-            break;
-        case '2':
-            checkUniformNum.text("此統編已註冊過。").removeClass("valid").addClass("invalid");
-            nextButton.prop("disabled", true);
-            break;
-        default:
-            checkUniformNum.text("統編格式不正確。").removeClass("valid").addClass("invalid");
-            nextButton.prop("disabled", true);
-            break;
-    }
+    // var checkUniformNum = $("#checkUniformNumResults");
+    // var nextButton = $("#submitBtn");
+    // var checkUniformNumValue = $('#uniformNum').val();
+    // switch (checkUniformNumValue) {
+    //     case "":
+    //         checkUniformNum.text("檢查").removeClass("invalid").removeClass("valid");
+    //         nextButton.prop("disabled", true);
+    //         break;
+    //     case '1': //沒有相同
+    //         checkUniformNum.text("檢查").removeClass("invalid").addClass("valid");
+    //         nextButton.prop("disabled", false);
+    //         break;
+    //     case '2':
+    //         checkUniformNum.text("此統編已註冊過。").removeClass("valid").addClass("invalid");
+    //         nextButton.prop("disabled", true);
+    //         break;
+    //     default:
+    //         checkUniformNum.text("統編格式不正確。").removeClass("valid").addClass("invalid");
+    //         nextButton.prop("disabled", true);
+    //         break;
+    // }
 }
 
 
 
 $(function () {
     // 載入完畢後，執行一次檢查email
-    checkRegisterEmail();
+    // checkRegisterEmail();
+    // 載入完畢後，執行一次檢查統編
+    checkRegisterUniformNum();
 
     // 當 #companyEmail 失去焦點時，再次執行檢查
-    $('#companyEmail').on('blur', function () {
-        checkRegisterEmail();
-    });
+    // $('#companyEmail').on('blur', function () {
+    //     checkRegisterEmail();
+    // });
+
+    // 當 #uniformNum 失去焦點時，再次執行檢查
+    // $('#uniformNum').on('blur', function () {
+    //     checkRegisterUniformNum();
+    // });
+
     // 當 .thisRequired 更改時，再次執行檢查
     $('.thisRequired').on('input change', function () {
         // checkRequiredElements(); 不可用，這是每次改動其中一項就檢查全部，但需要的是改動一項檢查該項
         checkThisRequiredElements.call(this);
-        // var id = $(this).attr('id');
-        // var elementType = $(this).prop('tagName').toLowerCase();
-        // var value = '';
-        // switch (elementType) {
-        //     case 'input':
-        //         var inputType = $(this).attr('type').toLowerCase();
-        //         if (inputType === 'checkbox' || inputType === 'radio') {
-        //             if (!$(this).is(':checked')) {
-        //                 allFilled = false;
-        //                 addDangerRequiredMessage(id);
-        //             }
-        //         } else if (inputType === 'file') {
-        //             if ($(this).get(0).files.length === 0) {
-        //                 allFilled = false;
-        //                 addDangerRequiredFilesMessage(id);
-        //             } else {
-        //                 removeDangerMessage(id);
-        //             }
-        //         } else {
-        //             value = $(this).val().trim();
-        //             if (value === '') {
-        //                 allFilled = false;
-        //                 addDangerRequiredMessage(id);
-        //             } else {
-        //                 removeDangerMessage(id);
-        //                 // 檢查是否為電話號碼類型，若是則再次驗證格式
-        //                 if ($(this).hasClass('thisPhone')) {
-        //                     var phoneId = $(this).attr('id');
-        //                     if (!validatePhone(value)) {
-        //                         addDangerPhoneMessage(phoneId);
-        //                         allFilled = false; // 如果格式不正確，設置 allFilled 為 false
-        //                     } else {
-        //                         $('#danger_' + phoneId).text(''); // 清除錯誤訊息
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //         break;
-        //     case 'select':
-        //         value = $(this).val() ? $(this).val().trim() : '';
-        //         if (value === '') {
-        //             allFilled = false;
-        //             addDangerRequiredSelectMessage(id);
-        //         } else {
-        //             removeDangerMessage(id);
-        //         }
-        //         break;
-        //     case 'textarea':
-        //         value = $(this).val() ? $(this).val().trim() : '';
-        //         if (value === '') {
-        //             allFilled = false;
-        //             addDangerRequiredMessage(id);
-        //         } else {
-        //             removeDangerMessage(id);
-        //         }
-        //         break;
-        //     default:
-        //         break;
-        // }
-        // // switch (elementType) {
-        // //     case 'input':
-        // //         var inputType = $(this).attr('type').toLowerCase();
-        // //         if (inputType === 'checkbox' || inputType === 'radio') {
-        // //             if ($(this).is(':checked')) {
-        // //                 removeDangerMessage(id);
-        // //             }
-        // //         } else {
-        // //             value = $(this).val().trim();
-        // //             if (value !== '') {
-        // //                 removeDangerMessage(id);
-        // //             }
-        // //         }
-        // //         break;
-        // //     case 'select':
-        // //     case 'textarea':
-        // //         value = $(this).val().trim();
-        // //         if (value !== '') {
-        // //             removeDangerMessage(id);
-        // //         }
-        // //         break;
-        // //     default:
-        // //         break;
-        // // }
+
     });
 
     // 點擊 submitBtn 按鈕時
@@ -288,10 +165,13 @@ $(function () {
 
         // 最後檢查 danger_ 開頭元素的文字內容
         if (checkDangerElements()) {
-            // $('#formRegister').submit(); // 提交表單
+            $('#formRegister').submit(); // 提交表單
             console.log('表單資料已送出');
-            $(location).attr("href","index.html");
             swalToastSuccess(' 請靜待7~10個工作天，並留意信箱歐！', 'top');
+            // $(location).attr("href","index.html");
+            setTimeout(function () {
+                location.reload();
+            }, 2300);  //2.3秒後
         } else {
             // 如果返回 false，顯示警告訊息
             swalToastWarning(' 請填上正確資料唷！', 'top');
@@ -415,3 +295,145 @@ $(function () {
 //     });
 
 // });
+
+// 限定函式 - 檢查Email
+// function checkRegisterEmail() {
+//     // 接資料庫後改用此。
+//     // var email = $("#companyEmail").val();
+//     // $.ajax({
+//     //     url: '@Url.Action("CheckEmail", "Account")',
+//     //     type: "POST",
+//     //     data: { email: email },
+//     //     success: function (result) {
+//     //         var checkEmail = $("#checkEmailResults");
+//     //         var nextButton = $("#submitBtn");
+//     //         switch (result) {
+//     //             case "NoText":
+//     //                 checkEmail.text("檢查").removeClass("invalid").removeClass("valid");
+//     //                 nextButton.prop("disabled", true);
+//     //                 break;
+//     //             case false: //沒有相同
+//     //                 checkEmail.text("檢查").removeClass("invalid").addClass("valid");
+//     //                 nextButton.prop("disabled", false);
+//     //                 break;
+//     //             case true:
+//     //                 checkEmail.text("此Email已註冊過。").removeClass("valid").addClass("invalid");
+//     //                 nextButton.prop("disabled", true);
+//     //                 break;
+//     //             default:
+//     //                 checkEmail.text("Email格式不正確。").removeClass("valid").addClass("invalid");
+//     //                 nextButton.prop("disabled", true);
+//     //                 break;
+//     //         }
+//     //     },
+//     //     error: function (error) {
+//     //         console.log("發生錯誤！", error.responseText);
+//     //     }
+//     // });
+//     // 未接資料庫暫用此測試。
+//     var checkEmail = $("#checkEmailResults");
+//     var nextButton = $("#submitBtn");
+//     var checkEmailValue = $('#companyEmail').val();
+//     switch (checkEmailValue) {
+//         case "":
+//             checkEmail.text("檢查").removeClass("invalid").removeClass("valid");
+//             nextButton.prop("disabled", true);
+//             break;
+//         case '1': //沒有相同
+//             checkEmail.text("檢查").removeClass("invalid").addClass("valid");
+//             nextButton.prop("disabled", false);
+//             break;
+//         case '2':
+//             checkEmail.text("此Email已註冊過。").removeClass("valid").addClass("invalid");
+//             nextButton.prop("disabled", true);
+//             break;
+//         default:
+//             checkEmail.text("Email格式不正確。").removeClass("valid").addClass("invalid");
+//             nextButton.prop("disabled", true);
+//             break;
+//     }
+// }
+
+// var id = $(this).attr('id');
+// var elementType = $(this).prop('tagName').toLowerCase();
+// var value = '';
+// switch (elementType) {
+//     case 'input':
+//         var inputType = $(this).attr('type').toLowerCase();
+//         if (inputType === 'checkbox' || inputType === 'radio') {
+//             if (!$(this).is(':checked')) {
+//                 allFilled = false;
+//                 addDangerRequiredMessage(id);
+//             }
+//         } else if (inputType === 'file') {
+//             if ($(this).get(0).files.length === 0) {
+//                 allFilled = false;
+//                 addDangerRequiredFilesMessage(id);
+//             } else {
+//                 removeDangerMessage(id);
+//             }
+//         } else {
+//             value = $(this).val().trim();
+//             if (value === '') {
+//                 allFilled = false;
+//                 addDangerRequiredMessage(id);
+//             } else {
+//                 removeDangerMessage(id);
+//                 // 檢查是否為電話號碼類型，若是則再次驗證格式
+//                 if ($(this).hasClass('thisPhone')) {
+//                     var phoneId = $(this).attr('id');
+//                     if (!validatePhone(value)) {
+//                         addDangerPhoneMessage(phoneId);
+//                         allFilled = false; // 如果格式不正確，設置 allFilled 為 false
+//                     } else {
+//                         $('#danger_' + phoneId).text(''); // 清除錯誤訊息
+//                     }
+//                 }
+//             }
+//         }
+//         break;
+//     case 'select':
+//         value = $(this).val() ? $(this).val().trim() : '';
+//         if (value === '') {
+//             allFilled = false;
+//             addDangerRequiredSelectMessage(id);
+//         } else {
+//             removeDangerMessage(id);
+//         }
+//         break;
+//     case 'textarea':
+//         value = $(this).val() ? $(this).val().trim() : '';
+//         if (value === '') {
+//             allFilled = false;
+//             addDangerRequiredMessage(id);
+//         } else {
+//             removeDangerMessage(id);
+//         }
+//         break;
+//     default:
+//         break;
+// }
+// // switch (elementType) {
+// //     case 'input':
+// //         var inputType = $(this).attr('type').toLowerCase();
+// //         if (inputType === 'checkbox' || inputType === 'radio') {
+// //             if ($(this).is(':checked')) {
+// //                 removeDangerMessage(id);
+// //             }
+// //         } else {
+// //             value = $(this).val().trim();
+// //             if (value !== '') {
+// //                 removeDangerMessage(id);
+// //             }
+// //         }
+// //         break;
+// //     case 'select':
+// //     case 'textarea':
+// //         value = $(this).val().trim();
+// //         if (value !== '') {
+// //             removeDangerMessage(id);
+// //         }
+// //         break;
+// //     default:
+// //         break;
+// // }

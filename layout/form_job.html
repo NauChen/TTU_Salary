@@ -116,7 +116,7 @@
         <div class="row mb-3">
             <label for="salaryType" class="col-lg-auto col-form-label text-nowrap">工作待遇：</label>
             <div class="col">
-                <select class="form-control form-select thisRequired" id="salaryType">
+                <select class="form-control form-select thisRequired" id="salaryStyle">
                     <option value="請選擇" disabled selected>--- 請選擇 ---</option>
                     <option value="時薪">時薪</option>
                     <!-- 元 -->
@@ -130,12 +130,12 @@
                     <option value="按件計酬">按件計酬</option>
                     <!-- 元/件 -->
                 </select>
-                <span class="text-danger" id="danger_salaryType"></span>
+                <span class="text-danger" id="danger_salaryStyle"></span>
             </div>
         </div>
         <div class="row mb-3 salaryRadio px-3 py-2 mx-2 border-success">
             <div class="form-check align-items-center salaryLabel my-1" id="dollarsItem">
-                <input type="radio" class="form-check-input" name="salaryTypeItem" id="salaryTypeRadio1" value="1">
+                <input type="radio" class="form-check-input" name="JobSalaryType" id="salaryTypeRadio1" value="1">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio1" id="dollars">
                     <input type="text" placeholder="NTD" name="dollars" id="dollarsInput"
                         class="form-control w-50 d-inline-block mx-2 text-end ntdInput" onkeyup="restrictToNum(this)"
@@ -145,7 +145,7 @@
             <span class="text-danger" id="danger_dollarsInput"></span>
 
             <div class="form-check align-items-center salaryLabel my-1" id="dollarsToDollarsItem">
-                <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio2" value="2">
+                <input class="form-check-input" type="radio" name="JobSalaryType" id="salaryTypeRadio2" value="2">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio2" id="dollarsToDollars">
                     <input type="text" placeholder="NTD" name="dollarsValue1" id="dollarsToDollars_1Input"
                         class="form-control w-30 d-inline-block mx-2 text-end ntdInput" onkeyup="restrictToNum(this)"
@@ -159,7 +159,7 @@
                 id="danger_dollarsToDollars_2Input"></span>
 
             <div class="form-check align-items-center salaryLabel my-1" id="moreThenDollarsItem">
-                <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio3" value="3">
+                <input class="form-check-input" type="radio" name="JobSalaryType" id="salaryTypeRadio3" value="3">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio3" id="moreThenDollars">
                     <input type="text" placeholder="NTD" name="moreThenDollars" id="moreThenDollarsInput"
                         class="form-control w-50 d-inline-block mx-2 text-end ntdInput" onkeyup="restrictToNum(this)"
@@ -169,7 +169,7 @@
             <span class="text-danger" id="danger_moreThenDollarsInput"></span>
 
             <div class="form-check align-items-center salaryLabel my-1" id="negotiableItem">
-                <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio4" value="4">
+                <input class="form-check-input" type="radio" name="JobSalaryType" id="salaryTypeRadio4" value="4">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio4" id="negotiable">
                     <span class="ms-2">面議</span>
                     <input type="text" placeholder="NTD" name="negotiable" id="negotiableInput"
@@ -180,7 +180,7 @@
             <span class="text-danger" id="danger_negotiableInput"></span>
 
             <div class="form-check align-items-center salaryLabel my-1" id="dollarsPerCaseItem">
-                <input class="form-check-input" type="radio" name="salaryTypeItem" id="salaryTypeRadio5" value="5">
+                <input class="form-check-input" type="radio" name="JobSalaryType" id="salaryTypeRadio5" value="5">
                 <label class="form-check-label flex-grow-1" for="salaryTypeRadio5" id="dollarsPerCase">
                     <input type="text" placeholder="NTD" name="dollarsPerCase" id="dollarsPerCaseInput"
                         class="form-control w-50 d-inline-block mx-2 text-end ntdInput" onkeyup="restrictToNum(this)"
