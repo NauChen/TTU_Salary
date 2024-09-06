@@ -1,30 +1,30 @@
 var dataset_myCultivationRoom = [
     {
         'id': '1',
-        'startDate': '2023-07-01',
-        'endDate': '2024-06-31',
+        'startDate': '2023-10-01',
+        'endDate': '2024-09-31',
         'building': '新德惠大樓',
         'room': '101',
-        'thisTimeDeadline': '2024-05-22',
+        'thisTimeDeadline': '2024-09-30',
         'nextTimeDeadline': '',
-        'paymentDate': '2024-05-20',
+        'paymentDate': '2024-03-31',
         'remark': '已到期未續約',
     },
     {
         'id': '2',
-        'startDate': '2023-07-31',
-        'endDate': '2024-08-01',
+        'startDate': '2023-08-31',
+        'endDate': '2024-09-01',
         'building': '綜合大樓',
         'room': '104',
         'thisTimeDeadline': '2024-05-15',
-        'nextTimeDeadline': '2024-07-20',
-        'paymentDate': '',
+        'nextTimeDeadline': '2024-09-01',
+        'paymentDate': '2024-09-01',
         'remark': '',
     },
     {
         'id': '3',
-        'startDate': '2024-06-01',
-        'endDate': '2025-05-31',
+        'startDate': '2023-11-01',
+        'endDate': '2024-10-30',
         'building': '挺生大樓',
         'room': '105',
         'thisTimeDeadline': '2024-05-22',
@@ -34,12 +34,12 @@ var dataset_myCultivationRoom = [
     },
     {
         'id': '4',
-        'startDate': '2024-06-01',
-        'endDate': '2026-05-31',
+        'startDate': '2023-10-11',
+        'endDate': '2024-10-10',
         'building': '實驗大樓',
         'room': '106',
         'thisTimeDeadline': '2025-05-01',
-        'nextTimeDeadline': '2026-05-01',
+        'nextTimeDeadline': '2024-05-01',
         'paymentDate': '2024-11-28',
         'remark': '',
     },
@@ -115,26 +115,35 @@ var dataset_myCultivationRoom = [
 $(function () {
     const today = new Date();
 
+    // 封裝日期差異計算的邏輯
+    function calculateDateDiff(date1, date2) {
+        const timeDiff = date1.getTime() - date2.getTime();
+        const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        return diffDays < 0 ? null : diffDays;
+    }
+
     dataset_myCultivationRoom.forEach(item => {
         const endDate = new Date(item.endDate);
-        const timeDiff = endDate.getTime() - today.getTime();
-        item.endDiffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        item.endDiffDays = calculateDateDiff(endDate, today);
+        console.log(`id = ${item.id} ，結束日期： ${item.endDate} ，今日： 2024-09-06 ，差： ${item.endDiffDays}`);
 
         const thisTimeDeadline = new Date(item.thisTimeDeadline);
         const nextTimeDeadline = new Date(item.nextTimeDeadline);
+        let deadLineDiffDays;
 
         if (isNaN(nextTimeDeadline.getTime())) {
-            const deadLineDiff = thisTimeDeadline.getTime() - today.getTime();
-            item.deadLineDiffDays = Math.ceil(deadLineDiff / (1000 * 3600 * 24));
+            deadLineDiffDays = calculateDateDiff(thisTimeDeadline, today);
         } else {
-            const deadLineDiff = nextTimeDeadline.getTime() - today.getTime();
-            item.deadLineDiffDays = Math.ceil(deadLineDiff / (1000 * 3600 * 24));
+            deadLineDiffDays = calculateDateDiff(nextTimeDeadline, today);
         }
+        item.deadLineDiffDays = deadLineDiffDays;
+        console.log(`id = ${item.id} ，期限日期： ${nextTimeDeadline.toString() === 'Invalid Date' ? item.thisTimeDeadline : item.nextTimeDeadline} ，今日： 2024-09-06 ，差： ${item.deadLineDiffDays}`);
 
         const paymentDate = new Date(item.paymentDate);
-        const payDiff = paymentDate.getTime() - today.getTime();
-        item.payDiffDays = Math.ceil(payDiff / (1000 * 3600 * 24));
+        item.payDiffDays = calculateDateDiff(paymentDate, today);
+        console.log(`id = ${item.id} ，付款期限： ${item.paymentDate} ，差： ${item.payDiffDays}`);
     });
+
 
     $('#myRenewContracList').DataTable({
         ...commonSettingsProvision,
@@ -152,27 +161,30 @@ $(function () {
             { data: 'building', title: "所在區域" }, // 2
             { data: 'room', title: "室", }, // 3
             { data: 'thisTimeDeadline', title: "本階段<br class='d-none d-lg-block'>到期日", }, // 4
-            { data: 'nextTimeDeadline', title: "下階段<br class='d-none d-lg-block'>到期日", }, // 5
-            { data: 'paymentDate', title: "已通知<br class='d-none d-lg-block'>付款日", }, // 6
+            {
+                data: 'nextTimeDeadline', title: "下階段<br class='d-none d-lg-block'>到期日",
+                render: function (data) {
+                    if (!data) {
+                        return '-';
+                    } else {
+                        return data;
+                    }
+                }
+            }, // 5
+            { data: 'paymentDate', title: "已通知<br class='d-none d-lg-block'>付款日",
+                render: function (data) {
+                    if (!data) {
+                        return '-';
+                    } else {
+                        return data;
+                    }
+                }
+             }, // 6
             { data: 'remark', title: "備註", }, // 7
             {
-                data: 'id', title: "轉帳<br class='d-none d-lg-block'>證明", // 8
+                data: 'id', title: "續約", // 8
                 render: function (data, type, row) {
-                    if (row.endDiffDays < 0) {
-                        return '';
-                    } else {
-                        if (row.paymentDate) {
-                            return '<button type="button" class="btn btn-light rounded-circle remittance_voucher align_center reuploadRemittance" title="再次上傳匯款憑證" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
-                        } else {
-                            return '<button type="button" class="btn btn-info rounded-circle remittance_voucher align_center uploadRemittance" title="上傳匯款憑證" data-bs-toggle="modal" data-bs-target="#remittanceModal" data-id="' + data + '"><i class="fa-solid fa-money-check-dollar"></i></button>';
-                        }
-                    }
-                }, className: 'text-center text-nowrap'
-            },
-            {
-                data: 'id', title: "續約", // 9
-                render: function (data, type, row) {
-                    if (row.endDiffDays < 0) {
+                    if (!row.endDiffDays) {
                         return '';
                     } else {
                         if (row.endDiffDays < 50) {
@@ -184,7 +196,7 @@ $(function () {
                 }
             },
             {
-                data: 'id', visible: false, //10
+                data: 'id', visible: false, // 9
                 render: function (data, type, row) {
                     const { endDate, thisTimeDeadline, nextTimeDeadline } = row;
                     const endDateObj = new Date(endDate);
@@ -203,26 +215,29 @@ $(function () {
 
 
         ],
-        order: [[10, 'asc']],
+        order: [[9, 'asc']],
         "columnDefs": [
             {
-                targets: [2],
+                targets: [1],
                 responsivePriority: 1,
             },
             {
-                targets: [3],
+                targets: [2],
                 responsivePriority: 2,
             },
             {
-                targets: [8],
+                targets: [3],
                 responsivePriority: 3,
             },
 
-            { searchable: false, orderable: false, targets: [8, 9] },
-            { className: "text-lg-center", targets: [0, 1, 2, 3, 4, 5, 6, 8] },
+            { searchable: false, orderable: false, targets: [8] },
+            { className: "text-lg-center", targets: [0, 1, 3, 4, 5, 6, 8] },
             { className: "text-nowrap", targets: [0, 1, 3, 4, 5, 6, 8] },
         ],
         createdRow: function (row, data, dataIndex) {
+            if (!data.endDiffDays) {
+                $('td', row).css('color', '#999');
+            }
             $('td:eq(8)', row).css('max-width', '70px');
             [0, 1, 4, 5, 6].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('font-size', '.9em');

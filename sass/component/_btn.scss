@@ -118,6 +118,10 @@ a {
 
             bottom: 125%;
             left: -25px;
+
+            &.lone {
+                left: -8px;
+            }
         }
     }
 

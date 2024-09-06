@@ -3,7 +3,7 @@
 
 <head>
     @@include('layout/meta.html', {
-    "title": "大同大學校內育成媒合平台-空白頁",
+    "title": "校內育成媒合平台-通知已匯款",
     })
 </head>
 
@@ -17,13 +17,12 @@
                 <div class="breadcrumb-box section-padding section-border-radius my-2r">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><i class="fa-solid fa-file-contract"></i>&ensp;申請與查閱</li>
-                        <li class="breadcrumb-item active"><i class="fa-solid fa-comment-dollar"></i>&ensp;付款通知</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-comment-dollar"></i>&ensp;通知已匯款</li>
                     </ol>
                 </div>
 
 
                 <div>
-                    <!-- 停車位列表 -->
                     <div class="tabs-box my-2r">
                         <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>轉帳證明<i
                                 class="fa-solid fa-quote-right"></i></h3>
@@ -34,48 +33,54 @@
                                 <div class="row">
                                     <div class="col-xl-8 mb-3">
                                         <div class="row mb-3">
-                                            <label for="profilesCompany_companyName"
+                                            <label for="proofOfPayment_companyName"
                                                 class="col-lg-auto col-form-label text-nowrap">公司名稱&emsp;</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="profilesCompany_companyName"
+                                                <input type="text" class="form-control" id="proofOfPayment_companyName"
                                                     readonly>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="profilesCompany_companyAdd"
+                                            <label for="proofOfPayment_last5AccountNo"
                                                 class="col-lg-auto col-form-label text-nowrap">帳號後五碼</label>
                                             <div class="col">
                                                 <input type="text" class="form-control thisRequired"
-                                                    id="profilesCompany_companyAdd">
-                                                <span class="text-danger" id="danger_profilesCompany_companyAdd"></span>
+                                                    id="proofOfPayment_last5AccountNo">
+                                                <span class="text-danger" id="danger_proofOfPayment_last5AccountNo"></span>
                                             </div>
-                                            <label for="AA" class="col-lg col-form-label text-nowrap">
+                                            <label for="proofOfPayment_saveLast5AccountNo" class="col-lg col-form-label text-nowrap">
                                                 <input type="checkbox" class="form-check-input me-2"
-                                                    id="AA">儲存為常用帳號後五碼</label>
+                                                    id="proofOfPayment_saveLast5AccountNo">儲存為常用帳號後五碼</label>
                                         </div>
                                         <div class="row mb-3 align-items-center">
-                                            <label for="profilesCompany_companyName"
+                                            <label for="proofOfPayment_companyName"
+                                                class="col-lg-auto col-form-label text-nowrap">轉帳日期&emsp;</label>
+                                            <div class="col">
+                                                <input type="date" class="form-control"
+                                                    id="proofOfPayment_companyName">
+                                            </div>
+                                            <label for="proofOfPayment_companyName"
                                                 class="col-lg-auto col-form-label text-nowrap">支付金額&emsp;</label>
                                             <div class="col">
                                                 <input type="text" class="form-control"
-                                                    id="profilesCompany_companyName">
+                                                    id="proofOfPayment_companyName">
                                             </div>
-                                            <div class="col">
-                                                <label for="remittancePdf"
-                                                    class="col-auto col-form-label text-nowrap upload-label py-0 align_center ps-3">請點此上傳匯款憑證(.pdf)<i
-                                                        class="fa-solid fa-upload mx-1"></i>
-                                                </label>
-                                                <div class="col-12">
-                                                    <input type="file" class="form-control d-none" id="remittancePdf"
-                                                        accept=".pdf" name="remittancePdf"
-                                                        onchange="javascript:{document.getElementById('remittance_fileInfo').innerHTML = document.getElementById('remittancePdf').value;setFormHeight();}">
-                                                    <div id="remittance_fileInfo" class="fileInfo"></div>
-                                                </div>
+                                        </div>
+                                        <div class="row mb-2 salaryRadio border-warning py-2">
+                                            <label for="remittancePdf"
+                                                class="col-auto col-form-label text-nowrap upload-label py-0 align_center">點擊此處可上傳匯款憑證(.pdf)<i
+                                                    class="fa-solid fa-upload mx-1"></i>
+                                            </label>
+                                            <div class="col-12">
+                                                <input type="file" class="form-control d-none" id="remittancePdf"
+                                                    accept=".pdf" name="remittancePdf"
+                                                    onchange="javascript:{document.getElementById('remittance_fileInfo').innerHTML = document.getElementById('remittancePdf').value;setFormHeight();}">
+                                                <div id="remittance_fileInfo" class="fileInfo"></div>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="profilesCompany_companyName"
-                                                class="col-lg-auto col-form-label text-nowrap">支付項目&emsp;</label>
+                                            <label for="proofOfPayment_companyName"
+                                                class="col-lg-auto col-form-label text-nowrap">本次匯款支付項目&emsp;</label>
                                             <div class="col">
                                                 <table>
                                                     <tr>
@@ -135,12 +140,13 @@
                                     <div class="col-xl-4 mb-3">
                                         <div class="salaryRadio px-2 py-2 mx-1 border-success">
                                             <div class="row mb-3">
-                                                <label for="profilesCompany_helpItems"
+                                                <label for="proofOfPayment_helpItems"
                                                     class="col-12 col-form-label text-nowrap fw-bold">注意事項：</label>
                                                 <div class="col">
                                                     <div class="row">
                                                         <div class="col-auto pe-0">a.</div>
-                                                        <div class="col">因付款通知無法修改，<strong>送出前請再次確認資料是否正確</strong>。
+                                                        <div class="col">因付款通知無法修改，<strong
+                                                                class="text-decoration-underline text-danger">送出前請再次確認資料是否正確</strong>。
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -149,7 +155,21 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-auto pe-0">c.</div>
-                                                        <div class="col">上傳匯款憑證時，<strong>僅接受PDF格式檔案(.pdf)</strong>。
+                                                        <div class="col"><strong
+                                                                class="text-decoration-underline">常用帳號後五碼僅能記錄一組</strong>，再次儲存後系統會更新資料。
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">d.</div>
+                                                        <div class="col">上傳匯款憑證時，<strong>僅接受PDF格式的檔案(.pdf)</strong>。
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">e.</div>
+                                                        <div class="col">
+                                                            <strong>大同大學帳戶資訊：</strong><br>
+                                                            XX銀行XX分行&emsp;代碼：000-0000<br>
+                                                            8888-8888-8888-8888。
                                                         </div>
                                                     </div>
                                                 </div>
@@ -158,6 +178,10 @@
                                     </div>
                                 </div>
                                 <div class="row text-center p-3 justify-content-center">
+                                    <div class="col-auto">
+                                        <button type="reset" class="btn btn-lg btn-outline-secondary"
+                                            id="rebackBtn" onclick="history.back()">返回</button>
+                                    </div>
                                     <div class="col-auto">
                                         <button type="reset" class="btn btn-lg btn-outline-danger"
                                             id="resetPSFormBtn">重填</button>

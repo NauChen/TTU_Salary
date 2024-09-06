@@ -70,7 +70,7 @@ height：畫面高度 -->
     <div class="burger-menu">
         <i class="fas fa-bars"></i>
     </div>
-    <!-- 側邊攔上方 -->
+    <!-- 側邊攔上方 template-movedToOfficialPage.html -->
     <div class="top">
         <a href="./index.html" class="navbar-logo">
             <img src="./images/ttoLogo_2.png" class="navbar-brand">
@@ -85,13 +85,19 @@ height：畫面高度 -->
                     aria-expanded="false"><i class="fa-solid fa-users"></i><span
                         class="tooltiptext tooltip-right">職缺媒合</span></a>
                 <ul class="dropdown-menu" aria-labelledby="jobLink">
-                    <li><a class="dropdown-item" href="./index.html">職缺總攬&ensp;<i
+                    <li>
+                        <!-- <a class="dropdown-item" href="./index.html">職缺總攬&ensp;<i class="fa-solid fa-users-line"></i></a> -->
+                        <a class="dropdown-item" href="./template-movedToOfficialPage.html">職缺總攬&ensp;<i
                                 class="fa-solid fa-users-line"></i></a>
                     </li>
-                    <li><a class="dropdown-item" href="./jobMyActiveListings.html">現正刊登&ensp;<i
-                                class="fa-solid fa-users-viewfinder"></i></a></li>
-                    <li><a class="dropdown-item" href="./jobActiveListings.html">全刊登中&ensp;<i
-                                class="fa-solid fa-users-viewfinder"></i></a></li>
+                    <li>
+                        <!-- <a class="dropdown-item" href="./jobMyActiveListings.html">現正刊登&ensp;<i class="fa-solid fa-users-viewfinder"></i></a> -->
+                        <a class="dropdown-item" href="./template-movedToOfficialPage.html">現正刊登&ensp;<i class="fa-solid fa-users-viewfinder"></i></a>
+                    </li>
+                    <li>
+                        <!-- <a class="dropdown-item" href="./jobActiveListings.html">全刊登中&ensp;<i class="fa-solid fa-users-viewfinder"></i></a> -->
+                        <a class="dropdown-item" href="./template-movedToOfficialPage.html">全刊登中&ensp;<i class="fa-solid fa-users-viewfinder"></i></a>
+                    </li>
                 </ul>
             </li>
             <li class="item dropend">
@@ -111,11 +117,11 @@ height：畫面高度 -->
                 </ul>
             </li>
 
-            <li class="item">
+            <!-- <li class="item">
                 <a class="link" href="./progressCheck.html" id="progressLink"><i
                         class="fa-solid fa-spinner icon-rotate"></i><span
                         class="tooltiptext tooltip-right">申請進度</span></a>
-            </li>
+            </li> -->
 
             <li class="item dropend">
                 <a class="link dropdown-toggle" role="button" id="assessmentLink" data-bs-toggle="dropdown"
@@ -337,14 +343,7 @@ height：畫面高度 -->
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-lg btn-success">送出</button>
                                 </div>
-                                <div class="col-auto">
-                                    <button class="btn btn-outline-success js-btn-prev" type="button"
-                                        title="Prev">PREV</button>
-                                </div>
-                                <div class="col-auto">
-                                    <button class="btn btn-outline-secondary js-btn-next ms-2" type="button"
-                                        title="Next">NEXT</button>
-                                </div>
+
                                 <div class="col-auto">
                                     <button type="button" class="btn btn-outline-dark"
                                         data-bs-dismiss="modal">關閉</button>
@@ -357,7 +356,7 @@ height：畫面高度 -->
                                 </div>
                                 <div class="col-auto">
                                     <a href="./cultivationRoom.html"
-                                        class="btn btn-lg btn-outline-danger twoWord text-nowrap">返回</a>
+                                        class="btn btn-lg btn-outline-secondary twoWord text-nowrap">返回</a>
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-lg btn-success">更新</button>
@@ -440,6 +439,30 @@ height：畫面高度 -->
                                 <div class="col-auto">
                                     <button type="button" class="btn btn-outline-primary btn-sm"><i
                                             class="fa-solid fa-skull"></i></button>
+                                </div>
+                                <div class="col-auto">
+                                    <label id="car_upload_label" class="btn btn-outline-secondary">
+                                        <input id="upload_car_img" type="file" accept="image/*" class="d-none">
+                                        <i class="fa-solid fa-car mx-1"></i><br class="d-lg-none">行照
+                                    </label>
+                                </div>
+                                <div class="col-auto">
+                                    <label id="bike_upload_label" class="btn btn-outline-secondary">
+                                        <input id="upload_moto_img" type="file" accept="image/*" class="d-none"><i
+                                            class="fa-solid fa-motorcycle  mx-1"></i><br class="d-lg-none">行照
+                                    </label>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-outline-danger col-auto goto_somewhere ms-3" id="deleteTheseIdCard"><i
+                                        class="fa-regular fa-square-check"></i><i class="fa-solid fa-arrow-right mx-1"></i><i
+                                        class="fa-solid fa-school"></i><span
+                                        class="tooltiptext tooltip-top">停用或取消申請</span></button>
+                                </div>
+                                <div class="col-auto">
+                                    <a class="btn btn-outline-info col-auto goto_somewhere ms-3 py-2" role="button"
+                                    href="./idCardApply.html"><i class="fa-solid fa-plus"></i><i
+                                        class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-id-card-clip"></i><span
+                                        class="tooltiptext tooltip-top">申請識別證</span></a>
                                 </div>
                             </div>
 

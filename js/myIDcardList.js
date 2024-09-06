@@ -8,15 +8,7 @@ var dataset_myIDcardHistory = [
         'library': '未申請',
         'print': '1',
 
-        'startDate': '2023-09-10',
-        'endDate': '2023-10-09',
-        'status': '已選停用，請至研發處歸還。',
-        'idCardNum': 'ABC101',
-
-        'phone': '0912-345678',
-        'email': 'abc#gmail.com',
-        'emergContact': '孫大美',
-        'ECPhone': '0933-456789',
+        'remark': '已選停用，請至研發處歸還。',
     },
     {
         'id': '2',
@@ -27,14 +19,7 @@ var dataset_myIDcardHistory = [
         'library': '已開放',
         'print': '-',
 
-        'startDate': '2023-09-10',
-        'endDate': '2023-10-09',
-        'status': '-',
-        'idCardNum': 'ABC102',
-        'phone': '0933-456789',
-        'email': 'abcd#gmail.com',
-        'emergContact': '孫一美',
-        'ECPhone': '0912-345678',
+        'remark': '',
     },
     {
         'id': '3',
@@ -45,15 +30,7 @@ var dataset_myIDcardHistory = [
         'library': '已開放',
         'print': '-',
 
-        'startDate': '2023-10-11',
-        'endDate': '2023-11-30',
-        'status': '-',
-        'idCardNum': 'ABC103',
-
-        'phone': '0912-345678',
-        'email': 'abc#gmail.com',
-        'emergContact': '孫大美',
-        'ECPhone': '0933-456789',
+        'remark': 'X',
     },
     {
         'id': '4',
@@ -64,15 +41,7 @@ var dataset_myIDcardHistory = [
         'library': '已開放',
         'print': '3',
 
-        'startDate': '2023-10-11',
-        'endDate': '2023-11-30',
-        'status': '-',
-        'idCardNum': 'ABC104',
-
-        'phone': '0912-345678',
-        'email': 'abc#gmail.com',
-        'emergContact': '孫大美',
-        'ECPhone': '0933-456789',
+        'remark': '',
     },
     {
         'id': '5',
@@ -83,15 +52,7 @@ var dataset_myIDcardHistory = [
         'library': '已開放',
         'print': '3',
 
-        'startDate': '2023-10-11',
-        'endDate': '2023-11-30',
-        'status': '-',
-        'idCardNum': 'ABC104',
-
-        'phone': '0912-345678',
-        'email': 'abc#gmail.com',
-        'emergContact': '孫大美',
-        'ECPhone': '0933-456789',
+        'remark': '',
     },
     {
         'id': '6',
@@ -102,15 +63,7 @@ var dataset_myIDcardHistory = [
         'library': '申請中',
         'print': '-',
 
-        'startDate': '-',
-        'endDate': '-',
-        'status': '申請中',
-        'idCardNum': 'ABC104',
-
-        'phone': '0912-345678',
-        'email': 'abc#gmail.com',
-        'emergContact': '孫大美',
-        'ECPhone': '0933-456789',
+        'remark': '申請中',
     },
     {
         'id': '7',
@@ -121,15 +74,7 @@ var dataset_myIDcardHistory = [
         'library': '申請中',
         'print': '1',
 
-        'startDate': '-',
-        'endDate': '-',
-        'status': '申請中',
-        'idCardNum': 'ABC104',
-
-        'phone': '0912-345678',
-        'email': 'abc#gmail.com',
-        'emergContact': '孫大美',
-        'ECPhone': '0933-456789',
+        'remark': '申請中',
     },
 ];
 
@@ -147,8 +92,12 @@ $(function () {
         "columns": [
             {
                 data: 'id', title: '<i class="fa-regular fa-square-check"></i>',
-                 render: function (data, type, row, meta) { // 0
-                    return '<input type="checkbox" class="form-check-input border-primary idCard-checkbox" value=' + data + '>'
+                render: function (data, type, row, meta) { // 0
+                    if (row.remark == "X" || row.remark == "已選停用，請至研發處歸還。") {
+                        return '';
+                    } else {
+                        return '<input type="checkbox" class="form-check-input border-primary idCard-checkbox" value=' + data + '>'
+                    }
                 },
             },
             { data: 'createDate', title: "申請日期" }, // 1
@@ -159,19 +108,34 @@ $(function () {
             { data: 'jobTitle', title: "職稱", }, // 4
             { data: 'library', title: "閱覽<br class='d-none d-lg-block'>圖書館", }, // 5
             { data: 'print', title: "補發<br class='d-none d-lg-block'>次數", }, // 6
-            { data: 'status', title: "備註", }, // 7
+            { data: 'remark', title: "備註", }, // 7
             {
                 data: 'id', title: "申請<br class='d-none d-lg-block'>補發", // 8
                 render: function (data, type, row) {
-                    if(row.status != "申請中"){
+                    if (row.remark != "申請中" && row.remark != "X" && row.remark != "已選停用，請至研發處歸還。") {
                         return '<a class="btn btn-outline-primary rounded-circle noOutline" href="./idCardReissue.html?id=' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
-                    }else{
+                    } else {
                         return "";
                     }
                 },
             },
+            {
+                data: 'remark', visible: false,  // 9
+                render: function (data, type, row) {
+                    if (data == "已選停用，請至研發處歸還。") {
+                        return '0';
+                    } else if (data == "申請中") {
+                        return '1';
+                    } else if (data == "X") {
+                        return "9"
+                    } else {
+                        return "6"
+                    };
+                },
+            },
+
         ],
-        "order": [[1, "desc"]],
+        "order": [[9, "asc"]],
         "columnDefs": [
             {
                 targets: [0],
@@ -190,6 +154,9 @@ $(function () {
             { className: "text-nowrap", targets: [0, 1, 3, 4, 5, 6] },
         ],
         createdRow: function (row, data, dataIndex) {
+            if (data.remark == "X") {
+                $('td', row).css('color', '#999');
+            }
             [1,].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('min-width', '130px');
             });
