@@ -8,17 +8,17 @@ var dataset_myCultivationRoom = [
         'thisTimeDeadline': '2024-09-30',
         'nextTimeDeadline': '',
         'paymentDate': '2024-03-31',
-        'remark': '已到期未續約',
+        'remark': '',
     },
     {
         'id': '2',
         'startDate': '2023-08-31',
-        'endDate': '2024-09-01',
+        'endDate': '2024-08-30',
         'building': '綜合大樓',
         'room': '104',
-        'thisTimeDeadline': '2024-05-15',
-        'nextTimeDeadline': '2024-09-01',
-        'paymentDate': '2024-09-01',
+        'thisTimeDeadline': '',
+        'nextTimeDeadline': '',
+        'paymentDate': '2024-08-31',
         'remark': '',
     },
     {
@@ -27,20 +27,20 @@ var dataset_myCultivationRoom = [
         'endDate': '2024-10-30',
         'building': '挺生大樓',
         'room': '105',
-        'thisTimeDeadline': '2024-05-22',
+        'thisTimeDeadline': '2024-11-01',
         'nextTimeDeadline': '',
-        'paymentDate': '',
+        'paymentDate': '2024-09-01',
         'remark': '',
     },
     {
         'id': '4',
-        'startDate': '2023-10-11',
-        'endDate': '2024-10-10',
+        'startDate': '2023-11-11',
+        'endDate': '2024-11-10',
         'building': '實驗大樓',
         'room': '106',
-        'thisTimeDeadline': '2025-05-01',
-        'nextTimeDeadline': '2024-05-01',
-        'paymentDate': '2024-11-28',
+        'thisTimeDeadline': '2024-11-10',
+        'nextTimeDeadline': '',
+        'paymentDate': '2024-09-05',
         'remark': '',
     },
     {
@@ -49,65 +49,65 @@ var dataset_myCultivationRoom = [
         'endDate': '2025-05-31',
         'building': '實驗大樓',
         'room': '201',
-        'thisTimeDeadline': '2024-05-22',
-        'nextTimeDeadline': '',
-        'paymentDate': '',
+        'thisTimeDeadline': '2024-12-31',
+        'nextTimeDeadline': '2025-03-31',
+        'paymentDate': '2024-09-25',
         'remark': '',
     },
     {
         'id': '6',
-        'startDate': '2024-06-01',
-        'endDate': '2025-05-31',
+        'startDate': '2024-07-01',
+        'endDate': '2025-06-31',
         'building': '北設工大樓',
         'room': '202',
-        'thisTimeDeadline': '2024-05-22',
-        'nextTimeDeadline': '2024-12-01',
-        'paymentDate': '2024-11-27',
+        'thisTimeDeadline': '2025-10-31',
+        'nextTimeDeadline': '2025-01-31',
+        'paymentDate': '',
         'remark': '',
     },
     {
         'id': '7',
-        'startDate': '2024-06-01',
-        'endDate': '2025-05-31',
+        'startDate': '2024-09-01',
+        'endDate': '2025-08-31',
         'building': '尚志大樓',
         'room': 'A4-102',
-        'thisTimeDeadline': '2024-05-22',
-        'nextTimeDeadline': '2024-07-01',
+        'thisTimeDeadline': '2025-03-01',
+        'nextTimeDeadline': '2025-08-31',
         'paymentDate': '',
-        'remark': '下階段款項已逾期，如若已付款請提供匯款資訊。',
+        'remark': '',
     },
     {
         'id': '8',
-        'startDate': '2024-06-01',
-        'endDate': '2025-05-31',
+        'startDate': '2024-02-01',
+        'endDate': '2025-01-31',
         'building': '新德惠大樓',
         'room': 'A4-103',
-        'thisTimeDeadline': '2024-05-22',
+        'thisTimeDeadline': '2024-09-30',
         'nextTimeDeadline': '',
         'paymentDate': '',
-        'remark': '本階段為最末段，請準備續約。',
+        'remark': '',
     },
     {
         'id': '9',
-        'startDate': '2024-06-01',
-        'endDate': '2025-05-31',
+        'startDate': '2023-06-01',
+        'endDate': '2024-05-31',
         'building': '綜合大樓',
         'room': '714',
-        'thisTimeDeadline': '2024-05-22',
-        'nextTimeDeadline': '2024-07-01',
-        'paymentDate': '2024-11-28',
-        'remark': '下階段已付款',
+        'thisTimeDeadline': '',
+        'nextTimeDeadline': '',
+        'paymentDate': '2024-05-15',
+        'remark': '',
     },
     {
         'id': '10',
-        'startDate': '2024-06-01',
-        'endDate': '2025-05-31',
+        'startDate': '2024-08-01',
+        'endDate': '2025-07-31',
         'building': '挺生大樓',
         'room': '809',
-        'thisTimeDeadline': '2024-05-22',
-        'nextTimeDeadline': '',
+        'thisTimeDeadline': '2024-10-01',
+        'nextTimeDeadline': '2025-01-01',
         'paymentDate': '',
-        'remark': '本階段為最末段，請準備續約。',
+        'remark': '',
     }
 ];
 
@@ -158,9 +158,17 @@ $(function () {
         "columns": [
             { data: 'startDate', title: "進駐開始" }, // 0
             { data: 'endDate', title: "進駐結束", }, // 1
-            { data: 'building', title: "所在區域" }, // 2
+            { data: 'building', title: "進駐區域" }, // 2
             { data: 'room', title: "室", }, // 3
-            { data: 'thisTimeDeadline', title: "本階段<br class='d-none d-lg-block'>到期日", }, // 4
+            { data: 'thisTimeDeadline', title: "本階段<br class='d-none d-lg-block'>到期日", 
+                render: function (data) {
+                    if (!data) {
+                        return '-';
+                    } else {
+                        return data;
+                    }
+                }
+            }, // 4
             {
                 data: 'nextTimeDeadline', title: "下階段<br class='d-none d-lg-block'>到期日",
                 render: function (data) {
@@ -171,7 +179,7 @@ $(function () {
                     }
                 }
             }, // 5
-            { data: 'paymentDate', title: "已通知<br class='d-none d-lg-block'>付款日",
+            { data: 'paymentDate', title: "最新<br class='d-none d-lg-block'>付款日",
                 render: function (data) {
                     if (!data) {
                         return '-';

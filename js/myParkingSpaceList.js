@@ -79,6 +79,16 @@ var dataset_myParkingSpaceHistory = [
         'endDate': '2024-07-01',
         'remark': '',
     },
+    {
+        'id': '9',
+        'carType': '機車',
+        'building': '',
+        'parkingSpaceNum': '',
+        'licensePlateNum': '3AB-555',
+        'name': '郝天天',
+        'endDate': '',
+        'remark': '申請中',
+    },
 ];
 
 
@@ -144,6 +154,7 @@ $(function () {
             { data: 'carType', visible: false }, // 9
         ],
         order: [
+            [6, 'desc'],
             [8, 'desc'],
             [5, 'desc']
         ],
@@ -165,8 +176,10 @@ $(function () {
             { className: "text-lg-center", targets: [0, 2, 3, 4, 5, 7] },
         ],
         createdRow: function (row, data, dataIndex) {
-            if (!data.diffDays) {
-                $('td', row).css('color', '#999'); 
+            if(data.remark != "申請中"){
+                if (!data.diffDays) {
+                    $('td', row).css('color', '#999'); 
+                }
             }
             $('td:eq(5)', row).css('font-size', '.95em').css('width', '110px');
             $('td:eq(6)', row).css('font-size', '.95em').css('min-width', '250px');

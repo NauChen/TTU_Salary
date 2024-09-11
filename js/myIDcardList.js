@@ -1,82 +1,82 @@
-var dataset_myIDcardHistory = [
-    {
-        'id': '1',
-        'createDate': '2023-08-30',
-        'place': '新德惠大樓-101',
-        'name': '孫一美',
-        'jobTitle': '工讀生',
-        'library': '未申請',
-        'print': '1',
+// var dataset_myIDcardHistory = [
+//     {
+//         'id': '1',
+//         'createDate': '2023-08-30',
+//         'place': '新德惠大樓-101',
+//         'name': '孫一美',
+//         'jobTitle': '工讀生',
+//         'library': '未申請',
+//         'print': '1',
 
-        'remark': '已選停用，請至研發處歸還。',
-    },
-    {
-        'id': '2',
-        'createDate': '2023-08-31',
-        'place': '綜合工廠大樓-202',
-        'name': '孫大美',
-        'jobTitle': '專員',
-        'library': '已開放',
-        'print': '-',
+//         'remark': '已選停用，請至研發處歸還。',
+//     },
+//     {
+//         'id': '2',
+//         'createDate': '2023-08-31',
+//         'place': '綜合工廠大樓-202',
+//         'name': '孫大美',
+//         'jobTitle': '專員',
+//         'library': '已開放',
+//         'print': '-',
 
-        'remark': '',
-    },
-    {
-        'id': '3',
-        'createDate': '2023-09-10',
-        'place': '挺生大樓-202',
-        'name': '孫大帥',
-        'jobTitle': '專員',
-        'library': '已開放',
-        'print': '-',
+//         'remark': '',
+//     },
+//     {
+//         'id': '3',
+//         'createDate': '2023-09-10',
+//         'place': '挺生大樓-202',
+//         'name': '孫大帥',
+//         'jobTitle': '專員',
+//         'library': '已開放',
+//         'print': '-',
 
-        'remark': 'X',
-    },
-    {
-        'id': '4',
-        'createDate': '2023-09-10',
-        'place': '實驗大樓-202',
-        'name': '孫二帥',
-        'jobTitle': '專員',
-        'library': '已開放',
-        'print': '3',
+//         'remark': 'X',
+//     },
+//     {
+//         'id': '4',
+//         'createDate': '2023-09-10',
+//         'place': '實驗大樓-202',
+//         'name': '孫二帥',
+//         'jobTitle': '專員',
+//         'library': '已開放',
+//         'print': '3',
 
-        'remark': '',
-    },
-    {
-        'id': '5',
-        'createDate': '2023-09-10',
-        'place': '尚志大樓-202',
-        'name': '孫二帥',
-        'jobTitle': '專員',
-        'library': '已開放',
-        'print': '3',
+//         'remark': '',
+//     },
+//     {
+//         'id': '5',
+//         'createDate': '2023-09-10',
+//         'place': '尚志大樓-202',
+//         'name': '孫二帥',
+//         'jobTitle': '專員',
+//         'library': '已開放',
+//         'print': '3',
 
-        'remark': '',
-    },
-    {
-        'id': '6',
-        'createDate': '2024-09-10',
-        'place': '尚志大樓-202',
-        'name': '關二爺',
-        'jobTitle': '經理',
-        'library': '申請中',
-        'print': '-',
+//         'remark': '',
+//     },
+//     {
+//         'id': '6',
+//         'createDate': '2024-09-10',
+//         'place': '尚志大樓-202',
+//         'name': '關二爺',
+//         'jobTitle': '經理',
+//         'library': '申請中',
+//         'print': '-',
 
-        'remark': '申請中',
-    },
-    {
-        'id': '7',
-        'createDate': '2024-09-12',
-        'place': '尚志大樓-202',
-        'name': '張三爺',
-        'jobTitle': '協理',
-        'library': '申請中',
-        'print': '1',
+//         'remark': '申請中',
+//     },
+//     {
+//         'id': '7',
+//         'createDate': '2024-09-12',
+//         'place': '尚志大樓-202',
+//         'name': '張三爺',
+//         'jobTitle': '協理',
+//         'library': '申請中',
+//         'print': '1',
 
-        'remark': '申請中',
-    },
-];
+//         'remark': '申請中',
+//     },
+// ];
 
 $(function () {
     let table = $('#myIDcardList').DataTable({
@@ -93,7 +93,7 @@ $(function () {
             {
                 data: 'id', title: '<i class="fa-regular fa-square-check"></i>',
                 render: function (data, type, row, meta) { // 0
-                    if (row.remark == "X" || row.remark == "已選停用，請至研發處歸還。") {
+                    if (row.remark == "X" || row.remark == "已選停用，請至研發處歸還。" || row.remark == "不通過，可洽研發處。") {
                         return '';
                     } else {
                         return '<input type="checkbox" class="form-check-input border-primary idCard-checkbox" value=' + data + '>'
@@ -112,7 +112,7 @@ $(function () {
             {
                 data: 'id', title: "申請<br class='d-none d-lg-block'>補發", // 8
                 render: function (data, type, row) {
-                    if (row.remark != "申請中" && row.remark != "X" && row.remark != "已選停用，請至研發處歸還。") {
+                    if (row.remark != "申請中" && row.remark != "X" && row.remark != "已選停用，請至研發處歸還。" && row.remark != "不通過，可洽研發處。") {
                         return '<a class="btn btn-outline-primary rounded-circle noOutline" href="./idCardReissue.html?id=' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
                     } else {
                         return "";
@@ -154,7 +154,7 @@ $(function () {
             { className: "text-nowrap", targets: [0, 1, 3, 4, 5, 6] },
         ],
         createdRow: function (row, data, dataIndex) {
-            if (data.remark == "X") {
+            if (data.remark == "X" || data.remark == "不通過，可洽研發處。") {
                 $('td', row).css('color', '#999');
             }
             [1,].forEach(function (colIdx) {
@@ -203,6 +203,25 @@ $(function () {
         //         console.error('Error deleting jobs', error);
         //     }
         // });
+        $.ajax({
+            // url: '@Url.Action("Delete", "JobVacancies")',
+            url: deleteUrl, // 使用預先生成的URL
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(selectedIds),  // 確認這裡發送的是一個字串數組
+            success: function (response) {
+                // console.log('Delete request successful', response);
+                // table.ajax.reload(); // 刷新表格
+                swalToastSuccess(response.message, 'top');// 2秒
+                setTimeout(function () {
+                    location.reload();
+                }, 2300);  //2.3秒後
+            },
+            error: function (xhr, status, error) {
+                console.error('Error deleting jobs', error);
+                swalToastWarning('刪除職缺時發生錯誤。', 'top');
+            }
+        });
 
     });
 

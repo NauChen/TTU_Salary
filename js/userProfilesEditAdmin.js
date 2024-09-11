@@ -497,7 +497,7 @@ $(function () {
                     if (row.type === "商號") {
                         linkPage = 'profilesEditCompany.html'
                         // return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./profilesEditCompany.htm?id=' + data + '"><i class="fa-solid fa-user-secret"></i></a>';
-                        return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./template-underConstruction.html?id=' + data + '"><i class="fa-solid fa-user-secret"></i></a>';
+                        return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./siteVisitReport.html?id=' + data + '"><i class="fa-solid fa-user-secret"></i></a>';
                     } else {
                         return '';
                     }

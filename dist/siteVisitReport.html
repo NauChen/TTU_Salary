@@ -22,7 +22,7 @@ height：畫面高度 -->
 <!-- <meta name="keywords" content="關鍵字1, 關鍵字2, 關鍵字3"> -->
 <!-- <meta name="author" content="作者"> -->
 
-<title>大同大學校內育成媒合平台-修改停車位</title>
+<title>大同大學校內育成媒合平台-空白頁</title>
 
 <!-- 網址列favicon圖片
 檔案格式：.ico（較常使用）、.png、.gif（只有 Firefox 支援）
@@ -209,126 +209,55 @@ height：畫面高度 -->
 </nav>
         <div class="content">
             <div class="container">
-                <!-- 麵包屑 -->
+
                 <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
-                        <li class="breadcrumb-item"><a class="d-inline" href="./parkingSpace.html"><i
-                                    class="fa-solid fa-square-parking"></i>&ensp;全部停車位</a></li>
-                        <li class="breadcrumb-item active"><i class="fa-solid fa-wrench"></i>&ensp;修改</li>
+                        <li class="breadcrumb-item"><a class="d-inline" href="./userProfilesEditAdmin.html"><i
+                                    class="fa-solid fa-address-book"></i>&ensp;用戶資料修改</a></li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-user-secret"></i>&ensp;訪視紀錄</li>
                     </ol>
                 </div>
-                <!-- 新增停車位 -->
                 <div class="tabs-box my-2r">
-                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>修改停車位<i
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>訪視紀錄<i
                             class="fa-solid fa-quote-right"></i></h3>
-
-                    <div class="tabs section-border-radius section-padding">
-                        <form class="container-fluid" method="post">
-                            <div class="row">
-    <div class="col-xl-4 col-lg-6 mb-3">
-        <div class="row mb-3 align-items-center">
-            <div class="col-lg-auto col-form-label text-nowrap">所在區域：</div>
-            <div class="col">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="BuildingName" id="originalBuilding" checked>
-                    <label class="form-check-label" for="originalBuilding">選擇既有</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="BuildingName" id="newBuilding">
-                    <label class="form-check-label" for="newBuilding">另行輸入</label>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12" id="originalBuildingBox">
-                <select name="" id="parkingSpaceBuilding" class="form-select">
-                    <option selected disabled>--- 請選擇 ---</option>
-                    <option value="校本部">校本部</option>
-                    <option value="新德惠大樓">新德惠大樓</option>
-                </select>
-                <span class="text-danger" id="danger_parkingSpaceBuilding"></span>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-12" id="newBuildingBox">
-                <input type="text" class="form-control" id="parkingSpaceBuildingNew">
-                <span class="text-danger" id="danger_parkingSpaceBuildingNew"></span>
-            </div>
-        </div>
-        <div class="row mb-3 align-items-center">
-            <div class="col-lg-auto col-form-label text-nowrap">車位種類：</div>
-            <div class="col">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="carType" id="car" value="汽車" checked>
-                    <label class="form-check-label" for="car">汽車</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="carType" id="moto" value="機車">
-                    <label class="form-check-label" for="moto">機車</label>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 col-lg-6 mb-3">
-        <div class="row mb-3">
-            <label for="basementNum" class="col-lg-auto col-form-label text-nowrap">車位號碼：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="basementNum">
-                <span class="text-danger" id="danger_basementNum"></span>
-            </div>
-        </div>
-        <div class="row mb-3 salaryRadio px-2 py-2 mx-1 border-success">
-            <div>&#10551;&ensp;請依格式輸入，例：B1-01。</div>
-        </div>
-
-        <div class="row mb-3">
-            <label for="parkingSpaceRate" class="col-lg-auto col-form-label text-nowrap">預設服務費/月：</label>
-            <div class="col">
-                <input type="text" class="form-control" id="parkingSpaceRate" onkeyup="restrictToNum(this)"
-                    onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
-                <span class="text-danger" id="danger_parkingSpaceRate"></span>
-            </div>
-        </div>
-
-    </div>
-    <div class="col-xl-4 col-lg-6 mb-3">
-        <div class="row mb-3">
-            <label for="parkingSpaceRemark" class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
-            <div class="col">
-                <textarea class="form-control resize-none h_110" id="parkingSpaceRemark"></textarea>
-                <span class="text-danger" id="danger_parkingSpaceRemark"></span>
-            </div>
-        </div>
-    </div>
-</div>
-                            <div class="row justify-content-end">
-                                <div class="col-xl-4 col-lg-6 mb-3">
-                                    <div class="row mb-3">
-                                        <label for="parkingSpaceStatus"
-                                            class="col-lg-auto col-form-label text-nowrap">啟用狀態：</label>
-                                        <div class="col">
-                                            <select class="form-select" id="parkingSpaceStatus">
-                                                <option value="啟用">啟用</option>
-                                                <option value="停用">停用</option>
-                                            </select>
+                    <div class="tabs section-border-radius section-padding p-5">
+                        <div class="row">
+                            <div class="col-12 col-lg-8">
+                                <table id="visitReportList"
+                                    class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                                </table>
+                            </div>
+                            <div class="col pt-5">
+                                <form class="row salaryRadio p-2 mx-1 border-success">
+                                    <div class="col-12">
+                                        <h5 class="mb-3 text-center fw-bolder">新增訪視紀錄</h5>
+                                        <div class="mb-3">
+                                            <label for="visitDate" class="form-label"><span
+                                                    class="requiredMark">*</span>訪視日期</label>
+                                            <input type="date" class="form-control" id="visitDate">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="adminNote" class="form-label">備註</label>
+                                            <input type="text" class="form-control" id="adminNote">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="fileVisitReport" class="form-label"><span
+                                                    class="requiredMark">*</span>上傳訪視文件</label>
+                                            <input type="file" class="form-control" id="adminNote">
+                                        </div>
+                                        <div class="text-end">
+                                            <button class="btn btn-success">
+                                                新增
+                                            </button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
-                            <div class="row text-center p-3 justify-content-center">
-                                <div class="col-auto">
-                                    <a href="./parkingSpace.html"
-                                        class="btn btn-lg btn-outline-danger twoWord text-nowrap">返回</a>
-                                </div>
-                                <div class="col-auto">
-                                    <button type="submit" class="btn btn-lg btn-success">修改</button>
-                                </div>
-                            </div>
-
-                        </form>
+                        </div>
                     </div>
                 </div>
+
                 <!-- <footer>
     <ul>
         <li>隱私權</li>
@@ -366,9 +295,7 @@ height：畫面高度 -->
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
 
-    <script src="./js/formComm.js"></script>
-    <script src="./js/parkingSpaceEdit.js"></script>
-
+    <script src="./js/siteVisitReport.js"></script>
 </body>
 
 </html>

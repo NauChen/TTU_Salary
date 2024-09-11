@@ -19,7 +19,8 @@ var dataset_idCardApp = [
         'readLibrary': '申請',
         'adminNote': '資料不齊全',
         'print': '1',
-        'receiptNum': 'RN000001',
+        'receiptNum': 'RN000001', 
+        'badgeNumber': '',
     },
     {
         'id': '2',
@@ -42,6 +43,7 @@ var dataset_idCardApp = [
         'adminNote': '需補充文件',
         'print': '2',
         'receiptNum': 'RN000005',
+        'badgeNumber': '',
     },
     {
         'id': '3',
@@ -64,6 +66,7 @@ var dataset_idCardApp = [
         'adminNote': '申請順利通過',
         'print': '1',
         'receiptNum': 'RN000004',
+        'badgeNumber': 'ID000000001',
     },
     {
         'id': '4',
@@ -86,6 +89,7 @@ var dataset_idCardApp = [
         'adminNote': '需補交簽名文件',
         'print': '3',
         'receiptNum': 'RN000003',
+        'badgeNumber': '',
     },
     {
         'id': '5',
@@ -108,6 +112,7 @@ var dataset_idCardApp = [
         'adminNote': '審核通過，發送通知',
         'print': '2',
         'receiptNum': 'RN000002',
+        'badgeNumber': 'ID000000002',
     }
 ];
 
@@ -189,7 +194,7 @@ $(function () {
         let idCardApplyData = dataset_idCardApp.find(idCard => idCard.id === idCardId);
 
         if (idCardApplyData) {
-            //     // console.log('Job data found:', idCardApplyData);
+            // console.log('Job data found:', idCardApplyData);
             $('#idcardApp_companyName').text(idCardApplyData.company);
             $('#idcardApp_uniformNum').text(idCardApplyData.uniformNum);
             $('#idcardApp_createDate').text(idCardApplyData.createDate);
@@ -212,39 +217,47 @@ $(function () {
             $('#idcardApp_adminNote').text(idCardApplyData.adminNote);
             $('#idcardApp_status').val(idCardApplyData.status);
 
+            $('#idcardApp_badgeNumber').text(idCardApplyData.badgeNumber);
+
             CustomInputHandlers.destroy();
-            $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote').removeClass('changeInput_items');
+            $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote, #idcardApp_badgeNumber').removeClass('changeInput_items');
             $('#idcardApp_receiptNum').removeClass('changeInputUpperNumber_items');
             $('#idcardApp_phoneNum, #idcardApp_ECPhone').removeClass('changePhone_items');
             $('#idcardApp_email').removeClass('changeEmail_items');
             $('#idcardApp_startDate, #idcardApp_endDate').removeClass('changeDate_items');
             $('#idcardApp_readLibrary').removeClass('changeRadioApply_items');
 
+            $('#idcardApp_badgeNumberLabel').addClass('bg-light').removeClass('pinkBG');
+            $('#idcardApp_badgeNumber').addClass('bg-light');
+
         } else {
             console.error('idCardApplyData data not found for id:', idCardId);
         };
 
         if (idCardApplyData.status === "通過" || idCardApplyData.status === "不通過") {
-            $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote, #idcardApp_receiptNum, #idcardApp_phoneNum, #idcardApp_ECPhone, #idcardApp_email, #idcardApp_startDate, #idcardApp_endDate, #idcardApp_readLibrary').addClass('readOnly');
+            $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote, #idcardApp_receiptNum, #idcardApp_phoneNum, #idcardApp_ECPhone, #idcardApp_email, #idcardApp_startDate, #idcardApp_endDate, #idcardApp_readLibrary, #idcardApp_badgeNumber').addClass('readOnly');
             $('#idCardApp_updateBtn').hide();
             $('#idCard_supplementaryFilesBox').hide();
             $('#idcardApp_status').hide();
             $('#idcardApp_statusText').show().text(idCardApplyData.status);
-        } else {
-            $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote, #idcardApp_receiptNum, #idcardApp_phoneNum, #idcardApp_ECPhone, #idcardApp_email, #idcardApp_startDate, #idcardApp_endDate, #idcardApp_readLibrary').removeClass('readOnly');
-            $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote').addClass('changeInput_items');
-            $('#idcardApp_receiptNum').addClass('changeInputUpperNumber_items');
-            $('#idcardApp_phoneNum, #idcardApp_ECPhone').addClass('changePhone_items');
-            $('#idcardApp_email').addClass('changeEmail_items');
-            $('#idcardApp_startDate, #idcardApp_endDate').addClass('changeDate_items');
-            $('#idcardApp_readLibrary').addClass('changeRadioApply_items');
-            CustomInputHandlers.init();
-            $('#idCardApp_updateBtn').show();
-            $('#idCard_supplementaryFilesBox').show();
-            $('#idcardApp_status').show();
-            $('#idcardApp_statusText').hide();
+            if (idCardApplyData.status == "通過") {
+                $('#idcardApp_badgeNumberLabel').removeClass('bg-light').addClass('pinkBG');
+                $('#idcardApp_badgeNumber').removeClass('bg-light');
+            } else {
+                $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote, #idcardApp_receiptNum, #idcardApp_phoneNum, #idcardApp_ECPhone, #idcardApp_email, #idcardApp_startDate, #idcardApp_endDate, #idcardApp_readLibrary, #idcardApp_badgeNumber').removeClass('readOnly');
+                $('#idcardApp_name, #idcardApp_jobTitle, #idcardApp_place, #idcardApp_emergContact, #idcardApp_adminNote, #idcardApp_badgeNumber').addClass('changeInput_items');
+                $('#idcardApp_receiptNum').addClass('changeInputUpperNumber_items');
+                $('#idcardApp_phoneNum, #idcardApp_ECPhone').addClass('changePhone_items');
+                $('#idcardApp_email').addClass('changeEmail_items');
+                $('#idcardApp_startDate, #idcardApp_endDate').addClass('changeDate_items');
+                $('#idcardApp_readLibrary').addClass('changeRadioApply_items');
+                CustomInputHandlers.init();
+                $('#idCardApp_updateBtn').show();
+                $('#idCard_supplementaryFilesBox').show();
+                $('#idcardApp_status').show();
+                $('#idcardApp_statusText').hide();
+            }
         }
-
         $('#idCardApp_updateBtn').on('click', function () {
             // console.log('idCardId 2 :', idCardId); // 確認 psId 是否正確獲取
             // 清除上次的資料
@@ -254,7 +267,7 @@ $(function () {
             updatedData.companyName = $('#idcardApp_companyName').text();
             updatedData.uniformNum = $('#idcardApp_uniformNum').text();
             updatedData.createDate = $('#idcardApp_createDate').text();
-            
+
             updatedData.name = $('#idcardApp_name').text();
             updatedData.jobTitle = $('#idcardApp_jobTitle').text();
             updatedData.receiptNum = $('#idcardApp_receiptNum').text();
