@@ -287,10 +287,10 @@ $(function () {
 
     // 點擊 submitBtn 按鈕時
     $('#printAndSubmit').click(function (event) {
-        // $('#formIdCardApply').submit(); // 提交表單
-        console.log('表單資料已送出');
-        var formData = $('#formIdCardApply').serializeArray();
-        console.log('表單資料：', JSON.stringify(formData, null, 2));
+        $('#formIdCardApply').submit(); // 提交表單
+        // console.log('表單資料已送出');
+        // var formData = $('#formIdCardApply').serializeArray();
+        // console.log('表單資料：', JSON.stringify(formData, null, 2));
     });
 
 
