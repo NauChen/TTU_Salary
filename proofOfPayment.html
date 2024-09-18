@@ -28,8 +28,6 @@
                                 class="fa-solid fa-quote-right"></i></h3>
                         <div class="tabs section-border-radius section-padding">
                             <form class="container-fluid" method="post" id="formSendProofOfPayment">
-
-
                                 <div class="row">
                                     <div class="col-xl-8 mb-3">
                                         <div class="row mb-3">
@@ -46,30 +44,33 @@
                                             <div class="col">
                                                 <input type="text" class="form-control thisRequired"
                                                     id="proofOfPayment_last5AccountNo">
-                                                <span class="text-danger" id="danger_proofOfPayment_last5AccountNo"></span>
+                                                <span class="text-danger"
+                                                    id="danger_proofOfPayment_last5AccountNo"></span>
                                             </div>
-                                            <label for="proofOfPayment_saveLast5AccountNo" class="col-lg col-form-label text-nowrap">
+                                            <label for="proofOfPayment_saveLast5AccountNo"
+                                                class="col-lg col-form-label text-nowrap">
                                                 <input type="checkbox" class="form-check-input me-2"
-                                                    id="proofOfPayment_saveLast5AccountNo">儲存為常用帳號後五碼</label>
+                                                    id="proofOfPayment_saveLast5AccountNo">儲存為常用帳號後五碼
+                                            </label>
                                         </div>
                                         <div class="row mb-3 align-items-center">
-                                            <label for="proofOfPayment_companyName"
+                                            <label for="proofOfPayment_Date"
                                                 class="col-lg-auto col-form-label text-nowrap">轉帳日期&emsp;</label>
                                             <div class="col">
-                                                <input type="date" class="form-control"
-                                                    id="proofOfPayment_companyName">
+                                                <input type="date" class="form-control thisRequired" id="proofOfPayment_Date">
+                                                <span class="text-danger" id="danger_proofOfPayment_Date"></span>
                                             </div>
-                                            <label for="proofOfPayment_companyName"
+                                            <label for="proofOfPayment_Money"
                                                 class="col-lg-auto col-form-label text-nowrap">支付金額&emsp;</label>
                                             <div class="col">
-                                                <input type="text" class="form-control"
-                                                    id="proofOfPayment_companyName">
+                                                <input type="text" class="form-control thisRequired" id="proofOfPayment_Money">
+                                                <span class="text-danger" id="danger_proofOfPayment_Money"></span>
                                             </div>
                                         </div>
                                         <div class="row mb-2 salaryRadio border-warning py-2">
                                             <label for="remittancePdf"
-                                                class="col-auto col-form-label text-nowrap upload-label py-0 align_center">點擊此處可上傳匯款憑證(.pdf)<i
-                                                    class="fa-solid fa-upload mx-1"></i>
+                                                class="col-auto col-form-label text-nowrap upload-label py-0 align_center">
+                                                點擊此處可上傳匯款憑證(.pdf)<i class="fa-solid fa-upload mx-1"></i>
                                             </label>
                                             <div class="col-12">
                                                 <input type="file" class="form-control d-none" id="remittancePdf"
@@ -82,55 +83,75 @@
                                             <label for="proofOfPayment_companyName"
                                                 class="col-lg-auto col-form-label text-nowrap">本次匯款支付項目&emsp;</label>
                                             <div class="col">
-                                                <table>
-                                                    <tr>
-                                                        <td><input type="checkbox" class="form-check-input me-2"
-                                                                id="BB"></td>
-                                                        <td><label for="BB" class="col-lg col-form-label ">
+                                                <table id="proofOfPayment_Table">
+                                                    <!-- <tr>
+                                                        <td>
+                                                            <input type="checkbox" class="form-check-input me-2"
+                                                                id="BB" name="proofOfPaymentItem">
+                                                        </td>
+                                                        <td>
+                                                            <label for="BB" class="col-lg col-form-label ">
                                                                 <span
                                                                     class="text-nowrap text-secondary">階段付款</span><span
                                                                     class="text-nowrap">培育室(挺生大樓-202)</span><span
-                                                                    class="text-nowrap text-danger">20,000元</span></label>
+                                                                    class="text-nowrap text-danger">20,000元</span>
+                                                            </label>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" class="form-check-input me-2"
-                                                                id="CC"></td>
-                                                        <td><label for="CC" class="col-lg col-form-label ">
+                                                        <td>
+                                                            <input type="checkbox" class="form-check-input me-2"
+                                                                id="CC" name="proofOfPaymentItem">
+                                                        </td>
+                                                        <td>
+                                                            <label for="CC" class="col-lg col-form-label ">
                                                                 <span
                                                                     class="text-nowrap text-secondary">階段付款</span><span
                                                                     class="text-nowrap">停車位(校本部-01)</span><span
-                                                                    class="text-nowrap text-danger">2,000元</span></label>
+                                                                    class="text-nowrap text-danger">2,000元</span>
+                                                            </label>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" class="form-check-input me-2"
-                                                                id="DD"></td>
-                                                        <td><label for="DD" class="col-lg col-form-label ">
+                                                        <td>
+                                                            <input type="checkbox" class="form-check-input me-2"
+                                                                id="DD" name="proofOfPaymentItem">
+                                                        </td>
+                                                        <td>
+                                                            <label for="DD" class="col-lg col-form-label ">
                                                                 <span class="text-nowrap text-secondary">新申請</span><span
                                                                     class="text-nowrap">停車位(ABC-119)</span><span
-                                                                    class="text-nowrap text-danger">費用待確認</span></label>
+                                                                    class="text-nowrap text-danger">費用待確認</span>
+                                                            </label>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" class="form-check-input me-2"
-                                                                id="EE"></td>
-                                                        <td><label for="EE" class="col-lg col-form-label ">
+                                                        <td>
+                                                            <input type="checkbox" class="form-check-input me-2"
+                                                                id="EE" name="proofOfPaymentItem">
+                                                        </td>
+                                                        <td>
+                                                            <label for="EE" class="col-lg col-form-label ">
                                                                 <span class="text-nowrap text-secondary">新申請</span><span
                                                                     class="text-nowrap">識別證(王小明)</span><span
-                                                                    class="text-nowrap text-danger">100元</span></label>
+                                                                    class="text-nowrap text-danger">100元</span>
+                                                            </label>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" class="form-check-input me-2"
-                                                                id="FF"></td>
-                                                        <td><label for="FF" class="col-lg col-form-label ">
+                                                        <td>
+                                                            <input type="checkbox" class="form-check-input me-2"
+                                                                id="FF" name="proofOfPaymentItem">
+                                                        </td>
+                                                        <td>
+                                                            <label for="FF" class="col-lg col-form-label ">
                                                                 <span
                                                                     class="text-nowrap text-secondary">遺失補發</span><span
                                                                     class="text-nowrap">識別證(王小明)</span><span
-                                                                    class="text-nowrap text-danger">300元</span></label>
+                                                                    class="text-nowrap text-danger">300元</span>
+                                                            </label>
                                                         </td>
-                                                    </tr>
+                                                    </tr> -->
                                                 </table>
                                             </div>
 
@@ -179,16 +200,16 @@
                                 </div>
                                 <div class="row text-center p-3 justify-content-center">
                                     <div class="col-auto">
-                                        <button type="reset" class="btn btn-lg btn-outline-secondary"
-                                            id="rebackBtn" onclick="history.back()">返回</button>
+                                        <button type="button" class="btn btn-lg btn-outline-secondary" id="rebackBtn"
+                                            onclick="history.back()">返回</button>
                                     </div>
                                     <div class="col-auto">
                                         <button type="reset" class="btn btn-lg btn-outline-danger"
-                                            id="resetPSFormBtn">重填</button>
+                                            id="resetBtn">重填</button>
                                     </div>
                                     <div class="col-auto">
                                         <button type="button" class="btn btn-lg btn-success"
-                                            id="confirm_parkingSpaceApply">送出</button>
+                                            id="submitBtn">送出</button>
                                     </div>
                                 </div>
                             </form>
@@ -200,6 +221,10 @@
         </div>
     </main>
     @@include('layout/metaJS.html')
+
+    <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
+    <script src="./js/proofOfPayment.js"></script>
 
     <!-- <script src="./js/myParkingSpaceList.js"></script> -->
 </body>
