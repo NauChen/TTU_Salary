@@ -43,7 +43,7 @@
                                                 class="col-lg-auto col-form-label text-nowrap">帳號後五碼</label>
                                             <div class="col">
                                                 <input type="text" class="form-control thisRequired"
-                                                    id="proofOfPayment_last5AccountNo">
+                                                    id="proofOfPayment_last5AccountNo" onkeyup="restrictTo5Num(this)">
                                                 <span class="text-danger"
                                                     id="danger_proofOfPayment_last5AccountNo"></span>
                                             </div>
@@ -53,7 +53,7 @@
                                                     id="proofOfPayment_saveLast5AccountNo">儲存為常用帳號後五碼
                                             </label>
                                         </div>
-                                        <div class="row mb-3 align-items-center">
+                                        <div class="row mb-3">
                                             <label for="proofOfPayment_Date"
                                                 class="col-lg-auto col-form-label text-nowrap">轉帳日期&emsp;</label>
                                             <div class="col">
@@ -61,9 +61,10 @@
                                                 <span class="text-danger" id="danger_proofOfPayment_Date"></span>
                                             </div>
                                             <label for="proofOfPayment_Money"
-                                                class="col-lg-auto col-form-label text-nowrap">支付金額&emsp;</label>
+                                                class="col-lg-auto col-form-label text-nowrap">轉帳金額&emsp;</label>
                                             <div class="col">
-                                                <input type="text" class="form-control thisRequired" id="proofOfPayment_Money">
+                                                <input type="text" class="form-control thisRequired" id="proofOfPayment_Money"
+                                                onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
                                                 <span class="text-danger" id="danger_proofOfPayment_Money"></span>
                                             </div>
                                         </div>

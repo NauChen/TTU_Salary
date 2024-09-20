@@ -23,7 +23,7 @@ function restrictToUniformNum(obj) {
 function restrictTo5Num(obj) {
     var inputValue = $(obj).val().replace(/\D/g, ''); // 移除所有非數字字符
     if (inputValue.length > 5) {
-        inputValue = inputValue.slice(0, 5); // 截取前8個字符
+        inputValue = inputValue.slice(0, 5); // 截取前5個字符
     }
     $(obj).val(inputValue);
 }

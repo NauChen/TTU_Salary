@@ -9,7 +9,7 @@ $(function () {
     ];
     
     // 動態生成table內容
-    let $table = $('#proofOfPayment_Table'); // 使用jQuery選擇table
+    let $table = $('#proofOfPayment_Table');
     $table.empty(); // 清空現有內容
     
     $.each(data, function(index, item) {
@@ -74,7 +74,7 @@ $(function () {
         // 最後檢查 danger_ 開頭元素的文字內容
         if (checkDangerElements()) {
             // 如果返回 true，送出表單資料
-            $('#formSendProofOfPayment').submit(); // 提交表單
+            // $('#formSendProofOfPayment').submit(); // 提交表單
             console.log('表單資料已送出');
         } else {
             // 如果返回 false，顯示警告訊息
