@@ -228,7 +228,7 @@ height：畫面高度 -->
                             <div class="row">
     <div class="col-xl-4 col-lg-6 mb-3">
         <div class="row mb-3 align-items-center">
-            <div class="col-lg-auto col-form-label text-nowrap">所在區域：</div>
+            <div class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>所在區域：</div>
             <div class="col">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="BuildingName" id="originalBuilding" checked>
@@ -242,7 +242,7 @@ height：畫面高度 -->
         </div>
         <div class="row">
             <div class="col-12" id="originalBuildingBox">
-                <select name="" id="parkingSpaceBuilding" class="form-select">
+                <select name="" id="parkingSpaceBuilding" class="form-select thisRequired">
                     <option selected disabled>--- 請選擇 ---</option>
                     <option value="校本部">校本部</option>
                     <option value="新德惠大樓">新德惠大樓</option>
@@ -252,12 +252,12 @@ height：畫面高度 -->
         </div>
         <div class="row mb-3">
             <div class="col-12" id="newBuildingBox">
-                <input type="text" class="form-control" id="parkingSpaceBuildingNew">
+                <input type="text" class="form-control thisRequired" id="parkingSpaceBuildingNew">
                 <span class="text-danger" id="danger_parkingSpaceBuildingNew"></span>
             </div>
         </div>
         <div class="row mb-3 align-items-center">
-            <div class="col-lg-auto col-form-label text-nowrap">車位種類：</div>
+            <div class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>車位種類：</div>
             <div class="col">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="carType" id="car" value="汽車" checked>
@@ -272,14 +272,14 @@ height：畫面高度 -->
     </div>
     <div class="col-xl-4 col-lg-6 mb-3">
         <div class="row mb-3">
-            <label for="basementNum" class="col-lg-auto col-form-label text-nowrap">車位號碼：</label>
+            <label for="basementNum" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>車位號碼：</label>
             <div class="col">
-                <input type="text" class="form-control" id="basementNum">
+                <input type="text" class="form-control thisRequired" id="basementNum">
                 <span class="text-danger" id="danger_basementNum"></span>
             </div>
         </div>
         <div class="row mb-3 salaryRadio px-2 py-2 mx-1 border-success">
-            <div>&#10551;&ensp;請依格式輸入，例：B1-01。</div>
+            <div>&#10551;&ensp;請依格式輸入，例：<span class="text-secondary">B1-01</span> 或是 <span class="text-secondary">01</span>。</div>
         </div>
 
         <div class="row mb-3">

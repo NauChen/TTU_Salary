@@ -28,14 +28,14 @@
                             class="fa-solid fa-quote-right"></i></h3>
 
                     <div class="tabs section-border-radius section-padding">
-                        <form class="container-fluid" method="post">
+                        <form class="container-fluid" method="post" id="formParkingSpaceCreate">
                             @@include('layout/form_parkingSpace.html')
                             <div class="row text-center p-3 justify-content-center">
                                 <div class="col-auto">
-                                    <button type="reset" class="btn btn-lg btn-outline-danger">重填</button>
+                                    <button type="reset" class="btn btn-lg btn-outline-danger" id="resetBtn">重填</button>
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-lg btn-success">送出</button>
+                                    <button type="submit" class="btn btn-lg btn-success" id="submitBtn">送出</button>
                                 </div>
                             </div>
 
@@ -52,12 +52,8 @@
     @@include('layout/metaJS.html')
 
     <script src="./js/formComm.js"></script>
-    <!-- <script src="./js/myParkingSpaceList.js"></script> -->
-    <script>
-        $(function () {
-            toggleRadioItems('originalBuilding', 'newBuilding', 'originalBuildingBox', 'newBuildingBox');
-        });
-    </script>
+    <script src="./js/formValidation.js"></script>
+    <script src="./js/parkingSpaceCreate.js"></script>
 </body>
 
 </html>

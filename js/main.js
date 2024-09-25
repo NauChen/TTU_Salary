@@ -360,11 +360,11 @@ $(function () {
     // };
     var linkMappings = {
         '#dashboardLink': ['dashboard.html'],
-        '#jobLink': ['Jobs/PostedByMe', 'Jobs/AllPosted', 'Jobs/Create', 'Jobs/Edit'],
-        '#applyAndCheckLink': ['idCardInventory.html', 'parkingSpaceInventory.html', 'cultivationRoomInventory.html', 'parkingSpaceApply.html', 'idCardApply.html', 'parkingSpaceRenew.html', 'idCardReissue.html', 'renewContractApply.html'],
+        '#jobLink': ['Jobs/Talent_wanted','Jobs/PostedByMe', 'Jobs/AllPosted', 'Jobs/Create', 'Jobs/Edit'],
+        '#applyAndCheckLink': ['Remittance/Create','ID_Card/Ours','ID_Card/Create','ParkingSpace/Ours','ParkingSpace/Apply','idCardInventory.html', 'parkingSpaceInventory.html', 'cultivationRoomInventory.html', 'parkingSpaceApply.html', 'idCardApply.html', 'parkingSpaceRenew.html', 'idCardReissue.html', 'renewContractApply.html'],
         '#progressLink': ['progressCheck.html'],
-        '#assessmentLink': ['coopManufApp.html', 'parkingSpaceApp.html', 'renewContractApp.html', 'idCardApp.html', 'confirmPayment.html'],
-        '#managementLink': ['cultivationRoom.html', 'parkingSpace.html', 'roles.html'],
+        '#assessmentLink': ['Remittance/Create','coopManufApp.html', 'parkingSpaceApp.html', 'renewContractApp.html', 'idCardApp.html', 'confirmPayment.html'],
+        '#managementLink': ['ParkingSpace/Management','ParkingSpace/Create','ParkingSpace/Edit','cultivationRoom.html', 'parkingSpace.html', 'roles.html'],
         '#logRecordLink': ['logRecordLink.html'],
         '#provideOpinionsLink': ['provideOpinionsLink.html'],
         '#styleLink': ['template-style.html'],

@@ -395,6 +395,7 @@ $(function () {
                     return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpaceEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>'
                 },
             },
+            { data: 'carType', visible: false }, // 9
         ],
         "columnDefs": [
             {

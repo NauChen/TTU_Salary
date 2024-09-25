@@ -32,15 +32,18 @@
                                     <div class="col-xl-8 mb-3">
                                         <div class="row mb-3">
                                             <label for="proofOfPayment_companyName"
-                                                class="col-lg-auto col-form-label text-nowrap">公司名稱&emsp;</label>
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>公司名稱&emsp;</label>
                                             <div class="col">
-                                                <input type="text" class="form-control" id="proofOfPayment_companyName"
-                                                    readonly>
+                                                <!-- <input type="text" class="form-control" id="proofOfPayment_companyName"
+                                                    readonly> -->
+                                                    <input type="text" class="form-control" id="proofOfPayment_companyName">
+                                                    <span class="text-danger"
+                                                    id="danger_proofOfPayment_companyName" name="companyName"></span>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="proofOfPayment_last5AccountNo"
-                                                class="col-lg-auto col-form-label text-nowrap">帳號後五碼</label>
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>帳號後五碼</label>
                                             <div class="col">
                                                 <input type="text" class="form-control thisRequired"
                                                     id="proofOfPayment_last5AccountNo" onkeyup="restrictTo5Num(this)">
@@ -55,13 +58,13 @@
                                         </div>
                                         <div class="row mb-3">
                                             <label for="proofOfPayment_Date"
-                                                class="col-lg-auto col-form-label text-nowrap">轉帳日期&emsp;</label>
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>轉帳日期&emsp;</label>
                                             <div class="col">
                                                 <input type="date" class="form-control thisRequired" id="proofOfPayment_Date">
                                                 <span class="text-danger" id="danger_proofOfPayment_Date"></span>
                                             </div>
                                             <label for="proofOfPayment_Money"
-                                                class="col-lg-auto col-form-label text-nowrap">轉帳金額&emsp;</label>
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>轉帳金額&emsp;</label>
                                             <div class="col">
                                                 <input type="text" class="form-control thisRequired" id="proofOfPayment_Money"
                                                 onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
@@ -82,7 +85,7 @@
                                         </div>
                                         <div class="row mb-3">
                                             <label for="proofOfPayment_companyName"
-                                                class="col-lg-auto col-form-label text-nowrap">本次匯款支付項目&emsp;</label>
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>本次匯款支付項目&emsp;</label>
                                             <div class="col">
                                                 <table id="proofOfPayment_Table">
                                                     <!-- <tr>
@@ -222,12 +225,13 @@
         </div>
     </main>
     @@include('layout/metaJS.html')
-
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
     <script src="./js/formComm.js"></script>
     <script src="./js/formValidation.js"></script>
+    <!-- <script src="./js/editableTextToggle.js"></script> -->
     <script src="./js/proofOfPayment.js"></script>
 
-    <!-- <script src="./js/myParkingSpaceList.js"></script> -->
 </body>
 
 </html>
