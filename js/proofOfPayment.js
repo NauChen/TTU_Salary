@@ -133,7 +133,7 @@ $(function () {
 
         // 送出表單資料到後端
         $.ajax({
-            url: paymentUrl,  // 替換為後端處理的 URL
+            url: paymentUrl,  
             type: 'POST',
             data: formData,
             processData: false, // 必須設置為 false 才能正確傳送 FormData

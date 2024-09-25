@@ -40,7 +40,7 @@ $(function () {
 
 
         $('#formParkingSpaceCreate').submit(); // 提交表單
-        console.log('表單資料已送出');
+        // console.log('表單資料已送出');
         // // 送出表單資料到後端
         // $.ajax({
         //     url: paymentUrl,  // 替換為後端處理的 URL
