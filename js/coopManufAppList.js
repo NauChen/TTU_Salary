@@ -501,14 +501,125 @@ $(function () {
             $('#jobTitle').text(firmData.jobTitle);
             $('#companyAdd').text(firmData.companyAdd);
             $('#locationOfCompany').text(firmData.locationOfCompany);
-            $('#helpItems').text(firmData.helpItems);
+            $('#helpItems').html(firmData.helpItems);
             $('#tutoringProfessor').text(firmData.tutoringProfessor);
             $('#nurtureProgram').text(firmData.nurtureProgram);
-            $('#adminNote').text(firmData.adminNote);
+            $('#adminNote').html(firmData.adminNote);
 
             if (firmData.status != '待審核') {
                 $('#status').val(firmData.status);
             };
+
+
+            // 動態生成下載連結
+            let downloadLinks = '';
+            let updateText = '<span class="mx-1 update">補</span>';
+
+            // if (firmData.companyProof) {
+            //     let CP_No = extractSubstringBetween(firmData.companyProof, "_", ".");
+            //     console.log("CP_No = ", CP_No);
+            //     if (CP_No == "CP1") {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/CP_${firmId}">公司登記證&ensp;<i class="fa-solid fa-download"></i></a>`;
+            //     } else {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/CP_${firmId}">公司登記證&ensp;<i class="fa-solid fa-download"></i>${updateText}</a>`;
+            //     }
+            // }
+
+            // if (firmData.businessProof) {
+            //     let BP_No = extractSubstringBetween(firmData.businessProof, "_", ".");
+            //     console.log("BP_No = ", BP_No);
+            //     if (BP_No == "BP1") {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/BP_${firmId}">營利事業登記證或預查名稱表影本&ensp;<i class="fa-solid fa-download"></i></a>`;
+            //     } else {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/BP_${firmId}">營利事業登記證或預查名稱表影本&ensp;<i class="fa-solid fa-download"></i>${updateText}</a>`;
+            //     }
+            // }
+
+            // if (firmData.memoOfCooperation) {
+            //     let MOC_No = extractSubstringBetween(firmData.memoOfCooperation, "_", ".");
+            //     console.log("MOC_No = ", MOC_No);
+            //     if (MOC_No == "MOC1") {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/MOC_${firmId}">企業與大同大學教職員簽訂之合作備忘錄&ensp;<i class="fa-solid fa-download"></i></a>`;
+            //     } else {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/MOC_${firmId}">企業與大同大學教職員簽訂之合作備忘錄&ensp;<i class="fa-solid fa-download"></i>${updateText}</a>`;
+            //     }
+            // }
+
+            // if (firmData.planConcept) {
+            //     let PC_No = extractSubstringBetween(firmData.planConcept, "_", ".");
+            //     console.log("PC_No = ", PC_No);
+            //     if (PC_No == "PC1") {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/PC_${firmId}">企業營運計畫構想書&ensp;<i class="fa-solid fa-download"></i></a>`;
+            //     } else {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/PC_${firmId}">企業營運計畫構想書&ensp;<i class="fa-solid fa-download"></i>${updateText}</a>`;
+            //     }
+            // }
+
+            // if (firmData.entryForm) {
+            //     let EF_No = extractSubstringBetween(firmData.entryForm, "_", ".");
+            //     console.log("EF_No = ", EF_No);
+            //     if (EF_No == "EF1") {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/EF_${firmId}">創新育成中心進駐申請書&ensp;<i class="fa-solid fa-download"></i></a>`;
+            //     } else {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/EF_${firmId}">創新育成中心進駐申請書&ensp;<i class="fa-solid fa-download"></i>${updateText}</a>`;
+            //     }
+            // }
+
+            // if (firmData.consentDoc) {
+            //     let CD_No = extractSubstringBetween(firmData.consentDoc, "_", ".");
+            //     console.log("CD_No = ", CD_No);
+            //     if (CD_No == "CD1") {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/CD_${firmId}">同意審查聲明書&ensp;<i class="fa-solid fa-download"></i></a>`;
+            //     } else {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/CD_${firmId}">同意審查聲明書&ensp;<i class="fa-solid fa-download"></i>${updateText}</a>`;
+            //     }
+            // }
+
+            // if (firmData.payProof) {
+            //     let PP_No = extractSubstringBetween(firmData.payProof, "_", ".");
+            //     console.log("PP_No = ", PP_No);
+            //     if (PP_No == "PP1") {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/PP_${firmId}">進駐審查費繳費證明&ensp;<i class="fa-solid fa-download"></i></a>`;
+            //     } else {
+            //         downloadLinks += `<a class="d-inline me-3" href="/download/PP_${firmId}">進駐審查費繳費證明&ensp;<i class="fa-solid fa-download"></i>${updateText}</a>`;
+            //     }
+            // }
+            // 簡化後的函數，用來生成下載連結
+            function generateDownloadLink(fileKey, fileId, fileLabel, filePrefix) {
+                let fileNo = extractSubstringBetween(fileKey, "_", ".");
+                console.log(`${filePrefix}_No = `, fileNo);
+                if (fileNo == `${filePrefix}1`) {
+                    return `<a class="d-inline me-3" href="/download/${filePrefix}_${fileId}">${fileLabel}&ensp;<i class="fa-solid fa-download"></i></a>`;
+                } else {
+                    return `<a class="d-inline me-3" href="/download/${filePrefix}_${fileId}">${fileLabel}&ensp;<i class="fa-solid fa-download"></i>${updateText}</a>`;
+                }
+            }
+
+            // 使用生成函數創建各項下載連結
+            if (firmData.companyProof) {
+                downloadLinks += generateDownloadLink(firmData.companyProof, firmId, '公司登記證', 'CP');
+            }
+            if (firmData.businessProof) {
+                downloadLinks += generateDownloadLink(firmData.businessProof, firmId, '營利事業登記證或預查名稱表影本', 'BP');
+            }
+            if (firmData.memoOfCooperation) {
+                downloadLinks += generateDownloadLink(firmData.memoOfCooperation, firmId, '企業與大同大學教職員簽訂之合作備忘錄', 'MOC');
+            }
+            if (firmData.planConcept) {
+                downloadLinks += generateDownloadLink(firmData.planConcept, firmId, '企業營運計畫構想書', 'PC');
+            }
+            if (firmData.entryForm) {
+                downloadLinks += generateDownloadLink(firmData.entryForm, firmId, '創新育成中心進駐申請書', 'EF');
+            }
+            if (firmData.consentDoc) {
+                downloadLinks += generateDownloadLink(firmData.consentDoc, firmId, '同意審查聲明書', 'CD');
+            }
+            if (firmData.payProof) {
+                downloadLinks += generateDownloadLink(firmData.payProof, firmId, '進駐審查費繳費證明', 'PP');
+            }
+
+            // 更新下載連結區域
+            $('#downloadLinksContainer').html(downloadLinks);
 
         } else {
             console.error('firmData data not found for id:', firmId);
@@ -546,110 +657,13 @@ $(function () {
             $('#statusText').hide();
         }
 
-        // $('#updateBtn').click(function () {
-        //     let updatedData = {};
-        //     updatedData.id = firmId;
-        //     updatedData.companyName = $('#companyName').text();
-        //     updatedData.companyDescription = $('#companyDescription').text();
-        //     updatedData.uniformNum = $('#uniformNum').text();
-        //     updatedData.creationDate = $('#creationDate').text();
-        //     updatedData.capitalAmount = $('#capitalAmount').text();
-        //     updatedData.employeesNum = $('#employeesNum').text();
-        //     updatedData.responsiblePerson = $('#responsiblePerson').text();
-        //     updatedData.referrer = $('#referrer').text();
-        //     updatedData.phone = $('#phoneNum').text();
-        //     updatedData.companyEmail = $('#companyEmail').text();
-        //     updatedData.lineId = $('#lineId').text();
-        //     updatedData.contactPerson = $('#contactPerson').text();
-        //     updatedData.ext = $('#ext').text();
-        //     updatedData.jobTitle = $('#jobTitle').text();
-        //     updatedData.companyAdd = $('#companyAdd').text();
-        //     updatedData.locationOfCompany = $('#locationOfCompany').text();
-        //     updatedData.helpItems = $('#helpItems').text();
-        //     updatedData.tutoringProfessor = $('#tutoringProfessor').text();
-        //     updatedData.adminNote = $('#adminNote').text();
-        //     updatedData.status = $('#status').val();
-
-        //     // 創建一個FormData對象來處理文件和其他數據
-        //     let formData = new FormData();
-
-        //     // 添加表單中的文件
-        //     // formData.append('companyProof', $('#companyProof')[0].files[0]);
-        //     // formData.append('memoUpload', $('#memoUpload')[0].files[0]);
-        //     // formData.append('consentDoc', $('#consentDoc')[0].files[0]);
-        //     // formData.append('businessProof', $('#businessProof')[0].files[0]);
-        //     // formData.append('planUpload', $('#planUpload')[0].files[0]);
-        //     // formData.append('entryForm', $('#entryForm')[0].files[0]);
-        //     // formData.append('payProof', $('#payProof')[0].files[0]);
-        //     // 定義上傳欄位和對應的ID
-        //     const fileFields = [
-        //         'companyProof',
-        //         'memoUpload',
-        //         'consentDoc',
-        //         'businessProof',
-        //         'planUpload',
-        //         'entryForm',
-        //         'payProof'
-        //     ];
-
-        //     // 迴圈檢查每個欄位並添加文件
-        //     fileFields.forEach(field => {
-        //         let fileInput = $(`#${field}`)[0].files[0];
-        //         if (fileInput) {
-        //             formData.append(field, fileInput);
-        //         }
-        //     });
-
-        //     // 添加其他數據
-        //     formData.append('updatedData', JSON.stringify(updatedData));
-
-        //     // 打印FormData檢查要傳的資料
-        //     for (let [key, value] of formData.entries()) {
-        //         console.log(key, value);
-        //     }
-
-        //     // 使用AJAX將數據發送到後端
-        //     // $.ajax({
-        //     //     url: '/your-backend-endpoint', // 替換為你的後端URL
-        //     //     type: 'POST',
-        //     //     data: formData,
-        //     //     processData: false,
-        //     //     contentType: false,
-        //     //     success: function (response) {
-        //     //         // 處理成功響應
-        //     //         console.log('成功:', response);
-        //     //     },
-        //     //     error: function (xhr, status, error) {
-        //     //         // 處理錯誤響應
-        //     //         console.error('錯誤:', error);
-        //     //     }
-        //     // });
-        //     $.ajax({
-        //         url: reviewCompanyUrl, 
-        //         type: 'POST',
-        //         data: formData,
-        //         contentType: false, // 必須設置為 false 才能正確傳送 FormData
-        //         processData: false, // 必須設置為 false 以避免 jQuery 自動設置類型
-        //         success: function (response) {
-        //             // 成功處理
-        //             swalToastSuccess(response.message, 'top');// 2秒
-        //             setTimeout(function () {
-        //                 // 關閉燈箱
-        //                 $('#vendorDetailModal').modal('hide');
-        //             }, 2300);  //2.3秒後
-        //         },
-        //         error: function (xhr, status, error) {
-        //             // 錯誤處理
-        //             swalToastError('提交失敗，請稍後再試。', 'top');
-        //         }
-        //     });
-        // });
-
 
         $('#updateBtn').click(function () {
-            let formData = new FormData();
-            
-            // 添加每個字段到 FormData
+            // 創建 FormData 物件以收集表單數據
+            var formData = new FormData($('#formCoopManufApp')[0]);
+
+            // 將其他需要傳遞的文本資訊加入 FormData
+            // formData.append('firmId', $('#firmId').text());
             formData.append('id', firmId);
             formData.append('companyName', $('#companyName').text());
             formData.append('companyDescription', $('#companyDescription').text());
@@ -667,54 +681,41 @@ $(function () {
             formData.append('jobTitle', $('#jobTitle').text());
             formData.append('companyAdd', $('#companyAdd').text());
             formData.append('locationOfCompany', $('#locationOfCompany').text());
-            formData.append('helpItems', $('#helpItems').text());
+            // formData.append('helpItems', $('#helpItems').text());
+            formData.append('helpItems', convertBrToNewline($('#helpItems').html()));
             formData.append('tutoringProfessor', $('#tutoringProfessor').text());
-            formData.append('adminNote', $('#adminNote').text());
-            formData.append('status', $('#status').val());
-        
-            // 定義上傳的文件欄位並添加文件
-            const fileFields = [
-                'companyProof',
-                'memoUpload',
-                'consentDoc',
-                'businessProof',
-                'planUpload',
-                'entryForm',
-                'payProof'
-            ];
-        
-            // 迴圈檢查每個欄位並添加文件
-            fileFields.forEach(field => {
-                let fileInput = $(`#${field}`)[0].files[0];
-                if (fileInput) {
-                    formData.append(field, fileInput);
-                }
-            });
-        
-            // 打印FormData檢查要傳的資料
-            for (let [key, value] of formData.entries()) {
-                console.log(key, value);
-            }
-        
+            // formData.append('adminNote', $('#adminNote').text());
+            formData.append('adminNote', convertBrToNewline($('#adminNote').html()));
+
             // 發送請求
             $.ajax({
-                url: reviewCompanyUrl, 
+                url: reviewCompanyUrl,
                 type: 'POST',
                 data: formData,
-                contentType: false, 
-                processData: false, 
+                contentType: false,
+                processData: false,
                 success: function (response) {
                     swalToastSuccess(response.message, 'top');
                     setTimeout(function () {
-                        $('#vendorDetailModal').modal('hide');
-                    }, 2300); 
+                        // $('#vendorDetailModal').modal('hide');
+                        // location.replace();
+                        // // 關閉燈箱
+                        // $('#vendorDetailModal').modal('hide'); // 隱藏燈箱
+                        // // 重新載入此頁面
+                        // location.reload(); // 重新載入頁面 
+                        // 關閉燈箱
+                        $('#vendorDetailModal').modal('hide'); // 隱藏燈箱
+
+                        // 使用 location.replace() 重新載入此頁面
+                        location.replace(location.href); // 將當前頁面的 URL 傳入
+                    }, 2300);
                 },
                 error: function (xhr, status, error) {
                     swalToastError('提交失敗，請稍後再試。', 'top');
                 }
             });
         });
-        
+
 
     });
 

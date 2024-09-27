@@ -446,6 +446,11 @@ function splitDate(dateString) {
         day: day
     };
 }
+//   將html <br>轉 \n (in)
+function convertBrToNewline(text) {
+    return text.replace(/<br\s*\/?>/gi, '\n');
+}
+
 
 // ※※ 清除函式 - 存取資料專用 ※※
 function clearValues(ids) {

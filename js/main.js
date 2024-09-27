@@ -1,35 +1,35 @@
-var session_userData = {
-    'id': '10', // 使用者id
-    'company': '加加油股份有限公司', // 公司名稱
-    'responsiblePerson': '郝有錢', // 公司負責人
-    'companyPhone': '02-74125698', // 公司主要聯絡電話
+// var session_userData = {
+//     'id': '10', // 使用者id
+//     'company': '加加油股份有限公司', // 公司名稱
+//     'responsiblePerson': '郝有錢', // 公司負責人
+//     'companyPhone': '02-74125698', // 公司主要聯絡電話
 
-    'uniformNum': '01478520', // 公司統編
+//     'uniformNum': '01478520', // 公司統編
 
-    'contactPerson': '金貝貝', // 公司主要聯絡人
-    'employeesNum': '300', // 員工人數
+//     'contactPerson': '金貝貝', // 公司主要聯絡人
+//     'employeesNum': '300', // 員工人數
 
-};
+// };
 
-var session_adminData = {
-    'id': '99', // 使用者id
-    'company': '大同大學研發部', // 公司名稱
-    'name': '曾絍鉦', // 使用者
+// var session_adminData = {
+//     'id': '99', // 使用者id
+//     'company': '大同大學研發部', // 公司名稱
+//     'name': '曾絍鉦', // 使用者
 
-    'email': 'abc_ttu@gmail.com', // email
+//     'email': 'abc_ttu@gmail.com', // email
 
 
 
-};
+// };
 
-var selectOptionLocation = [
-    { 'optigroup': '青創大樓', 'option': '101' },
-    { 'optigroup': '青創大樓', 'option': '102' },
-    { 'optigroup': '北設工大樓', 'option': '202' },
-    { 'optigroup': '產學實驗大樓', 'option': '202' },
-    { 'optigroup': '綜合工廠大樓', 'option': '202' },
-    { 'optigroup': '挺生大樓', 'option': '102' },
-];
+// var selectOptionLocation = [
+//     { 'optigroup': '青創大樓', 'option': '101' },
+//     { 'optigroup': '青創大樓', 'option': '102' },
+//     { 'optigroup': '北設工大樓', 'option': '202' },
+//     { 'optigroup': '產學實驗大樓', 'option': '202' },
+//     { 'optigroup': '綜合工廠大樓', 'option': '202' },
+//     { 'optigroup': '挺生大樓', 'option': '102' },
+// ];
 
 // DataTable設定 - 搜尋左上，無自選顯示個數(預設10筆)
 let commonSettingsTable = {
@@ -295,29 +295,29 @@ let commonSettingsProvision = {
 // });
 
 
-// 指定id群，加指定class
-function theseAddClass(classNames, ids) {
-    ids.forEach(function (id) {
-        var element = document.getElementById(id);
-        if (element) {
-            classNames.forEach(function (className) {
-                element.classList.add(className);
-            });
-        }
-    });
-}
+// // 指定id群，加指定class
+// function theseAddClass(classNames, ids) {
+//     ids.forEach(function (id) {
+//         var element = document.getElementById(id);
+//         if (element) {
+//             classNames.forEach(function (className) {
+//                 element.classList.add(className);
+//             });
+//         }
+//     });
+// }
 
-//指定id群，移除指定class
-function theseRemoveClass(classNames, ids) {
-    ids.forEach(function (id) {
-        var element = document.getElementById(id);
-        if (element) {
-            classNames.forEach(function (className) {
-                element.classList.remove(className);
-            });
-        }
-    });
-}
+// //指定id群，移除指定class
+// function theseRemoveClass(classNames, ids) {
+//     ids.forEach(function (id) {
+//         var element = document.getElementById(id);
+//         if (element) {
+//             classNames.forEach(function (className) {
+//                 element.classList.remove(className);
+//             });
+//         }
+//     });
+// }
 
 
 // ※※※※※※===TOP 按鈕===※※※※※※

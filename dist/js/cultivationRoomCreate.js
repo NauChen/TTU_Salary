@@ -1,0 +1,1 @@
+$(function(){$("#cultivationSpaceBuilding").typeahead({source:buildingData})});

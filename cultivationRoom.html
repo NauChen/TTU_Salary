@@ -20,38 +20,37 @@
                         <li class="breadcrumb-item active"><i class="fa-solid fa-tree-city"></i>&ensp;全部培育室</li>
                     </ol>
                 </div>
-                <div>
-                    <!-- 培育室啟用列表 -->
-                    <div class="tabs-box my-2r no_print">
-                        <div class="row mb-4 px-3">
-                            <h3 class="section-header col-auto mb-0 lh-base"><i
-                                    class="fa-solid fa-quote-left"></i>啟用中列表<i class="fa-solid fa-quote-right"></i></h3>
-                            <a class="btn btn-outline-info col-auto goto_somewhere ms-5 py-2" role="button"
-                                href="./cultivationRoomCreate.html"><i class="fa-solid fa-plus"></i><i
-                                    class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-tree-city"></i><span
-                                    class="tooltiptext tooltip-right">新增培育室</span></a>
-                        </div>
-                        <div class="tabs section-border-radius section-padding">
-                            <table id="cultivationRoom_OpenList"
-                                class="table table-hover table-bordered responsive align-middle" style="width:100%">
-                            </table>
-                        </div>
-                    </div>
-                    <hr class="my-5">
-                    <!-- 培育室停用列表 -->
-                    <div class="tabs-box my-2r no_print">
-                        <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>停用中列表<i
+                <!-- 培育室啟用列表 -->
+                <div class="tabs-box my-2r no_print">
+                    <div class="row mb-4 px-3">
+                        <h3 class="section-header col-auto mb-0 lh-base"><i class="fa-solid fa-quote-left"></i>啟用中列表<i
                                 class="fa-solid fa-quote-right"></i></h3>
-                        <div class="tabs section-border-radius section-padding">
-                            <table id="cultivationRoom_CloseList"
-                                class="table table-hover table-bordered responsive align-middle" style="width:100%">
-                            </table>
-                        </div>
+                        <a class="btn btn-outline-info col-auto goto_somewhere ms-5 py-2" role="button"
+                            href="./cultivationRoomCreate.html"><i class="fa-solid fa-plus"></i><i
+                                class="fa-solid fa-arrow-right mx-1"></i><i class="fa-solid fa-tree-city"></i><span
+                                class="tooltiptext tooltip-right">新增培育室</span></a>
+                    </div>
+                    <div class="tabs section-border-radius section-padding">
+                        <table id="cultivationRoom_OpenList"
+                            class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                        </table>
+                    </div>
+                </div>
+                <hr class="my-5">
+                <!-- 培育室停用列表 -->
+                <div class="tabs-box my-2r no_print">
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>停用中列表<i
+                            class="fa-solid fa-quote-right"></i></h3>
+                    <div class="tabs section-border-radius section-padding">
+                        <table id="cultivationRoom_CloseList"
+                            class="table table-hover table-bordered responsive align-middle" style="width:100%">
+                        </table>
                     </div>
                 </div>
                 <!-- 詳情與歷程 -->
-                <div class="modal fade" id="cultivationRoom_DetailsModel" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="cultivationRoom_DetailsModelLabel" aria-hidden="true">
+                <div class="modal fade" id="cultivationRoom_DetailsModel" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="cultivationRoom_DetailsModelLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
