@@ -600,57 +600,121 @@ var CustomInputHandlers = {
         $('.changeLineID_items').find('input').off('blur').off('keypress');
     },
     // selectOption
+    // bindChangeSelectItems: function () {
+    //     $('.changeSelect_items').on('click', function () {
+    //         var $this = $(this);
+    //         var currentText = $this.text().trim();
+
+    //         if ($this.find('select').length === 0) {
+    //             var selectOptions = `
+    //                 <select class="form-control form-select">
+    //                 </select>`;
+
+    //             var $select = $(selectOptions);
+
+    //             // var selectOption = [
+    //             //     { 'optigroup': '新德惠大樓', 'option': 'B1-01' },
+    //             //     { 'optigroup': '新德惠大樓', 'option': 'B1-05' },
+    //             //     { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
+    //             //     { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
+    //             //     { 'optigroup': '新德惠大樓', 'option': 'B3-01' },
+    //             //     { 'optigroup': '新德惠大樓', 'option': 'B3-10' },
+    //             //     { 'optigroup': '新德惠大樓', 'option': 'B2-05' },
+    //             //     { 'optigroup': '青創大樓', 'option': 'B4-01' },
+    //             // ];
+
+    //             var groupedOptions = {};
+    //             selectOption.forEach(function (item) {
+    //                 if (!groupedOptions[item.optigroup]) {
+    //                     groupedOptions[item.optigroup] = [];
+    //                 }
+    //                 groupedOptions[item.optigroup].push(item.option);
+    //             });
+
+    //             for (var group in groupedOptions) {
+    //                 var optgroup = $('<optgroup>').attr('label', group);
+    //                 groupedOptions[group].forEach(function (option) {
+    //                     var optionElement = $('<option>').attr('value', option).text(option);
+    //                     if (option === currentText) {
+    //                         optionElement.attr('selected', 'selected');
+    //                     }
+    //                     optgroup.append(optionElement);
+    //                 });
+    //                 $select.append(optgroup);
+    //             }
+
+    //             $this.html($select);
+    //             $select.focus();
+
+    //             $select.on('change', function () {
+    //                 var newText = $select.val();
+    //                 $this.html(newText);
+    //             });
+
+    //             $(document).on('click.select', function (e) {
+    //                 if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+    //                     var newText = $select.val();
+    //                     $this.html(newText ? newText : currentText);
+    //                     $(document).off('click.select');
+    //                 }
+    //             });
+    //         }
+    //     });
+    // },
     bindChangeSelectItems: function () {
         $('.changeSelect_items').on('click', function () {
             var $this = $(this);
             var currentText = $this.text().trim();
-
+    
             if ($this.find('select').length === 0) {
                 var selectOptions = `
                     <select class="form-control form-select">
                     </select>`;
-
+    
                 var $select = $(selectOptions);
-
-                // var selectOption = [
-                //     { 'optigroup': '新德惠大樓', 'option': 'B1-01' },
-                //     { 'optigroup': '新德惠大樓', 'option': 'B1-05' },
-                //     { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
-                //     { 'optigroup': '新德惠大樓', 'option': 'B2-08' },
-                //     { 'optigroup': '新德惠大樓', 'option': 'B3-01' },
-                //     { 'optigroup': '新德惠大樓', 'option': 'B3-10' },
-                //     { 'optigroup': '新德惠大樓', 'option': 'B2-05' },
-                //     { 'optigroup': '青創大樓', 'option': 'B4-01' },
-                // ];
-
-                var groupedOptions = {};
-                selectOption.forEach(function (item) {
-                    if (!groupedOptions[item.optigroup]) {
-                        groupedOptions[item.optigroup] = [];
+    
+                // 判斷 selectOption 是否有 optigroup
+                if (selectOption.length > 0 && selectOption[0].hasOwnProperty('optigroup')) {
+                    // 如果有 optigroup，則進行分組
+                    var groupedOptions = {};
+                    
+                    selectOption.forEach(function (item) {
+                        if (!groupedOptions[item.optigroup]) {
+                            groupedOptions[item.optigroup] = [];
+                        }
+                        groupedOptions[item.optigroup].push(item.option);
+                    });
+    
+                    for (var group in groupedOptions) {
+                        var optgroup = $('<optgroup>').attr('label', group);
+                        groupedOptions[group].forEach(function (option) {
+                            var optionElement = $('<option>').attr('value', option).text(option);
+                            if (option === currentText) {
+                                optionElement.attr('selected', 'selected');
+                            }
+                            optgroup.append(optionElement);
+                        });
+                        $select.append(optgroup);
                     }
-                    groupedOptions[item.optigroup].push(item.option);
-                });
-
-                for (var group in groupedOptions) {
-                    var optgroup = $('<optgroup>').attr('label', group);
-                    groupedOptions[group].forEach(function (option) {
-                        var optionElement = $('<option>').attr('value', option).text(option);
-                        if (option === currentText) {
+                } else {
+                    // 如果沒有 optigroup，則直接添加選項
+                    selectOption.forEach(function (item) {
+                        var optionElement = $('<option>').attr('value', item.option).text(item.option);
+                        if (currentText === item.option) {
                             optionElement.attr('selected', 'selected');
                         }
-                        optgroup.append(optionElement);
+                        $select.append(optionElement);
                     });
-                    $select.append(optgroup);
                 }
-
+    
                 $this.html($select);
                 $select.focus();
-
+    
                 $select.on('change', function () {
                     var newText = $select.val();
                     $this.html(newText);
                 });
-
+    
                 $(document).on('click.select', function (e) {
                     if (!$this.is(e.target) && $this.has(e.target).length === 0) {
                         var newText = $select.val();
@@ -661,6 +725,7 @@ var CustomInputHandlers = {
             }
         });
     },
+    
     unbindChangeSelectItems: function () {
         // 解除綁定 click 事件
         $('.changeSelect_items').off('click');

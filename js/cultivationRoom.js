@@ -197,7 +197,7 @@ $(function () {
                 data: 'id', title: "修改", // 8
                 render: function (data) {
                     // return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./cultivationRoomEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>'
-                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="/CultivationRoom/Edit/' + data + '"><i class="fa-solid fa-wrench"></i></a>'
+                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord btnThrottle" href="/CultivationRoom/Edit/' + data + '"><i class="fa-solid fa-wrench"></i></a>'
                 }
             },
         ],
@@ -253,7 +253,9 @@ $(function () {
             {
                 data: 'id', title: "再次<br class='d-none d-lg-block'>上架",
                 render: function (data) {
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-id="' + data + '"><i class="fa-solid fa-arrow-rotate-left"></i></button>'
+                    // CultivationRoom/Reactivate/
+                    // return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-id="' + data + '"><i class="fa-solid fa-arrow-rotate-left"></i></button>'
+                     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm reactivateBtn btnThrottle" data-id="' + data + '"><i class="fa-solid fa-arrow-rotate-left"></i></button>'
                 }
             },
         ],
@@ -343,6 +345,30 @@ $(function () {
         //         console.error('傳遞 roomId 時出錯:', textStatus, errorThrown);
         //     }
         // });
+    });
+
+      // 監聽 a 標籤的點擊事件
+      $('.reactivateBtn').on('click', function() {
+        var roomId = $(this).data('id');
+        
+        $.ajax({
+            url: reactivateUrl,  // 對應控制器方法的 URL
+            type: 'POST',
+            data: { id: roomId },  // 傳送 roomId 作為參數
+            success: function(response) {
+                // alert('培育室已成功重新啟用!');
+                // location.reload(); // 重新加載頁面
+                swalToastSuccess(response.message, 'top');// 2秒
+                setTimeout(function () {
+                    location.reload();
+                }, 2300);  //2.3秒後
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+                // alert('啟用失敗，請稍後再試。');
+                swalToastWarning('啟用時發生錯誤，請稍後再試。', 'top');
+            }
+        });
     });
 
 });

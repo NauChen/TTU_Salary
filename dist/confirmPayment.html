@@ -375,25 +375,18 @@ height：畫面高度 -->
     <div class="container-fluid">
         <!-- 培育室基本資料 (坪數先給預設，可改)-->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                所在區域&emsp;
-            </div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">所在區域&emsp;</div>
             <div class="col lightBoxItems p-3 readOnly align_center" id="cultivation_building"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                室
-            </div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">室</div>
             <div class="col lightBoxItems p-3 readOnly align_center" id="cultivation_room"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                坪數
-            </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center thisTextRequired" id="cultivation_squareMeters">11.5</div>
-
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">坪數</div>
+            <div class="col lightBoxItems p-3 align_center thisTextRequired" id="cultivation_squareMeters"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">服務費用/月</div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center thisTextRequired" id="cultivation_rate"></div>
         </div>
         <!-- 培育期間 起訖日期 (服務費先給預設，可改)-->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
-                培育期間&emsp;
-            </div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">培育期間&emsp;</div>
             <div class="col-auto col-lg lightBoxItems p-3 align_center">
                 <div class="row">
                     <div class="col-auto align_center">起：</div>
@@ -402,10 +395,8 @@ height：畫面高度 -->
                     <div class="col align_center" id="cultivation_endDate"></div>
                 </div>
             </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                服務費用/月
-            </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center thisTextRequired" id="cultivation_rate"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">分期數</div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center thisTextRequired" id="cultivation_period">1</div>
         </div>
         <!-- 公司名稱(自動代入)、統編(可改，可輸入已通過且開放的廠商資料)、負責人(自動代入) -->
         <div class="row mb-1 multiple">
@@ -425,7 +416,7 @@ height：畫面高度 -->
         <!-- E-mail、聯絡人、聯絡電話 (都自動代入)-->
         <div class="row mb-1 multiple">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                E-mail&emsp;
+                電子信箱&emsp;
             </div>
             <div class="col lightBoxItems p-3 align_center readOnly" id="cultivation_companyEmail"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
@@ -439,42 +430,65 @@ height：畫面高度 -->
         </div>
         <!-- 到期日 (可改) -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center "
+                id="cultivation_label_deadline1">
                 一階到期日
             </div>
             <div class="col lightBoxItems p-3 align_center" id="cultivation_deadline1">
             </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center "
+                id="cultivation_label_deadline2">
                 二階到期日
             </div>
             <div class="col lightBoxItems p-3 align_center" id="cultivation_deadline2">
             </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center "
+                id="cultivation_label_deadline3">
                 三階到期日
             </div>
             <div class="col lightBoxItems p-3 align_center" id="cultivation_deadline3">
             </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center "
+                id="cultivation_label_deadline4">
                 四階到期日
             </div>
             <div class="col lightBoxItems p-3 align_center" id="cultivation_deadline4">
             </div>
         </div>
+        <!-- 到期日 (可改) -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"
+                id="cultivation_label_installmentAmount1">一階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="cultivation_installmentAmount1"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="cultivation_label_installmentAmount2">二階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="cultivation_installmentAmount2"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="cultivation_label_installmentAmount3">三階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="cultivation_installmentAmount3"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="cultivation_label_installmentAmount4">四階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="cultivation_installmentAmount4"></div>
+        </div>
         <!-- 收據號碼 -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center "
+                id="cultivation_label_receiptNum1">
                 收據號碼&#10102;
             </div>
             <div class="col lightBoxItems p-3 align_center" id="cultivation_receiptNum1"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center "
+                id="cultivation_label_receiptNum2">
                 收據號碼&#10103;
             </div>
             <div class="col lightBoxItems p-3 align_center" id="cultivation_receiptNum2"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center "
+                id="cultivation_label_receiptNum3">
                 收據號碼&#10104;
             </div>
             <div class="col lightBoxItems p-3 align_center" id="cultivation_receiptNum3"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center "
+                id="cultivation_label_receiptNum4">
                 收據號碼&#10105;
             </div>
             <div class="col lightBoxItems p-3 align_center" id="cultivation_receiptNum4"></div>
@@ -1040,62 +1054,63 @@ height：畫面高度 -->
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-    <div class="container-fluid">
-        <!-- 公司名稱(自動代入)、統編(自動代入)、支付目的(可改) -->
-        <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                收據號碼
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receipt_receiptNum"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                收據日期
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receipt_receiptDate"></div>
-
-        </div>
-        <!-- E-mail、聯絡人、聯絡電話 (都自動代入)-->
-        <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                收據項目
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receipt_receiptItem"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                收據總額
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receipt_receiptAmount"></div>
-        </div>
-        <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                開立抬頭
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receipt_companyName"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                統一編號
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receipt_uniformNum"></div>
-        </div>
-        <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                收據狀態
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receipt_status"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                管理註記
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="receipt_adminNote"></div>
-        </div>
-        <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                建立日期
-            </div>
-            <div class="col col-lg lightBoxItems p-3 align_center readOnly" id="receipt_createDate"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
-                建檔人員
-            </div>
-            <div class="col col-lg lightBoxItems p-3 align_center readOnly" id="receipt_createBy"></div>
-        </div>
+                                <form class="container-fluid">
+                                    <!-- 公司名稱(自動代入)、統編(自動代入)、支付目的(可改) -->
+<div class="row mb-1 multiple">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+        收據號碼
     </div>
+    <div class="col lightBoxItems p-3 align_center" id="receipt_receiptNum"></div>
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+        收據日期
+    </div>
+    <div class="col lightBoxItems p-3 align_center" id="receipt_receiptDate"></div>
+
 </div>
+<!-- E-mail、聯絡人、聯絡電話 (都自動代入)-->
+<div class="row mb-1 multiple">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+        收據項目
+    </div>
+    <div class="col lightBoxItems p-3 align_center" id="receipt_receiptItem"></div>
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+        收據總額
+    </div>
+    <div class="col lightBoxItems p-3 align_center" id="receipt_receiptAmount"></div>
+</div>
+<div class="row mb-1 multiple">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+        開立抬頭
+    </div>
+    <div class="col lightBoxItems p-3 align_center" id="receipt_companyName"></div>
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+        統一編號
+    </div>
+    <div class="col lightBoxItems p-3 align_center" id="receipt_uniformNum"></div>
+</div>
+<div class="row mb-1 multiple">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+        收據狀態
+    </div>
+    <div class="col lightBoxItems p-3 align_center" id="receipt_status"></div>
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+        管理註記
+    </div>
+    <div class="col lightBoxItems p-3 align_center" id="receipt_adminNote"></div>
+</div>
+<div class="row mb-1 multiple">
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+        建立日期
+    </div>
+    <div class="col col-lg lightBoxItems p-3 align_center readOnly" id="receipt_createDate"></div>
+    <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
+        建檔人員
+    </div>
+    <div class="col col-lg lightBoxItems p-3 align_center readOnly" id="receipt_createBy"></div>
+</div>
+
+                                </form>
+                            </div>
                             <div class="modal-footer">
                                 <span class="text-danger" id="danger_receiptBox"></span>
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>

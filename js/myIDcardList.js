@@ -113,6 +113,8 @@ $(function () {
                 data: 'id', title: "申請<br class='d-none d-lg-block'>補發", // 8
                 render: function (data, type, row) {
                     if (row.remark != "申請中" && row.remark != "X" && row.remark != "已選停用，請至研發處歸還。" && row.remark != "不通過，可洽研發處。") {
+                        // return '<a class="btn btn-outline-primary rounded-circle noOutline" href="./idCardReissue.html?id=' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
+                        // /ID_Card/Create
                         return '<a class="btn btn-outline-primary rounded-circle noOutline" href="./idCardReissue.html?id=' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
                     } else {
                         return "";

@@ -953,138 +953,138 @@ var dataset_confirmPaymentParkingSpace = [
 // adminNote是管理員備註，可能為''
 // status是狀態，可能為：''
 
-var dataset_confirmPaymentReceipt = [
-    {
-        'id': 'R1',
-        'createDate': '2024-08-01',
-        'receiptNum': 'AE123456',
-        'receiptDate': '2024-08-02',
-        'item': '服務費',
-        'amount': '35,000',
-        'company': '頂尖科技有限公司',
-        'uniformNum': '12345678',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王小明',
-    },
-    {
-        'id': 'R2',
-        'createDate': '2024-08-03',
-        'receiptNum': 'AE234567',
-        'receiptDate': '2024-08-04',
-        'item': '場地維護費',
-        'amount': '2,500',
-        'company': '創新股份有限公司',
-        'uniformNum': '23456789',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王二明',
-    },
-    {
-        'id': 'R3',
-        'createDate': '2024-08-05',
-        'receiptNum': 'AE345678',
-        'receiptDate': '2024-08-06',
-        'item': '服務費',
-        'amount': '50,000',
-        'company': '宏達有限公司',
-        'uniformNum': '34567890',
-        'adminNote': '',
-        'status': '作廢收回',
-        'createBy': '王三明',
-    },
-    {
-        'id': 'R4',
-        'createDate': '2024-08-07',
-        'receiptNum': 'AE456789',
-        'receiptDate': '2024-08-08',
-        'item': '場地維護費',
-        'amount': '15,000',
-        'company': '光明股份有限公司',
-        'uniformNum': '45678901',
-        'adminNote': '',
-        'status': '作廢收回',
-        'createBy': '王小明',
-    },
-    {
-        'id': 'R5',
-        'createDate': '2024-08-09',
-        'receiptNum': 'AE567890',
-        'receiptDate': '2024-08-10',
-        'item': '服務費',
-        'amount': '40,000',
-        'company': '威士達有限公司',
-        'uniformNum': '56789012',
-        'adminNote': '',
-        'status': '作廢收回',
-        'createBy': '王四明',
-    },
-    {
-        'id': 'R6',
-        'createDate': '2024-08-11',
-        'receiptNum': 'AE678901',
-        'receiptDate': '2024-08-12',
-        'item': '場地維護費',
-        'amount': '12,000',
-        'company': '佳利科技有限公司',
-        'uniformNum': '67890123',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王小明',
-    },
-    {
-        'id': 'R7',
-        'createDate': '2024-08-13',
-        'receiptNum': 'AE789012',
-        'receiptDate': '2024-08-14',
-        'item': '服務費',
-        'amount': '5,000',
-        'company': '世紀股份有限公司',
-        'uniformNum': '78901234',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王五明',
-    },
-    {
-        'id': 'R8',
-        'createDate': '2024-08-15',
-        'receiptNum': 'AE890123',
-        'receiptDate': '2024-08-16',
-        'item': '場地維護費',
-        'amount': '25,000',
-        'company': '聯合股份有限公司',
-        'uniformNum': '89012345',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王小明',
-    },
-    {
-        'id': 'R9',
-        'createDate': '2024-08-17',
-        'receiptNum': 'AE901234',
-        'receiptDate': '2024-08-18',
-        'item': '服務費',
-        'amount': '10,000',
-        'company': '智遠有限公司',
-        'uniformNum': '90123456',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王小明',
-    },
-    {
-        'id': 'R10',
-        'createDate': '2024-08-19',
-        'receiptNum': 'AE012345',
-        'receiptDate': '2024-08-20',
-        'item': '場地維護費',
-        'amount': '18,000',
-        'company': '遠見科技有限公司',
-        'uniformNum': '01234567',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王六明',
-    }
-];
+// var dataset_confirmPaymentReceipt = [
+//     {
+//         'id': 'R1',
+//         'createDate': '2024-08-01',
+//         'receiptNum': 'AE123456',
+//         'receiptDate': '2024-08-02',
+//         'item': '服務費',
+//         'amount': '35,000',
+//         'company': '頂尖科技有限公司',
+//         'uniformNum': '12345678',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王小明',
+//     },
+//     {
+//         'id': 'R2',
+//         'createDate': '2024-08-03',
+//         'receiptNum': 'AE234567',
+//         'receiptDate': '2024-08-04',
+//         'item': '場地維護費',
+//         'amount': '2,500',
+//         'company': '創新股份有限公司',
+//         'uniformNum': '23456789',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王二明',
+//     },
+//     {
+//         'id': 'R3',
+//         'createDate': '2024-08-05',
+//         'receiptNum': 'AE345678',
+//         'receiptDate': '2024-08-06',
+//         'item': '服務費',
+//         'amount': '50,000',
+//         'company': '宏達有限公司',
+//         'uniformNum': '34567890',
+//         'adminNote': '',
+//         'status': '作廢收回',
+//         'createBy': '王三明',
+//     },
+//     {
+//         'id': 'R4',
+//         'createDate': '2024-08-07',
+//         'receiptNum': 'AE456789',
+//         'receiptDate': '2024-08-08',
+//         'item': '場地維護費',
+//         'amount': '15,000',
+//         'company': '光明股份有限公司',
+//         'uniformNum': '45678901',
+//         'adminNote': '',
+//         'status': '作廢收回',
+//         'createBy': '王小明',
+//     },
+//     {
+//         'id': 'R5',
+//         'createDate': '2024-08-09',
+//         'receiptNum': 'AE567890',
+//         'receiptDate': '2024-08-10',
+//         'item': '服務費',
+//         'amount': '40,000',
+//         'company': '威士達有限公司',
+//         'uniformNum': '56789012',
+//         'adminNote': '',
+//         'status': '作廢收回',
+//         'createBy': '王四明',
+//     },
+//     {
+//         'id': 'R6',
+//         'createDate': '2024-08-11',
+//         'receiptNum': 'AE678901',
+//         'receiptDate': '2024-08-12',
+//         'item': '場地維護費',
+//         'amount': '12,000',
+//         'company': '佳利科技有限公司',
+//         'uniformNum': '67890123',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王小明',
+//     },
+//     {
+//         'id': 'R7',
+//         'createDate': '2024-08-13',
+//         'receiptNum': 'AE789012',
+//         'receiptDate': '2024-08-14',
+//         'item': '服務費',
+//         'amount': '5,000',
+//         'company': '世紀股份有限公司',
+//         'uniformNum': '78901234',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王五明',
+//     },
+//     {
+//         'id': 'R8',
+//         'createDate': '2024-08-15',
+//         'receiptNum': 'AE890123',
+//         'receiptDate': '2024-08-16',
+//         'item': '場地維護費',
+//         'amount': '25,000',
+//         'company': '聯合股份有限公司',
+//         'uniformNum': '89012345',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王小明',
+//     },
+//     {
+//         'id': 'R9',
+//         'createDate': '2024-08-17',
+//         'receiptNum': 'AE901234',
+//         'receiptDate': '2024-08-18',
+//         'item': '服務費',
+//         'amount': '10,000',
+//         'company': '智遠有限公司',
+//         'uniformNum': '90123456',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王小明',
+//     },
+//     {
+//         'id': 'R10',
+//         'createDate': '2024-08-19',
+//         'receiptNum': 'AE012345',
+//         'receiptDate': '2024-08-20',
+//         'item': '場地維護費',
+//         'amount': '18,000',
+//         'company': '遠見科技有限公司',
+//         'uniformNum': '01234567',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王六明',
+//     }
+// ];
 
 
 
@@ -1161,6 +1161,13 @@ var selectOptionStatus = [
     { 'option': '取消' }, // 有付款但臨時取消
     { 'option': '刪除' }, // 錯誤輸入
 ];
+
+var selectOption = [
+    { 'option': '1' },
+    { 'option': '2' },
+    { 'option': '3' },
+    { 'option': '4' },
+]
 
 $(function () {
 
@@ -1260,7 +1267,7 @@ $(function () {
             },
             { data: 'status', visible: false }, // 9 仍可搜尋
         ],
-        "order": [[9, "desc"], [1, "desc"], [3, "desc"]],
+        "order": [[1, "desc"]],
         "columnDefs": [
             {
                 targets: [1],
@@ -1903,14 +1910,92 @@ $(function () {
 
     });
 
+
+
+
+
+
+
     // 同步培育室已配置 / 新配置燈箱 顯示資料
+    // $('#cultivation_receiptNum1, #cultivation_receiptNum2, #cultivation_receiptNum3, #cultivation_receiptNum4, #cultivation_adminNote').addClass("changeInput_items");
+    // $('#cultivation_startDate, #cultivation_endDate, #cultivation_deadline1, #cultivation_deadline2, #cultivation_deadline3, #cultivation_deadline4').addClass("changeDate_items");
+    // $('#cultivation_receiptNum1, #cultivation_receiptNum2, #cultivation_receiptNum3, #cultivation_receiptNum4').addClass("changeInput_items");
+    // $('#cultivation_deadline1, #cultivation_deadline2, #cultivation_deadline3, #cultivation_deadline4').addClass("changeDate_items");
     $('#confirmPaymentCultivationModel').on('show.bs.modal', function (event) {
-        $('#cultivation_receiptNum1, #cultivation_receiptNum2, #cultivation_receiptNum3, #cultivation_receiptNum4, #cultivation_adminNote').addClass("changeInput_items");
-        $('#cultivation_startDate, #cultivation_endDate, #cultivation_deadline1, #cultivation_deadline2, #cultivation_deadline3, #cultivation_deadline4').addClass("changeDate_items");
+        $('#cultivation_adminNote').addClass("changeInput_items");
+        $('#cultivation_startDate, #cultivation_endDate').addClass("changeDate_items");
         $('#cultivation_rate').addClass("changeMoney_items");
         $('#cultivation_uniformNum').addClass("changeUniformNum_items");
         $('#cultivation_squareMeters').addClass("changeDecimal_items");
-        CustomInputHandlers.init();
+        $('#cultivation_period').addClass("changeSelect_items");
+
+
+        // 獲取週期數
+        let periodNum = $('#cultivation_period').text();
+        console.log(periodNum);
+
+        // 定義需要的元素和樣式
+        const receiptNumElements = ['#cultivation_receiptNum1', '#cultivation_receiptNum2', '#cultivation_receiptNum3', '#cultivation_receiptNum4'];
+        const deadlineElements = ['#cultivation_deadline1', '#cultivation_deadline2', '#cultivation_deadline3', '#cultivation_deadline4'];
+        const labelReceiptElements = ['#cultivation_label_receiptNum1', '#cultivation_label_receiptNum2', '#cultivation_label_receiptNum3', '#cultivation_label_receiptNum4'];
+        const labelDeadlineElements = ['#cultivation_label_deadline1', '#cultivation_label_deadline2', '#cultivation_label_deadline3', '#cultivation_label_deadline4'];
+        const labelInstallmentAmountElements = ['#cultivation_label_installmentAmount1', '#cultivation_label_installmentAmount2', '#cultivation_label_installmentAmount3', '#cultivation_label_installmentAmount4'];
+        const installmentAmountElements = ['#cultivation_installmentAmount1', '#cultivation_installmentAmount2', '#cultivation_installmentAmount3', '#cultivation_installmentAmount4'];
+
+        const pinkBG = "pinkBG";
+        const grayBG = "grayBG";
+
+        // 定義處理樣式的函數
+        function setStyles(indices) {
+            receiptNumElements.forEach((el, index) => $(el).toggleClass("changeInput_items", indices.includes(index)));
+            deadlineElements.forEach((el, index) => $(el).toggleClass("changeDate_items", indices.includes(index)));
+            installmentAmountElements.forEach((el, index) => $(el).toggleClass("changeMoney_items", indices.includes(index)));
+
+            [labelReceiptElements, labelDeadlineElements, labelInstallmentAmountElements].forEach((labels) => {
+                labels.forEach((el, index) => {
+                    $(el).toggleClass(pinkBG, indices.includes(index));
+                    $(el).toggleClass(grayBG, !indices.includes(index));
+                });
+            });
+        }
+
+        // 計算安裝金額並更新顯示
+        function updateInstallmentAmounts(period, rate) {
+            const amount = (rate * 12) / period;
+            installmentAmountElements.forEach((el, index) => {
+                if (index < period) {
+                    $(el).text(amount.toLocaleString());
+                } else {
+                    $(el).text(''); // 清空不顯示的元素
+                }
+            });
+        }
+
+        // 根據週期數設置樣式
+        function updateStyles() {
+            const periodNum = parseInt($('#cultivation_period').text(), 10);
+            const rate = parseFloat($('#cultivation_rate').text().replace(/,/g, '')); // 去掉千分位符號並轉為數字
+            if (isNaN(rate)) return; // 確保 rate 是有效數字
+
+            const indices = Array.from({ length: periodNum }, (_, i) => i); // 生成從 0 到 periodNum - 1 的數組
+            setStyles(indices);
+            updateInstallmentAmounts(periodNum, rate);
+            CustomInputHandlers.init();
+        }
+
+        // 使用 MutationObserver 監聽 #cultivation_period 和 #cultivation_rate 的變化
+        function observeElementChanges(targetNode, callback) {
+            const observer = new MutationObserver(callback);
+            observer.observe(targetNode, { childList: true, subtree: true, characterData: true });
+        }
+
+        // 配置監聽
+        observeElementChanges(document.getElementById('cultivation_period'), updateStyles);
+        observeElementChanges(document.getElementById('cultivation_rate'), updateStyles);
+
+        // 初始調用一次
+        updateStyles();
+
 
         let button = $(event.relatedTarget);
         let roomThisId = String(button.data('id'));
@@ -1927,6 +2012,9 @@ $(function () {
 
                 $('#cultivation_startDate').text(openRoomData.startDate);
                 $('#cultivation_endDate').text(openRoomData.endDate);
+
+
+
                 $('#cultivation_rate').text(openRoomData.amount); // 修改金額不會回存培育室預設的數字，避免兩個期數不同價格，資料庫混亂。
 
                 $('#cultivation_companyName').text(openRoomData.company);
@@ -1967,8 +2055,31 @@ $(function () {
                 $('#cultivation_room').text(openRoomData.room);
                 $('#cultivation_squareMeters').text(openRoomData.squareMeters);
 
-                $('#cultivation_startDate').text('');
-                $('#cultivation_endDate').text('');
+                // $('#cultivation_startDate').text('');
+                // $('#cultivation_endDate').text('');
+                // 取得今日的日期
+                let today = new Date();
+
+                // 計算明天的日期
+                let tomorrow = new Date();
+                tomorrow.setDate(today.getDate() + 1);
+
+                // 計算一年後的日期
+                let nextYear = new Date();
+                nextYear.setFullYear(today.getFullYear() + 1);
+
+                // 格式化日期為 yyyy-MM-dd
+                function formatDate(date) {
+                    let year = date.getFullYear();
+                    let month = (date.getMonth() + 1).toString().padStart(2, '0'); // 月份補零
+                    let day = date.getDate().toString().padStart(2, '0'); // 天數補零
+                    return `${year}-${month}-${day}`;
+                }
+
+                // 將日期放入相應的 div 中
+                $('#cultivation_startDate').text(formatDate(tomorrow));
+                $('#cultivation_endDate').text(formatDate(nextYear));
+
                 $('#cultivation_rate').text(openRoomData.amount); // 修改金額不會回存培育室預設的數字，避免兩個期數不同價格，資料庫混亂。
 
                 $('#cultivation_companyName').text('');

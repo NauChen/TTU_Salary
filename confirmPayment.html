@@ -290,7 +290,11 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            @@include('layout/model_receipt.html')
+                            <div class="modal-body">
+                                <form class="container-fluid">
+                                    @@include('layout/model_receipt.html')
+                                </form>
+                            </div>
                             <div class="modal-footer">
                                 <span class="text-danger" id="danger_receiptBox"></span>
                                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">關閉</button>
