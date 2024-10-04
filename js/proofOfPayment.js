@@ -9,35 +9,90 @@
 //     "光速科技有限公司"
 // ];
 
-let pendingPaymentList = [
-    { id: 'CP1', type: '階段付款', description: '培育室(挺生大樓-202)', amount: '20,000元' },
-    { id: 'CP2', type: '階段付款', description: '停車位(校本部-01)', amount: '2,000元' },
-    { id: 'CA1', type: '新申請', description: '停車位(ABC-119)', amount: '費用待確認' },
-    { id: 'BA1', type: '新申請', description: '識別證(王小明)', amount: '100元' },
-    { id: 'BA2', type: '遺失補發', description: '識別證(王小明)', amount: '300元' }
-];
+// let pendingPaymentList = [
+//     { id: 'CP1', type: '階段付款', description: '培育室(挺生大樓-202)', amount: '20,000元' },
+//     { id: 'CP2', type: '階段付款', description: '停車位(校本部-01)', amount: '2,000元' },
+//     { id: 'CA1', type: '新申請', description: '停車位(ABC-119)', amount: '費用待確認' },
+//     { id: 'BA1', type: '新申請', description: '識別證(王小明)', amount: '100元' },
+//     { id: 'BA2', type: '遺失補發', description: '識別證(王小明)', amount: '300元' }
+// ];
 
 $(function () {
     // 動態生成table內容
-    let $table = $('#proofOfPayment_Table');
-    $table.empty(); // 清空現有內容
+    // let $table = $('#proofOfPayment_Table');
+    // $table.empty(); // 清空現有內容
 
-    $.each(pendingPaymentList, function (index, item) {
-        let row = `
-        <tr>
-            <td>
-                <input type="checkbox" class="form-check-input me-2 idCard-checkbox" id="${item.id}" name="proofOfPaymentItem">
-            </td>
-            <td>
-                <label for="${item.id}" class="col-lg col-form-label">
-                    <span class="text-nowrap text-secondary">${item.type}</span>
-                    <span class="text-nowrap">${item.description}</span>
-                    <span class="text-nowrap text-danger">${item.amount}</span>
-                </label>
-            </td>
-        </tr>`;
-        $table.append(row); // 將行追加到 table 中
-    });
+    // $.each(pendingPaymentList, function (index, item) {
+    //     let row = `
+    //     <tr>
+    //         <td>
+    //             <input type="checkbox" class="form-check-input me-2 idCard-checkbox" id="${item.id}" name="proofOfPaymentItem">
+    //         </td>
+    //         <td>
+    //             <label for="${item.id}" class="col-lg col-form-label">
+    //                 <span class="text-nowrap text-secondary">${item.type}</span>
+    //                 <span class="text-nowrap">${item.description}</span>
+    //                 <span class="text-nowrap text-danger">${item.amount}</span>
+    //             </label>
+    //         </td>
+    //     </tr>`;
+    //     $table.append(row); // 將行追加到 table 中
+    // });
+
+    if(pendingPaymentList != null){
+        renderTable(pendingPaymentList); 
+    };
+
+    console.log('篩選出的待付項目：', pendingPaymentAllList);
+
+    // $('#listPendingItemsBtn').click(function () {
+    //     // 取得 input 欄位中的公司名稱
+    //     let companyName = $('#proofOfPayment_companyName').val().trim();
+
+    //     // 檢查是否輸入了公司名稱
+    //     if (companyName === '') {
+    //         alert('請輸入公司名稱');
+    //         return;
+    //     }
+
+    //     // 根據公司名稱篩選出對應的待付項目
+    //     var pendingPaymentList = pendingPaymentAllList.filter(item => item.company === companyName);
+
+    //     // 更新前端資料清單 (假設你已經有前端邏輯來處理這個資料)
+    //     console.log('篩選出的待付項目：', pendingPaymentList);
+    //     // window.pendingPaymentList = pendingPaymentList;  // 更新全局變數
+    //     renderTable(pendingPaymentList); 
+    // });
+
+
+        // 動態生成table內容
+    function renderTable(pendingPaymentList) {
+        const table = document.getElementById('proofOfPayment_Table'); // 獲取表格元素
+        table.innerHTML = ''; // 清空現有內容
+    
+        pendingPaymentList.forEach(item => {
+            // 創建新的行
+            const row = document.createElement('tr');
+    
+            // 生成行的內容
+            row.innerHTML = `
+                <td>
+                    <input type="checkbox" class="form-check-input me-2 idCard-checkbox" id="${item.id}" name="proofOfPaymentItem">
+                </td>
+                <td>
+                    <label for="${item.id}" class="col-lg col-form-label">
+                        <span class="text-nowrap text-secondary">${item.type}</span>
+                        <span class="text-nowrap">${item.description}</span>
+                        <span class="text-nowrap text-danger">${item.amount}</span>
+                    </label>
+                </td>
+            `;
+    
+            // 將行追加到表格中
+            table.appendChild(row);
+        });
+    }
+
 
     // 建議輸入
     $('#proofOfPayment_companyName').typeahead({

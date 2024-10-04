@@ -11,14 +11,21 @@
             </div>
             <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="payment_uniformNum"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                支付目的
+                支付憑證
             </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_paymentPurpose"></div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_downloadRemittanceFile">
+            </div>
+            <!-- <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"></div>
+                支付憑證
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly">
+                <a class="d-inline me-3 text-nowrap" href="#" id="payment_downloadRemittanceFile">下載&ensp;<i class="fa-solid fa-download"></i><span class="mx-1 update">補</span></a>
+            </div> -->
         </div>
         <!-- E-mail、聯絡人、聯絡電話 (都自動代入)-->
         <div class="row mb-1 multiple">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
-                E-mail
+                電子信箱
             </div>
             <div class="col lightBoxItems p-3 align_center readOnly" id="payment_companyEmail"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
@@ -35,62 +42,69 @@
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                 支付日期
             </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_paymentDate"></div>
+            <div class="col lightBoxItems p-3 align_center readOnly" id="payment_paymentDate"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 支付金額
             </div>
-            <div class="col lightBoxItems p-3 align_center" id="payment_paymentAmount"></div>
+            <div class="col lightBoxItems p-3 align_center readOnly" id="payment_paymentAmount"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                支付方式
+                帳號後五碼
             </div>
-            <div class="col lightBoxItems p-3 align_center" id="payment_paymentMethod"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                帳尾五碼
-            </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_last5AccountNo"></div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="payment_last5AccountNo"></div>
         </div>
         <!-- 掃描文件 若曾補件過，顯示補件後的檔案-->
         <div class="row mb-1 multiple">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                 支付項目
             </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_type">汽車位</div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                支付物件
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="payment_placeOrPrint">B3-10</div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                支付憑證
-            </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly">
-                <a class="d-inline me-3 text-nowrap" href="#" id="payment_downloadRemittanceFile">憑證下載&ensp;<i class="fa-solid fa-download"></i><span
-                        class="mx-1 update">補</span></a>
+            <div class="col lightBoxItems p-3 align_center">
+                <div class="row justify-content-end">
+                    <ul class="col-12 col-lg mb-0"  id="payment_items">
+                        <!-- <li>
+                            <span class="text-nowrap text-secondary">階段付款</span>
+                            <span class="text-nowrap">培育室(挺生大樓-202)</span>
+                            <span class="text-nowrap text-danger">20,000元</span>
+                        </li>
+                        <li>
+                            <span class="text-nowrap text-secondary">階段付款</span>
+                            <span class="text-nowrap">停車位(校本部-01)</span>
+                            <span class="text-nowrap text-danger">2,000元</span>
+                        </li>
+                        <li>
+                            <span class="text-nowrap text-secondary">新申請</span>
+                            <span class="text-nowrap">停車位(ABC-119)</span>
+                            <span class="text-nowrap text-danger">費用待確認</span>
+                        </li>
+                        <li>
+                            <span class="text-nowrap text-secondary">新申請</span>
+                            <span class="text-nowrap">識別證(王小明)</span>
+                            <span class="text-nowrap text-danger">100元</span>
+                        </li>
+                        <li>
+                            <span class="text-nowrap text-secondary">遺失補發</span>
+                            <span class="text-nowrap">識別證(王小明)</span>
+                            <span class="text-nowrap text-danger">300元</span>
+                        </li> -->
+                    </ul>
+                    <a class="col-auto align-self-end btn btn-outline-primary rounded-circle btn-sm oneWord mx-2 mt-2" href="#"><i class="fa-solid fa-wrench"></i></a>
+                </div>
             </div>
         </div>
         <!-- 收據號碼、收據日期、收據金額 -->
-        <div class="row mb-1">
-            <!-- <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
-                收據日期
-            </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_receiptDate"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
-                收據金額
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="payment_receiptAmount"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
-                收據項目
-            </div>
-            <div class="col lightBoxItems p-3 align_center" id="payment_receiptItems">
-            </div> -->
+        <!-- <div class="row mb-1">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
                 收據號碼
             </div>
             <div class="col col-lg-2 lightBoxItems p-3 align_center" id="payment_receiptNum">
             </div>
             <div class="col col-lg lightBoxItems p-3 align_center text-secondary">
-                &#129034;請輸入已登錄在系統的收據號碼。
+                &#129034;請建檔收據資料後再輸入喔！
             </div>
-        </div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+                管理註記
+            </div>
+            <div class="col lightBoxItems p-3 align_center" id="payment_adminNote"></div>
+        </div> -->
 
 
         <div class="row mb-1 multiple">

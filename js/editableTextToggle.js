@@ -21,6 +21,7 @@ var CustomInputHandlers = {
         this.bindChangeDecimalItems();
         this.bindChangeInputUpperNumberHyphenItems();
         this.bindChangeInputUpperNumberItems();
+        this.bindChangeSelectStatus2Items();
     },
     destroy: function () {
         this.unbindChangeInputItems();
@@ -43,6 +44,7 @@ var CustomInputHandlers = {
         this.unbindChangeDecimalItems();
         this.unbindChangeInputUpperNumberHyphenItems();
         this.unbindChangeInputUpperNumberItems();
+        this.unbindChangeSelectStatus2Items();
     },
     bindChangeInputItems: function () {
         $('.changeInput_items').on('click', function () {
@@ -665,26 +667,26 @@ var CustomInputHandlers = {
         $('.changeSelect_items').on('click', function () {
             var $this = $(this);
             var currentText = $this.text().trim();
-    
+
             if ($this.find('select').length === 0) {
                 var selectOptions = `
                     <select class="form-control form-select">
                     </select>`;
-    
+
                 var $select = $(selectOptions);
-    
+
                 // 判斷 selectOption 是否有 optigroup
                 if (selectOption.length > 0 && selectOption[0].hasOwnProperty('optigroup')) {
                     // 如果有 optigroup，則進行分組
                     var groupedOptions = {};
-                    
+
                     selectOption.forEach(function (item) {
                         if (!groupedOptions[item.optigroup]) {
                             groupedOptions[item.optigroup] = [];
                         }
                         groupedOptions[item.optigroup].push(item.option);
                     });
-    
+
                     for (var group in groupedOptions) {
                         var optgroup = $('<optgroup>').attr('label', group);
                         groupedOptions[group].forEach(function (option) {
@@ -706,15 +708,15 @@ var CustomInputHandlers = {
                         $select.append(optionElement);
                     });
                 }
-    
+
                 $this.html($select);
                 $select.focus();
-    
+
                 $select.on('change', function () {
                     var newText = $select.val();
                     $this.html(newText);
                 });
-    
+
                 $(document).on('click.select', function (e) {
                     if (!$this.is(e.target) && $this.has(e.target).length === 0) {
                         var newText = $select.val();
@@ -725,7 +727,7 @@ var CustomInputHandlers = {
             }
         });
     },
-    
+
     unbindChangeSelectItems: function () {
         // 解除綁定 click 事件
         $('.changeSelect_items').off('click');
@@ -1028,5 +1030,51 @@ var CustomInputHandlers = {
 
         // 解除綁定 blur 和 keypress 事件
         $('.changeDecimal_items').find('input').off('blur').off('keypress');
+    },
+    // selectOptionStatus2
+    bindChangeSelectStatus2Items: function () {
+        $('.changeSelectStatus2_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('select').length === 0) {
+                var selectOptions = `
+                        <select class="form-control form-select">
+                        </select>`;
+
+                var $select = $(selectOptions);
+
+                selectOptionStatus2.forEach(function (item) {
+                    var optionElement = $('<option>').attr('value', item.option).text(item.option);
+                    if (currentText === item.option) {
+                        optionElement.attr('selected', 'selected');
+                    }
+                    $select.append(optionElement);
+                });
+
+                $this.html($select);
+                $select.focus();
+
+                $select.on('change', function () {
+                    var newText = $select.find('option:selected').text();
+                    $this.html(newText);
+                });
+
+                $(document).on('click.select', function (e) {
+                    if (!$this.is(e.target) && $this.has(e.target).length === 0) {
+                        var newText = $select.find('option:selected').text();
+                        $this.html(newText ? newText : currentText);
+                        $(document).off('click.select');
+                    }
+                });
+            }
+        });
+    },
+    unbindChangeSelectStatus2Items: function () {
+        // 解除綁定 click 事件
+        $('.changeSelectStatus2_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeSelectStatus2_items').find('input').off('blur').off('keypress');
     },
 };
