@@ -1,4 +1,21 @@
-// 付款資訊-合格廠商
+// var pendingPaymentThisAllList = {
+//     id: '1',
+//     company: '超級棒股份有限公司',
+//     last5AccountNo: '01234',
+//     paymentDate: '2024-07-13',
+//     amount: '2,500',
+//     items: '1,2,4'
+// };
+
+
+// var pendingPaymentThisList = [
+//     { id: '1', type: '階段付款', description: '培育室(挺生大樓-202)', amount: '20,000元' },
+//     { id: '2', type: '階段付款', description: '停車位(校本部-01)', amount: '2,000元' },
+//     { id: '3', type: '新申請', description: '停車位(ABC-119)', amount: '費用待確認' },
+//     { id: '4', type: '新申請', description: '識別證(王小明)', amount: '100元' },
+//     { id: '5', type: '遺失補發', description: '識別證(王小明)', amount: '300元' }
+// ];
+
 // var companyData = [
 //     "超級棒股份有限公司",
 //     "大富翁科技有限公司",
@@ -9,21 +26,17 @@
 //     "光速科技有限公司"
 // ];
 
-// let pendingPaymentList = [
-//     { id: 'CP1', type: '階段付款', description: '培育室(挺生大樓-202)', amount: '20,000元' },
-//     { id: 'CP2', type: '階段付款', description: '停車位(校本部-01)', amount: '2,000元' },
-//     { id: 'CA1', type: '新申請', description: '停車位(ABC-119)', amount: '費用待確認' },
-//     { id: 'BA1', type: '新申請', description: '識別證(王小明)', amount: '100元' },
-//     { id: 'BA2', type: '遺失補發', description: '識別證(王小明)', amount: '300元' }
-// ];
 
-// let pendingPaymentList = [];
 
 $(function () {
 
-    console.log('篩選出的待付項目：', pendingPaymentList);
-    if (pendingPaymentList) {
-        renderTable(pendingPaymentList);
+    if (pendingPaymentThisAllList) {
+        console.log('顯示列表', pendingPaymentThisAllList);
+        $('#proofOfPayment_companyName').val(pendingPaymentThisAllList.company);
+        $('#proofOfPayment_last5AccountNo').val(pendingPaymentThisAllList.last5AccountNo);
+        $('#proofOfPayment_Date').val(pendingPaymentThisAllList.paymentDate);
+        $('#proofOfPayment_Money').val(pendingPaymentThisAllList.amount);
+        renderCheckTable(pendingPaymentThisList, pendingPaymentThisAllList.items);  // 傳遞 items 給 renderTable 函式
     };
 
     $('#listPendingItemsBtn').click(function () {
@@ -32,7 +45,6 @@ $(function () {
 
         // 檢查是否輸入了公司名稱
         if (companyName === '') {
-            // alert('請輸入公司名稱');
             swalToastWarning('請輸入公司名稱唷！', 'top');
             return;
         }
@@ -41,7 +53,7 @@ $(function () {
         pendingPaymentList = pendingPaymentAllList.filter(item => item.company === companyName);
 
         // 更新前端資料清單 (假設你已經有前端邏輯來處理這個資料)
-        console.log('篩選出的待付項目：', pendingPaymentList);
+        // console.log('篩選出的待付項目：', pendingPaymentList);
         renderTable(pendingPaymentList);
     });
 
@@ -76,6 +88,37 @@ $(function () {
         });
     }
 
+    function renderCheckTable(pendingPaymentList, selectedItems) {
+        const $table = $('#proofOfPayment_Table'); // 使用 jQuery 獲取表格元素
+        $table.empty(); // 清空現有內容
+        
+        // const itemsArray = selectedItems.split(','); // 將選中的項目字串轉為陣列
+        const itemsArray = (selectedItems && typeof selectedItems === 'string') ? selectedItems.split(',') : [];
+
+
+        // 遍歷 pendingPaymentList 並生成表格內容
+        $.each(pendingPaymentList, function (index, item) {
+            const isChecked = itemsArray.includes(item.id) ? 'checked' : '';  // 判斷是否需要勾選
+            
+            const row = `
+                <tr>
+                    <td>
+                        <input type="checkbox" class="form-check-input me-2 idCard-checkbox" id="${item.id}" name="proofOfPaymentItem" ${isChecked}>
+                    </td>
+                    <td>
+                        <label for="${item.id}" class="col-lg col-form-label">
+                            <span class="text-nowrap text-secondary">${item.type}</span>
+                            <span class="text-nowrap">${item.description}</span>
+                            <span class="text-nowrap text-danger">${item.amount}</span>
+                        </label>
+                    </td>
+                </tr>
+            `;
+            // 將行追加到表格中
+            $table.append(row);
+        });
+    }
+
 
 
     // 建議輸入
@@ -83,17 +126,14 @@ $(function () {
         source: companyData
     });
 
-    // if (last5Num) {
-    //     $('#proofOfPayment_last5AccountNo').text(last5Num);
-    // }
-
     // 當 .thisRequired 更改時，再次執行檢查
     $('.thisRequired').on('input change', function () {
         checkThisRequiredElements.call(this);
     });
 
+     // 檢查 proofOfPayment_last5AccountNo 是否為5個字元
     $('#proofOfPayment_last5AccountNo').on('input change', function () {
-        var inputVal = $(this).val(); // 獲取輸入的值
+        var inputVal = $(this).val();
         var dangerMessage = $('#danger_proofOfPayment_last5AccountNo'); // 獲取警告訊息的元素
 
         // 檢查輸入是否為5個字元
@@ -104,14 +144,6 @@ $(function () {
             // 如果是5個字元，移除錯誤訊息
             dangerMessage.text("");
         }
-    });
-
-    // 點擊 resetBtn 按鈕時
-    $('#resetBtn').click(function () {
-        // 執行原有 reset 的功能
-        this.form.reset();
-        // 清空所有以 danger_ 開頭元素的內容
-        $('[id^="danger_"]').text('');
     });
 
     // 點擊 submitBtn 按鈕時
@@ -159,7 +191,7 @@ $(function () {
         }
 
         // 建立 FormData 對象，將表單數據傳送
-        let formData = new FormData($('#formSendProofOfPayment')[0]);
+        let formData = new FormData($('#formEditProofOfPayment')[0]);
         formData.append('selectedIds', selectedIds);
 
         // 檢查是否有上傳檔案
@@ -168,16 +200,16 @@ $(function () {
             formData.append('remittancePdf', remittanceFile); // 如果有檔案則添加
         }
 
+        let paymentEditUrl = '/Remittance/Edit/' + pendingPaymentThisAllList.id;
         // 送出表單資料到後端
         $.ajax({
-            url: paymentUrl,
+            url: paymentEditUrl,
             type: 'POST',
             data: formData,
             processData: false, // 必須設置為 false 才能正確傳送 FormData
             contentType: false, // 必須設置為 false 以避免 jQuery 自動設置類型
             success: function (response) {
                 // 處理成功的回應
-                // swalToastSuccess('資料已成功提交！', 'top');
                 swalToastSuccess(response.message, 'top');// 2秒
                 setTimeout(function () {
                     window.history.back(); // 返回上一頁
@@ -189,31 +221,6 @@ $(function () {
             }
         });
 
-        // // 最後檢查 danger_ 開頭元素的文字內容
-        // if (checkDangerElements()) {
-        //     // 如果返回 true，送出表單資料
-        //     // $('#formSendProofOfPayment').submit(); // 提交表單
-        //     // console.log('表單資料已送出');
-        //     $.ajax({
-        //         url: paymentUrl, 
-        //         method: 'POST',
-        //         data: formData,
-        //         success: function (response) {
-        //             if (response.success) {
-        //                 swalToastSuccess('匯款證明提交成功！', 'top');
-        //                 // 根據需要，跳轉到其他頁面或刷新頁面
-        //             } else {
-        //                 swalToastWarning(response.message, 'top');
-        //             }
-        //         },
-        //         error: function (xhr, status, error) {
-        //             swalToastError('提交匯款證明時發生錯誤。', 'top');
-        //         }
-        //     });
-        // } else {
-        //     // 如果返回 false，顯示警告訊息
-        //     swalToastWarning(' 請填上正確資料唷！', 'top');
-        // }
     });
 
 });

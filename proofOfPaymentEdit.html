@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/meta.html', {
+    "title": "校內育成媒合平台-修改通知已匯款",
+    })
+</head>
+
+<body>
+    <main class="main">
+        @@include('layout/header.html')
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-file-contract"></i>&ensp;申請與查閱</li>
+                        <li class="breadcrumb-item"><i class="fa-solid fa-comment-dollar"></i>&ensp;通知已匯款</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-wrench"></i>&ensp;修改</li>
+                    </ol>
+                </div>
+
+
+                <div>
+                    <div class="tabs-box my-2r">
+                        <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>轉帳證明<i
+                                class="fa-solid fa-quote-right"></i></h3>
+                        <div class="tabs section-border-radius section-padding">
+                            <form class="container-fluid" method="post" id="formEditProofOfPayment">
+                                <div class="row">
+                                    <div class="col-xl-8 mb-3">
+                                        <div class="row mb-3">
+                                            <label for="proofOfPayment_companyName"
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>公司名稱&emsp;</label>
+                                            <div class="col">
+                                                <!-- <input type="text" class="form-control" id="proofOfPayment_companyName"
+                                                    readonly> -->
+                                                    <input type="text" class="form-control" id="proofOfPayment_companyName">
+                                                    <span class="text-danger"
+                                                    id="danger_proofOfPayment_companyName" name="companyName"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="proofOfPayment_last5AccountNo"
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>帳號後五碼</label>
+                                            <div class="col">
+                                                <input type="text" class="form-control thisRequired"
+                                                    id="proofOfPayment_last5AccountNo" onkeyup="restrictTo5Num(this)">
+                                                <span class="text-danger"
+                                                    id="danger_proofOfPayment_last5AccountNo"></span>
+                                            </div>
+                                            <label for="proofOfPayment_saveLast5AccountNo"
+                                                class="col-lg col-form-label text-nowrap">
+                                                <input type="checkbox" class="form-check-input me-2"
+                                                    id="proofOfPayment_saveLast5AccountNo">儲存為常用帳號後五碼
+                                            </label>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="proofOfPayment_Date"
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>轉帳日期&emsp;</label>
+                                            <div class="col">
+                                                <input type="date" class="form-control thisRequired" id="proofOfPayment_Date">
+                                                <span class="text-danger" id="danger_proofOfPayment_Date"></span>
+                                            </div>
+                                            <label for="proofOfPayment_Money"
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>轉帳金額&emsp;</label>
+                                            <div class="col">
+                                                <input type="text" class="form-control thisRequired" id="proofOfPayment_Money"
+                                                onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
+                                                <span class="text-danger" id="danger_proofOfPayment_Money"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2 salaryRadio border-warning py-2">
+                                            <label for="remittancePdf"
+                                                class="col-auto col-form-label text-nowrap upload-label py-0 align_center">
+                                                點擊此處可上傳匯款憑證(.pdf)<i class="fa-solid fa-upload mx-1"></i>
+                                            </label>
+                                            <div class="col-12">
+                                                <input type="file" class="form-control d-none" id="remittancePdf"
+                                                    accept=".pdf" name="remittancePdf"
+                                                    onchange="javascript:{document.getElementById('remittance_fileInfo').innerHTML = document.getElementById('remittancePdf').value;setFormHeight();}">
+                                                <div id="remittance_fileInfo" class="fileInfo"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="proofOfPayment_companyName"
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>本次匯款支付項目&emsp;</label>
+                                            <div class="col">
+                                                <table id="proofOfPayment_Table"></table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4 mb-3">
+                                        <div class="salaryRadio px-2 py-2 mx-1 border-success">
+                                            <div class="row mb-3">
+                                                <label for="proofOfPayment_helpItems"
+                                                    class="col-12 col-form-label text-nowrap fw-bold">注意事項：</label>
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">a.</div>
+                                                        <div class="col">因付款通知無法修改，<strong
+                                                                class="text-decoration-underline text-danger">送出前請再次確認資料是否正確</strong>。
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">b.</div>
+                                                        <div class="col">若多次匯款，<strong>請分開填寫付款通知</strong>。</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">c.</div>
+                                                        <div class="col"><strong
+                                                                class="text-decoration-underline">常用帳號後五碼僅能記錄一組</strong>，再次儲存後系統會更新資料。
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">d.</div>
+                                                        <div class="col">上傳匯款憑證時，<strong>僅接受PDF格式的檔案(.pdf)</strong>。
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">e.</div>
+                                                        <div class="col">
+                                                            <strong>大同大學帳戶資訊：</strong><br>
+                                                            XX銀行XX分行&emsp;代碼：000-0000<br>
+                                                            8888-8888-8888-8888。
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row text-center p-3 justify-content-center">
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-lg btn-outline-secondary" id="rebackBtn"
+                                            onclick="history.back()">返回</button>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="reset" class="btn btn-lg btn-outline-danger"
+                                            id="resetBtn">重填</button>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-lg btn-success"
+                                            id="submitBtn">送出</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                @@include('layout/footer.html')
+            </div>
+        </div>
+    </main>
+    @@include('layout/metaJS.html')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+    <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
+    <!-- <script src="./js/editableTextToggle.js"></script> -->
+    <script src="./js/proofOfPaymentEdit.js"></script>
+
+</body>
+
+</html>

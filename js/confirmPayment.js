@@ -292,223 +292,222 @@ var dataset_confirmPaymentCultivationRoom = [
 ];
 
 // 匯款data
-var dataset_confirmPaymentAll = [
-    {
-        'id': '1',
-        'createDate': '2024-07-15',
-        'paymentDate': '2024-07-13',
-        'adminNote': '',
-        'status': '待確認',
-        'company': '超級棒股份有限公司',
-        'uniformNum': '12345678',
-        'amount': '2,500',
-        'last5AccountNo': '01234',
-        'remittanceFile': '20240713_MD231.pdf',
-        // 'receiptNum': '',
-        'companyEmail': 'contact@supercompany.com',
-        'contactPerson': '王大明',
-        'companyPhone': '02-86710001',
-        'items':  [
-            { id: 'CP1', type: '階段付款', description: '培育室(挺生大樓-202)', amount: '20,000元' },
-            { id: 'CP2', type: '階段付款', description: '停車位(校本部-01)', amount: '2,000元' },
-            { id: 'CA1', type: '新申請', description: '停車位(ABC-119)', amount: '費用待確認' },
-            { id: 'BA1', type: '新申請', description: '識別證(王小明)', amount: '100元' },
-            { id: 'BA2', type: '遺失補發', description: '識別證(王小明)', amount: '300元' }
-        ],
-    },
-    {
-        'id': '2',
-        'createDate': '2024-07-16',
-        'paymentDate': '2024-07-14',
-        'adminNote': '',
-        'status': '取消',
-        'applicationNum': '15',
-        'type': '機車位',
-        'company': '大富翁科技有限公司',
-        'uniformNum': '87654321',
-        'paymentPurpose': '新申請',
-        'placeOrPrint': '',
-        'amount': '100',
-        'paymentMethod': '現金',
-        'last5AccountNo': '',
-        'remittanceFile': '',
-        'receiptNum': '',
-        'companyEmail': 'contact@bigmonopoly.com',
-        'contactPerson': '李四',
-        'companyPhone': '0912-345678'
-    },
-    {
-        'id': '3',
-        'createDate': '2024-07-17',
-        'paymentDate': '2024-07-15',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '18',
-        'type': '識別證',
-        'company': '迅捷物流股份有限公司',
-        'uniformNum': '23456789',
-        'paymentPurpose': '補發',
-        'placeOrPrint': 'N000034',
-        'amount': '300',
-        'paymentMethod': '匯款',
-        'last5AccountNo': '56789',
-        'remittanceFile': '20240715_MD45',
-        'receiptNum': '',
-        'companyEmail': 'contact@swiftlogistics.com',
-        'contactPerson': '陳小華',
-        'companyPhone': '02-86710002'
-    },
-    {
-        'id': '4',
-        'createDate': '2024-07-18',
-        'paymentDate': '2024-07-16',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '20',
-        'type': '培育室',
-        'company': '綠能科技有限公司',
-        'uniformNum': '34567890',
-        'paymentPurpose': '階段費用',
-        'placeOrPrint': '青創基地-201',
-        'amount': '45,000',
-        'paymentMethod': '匯款',
-        'last5AccountNo': '67890',
-        'remittanceFile': '20240716_MD67',
-        'receiptNum': 'RM000126',
-        'companyEmail': 'contact@greenenergy.com',
-        'contactPerson': '林小強',
-        'companyPhone': '02-86710003'
-    },
-    {
-        'id': '5',
-        'createDate': '2024-07-19',
-        'paymentDate': '2024-07-17',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '22',
-        'type': '汽車位',
-        'company': '全球股份有限公司',
-        'uniformNum': '45678901',
-        'paymentPurpose': '續約',
-        'placeOrPrint': '',
-        'amount': '3,000',
-        'paymentMethod': '現金',
-        'last5AccountNo': '',
-        'remittanceFile': '',
-        'receiptNum': 'RM000127',
-        'companyEmail': 'contact@globalinc.com',
-        'contactPerson': '張偉',
-        'companyPhone': '0912-345679'
-    },
-    {
-        'id': '6',
-        'createDate': '2024-07-20',
-        'paymentDate': '2024-07-18',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '25',
-        'type': '機車位',
-        'company': '宇宙科技有限公司',
-        'uniformNum': '56789012',
-        'paymentPurpose': '續約',
-        'placeOrPrint': 'B1-07',
-        'amount': '100',
-        'paymentMethod': '匯款',
-        'last5AccountNo': '89012',
-        'remittanceFile': '20240718_MD89',
-        'receiptNum': 'RM000128',
-        'companyEmail': 'contact@universe.com',
-        'contactPerson': '劉明',
-        'companyPhone': '02-86710004'
-    },
-    {
-        'id': '7',
-        'createDate': '2024-07-21',
-        'paymentDate': '2024-07-19',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '28',
-        'type': '識別證',
-        'company': '光速科技有限公司',
-        'uniformNum': '67890123',
-        'paymentPurpose': '補發',
-        'placeOrPrint': 'N000056',
-        'amount': '300',
-        'paymentMethod': '現金',
-        'last5AccountNo': '',
-        'remittanceFile': '',
-        'receiptNum': 'RM000129',
-        'companyEmail': 'contact@lightspeed.com',
-        'contactPerson': '黃家豪',
-        'companyPhone': '0912-345670'
-    },
-    {
-        'id': '8',
-        'createDate': '2024-07-22',
-        'paymentDate': '2024-07-20',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '30',
-        'type': '培育室',
-        'company': '宏達電子有限公司',
-        'uniformNum': '78901234',
-        'paymentPurpose': '階段費用',
-        'placeOrPrint': '青創基地-201',
-        'amount': '40,000',
-        'paymentMethod': '匯款',
-        'last5AccountNo': '90123',
-        'remittanceFile': '20240720_MD01',
-        'receiptNum': 'RM000130',
-        'companyEmail': 'contact@htcelectronics.com',
-        'contactPerson': '張雅婷',
-        'companyPhone': '02-86710005'
-    },
-    {
-        'id': '9',
-        'createDate': '2024-07-23',
-        'paymentDate': '2024-07-21',
-        'adminNote': '',
-        'status': '待確認',
-        'applicationNum': '32',
-        'type': '汽車位',
-        'company': '智能機械有限公司',
-        'uniformNum': '89012345',
-        'paymentPurpose': '續約',
-        'placeOrPrint': 'B3-10',
-        'amount': '2,500',
-        'paymentMethod': '現金',
-        'last5AccountNo': '',
-        'remittanceFile': '',
-        'receiptNum': 'RM000131',
-        'companyEmail': 'contact@smartmachinery.com',
-        'contactPerson': '王志豪',
-        'companyPhone': '0912-345671'
-    },
-    {
-        'id': '10',
-        'createDate': '2024-07-24',
-        'paymentDate': '2024-07-22',
-        'adminNote': '',
-        'status': '完成',
-        'applicationNum': '35',
-        'type': '機車位',
-        'company': '聯合工業股份有限公司',
-        'uniformNum': '90123456',
-        'paymentPurpose': '新申請',
-        'placeOrPrint': '',
-        'amount': '100',
-        'paymentMethod': '匯款',
-        'last5AccountNo': '23456',
-        'remittanceFile': '20240722_MD23',
-        'receiptDate': '2024-07-31',
-        'receiptAmount': '100',
-        'receiptItems': '場地維護費',
-        'receiptNum': 'RM000132',
-        'companyEmail': 'contact@unitedindustries.com',
-        'contactPerson': '許文',
-        'companyPhone': '02-86710006'
-    }
-];
+// var dataset_confirmPaymentAll = [
+//     {
+//         'id': '1',
+//         'createDate': '2024-07-15',
+//         'paymentDate': '2024-07-13',
+//         'adminNote': '',
+//         'status': '待確認',
+//         'company': '超級棒股份有限公司',
+//         'uniformNum': '12345678',
+//         'amount': '2,500',
+//         'last5AccountNo': '01234',
+//         'remittanceFile': '20240713_MD231.pdf',
+//         'companyEmail': 'contact@supercompany.com',
+//         'contactPerson': '王大明',
+//         'companyPhone': '02-86710001',
+//         'items':  [
+//             { id: 'CP1', type: '階段付款', description: '培育室(挺生大樓-202)', amount: '20,000元' },
+//             { id: 'CP2', type: '階段付款', description: '停車位(校本部-01)', amount: '2,000元' },
+//             { id: 'CA1', type: '新申請', description: '停車位(ABC-119)', amount: '費用待確認' },
+//             { id: 'BA1', type: '新申請', description: '識別證(王小明)', amount: '100元' },
+//             { id: 'BA2', type: '遺失補發', description: '識別證(王小明)', amount: '300元' }
+//         ],
+//     },
+//     {
+//         'id': '2',
+//         'createDate': '2024-07-16',
+//         'paymentDate': '2024-07-14',
+//         'adminNote': '',
+//         'status': '取消',
+//         'applicationNum': '15',
+//         'type': '機車位',
+//         'company': '大富翁科技有限公司',
+//         'uniformNum': '87654321',
+//         'paymentPurpose': '新申請',
+//         'placeOrPrint': '',
+//         'amount': '100',
+//         'paymentMethod': '現金',
+//         'last5AccountNo': '',
+//         'remittanceFile': '',
+//         'receiptNum': '',
+//         'companyEmail': 'contact@bigmonopoly.com',
+//         'contactPerson': '李四',
+//         'companyPhone': '0912-345678'
+//     },
+//     {
+//         'id': '3',
+//         'createDate': '2024-07-17',
+//         'paymentDate': '2024-07-15',
+//         'adminNote': '',
+//         'status': '待確認',
+//         'applicationNum': '18',
+//         'type': '識別證',
+//         'company': '迅捷物流股份有限公司',
+//         'uniformNum': '23456789',
+//         'paymentPurpose': '補發',
+//         'placeOrPrint': 'N000034',
+//         'amount': '300',
+//         'paymentMethod': '匯款',
+//         'last5AccountNo': '56789',
+//         'remittanceFile': '20240715_MD45',
+//         'receiptNum': '',
+//         'companyEmail': 'contact@swiftlogistics.com',
+//         'contactPerson': '陳小華',
+//         'companyPhone': '02-86710002'
+//     },
+//     {
+//         'id': '4',
+//         'createDate': '2024-07-18',
+//         'paymentDate': '2024-07-16',
+//         'adminNote': '',
+//         'status': '待確認',
+//         'applicationNum': '20',
+//         'type': '培育室',
+//         'company': '綠能科技有限公司',
+//         'uniformNum': '34567890',
+//         'paymentPurpose': '階段費用',
+//         'placeOrPrint': '青創基地-201',
+//         'amount': '45,000',
+//         'paymentMethod': '匯款',
+//         'last5AccountNo': '67890',
+//         'remittanceFile': '20240716_MD67',
+//         'receiptNum': 'RM000126',
+//         'companyEmail': 'contact@greenenergy.com',
+//         'contactPerson': '林小強',
+//         'companyPhone': '02-86710003'
+//     },
+//     {
+//         'id': '5',
+//         'createDate': '2024-07-19',
+//         'paymentDate': '2024-07-17',
+//         'adminNote': '',
+//         'status': '待確認',
+//         'applicationNum': '22',
+//         'type': '汽車位',
+//         'company': '全球股份有限公司',
+//         'uniformNum': '45678901',
+//         'paymentPurpose': '續約',
+//         'placeOrPrint': '',
+//         'amount': '3,000',
+//         'paymentMethod': '現金',
+//         'last5AccountNo': '',
+//         'remittanceFile': '',
+//         'receiptNum': 'RM000127',
+//         'companyEmail': 'contact@globalinc.com',
+//         'contactPerson': '張偉',
+//         'companyPhone': '0912-345679'
+//     },
+//     {
+//         'id': '6',
+//         'createDate': '2024-07-20',
+//         'paymentDate': '2024-07-18',
+//         'adminNote': '',
+//         'status': '待確認',
+//         'applicationNum': '25',
+//         'type': '機車位',
+//         'company': '宇宙科技有限公司',
+//         'uniformNum': '56789012',
+//         'paymentPurpose': '續約',
+//         'placeOrPrint': 'B1-07',
+//         'amount': '100',
+//         'paymentMethod': '匯款',
+//         'last5AccountNo': '89012',
+//         'remittanceFile': '20240718_MD89',
+//         'receiptNum': 'RM000128',
+//         'companyEmail': 'contact@universe.com',
+//         'contactPerson': '劉明',
+//         'companyPhone': '02-86710004'
+//     },
+//     {
+//         'id': '7',
+//         'createDate': '2024-07-21',
+//         'paymentDate': '2024-07-19',
+//         'adminNote': '',
+//         'status': '待確認',
+//         'applicationNum': '28',
+//         'type': '識別證',
+//         'company': '光速科技有限公司',
+//         'uniformNum': '67890123',
+//         'paymentPurpose': '補發',
+//         'placeOrPrint': 'N000056',
+//         'amount': '300',
+//         'paymentMethod': '現金',
+//         'last5AccountNo': '',
+//         'remittanceFile': '',
+//         'receiptNum': 'RM000129',
+//         'companyEmail': 'contact@lightspeed.com',
+//         'contactPerson': '黃家豪',
+//         'companyPhone': '0912-345670'
+//     },
+//     {
+//         'id': '8',
+//         'createDate': '2024-07-22',
+//         'paymentDate': '2024-07-20',
+//         'adminNote': '',
+//         'status': '待確認',
+//         'applicationNum': '30',
+//         'type': '培育室',
+//         'company': '宏達電子有限公司',
+//         'uniformNum': '78901234',
+//         'paymentPurpose': '階段費用',
+//         'placeOrPrint': '青創基地-201',
+//         'amount': '40,000',
+//         'paymentMethod': '匯款',
+//         'last5AccountNo': '90123',
+//         'remittanceFile': '20240720_MD01',
+//         'receiptNum': 'RM000130',
+//         'companyEmail': 'contact@htcelectronics.com',
+//         'contactPerson': '張雅婷',
+//         'companyPhone': '02-86710005'
+//     },
+//     {
+//         'id': '9',
+//         'createDate': '2024-07-23',
+//         'paymentDate': '2024-07-21',
+//         'adminNote': '',
+//         'status': '待確認',
+//         'applicationNum': '32',
+//         'type': '汽車位',
+//         'company': '智能機械有限公司',
+//         'uniformNum': '89012345',
+//         'paymentPurpose': '續約',
+//         'placeOrPrint': 'B3-10',
+//         'amount': '2,500',
+//         'paymentMethod': '現金',
+//         'last5AccountNo': '',
+//         'remittanceFile': '',
+//         'receiptNum': 'RM000131',
+//         'companyEmail': 'contact@smartmachinery.com',
+//         'contactPerson': '王志豪',
+//         'companyPhone': '0912-345671'
+//     },
+//     {
+//         'id': '10',
+//         'createDate': '2024-07-24',
+//         'paymentDate': '2024-07-22',
+//         'adminNote': '',
+//         'status': '完成',
+//         'applicationNum': '35',
+//         'type': '機車位',
+//         'company': '聯合工業股份有限公司',
+//         'uniformNum': '90123456',
+//         'paymentPurpose': '新申請',
+//         'placeOrPrint': '',
+//         'amount': '100',
+//         'paymentMethod': '匯款',
+//         'last5AccountNo': '23456',
+//         'remittanceFile': '20240722_MD23',
+//         'receiptDate': '2024-07-31',
+//         'receiptAmount': '100',
+//         'receiptItems': '場地維護費',
+//         'receiptNum': 'RM000132',
+//         'companyEmail': 'contact@unitedindustries.com',
+//         'contactPerson': '許文',
+//         'companyPhone': '02-86710006'
+//     }
+// ];
 
 
 var dataset_confirmPaymentParkingSpace = [
@@ -846,153 +845,153 @@ var dataset_confirmPaymentParkingSpace = [
 
 
 // 收據data done
-var dataset_confirmPaymentReceipt = [
-    {
-        'id': 'R1',
-        'createDate': '2024-08-01',
-        'receiptNum': 'AE123456',
-        'receiptDate': '2024-08-02',
-        'item': '服務費',
-        'amount': '35,000',
-        'company': '頂尖科技有限公司',
-        'uniformNum': '12345678',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王小明',
-    },
-    {
-        'id': 'R2',
-        'createDate': '2024-08-03',
-        'receiptNum': 'AE234567',
-        'receiptDate': '2024-08-04',
-        'item': '場地維護費',
-        'amount': '2,500',
-        'company': '創新股份有限公司',
-        'uniformNum': '23456789',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王二明',
-    },
-    {
-        'id': 'R3',
-        'createDate': '2024-08-05',
-        'receiptNum': 'AE345678',
-        'receiptDate': '2024-08-06',
-        'item': '服務費',
-        'amount': '50,000',
-        'company': '宏達有限公司',
-        'uniformNum': '34567890',
-        'adminNote': '',
-        'status': '作廢收回',
-        'createBy': '王三明',
-    },
-    {
-        'id': 'R4',
-        'createDate': '2024-08-07',
-        'receiptNum': 'AE456789',
-        'receiptDate': '2024-08-08',
-        'item': '場地維護費',
-        'amount': '15,000',
-        'company': '光明股份有限公司',
-        'uniformNum': '45678901',
-        'adminNote': '',
-        'status': '作廢收回',
-        'createBy': '王小明',
-    },
-    {
-        'id': 'R5',
-        'createDate': '2024-08-09',
-        'receiptNum': 'AE567890',
-        'receiptDate': '2024-08-10',
-        'item': '服務費',
-        'amount': '40,000',
-        'company': '威士達有限公司',
-        'uniformNum': '56789012',
-        'adminNote': '',
-        'status': '作廢收回',
-        'createBy': '王四明',
-    },
-    {
-        'id': 'R6',
-        'createDate': '2024-08-11',
-        'receiptNum': 'AE678901',
-        'receiptDate': '2024-08-12',
-        'item': '場地維護費',
-        'amount': '12,000',
-        'company': '佳利科技有限公司',
-        'uniformNum': '67890123',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王小明',
-    },
-    {
-        'id': 'R7',
-        'createDate': '2024-08-13',
-        'receiptNum': 'AE789012',
-        'receiptDate': '2024-08-14',
-        'item': '服務費',
-        'amount': '5,000',
-        'company': '世紀股份有限公司',
-        'uniformNum': '78901234',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王五明',
-    },
-    {
-        'id': 'R8',
-        'createDate': '2024-08-15',
-        'receiptNum': 'AE890123',
-        'receiptDate': '2024-08-16',
-        'item': '場地維護費',
-        'amount': '25,000',
-        'company': '聯合股份有限公司',
-        'uniformNum': '89012345',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王小明',
-    },
-    {
-        'id': 'R9',
-        'createDate': '2024-08-17',
-        'receiptNum': 'AE901234',
-        'receiptDate': '2024-08-18',
-        'item': '服務費',
-        'amount': '10,000',
-        'company': '智遠有限公司',
-        'uniformNum': '90123456',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王小明',
-    },
-    {
-        'id': 'R10',
-        'createDate': '2024-08-19',
-        'receiptNum': 'AE012345',
-        'receiptDate': '2024-08-20',
-        'item': '場地維護費',
-        'amount': '18,000',
-        'company': '遠見科技有限公司',
-        'uniformNum': '01234567',
-        'adminNote': '',
-        'status': '使用中',
-        'createBy': '王六明',
-    }
-];
+// var dataset_confirmPaymentReceipt = [
+//     {
+//         'id': 'R1',
+//         'createDate': '2024-08-01',
+//         'receiptNum': 'AE123456',
+//         'receiptDate': '2024-08-02',
+//         'item': '服務費',
+//         'amount': '35,000',
+//         'company': '頂尖科技有限公司',
+//         'uniformNum': '12345678',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王小明',
+//     },
+//     {
+//         'id': 'R2',
+//         'createDate': '2024-08-03',
+//         'receiptNum': 'AE234567',
+//         'receiptDate': '2024-08-04',
+//         'item': '場地維護費',
+//         'amount': '2,500',
+//         'company': '創新股份有限公司',
+//         'uniformNum': '23456789',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王二明',
+//     },
+//     {
+//         'id': 'R3',
+//         'createDate': '2024-08-05',
+//         'receiptNum': 'AE345678',
+//         'receiptDate': '2024-08-06',
+//         'item': '服務費',
+//         'amount': '50,000',
+//         'company': '宏達有限公司',
+//         'uniformNum': '34567890',
+//         'adminNote': '',
+//         'status': '作廢收回',
+//         'createBy': '王三明',
+//     },
+//     {
+//         'id': 'R4',
+//         'createDate': '2024-08-07',
+//         'receiptNum': 'AE456789',
+//         'receiptDate': '2024-08-08',
+//         'item': '場地維護費',
+//         'amount': '15,000',
+//         'company': '光明股份有限公司',
+//         'uniformNum': '45678901',
+//         'adminNote': '',
+//         'status': '作廢收回',
+//         'createBy': '王小明',
+//     },
+//     {
+//         'id': 'R5',
+//         'createDate': '2024-08-09',
+//         'receiptNum': 'AE567890',
+//         'receiptDate': '2024-08-10',
+//         'item': '服務費',
+//         'amount': '40,000',
+//         'company': '威士達有限公司',
+//         'uniformNum': '56789012',
+//         'adminNote': '',
+//         'status': '作廢收回',
+//         'createBy': '王四明',
+//     },
+//     {
+//         'id': 'R6',
+//         'createDate': '2024-08-11',
+//         'receiptNum': 'AE678901',
+//         'receiptDate': '2024-08-12',
+//         'item': '場地維護費',
+//         'amount': '12,000',
+//         'company': '佳利科技有限公司',
+//         'uniformNum': '67890123',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王小明',
+//     },
+//     {
+//         'id': 'R7',
+//         'createDate': '2024-08-13',
+//         'receiptNum': 'AE789012',
+//         'receiptDate': '2024-08-14',
+//         'item': '服務費',
+//         'amount': '5,000',
+//         'company': '世紀股份有限公司',
+//         'uniformNum': '78901234',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王五明',
+//     },
+//     {
+//         'id': 'R8',
+//         'createDate': '2024-08-15',
+//         'receiptNum': 'AE890123',
+//         'receiptDate': '2024-08-16',
+//         'item': '場地維護費',
+//         'amount': '25,000',
+//         'company': '聯合股份有限公司',
+//         'uniformNum': '89012345',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王小明',
+//     },
+//     {
+//         'id': 'R9',
+//         'createDate': '2024-08-17',
+//         'receiptNum': 'AE901234',
+//         'receiptDate': '2024-08-18',
+//         'item': '服務費',
+//         'amount': '10,000',
+//         'company': '智遠有限公司',
+//         'uniformNum': '90123456',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王小明',
+//     },
+//     {
+//         'id': 'R10',
+//         'createDate': '2024-08-19',
+//         'receiptNum': 'AE012345',
+//         'receiptDate': '2024-08-20',
+//         'item': '場地維護費',
+//         'amount': '18,000',
+//         'company': '遠見科技有限公司',
+//         'uniformNum': '01234567',
+//         'adminNote': '',
+//         'status': '使用中',
+//         'createBy': '王六明',
+//     }
+// ];
 
 
 
 
 
 // 可用廠商data done
-var companyData = [
-    "超級棒股份有限公司",
-    "大富翁科技有限公司",
-    "迅捷物流股份有限公司",
-    "綠能科技有限公司",
-    "全球股份有限公司",
-    "宇宙科技有限公司",
-    "光速科技有限公司"
-];
+// var companyData = [
+//     "超級棒股份有限公司",
+//     "大富翁科技有限公司",
+//     "迅捷物流股份有限公司",
+//     "綠能科技有限公司",
+//     "全球股份有限公司",
+//     "宇宙科技有限公司",
+//     "光速科技有限公司"
+// ];
 
 
 // 付款資訊-可用汽車位
@@ -1086,36 +1085,36 @@ $(function () {
             { data: 'createDate', title: '通知日期' }, // 0
             { data: 'company', title: "通知公司" }, //1
             { data: 'paymentDate', title: "付款日", className: 'text-center' }, // 2
+            // {
+            //     data: 'type', title: "項目", // 3
+            //     render: function (data, type, row) {
+            //         const placeOrPrint = row.placeOrPrint;
+            //         if (placeOrPrint) {
+            //             return data + '：' + placeOrPrint;
+            //         } else {
+            //             return data;
+            //         }
+            //     }
+            // },
+            // { data: 'paymentPurpose', title: "目的" },  // 4
+            { data: 'amount', title: "付款金額" }, // 3
+            { data: 'adminNote', title: "管理備註", }, // 4
             {
-                data: 'type', title: "項目", // 3
-                render: function (data, type, row) {
-                    const placeOrPrint = row.placeOrPrint;
-                    if (placeOrPrint) {
-                        return data + '：' + placeOrPrint;
-                    } else {
-                        return data;
-                    }
-                }
-            },
-            { data: 'paymentPurpose', title: "目的" },  // 4
-            { data: 'amount', title: "付款<br class='d-none d-lg-block'>金額" }, // 5
-            { data: 'adminNote', title: "管理備註", }, // 6
-            {
-                data: 'id', title: "操作", // 7
+                data: 'id', title: "操作", // 5
                 render: function (data, type, row) {
                     const status = row.status;
                     if (status == '完成' || status == '取消') {
                         // return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '"><i class="fa-solid fa-receipt"></i>';
-                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '"><i class="fa-solid fa-wrench"></i>';
+                        return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '"><i class="fa-solid fa-info px-1"></i>';
                     } else {
                         // return '<button type="button" class="btn btn-info rounded-circle btn-sm wide_icon" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-receipt"></i>';
-                        return '<button type="button" class="btn btn-info rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-wrench"></i>';
+                        return '<button type="button" class="btn btn-info rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#confirmPaymentModel" data-id="' + data + '" title="登記收據資訊"><i class="fa-solid fa-info px-1"></i>';
                     }
-                }, className: 'text-nowrap'
+                }
             },
-            { data: 'status', visible: false }, // 8 仍可搜尋
+            { data: 'status', visible: false }, // 6 仍可搜尋
         ],
-        "order": [[8, "desc"], [0, "desc"], [2, "desc"], [3, "desc"]],
+        "order": [[6, "desc"], [0, "desc"], [2, "desc"]],
         "columnDefs": [
             {
                 targets: [1],
@@ -1126,20 +1125,20 @@ $(function () {
                 responsivePriority: 2,
             },
             {
-                targets: [4],
+                targets: [3],
                 responsivePriority: 3,
             },
-            { searchable: false, orderable: false, targets: [7] },
-            { className: "text-lg-center", targets: [0, 2, 7] },
-            { className: "text-nowrap", targets: [0, 2, 3, 4, 5] },
+            { searchable: false, orderable: false, targets: [5] },
+            { className: "text-lg-center", targets: [0, 2, 5] },
+            { className: "text-nowrap", targets: [0, 2, 5] },
         ],
         createdRow: function (row, data, dataIndex) {
-            $('td:eq(7)', row).css('min-width', '70px');
-            $('td:eq(1)', row).css('min-width', '140px');
+            $('td:eq(5)', row).css('min-width', '70px');
+            $('td:eq(1)', row).css('min-width', '150px');
             // [0, 2].forEach(function (colIdx) {
             //     $('td:eq(' + colIdx + ')', row).css('max-width', '110px');
             // });
-            [0, 2, 5, 6].forEach(function (colIdx) {
+            [0, 2, 3, 4].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('font-size', '.9em');
             });
         }
@@ -1671,12 +1670,14 @@ $(function () {
         if (paymentData) {
             $('#payment_companyName').text(paymentData.company);
             $('#payment_uniformNum').text(paymentData.uniformNum);
-            if (paymentData.remittanceFile) {
+            if (paymentData.remittanceFile != "-") {
                 let lengthText = paymentData.remittanceFile.length;
                 if (paymentData.remittanceFile.substring((lengthText - 5), (lengthText - 4)) != "1") {
-                    $('#payment_downloadRemittanceFile').html('<a class="d-inline me-3 text-nowrap" href="#">下載&ensp;<i class="fa-solid fa-download"></i><span class="mx-1 update">補</span></a>');
+                    // $('#payment_downloadRemittanceFile').html('<a class="d-inline me-3 text-nowrap" href="#">下載&ensp;<i class="fa-solid fa-download"></i><span class="mx-1 update">補</span></a>');
+                    $('#payment_downloadRemittanceFile').html(`<a class="d-inline me-3 text-nowrap" href="/download_T/T_${paymentData.id}">下載&ensp;<i class="fa-solid fa-download"></i><span class="mx-1 update">補</span></a>`);
                 } else {
-                    $('#payment_downloadRemittanceFile').html('<a class="d-inline me-3 text-nowrap" href="#">下載&ensp;<i class="fa-solid fa-download"></i></a>');
+                    // $('#payment_downloadRemittanceFile').html('<a class="d-inline me-3 text-nowrap" href="#">下載&ensp;<i class="fa-solid fa-download"></i></a>');
+                    $('#payment_downloadRemittanceFile').html(`<a class="d-inline me-3 text-nowrap" href="/download_T/T_${paymentData.id}">下載&ensp;<i class="fa-solid fa-download"></i>`);
                 }
             } else {
                 $('#payment_downloadRemittanceFile').text("-").addClass('readOnly');
@@ -1702,9 +1703,10 @@ $(function () {
                 // 將每個 listItem 添加到 #payment_items
                 $('#payment_items').append(listItem);
             });
-            // $('#payment_items').text(paymentData.items);
 
-            // $('#payment_receiptNum').text(paymentData.receiptNum);
+            // #gotoEditRemittance是a標籤，修改屬性href="/Remittance/Edit/' + id值 + '"
+            $('#gotoEditRemittance').attr('href', `/Remittance/Edit/${paymentData.id}`);
+
             $('#payment_adminNote').text(paymentData.adminNote);
 
             $('#payment_status').text(paymentData.status);
@@ -1720,7 +1722,9 @@ $(function () {
             $('#payment_status').removeClass("changeSelectStatus_items");
             // $('#payment_receiptNum, #payment_adminNote, #payment_status').addClass("readOnly");
             $('#payment_adminNote, #payment_status').addClass("readOnly");
-            $('#payment_updateBtn').hide();
+            $('#payment_updateBtn, #gotoEditRemittance').hide(); // gotoEditRemittance
+            // $('#gotoEditRemittance').hide();
+            
         } else {
             // $('#payment_receiptNum, #payment_adminNote').addClass("changeInput_items");
             $('#payment_adminNote').addClass("changeInput_items");
@@ -1728,7 +1732,8 @@ $(function () {
             // $('#payment_receiptNum, #payment_adminNote, #payment_status').removeClass("readOnly");
             $('#payment_adminNote, #payment_status').removeClass("readOnly");
             CustomInputHandlers.init();
-            $('#payment_updateBtn').show();
+            $('#payment_updateBtn, #gotoEditRemittance').show();
+            // $('#gotoEditRemittance').show();
         }
 
         $('#payment_updateBtn').on('click', function () {
@@ -1740,29 +1745,15 @@ $(function () {
 
             // 獲取所有欄位的目前值
             payment_updatedData.id = paymentId;
-
-            // payment_updatedData.receiptNum = $('#payment_receiptNum').text();
             payment_updatedData.adminNote = $('#payment_adminNote').text();
-
             payment_updatedData.status = $('#payment_status').text();
-
             console.log(payment_updatedData);
             // 將更新的資料送到後端
             $.ajax({
-                url: '您的後端URL', // 替換成您的後端接收更新請求的URL
+                url: paymentStatusEditUrl, 
                 type: 'POST', // 或者 'PUT'，根據您的後端接口設計來決定
                 contentType: 'application/json',
                 data: JSON.stringify(payment_updatedData),
-                // success: function (response) {
-                //     // 處理成功回應
-                //     console.log('更新成功:', response);
-                //     // 根據需要執行其他操作，例如顯示成功訊息
-                // },
-                // error: function (xhr, status, error) {
-                //     // 處理錯誤情況
-                //     console.error('更新失敗:', error);
-                //     // 根據需要顯示錯誤訊息或執行其他操作
-                // }
                 success: function (response) {
                     swalToastSuccess(response.message, 'top');
                     setTimeout(function () {

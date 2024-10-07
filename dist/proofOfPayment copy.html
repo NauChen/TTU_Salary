@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!-- 設定 IE 相容性檢視模式。有些人建議放在head內第一行，避免失效。content="IE=Edge"：什麼版本的 IE 就用什麼版本的標準模式、content="IE=edge,chrome=1"IE使用當前本地最新版標準模式渲染或者用chrome核心渲染 -->
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=Edge"> -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!-- content="no-cache"：禁止瀏覽器使用快取，使用者無法離線瀏覽網頁 -->
+<meta http-equiv="Pragma" content="no-cache">
+<!-- 行動裝置瀏覽網頁的基本設定，RWD網頁一定要寫：
+width=device-width：瀏覽器顯示寬度＝裝置的寬度
+手機、平板的解析度與裝置寬度不同，若沒寫的話，寬度會是裝置的解析度，在裝置上瀏覽網頁時會有明顯的差異
+initial-scale：初始縮放比
+minimum-scale：最小縮放比
+maximum-scale：最大縮放比
+user-scalable：使用者是否可以縮放畫面
+height：畫面高度 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- <meta name="description" content="簡述網站內容"> -->
+<!-- <meta name="keywords" content="關鍵字1, 關鍵字2, 關鍵字3"> -->
+<!-- <meta name="author" content="作者"> -->
+
+<title>校內育成媒合平台-通知已匯款</title>
+
+<!-- 網址列favicon圖片
+檔案格式：.ico（較常使用）、.png、.gif（只有 Firefox 支援）
+尺寸（單位px）：16×16、32×32、48×48
+若不打算支援IE瀏覽器，可以不加"shortcut" -->
+<link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+
+<!-- 行動裝置桌面圖示
+以前ios系統會再對圖片加上效果，若不希望添加，會改成"apple-touch-icon-precomposed"，現在已不用。Safari Web Content Guide
+針對不同裝置有不同的建議尺寸，若系統未找到建議尺寸的圖檔，會用尺寸比較大的圖檔。若不想寫那麼多不同尺寸，那就放最大尺寸的圖檔 -->
+<!-- <link rel="apple-touch-icon" href="圖片路徑" type="image/png" sizes="192x192"> -->
+
+
+ <!-- Facebook Open Graph（開放社交關係圖） -->
+ <!-- 網址，不包含工作階段變數、用戶識別參數或計數器 -->
+ <!-- <meta property="og:url" content="網址" /> -->
+ <!-- 內容的媒體類型，預設為 website，物件類型參考資料 -->
+ <!-- <meta property="og:type" content="內容的媒體類型" /> -->
+ <!-- 標題，不包含網站名稱等任何品牌內容 -->
+ <!-- <meta property="og:title" content="標題" /> -->
+ <!-- 內容的簡短說明，通常為 2 到 4 個句子 -->
+ <!-- <meta property="og:description" content="內容的簡短說明" /> -->
+ <!-- 用戶將內容分享至 Facebook 時顯示的圖像網址： 至少使用寬度為 600 像素的圖像， 高解析度裝置使用至少 1080 像素的寬度以獲得最佳顯示 -->
+ <!-- <meta property="og:image" content="分享至 Facebook 時顯示的圖像" /> -->
+ <!-- 資源的地區設定，預設為 en_US，臺灣是zh_TW，其他支援的地區設定 -->
+ <!-- <meta property="og:locale" content="資源的地區設定" /> -->
+ <meta property="og:site_name" content="公司名稱、網站名稱"/>
+
+
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/style.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> -->
+<link rel="stylesheet" href="./css/fontawesome-all.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.1/css/responsive.bootstrap5.min.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css"> -->
+</head>
+
+<body>
+    <main class="main">
+        <!-- 側邊攔 -->
+<nav class="nav-box no_print">
+    <!-- RWD-MENU標籤 -->
+    <div class="burger-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+    <!-- 側邊攔上方 template-movedToOfficialPage.html -->
+    <div class="top">
+        <a href="./index.html" class="navbar-logo">
+            <img src="./images/ttoLogo_2.png" class="navbar-brand">
+        </a>
+        <ul class="navigation navbar-top">
+            <li class="item">
+                <a class="link" href="./dashboard.html" id="dashboardLink"><i class="fas fa-home"></i><span
+                        class="tooltiptext tooltip-right">儀錶板</span></a>
+            </li>
+            <li class="item dropend">
+                <a class="link dropdown-toggle" role="button" id="jobLink" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-users"></i><span
+                        class="tooltiptext tooltip-right">職缺媒合</span></a>
+                <ul class="dropdown-menu" aria-labelledby="jobLink">
+                    <li>
+                        <!-- <a class="dropdown-item" href="./index.html">職缺總攬&ensp;<i class="fa-solid fa-users-line"></i></a> -->
+                        <a class="dropdown-item" href="./template-movedToOfficialPage.html">職缺總攬&ensp;<i
+                                class="fa-solid fa-users-line"></i></a>
+                    </li>
+                    <li>
+                        <!-- <a class="dropdown-item" href="./jobMyActiveListings.html">現正刊登&ensp;<i class="fa-solid fa-users-viewfinder"></i></a> -->
+                        <a class="dropdown-item" href="./template-movedToOfficialPage.html">現正刊登&ensp;<i class="fa-solid fa-users-viewfinder"></i></a>
+                    </li>
+                    <li>
+                        <!-- <a class="dropdown-item" href="./jobActiveListings.html">全刊登中&ensp;<i class="fa-solid fa-users-viewfinder"></i></a> -->
+                        <a class="dropdown-item" href="./template-movedToOfficialPage.html">全刊登中&ensp;<i class="fa-solid fa-users-viewfinder"></i></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="item dropend">
+                <a class="link dropdown-toggle" role="button" id="applyAndCheckLink" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-file-contract"></i><span
+                        class="tooltiptext tooltip-right">申請與查閱</span></a>
+                <ul class="dropdown-menu" aria-labelledby="applyAndCheckLink">
+                    <li><a class="dropdown-item" href="./template-movedToOfficialPage.html">識別證管理&ensp;<i
+                                class="fa-regular fa-address-card"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./parkingSpaceInventory.html">停車位管理&ensp;<i
+                                class="fa-solid fa-square-parking"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./cultivationRoomInventory.html">培育室管理&ensp;<i
+                                class="fa-solid fa-seedling"></i></a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- <li class="item">
+                <a class="link" href="./progressCheck.html" id="progressLink"><i
+                        class="fa-solid fa-spinner icon-rotate"></i><span
+                        class="tooltiptext tooltip-right">申請進度</span></a>
+            </li> -->
+
+            <li class="item dropend">
+                <a class="link dropdown-toggle" role="button" id="assessmentLink" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-stamp"></i><span
+                        class="tooltiptext tooltip-right">資料審核</span></a>
+                <ul class="dropdown-menu" aria-labelledby="assessmentLink">
+                    <li><a class="dropdown-item" href="./coopManufApp.html">廠商審核&emsp;&ensp;<i
+                                class="fa-solid fa-user-tie"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./confirmPayment.html">收款與收據&ensp;<i
+                                class="fa-solid fa-magnifying-glass-dollar"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./parkingSpaceApp.html">車位審核&emsp;&ensp;<i
+                                class="fa-solid fa-square-parking"></i></a></li>
+                    <li><a class="dropdown-item" href="./renewContractApp.html">續約審核&emsp;&ensp;<i
+                                class="fa-solid fa-file-signature"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./idCardApp.html">識別證審核&ensp;<i
+                                class="fa-regular fa-address-card"></i></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="item dropend">
+                <a class="link dropdown-toggle" role="button" id="managementLink" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-solid fa-briefcase"></i><span
+                        class="tooltiptext tooltip-right">資料管理</span></a>
+                <ul class="dropdown-menu" aria-labelledby="managementLink">
+                    <li><a class="dropdown-item" href="./cultivationRoom.html">培育室管理&ensp;<i
+                                class="fa-solid fa-tree-city"></i></a></li>
+                    <li><a class="dropdown-item" href="./parkingSpace.html">停車位管理&ensp;<i
+                                class="fa-brands fa-product-hunt"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./idCard.html">識別證管理&ensp;<i
+                                class="fa-regular fa-address-card"></i></a>
+                    </li>
+                    <li><a class="dropdown-item" href="./roles.html">用戶權限&emsp;&ensp;<i
+                                class="fa-solid fa-people-robbery"></i></a></li>
+                    <li><a class="dropdown-item" href="./userProfilesEditAdmin.html">用戶資料&emsp;&ensp;<i
+                                class="fa-solid fa-address-book"></i></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="item">
+                <a class="link" href="./template-underConstruction.html" id="logRecordLink"><i
+                        class="fa-solid fa-file-shield"></i><span class="tooltiptext tooltip-right">LOG紀錄</span></a>
+            </li>
+            <!-- <li class="item">
+                <a class="link" href="./template-underConstruction.html" id="provideOpinionsLink"><i
+                        class="fa-regular fa-paper-plane"></i><span class="tooltiptext tooltip-right">意見反應</span></a>
+            </li> -->
+            <li class="item">
+                <a class="link" href="./template-style.html" id="styleLink"><i
+                        class="fa-solid fa-paint-roller"></i><span class="tooltiptext tooltip-right">樣式設計</span></a>
+            </li>
+
+            <li class="item">
+                <a class="link" href="./template-underConstruction.html" id="underConstructionLink"><i
+                        class="fa-solid fa-person-digging"></i><span class="tooltiptext tooltip-right">施工頁</span></a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- 側邊攔下方 -->
+    <div class="bottom">
+        <ul class="navigation">
+            <!-- 已登入 -->
+            <li class="item dropend">
+                <a class="link dropdown-toggle" href="#" role="button" id="userLink" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fa-regular fa-circle-user"></i></a>
+                <ul class="dropdown-menu" aria-labelledby="userLink">
+                    <li><a class="dropdown-item" href="./login.html">登入&ensp;<i
+                                class="fa-solid fa-right-to-bracket"></i></a></li>
+                    <li><a class="dropdown-item" href="#">設定&ensp;<i class="fa-solid fa-gear"></i></a></li>
+                    <li><a class="dropdown-item" href="#">登出&ensp;<i class="fa-solid fa-door-open"></i></a></li>
+                </ul>
+            </li>
+            <!-- 未登入 -->
+            <!-- <li class="item">
+                        <a class="link" href="./nav-memo2-login.html"><i class="fa-regular fa-circle-user"></i><span
+                                class="tooltiptext tooltip-right">登入&ensp;/&ensp;申請</span></a>
+                    </li> -->
+        </ul>
+    </div>
+</nav>
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-file-contract"></i>&ensp;申請與查閱</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-comment-dollar"></i>&ensp;通知已匯款</li>
+                    </ol>
+                </div>
+
+
+                <div>
+                    <div class="tabs-box my-2r">
+                        <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>轉帳證明<i
+                                class="fa-solid fa-quote-right"></i></h3>
+                        <div class="tabs section-border-radius section-padding">
+                            <form class="container-fluid" method="post" id="formSendProofOfPayment">
+                                <div class="row">
+                                    <div class="col-xl-8 mb-3">
+                                        <div class="row mb-3">
+                                            <label for="proofOfPayment_companyName"
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>公司名稱&emsp;</label>
+                                            <div class="col">
+                                                <!-- <input type="text" class="form-control" id="proofOfPayment_companyName"
+                                                    readonly> -->
+                                                    <input type="text" class="form-control" id="proofOfPayment_companyName">
+                                                    <span class="text-danger"
+                                                    id="danger_proofOfPayment_companyName" name="companyName"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="proofOfPayment_last5AccountNo"
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>帳號後五碼</label>
+                                            <div class="col">
+                                                <input type="text" class="form-control thisRequired"
+                                                    id="proofOfPayment_last5AccountNo" onkeyup="restrictTo5Num(this)">
+                                                <span class="text-danger"
+                                                    id="danger_proofOfPayment_last5AccountNo"></span>
+                                            </div>
+                                            <label for="proofOfPayment_saveLast5AccountNo"
+                                                class="col-lg col-form-label text-nowrap">
+                                                <input type="checkbox" class="form-check-input me-2"
+                                                    id="proofOfPayment_saveLast5AccountNo">儲存為常用帳號後五碼
+                                            </label>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="proofOfPayment_Date"
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>轉帳日期&emsp;</label>
+                                            <div class="col">
+                                                <input type="date" class="form-control thisRequired" id="proofOfPayment_Date">
+                                                <span class="text-danger" id="danger_proofOfPayment_Date"></span>
+                                            </div>
+                                            <label for="proofOfPayment_Money"
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>轉帳金額&emsp;</label>
+                                            <div class="col">
+                                                <input type="text" class="form-control thisRequired" id="proofOfPayment_Money"
+                                                onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
+                                                <span class="text-danger" id="danger_proofOfPayment_Money"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2 salaryRadio border-warning py-2">
+                                            <label for="remittancePdf"
+                                                class="col-auto col-form-label text-nowrap upload-label py-0 align_center">
+                                                點擊此處可上傳匯款憑證(.pdf)<i class="fa-solid fa-upload mx-1"></i>
+                                            </label>
+                                            <div class="col-12">
+                                                <input type="file" class="form-control d-none" id="remittancePdf"
+                                                    accept=".pdf" name="remittancePdf"
+                                                    onchange="javascript:{document.getElementById('remittance_fileInfo').innerHTML = document.getElementById('remittancePdf').value;setFormHeight();}">
+                                                <div id="remittance_fileInfo" class="fileInfo"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="proofOfPayment_companyName"
+                                                class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>本次匯款支付項目&emsp;</label>
+                                            <div class="col">
+                                                <table id="proofOfPayment_Table">
+                                                    <!-- <tr>
+                                                        <td>
+                                                            <input type="checkbox" class="form-check-input me-2"
+                                                                id="BB" name="proofOfPaymentItem">
+                                                        </td>
+                                                        <td>
+                                                            <label for="BB" class="col-lg col-form-label ">
+                                                                <span
+                                                                    class="text-nowrap text-secondary">階段付款</span><span
+                                                                    class="text-nowrap">培育室(挺生大樓-202)</span><span
+                                                                    class="text-nowrap text-danger">20,000元</span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" class="form-check-input me-2"
+                                                                id="CC" name="proofOfPaymentItem">
+                                                        </td>
+                                                        <td>
+                                                            <label for="CC" class="col-lg col-form-label ">
+                                                                <span
+                                                                    class="text-nowrap text-secondary">階段付款</span><span
+                                                                    class="text-nowrap">停車位(校本部-01)</span><span
+                                                                    class="text-nowrap text-danger">2,000元</span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" class="form-check-input me-2"
+                                                                id="DD" name="proofOfPaymentItem">
+                                                        </td>
+                                                        <td>
+                                                            <label for="DD" class="col-lg col-form-label ">
+                                                                <span class="text-nowrap text-secondary">新申請</span><span
+                                                                    class="text-nowrap">停車位(ABC-119)</span><span
+                                                                    class="text-nowrap text-danger">費用待確認</span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" class="form-check-input me-2"
+                                                                id="EE" name="proofOfPaymentItem">
+                                                        </td>
+                                                        <td>
+                                                            <label for="EE" class="col-lg col-form-label ">
+                                                                <span class="text-nowrap text-secondary">新申請</span><span
+                                                                    class="text-nowrap">識別證(王小明)</span><span
+                                                                    class="text-nowrap text-danger">100元</span>
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" class="form-check-input me-2"
+                                                                id="FF" name="proofOfPaymentItem">
+                                                        </td>
+                                                        <td>
+                                                            <label for="FF" class="col-lg col-form-label ">
+                                                                <span
+                                                                    class="text-nowrap text-secondary">遺失補發</span><span
+                                                                    class="text-nowrap">識別證(王小明)</span><span
+                                                                    class="text-nowrap text-danger">300元</span>
+                                                            </label>
+                                                        </td>
+                                                    </tr> -->
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4 mb-3">
+                                        <div class="salaryRadio px-2 py-2 mx-1 border-success">
+                                            <div class="row mb-3">
+                                                <label for="proofOfPayment_helpItems"
+                                                    class="col-12 col-form-label text-nowrap fw-bold">注意事項：</label>
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">a.</div>
+                                                        <div class="col">因付款通知無法修改，<strong
+                                                                class="text-decoration-underline text-danger">送出前請再次確認資料是否正確</strong>。
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">b.</div>
+                                                        <div class="col">若多次匯款，<strong>請分開填寫付款通知</strong>。</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">c.</div>
+                                                        <div class="col"><strong
+                                                                class="text-decoration-underline">常用帳號後五碼僅能記錄一組</strong>，再次儲存後系統會更新資料。
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">d.</div>
+                                                        <div class="col">上傳匯款憑證時，<strong>僅接受PDF格式的檔案(.pdf)</strong>。
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-auto pe-0">e.</div>
+                                                        <div class="col">
+                                                            <strong>大同大學帳戶資訊：</strong><br>
+                                                            XX銀行XX分行&emsp;代碼：000-0000<br>
+                                                            8888-8888-8888-8888。
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row text-center p-3 justify-content-center">
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-lg btn-outline-secondary" id="rebackBtn"
+                                            onclick="history.back()">返回</button>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="reset" class="btn btn-lg btn-outline-danger"
+                                            id="resetBtn">重填</button>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-lg btn-success"
+                                            id="submitBtn">送出</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- <footer>
+    <ul>
+        <li>隱私權</li>
+    </ul>
+</footer> -->
+
+ <!-- TOP -->
+ <div class="top_button no_print">
+    <a id="btn_up"><img src="./images/TOP_LOGO_3.png" alt=""></a>
+</div>
+<!-- 頁尾 -->
+<div class="footer section-padding section-border-radius my-2r no_print">
+    <ul class="links">
+        <li><a href="#">大同大學</a></li>
+        <li><a href="./index.html">育成媒合</a></li>
+        <li><a href="./dashboard.html">帳號總攬</a></li>
+    </ul>
+    <p class="copyright">
+        大同大學 版權所有&ensp;&copy;&ensp;2022 All Rights Reserved.<br>建議使用：IE9.0以上版本或Google
+        Chrome瀏覽器<span>(最佳螢幕解析1280*1024)</span>
+    </p>
+</div>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.1/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.1/js/responsive.bootstrap5.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.all.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./js/sweetAlert.js"></script>
+<script src="./js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+    <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
+    <!-- <script src="./js/editableTextToggle.js"></script> -->
+    <script src="./js/proofOfPayment.js"></script>
+
+</body>
+
+</html>
