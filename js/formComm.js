@@ -264,7 +264,6 @@ function setLaterMinDate(inputId, todayLaterDays, startDateStr, startDateLaterDa
     $('#' + inputId).attr('min', laterDate);
 }
 
-
 //   確保選擇 開始日期 之前 不能選擇 結束日期，會跳Toast提示。選擇結束日期後開始日期加上max限制，避免逆選漏洞。
 function enforceStartDateFirst(startDateId, endDateId) {
     var startDate = $('#' + startDateId);
@@ -300,7 +299,13 @@ function enforceStartDateFirst(startDateId, endDateId) {
         }
     });
 }
-
+//   格式化日期為 yyyy-MM-dd
+function formatDate(date) {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
 
 // ※※ 文字轉換函式 - 存取資料專用 ※※
 //   將資料庫的文字內的 \n 轉成 <br>
