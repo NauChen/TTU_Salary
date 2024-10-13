@@ -3,14 +3,14 @@
 //         'id': '1',
 //         'building': '青創基地',
 //         'room': '101-A',
-//         'company': '馳晶科技股份有限公司',
+// 'company': '馳晶科技股份有限公司',
 //         'rate': '80,000',
-//         'squareMeters': '12.5',
-//         'adminNote': '共用空間-A',
-//         'startDate': '2024-01-05',
-//         'endDate': '2025-01-05',
-//         'responsiblePerson': '郝有錢',
-//         'createBy': '王小明',
+// 'squareMeters': '12.5',
+// 'adminNote': '共用空間-A',
+// 'startDate': '2024-01-05',
+// 'endDate': '2025-01-05',
+// 'responsiblePerson': '郝有錢',
+// 'createBy': '王小明',
 //         'createDate': '2023-01-15',
 //         'status': '啟用',
 //     },
@@ -130,48 +130,48 @@
 //     },
 // ];
 
-var dataset_cultivationRoomHistory = [
-    {
-        "createDate": "2019-01-19",
-        "squareMeters": "56.4",
-        "rate": "30,000",
-        "startDate": "",
-        "endDate": "",
-        "company": "",
-        "remark": "啟用",
-        "createBy": "王大明",
-    },
-    {
-        "createDate": "2019-08-20",
-        "squareMeters": "56.4",
-        "rate": "1,300,000",
-        "startDate": "2019-09-01",
-        "endDate": "2020-08-31",
-        "company": "冠陞企業管理顧問股份有限公司",
-        "remark": "廠商進駐",
-        "createBy": "王大明",
-    },
-    {
-        "createDate": "2020-08-20",
-        "squareMeters": "56.4",
-        "rate": "1,300,000",
-        "startDate": "2020-09-01",
-        "endDate": "2021-08-31",
-        "company": "冠陞企業管理顧問股份有限公司",
-        "remark": "廠商進駐",
-        "createBy": "王大明",
-    },
-    {
-        "createDate": "2021-10-20",
-        "squareMeters": "20.2",
-        "rate": "",
-        "startDate": "",
-        "endDate": "",
-        "company": "",
-        "remark": "改坪數",
-        "createBy": "王大明",
-    },
-]
+// var dataset_cultivationRoomHistory = [
+//     {
+//         "createDate": "2019-01-19",
+//         "squareMeters": "56.4",
+//         "rate": "30,000",
+//         "startDate": "",
+//         "endDate": "",
+//         "company": "",
+//         "remark": "啟用",
+//         "createBy": "王大明",
+//     },
+//     {
+//         "createDate": "2019-08-20",
+//         "squareMeters": "56.4",
+//         "rate": "1,300,000",
+//         "startDate": "2019-09-01",
+//         "endDate": "2020-08-31",
+//         "company": "冠陞企業管理顧問股份有限公司",
+//         "remark": "廠商進駐",
+//         "createBy": "王大明",
+//     },
+//     {
+//         "createDate": "2020-08-20",
+//         "squareMeters": "56.4",
+//         "rate": "1,300,000",
+//         "startDate": "2020-09-01",
+//         "endDate": "2021-08-31",
+//         "company": "冠陞企業管理顧問股份有限公司",
+//         "remark": "廠商進駐",
+//         "createBy": "王大明",
+//     },
+//     {
+//         "createDate": "2021-10-20",
+//         "squareMeters": "20.2",
+//         "rate": "",
+//         "startDate": "",
+//         "endDate": "",
+//         "company": "",
+//         "remark": "改坪數",
+//         "createBy": "王大明",
+//     },
+// ]
 
 $(function () {
     const dataset_cultivationRoom_OpenList = dataset_cultivationRoomAll.filter(item => item.status === "啟用");
@@ -255,7 +255,7 @@ $(function () {
                 render: function (data) {
                     // CultivationRoom/Reactivate/
                     // return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-id="' + data + '"><i class="fa-solid fa-arrow-rotate-left"></i></button>'
-                     return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm reactivateBtn btnThrottle" data-id="' + data + '"><i class="fa-solid fa-arrow-rotate-left"></i></button>'
+                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm reactivateBtn btnThrottle" data-id="' + data + '"><i class="fa-solid fa-arrow-rotate-left"></i></button>'
                 }
             },
         ],
@@ -332,6 +332,26 @@ $(function () {
             console.error('thisRoomData data not found for id:', thisRoomId);
         };
 
+        // 使用 AJAX 發送請求
+        $.ajax({
+            url: roomHistoryUrl, // 後端API的URL
+            method: 'POST',
+            data: { roomId: roomId },  // 將 roomId 傳給後端
+            success: function (response) {
+                // 後端返回的處理結果
+                console.log('歷史記錄:', response.history);
+                // 在前端顯示歷史記錄
+                // displayHistory(response.history);
+                // dataset_cultivationRoomHistory(response.history);
+                // dataset_cultivationRoomHistory 是你所需的資料
+                dataset_cultivationRoomHistory = response.dataset_cultivationRoomHistory;
+                console.log(dataset_cultivationRoomHistory);
+            },
+            error: function (error) {
+                console.log('錯誤:', error);
+            }
+        });
+
         // 要加上用thisRoomId去資料庫撈此id的歷史紀錄，放入dataset_cultivationRoomHistory
         // 使用 AJAX 發送請求到後端
         // $.ajax({
@@ -347,15 +367,15 @@ $(function () {
         // });
     });
 
-      // 監聽 a 標籤的點擊事件
-      $('.reactivateBtn').on('click', function() {
+    // 監聽 a 標籤的點擊事件
+    $('.reactivateBtn').on('click', function () {
         var roomId = $(this).data('id');
-        
+
         $.ajax({
             url: reactivateUrl,  // 對應控制器方法的 URL
             type: 'POST',
             data: { id: roomId },  // 傳送 roomId 作為參數
-            success: function(response) {
+            success: function (response) {
                 // alert('培育室已成功重新啟用!');
                 // location.reload(); // 重新加載頁面
                 swalToastSuccess(response.message, 'top');// 2秒
@@ -363,7 +383,7 @@ $(function () {
                     location.reload();
                 }, 2300);  //2.3秒後
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error('Error:', error);
                 // alert('啟用失敗，請稍後再試。');
                 swalToastWarning('啟用時發生錯誤，請稍後再試。', 'top');

@@ -318,8 +318,11 @@ height：畫面高度 -->
             <div class="col lightBoxItems p-3 readOnly align_center" id="cultivation_room"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">坪數</div>
             <div class="col lightBoxItems p-3 align_center thisTextRequired" id="cultivation_squareMeters"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">服務費用/月</div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center thisTextRequired" id="cultivation_rate"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">服務費用/月</div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center">
+                <input type="text" id="cultivation_inputRate" class="form-control" onkeyup="restrictToNum(this)"
+                    onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
+            </div>
         </div>
         <!-- 培育期間 起訖日期 (服務費先給預設，可改)-->
         <div class="row mb-1 multiple">
@@ -333,7 +336,14 @@ height：畫面高度 -->
                 </div>
             </div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">分期數</div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center thisTextRequired" id="cultivation_period">1</div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center thisTextRequired">
+                <select class="form-control form-select" id="cultivation_selectPeriod">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
         </div>
         <!-- 公司名稱(自動代入)、統編(可改，可輸入已通過且開放的廠商資料)、負責人(自動代入) -->
         <div class="row mb-1 multiple">

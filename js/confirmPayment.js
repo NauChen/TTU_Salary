@@ -1948,7 +1948,7 @@ $(function () {
             payment_updatedData.id = paymentId;
             payment_updatedData.adminNote = $('#payment_adminNote').text();
             payment_updatedData.status = $('#payment_status').text();
-            console.log(payment_updatedData);
+            // console.log(payment_updatedData);
             // 將更新的資料送到後端
             $.ajax({
                 url: paymentStatusEditUrl,
@@ -1981,7 +1981,6 @@ $(function () {
     $('#confirmPaymentCultivationModel').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget); // 獲取觸發模態框的按鈕
         let catchId = String(button.data('id')); // 從按鈕獲取數據 ID
-        // console.log('substringId:', catchId.substring(0, 4)); // 輸出 ID 的前四個字元
         let thisRoomId = "";
 
         // 根據 ID 的前綴來確定房間 ID
@@ -1996,11 +1995,10 @@ $(function () {
                 thisRoomId = catchId.substring(5);
                 break;
         }
-        // console.log('thisRoomId:', thisRoomId); // 輸出房間 ID
+        console.log('catchId:', catchId); // 輸出房間 ID
 
         // 從數據集中查找相應的房間資料
         let roomData = dataset_confirmPaymentCultivationRoom.find(r => r.roomId == thisRoomId);
-        // let periodNumValue = "1"; // 期間數值
 
         // 定義元素的選擇器
         const receiptNumElements = ['#cultivation_receiptNum1', '#cultivation_receiptNum2', '#cultivation_receiptNum3', '#cultivation_receiptNum4'];
@@ -2014,11 +2012,8 @@ $(function () {
 
         $('#cultivation_adminNote').addClass("changeInput_items");
         $('#cultivation_startDate, #cultivation_endDate').addClass("changeDate_items");
-        $('#cultivation_rate').addClass("changeMoney_items");
         $('#cultivation_uniformNum').addClass("changeUniformNum_items");
         $('#cultivation_squareMeters').addClass("changeDecimal_items");
-        $('#cultivation_period').addClass("changeSelect_items");
-
 
         if (roomData) {
             // 顯示房間的基本資料
@@ -2034,6 +2029,7 @@ $(function () {
             } else if (isNext) {
                 currentData = roomData.next;
             }
+            console.log('currentData:', currentData); 
 
             // 顯示刪除和提醒按鈕
             if (currentData && currentData.id) {
@@ -2043,18 +2039,17 @@ $(function () {
             }
 
             // 設定金額
-            $('#cultivation_rate').text(currentData?.amount || roomData.defaultAmount);
+            $('#cultivation_inputRate').val(currentData?.amount || roomData.defaultAmount);
 
             // 顯示面積和日期
             $('#cultivation_squareMeters').text(currentData?.squareMeters || roomData.defaultSquareMeters);
-            // $('#cultivation_startDate').text(currentData?.startDate || formatDate(new Date()));
             $('#cultivation_startDate').text(currentData?.startDate || formatDate(new Date(new Date().setDate(new Date().getDate() + 1))));
             $('#cultivation_endDate').text(currentData?.endDate || formatDate(new Date(new Date().setFullYear(new Date().getFullYear() + 1))));
 
             // 期間設置
             let periodNumValue = currentData?.period || "1";
             // console.log("periodNumValue", periodNumValue);
-            $('#cultivation_period').text(periodNumValue);
+            $('#cultivation_selectPeriod').val(periodNumValue);
 
             // 顯示公司和聯絡人資訊
             $('#cultivation_companyName').text(currentData?.company || "");
@@ -2071,17 +2066,21 @@ $(function () {
             $('#cultivation_deadline4').text(currentData?.deadline4 || "");
 
             // 顯示應收金額
-            const thisPeriodNum = parseInt(periodNumValue, 10);
-            // console.log("thisPeriodNum", thisPeriodNum);
+            let rateNum = parseFloat($('#cultivation_rate').text().replace(/,/g, ''));
+            // 顯示應收金額和收據
             if (currentData) {
                 for (let i = 1; i <= 4; i++) {
-                    if (currentData[`receivableAmount${i}`] && thisPeriodNum >= i) {
+                    // 檢查每期應收金額
+                    if (currentData[`receivableAmount${i}`]) {
+                        // 如果有值，顯示該值
                         $(`#cultivation_installmentAmount${i}`).text(currentData[`receivableAmount${i}`]);
+                    } else if (periodNumValue >= i) {
+                        // 如果沒有值，計算金額並顯示
+                        const calculatedAmount = ((rateNum * 12) / periodNumValue).toLocaleString();
+                        $(`#cultivation_installmentAmount${i}`).text(calculatedAmount);
                     }
-                }
 
-                // 顯示收據號碼和收到日期
-                for (let i = 1; i <= 4; i++) {
+                    // 顯示收據號碼和收到日期
                     $(`#cultivation_receiptNum${i}`).text(currentData[`receiptNum${i}`] || "");
                     $(`#cultivation_receivedDate${i}`).text(currentData[`receivedDate${i}`] || "");
                 }
@@ -2090,91 +2089,148 @@ $(function () {
             $('#cultivation_adminNote').text(currentData?.adminNote || "");
 
             // 更新應收金額
-            let rateNum = parseFloat($('#cultivation_rate').text().replace(/,/g, ''));
-            if (currentData) {
-                updateInstallmentAmounts(thisPeriodNum, rateNum);
-            }
+            // if (currentData) {
+            //     updateInstallmentAmounts(periodNumValue, rateNum);
+            // }
 
+            handleContentChange();
             // 清理顏色和樣式
-            CustomInputHandlers.destroy();
-            resetStyles();
+            // CustomInputHandlers.destroy();
+            // resetStyles();
+            // // 根據期數為相關元素添加背景顏色
+            // if (periodNumValue) {
+            //     applyBackgroundColors(periodNumValue);
+            // }
+            // CustomInputHandlers.init();
 
-            // 根據期數為相關元素添加背景顏色
-            if (periodNumValue) {
-                applyBackgroundColors(periodNumValue);
-            }
-            CustomInputHandlers.init();
-        }
-
-        // 函式 - 計算建議金額並更新顯示
-        function updateInstallmentAmounts(period, rate) {
-            const amount = (rate * 12) / period;
-            installmentAmountElements.forEach((el, index) => {
-                $(el).text(index < period ? amount.toLocaleString() : '');
+            // 監聽 cultivation_inputRate 的值變動
+            $('#cultivation_inputRate').on('input', function () {
+                const rateValue = $(this).val().trim();
+            console.log('Rate changed:', rateValue);
+                handleContentChange();
             });
-        }
-
-        // 函式 - 清理樣式
-        function resetStyles() {
-            labelReceiptElements.forEach((el, index) => {
-                $(el).removeClass(pinkBG).removeClass(grayBG);
-                $(labelInstallmentAmountElements[index]).removeClass(pinkBG).removeClass(grayBG);
-                $(labelDeadlineElements[index]).removeClass(pinkBG).removeClass(grayBG);
-                $(receiptNumElements[index]).removeClass("changeInput_items");
-                $(installmentAmountElements[index]).removeClass("changeMoney_items");
-                $(deadlineElements[index]).removeClass("changeDate_items");
+        
+            // 監聽 cultivation_selectPeriod 的值變動
+            $('#cultivation_selectPeriod').on('change', function () {
+                // CustomInputHandlers.destroy();
+                const periodValue = $(this).val();
+                console.log('Period changed:', periodValue);
+                handleContentChange();
+                // CustomInputHandlers.init();
             });
-        }
-
-        // 函式 - 為元素添加背景顏色
-        function applyBackgroundColors(periodNum) {
-            for (let j = 0; j < periodNum; j++) {
-                $(labelReceiptElements[j]).addClass(pinkBG);
-                $(labelInstallmentAmountElements[j]).addClass(pinkBG);
-                $(labelDeadlineElements[j]).addClass(pinkBG);
-                $(receiptNumElements[j]).addClass("changeInput_items");
-                $(installmentAmountElements[j]).addClass("changeMoney_items");
-                $(deadlineElements[j]).addClass("changeDate_items");
-            }
-        }
-
-        // 定義監聽 DOM 內容變化的函式
-        function observeContentChanges(elementId, callback) {
-            const targetNode = document.querySelector(elementId);
-            if (!targetNode) return;
-
-            const config = { childList: true, subtree: true, characterData: true };
-
-            const observer = new MutationObserver((mutationsList) => {
-                for (let mutation of mutationsList) {
-                    if (mutation.type === 'childList' || mutation.type === 'characterData') {
-                        callback();
-                        break;
-                    }
-                }
-            });
-
-            observer.observe(targetNode, config);
-            return observer; // 可以根據需要返回 observer 以便後續管理
-        }
-
-        // 監聽到 period 和 rate 改變後要執行的函式
-        function handleContentChange() {
-            const period = parseInt($('#cultivation_period').text(), 10);
-            const rate = parseFloat($('#cultivation_rate').text().replace(/,/g, ''));
-
-            if (!isNaN(period) && !isNaN(rate)) {
-                updateInstallmentAmounts(period, rate);
+            
+            // 這是處理變動後的邏輯
+            function handleContentChange() {
                 CustomInputHandlers.destroy();
-                resetStyles();
-                applyBackgroundColors(period);
-                CustomInputHandlers.init();
+                const period = $('#cultivation_selectPeriod').val();  // 取得選擇的期數
+                const rate = parseFloat($('#cultivation_inputRate').val().replace(/,/g, '')); // 取得輸入的金額並移除逗號
+        
+                if (!isNaN(period) && !isNaN(rate)) {
+                    console.log('Valid values: Period -', period, 'Rate -', rate);
+                    // 更新應收金額並重新應用樣式
+                    resetStyles();
+                    updateInstallmentAmounts(period, rate);
+                    applyBackgroundColors(period);
+                    CustomInputHandlers.init();
+                } else {
+                    console.log('Invalid values for period or rate.');
+                }
+            }
+        
+        
+            function updateInstallmentAmounts(period, rate) {
+                // 計算應收總額
+                const totalAmount = rate * 12;
+            
+                let totalReceivableAmount = 0; // 紀錄已有的應收金額總和
+                let remainingPeriods = period; // 剩餘未計入歷史數據的期數
+            
+                // 遍歷每個分期付款的 HTML 元素
+                installmentAmountElements.forEach((el, index) => {
+                    let receivableAmount = null;
+            
+                    // 確保 currentData 存在，並且有對應的應收金額
+                    if (currentData && currentData[`receivableAmount${index + 1}`]) {
+                        // 將應收金額字符串轉換為數字
+                        receivableAmount = parseFloat(currentData[`receivableAmount${index + 1}`].replace(/,/g, ''));
+                    }
+            
+                    if (!isNaN(receivableAmount) && index < period) {
+                        // 如果有歷史數據，顯示 currentData 的值
+                        // $(el).text(receivableAmount.toLocaleString());
+                            // 如果有歷史數據，顯示 currentData 的值
+                        if (receivableAmount !== null) {
+                            $(el).text(receivableAmount.toLocaleString());
+                        } else {
+                            $(el).text(''); // 或者設定為空值
+                        }
+                        totalReceivableAmount += receivableAmount; // 累加歷史數據的應收金額
+                        remainingPeriods--; // 減少剩餘的期數
+                    } else if (index < period) {
+                        // 如果沒有歷史數據，顯示剩餘金額的平均值
+                        const remainingAmount = totalAmount - totalReceivableAmount;
+            
+                        // 確保剩餘期數不為零，以避免除以零的錯誤
+                        const averageRemainingAmount = remainingPeriods > 0 ? (remainingAmount / remainingPeriods) : 0;
+            
+                        // 格式化為帶千分位的字符串
+                        $(el).text(averageRemainingAmount.toLocaleString());
+                    } else {
+                        // 超過期數的部分顯示為空白
+                        $(el).text('');
+                    }
+                });
+            }
+            // function updateInstallmentAmounts(period, rate) {
+            //     const amount = (rate * 12) / period; // 根據期數計算每期應收金額
+        
+            //     installmentAmountElements.forEach((el, index) => {
+            //         let receivableAmount = null;
+        
+            //         // 確保 currentData 存在，並且有對應的應收金額
+            //         if (currentData && currentData[`receivableAmount${index + 1}`]) {
+            //             receivableAmount = parseFloat(currentData[`receivableAmount${index + 1}`]);
+            //         }
+        
+            //         if (!isNaN(receivableAmount) && index < period) {
+            //             // 如果有值，顯示 currentData 的值
+            //             $(el).text(receivableAmount.toLocaleString());
+            //         } else if (index < period) {
+            //             // 否則顯示計算出的金額
+            //             $(el).text(amount.toLocaleString());
+            //         } else {
+            //             // 超過期數的部分顯示為空白
+            //             $(el).text('');
+            //         }
+            //     });
+            // }
+        
+            // 函式 - 清理樣式
+            function resetStyles() {
+                // 清除原本的背景色等樣式
+                labelReceiptElements.forEach((el, index) => {
+                    $(el).removeClass(pinkBG).removeClass(grayBG);
+                    $(labelInstallmentAmountElements[index]).removeClass(pinkBG).removeClass(grayBG);
+                    $(labelDeadlineElements[index]).removeClass(pinkBG).removeClass(grayBG);
+                    $(receiptNumElements[index]).removeClass("changeInput_items");
+                    $(installmentAmountElements[index]).removeClass("changeMoney_items");
+                    $(deadlineElements[index]).removeClass("changeDate_items");
+                });
+            }
+        
+            // 函式 - 根據期數為相關元素添加背景顏色
+            function applyBackgroundColors(periodNum) {
+                for (let j = 0; j < periodNum; j++) {
+                    $(labelReceiptElements[j]).addClass(pinkBG);
+                    $(labelInstallmentAmountElements[j]).addClass(pinkBG);
+                    $(labelDeadlineElements[j]).addClass(pinkBG);
+                    $(receiptNumElements[j]).addClass("changeInput_items");
+                    $(installmentAmountElements[j]).addClass("changeMoney_items");
+                    $(deadlineElements[j]).addClass("changeDate_items");
+                }
             }
         }
 
-        // 監聽 period 和 rate 的內容變化
-        observeContentChanges('#cultivation_period', handleContentChange);
-        observeContentChanges('#cultivation_rate', handleContentChange);
 
 
         $('#cultivation_updateBtn').off('click');
@@ -2182,41 +2238,41 @@ $(function () {
         $('#cultivation_deleteData').off('click');
         $('#cultivation_deleteData').on('click',function(){
             console.log("使用Id",catchId);
-        let deleteId = "";
-        switch (catchId.substring(0, 4)) {
-            case 'now_':
-                deleteId = roomData.now.id;
-                break;
-            case 'next':
-                deleteId = roomData.next.id;
-                break;
-            default:
-                deleteId = "add";
-                break;
-        }  
+            let deleteId = "";
+            switch (catchId.substring(0, 4)) {
+                case 'now_':
+                    deleteId = roomData.now.id;
+                    break;
+                case 'next':
+                    deleteId = roomData.next.id;
+                    break;
+                default:
+                    deleteId = "add";
+                    break;
+            }  
 
-        console.log("刪除Id",deleteId);
- // 將更新的資料送到後端
-        $.ajax({
-            url: deleteRoomRecordsUrl, // 替換成您的後端接收更新請求的URL
-            type: 'POST', // 或者 'PUT'，根據您的後端接口設計來決定
-            contentType: 'application/json',
-            data: JSON.stringify(deleteId),
-            success: function (response) {
-                // 處理成功回應
-                console.log('刪除成功:', response);
-                // 根據需要執行其他操作，例如顯示成功訊息
-                swalToastSuccess(response.message, 'top');// 2秒
-                setTimeout(function () {
-                    location.reload();
-                }, 2300);  //2.3秒後
-            },
-            error: function (xhr, status, error) {
-                // 處理錯誤情況
-                console.error('刪除失敗:', error);
-                swalToastWarning('刪除配置紀錄時發生錯誤。', 'top');
-            }
-        });
+            // console.log("刪除Id",deleteId);
+    // 將更新的資料送到後端
+            $.ajax({
+                url: deleteRoomRecordsUrl, // 替換成您的後端接收更新請求的URL
+                type: 'POST', // 或者 'PUT'，根據您的後端接口設計來決定
+                contentType: 'application/json',
+                data: JSON.stringify(deleteId),
+                success: function (response) {
+                    // 處理成功回應
+                    // console.log('刪除成功:', response);
+                    // 根據需要執行其他操作，例如顯示成功訊息
+                    swalToastSuccess(response.message, 'top');// 2秒
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2300);  //2.3秒後
+                },
+                error: function (xhr, status, error) {
+                    // 處理錯誤情況
+                    // console.error('刪除失敗:', error);
+                    swalToastWarning('刪除配置紀錄時發生錯誤。', 'top');
+                }
+            });
 
         });
 
@@ -2231,66 +2287,73 @@ $(function () {
                     // formType = "now";
                     formTypeId = roomData.now.id;
                     break;
-                case 'def_':
+                case 'next_':
                     // formType = "add";
-                    formTypeId = "add";
-                    break;
-                default:
-                    // formType = "next";
                     formTypeId = roomData.next.id;
                     break;
+                default:
+                    formTypeId = "add";
+                    // formType = "next";
+                    break;
             }
-            // 清除上次的資料
-            updatedData = {};
-            // 獲取所有欄位的目前值
-            updatedData.roomId = roomData.id;
 
-            updatedData.id = formTypeId;
-            updatedData.squareMeters = $('#cultivation_squareMeters').text();
-            updatedData.amount = $('#cultivation_rate').text();
+            var roomUpdatedData = {
+                roomId: thisRoomId,
+                id: formTypeId,
+                squareMeters: $('#cultivation_squareMeters').text(),
+                // amount: $('#cultivation_rate').text(),
+                amount: $('#cultivation_inputRate').val(),
+                startDate: $('#cultivation_startDate').text(),
+                endDate: $('#cultivation_endDate').text(),
+                // period: $('#cultivation_period').text(),
+                period: $('#cultivation_selectPeriod').val(),
+                uniformNum: $('#cultivation_uniformNum').text(),
+                deadline1: $('#cultivation_deadline1').text(),
+                deadline2: $('#cultivation_deadline2').text(),
+                deadline3: $('#cultivation_deadline3').text(),
+                deadline4: $('#cultivation_deadline4').text(),
+                receivableAmount1: $('#cultivation_installmentAmount1').text(),
+                receivableAmount2: $('#cultivation_installmentAmount2').text(),
+                receivableAmount3: $('#cultivation_installmentAmount3').text(),
+                receivableAmount4: $('#cultivation_installmentAmount4').text(),
+                receiptNum1: $('#cultivation_receiptNum1').text(),
+                receiptNum2: $('#cultivation_receiptNum2').text(),
+                receiptNum3: $('#cultivation_receiptNum3').text(),
+                receiptNum4: $('#cultivation_receiptNum4').text(),
+                adminNote: $('#receipt_adminNote').text()
+            };
 
-            updatedData.startDate = $('#cultivation_startDate').text();
-            updatedData.endDate = $('#cultivation_endDate').text();
+            console.log('roomUpdatedData:',roomUpdatedData);
+            // 驗證必要欄位是否完整
+            if (!roomUpdatedData.startDate || !roomUpdatedData.endDate || !roomUpdatedData.period || !roomUpdatedData.uniformNum || !roomUpdatedData.deadline1 || !roomUpdatedData.receivableAmount1 || !roomUpdatedData.amount) {
+                $('#danger_roomBox').text('請留下完整的資料，才可以儲存修改歐！');
+                return; // 如果有資料缺失，停止操作
+            } else {
+                $('#danger_roomBox').text('');
+                // 將更新的資料送到後端
+                $.ajax({
+                    url: editRoomRecordsUrl, // 替換成您的後端接收更新請求的URL
+                    type: 'POST', // 或者 'PUT'，根據您的後端接口設計來決定
+                    contentType: 'application/json',
+                    data: JSON.stringify(roomUpdatedData),
+                    success: function (response) {
+                        // 處理成功回應
+                        console.log('更新成功:', response);
+                        // 根據需要執行其他操作，例如顯示成功訊息
+                        swalToastSuccess(response.message, 'top');// 2秒
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2300);  //2.3秒後
+                    },
+                    error: function (xhr, status, error) {
+                        // 處理錯誤情況
+                        console.error('更新失敗:', error);
+                        swalToastWarning('刪除配置紀錄時發生錯誤。', 'top');
+                        // 根據需要顯示錯誤訊息或執行其他操作
+                    }
+                });
+            }
 
-            updatedData.period = $('#cultivation_period').text();
-            updatedData.uniformNum = $('#cultivation_uniformNum').text();
-            
-            updatedData.deadline1 = $('#cultivation_deadline1').text();
-            updatedData.deadline2 = $('#cultivation_deadline2').text();
-            updatedData.deadline3 = $('#cultivation_deadline3').text();
-            updatedData.deadline4 = $('#cultivation_deadline4').text();
-
-            updatedData.receivableAmount1 = $('#cultivation_installmentAmount1').text();
-            updatedData.receivableAmount2 = $('#cultivation_installmentAmount2').text();
-            updatedData.receivableAmount3 = $('#cultivation_installmentAmount3').text();
-            updatedData.receivableAmount4 = $('#cultivation_installmentAmount4').text();
-
-            updatedData.receiptNum1 = $('#cultivation_receiptNum1').text();
-            updatedData.receiptNum2 = $('#cultivation_receiptNum2').text();
-            updatedData.receiptNum3 = $('#cultivation_receiptNum3').text();
-            updatedData.receiptNum4 = $('#cultivation_receiptNum4').text();
-            
-            updatedData.adminNote = $('#cultivation_adminNote').text();
-            
-            console.log(updatedData);
-
-            // 將更新的資料送到後端
-            $.ajax({
-                url: '您的後端URL', // 替換成您的後端接收更新請求的URL
-                type: 'POST', // 或者 'PUT'，根據您的後端接口設計來決定
-                contentType: 'application/json',
-                data: JSON.stringify(updatedData),
-                success: function (response) {
-                    // 處理成功回應
-                    console.log('更新成功:', response);
-                    // 根據需要執行其他操作，例如顯示成功訊息
-                },
-                error: function (xhr, status, error) {
-                    // 處理錯誤情況
-                    console.error('更新失敗:', error);
-                    // 根據需要顯示錯誤訊息或執行其他操作
-                }
-            });
         });
 
     });
@@ -2459,13 +2522,7 @@ $(function () {
                     console.log(deleteData);
                 })
         });
-
     });
-
-
-
-
-
 
 });
 
@@ -3481,6 +3538,101 @@ $(function () {
             // // 調用監聽函式 並指定回呼 設定樣式的函式
             // observeElementChanges(document.getElementById('cultivation_period'), updateStyles);
             // observeElementChanges(document.getElementById('cultivation_rate'), updateStyles);
+
+
+
+// 函式 - 更新分期付款金額顯示
+// function updateInstallmentAmounts(period, rate) {
+//     const amount = (rate * 12) / period; // 根據期數計算每期應收金額
+//     installmentAmountElements.forEach((el, index) => {
+//         const receivableAmount = parseFloat(currentData[`receivableAmount${index + 1}`]); // 檢查 currentData 是否有應收金額
+//         if (!isNaN(receivableAmount) && index < period) {
+//             $(el).text(receivableAmount.toLocaleString()); // 如果有值，顯示 currentData 的值
+//         } else if (index < period) {
+//             $(el).text(amount.toLocaleString()); // 否則顯示計算出的金額
+//         } else {
+//             $(el).text(''); // 超過期數的部分顯示為空白
+//         }
+//     });
+// }
+
+// 函式 - 更新分期付款金額顯示
+// function updateInstallmentAmounts(period, rate) {
+//     const amount = (rate * 12) / period; // 根據期數計算每期應收金額
+//     installmentAmountElements.forEach((el, index) => {
+//         $(el).text(index < period ? amount.toLocaleString() : '');
+//     });
+// }
+
+        // // 函式 - 計算建議金額並更新顯示
+        // function updateInstallmentAmounts(period, rate) {
+        //     const amount = (rate * 12) / period;
+        //     installmentAmountElements.forEach((el, index) => {
+        //         $(el).text(index < period ? amount.toLocaleString() : '');
+        //     });
+        // }
+
+        // // 函式 - 清理樣式
+        // function resetStyles() {
+        //     labelReceiptElements.forEach((el, index) => {
+        //         $(el).removeClass(pinkBG).removeClass(grayBG);
+        //         $(labelInstallmentAmountElements[index]).removeClass(pinkBG).removeClass(grayBG);
+        //         $(labelDeadlineElements[index]).removeClass(pinkBG).removeClass(grayBG);
+        //         $(receiptNumElements[index]).removeClass("changeInput_items");
+        //         $(installmentAmountElements[index]).removeClass("changeMoney_items");
+        //         $(deadlineElements[index]).removeClass("changeDate_items");
+        //     });
+        // }
+
+        // // 函式 - 為元素添加背景顏色
+        // function applyBackgroundColors(periodNum) {
+        //     for (let j = 0; j < periodNum; j++) {
+        //         $(labelReceiptElements[j]).addClass(pinkBG);
+        //         $(labelInstallmentAmountElements[j]).addClass(pinkBG);
+        //         $(labelDeadlineElements[j]).addClass(pinkBG);
+        //         $(receiptNumElements[j]).addClass("changeInput_items");
+        //         $(installmentAmountElements[j]).addClass("changeMoney_items");
+        //         $(deadlineElements[j]).addClass("changeDate_items");
+        //     }
+        // }
+
+        // // 定義監聽 DOM 內容變化的函式
+        // function observeContentChanges(elementId, callback) {
+        //     const targetNode = document.querySelector(elementId);
+        //     if (!targetNode) return;
+
+        //     const config = { childList: true, subtree: true, characterData: true };
+
+        //     const observer = new MutationObserver((mutationsList) => {
+        //         for (let mutation of mutationsList) {
+        //             if (mutation.type === 'childList' || mutation.type === 'characterData') {
+        //                 callback();
+        //                 break;
+        //             }
+        //         }
+        //     });
+
+        //     observer.observe(targetNode, config);
+        //     return observer; // 可以根據需要返回 observer 以便後續管理
+        // }
+
+        // // 監聽到 period 和 rate 改變後要執行的函式
+        // function handleContentChange() {
+        //     CustomInputHandlers.destroy();
+        //     const period = parseInt($('#cultivation_period').text(), 10);
+        //     const rate = parseFloat($('#cultivation_rate').text().replace(/,/g, ''));
+
+        //     if (!isNaN(period) && !isNaN(rate)) {
+        //         resetStyles();
+        //         updateInstallmentAmounts(period, rate);
+        //         applyBackgroundColors(period);
+        //     }
+        //     CustomInputHandlers.init();
+        // }
+
+        // // 監聽 period 和 rate 的內容變化
+        // observeContentChanges('#cultivation_period', handleContentChange);
+        // observeContentChanges('#cultivation_rate', handleContentChange);
 
 
 
