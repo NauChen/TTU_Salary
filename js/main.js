@@ -123,7 +123,7 @@ let commonSettingsHistory = {
             responsivePriority: 3,
         },
         { orderable: false, targets: [1, 2, 3, 4, 6, 7] },
-        { className: "text-lg-center", targets: [0, 3, 4, 7] },
+        { className: "text-lg-center", targets: [0, 1, 3, 4, 7] },
     ],
     "responsive": true,
     language: {
@@ -155,18 +155,21 @@ let commonSettingsHistory = {
         $(thead).find('th').addClass('text-center text-nowrap align-middle');
     },
     createdRow: function (row, data, dataIndex) {
-        [0, 1, 2, 3, 4, 5, 6, 7].forEach(function (colIdx) {
-            $('td:eq(' + colIdx + ')', row).css('font-size', '.95em');
+        [2, 5, 6, 7].forEach(function (colIdx) {
+            $('td:eq(' + colIdx + ')', row).css('font-size', '.9em');
         });
-        [0, 1, 2, 4, 5].forEach(function (colIdx) {
+        [0, 1, 3, 4].forEach(function (colIdx) {
+            $('td:eq(' + colIdx + ')', row).css('font-size', '.8em');
+        });
+        [0, 1, 2, 3, 4].forEach(function (colIdx) {
             $('td:eq(' + colIdx + ')', row).addClass('text-nowrap');
         });
         [5, 6].forEach(function (colIdx) {
             $('td:eq(' + colIdx + ')', row).css('min-width', '150px');
         });
-        [0, 3, 4].forEach(function (colIdx) {
-            $('td:eq(' + colIdx + ')', row).css('min-width', '100px');
-        });
+        // [0, 3, 4].forEach(function (colIdx) {
+        //     $('td:eq(' + colIdx + ')', row).css('min-width', '90px');
+        // });
         // $('td:eq(1)', row).css('min-width', '80px');
     },
 };
@@ -361,15 +364,15 @@ $(function () {
     var linkMappings = {
         '#dashboardLink': ['dashboard.html'],
         '#jobLink': ['Jobs/Talent_wanted', 'Jobs/PostedByMe', 'Jobs/AllPosted', 'Jobs/Create', 'Jobs/Edit'],
-        '#applyAndCheckLink': ['ID_Card/Ours', 'ID_Card/Apply', 'ID_Card/Reissue', 'ParkingSpace/Ours', 'ParkingSpace/Apply', 'Remittance/Create','idCardInventory.html', 'parkingSpaceInventory.html', 'cultivationRoomInventory.html', 'parkingSpaceApply.html', 'idCardApply.html', 'parkingSpaceRenew.html', 'idCardReissue.html', 'renewContractApply.html','proofOfPaymentEdit.html'],
+        '#applyAndCheckLink': ['ID_Card/Ours', 'ID_Card/Apply', 'ID_Card/Reissue', 'ParkingSpace/Ours', 'ParkingSpace/Apply', 'Remittance/Create', 'idCardInventory.html', 'parkingSpaceInventory.html', 'cultivationRoomInventory.html', 'parkingSpaceApply.html', 'idCardApply.html', 'parkingSpaceRenew.html', 'idCardReissue.html', 'renewContractApply.html', 'proofOfPaymentEdit.html'],
         // '#progressLink': ['progressCheck.html'],
-        '#assessmentLink': ['CoopManuf/Review','coopManufApp.html', 'parkingSpaceApp.html', 'renewContractApp.html', 'idCardApp.html', 'confirmPayment.html'],
-        '#managementLink': ['CultivationRoom/Management', 'CultivationRoom/Creatd', 'CultivationRoom/Edit', 'ParkingSpace/Management', 'ParkingSpace/Create', 'ParkingSpace/Edit', 'Remittance/Create', 'Configure/Management', 'Remittance/Edit','cultivationRoom.html', 'parkingSpace.html', 'roles.html', 'proofOfPaymentEdit.html'],
+        '#assessmentLink': ['CoopManuf/Review', 'coopManufApp.html', 'parkingSpaceApp.html', 'renewContractApp.html', 'idCardApp.html', 'confirmPayment.html'],
+        '#managementLink': ['CultivationRoom/Management', 'CultivationRoom/Creatd', 'CultivationRoom/Edit', 'ParkingSpace/Management', 'ParkingSpace/Create', 'ParkingSpace/Edit', 'Remittance/Create', 'Configure/Management', 'Remittance/Edit', 'cultivationRoom.html', 'parkingSpace.html', 'roles.html', 'proofOfPaymentEdit.html'],
         '#logRecordLink': ['logRecordLink.html'],
         // '#provideOpinionsLink': ['provideOpinionsLink.html'],
         '#styleLink': ['template-style.html'],
         '#underConstructionLink': ['template-underConstruction.html'],
-        '#userLink':['User/ChangeIdentity']
+        '#userLink': ['User/ChangeIdentity']
     };
 
     // 移除所有鏈接的 .active 類名

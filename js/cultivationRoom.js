@@ -173,6 +173,8 @@
 //     },
 // ]
 
+// var dataset_cultivationRoomHistory = [];
+
 $(function () {
     const dataset_cultivationRoom_OpenList = dataset_cultivationRoomAll.filter(item => item.status === "啟用");
     const dataset_cultivationRoom_CloseList = dataset_cultivationRoomAll.filter(item => item.status === "停用");
@@ -290,25 +292,12 @@ $(function () {
 
         },
     });
-    $('#roomHistoryList').DataTable({
-        ...commonSettingsHistory,
-        "data": dataset_cultivationRoomHistory,
-        "columns": [
-            { data: 'createDate', title: "紀錄日期" }, //0
-            { data: 'squareMeters', title: "坪數" }, //1
-            { data: 'rate', title: "服務費/月", }, //2
-            { data: 'startDate', title: "培育開始", }, //3
-            { data: 'endDate', title: "培育結束", }, //4
-            { data: 'company', title: "培育企業", }, //5
-            { data: 'remark', title: "操作紀錄", }, //6
-            { data: 'createBy', title: "操作者", }, //7
-        ],
-    });
+
     // 同步燈箱顯示資料
     $('#cultivationRoom_DetailsModel').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget);
         let thisRoomId = String(button.data('id'));
-        // console.log('thisRoom Id:', thisRoomId);
+        console.log('thisRoom Id:', thisRoomId);
         let thisRoomData = dataset_cultivationRoomAll.find(thisRoom => thisRoom.id === thisRoomId);
         if (thisRoomData) {
             $('#venderBox').hide();
@@ -332,40 +321,45 @@ $(function () {
             console.error('thisRoomData data not found for id:', thisRoomId);
         };
 
-        // 使用 AJAX 發送請求
+        let dataset_cultivationRoomHistory = [];
         $.ajax({
-            url: roomHistoryUrl, // 後端API的URL
+            url: roomHistoryUrl,
             method: 'POST',
-            data: { roomId: roomId },  // 將 roomId 傳給後端
+            data: { thisRoomId: thisRoomId },
             success: function (response) {
-                // 後端返回的處理結果
-                console.log('歷史記錄:', response.history);
-                // 在前端顯示歷史記錄
-                // displayHistory(response.history);
-                // dataset_cultivationRoomHistory(response.history);
-                // dataset_cultivationRoomHistory 是你所需的資料
                 dataset_cultivationRoomHistory = response.dataset_cultivationRoomHistory;
-                console.log(dataset_cultivationRoomHistory);
+                console.log("dataset_cultivationRoomHistory:", dataset_cultivationRoomHistory);
+                $('#roomHistoryList').DataTable().clear().destroy();
+
+                $('#roomHistoryList').DataTable({
+                    ...commonSettingsHistory,
+                    "data": dataset_cultivationRoomHistory,
+                    "columns": [
+                        { data: 'createDate', title: "紀錄日期" }, //0
+                        { data: 'squareMeters', title: "坪數" }, //1
+                        { data: 'rate', title: "服務費", }, //2
+                        { data: 'startDate', title: "培育開始", }, //3
+                        { data: 'endDate', title: "培育結束", }, //4
+                        { data: 'company', title: "培育企業", }, //5
+                        { data: 'remark', title: "操作紀錄", 
+                            render: function(data, type, row) {
+                                // 確保只在 'display' 類型下渲染 HTML
+                                return type === 'display' ? data : data.replace(/<br\/>/g, "\n");
+                            }
+                        }, //6
+                        { data: 'createBy', title: "操作者", }, //7
+                    ],
+                });
             },
             error: function (error) {
                 console.log('錯誤:', error);
             }
         });
 
-        // 要加上用thisRoomId去資料庫撈此id的歷史紀錄，放入dataset_cultivationRoomHistory
-        // 使用 AJAX 發送請求到後端
-        // $.ajax({
-        //     url: '/your-endpoint', // 後端端點
-        //     method: 'POST',
-        //     data: { roomId: thisRoomId },
-        //     success: function (response) {
-        //         console.log('成功傳遞 roomId:', response);
-        //     },
-        //     error: function (jqXHR, textStatus, errorThrown) {
-        //         console.error('傳遞 roomId 時出錯:', textStatus, errorThrown);
-        //     }
-        // });
+
     });
+
+
 
     // 監聽 a 標籤的點擊事件
     $('.reactivateBtn').on('click', function () {
@@ -392,3 +386,17 @@ $(function () {
     });
 
 });
+
+// 要加上用thisRoomId去資料庫撈此id的歷史紀錄，放入dataset_cultivationRoomHistory
+// 使用 AJAX 發送請求到後端
+// $.ajax({
+//     url: '/your-endpoint', // 後端端點
+//     method: 'POST',
+//     data: { roomId: thisRoomId },
+//     success: function (response) {
+//         console.log('成功傳遞 roomId:', response);
+//     },
+//     error: function (jqXHR, textStatus, errorThrown) {
+//         console.error('傳遞 roomId 時出錯:', textStatus, errorThrown);
+//     }
+// });

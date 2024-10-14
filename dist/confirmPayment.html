@@ -402,7 +402,7 @@ height：畫面高度 -->
             <div class="col lightBoxItems p-3 align_center" id="cultivation_deadline4">
             </div>
         </div>
-        <!-- 到期日 (可改) -->
+        <!-- 應收款 (可改) -->
         <div class="row mb-1 multiple">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"
                 id="cultivation_label_installmentAmount1">一階應收款</div>
@@ -515,6 +515,13 @@ height：畫面高度 -->
                 類型
             </div>
             <div class="col col-lg-2 lightBoxItems p-3 readOnly align_center" id="parkingSapce_carType"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+                服務費用/月
+            </div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center">
+                <input type="text" id="parkingSapce_inputRate" class="form-control" onkeyup="restrictToNum(this)"
+                onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
+            </div>
         </div>
         <!-- 租賃期間 費用 (可改)-->
         <div class="row mb-1 multiple">
@@ -529,10 +536,16 @@ height：畫面高度 -->
                     <div class="col align_center" id="parkingSapce_endDate"></div>
                 </div>
             </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
-                服務費用/月
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">分期數</div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center thisTextRequired">
+                <select class="form-control form-select" id="parkingSapce_selectPeriod">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
             </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center thisTextRequired" id="parkingSapce_rate"></div>
+
         </div>
         <!-- 公司名稱、統編、承租人(自動代入)、車牌號碼(可改，可輸入或選擇已通知匯款的廠商資料)(自動代入) -->
         <div class="row mb-1 multiple">
@@ -566,42 +579,57 @@ height：畫面高度 -->
         </div>
         <!-- 到期日 (可改) -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                 一階到期日
             </div>
             <div class="col lightBoxItems p-3 align_center" id="parkingSapce_deadline1">
             </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 二階到期日
             </div>
             <div class="col lightBoxItems p-3 align_center" id="parkingSapce_deadline2">
             </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 三階到期日
             </div>
             <div class="col lightBoxItems p-3 align_center" id="parkingSapce_deadline3">
             </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 四階到期日
             </div>
             <div class="col lightBoxItems p-3 align_center" id="parkingSapce_deadline4">
             </div>
         </div>
+                <!-- 應收款 (可改) -->
+        <div class="row mb-1 multiple">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"
+                id="parkingSapce_label_installmentAmount1">一階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_installmentAmount1"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="parkingSapce_label_installmentAmount2">二階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_installmentAmount2"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="parkingSapce_label_installmentAmount3">三階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_installmentAmount3"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="parkingSapce_label_installmentAmount4">四階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_installmentAmount4"></div>
+        </div>
         <!-- 收據號碼 -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                 收據號碼&#10102;
             </div>
             <div class="col lightBoxItems p-3 align_center" id="parkingSapce_receiptNum1"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 收據號碼&#10103;
             </div>
             <div class="col lightBoxItems p-3 align_center" id="parkingSapce_receiptNum2"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 收據號碼&#10104;
             </div>
             <div class="col lightBoxItems p-3 align_center" id="parkingSapce_receiptNum3"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 收據號碼&#10105;
             </div>
             <div class="col lightBoxItems p-3 align_center" id="parkingSapce_receiptNum4"></div>
