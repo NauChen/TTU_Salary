@@ -5,21 +5,21 @@
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                 所在區域&emsp;
             </div>
-            <div class="col lightBoxItems p-3 readOnly align_center" id="parkingSapce_building"></div>
+            <div class="col lightBoxItems p-3 readOnly align_center" id="parkingSpace_building"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 車位號碼
             </div>
-            <div class="col lightBoxItems p-3 readOnly align_center" id="parkingSapce_parkingSpaceNum"></div>
+            <div class="col lightBoxItems p-3 readOnly align_center" id="parkingSpace_parkingSpaceNum"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 類型
             </div>
-            <div class="col col-lg-2 lightBoxItems p-3 readOnly align_center" id="parkingSapce_carType"></div>
+            <div class="col  lightBoxItems p-3 readOnly align_center" id="parkingSpace_carType"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
                 服務費用/月
             </div>
             <div class="col col-lg-2 lightBoxItems p-3 align_center">
-                <input type="text" id="parkingSapce_inputRate" class="form-control" onkeyup="restrictToNum(this)"
-                onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
+                <input type="text" id="parkingSpace_inputRate" class="form-control" onkeyup="restrictToNum(this)"
+                    onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
             </div>
         </div>
         <!-- 租賃期間 費用 (可改)-->
@@ -30,14 +30,14 @@
             <div class="col-auto col-lg lightBoxItems p-3 align_center">
                 <div class="row">
                     <div class="col-auto align_center">起：</div>
-                    <div class="col align_center" id="parkingSapce_startDate"></div>
+                    <div class="col align_center" id="parkingSpace_startDate"></div>
                     <div class="col-auto align_center">訖：</div>
-                    <div class="col align_center" id="parkingSapce_endDate"></div>
+                    <div class="col align_center" id="parkingSpace_endDate"></div>
                 </div>
             </div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">分期數</div>
             <div class="col col-lg-2 lightBoxItems p-3 align_center thisTextRequired">
-                <select class="form-control form-select" id="parkingSapce_selectPeriod">
+                <select class="form-control form-select" id="parkingSpace_selectPeriod">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -51,109 +51,117 @@
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                 承租企業&emsp;
             </div>
-            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSapce_companyName"></div>
+            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSpace_companyName"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 統一編號
             </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="parkingSapce_uniformNum"></div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="parkingSpace_uniformNum"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center pinkBG">
                 車牌號碼
             </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="parkingSapce_licensePlateNum"></div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="parkingSpace_licensePlateNum"></div>
         </div>
         <!-- E-mail、聯絡人、聯絡電話 (都自動代入)-->
         <div class="row mb-1 multiple">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                 E-mail&emsp;
             </div>
-            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSapce_email"></div>
+            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSpace_email"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel inlineLabel p-3 align_center">
                 聯絡電話
             </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="parkingSapce_phone"></div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="parkingSpace_phone"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 承租人名
             </div>
-            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="parkingSapce_applicant"></div>
+            <div class="col col-lg-2 lightBoxItems p-3 align_center readOnly" id="parkingSpace_applicant"></div>
         </div>
         <!-- 到期日 (可改) -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"
+                id="parkingSpace_label_deadline1">
                 一階到期日
             </div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_deadline1">
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_deadline1">
             </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="parkingSpace_label_deadline2">
                 二階到期日
             </div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_deadline2">
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_deadline2">
             </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="parkingSpace_label_deadline3">
                 三階到期日
             </div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_deadline3">
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_deadline3">
             </div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="parkingSpace_label_deadline4">
                 四階到期日
             </div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_deadline4">
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_deadline4">
             </div>
         </div>
-                <!-- 應收款 (可改) -->
+        <!-- 應收款 (可改) -->
         <div class="row mb-1 multiple">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"
-                id="parkingSapce_label_installmentAmount1">一階應收款</div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_installmentAmount1"></div>
+                id="parkingSpace_label_installmentAmount1">一階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_installmentAmount1"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
-                id="parkingSapce_label_installmentAmount2">二階應收款</div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_installmentAmount2"></div>
+                id="parkingSpace_label_installmentAmount2">二階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_installmentAmount2"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
-                id="parkingSapce_label_installmentAmount3">三階應收款</div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_installmentAmount3"></div>
+                id="parkingSpace_label_installmentAmount3">三階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_installmentAmount3"></div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
-                id="parkingSapce_label_installmentAmount4">四階應收款</div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_installmentAmount4"></div>
+                id="parkingSpace_label_installmentAmount4">四階應收款</div>
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_installmentAmount4"></div>
         </div>
         <!-- 收據號碼 -->
         <div class="row mb-1 multiple">
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center"
+                id="parkingSpace_label_receiptNum1">
                 收據號碼&#10102;
             </div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_receiptNum1"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_receiptNum1"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="parkingSpace_label_receiptNum2">
                 收據號碼&#10103;
             </div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_receiptNum2"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_receiptNum2"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="parkingSpace_label_receiptNum3">
                 收據號碼&#10104;
             </div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_receiptNum3"></div>
-            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_receiptNum3"></div>
+            <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center"
+                id="parkingSpace_label_receiptNum4">
                 收據號碼&#10105;
             </div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_receiptNum4"></div>
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_receiptNum4"></div>
         </div>
         <!-- 入帳日 (依收據號碼代入) -->
         <div class="row mb-1 multiple">
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                 一階付款日
             </div>
-            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSapce_receivedDate1">
+            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSpace_receivedDate1">
             </div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 二階付款日
             </div>
-            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSapce_receivedDate2">
+            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSpace_receivedDate2">
             </div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 三階付款日
             </div>
-            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSapce_receivedDate3">
+            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSpace_receivedDate3">
             </div>
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 inlineLabel align_center">
                 四階付款日
             </div>
-            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSapce_receivedDate4">
+            <div class="col lightBoxItems p-3 align_center readOnly" id="parkingSpace_receivedDate4">
             </div>
         </div>
 
@@ -161,7 +169,7 @@
             <div class="col-12 col-lg-auto text-nowrap lightBoxLabel p-3 align_center">
                 管理註記&emsp;
             </div>
-            <div class="col lightBoxItems p-3 align_center" id="parkingSapce_adminNote">
+            <div class="col lightBoxItems p-3 align_center" id="parkingSpace_adminNote">
             </div>
         </div>
 

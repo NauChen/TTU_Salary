@@ -22,6 +22,7 @@ var CustomInputHandlers = {
         this.bindChangeInputUpperNumberHyphenItems();
         this.bindChangeInputUpperNumberItems();
         this.bindChangeSelectStatus2Items();
+        this.bindChangeUpperItems();
     },
     destroy: function () {
         this.unbindChangeInputItems();
@@ -45,6 +46,7 @@ var CustomInputHandlers = {
         this.unbindChangeInputUpperNumberHyphenItems();
         this.unbindChangeInputUpperNumberItems();
         this.unbindChangeSelectStatus2Items();
+        this.unbindChangeUpperItems();
     },
     bindChangeInputItems: function () {
         $('.changeInput_items').on('click', function () {
@@ -1076,5 +1078,48 @@ var CustomInputHandlers = {
 
         // 解除綁定 blur 和 keypress 事件
         $('.changeSelectStatus2_items').find('input').off('blur').off('keypress');
+    },
+    bindChangeUpperItems: function () {
+        $('.changeUpper_items').on('click', function () {
+            var $this = $(this);
+            var currentText = $this.text().trim();
+
+            if ($this.find('input').length === 0) {
+                var $input = $('<input type="text" class="form-control" onkeyup="restrictToUpperCaseNumberHyphen(this)">').val(currentText);
+                $this.html($input);
+                $input.focus().select();
+
+                function handleBlurOrEnter(e) {
+                    if (e.type === 'blur' || (e.type === 'keypress' && e.which === 13)) {
+                        var newText = $input.val().trim();
+                        if (!newText) {
+                            if ($this.hasClass('thisTextRequired')) {
+                                $this.text(currentText);
+                                swalToastWarning('此欄位不可留白喔！', 'top');
+                            } else {
+                                $this.text('');
+                            }
+                        } else {
+                            if (validLineID(newText)) {
+                                $this.text(newText);
+                            } else {
+                                $this.text(currentText);
+                                swalToastWarning('請輸入大寫英文與數字！', 'top');
+                            }
+                        }
+                    }
+                }
+
+                $input.on('blur', handleBlurOrEnter);
+                $input.on('keypress', handleBlurOrEnter);
+            }
+        });
+    },
+    unbindChangeUpperItems: function () {
+        // 解除綁定 click 事件
+        $('.changeUpper_items').off('click');
+
+        // 解除綁定 blur 和 keypress 事件
+        $('.changeUpper_items').find('input').off('blur').off('keypress');
     },
 };
