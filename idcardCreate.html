@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/meta.html', {
+    "title": "大同大學校內育成媒合平台-新增識別證",
+    })
+</head>
+
+<body>
+    <main class="main">
+        @@include('layout/header.html')
+        <div class="content">
+            <div class="container">
+
+                <!-- 麵包屑 -->
+                <div class="breadcrumb-box section-padding section-border-radius my-2r">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
+                        <li class="breadcrumb-item"><a class="d-inline" href="./idCard.html"><i
+                                    class="fa-regular fa-address-card"></i>&ensp;識別證管理</a></li>
+                        <li class="breadcrumb-item active"><i class="fa-regular fa-address-card"></i>&ensp;新增識別證</li>
+                    </ol>
+                </div>
+
+                <!-- 新增培育室 -->
+                <div class="tabs-box my-2r">
+                    <h3 class="section-header"><i class="fa-solid fa-quote-left"></i>新增識別證<i
+                            class="fa-solid fa-quote-right"></i></h3>
+
+                    <div class="tabs section-border-radius section-padding">
+                        <form class="container-fluid" method="post">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-3">
+                                        <label for="idCardNumber" class="col-lg-auto col-form-label text-nowrap"><span
+                                                class="requiredMark">*</span>識別證號碼：</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control thisRequired" id="idCardNumber"
+                                                name="idCardNumber" onkeyup="restrictToUpperCaseNumberHyphen(this)">
+                                            <span class="text-danger" id="danger_idCardNumber"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="idCardName" class="col-lg-auto col-form-label text-nowrap"><span
+                                                class="requiredMark">*</span>識別證姓名：</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control thisRequired" id="idCardName"
+                                                name="idCardName">
+                                            <span class="text-danger" id="danger_idCardName"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="idCardBuilding" class="col-lg-auto col-form-label text-nowrap"><span
+                                                class="requiredMark">*</span>進駐大樓：&emsp;</label>
+                                        <div class="col">
+                                            <select name="idCardBuilding" id="idCardBuilding"
+                                                class="form-control form-select thisRequired">
+                                                <option value="請選擇" disabled selected>-請選擇-</option>
+                                                <option value="">新德惠大樓</option>
+                                                <option value="">校本部</option>
+                                            </select>
+                                            <span class="text-danger" id="danger_idCardBuilding"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="idCardRoom" class="col-lg-auto col-form-label text-nowrap"><span
+                                                class="requiredMark">*</span>進駐培育室：</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control thisRequired" id="idCardRoom"
+                                                name="idCardRoom">
+                                            <span class="text-danger" id="danger_idCardRoom"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-3">
+                                        <label for="idCardCompany" class="col-lg-auto col-form-label text-nowrap"><span
+                                                class="requiredMark">*</span>所屬培育廠商：</label>
+                                        <div class="col">
+                                            <input type="text" class="form-control thisRequired" id="idCardCompany"
+                                                name="idCardCompany" placeholder="部分文字有提示">
+                                            <span class="text-danger" id="danger_idCardCompany"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-lg-auto col-form-label text-nowrap"><span
+                                                class="requiredMark">*</span>閱覽圖書館權：</div>
+                                        <div class="col">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="libraryRead"
+                                                    id="canReadLibrary" value="1">
+                                                <label class="form-check-label" for="canReadLibrary">開放</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="libraryRead"
+                                                    id="cannotReadLibrary" value="0" checked>
+                                                <label class="form-check-label" for="cannotReadLibrary">不開放</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-lg-auto col-form-label text-nowrap"><span
+                                                class="requiredMark">*</span>首發或是補發：</div>
+                                        <div class="col">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="printed" id="initial"
+                                                    value="initial">
+                                                <label class="form-check-label" for="initial">首發</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="printed" id="reissue"
+                                                    value="reissue" checked>
+                                                <label class="form-check-label" for="reissue">補發</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-xl-4 col-lg-6 mb-3">
+                                    <div class="row mb-3">
+                                        <label for="idCardStatus" class="col-lg-auto col-form-label text-nowrap"><span
+                                                class="requiredMark">*</span>識別證狀態：</label>
+                                        <div class="col">
+                                            <select name="idCardStatus" id="idCardStatus"
+                                                class="form-control form-select thisRequired">
+                                                <option value="使用中">使用中</option>
+                                                <option value="停用未收回">停用未收回</option>
+                                                <option value="已收回">已收回</option>
+                                                <option value="刪除">刪除</option>
+                                            </select>
+                                            <span class="text-danger" id="danger_idCardStatus"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="returnDate" class="col-lg-auto col-form-label text-nowrap">
+                                            <span class="requiredMark d-none" id="returnDateStart">*</span>收回日期：</label>
+                                        <div class="col">
+                                            <input type="date" id="returnDate" class="form-control">
+                                            <span class="text-danger" id="danger_returnDate" ></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="idCardRemark"
+                                            class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
+                                        <div class="col">
+                                            <textarea class="form-control resize-none h_110"
+                                                id="idCardRemark"></textarea>
+                                            <span class="text-danger" id="danger_idCardRemark"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row text-center p-3 justify-content-center">
+                                <div class="col-auto">
+                                    <button type="reset" class="btn btn-lg btn-outline-danger" id="resetBtn">重填</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-lg btn-success" id="submitBtn">送出</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                @@include('layout/footer.html')
+
+            </div>
+        </div>
+    </main>
+    @@include('layout/metaJS.html')
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+    <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
+    <script src="./js/idCardCreate.js"></script>
+</body>
+
+</html>

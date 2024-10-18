@@ -264,6 +264,21 @@ function setLaterMinDate(inputId, todayLaterDays, startDateStr, startDateLaterDa
     $('#' + inputId).attr('min', laterDate);
 }
 
+//   限制可選日期不可晚於當前日期
+function setMaxDateToToday(inputId) {
+    // 獲取當前日期
+    var today = new Date();
+
+    // 格式化日期為 YYYY-MM-DD
+    var yyyy = today.getFullYear();
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); // 獲取月份，並確保格式為兩位數
+    var dd = String(today.getDate()).padStart(2, '0'); // 獲取日期，並確保格式為兩位數
+    var formattedDate = yyyy + '-' + mm + '-' + dd;
+
+    // 設置 input 元素的 min 屬性
+    $('#' + inputId).attr('max', formattedDate);
+}
+
 //   確保選擇 開始日期 之前 不能選擇 結束日期，會跳Toast提示。選擇結束日期後開始日期加上max限制，避免逆選漏洞。
 function enforceStartDateFirst(startDateId, endDateId) {
     var startDate = $('#' + startDateId);

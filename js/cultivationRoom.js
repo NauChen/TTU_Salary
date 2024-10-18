@@ -244,7 +244,7 @@ $(function () {
             { data: 'squareMeters', title: "坪數" },
             { data: 'rate', title: "預設<br class='d-none d-lg-block'>服務費/月" },
             { data: 'adminNote', title: "管理備註" },
-            { data: 'removeDate', title: "最後<br class='d-none d-lg-block'>停用日" },
+            { data: 'closeDate', title: "最後<br class='d-none d-lg-block'>停用日" },
             {
                 data: 'id', title: "歷史<br class='d-none d-lg-block'>紀錄",
                 render: function (data) {
@@ -370,7 +370,6 @@ $(function () {
             type: 'POST',
             data: { id: roomId },  // 傳送 roomId 作為參數
             success: function (response) {
-                // alert('培育室已成功重新啟用!');
                 // location.reload(); // 重新加載頁面
                 swalToastSuccess(response.message, 'top');// 2秒
                 setTimeout(function () {

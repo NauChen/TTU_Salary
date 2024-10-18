@@ -1,7 +1,6 @@
 // var dataset_parkingSpaceAll = [
 //     {
 //         'id': '1',
-//         'createDate': '2024-06-01',
 //         'building': '校本部',
 //         'basementNum': '10',
 //         'rate': '3,000',
@@ -9,16 +8,18 @@
 //         'status': '啟用',
 //         'adminNote': '費用共用車號AB-1234',
 //         'createBy': "AAA",
+//         'createDate': '2024-06-01',
 
 //         'company': '馳晶科技股份有限公司',
 //         'startDate': '2024-06-01',
 //         'endDate': '2024-07-01',
 //         'name': '李大華',
-//         'phone': '02-12345678',
-//         'jobTitle': '工程師',
-//         'ext': '101',
 //         'licensePlateNum': '5678-AB',
+//         'phone': '02-12345678',
+        
 //         'applicationFile': '',
+//         'ext': '101',
+//         'jobTitle': '工程師',
 //     },
 //     {
 //         'id': '2',
@@ -29,7 +30,7 @@
 //         'status': '啟用',
 //         'carType': '汽車',
 //         'createBy': "BBB",
-        
+
 //         'company': '宏達電股份有限公司',
 //         'name': '王小美',
 //         'phone': '02-23456789',
@@ -50,7 +51,7 @@
 //         'status': '啟用',
 //         'carType': '機車',
 //         'createBy': "CCC",
-        
+
 //         'company': '威盛電子股份有限公司',
 //         'name': '張志明',
 //         'phone': '02-34567890',
@@ -93,7 +94,7 @@
 //         'status': '啟用',
 //         'carType': '汽車',
 //         'createBy': "BBB",
-        
+
 //         'name': '',
 //         'phone': '',
 //         'adminNote': '',
@@ -324,7 +325,7 @@
 //         'closeDate': '2021-01-01',
 //         'adminNote': '',
 //         'status': '停用',
-        
+
 //         'createBy': "BBB",
 //     },
 //     {
@@ -341,58 +342,45 @@
 //     },
 // ];
 
-var dataset_parkingSpaceHistory = [
-    {
-        "createDate": "2019-01-19",
-        "rate": "2,000",
-        "startDate": "-",
-        "endDate": "-",
-        "company": "-",
-        "licensePlateNum": "-",
-        "remark": "啟用",
-        "createBy": "王大明",
-    },
-    {
-        "createDate": "2020-01-20",
-        "rate": "3,000",
-        "startDate": "2020-03-01",
-        "endDate": "2020-09-30",
-        "company": "冠陞企業管理顧問股份有限公司",
-        "licensePlateNum": "1234-MN",
-        "remark": "-",
-        "createBy": "王大明",
-    },
-    {
-        "createDate": "2020-02-20",
-        "rate": "2,500",
-        "startDate": "2020-03-01",
-        "endDate": "2020-09-30",
-        "company": "冠陞企業管理顧問股份有限公司",
-        "licensePlateNum": "1234-MN",
-        "remark": "一位躺在大門財富也能體驗高速，起點他的。",
-        "createBy": "王大明",
-    },
-];
+// var dataset_parkingSpaceHistory = [
+//     {
+//         "createDate": "2019-01-19",
+//         "licensePlateNum": "-",
+//         "rate": "2,000",
+//         "startDate": "-",
+//         "endDate": "-",
+//         "company": "-",
+//         "remark": "啟用",
+//         "createBy": "王大明",
+//     },
+//     {
+//         "createDate": "2020-01-20",
+//         "rate": "3,000",
+//         "startDate": "2020-03-01",
+//         "endDate": "2020-09-30",
+//         "company": "冠陞企業管理顧問股份有限公司",
+//         "licensePlateNum": "1234-MN",
+//         "remark": "-",
+//         "createBy": "王大明",
+//     },
+//     {
+//         "createDate": "2020-02-20",
+//         "rate": "2,500",
+//         "startDate": "2020-03-01",
+//         "endDate": "2020-09-30",
+//         "company": "冠陞企業管理顧問股份有限公司",
+//         "licensePlateNum": "1234-MN",
+//         "remark": "一位躺在大門財富也能體驗高速，起點他的。",
+//         "createBy": "王大明",
+//     },
+// ];
 
 
 $(function () {
     const dataset_parkingSpace_OpenList = dataset_parkingSpaceAll.filter(item => item.status === "啟用");
     const dataset_parkingSpace_CloseList = dataset_parkingSpaceAll.filter(item => item.status === "停用");
 
-    $('#parkingSpaceHistoryList').DataTable({
-        ...commonSettingsHistory,
-        "data": dataset_parkingSpaceHistory,
-        "columns": [
-            { data: 'createDate', title: "紀錄日期" }, //0
-            { data: 'licensePlateNum', title: "承租車牌", }, //1
-            { data: 'rate', title: "服務費/月", }, //2
-            { data: 'startDate', title: "承租開始", }, //3
-            { data: 'endDate', title: "承租結束", }, //4
-            { data: 'company', title: "承租企業", }, //5
-            { data: 'remark', title: "操作紀錄", }, //6
-            { data: 'createBy', title: "操作者", }, //7
-        ],
-    });
+
 
     $('#parkingSpace_OpenList').DataTable({
         ...commonSettingsTable,
@@ -423,7 +411,7 @@ $(function () {
                 data: 'id', title: "修改", //8
                 render: function (data) {
                     // return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpaceEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>'
-                      return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord btnThrottle" href="/ParkingSpace/Edit/' + data + '"><i class="fa-solid fa-wrench"></i></a>'
+                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord btnThrottle" href="/ParkingSpace/Edit/' + data + '"><i class="fa-solid fa-wrench"></i></a>'
                 },
             },
             { data: 'carType', visible: false }, // 9
@@ -445,7 +433,8 @@ $(function () {
             { "className": "text-nowrap", "targets": [0, 1, 2, 4, 5] },
             { "className": "text-lg-center", "targets": [5, 7, 8] },
         ],
-        "order": [[3, "asc"]],
+        // "order": [[3, "asc"]],
+        "order": [[0, "desc"], [1, "asc"]],
         createdRow: function (row, data, dataIndex) {
             [7, 8].forEach(function (colIdx) {
                 $('td:eq(' + colIdx + ')', row).css('max-width', '70px');
@@ -461,9 +450,9 @@ $(function () {
         ...commonSettingsTable,
         "data": dataset_parkingSpace_CloseList,
         "columns": [
-            { data: 'carateDate', title: "停車位<br class='d-none d-lg-block'>建立日期" }, // 0
+            { data: 'createDate', title: "停車位<br class='d-none d-lg-block'>建立日期" }, // 0
             { data: 'building', title: "車位位置" }, // 1
-            { data: 'room', title: "車位號碼", className: 'text-center' }, // 2
+            { data: 'basementNum', title: "車位號碼", className: 'text-center' }, // 2
             { data: 'rate', title: "預設<br class='d-none d-lg-block'>服務費/月" }, // 3
             { data: 'adminNote', title: "管理備註" }, // 4
             { data: 'closeDate', title: "最後停用日" }, // 5
@@ -476,7 +465,7 @@ $(function () {
             {
                 data: 'id', title: "再次<br class='d-none d-lg-block'>上架", // 7
                 render: function (data) {
-                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm" data-id="' + data + '"><i class="fa-solid fa-arrow-rotate-left"></i></button>'
+                    return '<button type="button" class="btn btn-outline-primary rounded-circle btn-sm reactivateBtn" data-id="' + data + '"><i class="fa-solid fa-arrow-rotate-left"></i></button>'
                 }
             },
         ],
@@ -508,6 +497,8 @@ $(function () {
         },
     });
 
+
+
     // 同步燈箱顯示資料
     $('#parkingSpace_DetailsModel').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget);
@@ -536,26 +527,67 @@ $(function () {
         } else {
             console.error('parkingSpaceData data not found for id:', thisPSId);
         };
+
+        let dataset_parkingSpaceHistory = [];
+
+        $.ajax({
+            url: psHistoryUrl,
+            method: 'POST',
+            data: { thisPSId: thisPSId },
+            success: function (response) {
+                dataset_parkingSpaceHistory = response.dataset_parkingSpaceHistory;
+                console.log("dataset_parkingSpaceHistory:", dataset_parkingSpaceHistory);
+                $('#parkingSpaceHistoryList').DataTable().clear().destroy();
+
+                $('#parkingSpaceHistoryList').DataTable({
+                    ...commonSettingsHistory,
+                    "data": dataset_parkingSpaceHistory,
+                    "columns": [
+                        { data: 'createDate', title: "紀錄日期" }, //0
+                        { data: 'licensePlateNum', title: "承租車牌", }, //1
+                        { data: 'rate', title: "服務費", }, //2
+                        { data: 'startDate', title: "承租開始", }, //3
+                        { data: 'endDate', title: "承租結束", }, //4
+                        { data: 'company', title: "承租企業", }, //5
+                        {
+                            data: 'remark', title: "操作紀錄",
+                            render: function (data, type, row) {
+                                // 確保只在 'display' 類型下渲染 HTML
+                                return type === 'display' ? data : data.replace(/<br\/>/g, "\n");
+                            }
+                        }, //6
+                        { data: 'createBy', title: "操作者", }, //7
+                    ],
+                });
+            },
+            error: function (error) {
+                console.log('錯誤:', error);
+            }
+        });
     });
 
     //要加上用thisPSId去資料庫撈此id的歷史紀錄，放入dataset_parkingSpaceHistory
-    // 使用 AJAX 發送請求到後端
-    // $.ajax({
-    //     url: '/your-endpoint', // 後端端點
-    //     method: 'POST',
-    //     data: { roomId: thisRoomId },
-    //     success: function (response) {
-    //         console.log('成功傳遞 roomId:', response);
-    //     },
-    //     error: function (jqXHR, textStatus, errorThrown) {
-    //         console.error('傳遞 roomId 時出錯:', textStatus, errorThrown);
-    //     }
-    // });
+    // 監聽 a 標籤的點擊事件
+    $('.reactivateBtn').on('click', function () {
+        var psId = $(this).data('id');
 
-
-    // $('.cannotChange').click(function () {
-    //     swalToastWarning('承租中不可修改歐！', 'top');
-    // });
+        $.ajax({
+            url: reactivatePSUrl,  // 對應控制器方法的 URL
+            type: 'POST',
+            data: { id: psId },  // 傳送 roomId 作為參數
+            success: function (response) {
+                // location.reload(); // 重新加載頁面
+                swalToastSuccess(response.message, 'top');// 2秒
+                setTimeout(function () {
+                    location.reload();
+                }, 2300);  //2.3秒後
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                swalToastWarning('啟用時發生錯誤，請稍後再試。', 'top');
+            }
+        });
+    });
 
 
 });

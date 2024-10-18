@@ -312,19 +312,29 @@
 // ];
 
 $(function () {
+    toggleRequiredFields();
+    // 監聽 radio button 的變更事件
+    $("input[name='buildingChoose']").change(function () {
+        toggleRequiredFields();
+    });
+    function toggleRequiredFields() {
+        if ($("#originalBuilding").is(":checked")) {
+            // 如果選擇的是 "選擇既有"
+            $("#parkingSpaceBuilding").addClass("thisRequired").attr("name", "building");
+            $("#parkingSpaceBuildingNew").removeClass("thisRequired").removeAttr("name");
+            $('#originalBuildingBox').show();
+            $('#newBuildingBox').hide();
+        } else if ($("#newBuilding").is(":checked")) {
+            // 如果選擇的是 "另行輸入"
+            $("#parkingSpaceBuilding").removeClass("thisRequired").removeAttr("name");
+            $("#parkingSpaceBuildingNew").addClass("thisRequired").attr("name", "building");
+            $('#newBuildingBox').show();
+            $('#originalBuildingBox').hide();
+        }
+    }
 
-    toggleRadioItems('originalBuilding', 'newBuilding', 'originalBuildingBox', 'newBuildingBox');
-
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const parkingSpaceId = String(urlParams.get('id'));
-
-    // 確保 parkingSpaceId 存在
-    // if (parkingSpaceId) {
-    // console.log('Room ID:', parkingSpaceId);
-
-    // let parkingSpaceData = dataset_parkingSpaceAll.find(parkingSpace => parkingSpace.id === parkingSpaceId);
     if (parkingSpaceData) {
-        console.log('company', parkingSpaceData.company);
+        console.log('usedNum', parkingSpaceData.used);
         $('#parkingSpaceBuilding').val(parkingSpaceData.building);
         // 根據 parkingSpaceData 的 carType 設置 radio button 的選擇
         if (parkingSpaceData.carType === "汽車") {
@@ -335,18 +345,69 @@ $(function () {
         $('#basementNum').val(parkingSpaceData.basementNum);
         $('#parkingSpaceRate').val(parkingSpaceData.rate);
         $('#parkingSpaceRemark').val(parkingSpaceData.adminNote);
-        if (parkingSpaceData.company) {
-            $('#originalBuilding, #newBuilding, #parkingSpaceBuilding, #basementNum, #car, #moto, #parkingSpaceStatus').attr('disabled', true);
 
+        if (parkingSpaceData.used != '0') {
+            console.log('XXX');
+            $('#originalBuilding, #newBuilding, #parkingSpaceBuilding, #basementNum, #car, #moto, #removeParkingSpace').attr('disabled', true);
         } else {
-            $('#originalBuilding, #newBuilding, #parkingSpaceBuilding, #basementNum, #car, #moto, #parkingSpaceStatus').attr('disabled', false);
+            console.log('OOO');
+            $('#originalBuilding, #newBuilding, #parkingSpaceBuilding, #basementNum, #car, #moto, #removeParkingSpace').attr('disabled', false);
         }
     } else {
-        console.error('ParkingSpace data not found for id:', parkingSpaceId);
+        console.error('ParkingSpace data not found:', parkingSpaceData);
     }
+    // 當 .thisRequired 更改時，再次執行檢查
+    $('.thisRequired').on('input change', function () {
+        checkThisRequiredElements.call(this);
+    });
 
-    // } else {
-    //     console.error('ParkingSpace ID not found in URL');
-    // }
+    // 點擊 submitBtn 按鈕時
+    $('#submitBtn').click(function (event) {
+        event.preventDefault(); // 防止表單預設提交行為
+        // console.log('防止表單預設提交行為');
+        // 先檢查必填項
+        if (!checkRequiredElements()) {
+            console.log('有必填未填');
+            return; // 如果必填項有未填寫的，直接返回，不再繼續
+        }
+        // console.log('檢查必填項');
+
+        // 檢查 danger_ 開頭元素的文字內容
+        if (checkDangerElements()) {
+            // console.log('準備送單');
+            $('#formParkingSpaceEdit').submit(); // 提交表單
+            // console.log('送單囉!');
+        } else {
+            swalToastWarning('請填上正確資料唷！', 'top');
+        }
+    });
+
 
 });
+
+// // 點擊 resetBtn 按鈕時
+// $('#resetBtn').click(function () {
+//     // 執行原有 reset 的功能
+//     this.form.reset();
+//     // 清空所有以 danger_ 開頭元素的內容
+//     $('[id^="danger_"]').text('');
+// });
+
+// toggleRadioItems('originalBuilding', 'newBuilding', 'originalBuildingBox', 'newBuildingBox');
+
+// const urlParams = new URLSearchParams(window.location.search);
+// const parkingSpaceId = String(urlParams.get('id'));
+
+// 確保 parkingSpaceId 存在
+// if (parkingSpaceId) {
+// console.log('Room ID:', parkingSpaceId);
+// let parkingSpaceData = dataset_parkingSpaceAll.find(parkingSpace => parkingSpace.id === parkingSpaceId);
+// if (parkingSpaceData.company) {
+//     $('#originalBuilding, #newBuilding, #parkingSpaceBuilding, #basementNum, #car, #moto, #parkingSpaceStatus').attr('disabled', true);
+
+// } else {
+//     $('#originalBuilding, #newBuilding, #parkingSpaceBuilding, #basementNum, #car, #moto, #parkingSpaceStatus').attr('disabled', false);
+// }
+// } else {
+//     console.error('ParkingSpace ID not found in URL');
+// }

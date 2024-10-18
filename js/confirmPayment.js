@@ -2354,51 +2354,55 @@ $(function () {
             }
         }
 
-
-
-        $('#cultivation_updateBtn').off('click');
-
         $('#cultivation_deleteData').off('click');
         $('#cultivation_deleteData').on('click', function () {
-            // console.log("使用Id", catchId);
-            let deleteRoomId = "";
-            switch (catchId.substring(0, 4)) {
-                case 'now_':
-                    deleteRoomId = roomData.now.id;
-                    break;
-                case 'next':
-                    deleteRoomId = roomData.next.id;
-                    break;
-                default:
-                    deleteRoomId = "add";
-                    break;
-            }
+            swalConfirm(
+                "確定要刪除此配置紀錄嗎?",
+                "確定刪除。",
+                "不要！",
+                function () {
+                    // console.log("使用Id", catchId);
+                    let deleteRoomId = "";
+                    switch (catchId.substring(0, 4)) {
+                        case 'now_':
+                            deleteRoomId = roomData.now.id;
+                            break;
+                        case 'next':
+                            deleteRoomId = roomData.next.id;
+                            break;
+                        default:
+                            deleteRoomId = "add";
+                            break;
+                    }
 
-            // console.log("刪除Id",deleteRoomId);
-            // 將更新的資料送到後端
-            $.ajax({
-                url: deleteRoomRecordsUrl, // 替換成您的後端接收更新請求的URL
-                type: 'POST', // 或者 'PUT'，根據您的後端接口設計來決定
-                contentType: 'application/json',
-                data: JSON.stringify(deleteRoomId),
-                success: function (response) {
-                    // 處理成功回應
-                    // console.log('刪除成功:', response);
-                    // 根據需要執行其他操作，例如顯示成功訊息
-                    swalToastSuccess(response.message, 'top');// 2秒
-                    setTimeout(function () {
-                        location.reload();
-                    }, 2300);  //2.3秒後
-                },
-                error: function (xhr, status, error) {
-                    // 處理錯誤情況
-                    // console.error('刪除失敗:', error);
-                    swalToastWarning('刪除配置紀錄時發生錯誤。', 'top');
+                    // console.log("刪除Id",deleteRoomId);
+                    // 將更新的資料送到後端
+                    $.ajax({
+                        url: deleteRoomRecordsUrl, // 替換成您的後端接收更新請求的URL
+                        type: 'POST', // 或者 'PUT'，根據您的後端接口設計來決定
+                        contentType: 'application/json',
+                        data: JSON.stringify(deleteRoomId),
+                        success: function (response) {
+                            // 處理成功回應
+                            // console.log('刪除成功:', response);
+                            // 根據需要執行其他操作，例如顯示成功訊息
+                            swalToastSuccess(response.message, 'top');// 2秒
+                            setTimeout(function () {
+                                location.reload();
+                            }, 2300);  //2.3秒後
+                        },
+                        error: function (xhr, status, error) {
+                            // 處理錯誤情況
+                            // console.error('刪除失敗:', error);
+                            swalToastWarning('刪除配置紀錄時發生錯誤。', 'top');
+                        }
+                    });
                 }
-            });
+            );
 
         });
 
+        $('#cultivation_updateBtn').off('click');
         $('#cultivation_updateBtn').on('click', function () {
             // console.log('roomId Btn :', catchId); // 確認 roomId 是否正確獲取
             // let formType = "";
@@ -2460,7 +2464,6 @@ $(function () {
                     contentType: 'application/json',
                     data: JSON.stringify(roomUpdatedData),
                     success: function (response) {
-                        // 處理成功回應
                         // console.log('更新成功:', response);
                         // 根據需要執行其他操作，例如顯示成功訊息
                         swalToastSuccess(response.message, 'top');// 2秒
@@ -2471,7 +2474,7 @@ $(function () {
                     error: function (xhr, status, error) {
                         // 處理錯誤情況
                         // console.error('更新失敗:', error);
-                        swalToastWarning('刪除配置紀錄時發生錯誤。', 'top');
+                        swalToastWarning('修改配置紀錄時發生錯誤。', 'top');
                         // 根據需要顯示錯誤訊息或執行其他操作
                     }
                 });
@@ -2701,46 +2704,88 @@ $(function () {
 
 
 
-        $('#parkingSpace_updateBtn').off('click');
+
 
         $('#parkingSpace_deleteData').off('click');
+        // $('#parkingSpace_deleteData').on('click', function () {
+        //     console.log("使用Id", catchId);
+        //     let deletePSId = "";
+        //     switch (catchId.substring(0, 4)) {
+        //         case 'now_':
+        //             deletePSId = PSData.now.id;
+        //             break;
+        //         case 'next':
+        //             deletePSId = PSData.next.id;
+        //             break;
+        //         default:
+        //             deletePSId = "add";
+        //             break;
+        //     }
+
+        //     console.log("刪除Id",deletePSId);
+        //     // 將更新的資料送到後端
+        //     $.ajax({
+        //         url: deletePSRecordsUrl, 
+        //         type: 'POST', 
+        //         contentType: 'application/json',
+        //         data: JSON.stringify(deletePSId),
+        //         success: function (response) {
+        //             // console.log('刪除成功:', response);
+        //             swalToastSuccess(response.message, 'top');// 2秒
+        //             setTimeout(function () {
+        //                 location.reload();
+        //             }, 2300);  //2.3秒後
+        //         },
+        //         error: function (xhr, status, error) {
+        //             // console.error('刪除失敗:', error);
+        //             swalToastWarning('刪除配置紀錄時發生錯誤。', 'top');
+        //         }
+        //     });
+
+        // });
         $('#parkingSpace_deleteData').on('click', function () {
-            console.log("使用Id", catchId);
-            let deletePSId = "";
-            switch (catchId.substring(0, 4)) {
-                case 'now_':
-                    deletePSId = PSData.now.id;
-                    break;
-                case 'next':
-                    deletePSId = PSData.next.id;
-                    break;
-                default:
-                    deletePSId = "add";
-                    break;
-            }
+            // 呼叫 swalConfirm() 顯示確認對話框
+            swalConfirm(
+                "確定要刪除此配置紀錄嗎?",
+                "確定刪除。",
+                "不要！",
+                function () {
+                    console.log("使用Id", catchId);
+                    let deletePSId = "";
+                    switch (catchId.substring(0, 4)) {
+                        case 'now_':
+                            deletePSId = PSData.now.id;
+                            break;
+                        case 'next':
+                            deletePSId = PSData.next.id;
+                            break;
+                        default:
+                            deletePSId = "add";
+                            break;
+                    }
 
-            console.log("刪除Id",deletePSId);
-            // 將更新的資料送到後端
-            $.ajax({
-                url: deletePSRecordsUrl, 
-                type: 'POST', 
-                contentType: 'application/json',
-                data: JSON.stringify(deletePSId),
-                success: function (response) {
-                    // console.log('刪除成功:', response);
-                    swalToastSuccess(response.message, 'top');// 2秒
-                    setTimeout(function () {
-                        location.reload();
-                    }, 2300);  //2.3秒後
-                },
-                error: function (xhr, status, error) {
-                    // console.error('刪除失敗:', error);
-                    swalToastWarning('刪除配置紀錄時發生錯誤。', 'top');
+                    console.log("刪除Id", deletePSId);
+                    // 將更新的資料送到後端
+                    $.ajax({
+                        url: deletePSRecordsUrl,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(deletePSId),
+                        success: function (response) {
+                            swalToastSuccess(response.message, 'top'); // 2秒
+                            setTimeout(function () {
+                                location.reload();
+                            }, 2300);  // 2.3秒後重新整理
+                        },
+                        error: function (xhr, status, error) {
+                            swalToastWarning('刪除配置紀錄時發生錯誤。', 'top');
+                        }
+                    });
                 }
-            });
-
+            );
         });
 
+        $('#parkingSpace_updateBtn').off('click');
         $('#parkingSpace_updateBtn').on('click', function () {
             console.log('PSId Btn :', catchId); // 確認 PSId 是否正確獲取
             let formPSTypeId = "";
@@ -2748,10 +2793,10 @@ $(function () {
             // 根據 ID 的前綴來確定房間 ID
             switch (catchId.substring(0, 4)) {
                 case 'now_':
-                    formPSTypeId = roomData.now.id;
+                    formPSTypeId = PSData.now.id;
                     break;
                 case 'next_':
-                    formPSTypeId = roomData.next.id;
+                    formPSTypeId = PSData.next.id;
                     break;
                 default:
                     formPSTypeId = "add";
@@ -2790,20 +2835,20 @@ $(function () {
                 $('#danger_parkingSapceBox').text('');
                 // 將更新的資料送到後端
                 $.ajax({
-                    url: editPSRecordsUrl, 
-                    type: 'POST', 
+                    url: editPSRecordsUrl,
+                    type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(psUpdatedData),
                     success: function (response) {
-                        console.log('更新成功:', response);
+                        // console.log('更新成功:', response);
                         swalToastSuccess(response.message, 'top');// 2秒
                         setTimeout(function () {
                             location.reload();
                         }, 2300);  //2.3秒後
                     },
                     error: function (xhr, status, error) {
-                        console.error('更新失敗:', error);
-                        swalToastWarning('刪除配置紀錄時發生錯誤。', 'top');
+                        // console.error('更新失敗:', error);
+                        swalToastWarning('修改配置紀錄時發生錯誤。', 'top');
                     }
                 });
             }
@@ -2851,7 +2896,7 @@ $(function () {
     });
 
 });
-$(function(){
+$(function () {
     $('#typeahead_receiptCompanyAdd').typeahead({
         source: companyData
     });
