@@ -1,8 +1,5 @@
 $(function () {
-    // 抓取要代進的資料
-    let sessionData = session_userData;
-    // 同步session跟燈箱
-    $('#parkingSpaceCompany_td').text(sessionData.company);
+    $('#parkingSpaceCompany_td').text(userCompanyName);
 
     // 確保起租日期不可小於當日+5天
     setMinDateToSomeDaysLater('parkingSpaceStartDate', 5);
@@ -37,14 +34,14 @@ $(function () {
             // 如果返回 false，顯示警告訊息
             swalToastWarning('請上傳行照圖檔，並裁剪成指定大小唷！', 'top');
         }
-        // $('#parkingSpaceApply_pdf').modal('show');
     });
 
     // 點擊 submitBtn 按鈕時
     $('#printAndSubmit').click(function (event) {
-        // $('#formParkingSpaceApply').submit(); // 提交表單
+        // event.preventDefault(); // 防止默認提交行為（僅測試用）
         console.log('表單資料已送出');
-        var formData = $('#formParkingSpaceApply').serializeArray();
-        console.log('表單資料：', JSON.stringify(formData, null, 2));
+        $('#formParkingSpaceApply').submit(); // 提交表單
     });
 });
+// var formData = $('#formParkingSpaceApply').serializeArray();
+// console.log('表單資料：', JSON.stringify(formData, null, 2));

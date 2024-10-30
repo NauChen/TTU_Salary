@@ -239,6 +239,36 @@ function checkAtLeastOneChecked(checkboxIds, errorMessageElementId) {
     }
 }
 
+// ================檢查.thisPassword是否符合格式，沒有則加上錯誤訊息並回傳false
+function checkPasswords() {
+    var allValid = true;
+
+    $('.thisPassword').each(function () {
+        var passwordValue = $(this).val().trim();
+        var inputId = $(this).attr('id');
+
+        if (passwordValue === '') {
+            // 當值為空，跳過檢查並繼續檢查下一個
+            $('#danger_' + inputId).text('');
+            return true;
+        }
+
+        if (!validatePassword(passwordValue)) {
+            addDangerPasswordMessage(inputId);
+            allValid = false;
+        } else {
+            $('#danger_' + inputId).text('');
+        }
+    });
+
+    return allValid;
+}
+
+
+
+
+
+
 
 // 添加 此為必填欄位 的警告訊息
 function addDangerRequiredMessage(id) {
@@ -274,6 +304,12 @@ function addDangerEmailMessage(id) {
     $('#danger_' + id).text('請輸入有效的電子郵件地址！');
 }
 
+// 添加 密碼格式 的警告訊息
+function addDangerPasswordMessage(id) {
+    // $('#danger_' + id).text('請依正確的格式輸入：至少8個字元、內含大寫英文、小寫英文、半形符號、不連續或重複字元(如zz或是678)');
+    $('#danger_' + id).text('請依正確的格式輸入：至少8個字元、內含大寫英文、小寫英文、數字、不連續或重複字元(如zz或是678)');
+}
+
 // 刪除警告訊息
 function removeDangerMessage(id) {
     $('#danger_' + id).text('');
@@ -294,6 +330,42 @@ function validLineID(lineID) {
     // 允许的字符為半形英数字、(.)、(-)、(_)和@
     var validChars = /^[a-zA-Z0-9.@_-]+$/;
     return validChars.test(lineID);
+}
+
+// 驗證密碼格式是否正確
+function validatePassword(password) {
+    // 檢查是否至少8個字元
+    if (password.length < 8) return false;
+
+    // 檢查是否包含至少一個大寫字母、小寫字母、數字以及符號
+    var hasUpperCase = /[A-Z]/.test(password);
+    var hasLowerCase = /[a-z]/.test(password);
+    var hasNumber = /[0-9]/.test(password);
+    // var hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    // 檢查是否有重複字元，例如：aaa
+    var hasConsecutive = /(.)\1{2,}/.test(password); // 重複字元
+
+    // 檢查是否有連續的數字或字母，不管幾個字母或數字連續都不行
+    var hasSequentialNumbers = /(?:012|123|234|345|456|567|678|789|890)/.test(password); // 連續數字
+    var hasSequentialLetters = /(?:abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz)/i.test(password); // 連續字母
+
+    // 更加嚴格的連續檢查，包括小範圍的連續數字或字母（如ab、12等）
+    // var isStrictSequential = function (str) {
+    //     for (var i = 0; i < str.length - 1; i++) {
+    //         var currentCharCode = str.charCodeAt(i);
+    //         var nextCharCode = str.charCodeAt(i + 1);
+    //         if (nextCharCode === currentCharCode + 1) {
+    //             return true; // 如果發現連續字母或數字，返回true
+    //         }
+    //     }
+    //     return false;
+    // };
+
+    // if (isStrictSequential(password)) return false; // 檢查是否有短範圍的連續字母或數字
+
+    // return hasUpperCase && hasLowerCase && hasNumber && hasSymbol && !hasConsecutive && !hasSequentialNumbers && !hasSequentialLetters;
+    return hasUpperCase && hasLowerCase && hasNumber && !hasConsecutive && !hasSequentialNumbers && !hasSequentialLetters;
 }
 
 // ※※ onblur函式 - 輸入完畢後用 ※※
@@ -318,7 +390,7 @@ function checkThisEmail() {
     var warningBox = $('#danger_' + emailId);
 
     if (emailValue === '') {
-        if(warningBox.text() != '此為必填欄位！'){
+        if (warningBox.text() != '此為必填欄位！') {
             warningBox.text('');
         }
     } else if (!validateEmail(emailValue)) {

@@ -219,8 +219,8 @@
 
 // idCardApply.js
 $(function () {
-    // 依照資料生成下拉選單
-    populateSelect('idCardCultRoom', selectOptionLocation);
+    // // 依照資料生成下拉選單
+    // populateSelect('idCardCultRoom', selectOptionLocation);
 
     // 預設本次申請為首次申請
     $('#typeReissue').prop({
@@ -241,11 +241,11 @@ $(function () {
     enforceStartDateFirst('idCard_Period1', 'idCard_Period2');
 
     // 抓取要代進的資料
-    let sessionData = session_userData;
+    // let sessionData = session_userData;
     // 同步session跟燈箱
-    $('#idCardCompany_td').text(sessionData.company);
-    $('#idCardResponsiblePerson_td').text(sessionData.responsiblePerson);
-    $('#idCardCompanyPhone_td').text(sessionData.companyPhone);
+    $('#idCardCompany_td').text(companyData.company);
+    $('#idCardResponsiblePerson_td').text(companyData.responsiblePerson);
+    $('#idCardCompanyPhone_td').text(companyData.companyPhone);
 
 
     // 同步輸入框跟預覽td

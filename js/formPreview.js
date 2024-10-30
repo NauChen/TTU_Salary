@@ -55,18 +55,42 @@ function syncInputDate(inputId, tdId_Y, tdId_m, tdId_D) {
 }
 
 //同步input select
+// function syncSelectValue(selectId, tdgroupId, tdvalueId) {
+//     $('#' + selectId).on('blur change', function () {
+//         var selectedOption = $(this).find('option:selected');
+//         var optionValue = selectedOption.val();
+//         // var optgroupLabel = selectedOption.closest('optgroup').attr('label');
+
+//         // var changedRoomName = changeRoomName(optgroupLabel);
+//         // $('#' + tdgroupId).text(changedRoomName);
+//         $('#' + tdgroupId).text(optgroupLabel);
+//         $('#' + tdvalueId).text(optionValue);
+//     });
+// }
 function syncSelectValue(selectId, tdgroupId, tdvalueId) {
     $('#' + selectId).on('blur change', function () {
         var selectedOption = $(this).find('option:selected');
         var optionValue = selectedOption.val();
-        var optgroupLabel = selectedOption.closest('optgroup').attr('label');
+        
+        // 檢查 optionValue 是否為 null 或空
+        if (optionValue) {
+            // 使用 "|" 分割 optionValue
+            var values = optionValue.split('|');
 
-        var changedRoomName = changeRoomName(optgroupLabel);
-
-        $('#' + tdgroupId).text(changedRoomName);
-        $('#' + tdvalueId).text(optionValue);
+            // 更新 tdgroupId 和 tdvalueId 的文本內容
+            // 假設左邊的值是 Building，右邊的值是 Room
+            $('#' + tdgroupId).text(values[0]); // 放入 optionValue 的 "|" 的左邊
+            $('#' + tdvalueId).text(values[1]); // 放入 optionValue 的 "|" 的右邊
+        } else {
+            // 如果沒有選擇有效的選項，可以選擇清空或給予預設值
+            $('#' + tdgroupId).text(''); // 清空或設置為預設值
+            $('#' + tdvalueId).text('');
+        }
     });
 }
+
+
+
 //同步input radio
 function syncInputRadio(yesRadioId, noRadioId, yesTdId, noTdId) {
     function updateDisplay() {

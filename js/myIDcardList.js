@@ -11,12 +11,12 @@
 //         'remark': '已選停用，請至研發處歸還。',
 //     },
 //     {
-//         'id': '2',
 //         'createDate': '2023-08-31',
-//         'place': '綜合工廠大樓-202',
-//         'name': '孫大美',
+//         'id': '2',
 //         'jobTitle': '專員',
 //         'library': '已開放',
+//         'name': '孫大美',
+//         'place': '綜合工廠大樓-202',
 //         'print': '-',
 
 //         'remark': '',
@@ -115,7 +115,7 @@ $(function () {
                     if (row.remark != "申請中" && row.remark != "X" && row.remark != "已選停用，請至研發處歸還。" && row.remark != "不通過，可洽研發處。") {
                         // return '<a class="btn btn-outline-primary rounded-circle noOutline" href="./idCardReissue.html?id=' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
                         // /ID_Card/Create
-                        return '<a class="btn btn-outline-primary rounded-circle noOutline" href="./idCardReissue.html?id=' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
+                        return '<a class="btn btn-outline-primary rounded-circle noOutline" href="/ID_Card/Reissue/' + data + '"><i class="fa-regular fa-face-sad-tear"></i></a>';
                     } else {
                         return "";
                     }
@@ -221,7 +221,7 @@ $(function () {
             },
             error: function (xhr, status, error) {
                 console.error('Error deleting jobs', error);
-                swalToastWarning('刪除職缺時發生錯誤。', 'top');
+                swalToastWarning('刪除識別證時發生錯誤。', 'top');
             }
         });
 

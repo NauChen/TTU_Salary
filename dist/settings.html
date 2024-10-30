@@ -22,7 +22,7 @@ height：畫面高度 -->
 <!-- <meta name="keywords" content="關鍵字1, 關鍵字2, 關鍵字3"> -->
 <!-- <meta name="author" content="作者"> -->
 
-<title>大同大學校內育成媒合平台-全部識別證</title>
+<title>校內育成媒合平台-修改密碼</title>
 
 <!-- 網址列favicon圖片
 檔案格式：.ico（較常使用）、.png、.gif（只有 Firefox 支援）
@@ -225,31 +225,107 @@ height：畫面高度 -->
 </nav>
         <div class="content">
             <div class="container">
-                <!-- 麵包屑 -->
                 <div class="breadcrumb-box section-padding section-border-radius my-2r no_print">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fa-solid fa-briefcase"></i>&ensp;資料管理</li>
-                        <li class="breadcrumb-item active"><i class="fa-regular fa-address-card"></i>&ensp;全部識別證</li>
+                        <li class="breadcrumb-item"><i class="fa-solid fa-gear"></i>&ensp;帳號管理</li>
+                        <li class="breadcrumb-item active"><i class="fa-solid fa-user-gear"></i>&ensp;個人資料設定</li>
                     </ol>
                 </div>
-                    <!-- 停車位啟用列表 -->
-                    <div class="tabs-box my-2r no_print">
-                        <div class="row mb-4 px-3">
-                            <h3 class="section-header col-auto mb-0 lh-base"><i
-                                    class="fa-solid fa-quote-left"></i>識別證列表<i class="fa-solid fa-quote-right"></i></h3>
-                            <a class="btn btn-outline-info col-auto goto_somewhere ms-5 py-2" role="button"
-                                href="idcardCreate.html"><i class="fa-solid fa-plus"></i><i
-                                    class="fa-solid fa-arrow-right mx-1"></i><i class="fa-regular fa-address-card"></i><span
-                                    class="tooltiptext tooltip-right">新增識別證</span></a>
-                        </div>
-                        <div class="tabs section-border-radius section-padding">
-                            <table id="idCard_List"
-                                class="table table-hover table-bordered responsive align-middle" style="width:100%">
-                            </table>
-                        </div>
+                <div class="tabs-box my-2r">
+                    <h3 class="section-header">
+                        <i class="fa-solid fa-quote-left"></i>修改密碼<i class="fa-solid fa-quote-right"></i>
+                    </h3>
+
+                    <div class="tabs section-border-radius section-padding">
+                        <form class="container-fluid" method="post" id="formSetting" asp-action="ProfileSettings">
+                            <div class="row">
+                                <div class="col-xl-6 mb-3">
+                                    <div class="row mb-3  align-items-center">
+                                        <div class="col-lg-auto col-form-label text-nowrap">用戶名稱：</div>
+                                        <div class="col">
+                                            <span class="text-muted" id="settingName">@ViewBag.UseData.RealName</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3  align-items-center">
+                                        <div class="col-lg-auto col-form-label text-nowrap">
+                                            登入帳號：
+                                        </div>
+                                        <div class="col">
+                                            <span class="text-muted"
+                                                id="settingAccount">@ViewBag.UseData.UserName</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 justify-content-end">
+                                        <div class="col-12 col-form-label text-nowrap">
+                                            修改密碼：
+                                        </div>
+                                        <div class="col-11">
+                                            <div class="row mb-2">
+                                                <label class="col-lg-auto col-form-label text-nowrap"
+                                                    for="settingOriginalPassword">
+                                                    <span class="requiredMark">*</span>輸入原來的密碼：
+                                                </label>
+                                                <div class="col">
+                                                    <input type="password" id="settingOriginalPassword"
+                                                        name="settingOriginalPassword" class="form-control thisRequired">
+                                                    <span class="text-danger"
+                                                        id="danger_settingOriginalPassword"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label class="col-lg-auto col-form-label text-nowrap"
+                                                    for="settingNewPassword">
+                                                    <span class="requiredMark">*</span>想改成的新密碼：
+                                                </label>
+                                                <div class="col">
+                                                    <input type="password" id="settingNewPassword"
+                                                        name="settingNewPassword" class="form-control thisPassword thisRequired">
+                                                    <span class="text-danger" id="danger_settingNewPassword"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label class="col-lg-auto col-form-label text-nowrap"
+                                                    for="settingNewPasswordAgain">
+                                                    <span class="requiredMark">*</span>再次輸入新密碼：
+                                                </label>
+                                                <div class="col">
+                                                    <input type="password" id="settingNewPasswordAgain"
+                                                        name="settingNewPasswordAgain" class="form-control thisPassword thisRequired">
+                                                    <span class="text-danger"
+                                                        id="danger_settingNewPasswordAgain"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 mb-3">
+                                    <div class="salaryRadio px-2 py-2 mx-1 border-success row">
+                                        <div class="col-12">
+                                            注意事項：
+                                        </div>
+                                        <div class="col-12">
+                                            測試測試
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row text-center p-3 justify-content-center">
+                                <div class="col-auto">
+                                    <a class="btn btn-lg btn-outline-secondary twoWord text-nowrap"
+                                        onclick="history.back()">返回</a>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-lg btn-success btnThrottle"
+                                        id="updateBtn">送出</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
-                <!-- <footer>
+
+                    <!-- <footer>
     <ul>
         <li>隱私權</li>
     </ul>
@@ -272,8 +348,8 @@ height：畫面高度 -->
     </p>
 </div>
 
+                </div>
             </div>
-        </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="./js/bootstrap.bundle.min.js"></script>
@@ -286,7 +362,9 @@ height：畫面高度 -->
 <script src="./js/sweetAlert.js"></script>
 <script src="./js/main.js"></script>
 
-    <script src="./js/idCard.js"></script>
+    <script src="./js/formComm.js"></script>
+    <script src="./js/formValidation.js"></script>
+    <script src="./js/settings.js"></script>
 </body>
 
 </html>

@@ -90,7 +90,7 @@ $(function () {
 
 
     // ※※※ 是否進入申請頁面 ※※※
-    $('#danger_loginPage').hide();
+    // $('#danger_loginPage').hide();
     $('#nextButton').click(function (event) {
         var allChecked = true;
         var agreePIP = $('#checkbox_PIP');
@@ -113,14 +113,16 @@ $(function () {
         if (agreePIP.is(':checked')) {
             if (!allChecked) {
                 event.preventDefault();
-                $('#danger_loginPage').show().text('(ó㉨ò)　請確認備齊文件再申請唷！');
+                // $('#danger_loginPage').show().text('(ó㉨ò)　請確認備齊文件再申請唷！');
+                swalToastWarning('(ó㉨ò)請確認備齊文件再申請唷！', 'top');
             } else {
                 $('#danger_loginPage').hide();
                 window.location.href = $('#nextLink').attr('href');
             }
         } else {
             event.preventDefault();
-            $('#danger_loginPage').show().text('(ó㉨ò)　需詳閱並同意個資規範唷！');
+            // $('#danger_loginPage').show().text('(ó㉨ò)　需詳閱並同意個資規範唷！');
+            swalToastWarning('(ó㉨ò)需詳閱並同意個資規範唷！', 'top');
         }
     });
 
@@ -128,7 +130,87 @@ $(function () {
 });
 
 
-$(function () {
+// $(function () {
+//     $('#loginBtn').click(function () {
+//         // 獲取帳號與密碼
+//         var account = $('#accountInput').val();
+//         var password = $('#passwordInput').val();
+//         console.log("AAAA");
 
 
-});
+//         // $.ajax({
+//         //     url: loginUrl,  // 指向後端控制器中的方法
+//         //     type: 'POST',
+//         //     contentType: 'application/json',
+//         //     data: JSON.stringify({ account: account, password: password }),
+//         //     success: function (response) {
+//         //         if (response.success) {
+//         //             // 登入成功後重定向到目標頁面
+//         //             // location.href = '/Jobs/Talent_wanted';
+//         //             swalToastSuccess(response.message, 'top');// 2秒
+//         //             setTimeout(function () {
+//         //                 // location.reload();
+//         //                 location.href = '/Jobs/Talent_wanted';
+//         //             }, 2300);  //2.3秒後
+//         //         } else {
+//         //             // 登入失敗，顯示錯誤訊息
+//         //             swalToastWarning(response.message, 'top');
+//         //         }
+//         //     },
+//         //     error: function (xhr, status, error) {
+//         //         console.error('登入失敗', error);
+//         //         swalToastWarning('登入時發生錯誤，請稍後再試。', 'top');
+//         //     }
+//         // });
+//         // $.ajax({
+//         //     url: '/Home/Login', // 應確認路徑與後端一致
+//         //     type: 'POST',
+//         //     contentType: 'application/json',
+//         //     data: JSON.stringify({
+//         //         account: $('#accountInput').val(),
+//         //         password: $('#passwordInput').val()
+//         //     }),
+//         //     success: function(response) {
+//         //         if (response.success) {
+//         //             // 登入成功，處理導向
+//         //             window.location.href = '/JobVacancies/TalentWanted';
+//         //         } else {
+//         //             // 顯示錯誤訊息
+//         //             alert(response.message);
+//         //         }
+//         //     },
+//         //     error: function() {
+//         //         alert('登入失敗，請稍後再試。');
+//         //     }
+//         // });
+//         $.ajax({
+//             url: '/Home/Login',
+//             type: 'POST',
+//             data: {
+//                 account: $('#accountInput').val(),
+//                 password: $('#passwordInput').val()
+//             },
+//             success: function(response) {
+//                 // console.log(response);  // 檢查返回的 response
+//                 // if (response.success) {
+//                 //     window.location.href = response.redirectUrl; // 重定向到指定網址
+//                 // } else {
+//                 //     swalToastWarning(response.message, 'top'); // 顯示錯誤訊息
+//                 // }
+//                 swalToastSuccess(response.message, 'top'); 
+//                 console.log(response); 
+//                 setTimeout(function () {
+//                     // window.location.href = response.redirectUrl;
+//                     window.location.href = "/Jobs/Talent_wanted";
+//                 }, 2300);  //2.3秒後
+//             },
+//             error: function(xhr) {
+//                 var response = xhr.responseJSON;
+//                 swalToastWarning(response.message, 'top');
+//             }
+//         });
+        
+
+//     });
+
+// });

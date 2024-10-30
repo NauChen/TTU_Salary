@@ -328,26 +328,26 @@ function formatDate(date) {
 //     return text.replace(/\n/g, '<br>');
 // }
 //   基地培育區 轉 大樓名
-function changeRoomName(room) {
-    switch (room) {
-        case '青創基地':
-            return '新德惠';
-        case '綜合工廠培育區':
-            return '綜合';
-        case '挺生大樓培育區':
-            return '挺生';
-        case '產學實驗培育區':
-            return '產學';
-        case '實驗大樓培育區':
-            return '實驗';
-        case '北設工培育區':
-            return '北設工';
-        case '尚志大樓培育區':
-            return '尚志';
-        default:
-            return '待新增';
-    }
-}
+// function changeRoomName(room) {
+//     switch (room) {
+//         case '青創基地':
+//             return '新德惠';
+//         case '綜合工廠培育區':
+//             return '綜合';
+//         case '挺生大樓培育區':
+//             return '挺生';
+//         case '產學實驗培育區':
+//             return '產學';
+//         case '實驗大樓培育區':
+//             return '實驗';
+//         case '北設工培育區':
+//             return '北設工';
+//         case '尚志大樓培育區':
+//             return '尚志';
+//         default:
+//             return '待新增';
+//     }
+// }
 //   培育區 轉 大樓名
 function changeBuildingToCultivationRoom(building) {
     switch (building) {

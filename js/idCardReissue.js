@@ -56,23 +56,28 @@
 //         'ECPhone': '0933-456789',
 //     },
 //     {
-//         'id': '4',
-//         'createDate': '2023-09-10',
-//         'place': '北設工-202',
 //         'name': '孫二帥',
 //         'jobTitle': '專員',
-//         'library': '已開放',
-//         'print': '3',
-
+//         'phone': '0912-345678',
+//         'email': 'abc#gmail.com',
 //         'startDate': '2023-10-11',
+//         'place': '北設工-202',
+//         'print': '3',
+//         'emergContact': '孫大美',
+//         'ECPhone': '0933-456789',
+//         'library': '已開放',
+
+//         'company':'',
+//         'responsiblePerson':'',
+//         'companyPhone':'',
+
+//         'id': '4',
+//         'createDate': '2023-09-10',
 //         'endDate': '2023-11-30',
 //         'status': '-',
 //         'idCardNum': 'ABC104',
 
-//         'phone': '0912-345678',
-//         'email': 'abc#gmail.com',
-//         'emergContact': '孫大美',
-//         'ECPhone': '0933-456789',
+
 //     },
 // ];
 
