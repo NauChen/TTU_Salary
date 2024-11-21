@@ -268,7 +268,8 @@ height：畫面高度 -->
                                                 </label>
                                                 <div class="col">
                                                     <input type="password" id="settingOriginalPassword"
-                                                        name="settingOriginalPassword" class="form-control thisRequired">
+                                                        name="settingOriginalPassword"
+                                                        class="form-control thisRequired">
                                                     <span class="text-danger"
                                                         id="danger_settingOriginalPassword"></span>
                                                 </div>
@@ -280,8 +281,23 @@ height：畫面高度 -->
                                                 </label>
                                                 <div class="col">
                                                     <input type="password" id="settingNewPassword"
-                                                        name="settingNewPassword" class="form-control thisPassword thisRequired">
+                                                        name="settingNewPassword"
+                                                        class="form-control thisPassword thisRequired">
                                                     <span class="text-danger" id="danger_settingNewPassword"></span>
+                                                </div>
+                                                <div class="d-flex justify-content-end mt-1">
+                                                    <span class="badge fw-normal bg-secondary ms-1"
+                                                        id="lengthBadge">8~20碼</span>
+                                                    <span class="badge fw-normal bg-secondary ms-1"
+                                                        id="numberBadge">數字</span>
+                                                    <span class="badge fw-normal bg-secondary ms-1"
+                                                        id="uppercaseBadge">大寫英文</span>
+                                                    <span class="badge fw-normal bg-secondary ms-1"
+                                                        id="lowercaseBadge">小寫英文</span>
+                                                    <span class="badge fw-normal bg-secondary ms-1"
+                                                        id="noConsecutiveNumbersBadge">無連續數字</span>
+                                                    <span class="badge fw-normal bg-secondary ms-1"
+                                                        id="noConsecutiveLettersBadge">無連續字母</span>
                                                 </div>
                                             </div>
                                             <div class="row mb-2">
@@ -291,7 +307,8 @@ height：畫面高度 -->
                                                 </label>
                                                 <div class="col">
                                                     <input type="password" id="settingNewPasswordAgain"
-                                                        name="settingNewPasswordAgain" class="form-control thisPassword thisRequired">
+                                                        name="settingNewPasswordAgain"
+                                                        class="form-control thisRequired">
                                                     <span class="text-danger"
                                                         id="danger_settingNewPasswordAgain"></span>
                                                 </div>

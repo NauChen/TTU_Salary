@@ -5,10 +5,16 @@ $(function () {
         checkThisRequiredElements.call(this);  // 假設這個函數存在並檢查必填欄位
     });
 
-    // 當 .thisPassword 更改時，再次執行檢查
-    $('.thisPassword').on('input change', function () {
-        checkPasswords.call(this);  // 假設這個函數存在並檢查密碼欄位
-    });
+    // // 當 .thisPassword 更改時，再次執行檢查
+    // $('.thisPassword').on('input change', function () {
+    //     checkPasswords.call(this);  // 假設這個函數存在並檢查密碼欄位
+    // });
+
+    // 綁定輸入事件
+$('#settingNewPassword').on('input', function () {
+    const password = $(this).val();
+    validatePasswordDynamic(password); // 動態驗證
+});
 
     // 檢查密碼一致性和格式
     $('#settingNewPasswordAgain, #settingNewPassword').on('input blur change', function () {
@@ -21,15 +27,6 @@ $(function () {
         } else {
             $('#danger_settingNewPasswordAgain').text(''); // 清除錯誤訊息
         }
-
-        // 檢查密碼格式是否正確
-        // if (!validatePassword(newPassword)) {
-        //     $('#danger_settingNewPassword').text('密碼格式不正確，請包含大寫、小寫、數字、符號，並且避免連續或重複字元。');
-        // } else {
-        //     $('#danger_settingNewPassword').text(''); // 清除錯誤訊息
-        // }
-        // checkPasswords();aK5r.6gP
-        // Qhi735r4
     });
 
     // 點擊 updateBtn 按鈕時
