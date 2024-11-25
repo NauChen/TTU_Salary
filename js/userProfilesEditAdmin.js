@@ -7,6 +7,7 @@ var dataset_userList = [
         'type': "個人",
         'editBy': "-",
         'adminNote': '2024-07-31到職',
+        'status': "啟用",
     },
     {
         'id': '1',
@@ -40,6 +41,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "啟用",
     },
     {
         'id': '2',
@@ -73,6 +75,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "停用",
     },
     {
         'id': '23',
@@ -116,6 +119,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "啟用",
     },
     {
         'id': '4',
@@ -149,6 +153,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "啟用",
     },
     {
         'id': '5',
@@ -182,6 +187,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "停用",
     },
     {
         'id': '6',
@@ -215,6 +221,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "啟用",
     },
     {
         'id': '7',
@@ -248,6 +255,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "啟用",
     },
     {
         'id': '8',
@@ -281,6 +289,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "啟用",
     },
     {
         'id': '9',
@@ -314,6 +323,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "啟用",
     },
     {
         'id': '10',
@@ -347,6 +357,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "啟用",
     },
     {
         'id': '11',
@@ -380,6 +391,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "啟用",
     },
     {
         'id': '12',
@@ -413,6 +425,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "停用",
     },
     {
         'id': '13',
@@ -446,6 +459,7 @@ var dataset_userList = [
         'tutoringProfessor': '黃飛鴻',
         'nurtureProgram': '中國傳統武術發揚光大',
         'adminNote': '副業：十三姨古典洋裝',
+        'status': "停用",
     }
 ];
 
@@ -503,8 +517,19 @@ $(function () {
                     }
                 }
             },
+            {
+                data: 'status', title: "啟用<br class='d-none d-lg-block'>狀態", // 8
+                render: function (data) {
+                    if (data == "啟用") {
+                        return '<div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked value="啟用"></div>';
+                    } else {
+                        return '<div class="form-check form-switch"><input class="form-check-input" type="checkbox" value="停用"></div>';
+                    }
+                },
+            },
+            { data: 'status', visible: false } // 9
         ],
-        order: [[0, 'desc']],
+        order: [ [9, "desc"],[0, 'desc'],],
         "columnDefs": [
             {
                 targets: [1],
@@ -514,9 +539,9 @@ $(function () {
                 targets: [2],
                 responsivePriority: 2,
             },
-            { searchable: false, orderable: false, targets: [5, 6, 7] },
+            { searchable: false, orderable: false, targets: [5, 6, 7,8] },
             { className: "text-nowrap", targets: [0, 2, 3] },
-            { className: "text-lg-center", targets: [0, 3, 5, 6, 7] },
+            { className: "text-lg-center", targets: [0, 3, 5, 6, 7,8] },
         ],
         createdRow: function (row, data, dataIndex) {
             [5, 6, 7].forEach(function (colIdx) {
