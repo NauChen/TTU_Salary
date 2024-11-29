@@ -80,9 +80,9 @@ $(function () {
                     }
                 },
             },
-            { data: 'visitDate', title: "訪視日期" }, // 0
+            { data: 'visitDate', title: "訪視日期" }, // 1
             {
-                data: 'fileName', title: "紀錄<br class='d-none d-lg-block'>下載", // 1
+                data: 'fileName', title: "紀錄<br class='d-none d-lg-block'>下載", // 2
                 render: function (data, type, row) {
                     if (row.remark != "申請中" && row.remark != "X" && row.remark != "已選停用，請至研發處歸還。") {
                         return '<a class="" href="./.html?id=' + data + '"><i class="fa-solid fa-download"></i></a>';
@@ -91,12 +91,12 @@ $(function () {
                     }
                 },
             },
-            { data: 'remark', title: "備註", }, // 2
+            { data: 'remark', title: "備註", }, // 3
             {
-                data: 'createBy', title: "上傳者", // 3
+                data: 'createBy', title: "上傳者", // 4
             },
             {
-                data: 'createDate', title: "上傳日期", // 4
+                data: 'createDate', title: "上傳日期", // 5
             },
 
 
@@ -115,7 +115,8 @@ $(function () {
             { searchable: false, targets: [0, 2] },
             { orderable: false, targets: [0, 2, 4, 5] },
             { className: "text-center", targets: [0, 1] },
-            { className: "text-lg-center", targets: [2, 4, 5] },
+            { className: "text-sm-center", targets: [2] },
+            { className: "text-md-center", targets: [4, 5] },
             { className: "text-nowrap", targets: [0, 1, 2, 4, 5] },
         ],
         createdRow: function (row, data, dataIndex) {

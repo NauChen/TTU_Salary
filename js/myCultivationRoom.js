@@ -226,7 +226,7 @@ $(function () {
             // },
             // diffDays
             {
-                data: 'diffDays', // visible: false, // 9
+                data: 'diffDays', visible: false, // 9
             },
 
 

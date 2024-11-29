@@ -589,9 +589,9 @@ $(function () {
                 let fileNo = extractSubstringBetween(fileKey, "_", ".");
                 console.log(`${filePrefix}_No = `, fileNo);
                 if (fileNo == `${filePrefix}1`) {
-                    return `<a class="d-inline me-3" href="/download/${filePrefix}_${fileId}">${fileLabel}&ensp;<i class="fa-solid fa-download"></i></a>`;
+                    return `<a class="d-inline me-3" href="../download/${filePrefix}_${fileId}">${fileLabel}&ensp;<i class="fa-solid fa-download"></i></a>`;
                 } else {
-                    return `<a class="d-inline me-3" href="/download/${filePrefix}_${fileId}">${fileLabel}&ensp;<i class="fa-solid fa-download"></i>${updateText}</a>`;
+                    return `<a class="d-inline me-3" href="../download/${filePrefix}_${fileId}">${fileLabel}&ensp;<i class="fa-solid fa-download"></i>${updateText}</a>`;
                 }
             }
 

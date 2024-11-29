@@ -411,7 +411,7 @@ $(function () {
                 data: 'id', title: "修改", //8
                 render: function (data) {
                     // return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./parkingSpaceEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>'
-                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord btnThrottle" href="/ParkingSpace/Edit/' + data + '"><i class="fa-solid fa-wrench"></i></a>'
+                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord btnThrottle" href="../ParkingSpace/Edit/' + data + '"><i class="fa-solid fa-wrench"></i></a>'
                 },
             },
             { data: 'carType', visible: false }, // 9

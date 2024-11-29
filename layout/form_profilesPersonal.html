@@ -1,14 +1,15 @@
 <div class="row">
     <div class="col-xl-6 mb-3">
-        <div class="row mb-3">
-            <label for="profilesPersonal_Name"
-                class="col-lg-auto col-form-label text-nowrap">個人名稱：</label>
+        <div class="row mb-3 align-items-center">
+            <!-- <label for="profilesPersonal_Name" class="col-lg-auto col-form-label text-nowrap">顯示名稱：</label> -->
+            <div class="col-lg-auto col-form-label text-nowrap">顯示名稱：</div>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesPersonal_Name">
-                <span class="text-danger" id="danger_profilesPersonal_Name"></span>
+                <div id="userName"></div>
+                <!-- <input type="text" class="form-control thisRequired" id="profilesPersonal_Name">
+                <span class="text-danger" id="danger_profilesPersonal_Name"></span> -->
             </div>
         </div>
-        <div class="row mb-3">
+        <!-- <div class="row mb-3">
             <label for="profilesPersonal_Email"
                 class="col-lg-auto col-form-label text-nowrap">電子信箱：</label>
             <div class="col">
@@ -16,29 +17,105 @@
                     onkeyup="restrictToValidChars(this)" onblur="checkThisEmail.call(this)">
                 <span class="text-danger" id="danger_profilesPersonal_Email"></span>
             </div>
-        </div>
+        </div> -->
         <div class="row mb-3">
-            <label for="profilesPersonal_AdminNote"
-                class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
+            <div class="col-lg-auto col-form-label text-nowrap">使用帳號：</div>
             <div class="col">
-                <input type="text" class="form-control" id="profilesPersonal_AdminNote">
-                <span class="text-danger" id="danger_profilesPersonal_AdminNote"></span>
+                <div id="userEmail"></div>
+                <!-- <input type="text" class="form-control thisRequired" id="profilesPersonal_Name">
+                <span class="text-danger" id="danger_profilesPersonal_Name"></span> -->
+            </div>
+        </div>
+        <div class="row mb-3 align-items-center">
+            <div class="col-lg-auto col-form-label text-nowrap">身份類型：</div>
+            <div class="col">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="userType" id="userType1" value="研發處">
+                    <label class="form-check-label" for="userType1">研發處</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="userType" id="userType2" value="師長">
+                    <label class="form-check-label" for="userType2">師長</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="userType" id="userType3" value="學生">
+                    <label class="form-check-label" for="userType3">學生</label>
+                </div>
+                <!-- <span class="text-danger" id="danger_profilesPersonal_AdminNote"></span> -->
+            </div>
+        </div>
+
+
+        <div class="row mb-3">
+            <label for="remark" class="col-lg-auto col-form-label text-nowrap">管理備註：</label>
+            <div class="col">
+                <input type="text" class="form-control" id="remark" name="remark">
+                <!-- <span class="text-danger" id="danger_userAdminNote"></span> -->
             </div>
         </div>
     </div>
     <div class="col-xl-6 mb-3">
         <div class="row mb-3 salaryRadio px-2 py-2 mx-1 border-success align-items-center">
-            <div class="mb-3">&#711;&#10623;&#711;&ensp;請先確認修改後的電子信箱是否有重複，若重複就不能使用歐！</div>
+            <div class="row mb-3">
+                <div class="col-12 col-form-label text-nowrap fw-bold">注意事項：</div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-auto pe-0">a.</div>
+                        <div class="col">
+                            首次登入預設身份為學生，請依實際狀況調整。
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto pe-0">b.</div>
+                        <div class="col">帳號狀態存為<strong class="text-danger">刪除</strong>以後，<strong class="text-decoration-underline">無法再次啟用</strong>。</div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-auto pe-0">c.</div>
+                        <div class="col">
+                            <strong class="">管理備註會顯示在</strong>
+                            如：abcdefg、1234567。
+                        </div>
+                    </div> -->
+                    <!-- <div class="row">
+                        <div class="col-auto pe-0">d.</div>
+                        <div class="col text-decoration-underline">若密碼輸入達成必備條件，<strong
+                                class="text-danger">該條件的標籤會變為綠色</strong>。</div>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- <div class="mb-3">&#711;&#10623;&#711;&ensp;請先確認修改後的電子信箱是否有重複，若重複就不能使用歐！</div>
             <div class="col-auto">
                 <button type="button" class="btn btn-danger btn-sm" id="checkEmail"><i
                         class="fa-solid fa-magnifying-glass"></i>&ensp;檢查</button>
-            </div>
+            </div> -->
+            <!-- <div class="col"> -->
+            <!-- 結果： -->
+            <!-- <span id="checkEmailResult"> -->
+            <!-- 可以使用。 -->
+            <!-- 不能使用。 -->
+            <!-- </span> -->
+            <!-- </div> -->
+        </div>
+        
+    </div>
+    <div class="col-auto ms-auto">
+        <div class="row mb-3 align-items-center">
+            <div class="col-lg-auto col-form-label text-nowrap">帳號狀態：</div>
             <div class="col">
-                結果：
-                <span id="checkEmailResult">
-                    <!-- 可以使用。 -->
-                    不能使用。
-                </span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="userStatus" id="userStatus1" value="啟用">
+                    <label class="form-check-label" for="userStatus1">啟用</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="userStatus" id="userStatus2" value="停用">
+                    <label class="form-check-label" for="userStatus2">停用</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="userStatus" id="userStatus3" value="刪除">
+                    <label class="form-check-label" for="userStatus3">刪除</label>
+                </div>
+                <!-- <span class="text-danger" id="danger_profilesPersonal_AdminNote"></span> -->
             </div>
         </div>
     </div>

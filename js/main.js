@@ -364,15 +364,15 @@ $(function () {
     var linkMappings = {
         '#dashboardLink': ['dashboard.html'],
         '#jobLink': ['Jobs/Talent_wanted', 'Jobs/PostedByMe', 'Jobs/AllPosted', 'Jobs/Create', 'Jobs/Edit'],
-        '#applyAndCheckLink': ['ID_Card/Ours', 'ID_Card/Apply', 'ID_Card/Reissue', 'ParkingSpace/Ours', 'ParkingSpace/Apply', 'Remittance/Create', 'idCardInventory.html', 'parkingSpaceInventory.html', 'cultivationRoomInventory.html', 'parkingSpaceApply.html', 'idCardApply.html', 'parkingSpaceRenew.html', 'idCardReissue.html', 'renewContractApply.html', 'proofOfPaymentEdit.html'],
+        '#applyAndCheckLink': ['ID_Card/Ours', 'ID_Card/Apply', 'ID_Card/Reissue', 'Remittance/Create', 'ParkingSpace/Ours', 'ParkingSpace/Apply', 'CultivationRoom/Ours', 'idCardInventory.html', 'parkingSpaceInventory.html', 'cultivationRoomInventory.html', 'parkingSpaceApply.html', 'idCardApply.html', 'parkingSpaceRenew.html', 'idCardReissue.html', 'renewContractApply.html', 'proofOfPaymentEdit.html'],
         // '#progressLink': ['progressCheck.html'],
         '#assessmentLink': ['CoopManuf/Review', 'coopManufApp.html', 'parkingSpaceApp.html', 'renewContractApp.html', 'idCardApp.html', 'confirmPayment.html'],
-        '#managementLink': ['ID_Card/Management', 'CultivationRoom/Management', 'CultivationRoom/Create', 'CultivationRoom/Edit', 'ParkingSpace/Management', 'ParkingSpace/Create', 'ParkingSpace/Edit', 'Remittance/Create', 'Configure/Management', 'Remittance/Edit', 'parkingSpace.html', 'roles.html', 'proofOfPaymentEdit.html'],
+        '#managementLink': ['User/Information', 'ID_Card/Management', 'Remittance/Create', 'Configure/Management', 'Remittance/Edit', 'ParkingSpace/Management', 'ParkingSpace/Create', 'ParkingSpace/Edit', 'CultivationRoom/Management', 'CultivationRoom/Create', 'CultivationRoom/Edit', 'User/Edit', 'parkingSpace.html', 'roles.html', 'proofOfPaymentEdit.html'],
         '#logRecordLink': ['logRecordLink.html'],
         // '#provideOpinionsLink': ['provideOpinionsLink.html'],
         '#styleLink': ['template-style.html'],
         '#underConstructionLink': ['template-underConstruction.html'],
-        '#userLink': ['User/Settings']
+        '#userLink': ['User/Settings', 'User/ChangeIdentity']
     };
 
     // 移除所有鏈接的 .active 類名

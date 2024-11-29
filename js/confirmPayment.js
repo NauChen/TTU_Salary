@@ -2003,10 +2003,10 @@ $(function () {
                 let lengthText = paymentData.remittanceFile.length;
                 if (paymentData.remittanceFile.substring((lengthText - 5), (lengthText - 4)) != "1") {
                     // $('#payment_downloadRemittanceFile').html('<a class="d-inline me-3 text-nowrap" href="#">下載&ensp;<i class="fa-solid fa-download"></i><span class="mx-1 update">補</span></a>');
-                    $('#payment_downloadRemittanceFile').html(`<a class="d-inline me-3 text-nowrap" href="/download_T/T_${paymentData.id}">下載&ensp;<i class="fa-solid fa-download"></i><span class="mx-1 update">補</span></a>`);
+                    $('#payment_downloadRemittanceFile').html(`<a class="d-inline me-3 text-nowrap" href="../download_T/T_${paymentData.id}">下載&ensp;<i class="fa-solid fa-download"></i><span class="mx-1 update">補</span></a>`);
                 } else {
                     // $('#payment_downloadRemittanceFile').html('<a class="d-inline me-3 text-nowrap" href="#">下載&ensp;<i class="fa-solid fa-download"></i></a>');
-                    $('#payment_downloadRemittanceFile').html(`<a class="d-inline me-3 text-nowrap" href="/download_T/T_${paymentData.id}">下載&ensp;<i class="fa-solid fa-download"></i>`);
+                    $('#payment_downloadRemittanceFile').html(`<a class="d-inline me-3 text-nowrap" href="../download_T/T_${paymentData.id}">下載&ensp;<i class="fa-solid fa-download"></i>`);
                 }
             } else {
                 $('#payment_downloadRemittanceFile').text("-").addClass('readOnly');
@@ -2034,7 +2034,7 @@ $(function () {
             });
 
             // #gotoEditRemittance是a標籤，修改屬性href="/Remittance/Edit/' + id值 + '"
-            $('#gotoEditRemittance').attr('href', `/Remittance/Edit/${paymentData.id}`);
+            $('#gotoEditRemittance').attr('href', `../Remittance/Edit/${paymentData.id}`);
 
             $('#payment_adminNote').text(paymentData.adminNote);
 

@@ -199,7 +199,7 @@ $(function () {
                 data: 'id', title: "修改", // 8
                 render: function (data) {
                     // return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./cultivationRoomEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>'
-                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord btnThrottle" href="/CultivationRoom/Edit/' + data + '"><i class="fa-solid fa-wrench"></i></a>'
+                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord btnThrottle" href="../CultivationRoom/Edit/' + data + '"><i class="fa-solid fa-wrench"></i></a>'
                 }
             },
         ],

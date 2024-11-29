@@ -413,7 +413,7 @@ $(function () {
                 data: 'id', title: "修改", // 9
                 render: function (data) {
                     // return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="./jobEdit.html?id=' + data + '"><i class="fa-solid fa-wrench"></i></a>';
-                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="/Jobs/Edit/' + data + '"><i class="fa-solid fa-wrench"></i></a>';
+                    return '<a class="btn btn-outline-primary rounded-circle btn-sm oneWord" href="../Jobs/Edit/' + data + '"><i class="fa-solid fa-wrench"></i></a>';
                 },
             },
         ],

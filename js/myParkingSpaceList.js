@@ -111,10 +111,10 @@ $(function () {
                     let iconType = "";
                     switch (data) {
                         case "汽車":
-                            iconType = '<i class="fa-solid fa-car-side" title="汽車"></i>';
+                            iconType = '<i class="fa-solid fa-car-side" title="汽車位"></i>';
                             break;
                         case "機車":
-                            iconType = '<i class="fa-solid fa-motorcycle" title="機車"></i>';
+                            iconType = '<i class="fa-solid fa-motorcycle" title="機車位"></i>';
                             break;
                         case "申請書":
                             iconType = '<i class="fa-regular fa-clipboard" title="申請書"></i>';

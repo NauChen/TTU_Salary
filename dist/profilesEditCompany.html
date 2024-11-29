@@ -243,116 +243,138 @@ height：畫面高度 -->
                             <div class="row">
     <div class="col-xl-8 mb-3">
         <div class="row mb-3">
-            <label for="profilesCompany_companyName" class="col-lg-auto col-form-label text-nowrap">公司名稱</label>
+            <label for="companyName" class="col-lg-auto col-form-label text-nowrap">公司名稱</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_companyName">
-                <span class="text-danger" id="danger_profilesCompany_companyName"></span>
+                <input type="text" class="form-control thisRequired" id="companyName">
+                <span class="text-danger" id="danger_companyName"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="profilesCompany_creationDate" class="col-lg-auto col-form-label text-nowrap">成立日期</label>
+            <label for="creationDate" class="col-lg-auto col-form-label text-nowrap">成立日期</label>
             <div class="col">
-                <input type="date" class="form-control thisRequired" id="profilesCompany_creationDate">
-                <span class="text-danger" id="danger_profilesCompany_creationDate"></span>
+                <input type="date" class="form-control thisRequired" id="creationDate">
+                <span class="text-danger" id="danger_creationDate"></span>
             </div>
-            <label for="profilesCompany_uniformNum" class="col-lg-auto col-form-label text-nowrap">統一編號</label>
+            <label for="uniformNum" class="col-lg-auto col-form-label text-nowrap">統一編號</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_uniformNum" readonly>
-                <span class="text-danger" id="danger_profilesCompany_uniformNum"></span>
+                <input type="text" class="form-control thisRequired" id="uniformNum" readonly>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="profilesCompany_capitalAmount" class="col-lg-auto col-form-label text-nowrap">資本額&emsp;</label>
+            <label for="capitalAmount" class="col-lg-auto col-form-label text-nowrap">資本額&emsp;</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_capitalAmount"
+                <input type="text" class="form-control thisRequired" id="capitalAmount"
                 onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
-                <span class="text-danger" id="danger_profilesCompany_capitalAmount"></span>
+                <span class="text-danger" id="danger_capitalAmount"></span>
             </div>
-            <label for="profilesCompany_responsiblePerson" class="col-lg-auto col-form-label text-nowrap">負責人&emsp;</label>
+            <label for="responsiblePerson" class="col-lg-auto col-form-label text-nowrap">負責人&emsp;</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_responsiblePerson">
-                <span class="text-danger" id="danger_profilesCompany_responsiblePerson"></span>
+                <input type="text" class="form-control thisRequired" id="responsiblePerson">
+                <span class="text-danger" id="danger_responsiblePerson"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="profilesCompany_companyAdd" class="col-lg-auto col-form-label text-nowrap">登記地址</label>
+            <label for="companyAdd" class="col-lg-auto col-form-label text-nowrap">登記地址</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_companyAdd">
-                <span class="text-danger" id="danger_profilesCompany_companyAdd"></span>
+                <input type="text" class="form-control thisRequired" id="companyAdd">
+                <span class="text-danger" id="danger_companyAdd"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="profilesCompany_locationOfCompany" class="col-lg-auto col-form-label text-nowrap">通訊地址</label>
+            <label for="locationOfCompany" class="col-lg-auto col-form-label text-nowrap">通訊地址</label>
             <div class="col">
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="sameAdd">
                     <label for="sameAdd" class="form-check-label">通訊地址同上</label>
                 </div>
-                <input type="text" class="form-control thisRequired" id="profilesCompany_locationOfCompany">
-                <span class="text-danger" id="danger_profilesCompany_profilesCompany_locationOfCompany"></span>
+                <input type="text" class="form-control thisRequired" id="locationOfCompany">
+                <span class="text-danger" id="danger_locationOfCompany"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="profilesCompany_employeesNum" class="col-lg-auto col-form-label text-nowrap">員工人數</label>
+            <label for="employeesNum" class="col-lg-auto col-form-label text-nowrap">員工人數</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_employeesNum"
+                <input type="text" class="form-control thisRequired" id="employeesNum"
                 onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
-                <span class="text-danger" id="danger_profilesCompany_employeesNum"></span>
+                <span class="text-danger" id="danger_employeesNum"></span>
             </div>
-            <label for="profilesCompany_referrer" class="col-lg-auto col-form-label text-nowrap">推薦人&emsp;</label>
+            <label for="referrer" class="col-lg-auto col-form-label text-nowrap">推薦人&emsp;</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_referrer">
-                <span class="text-danger" id="danger_profilesCompany_referrer"></span>
+                <input type="text" class="form-control thisRequired" id="referrer">
+                <span class="text-danger" id="danger_referrer"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="profilesCompany_contactPerson" class="col-lg-auto col-form-label text-nowrap">聯絡人&emsp;</label>
+            <label for="contactPerson" class="col-lg-auto col-form-label text-nowrap">聯絡人&emsp;</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_contactPerson">
-                <span class="text-danger" id="danger_profilesCompany_contactPerson"></span>
+                <input type="text" class="form-control thisRequired" id="contactPerson">
+                <span class="text-danger" id="danger_contactPerson"></span>
             </div>
-            <label for="profilesCompany_responsiblePerson" class="col-lg-auto col-form-label text-nowrap">分機</label>
+            <label for="ext" class="col-lg-auto col-form-label text-nowrap">分機</label>
             <div class="col col-lg-3">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_responsiblePerson">
-                <span class="text-danger" id="danger_profilesCompany_responsiblePerson"></span>
+                <input type="text" class="form-control thisRequired" id="ext">
+                <span class="text-danger" id="danger_ext"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="profilesCompany_jobTitle" class="col-lg-auto col-form-label text-nowrap">職務名稱</label>
+            <label for="jobTitle" class="col-lg-auto col-form-label text-nowrap">職務名稱</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_jobTitle">
-                <span class="text-danger" id="danger_profilesCompany_jobTitle"></span>
+                <input type="text" class="form-control thisRequired" id="jobTitle">
+                <span class="text-danger" id="danger_jobTitle"></span>
             </div>
-            <label for="profilesCompany_responsiblePerson" class="col-lg-auto col-form-label text-nowrap">電話/手機</label>
+            <label for="companyPhone" class="col-lg-auto col-form-label text-nowrap">電話/手機</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_responsiblePerson">
-                <span class="text-danger" id="danger_profilesCompany_responsiblePerson"></span>
+                <input type="text" class="form-control thisRequired" id="companyPhone">
+                <span class="text-danger" id="danger_companyPhone"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="profilesCompany_companyEmail" class="col-lg-auto col-form-label text-nowrap">主要信箱</label>
+            <label for="companyEmail" class="col-lg-auto col-form-label text-nowrap">主要信箱</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_companyEmail"
+                <input type="text" class="form-control thisRequired" id="companyEmail"
                     onkeyup="restrictToValidChars(this)">
-                <span class="text-danger" id="danger_profilesCompany_companyEmail"></span>
+                <span class="text-danger" id="danger_companyEmail"></span>
             </div>
-            <label for="profilesCompany_lineId" class="col-lg-auto col-form-label text-nowrap">Line ID</label>
+            <label for="lineId" class="col-lg-auto col-form-label text-nowrap">Line ID</label>
             <div class="col">
-                <input type="text" class="form-control thisRequired" id="profilesCompany_lineId"
+                <input type="text" class="form-control thisRequired" id="lineId"
                 onkeyup="restrictToValidChars(this)">
-                <span class="text-danger" id="danger_profilesCompany_profilesCompany_lineId"></span>
+                <span class="text-danger" id="danger_lineId"></span>
             </div>
         </div>
-
-
-
         <div class="row mb-3">
-            <label for="profilesCompany_AdminNote" class="col-lg-auto col-form-label text-nowrap">管理備註</label>
+            <label for="tutoringProfessor" class="col-lg-auto col-form-label text-nowrap">輔導教授</label>
             <div class="col">
-                <input type="text" class="form-control" id="profilesCompany_AdminNote">
-                <span class="text-danger" id="danger_profilesCompany_AdminNote"></span>
+                <input type="text" class="form-control thisRequired" id="tutoringProfessor">
+                <span class="text-danger" id="danger_tutoringProfessor"></span>
+            </div>
+            <label for="nurtureProgram" class="col-lg-auto col-form-label text-nowrap">培育計畫</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="nurtureProgram">
+                <span class="text-danger" id="danger_nurtureProgram"></span>
             </div>
         </div>
+        <!-- <div class="row mb-3">
+            <label for="businessItems" class="col-lg-auto col-form-label text-nowrap">主要營業項目</label>
+            <div class="col">
+                <textarea class="form-control textarea-md thisRequired"
+                id="businessItems" placeholder="※請簡述"></textarea>
+                <span class="text-danger" id="businessItems"></span>
+            </div>
+            <label for="helpItems" class="col-lg-auto col-form-label text-nowrap">駐育成中心主要<br class="d-none d-lg-block">輔導項目需求</label>
+            <div class="col">
+                <textarea class="form-control textarea-md thisRequired"
+                id="helpItems" placeholder="※請簡述"></textarea>
+                <span class="text-danger" id="helpItems"></span>
+            </div>
+        </div> -->
+        <!-- <div class="row mb-3">
+            <label for="adminNote" class="col-lg-auto col-form-label text-nowrap">管理備註</label>
+            <div class="col">
+                <textarea class="form-control textarea-md thisRequired" id="adminNote"></textarea>
+                <span class="text-danger" id="danger_adminNote"></span>
+            </div>
+        </div> -->
     </div>
     <div class="col-xl-4 mb-3">
         <div class="salaryRadio px-2 py-2 mx-1 border-success">
@@ -368,23 +390,31 @@ height：畫面高度 -->
                 </span>
             </div> -->
             <div class="row mb-3 ">
-                <label for="profilesCompany_businessItems" class="col-12 col-form-label text-nowrap">主要營業項目</label>
+                <label for="businessItems" class="col-12 col-form-label text-nowrap">主要營業項目</label>
                 <div class="col">
                     <textarea class="form-control textarea-md thisRequired"
-                    id="profilesCompany_businessItems" placeholder="※請簡述"></textarea>
-                    <span class="text-danger" id="profilesCompany_businessItems"></span>
+                    id="businessItems" placeholder="※請簡述"></textarea>
+                    <span class="text-danger" id="businessItems"></span>
                 </div>
             </div>
             <div class="row mb-4 ">
-                <label for="profilesCompany_helpItems" class="col-12 col-form-label text-nowrap">駐育成中心主要輔導項目需求</label>
+                <label for="helpItems" class="col-12 col-form-label text-nowrap">駐育成中心主要輔導項目需求</label>
                 <div class="col">
                     <textarea class="form-control textarea-md thisRequired"
-                    id="profilesCompany_helpItems" placeholder="※請簡述"></textarea>
-                    <span class="text-danger" id="profilesCompany_helpItems"></span>
+                    id="helpItems" placeholder="※請簡述"></textarea>
+                    <span class="text-danger" id="helpItems"></span>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="profilesCompany_helpItems" class="col-12 col-form-label text-nowrap fw-bold">檔案重新上傳：</label>
+                <label for="adminNote" class="col-12 col-form-label text-nowrap">管理備註</label>
+                <div class="col">
+                    <textarea class="form-control textarea-md thisRequired" id="adminNote"></textarea>
+                    <span class="text-danger" id="danger_adminNote"></span>
+                </div>
+    
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-form-label text-nowrap fw-bold">檔案重新上傳：</div>
                 <div class="col">
                     <div class="row">
                         <label for="companyProof"
