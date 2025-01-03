@@ -1314,37 +1314,37 @@
 
 
 // 付款資訊-可用汽車位
-var parkingSpaceCarData = [
-    "B1-01",
-    "B1-02",
-    "B2-03",
-    "B3-04",
-    "B2-05",
-    "B2-07",
-    "B3-11"
-];
+// var parkingSpaceCarData = [
+//     "B1-01",
+//     "B1-02",
+//     "B2-03",
+//     "B3-04",
+//     "B2-05",
+//     "B2-07",
+//     "B3-11"
+// ];
 
 // 付款資訊-可用機車位
-var parkingSpaceMotoData = [
-    "B1-21",
-    "B1-22",
-    "B2-23",
-    "B3-24",
-    "B2-25",
-    "B2-26",
-    "B3-27"
-];
+// var parkingSpaceMotoData = [
+//     "B1-21",
+//     "B1-22",
+//     "B2-23",
+//     "B3-24",
+//     "B2-25",
+//     "B2-26",
+//     "B3-27"
+// ];
 
 // 付款資訊-已發識別證
-var idCardData = [
-    "N000030",
-    "N000051",
-    "N000040",
-    "N000089",
-    "N000012",
-    "N000060",
-    "N000070"
-];
+// var idCardData = [
+//     "N000030",
+//     "N000051",
+//     "N000040",
+//     "N000089",
+//     "N000012",
+//     "N000060",
+//     "N000070"
+// ];
 
 // // 付款資訊-該合格廠商所擁有的培育室(若辦不到就用開放的培育室吧)
 // var roomData = [
@@ -1656,55 +1656,6 @@ $(function () {
         }
     });
 
-
-
-
-
-    // 車位配置廠商-增加緊急日期
-    // dataset_confirmPaymentParkingSpace.forEach(item => {
-    //     if (!item.company) {
-    //         item.recentMaturityDate = '';
-    //     } else {
-    //         if (item.deadline4) {
-    //             if (item.receivedDate4) {
-    //                 item.recentMaturityDate = '0';
-    //             } else {
-    //                 if (item.receiptNum3) {
-    //                     item.recentMaturityDate = item.deadline4;
-    //                 } else {
-    //                     item.recentMaturityDate = item.deadline3;
-    //                 }
-    //             }
-    //         } else if (item.deadline3) {
-    //             if (item.receivedDate3) {
-    //                 item.recentMaturityDate = '0';
-    //             } else {
-    //                 if (item.receiptNum2) {
-    //                     item.recentMaturityDate = item.deadline3;
-    //                 } else {
-    //                     item.recentMaturityDate = item.deadline2;
-    //                 }
-    //             }
-    //         } else if (item.deadline2) {
-    //             if (item.receivedDate2) {
-    //                 item.recentMaturityDate = '0';
-    //             } else {
-    //                 if (item.receiptNum1) {
-    //                     item.recentMaturityDate = item.deadline2;
-    //                 } else {
-    //                     item.recentMaturityDate = item.deadline1;
-    //                 }
-    //             }
-    //         } else {
-    //             if (item.receivedDate1) {
-    //                 item.recentMaturityDate = '0';
-    //             } else {
-    //                 item.recentMaturityDate = item.deadline1;
-    //             }
-    //         }
-    //     }
-    //     // console.log('id = ' + item.id + ' ，期限狀態： ' + item.recentMaturityDate);
-    // });
     // 車位配置廠商-表格
     $('#confirmPaymentParkingSpaceList').DataTable({
         ...commonSettingsTable,
@@ -1858,7 +1809,51 @@ $(function () {
         }
     });
 
-
+    // 車位配置廠商-增加緊急日期
+    // dataset_confirmPaymentParkingSpace.forEach(item => {
+    //     if (!item.company) {
+    //         item.recentMaturityDate = '';
+    //     } else {
+    //         if (item.deadline4) {
+    //             if (item.receivedDate4) {
+    //                 item.recentMaturityDate = '0';
+    //             } else {
+    //                 if (item.receiptNum3) {
+    //                     item.recentMaturityDate = item.deadline4;
+    //                 } else {
+    //                     item.recentMaturityDate = item.deadline3;
+    //                 }
+    //             }
+    //         } else if (item.deadline3) {
+    //             if (item.receivedDate3) {
+    //                 item.recentMaturityDate = '0';
+    //             } else {
+    //                 if (item.receiptNum2) {
+    //                     item.recentMaturityDate = item.deadline3;
+    //                 } else {
+    //                     item.recentMaturityDate = item.deadline2;
+    //                 }
+    //             }
+    //         } else if (item.deadline2) {
+    //             if (item.receivedDate2) {
+    //                 item.recentMaturityDate = '0';
+    //             } else {
+    //                 if (item.receiptNum1) {
+    //                     item.recentMaturityDate = item.deadline2;
+    //                 } else {
+    //                     item.recentMaturityDate = item.deadline1;
+    //                 }
+    //             }
+    //         } else {
+    //             if (item.receivedDate1) {
+    //                 item.recentMaturityDate = '0';
+    //             } else {
+    //                 item.recentMaturityDate = item.deadline1;
+    //             }
+    //         }
+    //     }
+    //     // console.log('id = ' + item.id + ' ，期限狀態： ' + item.recentMaturityDate);
+    // });
 
 
 });
@@ -2094,9 +2089,7 @@ $(function () {
         });
     });
 
-
-
-
+    // 同步 配置培育室 燈箱顯示資料 done*
     $('#confirmPaymentCultivationModel').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget); // 獲取觸發模態框的按鈕
         let catchId = String(button.data('id')); // 從按鈕獲取數據 ID
@@ -2114,7 +2107,7 @@ $(function () {
                 thisRoomId = catchId.substring(5);
                 break;
         }
-        // console.log('catchId:', catchId); // 輸出房間 ID
+        console.log('catchId:', catchId); // 輸出房間 ID
 
         // 從數據集中查找相應的房間資料
         let roomData = dataset_confirmPaymentCultivationRoom.find(r => r.roomId == thisRoomId);
@@ -2361,7 +2354,7 @@ $(function () {
                 "確定刪除。",
                 "不要！",
                 function () {
-                    // console.log("使用Id", catchId);
+                    console.log("使用Id", catchId);
                     let deleteRoomId = "";
                     switch (catchId.substring(0, 4)) {
                         case 'now_':
@@ -2404,7 +2397,7 @@ $(function () {
 
         $('#cultivation_updateBtn').off('click');
         $('#cultivation_updateBtn').on('click', function () {
-            // console.log('roomId Btn :', catchId); // 確認 roomId 是否正確獲取
+            console.log('roomId Btn :', catchId); // 確認 roomId 是否正確獲取
             // let formType = "";
             let formRoomTypeId = "";
 
@@ -2484,6 +2477,7 @@ $(function () {
 
     });
 
+    // 同步 配置停車位 燈箱顯示資料 done*
     $('#confirmPaymentParkingSpaceModel').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget); // 獲取觸發模態框的按鈕
         let catchId = String(button.data('id')); // 從按鈕獲取數據 ID

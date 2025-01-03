@@ -367,7 +367,7 @@ $(function () {
         '#applyAndCheckLink': ['ID_Card/Ours', 'ID_Card/Apply', 'ID_Card/Reissue', 'Remittance/Create', 'ParkingSpace/Ours', 'ParkingSpace/Apply', 'CultivationRoom/Ours', 'idCardInventory.html', 'parkingSpaceInventory.html', 'cultivationRoomInventory.html', 'parkingSpaceApply.html', 'idCardApply.html', 'parkingSpaceRenew.html', 'idCardReissue.html', 'renewContractApply.html', 'proofOfPaymentEdit.html'],
         // '#progressLink': ['progressCheck.html'],
         '#assessmentLink': ['CoopManuf/Review', 'coopManufApp.html', 'parkingSpaceApp.html', 'renewContractApp.html', 'idCardApp.html', 'confirmPayment.html'],
-        '#managementLink': ['User/Information', 'ID_Card/Management', 'Remittance/Create', 'Configure/Management', 'Remittance/Edit', 'ParkingSpace/Management', 'ParkingSpace/Create', 'ParkingSpace/Edit', 'CultivationRoom/Management', 'CultivationRoom/Create', 'CultivationRoom/Edit', 'User/Edit', 'parkingSpace.html', 'roles.html', 'proofOfPaymentEdit.html'],
+        '#managementLink': ['User/Information', 'User/Edit', 'ID_Card/Management', 'Remittance/Create', 'Configure/Management', 'Remittance/Edit', 'ParkingSpace/Management', 'ParkingSpace/Create', 'ParkingSpace/Edit', 'CoopManuf/Edit', 'CoopManuf/VisitReport', 'CultivationRoom/Management', 'CultivationRoom/Create', 'CultivationRoom/Edit', 'parkingSpace.html', 'roles.html', 'proofOfPaymentEdit.html'],
         '#logRecordLink': ['logRecordLink.html'],
         // '#provideOpinionsLink': ['provideOpinionsLink.html'],
         '#styleLink': ['template-style.html'],

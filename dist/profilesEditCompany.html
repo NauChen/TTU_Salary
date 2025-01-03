@@ -243,14 +243,14 @@ height：畫面高度 -->
                             <div class="row">
     <div class="col-xl-8 mb-3">
         <div class="row mb-3">
-            <label for="companyName" class="col-lg-auto col-form-label text-nowrap">公司名稱</label>
+            <label for="companyName" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>公司名稱</label>
             <div class="col">
                 <input type="text" class="form-control thisRequired" id="companyName">
                 <span class="text-danger" id="danger_companyName"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="creationDate" class="col-lg-auto col-form-label text-nowrap">成立日期</label>
+            <label for="creationDate" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>成立日期</label>
             <div class="col">
                 <input type="date" class="form-control thisRequired" id="creationDate">
                 <span class="text-danger" id="danger_creationDate"></span>
@@ -261,27 +261,27 @@ height：畫面高度 -->
             </div>
         </div>
         <div class="row mb-3">
-            <label for="capitalAmount" class="col-lg-auto col-form-label text-nowrap">資本額&emsp;</label>
+            <label for="capitalAmount" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>資本額&emsp;</label>
             <div class="col">
                 <input type="text" class="form-control thisRequired" id="capitalAmount"
                 onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
                 <span class="text-danger" id="danger_capitalAmount"></span>
             </div>
-            <label for="responsiblePerson" class="col-lg-auto col-form-label text-nowrap">負責人&emsp;</label>
+            <label for="responsiblePerson" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>負責人&emsp;</label>
             <div class="col">
                 <input type="text" class="form-control thisRequired" id="responsiblePerson">
                 <span class="text-danger" id="danger_responsiblePerson"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="companyAdd" class="col-lg-auto col-form-label text-nowrap">登記地址</label>
+            <label for="companyAdd" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>登記地址</label>
             <div class="col">
                 <input type="text" class="form-control thisRequired" id="companyAdd">
                 <span class="text-danger" id="danger_companyAdd"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="locationOfCompany" class="col-lg-auto col-form-label text-nowrap">通訊地址</label>
+            <label for="locationOfCompany" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>通訊地址</label>
             <div class="col">
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="sameAdd">
@@ -292,7 +292,7 @@ height：畫面高度 -->
             </div>
         </div>
         <div class="row mb-3">
-            <label for="employeesNum" class="col-lg-auto col-form-label text-nowrap">員工人數</label>
+            <label for="employeesNum" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>員工人數</label>
             <div class="col">
                 <input type="text" class="form-control thisRequired" id="employeesNum"
                 onkeyup="restrictToNum(this)" onfocus="unformatOnFocus(this)" onblur="formatOnBlur(this)">
@@ -305,7 +305,7 @@ height：畫面高度 -->
             </div>
         </div>
         <div class="row mb-3">
-            <label for="contactPerson" class="col-lg-auto col-form-label text-nowrap">聯絡人&emsp;</label>
+            <label for="contactPerson" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>聯絡人&emsp;</label>
             <div class="col">
                 <input type="text" class="form-control thisRequired" id="contactPerson">
                 <span class="text-danger" id="danger_contactPerson"></span>
@@ -317,19 +317,19 @@ height：畫面高度 -->
             </div>
         </div>
         <div class="row mb-3">
-            <label for="jobTitle" class="col-lg-auto col-form-label text-nowrap">職務名稱</label>
+            <label for="jobTitle" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>職務名稱</label>
             <div class="col">
                 <input type="text" class="form-control thisRequired" id="jobTitle">
                 <span class="text-danger" id="danger_jobTitle"></span>
             </div>
-            <label for="companyPhone" class="col-lg-auto col-form-label text-nowrap">電話/手機</label>
+            <label for="companyPhone" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>聯絡電話</label>
             <div class="col">
                 <input type="text" class="form-control thisRequired" id="companyPhone">
                 <span class="text-danger" id="danger_companyPhone"></span>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="companyEmail" class="col-lg-auto col-form-label text-nowrap">主要信箱</label>
+            <label for="companyEmail" class="col-lg-auto col-form-label text-nowrap"><span class="requiredMark">*</span>主要信箱</label>
             <div class="col">
                 <input type="text" class="form-control thisRequired" id="companyEmail"
                     onkeyup="restrictToValidChars(this)">
@@ -354,6 +354,61 @@ height：畫面高度 -->
                 <span class="text-danger" id="danger_nurtureProgram"></span>
             </div>
         </div>
+        <div class="mb-3">
+            <div class="salaryRadio px-2 py-2 mx-1 border-secondary">
+                <div class="row justify-content-between mb-2">
+                    <div class="col-12 col-lg-auto fw-bold fs-5">合約書</div>
+                    <div class="col-auto ms-2 text-decoration-underline text-danger">※僅能修改最後一筆合約資料，或是增加一筆新的合約。</div>
+                </div>
+                <div class="row align-items-center ps-2 mb-2">
+                    <label for="entryContractLastOne" class="col-auto col-form-label text-nowrap"><span class="requiredMark">*</span>最後一筆註記</label>
+                    <div class="col col-sm-4 col-md-3">
+                        <input type="text" class="form-control thisRequired" id="entryContractLastOne">
+                        <span class="text-danger" id="danger_entryContractLastOne"></span>
+                    </div>
+                    <label for="EC_lastOne"
+                        class="col-12 col-sm-auto col-form-label text-nowrap upload-label py-0">重新上傳<i
+                            class="fa-solid fa-upload mx-1"></i>
+                    </label>
+                    <div class="col-12">
+                        <input type="file" class="form-control d-none" id="EC_lastOne"
+                            accept=".pdf"
+                            onchange="javascript:{document.getElementById('fileInfo_EC_lastOne').innerHTML = document.getElementById('EC_lastOne').value;setFormHeight();}">
+                        <div id="fileInfo_EC_lastOne" class="fileInfo py-0"></div>
+                    </div>
+                </div>
+                <div class="row align-items-center ps-2">
+                    <label for="entryContractNewOne" class="col-auto col-form-label text-nowrap"><span class="requiredMark" id="newECMark">&ensp;</span>新合約的註記</label>
+                    <div class="col col-sm-4 col-md-3">
+                        <input type="text" class="form-control thisRequired" id="entryContractNewOne">
+                        <span class="text-danger" id="danger_entryContractNewOne"></span>
+                    </div>
+                    <label for="EC_newOne"
+                        class="col-12 col-sm-auto col-form-label text-nowrap upload-label py-0">上傳新的<i
+                            class="fa-solid fa-upload mx-1"></i>
+                    </label>
+                    <div class="col-12">
+                        <input type="file" class="form-control d-none" id="EC_newOne"
+                            accept=".pdf"
+                            onchange="javascript:{updateFileInfo();}">
+                        <div id="fileInfo_EC_newOne" class="fileInfo py-0"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row mb-3">
+            <label for="tutoringProfessor" class="col-lg-auto col-form-label text-nowrap">輔導教授</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="tutoringProfessor">
+                <span class="text-danger" id="danger_tutoringProfessor"></span>
+            </div>
+            <label for="nurtureProgram" class="col-lg-auto col-form-label text-nowrap">培育計畫</label>
+            <div class="col">
+                <input type="text" class="form-control thisRequired" id="nurtureProgram">
+                <span class="text-danger" id="danger_nurtureProgram"></span>
+            </div>
+            
+        </div> -->
         <!-- <div class="row mb-3">
             <label for="businessItems" class="col-lg-auto col-form-label text-nowrap">主要營業項目</label>
             <div class="col">
@@ -390,7 +445,7 @@ height：畫面高度 -->
                 </span>
             </div> -->
             <div class="row mb-3 ">
-                <label for="businessItems" class="col-12 col-form-label text-nowrap">主要營業項目</label>
+                <label for="businessItems" class="col-12 col-form-label text-nowrap"><span class="requiredMark">*</span>主要營業項目</label>
                 <div class="col">
                     <textarea class="form-control textarea-md thisRequired"
                     id="businessItems" placeholder="※請簡述"></textarea>
@@ -494,7 +549,7 @@ height：畫面高度 -->
                             <span class="text-danger" id="danger_entryForm"></span>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <label for="payProof"
                             class="col col-form-label text-nowrap upload-label py-0">合約書<i
                                 class="fa-solid fa-upload mx-1"></i>
@@ -505,7 +560,7 @@ height：畫面高度 -->
                                 onchange="javascript:{document.getElementById('fileInfo_payProof').innerHTML = document.getElementById('payProof').value;setFormHeight();}">
                             <div id="fileInfo_payProof" class="fileInfo py-0"></div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
